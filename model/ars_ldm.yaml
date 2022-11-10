@@ -1,0 +1,115 @@
+id: https://www.cdisc.org/ars/1-0
+name: ARS-Schema
+
+imports:
+  - linkml:types
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+
+default_range: string
+
+classes:
+
+  NamedObject:
+    abstract: true
+    slots:
+      - name
+
+  ReportingEvent:
+    tree_root: true
+    is_a: NamedObject
+    slots:
+      - listOfPlannedOutputs
+
+  NestedListOfOutputs:
+    slots:
+      - sublists
+      - outputs
+
+  ListedListItem:
+    is_a: NamedObject
+    slots:
+      - order
+      - listedList
+
+  ListedOutputItem:
+    is_a: NamedObject
+    slots:
+      - order
+      - listedOutput
+
+  Output:
+    slots:
+      - id
+      - version
+      - fileSpecifications
+
+  File:
+    is_a: NamedObject
+    slots:
+      - fileType
+      - location
+      - style
+
+slots:
+
+  name:
+    required: true
+
+  listOfPlannedOutputs:
+    required: true
+    range: NestedListOfOutputs
+
+  order:
+    required: true
+    range: integer
+
+  listedItem:
+    required: true
+    range: NamedObject
+
+  sublists:
+    multivalued: true
+    inlined_as_list: true
+    range: ListedListItem
+
+  listedList:
+    required: true
+    range: NestedListOfOutputs
+
+  outputs:
+    multivalued: true
+    inlined_as_list: true
+    range: ListedOutputItem
+
+  listedOutput:
+    required: true
+    range: Output
+
+  id:
+    required: true
+    identifier: true
+
+  version:
+    range: integer
+
+  fileSpecifications:
+    multivalued: true
+    inlined_as_list: true
+    range: File
+
+  fileType:
+    range: FileType
+
+  location:
+
+  style:
+
+enums:
+
+  FileType:
+    permissible_values:
+      pdf:
+      rtf:
+      txt:

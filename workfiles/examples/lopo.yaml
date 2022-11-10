@@ -1,0 +1,37 @@
+name: CDISC360 Pilot 1 CSR
+listOfPlannedOutputs:
+  sublists:
+  - name: Safety
+    order: 1
+    listedList:
+      outputs:
+      - name: Standard Demographics Table
+        order: 1
+        listedOutput:
+          id: T14201-DEMOG
+          version: 1
+          fileSpecifications:
+          - name: T-14-02-01-demog
+            fileType: rtf
+            location: .
+            style: To be defined
+      - name: AE Summary Table
+        order: 2
+        listedOutput:
+          id: T14301-AE-SUMM
+          version: 1
+          fileSpecifications:
+          - name: T-14-03-01-aesum
+            fileType: rtf
+            location: .
+            style: To be defined
+      - name: Vital Signs Change from Baseline Table
+        order: 3
+        listedOutput:
+          id: T14303-VITALS-CHGBL
+          version: 1
+          fileSpecifications:
+          - name: T-14-03-03-vitals-chgbl
+            fileType: rtf
+            location: .
+            style: To be defined
