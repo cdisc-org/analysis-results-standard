@@ -21,27 +21,23 @@ classes:
     is_a: NamedObject
     slots:
       - listOfPlannedOutputs
+      - analysisSets
+      - analysisGroups
 
-  NestedListOfOutputs:
+  NestedList:
     slots:
-      - sublists
-      - outputs
+      - listItems
 
-  ListedListItem:
+  OrderedListItem:
     is_a: NamedObject
     slots:
       - order
-      - listedList
-
-  ListedOutputItem:
-    is_a: NamedObject
-    slots:
-      - order
-      - listedOutput
-
+      - sublist
+      - output
+  
   Output:
     slots:
-      - id
+      - opid
       - version
       - fileSpecifications
 
@@ -52,6 +48,66 @@ classes:
       - location
       - style
 
+  WhereClause:
+    slots:
+      - id
+      - condition
+      - compoundExpression
+
+  Condition:
+    slots:
+      - dataset
+      - variable
+      - comparator
+      - value
+
+  CompoundExpression:
+    slots:
+      - logicalOperator
+      - whereClauses
+
+  CompoundSetExpression:
+    is_a: CompoundExpression
+    slot_usage:
+      whereClauses:
+        range: AnalysisSet
+        inlined: false
+
+  CompoundGroupExpression:
+    is_a: CompoundExpression
+    slot_usage:
+      whereClauses:
+        range: AnalysisGroupMember
+        inlined: false
+
+  AnalysisSet:
+    is_a: WhereClause
+    slot_usage:
+      compoundExpression:
+        range: CompoundSetExpression
+    slots:
+      - label
+      - order
+
+  AnalysisGroupSet:
+    slots:
+      - id
+      - label
+      - members
+
+  AnalysisGroupMember:
+    is_a: WhereClause
+    slot_usage:
+      compoundExpression:
+        range: CompoundGroupExpression
+    slots:
+      - label
+      - order
+
+  DataSelection:
+    slots:
+      - selectionCriteria
+
 slots:
 
   name:
@@ -59,37 +115,41 @@ slots:
 
   listOfPlannedOutputs:
     required: true
-    range: NestedListOfOutputs
+    range: NestedList
+
+  analysisSets:
+    multivalued: true
+    inlined_as_list: true
+    range: AnalysisSet
+
+  analysisGroups:
+    multivalued: true
+    inlined_as_list: true
+    range: AnalysisGroupSet
+
+  listItems:
+    multivalued: true
+    list_elements_ordered: true
+    inlined_as_list: true
+    range: OrderedListItem
 
   order:
     required: true
     range: integer
 
-  listedItem:
-    required: true
-    range: NamedObject
+  sublist: 
+    range: NestedList
 
-  sublists:
-    multivalued: true
-    inlined_as_list: true
-    range: ListedListItem
-
-  listedList:
-    required: true
-    range: NestedListOfOutputs
-
-  outputs:
-    multivalued: true
-    inlined_as_list: true
-    range: ListedOutputItem
-
-  listedOutput:
-    required: true
+  output: 
     range: Output
 
   id:
     required: true
     identifier: true
+
+  opid:
+    required: true
+    #identifier: true
 
   version:
     range: integer
@@ -106,6 +166,43 @@ slots:
 
   style:
 
+  logicalOperator:
+    required: true
+    range: AndOr
+
+  condition:
+    range: Condition
+
+  compoundExpression:
+    range: CompoundExpression
+
+  whereClauses:
+    multivalued: true
+    list_elements_ordered: true
+    inlined: false
+    range: WhereClause
+
+  members:
+    multivalued: true
+    list_elements_ordered: true
+    inlined_as_list: true
+    range: AnalysisGroupMember
+
+  dataset:
+
+  variable:
+
+  comparator:
+    range: Comparator
+
+  value:
+    multivalued: true
+
+  label:
+
+  selectionCriteria:
+    range: WhereClause
+
 enums:
 
   FileType:
@@ -113,3 +210,19 @@ enums:
       pdf:
       rtf:
       txt:
+
+  AndOr:
+    permissible_values:
+      AND:
+      OR:
+
+  Comparator:
+    permissible_values:
+      EQ:
+      NE:
+      GT:
+      GE:
+      LT:
+      LE:
+      IN:
+      NOTIN:

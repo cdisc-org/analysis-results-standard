@@ -1,0 +1,160 @@
+name: CDISC360 Pilot 1 CSR
+listOfPlannedOutputs:
+  listItems:
+  - name: Safety
+    order: 1
+    sublist:
+      listItems:
+      - name: Standard Demographics Table
+        order: 1
+        output:
+          opid: T14201-DEMOG
+          version: 1
+          fileSpecifications:
+          - name: T-14-02-01-demog
+            fileType: rtf
+            location: .
+            style: To be defined
+      - name: AE Summary Table
+        order: 2
+        output:
+          opid: T14301-AE-SUMM
+          version: 1
+          fileSpecifications:
+          - name: T-14-03-01-aesum
+            fileType: rtf
+            location: .
+            style: To be defined
+      - name: Vital Signs Change from Baseline Table
+        order: 3
+        output:
+          opid: T14303-VITALS-CHGBL
+          version: 1
+          fileSpecifications:
+          - name: T-14-03-03-vitals-chgbl
+            fileType: rtf
+            location: .
+            style: To be defined
+      - name: Drug Induced Liver Injury (DILI)
+        order: 4
+        sublist:
+          listItems:
+          - name: Liver Function Tests Change from Baseline
+            order: 1
+            output:
+              opid: T140401-LFT-CHGBL
+              version: 1
+              fileSpecifications:
+              - name: T14-04-01-lft-chgbl
+                fileType: rtf
+                location: .
+                style: To be defined
+          - name: Liver Function Test AE Summary
+            order: 2
+            output:
+              opid: T140402-LFT-AE-SUMM
+              version: 1
+              fileSpecifications:
+              - name: T14-04-02-lft-aesumm
+                fileType: rtf
+                location: .
+                style: To be defined
+  - name: Efficacy
+    order: 2
+    sublist:
+      listItems:
+      - name: Change from Baseline in Extent of Disease
+        order: 1
+        output:
+          opid: T14303-EOD-CHGBL
+          version: 1
+          fileSpecifications:
+          - name: T-14-03-03-eod-chgbl
+            fileType: pdf
+            location: .
+            style: To be defined
+analysisSets:
+- id: AnalysisSet_01
+  label: Safety Population
+  order: 1
+  condition:
+    dataset: ADSL
+    variable: SAFFL
+    comparator: EQ
+    value:
+    - Y
+- id: AnalysisSet_02
+  label: Efficacy Population
+  order: 1
+  condition:
+    dataset: ADSL
+    variable: ITT
+    comparator: EQ
+    value:
+    - Y
+- id: AnalysisSet_03
+  label: Treatment-Emergent Adverse Events
+  order: 1
+  condition:
+    dataset: ADAE
+    variable: TRTEMFL
+    comparator: EQ
+    value:
+    - Y
+- id: AnalysisSet_04
+  label: Treatment-Emergent Adverse Events ^ Safety Population
+  order: 1
+  compoundExpression:
+    logicalOperator: AND
+    whereClauses:
+    - AnalysisSet_01
+    - AnalysisSet_03
+analysisGroups:
+- id: TrtGroup_02
+  label: Treatment
+  members:
+  - id: TrtGroup_02_1
+    label: Xanomeline High Dose
+    order: 1
+    condition: 
+      dataset: ADAE
+      variable: TRT01A
+      comparator: EQ
+      value:
+      - Xanomeline High Dose
+  - id: TrtGroup_02_2
+    label: Xanomeline Low Dose
+    order: 2
+    condition: 
+      dataset: ADAE
+      variable: TRT01A
+      comparator: EQ
+      value:
+      - Xanomeline Low Dose
+  - id: TrtGroup_02_3
+    label: Placebo
+    order: 3
+    condition: 
+      dataset: ADAE
+      variable: TRT01A
+      comparator: EQ
+      value:
+      - Placebo
+  - id: TrtGroup_02_4
+    label: Active Doses
+    order: 4
+    compoundExpression:
+      logicalOperator: OR
+      whereClauses:
+      - TrtGroup_02_1
+      - TrtGroup_02_2
+  - id: TrtGroup_02_5
+    label: Total
+    order: 5
+    compoundExpression:
+      logicalOperator: OR
+      whereClauses:
+      - TrtGroup_02_1
+      - TrtGroup_02_2
+      - TrtGroup_02_3
+

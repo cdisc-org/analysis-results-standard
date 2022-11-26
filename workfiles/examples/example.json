@@ -1,0 +1,253 @@
+{
+  "name": "CDISC360 Pilot 1 CSR",
+  "listOfPlannedOutputs": {
+    "listItems": [
+      {
+        "name": "Safety",
+        "order": 1,
+        "sublist": {
+          "listItems": [
+            {
+              "name": "Standard Demographics Table",
+              "order": 1,
+              "output": {
+                "opid": "T14201-DEMOG",
+                "version": 1,
+                "fileSpecifications": [
+                  {
+                    "name": "T-14-02-01-demog",
+                    "fileType": "rtf",
+                    "location": ".",
+                    "style": "To be defined"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "AE Summary Table",
+              "order": 2,
+              "output": {
+                "opid": "T14301-AE-SUMM",
+                "version": 1,
+                "fileSpecifications": [
+                  {
+                    "name": "T-14-03-01-aesum",
+                    "fileType": "rtf",
+                    "location": ".",
+                    "style": "To be defined"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Vital Signs Change from Baseline Table",
+              "order": 3,
+              "output": {
+                "opid": "T14303-VITALS-CHGBL",
+                "version": 1,
+                "fileSpecifications": [
+                  {
+                    "name": "T-14-03-03-vitals-chgbl",
+                    "fileType": "rtf",
+                    "location": ".",
+                    "style": "To be defined"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Drug Induced Liver Injury (DILI)",
+              "order": 4,
+              "sublist": {
+                "listItems": [
+                  {
+                    "name": "Liver Function Tests Change from Baseline",
+                    "order": 1,
+                    "output": {
+                      "opid": "T140401-LFT-CHGBL",
+                      "version": 1,
+                      "fileSpecifications": [
+                        {
+                          "name": "T14-04-01-lft-chgbl",
+                          "fileType": "rtf",
+                          "location": ".",
+                          "style": "To be defined"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "name": "Liver Function Test AE Summary",
+                    "order": 2,
+                    "output": {
+                      "opid": "T140402-LFT-AE-SUMM",
+                      "version": 1,
+                      "fileSpecifications": [
+                        {
+                          "name": "T14-04-02-lft-aesumm",
+                          "fileType": "rtf",
+                          "location": ".",
+                          "style": "To be defined"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Efficacy",
+        "order": 2,
+        "sublist": {
+          "listItems": [
+            {
+              "name": "Change from Baseline in Extent of Disease",
+              "order": 1,
+              "output": {
+                "opid": "T14303-EOD-CHGBL",
+                "version": 1,
+                "fileSpecifications": [
+                  {
+                    "name": "T-14-03-03-eod-chgbl",
+                    "fileType": "pdf",
+                    "location": ".",
+                    "style": "To be defined"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "analysisSets": [
+    {
+      "id": "AnalysisSet_01",
+      "condition": {
+        "dataset": "ADSL",
+        "variable": "SAFFL",
+        "comparator": "EQ",
+        "value": [
+          "Y"
+        ]
+      },
+      "order": 1,
+      "label": "Safety Population"
+    },
+    {
+      "id": "AnalysisSet_02",
+      "condition": {
+        "dataset": "ADSL",
+        "variable": "ITT",
+        "comparator": "EQ",
+        "value": [
+          "Y"
+        ]
+      },
+      "order": 1,
+      "label": "Efficacy Population"
+    },
+    {
+      "id": "AnalysisSet_03",
+      "condition": {
+        "dataset": "ADAE",
+        "variable": "TRTEMFL",
+        "comparator": "EQ",
+        "value": [
+          "Y"
+        ]
+      },
+      "order": 1,
+      "label": "Treatment-Emergent Adverse Events"
+    },
+    {
+      "id": "AnalysisSet_04",
+      "compoundExpression": {
+        "logicalOperator": "AND",
+        "whereClauses": [
+          "AnalysisSet_01",
+          "AnalysisSet_03"
+        ]
+      },
+      "order": 1,
+      "label": "Treatment-Emergent Adverse Events ^ Safety Population"
+    }
+  ],
+  "analysisGroups": [
+    {
+      "id": "TrtGroup_02",
+      "label": "Treatment",
+      "members": [
+        {
+          "id": "TrtGroup_02_1",
+          "condition": {
+            "dataset": "ADAE",
+            "variable": "TRT01A",
+            "comparator": "EQ",
+            "value": [
+              "Xanomeline High Dose"
+            ]
+          },
+          "order": 1,
+          "label": "Xanomeline High Dose"
+        },
+        {
+          "id": "TrtGroup_02_2",
+          "condition": {
+            "dataset": "ADAE",
+            "variable": "TRT01A",
+            "comparator": "EQ",
+            "value": [
+              "Xanomeline Low Dose"
+            ]
+          },
+          "order": 2,
+          "label": "Xanomeline Low Dose"
+        },
+        {
+          "id": "TrtGroup_02_3",
+          "condition": {
+            "dataset": "ADAE",
+            "variable": "TRT01A",
+            "comparator": "EQ",
+            "value": [
+              "Placebo"
+            ]
+          },
+          "order": 3,
+          "label": "Placebo"
+        },
+        {
+          "id": "TrtGroup_02_4",
+          "compoundExpression": {
+            "logicalOperator": "OR",
+            "whereClauses": [
+              "TrtGroup_02_1",
+              "TrtGroup_02_2"
+            ]
+          },
+          "order": 4,
+          "label": "Active Doses"
+        },
+        {
+          "id": "TrtGroup_02_5",
+          "compoundExpression": {
+            "logicalOperator": "OR",
+            "whereClauses": [
+              "TrtGroup_02_1",
+              "TrtGroup_02_2",
+              "TrtGroup_02_3"
+            ]
+          },
+          "order": 5,
+          "label": "Total"
+        }
+      ]
+    }
+  ],
+  "@type": "ReportingEvent"
+}
