@@ -23,6 +23,8 @@ classes:
       - listOfPlannedOutputs
       - analysisSets
       - analysisGroups
+      - outputs
+      - displays
 
   NestedList:
     slots:
@@ -34,12 +36,13 @@ classes:
       - order
       - sublist
       - output
-  
+
   Output:
     slots:
-      - opid
+      - id
       - version
       - fileSpecifications
+      - outputDisplays
 
   File:
     is_a: NamedObject
@@ -47,6 +50,30 @@ classes:
       - fileType
       - location
       - style
+
+  OutputDisplay:
+    slots:
+      - order
+      - display
+
+  Display:
+    is_a: NamedObject
+    slots:
+      - id
+      - version
+      - title
+      - displaySections
+
+  DisplaySection:
+    slots:
+      - sectionType
+      - subSections
+
+  DisplaySubSection:
+    slots:
+      - id
+      - order
+      - text      
 
   WhereClause:
     slots:
@@ -127,6 +154,16 @@ slots:
     inlined_as_list: true
     range: AnalysisGroupSet
 
+  outputs:
+    multivalued: true
+    inlined_as_list: true
+    range: Output
+
+  displays:
+    multivalued: true
+    inlined_as_list: true
+    range: Display
+
   listItems:
     multivalued: true
     list_elements_ordered: true
@@ -139,20 +176,22 @@ slots:
 
   sublist: 
     range: NestedList
+    multivalued: false
+    inlined: true
 
   output: 
     range: Output
+    multivalued: false
+    inlined: false
 
   id:
     required: true
     identifier: true
 
-  opid:
-    required: true
-    #identifier: true
-
   version:
     range: integer
+
+  title:
 
   fileSpecifications:
     multivalued: true
@@ -165,6 +204,33 @@ slots:
   location:
 
   style:
+
+  outputDisplays:
+    range: OutputDisplay
+    multivalued: true
+    inlined_as_list: true
+    list_elements_ordered: true
+
+  display:
+    range: Display
+    multivalued: false
+    inlined: false
+
+  displaySections:
+    multivalued: true
+    inlined_as_list: true
+    range: DisplaySection
+
+  sectionType:
+    range: SectionType
+
+  subSections:
+    multivalued: true
+    list_elements_ordered: true
+    inlined_as_list: true
+    range: DisplaySubSection
+
+  text:
 
   logicalOperator:
     required: true
@@ -226,3 +292,11 @@ enums:
       LE:
       IN:
       NOTIN:
+
+  SectionType:
+    permissible_values:
+      Title:
+      Footnote:
+      Abbreviation:
+      Legend:
+      Rowlabel Header:

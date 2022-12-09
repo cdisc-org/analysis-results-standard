@@ -7,72 +7,30 @@ listOfPlannedOutputs:
       listItems:
       - name: Standard Demographics Table
         order: 1
-        output:
-          opid: T14201-DEMOG
-          version: 1
-          fileSpecifications:
-          - name: T-14-02-01-demog
-            fileType: rtf
-            location: .
-            style: To be defined
+        output: O14201-DEMOG
       - name: AE Summary Table
         order: 2
-        output:
-          opid: T14301-AE-SUMM
-          version: 1
-          fileSpecifications:
-          - name: T-14-03-01-aesum
-            fileType: rtf
-            location: .
-            style: To be defined
+        output: O14301-AE-SUMM
       - name: Vital Signs Change from Baseline Table
         order: 3
-        output:
-          opid: T14303-VITALS-CHGBL
-          version: 1
-          fileSpecifications:
-          - name: T-14-03-03-vitals-chgbl
-            fileType: rtf
-            location: .
-            style: To be defined
+        output: O14303-VITALS-CHGBL
       - name: Drug Induced Liver Injury (DILI)
         order: 4
         sublist:
           listItems:
           - name: Liver Function Tests Change from Baseline
             order: 1
-            output:
-              opid: T140401-LFT-CHGBL
-              version: 1
-              fileSpecifications:
-              - name: T14-04-01-lft-chgbl
-                fileType: rtf
-                location: .
-                style: To be defined
+            output: O140401-LFT-CHGBL
           - name: Liver Function Test AE Summary
             order: 2
-            output:
-              opid: T140402-LFT-AE-SUMM
-              version: 1
-              fileSpecifications:
-              - name: T14-04-02-lft-aesumm
-                fileType: rtf
-                location: .
-                style: To be defined
+            output: O140402-LFT-AE-SUMM
   - name: Efficacy
     order: 2
     sublist:
       listItems:
       - name: Change from Baseline in Extent of Disease
         order: 1
-        output:
-          opid: T14303-EOD-CHGBL
-          version: 1
-          fileSpecifications:
-          - name: T-14-03-03-eod-chgbl
-            fileType: pdf
-            location: .
-            style: To be defined
+        output: O14303-EOD-CHGBLx
 analysisSets:
 - id: AnalysisSet_01
   label: Safety Population
@@ -157,4 +115,127 @@ analysisGroups:
       - TrtGroup_02_1
       - TrtGroup_02_2
       - TrtGroup_02_3
-
+outputs:
+- id: O14201-DEMOG
+  version: 1
+  fileSpecifications:
+  - name: O-14-02-01-demog
+    fileType: rtf
+    location: .
+    style: To be defined
+  outputDisplays:
+  - order: 1
+    display: T14201-DEMOG
+- id: O14301-AE-SUMM
+  version: 1
+  fileSpecifications:
+  - name: O-14-03-01-aesum
+    fileType: rtf
+    location: .
+    style: To be defined
+  outputDisplays:
+  - order: 1
+    display: T14301-AE-SUMM
+- id: O14303-VITALS-CHGBL
+  version: 1
+  fileSpecifications:
+  - name: O-14-03-03-vitals-chgbl
+    fileType: rtf
+    location: .
+    style: To be defined
+  outputDisplays:
+  - order: 1
+    display: T14303-VITALS-CHGBL
+- id: O140401-LFT-CHGBL
+  version: 1
+  fileSpecifications:
+  - name: O14-04-01-lft-chgbl
+    fileType: rtf
+    location: .
+    style: To be defined
+- id: O140402-LFT-AE-SUMM
+  version: 1
+  fileSpecifications:
+  - name: O14-04-02-lft-aesumm
+    fileType: rtf
+    location: .
+    style: To be defined
+- id: O14303-EOD-CHGBL
+  version: 1
+  fileSpecifications:
+  - name: o-14-03-03-eod-chgbl
+    fileType: pdf
+    location: .
+    style: To be defined
+displays:
+- id: T14201-DEMOG
+  name: Table 14.1.2
+  version: 1
+  title: Summary of Demographics and Baseline Characteristics - Safety
+  displaySections:
+  - sectionType: Title
+    subSections:
+    - id: T1420-1-DEMOG-DISP-01
+      order: 1
+      text: "Table 14.2.01 Summary of Demographics and Baseline Characteristics"
+    - id: T1420-1-DEMOG-DISP-02
+      order: 2
+      text: "Safety Population"
+  - sectionType: Legend
+    subSections:
+    - id: T1420-1-DEMOG-DISP-03
+      order: 1
+      text: "[1] P-values are results of ANOVA treatment group comparisons for continuous variables and Pearson’s chisquare test for categorical variables."
+    - id: T1420-1-DEMOG-DISP-04
+      order: 2
+      text: "NOTE: Duration of disease is computed as months between date of enrollment and date of onset of the first definite symptoms of Alzheimer's disease."
+  - sectionType: Footnote
+    subSections:
+    - id: T1420-1-DEMOG-DISP-05
+      order: 1
+      text: "Source dataset: adsl, Generated on: &dsdate9.:&dstime."
+    - id: T1420-1-DEMOG-DISP-06
+      order: 2
+      text: "Program: T-demog-saf.sas, Output: T-14-01-02-01-demog-saf.rtf, Generated on: &outdate9.:&outtime."
+  - sectionType: Rowlabel Header
+    subSections:
+    - id: T1420-1-DEMOG-DISP-07
+      order: 1
+      text: "Characteristics"
+- id: T14301-AE-SUMM
+  name: Table 14.3.1
+  version: 1
+  title: Overall Summary of Treatment-Emergent Adverse Events
+  displaySections:
+  - sectionType: Title
+    subSections:
+    - id: T14301-AE-SUMM-DISP-01
+      order: 1
+      text: "Table 14.3.1"
+    - id: T14301-AE-SUMM-DISP-02
+      order: 2
+      text: "Overall Summary of Treatment-Emergent Adverse Events"
+    - id: T14301-AE-SUMM-DISP-03
+      order: 3
+      text: "Safety Population"
+  - sectionType: Legend
+    subSections:
+    - id: T14301-AE-SUMM-DISP-04
+      order: 1
+      text: "Note: TEAE=Treatment-Emergent Adverse Events"
+  - sectionType: Footnote
+    subSections:
+    - id: T14301-AE-SUMM-DISP-05
+      order: 1
+      text: "[a] Dose Modification includes Dose Reduced; Drug Interrupted in the AE action taken with study treatment."
+    - id: T14301-AE-SUMM-DISP-06
+      order: 2
+      text: "Source dataset: adae, Generated on: DDMONYYYY:HH:MM"
+    - id: T14301-AE-SUMM-DISP-07
+      order: 3
+      text: "Program: <pid>.sas, Output: <pid><oid>.rtf, Generated on: DDMONYYYY:HH:MM"
+  - sectionType: Rowlabel Header
+    subSections:
+    - id: T14301-AE-SUMM-DISP-08
+      order: 1
+      text: "Categories, n (%)"
