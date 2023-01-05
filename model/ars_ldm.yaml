@@ -22,9 +22,10 @@ classes:
     slots:
       - listOfPlannedOutputs
       - analysisSets
-      - analysisGroups
+      - analysisGroupings
+      - dataSubsets
+      - globalDisplaySections
       - outputs
-      - displays
 
   NestedList:
     slots:
@@ -61,7 +62,7 @@ classes:
     slots:
       - id
       - version
-      - title
+      - displayTitle
       - displaySections
 
   DisplaySection:
@@ -104,10 +105,21 @@ classes:
     is_a: CompoundExpression
     slot_usage:
       whereClauses:
-        range: AnalysisGroupMember
+        range: AnalysisGroup
         inlined: false
 
+  CompoundSubsetExpression:
+    is_a: CompoundExpression
+    slot_usage:
+      whereClauses:
+        inlined_as_list: true
+
   AnalysisSet:
+    description: >-
+      A set of subjects whose data are to be included in the main analyses.
+      This should be defined in the statistical section of the protocol.
+      NOTE: There are a number of potential analysis sets, including,
+      for example, the set based upon the intent-to-treat principle. [ICH E9]
     is_a: WhereClause
     slot_usage:
       compoundExpression:
@@ -116,13 +128,15 @@ classes:
       - label
       - order
 
-  AnalysisGroupSet:
+  AnalysisGroupingFactor:
+    description: A factor used to subdivide the subject population for comparative analysis (e.g., treatment, sex, race, age).
     slots:
       - id
       - label
-      - members
+      - groups
 
-  AnalysisGroupMember:
+  AnalysisGroup:
+    description: A subdivision of the subject population based on a defined factor (e.g., subjects whose treatment is Drug A, subjects whose gender is male).
     is_a: WhereClause
     slot_usage:
       compoundExpression:
@@ -131,9 +145,14 @@ classes:
       - label
       - order
 
-  DataSelection:
+  DataSubset:
+    description: A subset of data identified by selection criteria for inclusion in the analysis.
+    is_a: WhereClause
+    slot_usage:
+      compoundExpression:
+        range: CompoundSubsetExpression
     slots:
-      - selectionCriteria
+      - label
 
 slots:
 
@@ -149,20 +168,20 @@ slots:
     inlined_as_list: true
     range: AnalysisSet
 
-  analysisGroups:
+  analysisGroupings:
     multivalued: true
     inlined_as_list: true
-    range: AnalysisGroupSet
+    range: AnalysisGroupingFactor
+
+  dataSubsets:
+    multivalued: true
+    inlined_as_list: true
+    range: DataSubset
 
   outputs:
     multivalued: true
     inlined_as_list: true
     range: Output
-
-  displays:
-    multivalued: true
-    inlined_as_list: true
-    range: Display
 
   listItems:
     multivalued: true
@@ -191,7 +210,7 @@ slots:
   version:
     range: integer
 
-  title:
+  displayTitle:
 
   fileSpecifications:
     multivalued: true
@@ -213,8 +232,12 @@ slots:
 
   display:
     range: Display
-    multivalued: false
-    inlined: false
+    inlined: true
+
+  globalDisplaySections:
+    multivalued: true
+    inlined_as_list: true
+    range: DisplaySection
 
   displaySections:
     multivalued: true
@@ -248,11 +271,11 @@ slots:
     inlined: false
     range: WhereClause
 
-  members:
+  groups:
     multivalued: true
     list_elements_ordered: true
     inlined_as_list: true
-    range: AnalysisGroupMember
+    range: AnalysisGroup
 
   dataset:
 
@@ -265,9 +288,6 @@ slots:
     multivalued: true
 
   label:
-
-  selectionCriteria:
-    range: WhereClause
 
 enums:
 

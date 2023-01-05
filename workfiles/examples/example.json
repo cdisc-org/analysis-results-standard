@@ -84,38 +84,13 @@
       },
       "order": 1,
       "label": "Efficacy Population"
-    },
-    {
-      "id": "AnalysisSet_03",
-      "condition": {
-        "dataset": "ADAE",
-        "variable": "TRTEMFL",
-        "comparator": "EQ",
-        "value": [
-          "Y"
-        ]
-      },
-      "order": 1,
-      "label": "Treatment-Emergent Adverse Events"
-    },
-    {
-      "id": "AnalysisSet_04",
-      "compoundExpression": {
-        "logicalOperator": "AND",
-        "whereClauses": [
-          "AnalysisSet_01",
-          "AnalysisSet_03"
-        ]
-      },
-      "order": 1,
-      "label": "Treatment-Emergent Adverse Events ^ Safety Population"
     }
   ],
-  "analysisGroups": [
+  "analysisGroupings": [
     {
       "id": "TrtGroup_02",
       "label": "Treatment",
-      "members": [
+      "groups": [
         {
           "id": "TrtGroup_02_1",
           "condition": {
@@ -183,6 +158,42 @@
       ]
     }
   ],
+  "dataSubsets": [
+    {
+      "id": "DataSubset_01",
+      "condition": {
+        "dataset": "ADAE",
+        "variable": "TRTEMFL",
+        "comparator": "EQ",
+        "value": [
+          "Y"
+        ]
+      },
+      "label": "Treatment-Emergent Adverse Events"
+    }
+  ],
+  "globalDisplaySections": [
+    {
+      "sectionType": "Title",
+      "subSections": [
+        {
+          "id": "Global_ID_001-01",
+          "order": 1,
+          "text": "CDISC360 Pilot 1"
+        }
+      ]
+    },
+    {
+      "sectionType": "Footnote",
+      "subSections": [
+        {
+          "id": "Global_ID_001-02",
+          "order": 1,
+          "text": "Program: <pid>.sas, Output: <pid><oid>.rtf, Generated on: &outdate9.:&outtime."
+        }
+      ]
+    }
+  ],
   "outputs": [
     {
       "id": "O14201-DEMOG",
@@ -198,7 +209,73 @@
       "outputDisplays": [
         {
           "order": 1,
-          "display": "T14201-DEMOG"
+          "display": {
+            "name": "Table 14.1.2",
+            "id": "T14201-DEMOG",
+            "version": 1,
+            "displayTitle": "Summary of Demographics and Baseline Characteristics - Safety",
+            "displaySections": [
+              {
+                "sectionType": "Title",
+                "subSections": [
+                  {
+                    "id": "T1420-1-DEMOG-DISP-01",
+                    "order": 1,
+                    "text": "Table 14.2.01 Summary of Demographics and Baseline Characteristics"
+                  },
+                  {
+                    "id": "T1420-1-DEMOG-DISP-02",
+                    "order": 2,
+                    "text": "Safety Population"
+                  },
+                  {
+                    "id": "Global_ID_001-01",
+                    "order": 3
+                  }
+                ]
+              },
+              {
+                "sectionType": "Legend",
+                "subSections": [
+                  {
+                    "id": "T1420-1-DEMOG-DISP-03",
+                    "order": 1,
+                    "text": "[1] P-values are results of ANOVA treatment group comparisons for continuous variables and Pearson’s chisquare test for categorical variables."
+                  },
+                  {
+                    "id": "T1420-1-DEMOG-DISP-04",
+                    "order": 2,
+                    "text": "NOTE: Duration of disease is computed as months between date of enrollment and date of onset of the first definite symptoms of Alzheimer's disease."
+                  }
+                ]
+              },
+              {
+                "sectionType": "Footnote",
+                "subSections": [
+                  {
+                    "id": "T1420-1-DEMOG-DISP-05",
+                    "order": 1,
+                    "text": "Source dataset: adsl, Generated on: &dsdate9.:&dstime."
+                  },
+                  {
+                    "id": "T1420-1-DEMOG-DISP-06",
+                    "order": 2,
+                    "text": "Program: T-demog-saf.sas, Output: T-14-01-02-01-demog-saf.rtf, Generated on: &outdate9.:&outtime."
+                  }
+                ]
+              },
+              {
+                "sectionType": "Rowlabel Header",
+                "subSections": [
+                  {
+                    "id": "T1420-1-DEMOG-DISP-07",
+                    "order": 1,
+                    "text": "Characteristics"
+                  }
+                ]
+              }
+            ]
+          }
         }
       ]
     },
@@ -216,7 +293,73 @@
       "outputDisplays": [
         {
           "order": 1,
-          "display": "T14301-AE-SUMM"
+          "display": {
+            "name": "Table 14.3.1",
+            "id": "T14301-AE-SUMM",
+            "version": 1,
+            "displayTitle": "Overall Summary of Treatment-Emergent Adverse Events",
+            "displaySections": [
+              {
+                "sectionType": "Title",
+                "subSections": [
+                  {
+                    "id": "T14301-AE-SUMM-DISP-01",
+                    "order": 1,
+                    "text": "Table 14.3.1"
+                  },
+                  {
+                    "id": "T14301-AE-SUMM-DISP-02",
+                    "order": 2,
+                    "text": "Overall Summary of Treatment-Emergent Adverse Events"
+                  },
+                  {
+                    "id": "T14303-VITALS-CHGBL-DISP-03",
+                    "order": 3
+                  }
+                ]
+              },
+              {
+                "sectionType": "Legend",
+                "subSections": [
+                  {
+                    "id": "T14301-AE-SUMM-DISP-04",
+                    "order": 1,
+                    "text": "Note: TEAE=Treatment-Emergent Adverse Events"
+                  }
+                ]
+              },
+              {
+                "sectionType": "Footnote",
+                "subSections": [
+                  {
+                    "id": "T14301-AE-SUMM-DISP-05",
+                    "order": 1,
+                    "text": "[a] Dose Modification includes Dose Reduced; Drug Interrupted in the AE action taken with study treatment."
+                  },
+                  {
+                    "id": "T14301-AE-SUMM-DISP-06",
+                    "order": 2,
+                    "text": "Source dataset: adae, Generated on: DDMONYYYY:HH:MM"
+                  },
+                  {
+                    "id": "T14301-AE-SUMM-DISP-07",
+                    "order": 3,
+                    "text": "Program: <pid>.sas, Output: <pid><oid>.rtf, Generated on: DDMONYYYY:HH:MM"
+                  }
+                ]
+              },
+              {
+                "sectionType": "Rowlabel Header",
+                "subSections": [
+                  {
+                    "id": "T14301-AE-SUMM-DISP-08",
+                    "order": 1,
+                    "text": "Categories, n (%)"
+                  }
+                ]
+              }
+            ]
+          }
         }
       ]
     },
@@ -234,7 +377,78 @@
       "outputDisplays": [
         {
           "order": 1,
-          "display": "T14303-VITALS-CHGBL"
+          "display": {
+            "name": "Table 14.3.3",
+            "id": "T14303-VITALS-CHGBL",
+            "displayTitle": "Summary of Observed and Change from Baseline by Scheduled Visits – Vital Signs",
+            "displaySections": [
+              {
+                "sectionType": "Title",
+                "subSections": [
+                  {
+                    "id": "T14303-VITALS-CHGBL-DISP-01",
+                    "order": 1,
+                    "text": "Table 14.3.3.x.y"
+                  },
+                  {
+                    "id": "T14303-VITALS-CHGBL-DISP-02",
+                    "order": 2,
+                    "text": "Summary of Observed and Change from Baseline by Scheduled Visits - Vital Signs"
+                  },
+                  {
+                    "id": "T14303-VITALS-CHGBL-DISP-03",
+                    "order": 3,
+                    "text": "Safety Population"
+                  }
+                ]
+              },
+              {
+                "sectionType": "Legend",
+                "subSections": [
+                  {
+                    "id": "T14303-VITALS-CHGBL-DISP-04",
+                    "order": 1,
+                    "text": "Note: Baseline is defined as the last assessment that is non-missing prior to first dose of investigational product."
+                  }
+                ]
+              },
+              {
+                "sectionType": "Abbreviation",
+                "subSections": [
+                  {
+                    "id": "T14303-VITALS-CHGBL-DISP-05",
+                    "order": 1,
+                    "text": "CFB: Change from Baseline"
+                  }
+                ]
+              },
+              {
+                "sectionType": "Footnote",
+                "subSections": [
+                  {
+                    "id": "T14303-VITALS-CHGBL-DISP-06",
+                    "order": 2,
+                    "text": "Source dataset: advs, Generated on: &dsdate9.:&dstime."
+                  },
+                  {
+                    "id": "T14303-VITALS-CHGBL-DISP-07",
+                    "order": 3,
+                    "text": "Program: <pid>.sas, Output: <pid><oid>.rtf, Generated on: &outdate9.:&outtime."
+                  }
+                ]
+              },
+              {
+                "sectionType": "Rowlabel Header",
+                "subSections": [
+                  {
+                    "id": "T14303-VITALS-CHGBL-DISP-08",
+                    "order": 1,
+                    "text": "Parameter (Units) ^ Visit"
+                  }
+                ]
+              }
+            ]
+          }
         }
       ]
     },
@@ -271,139 +485,6 @@
           "fileType": "pdf",
           "location": ".",
           "style": "To be defined"
-        }
-      ]
-    }
-  ],
-  "displays": [
-    {
-      "name": "Table 14.1.2",
-      "id": "T14201-DEMOG",
-      "version": 1,
-      "title": "Summary of Demographics and Baseline Characteristics - Safety",
-      "displaySections": [
-        {
-          "sectionType": "Title",
-          "subSections": [
-            {
-              "id": "T1420-1-DEMOG-DISP-01",
-              "order": 1,
-              "text": "Table 14.2.01 Summary of Demographics and Baseline Characteristics"
-            },
-            {
-              "id": "T1420-1-DEMOG-DISP-02",
-              "order": 2,
-              "text": "Safety Population"
-            }
-          ]
-        },
-        {
-          "sectionType": "Legend",
-          "subSections": [
-            {
-              "id": "T1420-1-DEMOG-DISP-03",
-              "order": 1,
-              "text": "[1] P-values are results of ANOVA treatment group comparisons for continuous variables and Pearson’s chisquare test for categorical variables."
-            },
-            {
-              "id": "T1420-1-DEMOG-DISP-04",
-              "order": 2,
-              "text": "NOTE: Duration of disease is computed as months between date of enrollment and date of onset of the first definite symptoms of Alzheimer's disease."
-            }
-          ]
-        },
-        {
-          "sectionType": "Footnote",
-          "subSections": [
-            {
-              "id": "T1420-1-DEMOG-DISP-05",
-              "order": 1,
-              "text": "Source dataset: adsl, Generated on: &dsdate9.:&dstime."
-            },
-            {
-              "id": "T1420-1-DEMOG-DISP-06",
-              "order": 2,
-              "text": "Program: T-demog-saf.sas, Output: T-14-01-02-01-demog-saf.rtf, Generated on: &outdate9.:&outtime."
-            }
-          ]
-        },
-        {
-          "sectionType": "Rowlabel Header",
-          "subSections": [
-            {
-              "id": "T1420-1-DEMOG-DISP-07",
-              "order": 1,
-              "text": "Characteristics"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Table 14.3.1",
-      "id": "T14301-AE-SUMM",
-      "version": 1,
-      "title": "Overall Summary of Treatment-Emergent Adverse Events",
-      "displaySections": [
-        {
-          "sectionType": "Title",
-          "subSections": [
-            {
-              "id": "T14301-AE-SUMM-DISP-01",
-              "order": 1,
-              "text": "Table 14.3.1"
-            },
-            {
-              "id": "T14301-AE-SUMM-DISP-02",
-              "order": 2,
-              "text": "Overall Summary of Treatment-Emergent Adverse Events"
-            },
-            {
-              "id": "T14301-AE-SUMM-DISP-03",
-              "order": 3,
-              "text": "Safety Population"
-            }
-          ]
-        },
-        {
-          "sectionType": "Legend",
-          "subSections": [
-            {
-              "id": "T14301-AE-SUMM-DISP-04",
-              "order": 1,
-              "text": "Note: TEAE=Treatment-Emergent Adverse Events"
-            }
-          ]
-        },
-        {
-          "sectionType": "Footnote",
-          "subSections": [
-            {
-              "id": "T14301-AE-SUMM-DISP-05",
-              "order": 1,
-              "text": "[a] Dose Modification includes Dose Reduced; Drug Interrupted in the AE action taken with study treatment."
-            },
-            {
-              "id": "T14301-AE-SUMM-DISP-06",
-              "order": 2,
-              "text": "Source dataset: adae, Generated on: DDMONYYYY:HH:MM"
-            },
-            {
-              "id": "T14301-AE-SUMM-DISP-07",
-              "order": 3,
-              "text": "Program: <pid>.sas, Output: <pid><oid>.rtf, Generated on: DDMONYYYY:HH:MM"
-            }
-          ]
-        },
-        {
-          "sectionType": "Rowlabel Header",
-          "subSections": [
-            {
-              "id": "T14301-AE-SUMM-DISP-08",
-              "order": 1,
-              "text": "Categories, n (%)"
-            }
-          ]
         }
       ]
     }
