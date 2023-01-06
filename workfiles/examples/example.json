@@ -88,11 +88,11 @@
   ],
   "analysisGroupings": [
     {
-      "id": "TrtGroup_01",
+      "id": "Grouping_01",
       "label": "Sex",
       "groups": [
         {
-          "id": "TrtGroup_01_1",
+          "id": "Grouping_01_1",
           "condition": {
             "dataset": "ADAE",
             "variable": "SEX",
@@ -105,7 +105,7 @@
           "label": "Male"
         },
         {
-          "id": "TrtGroup_01_2",
+          "id": "Grouping_01_2",
           "condition": {
             "dataset": "ADAE",
             "variable": "SEX",
@@ -120,11 +120,11 @@
       ]
     },
     {
-      "id": "TrtGroup_02",
+      "id": "Grouping_02",
       "label": "Treatment",
       "groups": [
         {
-          "id": "TrtGroup_02_1",
+          "id": "Grouping_02_1",
           "condition": {
             "dataset": "ADAE",
             "variable": "TRT01A",
@@ -137,7 +137,7 @@
           "label": "Xanomeline High Dose"
         },
         {
-          "id": "TrtGroup_02_2",
+          "id": "Grouping_02_2",
           "condition": {
             "dataset": "ADAE",
             "variable": "TRT01A",
@@ -150,7 +150,7 @@
           "label": "Xanomeline Low Dose"
         },
         {
-          "id": "TrtGroup_02_3",
+          "id": "Grouping_02_3",
           "condition": {
             "dataset": "ADAE",
             "variable": "TRT01A",
@@ -163,25 +163,25 @@
           "label": "Placebo"
         },
         {
-          "id": "TrtGroup_02_4",
+          "id": "Grouping_02_4",
           "compoundExpression": {
             "logicalOperator": "OR",
             "whereClauses": [
-              "TrtGroup_02_1",
-              "TrtGroup_02_2"
+              "Grouping_02_1",
+              "Grouping_02_2"
             ]
           },
           "order": 4,
           "label": "Active Doses"
         },
         {
-          "id": "TrtGroup_02_5",
+          "id": "Grouping_02_5",
           "compoundExpression": {
             "logicalOperator": "OR",
             "whereClauses": [
-              "TrtGroup_02_1",
-              "TrtGroup_02_2",
-              "TrtGroup_02_3"
+              "Grouping_02_1",
+              "Grouping_02_2",
+              "Grouping_02_3"
             ]
           },
           "order": 5,
