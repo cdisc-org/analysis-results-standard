@@ -51,6 +51,27 @@ analysisSets:
     value:
     - Y
 analysisGroupings:
+- id: TrtGroup_01
+  label: Sex
+  groups:
+  - id: TrtGroup_01_1
+    label: Male
+    order: 1
+    condition: 
+      dataset: ADAE
+      variable: SEX
+      comparator: EQ
+      value:
+      - M
+  - id: TrtGroup_01_2
+    label: Female
+    order: 2
+    condition: 
+      dataset: ADAE
+      variable: SEX
+      comparator: EQ
+      value:
+      - F
 - id: TrtGroup_02
   label: Treatment
   groups:
