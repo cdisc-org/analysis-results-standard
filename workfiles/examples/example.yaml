@@ -51,10 +51,10 @@ analysisSets:
     value:
     - Y
 analysisGroupings:
-- id: TrtGroup_01
+- id: Grouping_01
   label: Sex
   groups:
-  - id: TrtGroup_01_1
+  - id: Grouping_01_1
     label: Male
     order: 1
     condition: 
@@ -63,7 +63,7 @@ analysisGroupings:
       comparator: EQ
       value:
       - M
-  - id: TrtGroup_01_2
+  - id: Grouping_01_2
     label: Female
     order: 2
     condition: 
@@ -72,10 +72,10 @@ analysisGroupings:
       comparator: EQ
       value:
       - F
-- id: TrtGroup_02
+- id: Grouping_02
   label: Treatment
   groups:
-  - id: TrtGroup_02_1
+  - id: Grouping_02_1
     label: Xanomeline High Dose
     order: 1
     condition: 
@@ -84,7 +84,7 @@ analysisGroupings:
       comparator: EQ
       value:
       - Xanomeline High Dose
-  - id: TrtGroup_02_2
+  - id: Grouping_02_2
     label: Xanomeline Low Dose
     order: 2
     condition: 
@@ -93,7 +93,7 @@ analysisGroupings:
       comparator: EQ
       value:
       - Xanomeline Low Dose
-  - id: TrtGroup_02_3
+  - id: Grouping_02_3
     label: Placebo
     order: 3
     condition: 
@@ -102,23 +102,23 @@ analysisGroupings:
       comparator: EQ
       value:
       - Placebo
-  - id: TrtGroup_02_4
+  - id: Grouping_02_4
     label: Active Doses
     order: 4
     compoundExpression:
       logicalOperator: OR
       whereClauses:
-      - TrtGroup_02_1
-      - TrtGroup_02_2
-  - id: TrtGroup_02_5
+      - Grouping_02_1
+      - Grouping_02_2
+  - id: Grouping_02_5
     label: Total
     order: 5
     compoundExpression:
       logicalOperator: OR
       whereClauses:
-      - TrtGroup_02_1
-      - TrtGroup_02_2
-      - TrtGroup_02_3
+      - Grouping_02_1
+      - Grouping_02_2
+      - Grouping_02_3
 dataSubsets:
 - id: DataSubset_01
   label: Treatment-Emergent Adverse Events
