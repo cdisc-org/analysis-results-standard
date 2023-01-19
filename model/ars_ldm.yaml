@@ -20,11 +20,13 @@ classes:
     tree_root: true
     is_a: NamedObject
     slots:
+      - listOfPlannedAnalyses
       - listOfPlannedOutputs
       - analysisSets
       - analysisGroupings
       - dataSubsets
       - globalDisplaySections
+      - analyses
       - outputs
 
   NestedList:
@@ -36,7 +38,15 @@ classes:
     slots:
       - order
       - sublist
+      - analysis
       - output
+
+  Analysis:
+    slots:
+      - id
+      - version
+      - analysisSet
+      - groupings
 
   Output:
     slots:
@@ -74,7 +84,7 @@ classes:
     slots:
       - id
       - order
-      - text      
+      - text
 
   WhereClause:
     slots:
@@ -159,6 +169,10 @@ slots:
   name:
     required: true
 
+  listOfPlannedAnalyses:
+    required: true
+    range: NestedList
+
   listOfPlannedOutputs:
     required: true
     range: NestedList
@@ -177,6 +191,11 @@ slots:
     multivalued: true
     inlined_as_list: true
     range: DataSubset
+
+  analyses:
+    multivalued: true
+    inlined_as_list: true
+    range: Analysis
 
   outputs:
     multivalued: true
@@ -197,6 +216,21 @@ slots:
     range: NestedList
     multivalued: false
     inlined: true
+
+  analysis: 
+    range: Analysis
+    multivalued: false
+    inlined: false
+
+  analysisSet: 
+    range: AnalysisSet
+    multivalued: false
+    inlined: false
+
+  groupings: 
+    range: AnalysisGroupingFactor
+    multivalued: true
+    inlined: false
 
   output: 
     range: Output

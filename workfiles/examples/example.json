@@ -1,5 +1,284 @@
 {
   "name": "CDISC360 Pilot 1 CSR",
+  "listOfPlannedAnalyses": {
+    "listItems": [
+      {
+        "name": "STUDY POPULATION",
+        "order": 1,
+        "sublist": {
+          "listItems": [
+            {
+              "name": "Disposition of Subjects",
+              "order": 1,
+              "sublist": {
+                "listItems": [
+                  {
+                    "name": "Summary of Populations",
+                    "order": 1,
+                    "sublist": {
+                      "listItems": [
+                        {
+                          "name": "Summary by group of All Subjects",
+                          "order": 1,
+                          "analysis": "A14-1.01-01"
+                        },
+                        {
+                          "name": "Summary of All Subjects",
+                          "order": 2,
+                          "analysis": "A14-1.01-02"
+                        },
+                        {
+                          "name": "Summary by group of ITT Population",
+                          "order": 3,
+                          "analysis": "A14-1.01-03"
+                        },
+                        {
+                          "name": "Summary of ITT Population",
+                          "order": 4,
+                          "analysis": "A14-1.01-04"
+                        },
+                        {
+                          "name": "Summary by group of Safety Population",
+                          "order": 5,
+                          "analysis": "A14-1.01-05"
+                        },
+                        {
+                          "name": "Summary of Safety Population",
+                          "order": 6,
+                          "analysis": "A14-1.01-06"
+                        },
+                        {
+                          "name": "Summary by group of Efficacy Population",
+                          "order": 7,
+                          "analysis": "A14-1.01-07"
+                        },
+                        {
+                          "name": "Summary of Efficacy Population",
+                          "order": 8,
+                          "analysis": "A14-1.01-08"
+                        },
+                        {
+                          "name": "Summary by group of Completer Week 24 Population",
+                          "order": 9,
+                          "analysis": "A14-1.01-09"
+                        },
+                        {
+                          "name": "Summary of Completer Week 24 Population",
+                          "order": 10,
+                          "analysis": "A14-1.01-10"
+                        },
+                        {
+                          "name": "Summary by group of Complete Study Population",
+                          "order": 11,
+                          "analysis": "A14-1.01-11"
+                        },
+                        {
+                          "name": "Summary of Complete Study Population",
+                          "order": 12,
+                          "analysis": "A14-1.01-12"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "name": "Summary of End of Study Data (ITT population)",
+                    "order": 2,
+                    "sublist": {
+                      "listItems": [
+                        {
+                          "name": "Summary by group of Completion Status",
+                          "order": 1,
+                          "analysis": "A14-1.02-01"
+                        },
+                        {
+                          "name": "Summary of Completion Status",
+                          "order": 2,
+                          "analysis": "A14-1.02-02"
+                        },
+                        {
+                          "name": "Summary by group of Reasons for Early Termination",
+                          "order": 3,
+                          "analysis": "A14-1.02-03"
+                        },
+                        {
+                          "name": "Summary of Reasons for Early Termination",
+                          "order": 4,
+                          "analysis": "A14-1.02-04"
+                        },
+                        {
+                          "name": "Comparison of Reasons for Study Discontinuation",
+                          "order": 5,
+                          "analysis": "A14-1.02-05"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Demographic and Baseline Characteristics",
+              "order": 2,
+              "sublist": {
+                "listItems": [
+                  {
+                    "name": "Summary of Demographic and Baseline Characteristics (ITT population)",
+                    "order": 1,
+                    "sublist": {
+                      "listItems": [
+                        {
+                          "name": "Summary by group for continuous variables",
+                          "order": 1,
+                          "analysis": "A14-2.01-01"
+                        },
+                        {
+                          "name": "Summary for continuous variables",
+                          "order": 2,
+                          "analysis": "A14-2.01-02"
+                        },
+                        {
+                          "name": "Group comparison for continuous variables",
+                          "order": 3,
+                          "analysis": "A14-2.01-03"
+                        },
+                        {
+                          "name": "Summary by group for categorical variables",
+                          "order": 4,
+                          "analysis": "A14-2.01-04"
+                        },
+                        {
+                          "name": "Summary for categorical variables",
+                          "order": 5,
+                          "analysis": "A14-2.01-05"
+                        },
+                        {
+                          "name": "Group comparison for categorical variables",
+                          "order": 6,
+                          "analysis": "A14-2.01-06"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Treatment Compliance",
+              "order": 3
+            }
+          ]
+        }
+      },
+      {
+        "name": "EFFICACY ANALYSES",
+        "order": 2,
+        "sublist": {
+          "listItems": [
+            {
+              "name": "Primary Efficacy Endpoints",
+              "order": 1,
+              "sublist": {
+                "listItems": [
+                  {
+                    "name": "ADAS-COG (11)",
+                    "order": 1
+                  },
+                  {
+                    "name": "CIBIC+",
+                    "order": 2
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Secondary Efficacy Endpoints",
+              "order": 1,
+              "sublist": {
+                "listItems": [
+                  {
+                    "name": "NPI-X",
+                    "order": 1
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "SAFETY ANALYSES",
+        "order": 3,
+        "sublist": {
+          "listItems": [
+            {
+              "name": "Extent of Exposure",
+              "order": 1,
+              "sublist": {
+                "listItems": [
+                  {
+                    "name": "Summary by group of Average Daily Dose",
+                    "order": 1
+                  },
+                  {
+                    "name": "Summary by group of Cumulative Dose",
+                    "order": 2
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Adverse Events",
+              "order": 2,
+              "sublist": {
+                "listItems": [
+                  {
+                    "name": "Summary by group of Incidence of Treatment Emergent Events",
+                    "order": 1
+                  },
+                  {
+                    "name": "Placebo to Active Treatment Comparison of Incidence of Treatment Emergent Events",
+                    "order": 2
+                  },
+                  {
+                    "name": "Summary by group of Incidence of Treatment Emergent Events by System Organ Class (SOC)",
+                    "order": 3
+                  },
+                  {
+                    "name": "Placebo to Active Treatment Comparison of Incidence of Treatment Emergent Events by System Organ Class (SOC)",
+                    "order": 4
+                  },
+                  {
+                    "name": "Summary by group of Incidence of Treatment Emergent Events by Preferred Term (PT)",
+                    "order": 5
+                  },
+                  {
+                    "name": "Placebo to Active Treatment Comparison of Incidence of Treatment Emergent Events by Preferred Term (PT)",
+                    "order": 6
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Deaths and Serious Adverse Events",
+              "order": 3
+            },
+            {
+              "name": "Adverse Events Leading to Discontinuation of Investigational Product and/or Withdrawal from the Study and Other Significant Adverse Events",
+              "order": 4
+            },
+            {
+              "name": "Clinical Laboratory Evaluations",
+              "order": 5
+            },
+            {
+              "name": "Other Safety Measures",
+              "order": 6
+            }
+          ]
+        }
+      }
+    ]
+  },
   "listOfPlannedOutputs": {
     "listItems": [
       {
@@ -63,6 +342,19 @@
       "id": "AnalysisSet_01",
       "condition": {
         "dataset": "ADSL",
+        "variable": "ITTFL",
+        "comparator": "EQ",
+        "value": [
+          "Y"
+        ]
+      },
+      "order": 1,
+      "label": "Intent-to-Treat Population"
+    },
+    {
+      "id": "AnalysisSet_02",
+      "condition": {
+        "dataset": "ADSL",
         "variable": "SAFFL",
         "comparator": "EQ",
         "value": [
@@ -73,10 +365,10 @@
       "label": "Safety Population"
     },
     {
-      "id": "AnalysisSet_02",
+      "id": "AnalysisSet_03",
       "condition": {
         "dataset": "ADSL",
-        "variable": "ITT",
+        "variable": "EFFFL",
         "comparator": "EQ",
         "value": [
           "Y"
@@ -84,6 +376,32 @@
       },
       "order": 1,
       "label": "Efficacy Population"
+    },
+    {
+      "id": "AnalysisSet_04",
+      "condition": {
+        "dataset": "ADSL",
+        "variable": "COMP24FL",
+        "comparator": "EQ",
+        "value": [
+          "Y"
+        ]
+      },
+      "order": 1,
+      "label": "Completer Week 24 Population"
+    },
+    {
+      "id": "AnalysisSet_05",
+      "condition": {
+        "dataset": "ADSL",
+        "variable": "DISCONFL",
+        "comparator": "NE",
+        "value": [
+          "Y"
+        ]
+      },
+      "order": 1,
+      "label": "Complete Study Population"
     }
   ],
   "analysisGroupings": [
@@ -130,11 +448,11 @@
             "variable": "TRT01A",
             "comparator": "EQ",
             "value": [
-              "Xanomeline High Dose"
+              "Placebo"
             ]
           },
           "order": 1,
-          "label": "Xanomeline High Dose"
+          "label": "Placebo"
         },
         {
           "id": "Grouping_02_2",
@@ -156,11 +474,11 @@
             "variable": "TRT01A",
             "comparator": "EQ",
             "value": [
-              "Placebo"
+              "Xanomeline High Dose"
             ]
           },
           "order": 3,
-          "label": "Placebo"
+          "label": "Xanomeline High Dose"
         },
         {
           "id": "Grouping_02_4",
@@ -224,6 +542,84 @@
           "text": "Program: <pid>.sas, Output: <pid><oid>.rtf, Generated on: &outdate9.:&outtime."
         }
       ]
+    }
+  ],
+  "analyses": [
+    {
+      "id": "A14-1.01-01",
+      "version": 1,
+      "groupings": [
+        "Grouping_02"
+      ]
+    },
+    {
+      "id": "A14-1.01-02",
+      "version": 1
+    },
+    {
+      "id": "A14-1.01-03",
+      "version": 1,
+      "analysisSet": "AnalysisSet_01",
+      "groupings": [
+        "Grouping_02"
+      ]
+    },
+    {
+      "id": "A14-1.01-04",
+      "version": 1,
+      "analysisSet": "AnalysisSet_01"
+    },
+    {
+      "id": "A14-1.01-05",
+      "version": 1,
+      "analysisSet": "AnalysisSet_02",
+      "groupings": [
+        "Grouping_02"
+      ]
+    },
+    {
+      "id": "A14-1.01-06",
+      "version": 1,
+      "analysisSet": "AnalysisSet_02"
+    },
+    {
+      "id": "A14-1.01-07",
+      "version": 1,
+      "analysisSet": "AnalysisSet_03",
+      "groupings": [
+        "Grouping_02"
+      ]
+    },
+    {
+      "id": "A14-1.01-08",
+      "version": 1,
+      "analysisSet": "AnalysisSet_03"
+    },
+    {
+      "id": "A14-1.01-09",
+      "version": 1,
+      "analysisSet": "AnalysisSet_04",
+      "groupings": [
+        "Grouping_02"
+      ]
+    },
+    {
+      "id": "A14-1.01-10",
+      "version": 1,
+      "analysisSet": "AnalysisSet_04"
+    },
+    {
+      "id": "A14-1.01-11",
+      "version": 1,
+      "analysisSet": "AnalysisSet_05",
+      "groupings": [
+        "Grouping_02"
+      ]
+    },
+    {
+      "id": "A14-1.01-12",
+      "version": 1,
+      "analysisSet": "AnalysisSet_05"
     }
   ],
   "outputs": [
