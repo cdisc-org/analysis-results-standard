@@ -1,0 +1,638 @@
+name: CDISC360 Pilot 1 CSR
+listOfPlannedAnalyses:
+  listItems:
+  - name: STUDY POPULATION
+    order: 1
+    sublist:
+      listItems:
+      - name: Disposition of Subjects
+        order: 1
+        sublist:
+          listItems:
+          - name: Summary of Populations
+            order: 1
+            output: O14-1.01
+            sublist:
+              listItems:
+              - name: Summary by group of All Subjects
+                order: 1
+                analysis: A9-1.01-01
+              - name: Summary of All Subjects
+                order: 2
+                analysis: A9-1.01-02
+              - name: Summary by group of ITT Population
+                order: 3
+                analysis: A9-1.01-03
+              - name: Summary of ITT Population
+                order: 4
+                analysis: A9-1.01-04
+              - name: Summary by group of Safety Population
+                order: 5
+                analysis: A9-1.01-05
+              - name: Summary of Safety Population
+                order: 6
+                analysis: A9-1.01-06
+              - name: Summary by group of Efficacy Population
+                order: 7
+                analysis: A9-1.01-07
+              - name: Summary of Efficacy Population
+                order: 8
+                analysis: A9-1.01-08
+              - name: Summary by group of Completer Week 24 Population
+                order: 9
+                analysis: A9-1.01-09
+              - name: Summary of Completer Week 24 Population
+                order: 10
+                analysis: A9-1.01-10
+              - name: Summary by group of Complete Study Population
+                order: 11
+                analysis: A9-1.01-11
+              - name: Summary of Complete Study Population
+                order: 12
+                analysis: A9-1.01-12
+          - name: Summary of End of Study Data (ITT population)
+            order: 2
+            output: O14-1.02
+            sublist:
+              listItems:
+              - name: Summary by group of Completion Status
+                order: 1
+                analysis: A9-1.02-01
+              - name: Summary of Completion Status
+                order: 2
+                analysis: A9-1.02-02
+              - name: Summary by group of Reasons for Early Termination
+                order: 3
+                analysis: A9-1.02-03
+              - name: Summary of Reasons for Early Termination
+                order: 4
+                analysis: A9-1.02-04
+              - name: Comparison of Reasons for Study Discontinuation
+                order: 5
+                analysis: A9-1.02-05
+      - name: Demographic and Baseline Characteristics
+        order: 2
+        sublist:
+          listItems:
+          - name: Summary of Demographic and Baseline Characteristics (ITT population)
+            order: 1
+            output: O14-2.01
+            sublist:
+              listItems:
+              - name: Summary by group for continuous variables
+                order: 1
+                analysis: A9-2.01-01
+              - name: Summary for continuous variables
+                order: 2
+                analysis: A9-2.01-02
+              - name: Group comparison for continuous variables
+                order: 3
+                analysis: A9-2.01-03
+              - name: Summary by group for categorical variables
+                order: 4
+                analysis: A9-2.01-04
+              - name: Summary for categorical variables
+                order: 5
+                analysis: A9-2.01-05
+              - name: Group comparison for categorical variables
+                order: 6
+                analysis: A9-2.01-06
+      - name: Treatment Compliance
+        order: 3
+  - name: EFFICACY ANALYSES
+    order: 2
+    sublist:
+      listItems:
+      - name: Primary Efficacy Endpoints
+        order: 1
+        sublist:
+          listItems:
+          - name: ADAS-COG (11)
+            order: 1
+          - name: CIBIC+
+            order: 2
+      - name: Secondary Efficacy Endpoints
+        order: 1
+        sublist:
+          listItems:
+          - name: NPI-X
+            order: 1
+  - name: SAFETY ANALYSES
+    order: 3
+    sublist:
+      listItems:
+      - name: Extent of Exposure
+        order: 1
+        output: O14-4.01
+        sublist:
+          listItems:
+          - name: Summary by group of Average Daily Dose (Completers at Week 24 Population)
+            order: 1
+            analysis: A11-1.01-01
+          - name: Summary by group of Average Daily Dose (Safety Population)
+            order: 1
+            analysis: A11-1.01-02
+          - name: Summary by group of Cumulative Dose (Completers at Week 24 Population)
+            order: 2
+            analysis: A11-1.01-03
+          - name: Summary by group of Cumulative Dose (Safety Population)
+            order: 2
+            analysis: A11-1.01-04
+      - name: Adverse Events
+        order: 2
+        sublist:
+          listItems:
+          - name: Summary of Treatment Emergent Adverse Events
+            order: 1
+            output: O14-5.01
+            sublist:
+              listItems:
+              - name: Summary by group of Incidence of Treatment Emergent Adverse Events
+                order: 1
+                analysis: A11-2.01-01
+              - name: Placebo to Active Treatment Comparison of Incidence of Treatment Emergent Adverse Events
+                order: 2
+                analysis: A11-2.01-02
+              - name: Summary by group of Incidence of Treatment Emergent Adverse Events by System Organ Class (SOC)
+                order: 3
+                analysis: A11-2.01-03
+              - name: Placebo to Active Treatment Comparison of Incidence of Treatment Emergent Adverse Events by System Organ Class (SOC)
+                order: 4
+                analysis: A11-2.01-04
+              - name: Summary by group of Incidence of Treatment Emergent Adverse Events by Preferred Term (PT)
+                order: 5
+                analysis: A11-2.01-05
+              - name: Placebo to Active Treatment Comparison of Incidence of Treatment Emergent Adverse Events by Preferred Term (PT)
+                order: 6
+                analysis: A11-2.01-06
+          - name: Summary of Dermatological Events
+            order: 2
+      - name: Deaths and Serious Adverse Events
+        order: 3
+        sublist:
+          listItems:
+          - name: Summary of Serious Treatment Emergent Adverse Events
+            order: 1
+            output: O14-5.02
+            sublist:
+              listItems:
+              - name: Summary by group of Incidence of Serious Treatment Emergent Adverse Events
+                order: 1
+                analysis: A11-3.01-01
+              - name: Placebo to Active Treatment Comparison of Incidence of Serious Treatment Emergent Adverse Events
+                order: 2
+                analysis: A11-3.01-02
+              - name: Summary by group of Incidence of Serious Treatment Emergent Adverse Events by System Organ Class (SOC)
+                order: 3
+                analysis: A11-3.01-03
+              - name: Placebo to Active Treatment Comparison of Incidence of Serious Treatment Emergent Adverse Events by System Organ Class (SOC)
+                order: 4
+                analysis: A11-3.01-04
+              - name: Summary by group of Incidence of Serious Treatment Emergent Adverse Events by Preferred Term (PT)
+                order: 5
+                analysis: A11-3.01-05
+              - name: Placebo to Active Treatment Comparison of Incidence of Serious Treatment Emergent Adverse Events by Preferred Term (PT)
+                order: 6
+                analysis: A11-3.01-06
+      - name: Adverse Events Leading to Discontinuation of Investigational Product and/or Withdrawal from the Study and Other Significant Adverse Events
+        order: 4
+      - name: Clinical Laboratory Evaluations
+        order: 5
+      - name: Other Safety Measures
+        order: 6
+        sublist:
+          listItems:
+          - name: Vital Signs
+            order: 1
+            sublist:
+              listItems:
+              - name: Summary of Vital Signs at Baseline and End of Treatment
+                order: 1           
+                analysis: A11-6.01-01
+                output: O14-7.01
+              - name: Summary of Vital Signs Change from Baseline at End of Treatment
+                order: 2
+                analysis: A11-6.01-02
+                output: O14-7.02
+          - name: Concomitant Medications
+            order: 2
+            sublist:
+              listItems:
+              - name: Summary of Concomitant Medications (Number of Subjects)
+                order: 1           
+                analysis: A11-6.02-01
+                output: O14-7.04
+analysisSets:
+- id: AnalysisSet_01
+  label: Intent-to-Treat Population
+  order: 1
+  condition:
+    dataset: ADSL
+    variable: ITTFL
+    comparator: EQ
+    value:
+    - Y
+- id: AnalysisSet_02
+  label: Safety Population
+  order: 1
+  condition:
+    dataset: ADSL
+    variable: SAFFL
+    comparator: EQ
+    value:
+    - Y
+- id: AnalysisSet_03
+  label: Efficacy Population
+  order: 1
+  condition:
+    dataset: ADSL
+    variable: EFFFL
+    comparator: EQ
+    value:
+    - Y
+- id: AnalysisSet_04
+  label: Completer Week 24 Population
+  order: 1
+  condition:
+    dataset: ADSL
+    variable: COMP24FL
+    comparator: EQ
+    value:
+    - Y
+- id: AnalysisSet_05
+  label: Complete Study Population
+  order: 1
+  condition:
+    dataset: ADSL
+    variable: DISCONFL
+    comparator: NE
+    value:
+    - Y
+analysisGroupings:
+- id: Grouping_01
+  label: Sex
+  groups:
+  - id: Grouping_01_1
+    label: Male
+    order: 1
+    condition: 
+      dataset: ADAE
+      variable: SEX
+      comparator: EQ
+      value:
+      - M
+  - id: Grouping_01_2
+    label: Female
+    order: 2
+    condition: 
+      dataset: ADAE
+      variable: SEX
+      comparator: EQ
+      value:
+      - F
+- id: Grouping_02
+  label: Treatment
+  groups:
+  - id: Grouping_02_1
+    label: Placebo
+    order: 1
+    condition: 
+      dataset: ADAE
+      variable: TRT01A
+      comparator: EQ
+      value:
+      - Placebo
+  - id: Grouping_02_2
+    label: Xanomeline Low Dose
+    order: 2
+    condition: 
+      dataset: ADAE
+      variable: TRT01A
+      comparator: EQ
+      value:
+      - Xanomeline Low Dose
+  - id: Grouping_02_3
+    label: Xanomeline High Dose
+    order: 3
+    condition: 
+      dataset: ADAE
+      variable: TRT01A
+      comparator: EQ
+      value:
+      - Xanomeline High Dose
+dataSubsets:
+- id: DataSubset_01
+  label: Treatment-Emergent Adverse Events
+  condition:
+    dataset: ADAE
+    variable: TRTEMFL
+    comparator: EQ
+    value:
+    - Y
+analyses:
+- id: A9-1.01-01
+  version: 1
+  groupings:
+  - Grouping_02
+- id: A9-1.01-02
+  version: 1 
+- id: A9-1.01-03
+  version: 1
+  analysisSet: AnalysisSet_01
+  groupings:
+  - Grouping_02
+- id: A9-1.01-04
+  version: 1
+  analysisSet: AnalysisSet_01
+- id: A9-1.01-05
+  version: 1
+  analysisSet: AnalysisSet_02
+  groupings:
+  - Grouping_02
+- id: A9-1.01-06
+  version: 1
+  analysisSet: AnalysisSet_02
+- id: A9-1.01-07
+  version: 1
+  analysisSet: AnalysisSet_03
+  groupings:
+  - Grouping_02
+- id: A9-1.01-08
+  version: 1
+  analysisSet: AnalysisSet_03
+- id: A9-1.01-09
+  version: 1
+  analysisSet: AnalysisSet_04
+  groupings:
+  - Grouping_02
+- id: A9-1.01-10
+  version: 1
+  analysisSet: AnalysisSet_04
+- id: A9-1.01-11
+  version: 1
+  analysisSet: AnalysisSet_05
+  groupings:
+  - Grouping_02
+- id: A9-1.01-12
+  version: 1
+  analysisSet: AnalysisSet_05
+globalDisplaySections:
+- sectionType: Title
+  subSections:
+  - id: Global_ID_001-01
+    order: 1
+    text: "CDISC360 Pilot 1"
+- sectionType: Footnote
+  subSections:
+  - id: Global_ID_001-02
+    order: 1
+    text: "Program: <pid>.sas, Output: <pid><oid>.rtf, Generated on: &outdate9.:&outtime."
+outputs:
+- id: O14-1.01
+  version: 1
+  fileSpecifications:
+  - name: O-14-01-01-pop
+    fileType: rtf
+    location: .
+    style: To be defined
+  outputDisplays:
+  - order: 1
+    display: 
+      id: T14101-POP
+      name: Table 14-1.01
+      version: 1
+      displayTitle: Summary of Populations
+      displaySections:
+      - sectionType: Title
+        subSections:
+        - id: T14101-POP-DISP-01
+          order: 1
+          text: "Table 14-1.01 Summary of Populations"
+        - id: T14101-POP-DISP-02
+          order: 2
+          text: "Population: All Subjects"
+        - Global_ID_001-01:
+            order: 3
+      - sectionType: Legend
+        subSections:
+        - id: T14101-POP-DISP-03
+          order: 1
+          text: "NOTE: N in column headers represents number of subjects entered in study (i.e., signed informed consent). The ITT population includes all subjects randomized. The Safety population includes all randomized subjects known to have taken at least one dose of randomized study drug. The Efficacy population includes all subjects in the safety population who also have at least one post-baseline ADAS-Cog and CIBIC+ assessment"
+      - sectionType: Footnote
+        subSections:
+        - id: T14101-POP-DISP-03
+          order: 1
+          text: "Source dataset: adsl, Generated on: &dsdate9.:&dstime."
+        - id: T14101-POP-DISP-06
+          order: 2
+          text: "Program: T-pop-all.sas, Output: O-14-01-01-pop.rtf, Generated on: &outdate9.:&outtime."
+      - sectionType: Rowlabel Header
+        subSections:
+        - id: T1420-1-DEMOG-DISP-07
+          order: 1
+          text: "Population"
+- id: O14-1.02
+  version: 1
+  fileSpecifications:
+  - name: O-14-01-02-demog
+    fileType: rtf
+    location: .
+    style: To be defined
+  outputDisplays:
+  - order: 1
+    display: 
+      id: T14102-DEMOG
+      name: Table 14.1.2
+      version: 1
+      displayTitle: Summary of Demographics and Baseline Characteristics - Safety
+      displaySections:
+      - sectionType: Title
+        subSections:
+        - id: T1420-1-DEMOG-DISP-01
+          order: 1
+          text: "Table 14.2.01 Summary of Demographics and Baseline Characteristics"
+        - id: T1420-1-DEMOG-DISP-02
+          order: 2
+          text: "Safety Population"
+        - Global_ID_001-01:
+            order: 3
+      - sectionType: Legend
+        subSections:
+        - id: T1420-1-DEMOG-DISP-03
+          order: 1
+          text: "[1] P-values are results of ANOVA treatment group comparisons for continuous variables and Pearson’s chisquare test for categorical variables."
+        - id: T1420-1-DEMOG-DISP-04
+          order: 2
+          text: "NOTE: Duration of disease is computed as months between date of enrollment and date of onset of the first definite symptoms of Alzheimer's disease."
+      - sectionType: Footnote
+        subSections:
+        - id: T1420-1-DEMOG-DISP-05
+          order: 1
+          text: "Source dataset: adsl, Generated on: &dsdate9.:&dstime."
+        - id: T1420-1-DEMOG-DISP-06
+          order: 2
+          text: "Program: T-demog-saf.sas, Output: T-14-01-02-01-demog-saf.rtf, Generated on: &outdate9.:&outtime."
+      - sectionType: Rowlabel Header
+        subSections:
+        - id: T1420-1-DEMOG-DISP-07
+          order: 1
+          text: "Characteristics"
+- id: O14-5.01
+  version: 1
+  fileSpecifications:
+  - name: O-14-05-01-aesum
+    fileType: rtf
+    location: .
+    style: To be defined
+  outputDisplays:
+  - order: 1
+    display:
+      id: T14501-AE-SUMM
+      name: Table 14.5.1
+      version: 1
+      displayTitle: Overall Summary of Treatment-Emergent Adverse Events
+      displaySections:
+      - sectionType: Title
+        subSections:
+        - id: T14301-AE-SUMM-DISP-01
+          order: 1
+          text: "Table 14-5.01"
+        - id: T14301-AE-SUMM-DISP-02
+          order: 2
+          text: "Incidence of Treatment Emergent Adverse Events by Treatment Group"
+        - T14701-VITALS-CHGBL-DISP-03:
+            order: 3
+      - sectionType: Legend
+        subSections:
+        - id: T14501-AE-SUMM-DISP-04
+          order: 1
+          text: "Note: TEAE=Treatment-Emergent Adverse Events"
+        - id: T14501-AE-SUMM-DISP-05
+          order: 2
+          text: "Note: Treatment emergent events are defined as events which start on or after the start of treatment."
+        - id: T14501-AE-SUMM-DISP-06
+          order: 3
+          text: "Note: Adverse events are coded using MedDRA."
+        - id: T14501-AE-SUMM-DISP-07
+          order: 4
+          text: "Note: Percentages are based on the number of subjects in the safety population within each treatment group."
+        - id: T14501-AE-SUMM-DISP-08
+          order: 5
+          text: "Note: P-values are based on Fisher's Exact test for the comparison of placebo versus each active treatment group. An asterisk is appended to p-values that are less than 0.15."
+        - id: T14501-AE-SUMM-DISP-09
+          order: 6
+          text: "Note: The column [AE] represents the total number of times an event was recorded."
+      - sectionType: Footnote
+        subSections:
+        - id: T14501-AE-SUMM-DISP-10
+          order: 1
+          text: 'Source: C:\cdisc_pilot\PROGRAMS\DRAFT\TFLs\aetable.sas, Generated on: &outdate9.:&outtime.'
+      - sectionType: Rowlabel Header
+        subSections:
+        - id: T14501-AE-SUMM-DISP-08
+          order: 1
+          text: "System Organ Class/Preferred Term"
+- id: O14-7.01
+  version: 1
+  fileSpecifications:
+  - name: O-14-07-01-vitals-summ
+    fileType: rtf
+    location: .
+    style: To be defined
+  outputDisplays:
+  - order: 1
+    display: 
+      id: T14701-VITALS-SUMM
+      name: Table 14-7.01
+      displayTitle: Summary of Vital Signs at Baseline and End of Treatment
+      displaySections:
+      - sectionType: Title
+        subSections:
+        - id: T14701-VITALS-SUMM-DISP-01
+          order: 1
+          text: "Table 14-7.01"
+        - id: T14701-VITALS-SUMM-DISP-02
+          order: 2
+          text: "Summary of Vital Signs at Baseline and End of Treatment"
+        - id: T14701-VITALS-SUMM-DISP-03
+          order: 3
+          text: "Safety Population"
+      - sectionType: Legend
+        subSections:
+        - id: T14701-VITALS-SUMM-DISP-04
+          order: 1
+          text: "End of treatment is the last on-treatment assessment of the specified vital sign (on or before the Week 24 visit)."
+      - sectionType: Footnote
+        subSections:
+        - id: T14701-VITALS-SUMM-DISP-05
+          order: 1
+          text: 'Source: C:\cdisc_pilot\PROGRAMS\DRAFT\TFLs\rtvs.sas, Generated on: &outdate9.:&outtime.'
+      - sectionType: Rowlabel Header
+        subSections:
+        - id: T14701-VITALS-SUMM-DISP-06
+          order: 1
+          text: "Measure"
+        - id: T14701-VITALS-SUMM-DISP-07
+          order: 2
+          text: "Position"
+        - id: T14701-VITALS-SUMM-DISP-08
+          order: 3
+          text: "Treatment"
+        - id: T14701-VITALS-SUMM-DISP-09
+          order: 4
+          text: "N"
+        - id: T14701-VITALS-SUMM-DISP-10
+          order: 5
+          text: "Planned Relative Time"
+- id: O14-7.02
+  version: 1
+  fileSpecifications:
+  - name: O-14-07-02-vitals-chgbl
+    fileType: rtf
+    location: .
+    style: To be defined
+  outputDisplays:
+  - order: 1
+    display: 
+      id: T14702-VITALS-CHGBL
+      name: Table 14-7.02
+      displayTitle: Summary of Vital Signs Change from Baseline at End of Treatment
+      displaySections:
+      - sectionType: Title
+        subSections:
+        - id: T14702-VITALS-CHGBL-DISP-01
+          order: 1
+          text: "Table 14-7.02"
+        - id: T14702-VITALS-CHGBL-DISP-02
+          order: 2
+          text: "Summary of Vital Signs Change from Baseline at End of Treatment"
+        - id: T14702-VITALS-CHGBL-DISP-03
+          order: 3
+          text: "Safety Population"
+      - sectionType: Legend
+        subSections:
+        - id: T14702-VITALS-CHGBL-DISP-04
+          order: 1
+          text: "End of treatment is the last on-treatment assessment of the specified vital sign (on or before the Week 24 visit)."
+      - sectionType: Footnote
+        subSections:
+        - id: T14702-VITALS-CHGBL-DISP-05
+          order: 1
+          text: 'Source: C:\cdisc_pilot\PROGRAMS\DRAFT\TFLs\rtvs.sas, Generated on: &outdate9.:&outtime.'
+      - sectionType: Rowlabel Header
+        subSections:
+        - id: T14702-VITALS-CHGBL-DISP-06
+          order: 1
+          text: "Measure"
+        - id: T14702-VITALS-CHGBL-DISP-07
+          order: 2
+          text: "Position"
+        - id: T14702-VITALS-CHGBL-DISP-08
+          order: 3
+          text: "Treatment"
+        - id: T14702-VITALS-CHGBL-DISP-09
+          order: 4
+          text: "N"
+        - id: T14702-VITALS-CHGBL-DISP-10
+          order: 5
+          text: "Planned Relative Time"
