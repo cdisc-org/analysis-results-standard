@@ -1,0 +1,219 @@
+type Analysis
+  {
+    id: String!
+    version: Integer
+    analysisSet: AnalysisSet
+    orderedGroupings: [OrderedGroupingFactor]
+    dataset: String
+    categoryRefs: [AnalysisCategory]
+  }
+
+type AnalysisCategorization
+  {
+    id: String!
+    label: String
+    categories: [AnalysisCategory]!
+  }
+
+type AnalysisCategory
+  {
+    id: String!
+    label: String
+    subCategorizations: [AnalysisCategorization]
+  }
+
+type AnalysisGroup
+  {
+    id: String!
+    condition: Condition
+    label: String
+    order: Integer!
+    compoundExpression: CompoundGroupExpression
+  }
+
+type AnalysisSet
+  {
+    id: String!
+    condition: Condition
+    label: String
+    order: Integer!
+    compoundExpression: CompoundSetExpression
+  }
+
+type CompoundExpression
+  {
+    logicalOperator: AndOr!
+    whereClauses: [WhereClause]
+  }
+
+type CompoundGroupExpression
+  {
+    logicalOperator: AndOr!
+    whereClauses: [Group]
+  }
+
+type CompoundSetExpression
+  {
+    logicalOperator: AndOr!
+    whereClauses: [AnalysisSet]
+  }
+
+type CompoundSubsetExpression
+  {
+    logicalOperator: AndOr!
+    whereClauses: [WhereClause]
+  }
+
+type Condition
+  {
+    dataset: String
+    variable: String
+    comparator: Comparator
+    value: [String]
+  }
+
+type DataGroup
+  {
+    id: String!
+    condition: Condition
+    label: String
+    order: Integer!
+    compoundExpression: CompoundGroupExpression
+  }
+
+type DataGroupingFactor
+  {
+    id: String!
+    label: String
+    groupingVariable: String
+    dataDriven: Boolean!
+    groups: [DataGroup]
+  }
+
+type DataSubset
+  {
+    id: String!
+    condition: Condition
+    label: String
+    compoundExpression: CompoundSubsetExpression
+  }
+
+type Display
+  {
+    name: String!
+    id: String!
+    version: Integer
+    displayTitle: String
+    displaySections: [DisplaySection]
+  }
+
+type DisplaySection
+  {
+    sectionType: SectionType
+    subSections: [DisplaySubSection]
+  }
+
+type DisplaySubSection
+  {
+    id: String!
+    order: Integer!
+    text: String
+  }
+
+type File
+  {
+    name: String!
+    fileType: FileType
+    location: String
+    style: String
+  }
+
+type Group
+  {
+    id: String!
+    condition: Condition
+    label: String
+    order: Integer!
+    compoundExpression: CompoundGroupExpression
+  }
+
+interface GroupingFactor
+  {
+    id: String!
+    label: String
+    groupingVariable: String
+    dataDriven: Boolean!
+    groups: [Group]
+  }
+
+interface NamedObject
+  {
+    name: String!
+  }
+
+type NestedList
+  {
+    listItems: [OrderedListItem]
+  }
+
+type OrderedGroupingFactor
+  {
+    order: Integer!
+    groupingRef: GroupingFactor
+    dataGrouping: DataGroupingFactor
+  }
+
+type OrderedListItem
+  {
+    name: String!
+    order: Integer!
+    sublist: NestedList
+    analysis: Analysis
+    output: Output
+  }
+
+type Output
+  {
+    id: String!
+    version: Integer
+    fileSpecifications: [File]
+    outputDisplays: [OutputDisplay]
+    categoryRefs: [AnalysisCategory]
+  }
+
+type OutputDisplay
+  {
+    order: Integer!
+    display: Display
+  }
+
+type ReportingEvent
+  {
+    name: String!
+    listOfPlannedAnalyses: NestedList!
+    listOfPlannedOutputs: NestedList
+    analysisSets: [AnalysisSet]
+    analysisGroupings: [SubjectGroupingFactor]
+    dataSubsets: [DataSubset]
+    globalDisplaySections: [DisplaySection]
+    analysisCategorizations: [AnalysisCategorization]
+    analyses: [Analysis]
+    outputs: [Output]
+  }
+
+type SubjectGroupingFactor
+  {
+    id: String!
+    label: String
+    groupingVariable: String
+    dataDriven: Boolean!
+    groups: [AnalysisGroup]
+  }
+
+type WhereClause
+  {
+    id: String!
+    condition: Condition
+    compoundExpression: CompoundExpression
+  }
+

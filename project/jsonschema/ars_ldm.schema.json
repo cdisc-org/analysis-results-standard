@@ -1,0 +1,781 @@
+{
+    "$defs": {
+        "Analysis": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "analysisSet": {
+                    "type": "string"
+                },
+                "categoryRefs": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "dataset": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "orderedGroupings": {
+                    "items": {
+                        "$ref": "#/$defs/OrderedGroupingFactor"
+                    },
+                    "type": "array"
+                },
+                "version": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "Analysis",
+            "type": "object"
+        },
+        "AnalysisCategorization": {
+            "additionalProperties": false,
+            "description": "An implementer-defined categorization of analyses/outputs.",
+            "properties": {
+                "categories": {
+                    "items": {
+                        "$ref": "#/$defs/AnalysisCategory"
+                    },
+                    "type": "array"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "label": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "categories"
+            ],
+            "title": "AnalysisCategorization",
+            "type": "object"
+        },
+        "AnalysisCategory": {
+            "additionalProperties": false,
+            "description": "An implementer-defined category of analyses/outputs.",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "label": {
+                    "type": "string"
+                },
+                "subCategorizations": {
+                    "items": {
+                        "$ref": "#/$defs/AnalysisCategorization"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "AnalysisCategory",
+            "type": "object"
+        },
+        "AnalysisGroup": {
+            "additionalProperties": false,
+            "description": "A subdivision of the subject population based on a defined factor (e.g., subjects whose treatment is Drug A, subjects whose gender is male).",
+            "properties": {
+                "compoundExpression": {
+                    "$ref": "#/$defs/CompoundGroupExpression"
+                },
+                "condition": {
+                    "$ref": "#/$defs/Condition"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "label": {
+                    "type": "string"
+                },
+                "order": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "order",
+                "id"
+            ],
+            "title": "AnalysisGroup",
+            "type": "object"
+        },
+        "AnalysisSet": {
+            "additionalProperties": false,
+            "description": "A set of subjects whose data are to be included in the main analyses. This should be defined in the statistical section of the protocol. NOTE: There are a number of potential analysis sets, including, for example, the set based upon the intent-to-treat principle. [ICH E9]",
+            "properties": {
+                "compoundExpression": {
+                    "$ref": "#/$defs/CompoundSetExpression"
+                },
+                "condition": {
+                    "$ref": "#/$defs/Condition"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "label": {
+                    "type": "string"
+                },
+                "order": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "order",
+                "id"
+            ],
+            "title": "AnalysisSet",
+            "type": "object"
+        },
+        "AndOr": {
+            "description": "",
+            "enum": [
+                "AND",
+                "OR"
+            ],
+            "title": "AndOr",
+            "type": "string"
+        },
+        "Comparator": {
+            "description": "",
+            "enum": [
+                "EQ",
+                "NE",
+                "GT",
+                "GE",
+                "LT",
+                "LE",
+                "IN",
+                "NOTIN"
+            ],
+            "title": "Comparator",
+            "type": "string"
+        },
+        "CompoundExpression": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "logicalOperator": {
+                    "$ref": "#/$defs/AndOr"
+                },
+                "whereClauses": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "logicalOperator"
+            ],
+            "title": "CompoundExpression",
+            "type": "object"
+        },
+        "CompoundGroupExpression": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "logicalOperator": {
+                    "$ref": "#/$defs/AndOr"
+                },
+                "whereClauses": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "logicalOperator"
+            ],
+            "title": "CompoundGroupExpression",
+            "type": "object"
+        },
+        "CompoundSetExpression": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "logicalOperator": {
+                    "$ref": "#/$defs/AndOr"
+                },
+                "whereClauses": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "logicalOperator"
+            ],
+            "title": "CompoundSetExpression",
+            "type": "object"
+        },
+        "CompoundSubsetExpression": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "logicalOperator": {
+                    "$ref": "#/$defs/AndOr"
+                },
+                "whereClauses": {
+                    "items": {
+                        "$ref": "#/$defs/WhereClause"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "logicalOperator"
+            ],
+            "title": "CompoundSubsetExpression",
+            "type": "object"
+        },
+        "Condition": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "comparator": {
+                    "$ref": "#/$defs/Comparator"
+                },
+                "dataset": {
+                    "type": "string"
+                },
+                "value": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "variable": {
+                    "type": "string"
+                }
+            },
+            "title": "Condition",
+            "type": "object"
+        },
+        "DataGroup": {
+            "additionalProperties": false,
+            "description": "A subdivision of the analysis dataset records based on a defined factor.",
+            "properties": {
+                "compoundExpression": {
+                    "$ref": "#/$defs/CompoundGroupExpression"
+                },
+                "condition": {
+                    "$ref": "#/$defs/Condition"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "label": {
+                    "type": "string"
+                },
+                "order": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "order",
+                "id"
+            ],
+            "title": "DataGroup",
+            "type": "object"
+        },
+        "DataGroupingFactor": {
+            "additionalProperties": false,
+            "description": "A factor used to subdivide data records in an analysis dataset for analysis.",
+            "properties": {
+                "dataDriven": {
+                    "description": "Indicates whether the groups defined by the grouping are prespecified (false) or obtained from distinct data values of the groupingVariable (true).",
+                    "type": "boolean"
+                },
+                "groupingVariable": {
+                    "description": "For groupings based on a single variable, a reference to the dataset variable upon which grouping is based.",
+                    "type": "string"
+                },
+                "groups": {
+                    "items": {
+                        "$ref": "#/$defs/DataGroup"
+                    },
+                    "type": "array"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "label": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "dataDriven"
+            ],
+            "title": "DataGroupingFactor",
+            "type": "object"
+        },
+        "DataSubset": {
+            "additionalProperties": false,
+            "description": "A subset of data identified by selection criteria for inclusion in the analysis.",
+            "properties": {
+                "compoundExpression": {
+                    "$ref": "#/$defs/CompoundSubsetExpression"
+                },
+                "condition": {
+                    "$ref": "#/$defs/Condition"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "label": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "DataSubset",
+            "type": "object"
+        },
+        "Display": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "displaySections": {
+                    "items": {
+                        "$ref": "#/$defs/DisplaySection"
+                    },
+                    "type": "array"
+                },
+                "displayTitle": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "version": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "id",
+                "name"
+            ],
+            "title": "Display",
+            "type": "object"
+        },
+        "DisplaySection": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "sectionType": {
+                    "$ref": "#/$defs/SectionType"
+                },
+                "subSections": {
+                    "items": {
+                        "$ref": "#/$defs/DisplaySubSection"
+                    },
+                    "type": "array"
+                }
+            },
+            "title": "DisplaySection",
+            "type": "object"
+        },
+        "DisplaySubSection": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "order": {
+                    "type": "integer"
+                },
+                "text": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "order"
+            ],
+            "title": "DisplaySubSection",
+            "type": "object"
+        },
+        "File": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "fileType": {
+                    "$ref": "#/$defs/FileType"
+                },
+                "location": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "style": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "title": "File",
+            "type": "object"
+        },
+        "FileType": {
+            "description": "",
+            "enum": [
+                "pdf",
+                "rtf",
+                "txt"
+            ],
+            "title": "FileType",
+            "type": "string"
+        },
+        "Group": {
+            "additionalProperties": false,
+            "description": "A subdivision of the subject population or analysis dataset record set based on a defined factor.",
+            "properties": {
+                "compoundExpression": {
+                    "$ref": "#/$defs/CompoundGroupExpression"
+                },
+                "condition": {
+                    "$ref": "#/$defs/Condition"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "label": {
+                    "type": "string"
+                },
+                "order": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "order",
+                "id"
+            ],
+            "title": "Group",
+            "type": "object"
+        },
+        "NestedList": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "listItems": {
+                    "items": {
+                        "$ref": "#/$defs/OrderedListItem"
+                    },
+                    "type": "array"
+                }
+            },
+            "title": "NestedList",
+            "type": "object"
+        },
+        "OrderedGroupingFactor": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "dataGrouping": {
+                    "$ref": "#/$defs/DataGroupingFactor"
+                },
+                "groupingRef": {
+                    "type": "string"
+                },
+                "order": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "order"
+            ],
+            "title": "OrderedGroupingFactor",
+            "type": "object"
+        },
+        "OrderedListItem": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "analysis": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "order": {
+                    "type": "integer"
+                },
+                "output": {
+                    "type": "string"
+                },
+                "sublist": {
+                    "$ref": "#/$defs/NestedList"
+                }
+            },
+            "required": [
+                "order",
+                "name"
+            ],
+            "title": "OrderedListItem",
+            "type": "object"
+        },
+        "Output": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "categoryRefs": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "fileSpecifications": {
+                    "items": {
+                        "$ref": "#/$defs/File"
+                    },
+                    "type": "array"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "outputDisplays": {
+                    "items": {
+                        "$ref": "#/$defs/OutputDisplay"
+                    },
+                    "type": "array"
+                },
+                "version": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "Output",
+            "type": "object"
+        },
+        "OutputDisplay": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "display": {
+                    "$ref": "#/$defs/Display"
+                },
+                "order": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "order"
+            ],
+            "title": "OutputDisplay",
+            "type": "object"
+        },
+        "ReportingEvent": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "analyses": {
+                    "items": {
+                        "$ref": "#/$defs/Analysis"
+                    },
+                    "type": "array"
+                },
+                "analysisCategorizations": {
+                    "items": {
+                        "$ref": "#/$defs/AnalysisCategorization"
+                    },
+                    "type": "array"
+                },
+                "analysisGroupings": {
+                    "items": {
+                        "$ref": "#/$defs/SubjectGroupingFactor"
+                    },
+                    "type": "array"
+                },
+                "analysisSets": {
+                    "items": {
+                        "$ref": "#/$defs/AnalysisSet"
+                    },
+                    "type": "array"
+                },
+                "dataSubsets": {
+                    "items": {
+                        "$ref": "#/$defs/DataSubset"
+                    },
+                    "type": "array"
+                },
+                "globalDisplaySections": {
+                    "items": {
+                        "$ref": "#/$defs/DisplaySection"
+                    },
+                    "type": "array"
+                },
+                "listOfPlannedAnalyses": {
+                    "$ref": "#/$defs/NestedList"
+                },
+                "listOfPlannedOutputs": {
+                    "$ref": "#/$defs/NestedList"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "outputs": {
+                    "items": {
+                        "$ref": "#/$defs/Output"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "listOfPlannedAnalyses",
+                "name"
+            ],
+            "title": "ReportingEvent",
+            "type": "object"
+        },
+        "SectionType": {
+            "description": "",
+            "enum": [
+                "Title",
+                "Footnote",
+                "Abbreviation",
+                "Legend",
+                "Rowlabel Header"
+            ],
+            "title": "SectionType",
+            "type": "string"
+        },
+        "SubjectGroupingFactor": {
+            "additionalProperties": false,
+            "description": "A factor used to subdivide the subject population for comparative analysis (e.g., treatment, sex, race, age).",
+            "properties": {
+                "dataDriven": {
+                    "description": "Indicates whether the groups defined by the grouping are prespecified (false) or obtained from distinct data values of the groupingVariable (true).",
+                    "type": "boolean"
+                },
+                "groupingVariable": {
+                    "description": "For groupings based on a single variable, a reference to the dataset variable upon which grouping is based.",
+                    "type": "string"
+                },
+                "groups": {
+                    "items": {
+                        "$ref": "#/$defs/AnalysisGroup"
+                    },
+                    "type": "array"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "label": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "dataDriven"
+            ],
+            "title": "SubjectGroupingFactor",
+            "type": "object"
+        },
+        "WhereClause": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "compoundExpression": {
+                    "$ref": "#/$defs/CompoundExpression"
+                },
+                "condition": {
+                    "$ref": "#/$defs/Condition"
+                },
+                "id": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "WhereClause",
+            "type": "object"
+        }
+    },
+    "$id": "https://www.cdisc.org/ars/1-0",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": true,
+    "metamodel_version": "1.7.0",
+    "properties": {
+        "analyses": {
+            "items": {
+                "$ref": "#/$defs/Analysis"
+            },
+            "type": "array"
+        },
+        "analysisCategorizations": {
+            "items": {
+                "$ref": "#/$defs/AnalysisCategorization"
+            },
+            "type": "array"
+        },
+        "analysisGroupings": {
+            "items": {
+                "$ref": "#/$defs/SubjectGroupingFactor"
+            },
+            "type": "array"
+        },
+        "analysisSets": {
+            "items": {
+                "$ref": "#/$defs/AnalysisSet"
+            },
+            "type": "array"
+        },
+        "dataSubsets": {
+            "items": {
+                "$ref": "#/$defs/DataSubset"
+            },
+            "type": "array"
+        },
+        "globalDisplaySections": {
+            "items": {
+                "$ref": "#/$defs/DisplaySection"
+            },
+            "type": "array"
+        },
+        "listOfPlannedAnalyses": {
+            "$ref": "#/$defs/NestedList"
+        },
+        "listOfPlannedOutputs": {
+            "$ref": "#/$defs/NestedList"
+        },
+        "name": {
+            "type": "string"
+        },
+        "outputs": {
+            "items": {
+                "$ref": "#/$defs/Output"
+            },
+            "type": "array"
+        }
+    },
+    "required": [
+        "listOfPlannedAnalyses",
+        "name"
+    ],
+    "title": "ARS-Schema",
+    "type": "object",
+    "version": null
+}
