@@ -22,7 +22,7 @@ The goals of CDISC Analysis Results Standards team is to develop:
 - Lack of features to drive automation 
 - Limited regulatory use cases 
 - Limited traceability 
-
+![Analysis Results Current State](images/AR-current-state.png)
 
 ## Analysis Results Future State
   - Formal model for describing analyses and results as data
@@ -32,7 +32,7 @@ The goals of CDISC Analysis Results Standards team is to develop:
   - Support storage, access, processing and reproducibility of results 
   - Traceability to Protocol/SAP and to input ADaM data 
   - Open-source tools to design, specify, build and generate analysis results
-  - 
+ 
 ![Analysis Results Future State](images/AR-future-state.png)
 
 ## Contribution
