@@ -1,13 +1,3 @@
-TODO:
-
-* update readme for your project needs, e.g. use CC0 or CC-BY-4.0 license
-* update LICENSE, [INCLUDE COPYRIGHT INSTANCE] -> e.g. Project XY, CDISC, John Doe
-* update CODE_OF_CONDUCT, [INSERT CONTACT METHOD] -> e.g. <example@example.com>
-* update CONTRIBUTION.md if you want to provide additional rules or guidances, for example naming conventions
-
-*-------------------------- DELETE EVERYTHIG ABOVE ---------------------------*
-
-
 ## Description
 
 The goals of CDISC Analysis Results Standards team is to develop:
@@ -43,7 +33,7 @@ The goals of CDISC Analysis Results Standards team is to develop:
   - Traceability to Protocol/SAP and to input ADaM data 
   - Open-source tools to design, specify, build and generate analysis results
   - 
-![image](https://user-images.githubusercontent.com/89986579/219955647-ed472ded-60f7-4a4e-be81-8d55bdace419.png)
+![Analysis Results Future State](images/AR-future-state.png)
 
 ## Contribution
 
