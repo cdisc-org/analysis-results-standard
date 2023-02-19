@@ -28,13 +28,11 @@ The goals of CDISC Analysis Results Standards team is to develop:
 - May be hundred of tables in PDF format, often difficult to navigate
 - Variability between sponsors 
 - Expensive to generate and only used once, no or limited reusability 
-![image](https://user-images.githubusercontent.com/89986579/219955565-f0cb1a6d-2e19-4169-8367-eefa476ef3e1.png)
 - ARM v1.0 describes metadata about analysis displays and results (at a high level), no formal analysis and results model or results data
 - Lack of features to drive automation 
 - Limited regulatory use cases 
 - Limited traceability 
-![image](https://user-images.githubusercontent.com/89986579/219955565-f0cb1a6d-2e19-4169-8367-eefa476ef3e1.png)
-![Image Description](./images/placeholder.png)
+
 
 ## Analysis Results Future State
   - Formal model for describing analyses and results as data
@@ -44,6 +42,7 @@ The goals of CDISC Analysis Results Standards team is to develop:
   - Support storage, access, processing and reproducibility of results 
   - Traceability to Protocol/SAP and to input ADaM data 
   - Open-source tools to design, specify, build and generate analysis results
+  - 
 ![image](https://user-images.githubusercontent.com/89986579/219955647-ed472ded-60f7-4a4e-be81-8d55bdace419.png)
 
 ## Contribution
