@@ -1,17 +1,3 @@
-# COSAHackathonTemplate
-
-This is a template for COSA workshops/open source projects which could be used to create new projects.
-
-## How to use this template (remove this section)
-
-You can copy this template and use this for your open source project, workshops, hackathons or similar where participants should contribute content. Please update the README and other files depending on your requirements, project description etc. You find various "How Tos" documents if you or your expected contributors are not familar with setting up and working with repositories. Feel free to remove no longer applicable ones for your own repository.
-
-You might want to checkout [makeareadme.com](https://www.makeareadme.com) to gain additional guidance and options for a typical README file.
-
-![License: CC0-1.0](https://img.shields.io/badge/License-CC0_1.0-blue.svg)
-
-**License**: This template is using [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). So you can copy or fork this template without the need to reference. Keep attribution from CODE_OF_CONDUCT as this uses CC-BY-4.0. The license files contained are meant to be used for the final open source project you run.
-
 TODO:
 
 * update readme for your project needs, e.g. use CC0 or CC-BY-4.0 license
@@ -22,17 +8,43 @@ TODO:
 *-------------------------- DELETE EVERYTHIG ABOVE ---------------------------*
 
 
-# *NAME* 
-
-This repository should be used for the *Project/Workshop/Hackathon XY* to contain code, minutes, notes, outcomes, discussions and more. It is meant to allow anyone working with the results and discussions to allow flexible collaboration and follow up projects.
-
 ## Description
 
-The main purpose of *Project Name* is to ....
+The goals of CDISC Analysis Results Standards team is to develop:
+  - Analysis Results Metadata Technical Specification (ARM-TS), to support automation, traceability, and creation of data displays
+  - Define an Analysis Results Data (ARD) structure, to support reuse and reproducibility of results data
+  - Illustrate and exercise ARD and ARM-TS with a set of machine-readable common safety displays 
 
-If possible use images as well.
+## Background
 
+  - Unnecessary variation in analysis results reporting
+  - Limited CDISC standards to support analysis results and associated metadata
+  - CDISC has been working towards creating standards to support, consistency, traceability, and reuse of results data
+  - We anticipate that the CDISC work will support sponsor submissions of analysis results in a standard format that aligns with the FDA effort
+
+## Analysis Results Current State
+
+- Static results created for Clinical Study Report
+- May be hundred of tables in PDF format, often difficult to navigate
+- Variability between sponsors 
+- Expensive to generate and only used once, no or limited reusability 
+![image](https://user-images.githubusercontent.com/89986579/219955565-f0cb1a6d-2e19-4169-8367-eefa476ef3e1.png)
+- ARM v1.0 describes metadata about analysis displays and results (at a high level), no formal analysis and results model or results data
+- Lack of features to drive automation 
+- Limited regulatory use cases 
+- Limited traceability 
+![image](https://user-images.githubusercontent.com/89986579/219955565-f0cb1a6d-2e19-4169-8367-eefa476ef3e1.png)
 ![Image Description](./images/placeholder.png)
+
+## Analysis Results Future State
+  - Formal model for describing analyses and results as data
+  - Facilitate automated generation of results
+  - From static to machine readable results
+  - Improved navigation and reusability of analyses and results
+  - Support storage, access, processing and reproducibility of results 
+  - Traceability to Protocol/SAP and to input ADaM data 
+  - Open-source tools to design, specify, build and generate analysis results
+![image](https://user-images.githubusercontent.com/89986579/219955647-ed472ded-60f7-4a4e-be81-8d55bdace419.png)
 
 ## Contribution
 
