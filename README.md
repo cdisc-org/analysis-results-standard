@@ -4,6 +4,7 @@ The goals of CDISC Analysis Results Standards team is to develop:
   - Analysis Results Metadata Technical Specification (ARM-TS), to support automation, traceability, and creation of data displays
   - Define an Analysis Results Data (ARD) structure, to support reuse and reproducibility of results data
   - Illustrate and exercise ARD and ARM-TS with a set of machine-readable common safety displays 
+  - Develop a logical analysis results metamodel to support ARM and ARD
 
 ## Background
 
