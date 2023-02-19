@@ -44,7 +44,11 @@ The goals of CDISC Analysis Results Standards team is to develop:
 
 ## Contribution
 
-Project Contact: Bhavin Busa (https://github.com/bhavinbusa), Bess LeRoy, Richard Marshall (https://github.com/ASL-rmarshall), Drew Mills (https://github.com/drewcdisc)
+Project Contact: 
+- Bhavin Busa (https://github.com/bhavinbusa): Product Owner and Co-lead
+- Bess LeRoy: Co-lead
+- Richard Marshall (https://github.com/ASL-rmarshall): ARS model developer
+- Drew Mills (https://github.com/drewcdisc): Scrum Master
 
 Contribution is very welcome. When you contribute to this repository you are doing so under the below licenses. Please checkout [Contribution](CONTRIBUTING.md) for additional information. All contributions must adhere to the following [Code of Conduct](CODE_OF_CONDUCT.md).
 
