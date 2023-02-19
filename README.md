@@ -22,6 +22,7 @@ The goals of CDISC Analysis Results Standards team is to develop:
 - Lack of features to drive automation 
 - Limited regulatory use cases 
 - Limited traceability 
+
 ![Analysis Results Current State](images/AR-current-state.png)
 
 ## Analysis Results Future State
