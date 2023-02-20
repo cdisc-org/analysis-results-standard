@@ -1,40 +1,54 @@
-# COSAHackathonTemplate
-
-This is a template for COSA workshops/open source projects which could be used to create new projects.
-
-## How to use this template (remove this section)
-
-You can copy this template and use this for your open source project, workshops, hackathons or similar where participants should contribute content. Please update the README and other files depending on your requirements, project description etc. You find various "How Tos" documents if you or your expected contributors are not familar with setting up and working with repositories. Feel free to remove no longer applicable ones for your own repository.
-
-You might want to checkout [makeareadme.com](https://www.makeareadme.com) to gain additional guidance and options for a typical README file.
-
-![License: CC0-1.0](https://img.shields.io/badge/License-CC0_1.0-blue.svg)
-
-**License**: This template is using [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). So you can copy or fork this template without the need to reference. Keep attribution from CODE_OF_CONDUCT as this uses CC-BY-4.0. The license files contained are meant to be used for the final open source project you run.
-
-TODO:
-
-* update readme for your project needs, e.g. use CC0 or CC-BY-4.0 license
-* update LICENSE, [INCLUDE COPYRIGHT INSTANCE] -> e.g. Project XY, CDISC, John Doe
-* update CODE_OF_CONDUCT, [INSERT CONTACT METHOD] -> e.g. <example@example.com>
-* update CONTRIBUTION.md if you want to provide additional rules or guidances, for example naming conventions
-
-*-------------------------- DELETE EVERYTHIG ABOVE ---------------------------*
-
-
-# *NAME* 
-
-This repository should be used for the *Project/Workshop/Hackathon XY* to contain code, minutes, notes, outcomes, discussions and more. It is meant to allow anyone working with the results and discussions to allow flexible collaboration and follow up projects.
-
 ## Description
 
-The main purpose of *Project Name* is to ....
+The goals of CDISC Analysis Results Standards team is to develop:
+  - Analysis Results Metadata Technical Specification (ARM-TS), to support automation, traceability, and creation of data displays
+  - Define an Analysis Results Data (ARD) structure, to support reuse and reproducibility of results data
+  - Illustrate and exercise ARD and ARM-TS with a set of machine-readable common safety displays 
+  - Develop a logical analysis results metamodel to support ARM and ARD
+    - Including model definition
+    - User Guide
+    - API development
+    - Conformance rules
+    - Terminology
 
-If possible use images as well.
+## Background
 
-![Image Description](./images/placeholder.png)
+  - Unnecessary variation in analysis results reporting
+  - Limited CDISC standards to support analysis results and associated metadata
+  - CDISC has been working towards creating standards to support, consistency, traceability, and reuse of results data
+  - We anticipate that the CDISC work will support sponsor submissions of analysis results in a standard format that aligns with the FDA effort
+
+## Analysis Results Current State
+
+- Static results created for Clinical Study Report
+- May be hundred of tables in PDF format, often difficult to navigate
+- Variability between sponsors 
+- Expensive to generate and only used once, no or limited reusability 
+- ARM v1.0 describes metadata about analysis displays and results (at a high level), no formal analysis and results model or results data
+- Lack of features to drive automation 
+- Limited regulatory use cases 
+- Limited traceability 
+
+![Analysis Results Current State](images/AR-current-state.png)
+
+## Analysis Results Future State
+  - Formal model for describing analyses and results as data
+  - Facilitate automated generation of results
+  - From static to machine readable results
+  - Improved navigation and reusability of analyses and results
+  - Support storage, access, processing and reproducibility of results 
+  - Traceability to Protocol/SAP and to input ADaM data 
+  - Open-source tools to design, specify, build and generate analysis results
+ 
+![Analysis Results Future State](images/AR-future-state.png)
 
 ## Contribution
+
+Project Contact: 
+- Bhavin Busa (https://github.com/bhavinbusa): Product Owner and Co-lead
+- Bess LeRoy (https://github.com/bessleroy): Co-lead
+- Richard Marshall (https://github.com/ASL-rmarshall): ARS model developer
+- Drew Mills (https://github.com/drewcdisc): Scrum Master
 
 Contribution is very welcome. When you contribute to this repository you are doing so under the below licenses. Please checkout [Contribution](CONTRIBUTING.md) for additional information. All contributions must adhere to the following [Code of Conduct](CODE_OF_CONDUCT.md).
 
@@ -56,8 +70,4 @@ When you re-use the source, keep or copy the license information also in the sou
 
 When you want to re-use and refer to the content, please do so like the following:
 
-> Content based on [Project XY (GitHub)](https://github.com/xy/xy) used under the [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/) license.
-
-
-
-
+> Content based on [Project CDISC Analysis Results Standards (GitHub)](https://github.com/cdisc-org/analysis-results-standard) used under the [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/) license.
