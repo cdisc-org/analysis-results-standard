@@ -46,7 +46,7 @@ The goals of CDISC Analysis Results Standards team is to develop:
 
 Project Contact: 
 - Bhavin Busa (https://github.com/bhavinbusa): Product Owner and Co-lead
-- Bess LeRoy: Co-lead
+- Bess LeRoy (https://github.com/bessleroy): Co-lead
 - Richard Marshall (https://github.com/ASL-rmarshall): ARS model developer
 - Drew Mills (https://github.com/drewcdisc): Scrum Master
 
