@@ -1,3 +1,7 @@
+# UPDATES REQUIRED
+
+Richard and Bhavin need to update this file to express the project interests in contributions and to explain the Directory Structure below.
+
 # Contributions
 
 Contribution is very welcome. All contributions must adhere to the following [Code of Conduct](CODE_OF_CONDUCT.md). If you are not familar with contributions, please checkout the documents under the [How To's](./HowTos).
