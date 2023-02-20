@@ -1,0 +1,813 @@
+@prefix IAO: <http://purl.obolibrary.org/obo/IAO_> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix linkml: <https://w3id.org/linkml/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+linkml:SubsetDefinition a owl:Class ;
+    rdfs:label "subset_definition" .
+
+linkml:TypeDefinition a owl:Class ;
+    rdfs:label "type_definition" .
+
+linkml:topValue a owl:DatatypeProperty ;
+    rdfs:label "value" .
+
+<https://www.cdisc.org/ars/1-0> a owl:Ontology ;
+    rdfs:label "ARS-Schema" ;
+    IAO:0000700 <https://www.cdisc.org/ars/1-0/Analysis>,
+        <https://www.cdisc.org/ars/1-0/AnalysisCategorization>,
+        <https://www.cdisc.org/ars/1-0/AnalysisCategory>,
+        <https://www.cdisc.org/ars/1-0/CompoundExpression>,
+        <https://www.cdisc.org/ars/1-0/Condition>,
+        <https://www.cdisc.org/ars/1-0/DisplaySection>,
+        <https://www.cdisc.org/ars/1-0/DisplaySubSection>,
+        <https://www.cdisc.org/ars/1-0/GroupingFactor>,
+        <https://www.cdisc.org/ars/1-0/NamedObject>,
+        <https://www.cdisc.org/ars/1-0/NestedList>,
+        <https://www.cdisc.org/ars/1-0/OrderedGroupingFactor>,
+        <https://www.cdisc.org/ars/1-0/Output>,
+        <https://www.cdisc.org/ars/1-0/OutputDisplay>,
+        <https://www.cdisc.org/ars/1-0/WhereClause> ;
+    dcterms:license "https://creativecommons.org/publicdomain/zero/1.0/" ;
+    linkml:generation_date "2023-02-15T16:51:28" ;
+    linkml:metamodel_version "1.7.0" ;
+    linkml:source_file "ars_ldm.yaml" ;
+    linkml:source_file_date "2023-02-02T21:23:51" ;
+    linkml:source_file_size 8671 .
+
+<https://www.cdisc.org/ars/1-0/ReportingEvent> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "ReportingEvent" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom <https://www.cdisc.org/ars/1-0/Analysis> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/analyses> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://www.cdisc.org/ars/1-0/DataSubset> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/dataSubsets> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://www.cdisc.org/ars/1-0/NestedList> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/listOfPlannedOutputs> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://www.cdisc.org/ars/1-0/SubjectGroupingFactor> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/analysisGroupings> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://www.cdisc.org/ars/1-0/AnalysisSet> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/analysisSets> ],
+        [ a owl:Restriction ;
+            owl:onClass <https://www.cdisc.org/ars/1-0/NestedList> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/listOfPlannedAnalyses> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://www.cdisc.org/ars/1-0/DisplaySection> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/globalDisplaySections> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://www.cdisc.org/ars/1-0/AnalysisCategorization> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/analysisCategorizations> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://www.cdisc.org/ars/1-0/Output> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/outputs> ],
+        <https://www.cdisc.org/ars/1-0/NamedObject> .
+
+<https://www.cdisc.org/ars/1-0/AnalysisGroup> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "AnalysisGroup" ;
+    rdfs:subClassOf <https://www.cdisc.org/ars/1-0/Group> ;
+    skos:definition "A subdivision of the subject population based on a defined factor (e.g., subjects whose treatment is Drug A, subjects whose gender is male)." .
+
+<https://www.cdisc.org/ars/1-0/CompoundGroupExpression> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "CompoundGroupExpression" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom <https://www.cdisc.org/ars/1-0/Group> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/whereClauses> ],
+        <https://www.cdisc.org/ars/1-0/CompoundExpression> .
+
+<https://www.cdisc.org/ars/1-0/CompoundSetExpression> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "CompoundSetExpression" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom <https://www.cdisc.org/ars/1-0/AnalysisSet> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/whereClauses> ],
+        <https://www.cdisc.org/ars/1-0/CompoundExpression> .
+
+<https://www.cdisc.org/ars/1-0/CompoundSubsetExpression> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "CompoundSubsetExpression" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom <https://www.cdisc.org/ars/1-0/WhereClause> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/whereClauses> ],
+        <https://www.cdisc.org/ars/1-0/CompoundExpression> .
+
+<https://www.cdisc.org/ars/1-0/DataGroup> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "DataGroup" ;
+    rdfs:subClassOf <https://www.cdisc.org/ars/1-0/Group> ;
+    skos:definition "A subdivision of the analysis dataset records based on a defined factor." .
+
+<https://www.cdisc.org/ars/1-0/analyses> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "analyses" ;
+    rdfs:range <https://www.cdisc.org/ars/1-0/Analysis> .
+
+<https://www.cdisc.org/ars/1-0/analysis> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "analysis" ;
+    rdfs:range <https://www.cdisc.org/ars/1-0/Analysis> .
+
+<https://www.cdisc.org/ars/1-0/analysisCategorizations> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "analysisCategorizations" ;
+    rdfs:range <https://www.cdisc.org/ars/1-0/AnalysisCategorization> .
+
+<https://www.cdisc.org/ars/1-0/analysisGroupings> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "analysisGroupings" ;
+    rdfs:range <https://www.cdisc.org/ars/1-0/SubjectGroupingFactor> .
+
+<https://www.cdisc.org/ars/1-0/analysisSet> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "analysisSet" ;
+    rdfs:range <https://www.cdisc.org/ars/1-0/AnalysisSet> .
+
+<https://www.cdisc.org/ars/1-0/analysisSets> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "analysisSets" ;
+    rdfs:range <https://www.cdisc.org/ars/1-0/AnalysisSet> .
+
+<https://www.cdisc.org/ars/1-0/comparator> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "comparator" ;
+    rdfs:range <https://www.cdisc.org/ars/1-0/Comparator> .
+
+<https://www.cdisc.org/ars/1-0/condition> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "condition" ;
+    rdfs:range <https://www.cdisc.org/ars/1-0/Condition> .
+
+<https://www.cdisc.org/ars/1-0/dataDriven> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dataDriven" ;
+    rdfs:range linkml:Boolean ;
+    skos:definition "Indicates whether the groups defined by the grouping are prespecified (false) or obtained from distinct data values of the groupingVariable (true)." .
+
+<https://www.cdisc.org/ars/1-0/dataGrouping> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dataGrouping" ;
+    rdfs:range <https://www.cdisc.org/ars/1-0/DataGroupingFactor> .
+
+<https://www.cdisc.org/ars/1-0/dataSubsets> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dataSubsets" ;
+    rdfs:range <https://www.cdisc.org/ars/1-0/DataSubset> .
+
+<https://www.cdisc.org/ars/1-0/display> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "display" ;
+    rdfs:range <https://www.cdisc.org/ars/1-0/Display> .
+
+<https://www.cdisc.org/ars/1-0/displaySections> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "displaySections" ;
+    rdfs:range <https://www.cdisc.org/ars/1-0/DisplaySection> .
+
+<https://www.cdisc.org/ars/1-0/displayTitle> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "displayTitle" ;
+    rdfs:range linkml:String .
+
+<https://www.cdisc.org/ars/1-0/fileSpecifications> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "fileSpecifications" ;
+    rdfs:range <https://www.cdisc.org/ars/1-0/File> .
+
+<https://www.cdisc.org/ars/1-0/fileType> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "fileType" ;
+    rdfs:range <https://www.cdisc.org/ars/1-0/FileType> .
+
+<https://www.cdisc.org/ars/1-0/globalDisplaySections> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "globalDisplaySections" ;
+    rdfs:range <https://www.cdisc.org/ars/1-0/DisplaySection> .
+
+<https://www.cdisc.org/ars/1-0/groupingRef> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "groupingRef" ;
+    rdfs:range <https://www.cdisc.org/ars/1-0/GroupingFactor> .
+
+<https://www.cdisc.org/ars/1-0/groupingVariable> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "groupingVariable" ;
+    rdfs:range linkml:String ;
+    skos:definition "For groupings based on a single variable, a reference to the dataset variable upon which grouping is based." .
+
+<https://www.cdisc.org/ars/1-0/listItems> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "listItems" ;
+    rdfs:range <https://www.cdisc.org/ars/1-0/OrderedListItem> .
+
+<https://www.cdisc.org/ars/1-0/listOfPlannedAnalyses> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "listOfPlannedAnalyses" ;
+    rdfs:range <https://www.cdisc.org/ars/1-0/NestedList> .
+
+<https://www.cdisc.org/ars/1-0/listOfPlannedOutputs> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "listOfPlannedOutputs" ;
+    rdfs:range <https://www.cdisc.org/ars/1-0/NestedList> .
+
+<https://www.cdisc.org/ars/1-0/location> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "location" ;
+    rdfs:range linkml:String .
+
+<https://www.cdisc.org/ars/1-0/logicalOperator> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "logicalOperator" ;
+    rdfs:range <https://www.cdisc.org/ars/1-0/AndOr> .
+
+<https://www.cdisc.org/ars/1-0/name> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "name" ;
+    rdfs:range linkml:String .
+
+<https://www.cdisc.org/ars/1-0/orderedGroupings> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "orderedGroupings" ;
+    rdfs:range <https://www.cdisc.org/ars/1-0/OrderedGroupingFactor> .
+
+<https://www.cdisc.org/ars/1-0/output> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "output" ;
+    rdfs:range <https://www.cdisc.org/ars/1-0/Output> .
+
+<https://www.cdisc.org/ars/1-0/outputDisplays> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "outputDisplays" ;
+    rdfs:range <https://www.cdisc.org/ars/1-0/OutputDisplay> .
+
+<https://www.cdisc.org/ars/1-0/outputs> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "outputs" ;
+    rdfs:range <https://www.cdisc.org/ars/1-0/Output> .
+
+<https://www.cdisc.org/ars/1-0/sectionType> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "sectionType" ;
+    rdfs:range <https://www.cdisc.org/ars/1-0/SectionType> .
+
+<https://www.cdisc.org/ars/1-0/style> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "style" ;
+    rdfs:range linkml:String .
+
+<https://www.cdisc.org/ars/1-0/subCategorizations> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "subCategorizations" ;
+    rdfs:range <https://www.cdisc.org/ars/1-0/AnalysisCategorization> .
+
+<https://www.cdisc.org/ars/1-0/subSections> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "subSections" ;
+    rdfs:range <https://www.cdisc.org/ars/1-0/DisplaySubSection> .
+
+<https://www.cdisc.org/ars/1-0/sublist> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "sublist" ;
+    rdfs:range <https://www.cdisc.org/ars/1-0/NestedList> .
+
+<https://www.cdisc.org/ars/1-0/text> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "text" ;
+    rdfs:range linkml:String .
+
+<https://www.cdisc.org/ars/1-0/value> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "value" ;
+    rdfs:range linkml:String .
+
+<https://www.cdisc.org/ars/1-0/variable> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "variable" ;
+    rdfs:range linkml:String .
+
+<https://www.cdisc.org/ars/1-0/AndOr#AND> a owl:Class,
+        <https://www.cdisc.org/ars/1-0/AndOr> ;
+    rdfs:label "AND" .
+
+<https://www.cdisc.org/ars/1-0/AndOr#OR> a owl:Class,
+        <https://www.cdisc.org/ars/1-0/AndOr> ;
+    rdfs:label "OR" .
+
+<https://www.cdisc.org/ars/1-0/Comparator#EQ> a owl:Class,
+        <https://www.cdisc.org/ars/1-0/Comparator> ;
+    rdfs:label "EQ" .
+
+<https://www.cdisc.org/ars/1-0/Comparator#GE> a owl:Class,
+        <https://www.cdisc.org/ars/1-0/Comparator> ;
+    rdfs:label "GE" .
+
+<https://www.cdisc.org/ars/1-0/Comparator#GT> a owl:Class,
+        <https://www.cdisc.org/ars/1-0/Comparator> ;
+    rdfs:label "GT" .
+
+<https://www.cdisc.org/ars/1-0/Comparator#IN> a owl:Class,
+        <https://www.cdisc.org/ars/1-0/Comparator> ;
+    rdfs:label "IN" .
+
+<https://www.cdisc.org/ars/1-0/Comparator#LE> a owl:Class,
+        <https://www.cdisc.org/ars/1-0/Comparator> ;
+    rdfs:label "LE" .
+
+<https://www.cdisc.org/ars/1-0/Comparator#LT> a owl:Class,
+        <https://www.cdisc.org/ars/1-0/Comparator> ;
+    rdfs:label "LT" .
+
+<https://www.cdisc.org/ars/1-0/Comparator#NE> a owl:Class,
+        <https://www.cdisc.org/ars/1-0/Comparator> ;
+    rdfs:label "NE" .
+
+<https://www.cdisc.org/ars/1-0/Comparator#NOTIN> a owl:Class,
+        <https://www.cdisc.org/ars/1-0/Comparator> ;
+    rdfs:label "NOTIN" .
+
+<https://www.cdisc.org/ars/1-0/DataGroupingFactor> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "DataGroupingFactor" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom <https://www.cdisc.org/ars/1-0/DataGroup> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/groups> ],
+        <https://www.cdisc.org/ars/1-0/GroupingFactor> ;
+    skos:definition "A factor used to subdivide data records in an analysis dataset for analysis." .
+
+<https://www.cdisc.org/ars/1-0/DataSubset> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "DataSubset" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://www.cdisc.org/ars/1-0/CompoundSubsetExpression> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/compoundExpression> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/label> ],
+        <https://www.cdisc.org/ars/1-0/WhereClause> ;
+    skos:definition "A subset of data identified by selection criteria for inclusion in the analysis." .
+
+<https://www.cdisc.org/ars/1-0/Display> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Display" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/displayTitle> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Integer ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/version> ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/id> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://www.cdisc.org/ars/1-0/DisplaySection> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/displaySections> ],
+        <https://www.cdisc.org/ars/1-0/NamedObject> .
+
+<https://www.cdisc.org/ars/1-0/File> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "File" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/style> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/location> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://www.cdisc.org/ars/1-0/FileType> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/fileType> ],
+        <https://www.cdisc.org/ars/1-0/NamedObject> .
+
+<https://www.cdisc.org/ars/1-0/FileType#pdf> a owl:Class,
+        <https://www.cdisc.org/ars/1-0/FileType> ;
+    rdfs:label "pdf" .
+
+<https://www.cdisc.org/ars/1-0/FileType#rtf> a owl:Class,
+        <https://www.cdisc.org/ars/1-0/FileType> ;
+    rdfs:label "rtf" .
+
+<https://www.cdisc.org/ars/1-0/FileType#txt> a owl:Class,
+        <https://www.cdisc.org/ars/1-0/FileType> ;
+    rdfs:label "txt" .
+
+<https://www.cdisc.org/ars/1-0/OrderedListItem> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "OrderedListItem" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass linkml:Integer ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/order> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://www.cdisc.org/ars/1-0/Output> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/output> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://www.cdisc.org/ars/1-0/Analysis> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/analysis> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://www.cdisc.org/ars/1-0/NestedList> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/sublist> ],
+        <https://www.cdisc.org/ars/1-0/NamedObject> .
+
+<https://www.cdisc.org/ars/1-0/SectionType#Abbreviation> a owl:Class,
+        <https://www.cdisc.org/ars/1-0/SectionType> ;
+    rdfs:label "Abbreviation" .
+
+<https://www.cdisc.org/ars/1-0/SectionType#Footnote> a owl:Class,
+        <https://www.cdisc.org/ars/1-0/SectionType> ;
+    rdfs:label "Footnote" .
+
+<https://www.cdisc.org/ars/1-0/SectionType#Legend> a owl:Class,
+        <https://www.cdisc.org/ars/1-0/SectionType> ;
+    rdfs:label "Legend" .
+
+<https://www.cdisc.org/ars/1-0/SectionType#Rowlabel+Header> a owl:Class,
+        <https://www.cdisc.org/ars/1-0/SectionType> ;
+    rdfs:label "Rowlabel Header" .
+
+<https://www.cdisc.org/ars/1-0/SectionType#Title> a owl:Class,
+        <https://www.cdisc.org/ars/1-0/SectionType> ;
+    rdfs:label "Title" .
+
+<https://www.cdisc.org/ars/1-0/SubjectGroupingFactor> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "SubjectGroupingFactor" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom <https://www.cdisc.org/ars/1-0/AnalysisGroup> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/groups> ],
+        <https://www.cdisc.org/ars/1-0/GroupingFactor> ;
+    skos:definition "A factor used to subdivide the subject population for comparative analysis (e.g., treatment, sex, race, age)." .
+
+<https://www.cdisc.org/ars/1-0/categories> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "categories" ;
+    rdfs:range <https://www.cdisc.org/ars/1-0/AnalysisCategory> .
+
+<https://www.cdisc.org/ars/1-0/categoryRefs> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "categoryRefs" ;
+    rdfs:range <https://www.cdisc.org/ars/1-0/AnalysisCategory> .
+
+<https://www.cdisc.org/ars/1-0/dataset> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dataset" ;
+    rdfs:range linkml:String .
+
+<https://www.cdisc.org/ars/1-0/Condition> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Condition" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/value> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/dataset> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://www.cdisc.org/ars/1-0/Comparator> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/comparator> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/variable> ] .
+
+<https://www.cdisc.org/ars/1-0/DisplaySubSection> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "DisplaySubSection" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/id> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/text> ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:Integer ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/order> ;
+            owl:qualifiedCardinality 1 ] .
+
+<https://www.cdisc.org/ars/1-0/OrderedGroupingFactor> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "OrderedGroupingFactor" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://www.cdisc.org/ars/1-0/DataGroupingFactor> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/dataGrouping> ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:Integer ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/order> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://www.cdisc.org/ars/1-0/GroupingFactor> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/groupingRef> ] .
+
+<https://www.cdisc.org/ars/1-0/OutputDisplay> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "OutputDisplay" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://www.cdisc.org/ars/1-0/Display> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/display> ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:Integer ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/order> ;
+            owl:qualifiedCardinality 1 ] .
+
+<https://www.cdisc.org/ars/1-0/groups> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "groups" ;
+    rdfs:range <https://www.cdisc.org/ars/1-0/Group> .
+
+<https://www.cdisc.org/ars/1-0/version> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "version" ;
+    rdfs:range linkml:Integer .
+
+<https://www.cdisc.org/ars/1-0/AndOr> a owl:Class,
+        linkml:EnumDefinition ;
+    rdfs:label "AndOr" ;
+    owl:unionOf ( <https://www.cdisc.org/ars/1-0/AndOr#AND> <https://www.cdisc.org/ars/1-0/AndOr#OR> ) ;
+    linkml:permissible_values <https://www.cdisc.org/ars/1-0/AndOr#AND>,
+        <https://www.cdisc.org/ars/1-0/AndOr#OR> .
+
+<https://www.cdisc.org/ars/1-0/compoundExpression> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "compoundExpression" ;
+    rdfs:range <https://www.cdisc.org/ars/1-0/CompoundExpression> .
+
+<https://www.cdisc.org/ars/1-0/whereClauses> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "whereClauses" ;
+    rdfs:range <https://www.cdisc.org/ars/1-0/WhereClause> .
+
+<https://www.cdisc.org/ars/1-0/Analysis> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Analysis" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom <https://www.cdisc.org/ars/1-0/OrderedGroupingFactor> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/orderedGroupings> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://www.cdisc.org/ars/1-0/AnalysisSet> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/analysisSet> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Integer ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/version> ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/id> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://www.cdisc.org/ars/1-0/AnalysisCategory> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/categoryRefs> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/dataset> ] .
+
+<https://www.cdisc.org/ars/1-0/AnalysisCategorization> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "AnalysisCategorization" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/label> ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/id> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:allValuesFrom <https://www.cdisc.org/ars/1-0/AnalysisCategory> ;
+                        owl:onProperty <https://www.cdisc.org/ars/1-0/categories> ] [ a owl:Restriction ;
+                        owl:onProperty <https://www.cdisc.org/ars/1-0/categories> ;
+                        owl:someValuesFrom <https://www.cdisc.org/ars/1-0/AnalysisCategory> ] ) ] ;
+    skos:definition "An implementer-defined categorization of analyses/outputs." .
+
+<https://www.cdisc.org/ars/1-0/AnalysisSet> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "AnalysisSet" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://www.cdisc.org/ars/1-0/CompoundSetExpression> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/compoundExpression> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/label> ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:Integer ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/order> ;
+            owl:qualifiedCardinality 1 ],
+        <https://www.cdisc.org/ars/1-0/WhereClause> ;
+    skos:definition "A set of subjects whose data are to be included in the main analyses. This should be defined in the statistical section of the protocol. NOTE: There are a number of potential analysis sets, including, for example, the set based upon the intent-to-treat principle. [ICH E9]" .
+
+<https://www.cdisc.org/ars/1-0/DisplaySection> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "DisplaySection" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom <https://www.cdisc.org/ars/1-0/DisplaySubSection> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/subSections> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://www.cdisc.org/ars/1-0/SectionType> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/sectionType> ] .
+
+<https://www.cdisc.org/ars/1-0/FileType> a owl:Class,
+        linkml:EnumDefinition ;
+    rdfs:label "FileType" ;
+    owl:unionOf ( <https://www.cdisc.org/ars/1-0/FileType#pdf> <https://www.cdisc.org/ars/1-0/FileType#rtf> <https://www.cdisc.org/ars/1-0/FileType#txt> ) ;
+    linkml:permissible_values <https://www.cdisc.org/ars/1-0/FileType#pdf>,
+        <https://www.cdisc.org/ars/1-0/FileType#rtf>,
+        <https://www.cdisc.org/ars/1-0/FileType#txt> .
+
+<https://www.cdisc.org/ars/1-0/Group> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Group" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://www.cdisc.org/ars/1-0/CompoundGroupExpression> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/compoundExpression> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/label> ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:Integer ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/order> ;
+            owl:qualifiedCardinality 1 ],
+        <https://www.cdisc.org/ars/1-0/WhereClause> ;
+    skos:definition "A subdivision of the subject population or analysis dataset record set based on a defined factor." .
+
+<https://www.cdisc.org/ars/1-0/GroupingFactor> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "GroupingFactor" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass linkml:Boolean ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/dataDriven> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/id> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/label> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/groupingVariable> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://www.cdisc.org/ars/1-0/Group> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/groups> ] ;
+    skos:definition "A factor used to subdivide either the subject population or data records in an analysis dataset for analysis." .
+
+<https://www.cdisc.org/ars/1-0/NamedObject> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "NamedObject" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/name> ;
+            owl:qualifiedCardinality 1 ] .
+
+<https://www.cdisc.org/ars/1-0/Output> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Output" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Integer ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/version> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://www.cdisc.org/ars/1-0/OutputDisplay> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/outputDisplays> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://www.cdisc.org/ars/1-0/AnalysisCategory> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/categoryRefs> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://www.cdisc.org/ars/1-0/File> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/fileSpecifications> ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/id> ;
+            owl:qualifiedCardinality 1 ] .
+
+<https://www.cdisc.org/ars/1-0/CompoundExpression> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "CompoundExpression" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass <https://www.cdisc.org/ars/1-0/AndOr> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/logicalOperator> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://www.cdisc.org/ars/1-0/WhereClause> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/whereClauses> ] .
+
+<https://www.cdisc.org/ars/1-0/label> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "label" ;
+    rdfs:range linkml:String .
+
+<https://www.cdisc.org/ars/1-0/order> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "order" ;
+    rdfs:range linkml:Integer .
+
+<https://www.cdisc.org/ars/1-0/AnalysisCategory> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "AnalysisCategory" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/id> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/label> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://www.cdisc.org/ars/1-0/AnalysisCategorization> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/subCategorizations> ] ;
+    skos:definition "An implementer-defined category of analyses/outputs." .
+
+<https://www.cdisc.org/ars/1-0/NestedList> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "NestedList" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom <https://www.cdisc.org/ars/1-0/OrderedListItem> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/listItems> ] .
+
+<https://www.cdisc.org/ars/1-0/SectionType> a owl:Class,
+        linkml:EnumDefinition ;
+    rdfs:label "SectionType" ;
+    owl:unionOf ( <https://www.cdisc.org/ars/1-0/SectionType#Title> <https://www.cdisc.org/ars/1-0/SectionType#Footnote> <https://www.cdisc.org/ars/1-0/SectionType#Abbreviation> <https://www.cdisc.org/ars/1-0/SectionType#Legend> <https://www.cdisc.org/ars/1-0/SectionType#Rowlabel+Header> ) ;
+    linkml:permissible_values <https://www.cdisc.org/ars/1-0/SectionType#Abbreviation>,
+        <https://www.cdisc.org/ars/1-0/SectionType#Footnote>,
+        <https://www.cdisc.org/ars/1-0/SectionType#Legend>,
+        <https://www.cdisc.org/ars/1-0/SectionType#Rowlabel+Header>,
+        <https://www.cdisc.org/ars/1-0/SectionType#Title> .
+
+<https://www.cdisc.org/ars/1-0/WhereClause> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "WhereClause" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://www.cdisc.org/ars/1-0/Condition> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/condition> ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/id> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://www.cdisc.org/ars/1-0/CompoundExpression> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/compoundExpression> ] .
+
+<https://www.cdisc.org/ars/1-0/id> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "id" ;
+    rdfs:range linkml:String .
+
+<https://www.cdisc.org/ars/1-0/Comparator> a owl:Class,
+        linkml:EnumDefinition ;
+    rdfs:label "Comparator" ;
+    owl:unionOf ( <https://www.cdisc.org/ars/1-0/Comparator#EQ> <https://www.cdisc.org/ars/1-0/Comparator#NE> <https://www.cdisc.org/ars/1-0/Comparator#GT> <https://www.cdisc.org/ars/1-0/Comparator#GE> <https://www.cdisc.org/ars/1-0/Comparator#LT> <https://www.cdisc.org/ars/1-0/Comparator#LE> <https://www.cdisc.org/ars/1-0/Comparator#IN> <https://www.cdisc.org/ars/1-0/Comparator#NOTIN> ) ;
+    linkml:permissible_values <https://www.cdisc.org/ars/1-0/Comparator#EQ>,
+        <https://www.cdisc.org/ars/1-0/Comparator#GE>,
+        <https://www.cdisc.org/ars/1-0/Comparator#GT>,
+        <https://www.cdisc.org/ars/1-0/Comparator#IN>,
+        <https://www.cdisc.org/ars/1-0/Comparator#LE>,
+        <https://www.cdisc.org/ars/1-0/Comparator#LT>,
+        <https://www.cdisc.org/ars/1-0/Comparator#NE>,
+        <https://www.cdisc.org/ars/1-0/Comparator#NOTIN> .
+
+linkml:ClassDefinition a owl:Class ;
+    rdfs:label "class_definition" .
+
+linkml:SlotDefinition a owl:Class ;
+    rdfs:label "slot_definition" .
+
+

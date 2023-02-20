@@ -1,0 +1,188 @@
+message Analysis
+ {
+  string id = 0
+  integer version = 0
+  analysisSet analysisSet = 0
+ repeated  orderedGroupingFactor orderedGroupings = 0
+  string dataset = 0
+ repeated  analysisCategory categoryRefs = 0
+ }
+// An implementer-defined categorization of analyses/outputs.
+message AnalysisCategorization
+ {
+  string id = 0
+  string label = 0
+ repeated  analysisCategory categories = 0
+ }
+// An implementer-defined category of analyses/outputs.
+message AnalysisCategory
+ {
+  string id = 0
+  string label = 0
+ repeated  analysisCategorization subCategorizations = 0
+ }
+// A subdivision of the subject population based on a defined factor (e.g., subjects whose treatment is Drug A, subjects whose gender is male).
+message AnalysisGroup
+ {
+  string id = 0
+  condition condition = 0
+  string label = 0
+  integer order = 0
+  compoundGroupExpression compoundExpression = 0
+ }
+// A set of subjects whose data are to be included in the main analyses. This should be defined in the statistical section of the protocol. NOTE: There are a number of potential analysis sets, including, for example, the set based upon the intent-to-treat principle. [ICH E9]
+message AnalysisSet
+ {
+  string id = 0
+  condition condition = 0
+  string label = 0
+  integer order = 0
+  compoundSetExpression compoundExpression = 0
+ }
+message CompoundExpression
+ {
+  andOr logicalOperator = 0
+ repeated  whereClause whereClauses = 0
+ }
+message CompoundGroupExpression
+ {
+  andOr logicalOperator = 0
+ repeated  group whereClauses = 0
+ }
+message CompoundSetExpression
+ {
+  andOr logicalOperator = 0
+ repeated  analysisSet whereClauses = 0
+ }
+message CompoundSubsetExpression
+ {
+  andOr logicalOperator = 0
+ repeated  whereClause whereClauses = 0
+ }
+message Condition
+ {
+  string dataset = 0
+  string variable = 0
+  comparator comparator = 0
+ repeated  string value = 0
+ }
+// A subdivision of the analysis dataset records based on a defined factor.
+message DataGroup
+ {
+  string id = 0
+  condition condition = 0
+  string label = 0
+  integer order = 0
+  compoundGroupExpression compoundExpression = 0
+ }
+// A factor used to subdivide data records in an analysis dataset for analysis.
+message DataGroupingFactor
+ {
+  string id = 0
+  string label = 0
+  string groupingVariable = 0
+  boolean dataDriven = 0
+ repeated  dataGroup groups = 0
+ }
+// A subset of data identified by selection criteria for inclusion in the analysis.
+message DataSubset
+ {
+  string id = 0
+  condition condition = 0
+  string label = 0
+  compoundSubsetExpression compoundExpression = 0
+ }
+message Display
+ {
+  string name = 0
+  string id = 0
+  integer version = 0
+  string displayTitle = 0
+ repeated  displaySection displaySections = 0
+ }
+message DisplaySection
+ {
+  sectionType sectionType = 0
+ repeated  displaySubSection subSections = 0
+ }
+message DisplaySubSection
+ {
+  string id = 0
+  integer order = 0
+  string text = 0
+ }
+message File
+ {
+  string name = 0
+  fileType fileType = 0
+  string location = 0
+  string style = 0
+ }
+// A subdivision of the subject population or analysis dataset record set based on a defined factor.
+message Group
+ {
+  string id = 0
+  condition condition = 0
+  string label = 0
+  integer order = 0
+  compoundGroupExpression compoundExpression = 0
+ }
+message NestedList
+ {
+ repeated  orderedListItem listItems = 0
+ }
+message OrderedGroupingFactor
+ {
+  integer order = 0
+  groupingFactor groupingRef = 0
+  dataGroupingFactor dataGrouping = 0
+ }
+message OrderedListItem
+ {
+  string name = 0
+  integer order = 0
+  nestedList sublist = 0
+  analysis analysis = 0
+  output output = 0
+ }
+message Output
+ {
+  string id = 0
+  integer version = 0
+ repeated  file fileSpecifications = 0
+ repeated  outputDisplay outputDisplays = 0
+ repeated  analysisCategory categoryRefs = 0
+ }
+message OutputDisplay
+ {
+  integer order = 0
+  display display = 0
+ }
+message ReportingEvent
+ {
+  string name = 0
+  nestedList listOfPlannedAnalyses = 0
+  nestedList listOfPlannedOutputs = 0
+ repeated  analysisSet analysisSets = 0
+ repeated  subjectGroupingFactor analysisGroupings = 0
+ repeated  dataSubset dataSubsets = 0
+ repeated  displaySection globalDisplaySections = 0
+ repeated  analysisCategorization analysisCategorizations = 0
+ repeated  analysis analyses = 0
+ repeated  output outputs = 0
+ }
+// A factor used to subdivide the subject population for comparative analysis (e.g., treatment, sex, race, age).
+message SubjectGroupingFactor
+ {
+  string id = 0
+  string label = 0
+  string groupingVariable = 0
+  boolean dataDriven = 0
+ repeated  analysisGroup groups = 0
+ }
+message WhereClause
+ {
+  string id = 0
+  condition condition = 0
+  compoundExpression compoundExpression = 0
+ }

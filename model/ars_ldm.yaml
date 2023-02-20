@@ -26,6 +26,7 @@ classes:
       - analysisGroupings
       - dataSubsets
       - globalDisplaySections
+      - analysisCategorizations
       - analyses
       - outputs
 
@@ -41,12 +42,34 @@ classes:
       - analysis
       - output
 
+  AnalysisCategorization:
+    description: An implementer-defined categorization of analyses/outputs.
+    slots:
+      - id
+      - label
+      - categories
+
+  AnalysisCategory:
+    description: An implementer-defined category of analyses/outputs.
+    slots:
+      - id
+      - label
+      - subCategorizations
+
   Analysis:
     slots:
       - id
       - version
       - analysisSet
-      - groupings
+      - orderedGroupings
+      - dataset
+      - categoryRefs
+
+  OrderedGroupingFactor:
+    slots:
+      - order
+      - groupingRef
+      - dataGrouping
 
   Output:
     slots:
@@ -54,6 +77,11 @@ classes:
       - version
       - fileSpecifications
       - outputDisplays
+      - categoryRefs
+    slot_usage:
+      categoryRefs:
+        required: false
+        inlined: false
 
   File:
     is_a: NamedObject
@@ -115,7 +143,7 @@ classes:
     is_a: CompoundExpression
     slot_usage:
       whereClauses:
-        range: AnalysisGroup
+        range: Group
         inlined: false
 
   CompoundSubsetExpression:
@@ -138,15 +166,32 @@ classes:
       - label
       - order
 
-  AnalysisGroupingFactor:
-    description: A factor used to subdivide the subject population for comparative analysis (e.g., treatment, sex, race, age).
+  GroupingFactor:
+    abstract: true
+    description: A factor used to subdivide either the subject population or data records in an analysis dataset for analysis.
     slots:
       - id
       - label
+      - groupingVariable
+      - dataDriven
       - groups
 
-  AnalysisGroup:
-    description: A subdivision of the subject population based on a defined factor (e.g., subjects whose treatment is Drug A, subjects whose gender is male).
+  SubjectGroupingFactor:
+    is_a: GroupingFactor
+    description: A factor used to subdivide the subject population for comparative analysis (e.g., treatment, sex, race, age).
+    slot_usage:
+      groups:
+        range: AnalysisGroup
+
+  DataGroupingFactor:
+    is_a: GroupingFactor
+    description: A factor used to subdivide data records in an analysis dataset for analysis.
+    slot_usage:
+      groups:
+        range: DataGroup
+
+  Group:
+    description: A subdivision of the subject population or analysis dataset record set based on a defined factor.
     is_a: WhereClause
     slot_usage:
       compoundExpression:
@@ -154,6 +199,14 @@ classes:
     slots:
       - label
       - order
+
+  AnalysisGroup:
+    description: A subdivision of the subject population based on a defined factor (e.g., subjects whose treatment is Drug A, subjects whose gender is male).
+    is_a: Group
+
+  DataGroup:
+    description: A subdivision of the analysis dataset records based on a defined factor.
+    is_a: Group
 
   DataSubset:
     description: A subset of data identified by selection criteria for inclusion in the analysis.
@@ -174,7 +227,7 @@ slots:
     range: NestedList
 
   listOfPlannedOutputs:
-    required: true
+    required: false
     range: NestedList
 
   analysisSets:
@@ -185,7 +238,21 @@ slots:
   analysisGroupings:
     multivalued: true
     inlined_as_list: true
-    range: AnalysisGroupingFactor
+    range: SubjectGroupingFactor
+
+  groupingVariable:
+    description: For groupings based on a single variable, a reference to the dataset variable upon which grouping is based.
+
+  dataDriven:
+    description: Indicates whether the groups defined by the grouping are prespecified (false) or obtained from distinct data values of the groupingVariable (true).
+    range: boolean
+    required: true
+
+  groups:
+    multivalued: true
+    list_elements_ordered: true
+    inlined_as_list: true
+    range: Group
 
   dataSubsets:
     multivalued: true
@@ -196,6 +263,28 @@ slots:
     multivalued: true
     inlined_as_list: true
     range: Analysis
+
+  analysisCategorizations:
+    multivalued: true
+    range: AnalysisCategorization
+    inlined_as_list: true
+
+  categories:
+    multivalued: true
+    range: AnalysisCategory
+    inlined_as_list: true
+    required: true
+
+  categoryRefs:
+    multivalued: true
+    range: AnalysisCategory
+    inlined: false
+    required: false
+
+  subCategorizations:
+    multivalued: true
+    range: AnalysisCategorization
+    inlined_as_list: true
 
   outputs:
     multivalued: true
@@ -227,10 +316,19 @@ slots:
     multivalued: false
     inlined: false
 
-  groupings: 
-    range: AnalysisGroupingFactor
+  orderedGroupings: 
+    range: OrderedGroupingFactor
     multivalued: true
+    list_elements_ordered: true
+    inlined_as_list: true
+
+  groupingRef: 
+    range: GroupingFactor
     inlined: false
+
+  dataGrouping: 
+    range: DataGroupingFactor
+    inlined: true
 
   output: 
     range: Output
@@ -304,12 +402,6 @@ slots:
     list_elements_ordered: true
     inlined: false
     range: WhereClause
-
-  groups:
-    multivalued: true
-    list_elements_ordered: true
-    inlined_as_list: true
-    range: AnalysisGroup
 
   dataset:
 
