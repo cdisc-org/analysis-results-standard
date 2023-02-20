@@ -38,10 +38,13 @@ linkml:Nodeidentifier NONLITERAL
 
 <Analysis> CLOSED {
     (  $<Analysis_tes> (  <version> @linkml:Integer ? ;
-          <analysisSet> @<AnalysisSet> ? ;
+          <categoryRefs> @<AnalysisCategory> * ;
+          <analysisSetRef> @<AnalysisSet> ? ;
           <orderedGroupings> @<OrderedGroupingFactor> * ;
+          <dataSubsetRef> @<DataSubset> ? ;
           <dataset> @linkml:String ? ;
-          <categoryRefs> @<AnalysisCategory> *
+          <variable> @linkml:String ? ;
+          <method> @<AnalysisMethod> ?
        ) ;
        rdf:type [ <Analysis> ]
     )
@@ -68,6 +71,17 @@ linkml:Nodeidentifier NONLITERAL
           rdf:type [ <Group> ] ?
        ) ;
        rdf:type [ <AnalysisGroup> ]
+    )
+}
+
+<AnalysisMethod> CLOSED {
+    (  $<AnalysisMethod_tes> (  &<NamedObject_tes> ;
+          rdf:type [ <NamedObject> ] ? ;
+          <label> @linkml:String ? ;
+          <description> @linkml:String ? ;
+          <operations> @<Operation> +
+       ) ;
+       rdf:type [ <AnalysisMethod> ]
     )
 }
 
@@ -222,7 +236,7 @@ linkml:Nodeidentifier NONLITERAL
 }
 
 <NamedObject>  (
-    @<Display> OR @<File> OR @<OrderedListItem> OR @<ReportingEvent>
+    @<AnalysisMethod> OR @<Display> OR @<File> OR @<Operation> OR @<OrderedListItem> OR @<ReportingEvent>
 )
 
 <NamedObject_struct> {
@@ -234,6 +248,27 @@ linkml:Nodeidentifier NONLITERAL
 <NestedList> CLOSED {
     (  $<NestedList_tes> <listItems> @<OrderedListItem> * ;
        rdf:type [ <NestedList> ] ?
+    )
+}
+
+<Operation> CLOSED {
+    (  $<Operation_tes> (  &<NamedObject_tes> ;
+          rdf:type [ <NamedObject> ] ? ;
+          <label> @linkml:String ? ;
+          <referencedResultRelationships> @<ReferencedResultRelationship> * ;
+          <resultPattern> @linkml:String ? ;
+          <results> @<OperationResult> *
+       ) ;
+       rdf:type [ <Operation> ]
+    )
+}
+
+<OperationResult> CLOSED {
+    (  $<OperationResult_tes> (  <groupRefs> @<AnalysisGroup> * ;
+          <rawValue> @linkml:String ? ;
+          <formattedValue> @linkml:String ?
+       ) ;
+       rdf:type [ <OperationResult> ] ?
     )
 }
 
@@ -251,8 +286,8 @@ linkml:Nodeidentifier NONLITERAL
           rdf:type [ <NamedObject> ] ? ;
           <order> @linkml:Integer ;
           <sublist> @<NestedList> ? ;
-          <analysis> @<Analysis> ? ;
-          <output> @<Output> ?
+          <analysisRef> @<Analysis> ? ;
+          <outputRef> @<Output> ?
        ) ;
        rdf:type [ <OrderedListItem> ] ?
     )
@@ -273,6 +308,14 @@ linkml:Nodeidentifier NONLITERAL
           <display> @<Display> ?
        ) ;
        rdf:type [ <OutputDisplay> ] ?
+    )
+}
+
+<ReferencedResultRelationship> CLOSED {
+    (  $<ReferencedResultRelationship_tes> (  <referencedResultRole> @<OperationRole> ;
+          <operationRef> @<Operation>
+       ) ;
+       rdf:type [ <ReferencedResultRelationship> ] ?
     )
 }
 

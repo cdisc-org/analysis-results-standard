@@ -7,7 +7,7 @@ A subdivision of the subject population based on a defined factor (e.g., subject
 URI: [https://www.cdisc.org/ars/1-0/AnalysisGroup](https://www.cdisc.org/ars/1-0/AnalysisGroup)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[SubjectGroupingFactor],[Group],[Condition],[CompoundGroupExpression],[SubjectGroupingFactor]++-%20groups%200..*>[AnalysisGroup&#124;label(i):string%20%3F;order(i):integer;id(i):string],[Group]^-[AnalysisGroup])](https://yuml.me/diagram/nofunky;dir:TB/class/[SubjectGroupingFactor],[Group],[Condition],[CompoundGroupExpression],[SubjectGroupingFactor]++-%20groups%200..*>[AnalysisGroup&#124;label(i):string%20%3F;order(i):integer;id(i):string],[Group]^-[AnalysisGroup])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[SubjectGroupingFactor],[Group],[Condition],[CompoundGroupExpression],[SubjectGroupingFactor]++-%20groups%200..*>[AnalysisGroup&#124;label(i):string%20%3F;order(i):integer;id(i):string],[OperationResult]-%20groupRefs%200..*>[AnalysisGroup],[Group]^-[AnalysisGroup],[OperationResult])](https://yuml.me/diagram/nofunky;dir:TB/class/[SubjectGroupingFactor],[Group],[Condition],[CompoundGroupExpression],[SubjectGroupingFactor]++-%20groups%200..*>[AnalysisGroup&#124;label(i):string%20%3F;order(i):integer;id(i):string],[OperationResult]-%20groupRefs%200..*>[AnalysisGroup],[Group]^-[AnalysisGroup],[OperationResult])
 
 ## Parents
 
@@ -16,6 +16,7 @@ URI: [https://www.cdisc.org/ars/1-0/AnalysisGroup](https://www.cdisc.org/ars/1-0
 ## Referenced by Class
 
  *  **[SubjectGroupingFactor](SubjectGroupingFactor.md)** *[SubjectGroupingFactor➞groups](SubjectGroupingFactor_groups.md)*  <sub>0..\*</sub>  **[AnalysisGroup](AnalysisGroup.md)**
+ *  **None** *[groupRefs](groupRefs.md)*  <sub>0..\*</sub>  **[AnalysisGroup](AnalysisGroup.md)**
 
 ## Attributes
 

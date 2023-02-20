@@ -2,10 +2,13 @@ message Analysis
  {
   string id = 0
   integer version = 0
-  analysisSet analysisSet = 0
- repeated  orderedGroupingFactor orderedGroupings = 0
-  string dataset = 0
  repeated  analysisCategory categoryRefs = 0
+  analysisSet analysisSetRef = 0
+ repeated  orderedGroupingFactor orderedGroupings = 0
+  dataSubset dataSubsetRef = 0
+  string dataset = 0
+  string variable = 0
+  analysisMethod method = 0
  }
 // An implementer-defined categorization of analyses/outputs.
 message AnalysisCategorization
@@ -29,6 +32,14 @@ message AnalysisGroup
   string label = 0
   integer order = 0
   compoundGroupExpression compoundExpression = 0
+ }
+message AnalysisMethod
+ {
+  string name = 0
+  string id = 0
+  string label = 0
+  string description = 0
+ repeated  operation operations = 0
  }
 // A set of subjects whose data are to be included in the main analyses. This should be defined in the statistical section of the protocol. NOTE: There are a number of potential analysis sets, including, for example, the set based upon the intent-to-treat principle. [ICH E9]
 message AnalysisSet
@@ -131,6 +142,21 @@ message NestedList
  {
  repeated  orderedListItem listItems = 0
  }
+message Operation
+ {
+  string name = 0
+  string id = 0
+  string label = 0
+ repeated  referencedResultRelationship referencedResultRelationships = 0
+  string resultPattern = 0
+ repeated  operationResult results = 0
+ }
+message OperationResult
+ {
+ repeated  analysisGroup groupRefs = 0
+  string rawValue = 0
+  string formattedValue = 0
+ }
 message OrderedGroupingFactor
  {
   integer order = 0
@@ -142,8 +168,8 @@ message OrderedListItem
   string name = 0
   integer order = 0
   nestedList sublist = 0
-  analysis analysis = 0
-  output output = 0
+  analysis analysisRef = 0
+  output outputRef = 0
  }
 message Output
  {
@@ -157,6 +183,11 @@ message OutputDisplay
  {
   integer order = 0
   display display = 0
+ }
+message ReferencedResultRelationship
+ {
+  operationRole referencedResultRole = 0
+  operation operationRef = 0
  }
 message ReportingEvent
  {

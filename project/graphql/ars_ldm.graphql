@@ -2,10 +2,13 @@ type Analysis
   {
     id: String!
     version: Integer
-    analysisSet: AnalysisSet
-    orderedGroupings: [OrderedGroupingFactor]
-    dataset: String
     categoryRefs: [AnalysisCategory]
+    analysisSetRef: AnalysisSet
+    orderedGroupings: [OrderedGroupingFactor]
+    dataSubsetRef: DataSubset
+    dataset: String
+    variable: String
+    method: AnalysisMethod
   }
 
 type AnalysisCategorization
@@ -29,6 +32,15 @@ type AnalysisGroup
     label: String
     order: Integer!
     compoundExpression: CompoundGroupExpression
+  }
+
+type AnalysisMethod
+  {
+    name: String!
+    id: String!
+    label: String
+    description: String
+    operations: [Operation]!
   }
 
 type AnalysisSet
@@ -156,6 +168,23 @@ type NestedList
     listItems: [OrderedListItem]
   }
 
+type Operation
+  {
+    name: String!
+    id: String!
+    label: String
+    referencedResultRelationships: [ReferencedResultRelationship]
+    resultPattern: String
+    results: [OperationResult]
+  }
+
+type OperationResult
+  {
+    groupRefs: [AnalysisGroup]
+    rawValue: String
+    formattedValue: String
+  }
+
 type OrderedGroupingFactor
   {
     order: Integer!
@@ -168,8 +197,8 @@ type OrderedListItem
     name: String!
     order: Integer!
     sublist: NestedList
-    analysis: Analysis
-    output: Output
+    analysisRef: Analysis
+    outputRef: Output
   }
 
 type Output
@@ -185,6 +214,12 @@ type OutputDisplay
   {
     order: Integer!
     display: Display
+  }
+
+type ReferencedResultRelationship
+  {
+    referencedResultRole: OperationRole!
+    operationRef: Operation!
   }
 
 type ReportingEvent

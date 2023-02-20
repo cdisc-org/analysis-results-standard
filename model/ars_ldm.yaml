@@ -39,8 +39,8 @@ classes:
     slots:
       - order
       - sublist
-      - analysis
-      - output
+      - analysisRef
+      - outputRef
 
   AnalysisCategorization:
     description: An implementer-defined categorization of analyses/outputs.
@@ -60,16 +60,47 @@ classes:
     slots:
       - id
       - version
-      - analysisSet
-      - orderedGroupings
-      - dataset
       - categoryRefs
+      - analysisSetRef
+      - orderedGroupings
+      - dataSubsetRef
+      - dataset
+      - variable
+      - method
 
   OrderedGroupingFactor:
     slots:
       - order
       - groupingRef
       - dataGrouping
+
+  AnalysisMethod:
+    is_a: NamedObject
+    slots:
+      - id
+      - label
+      - description
+      - operations
+
+  Operation:
+    is_a: NamedObject
+    slots:
+      - id
+      - label
+      - referencedResultRelationships
+      - resultPattern
+      - results
+
+  ReferencedResultRelationship:
+    slots:
+      - referencedResultRole
+      - operationRef
+
+  OperationResult:
+    slots:
+      - groupRefs
+      - rawValue
+      - formattedValue
 
   Output:
     slots:
@@ -112,7 +143,7 @@ classes:
     slots:
       - id
       - order
-      - text
+      - text      
 
   WhereClause:
     slots:
@@ -306,12 +337,12 @@ slots:
     multivalued: false
     inlined: true
 
-  analysis: 
+  analysisRef: 
     range: Analysis
     multivalued: false
     inlined: false
 
-  analysisSet: 
+  analysisSetRef: 
     range: AnalysisSet
     multivalued: false
     inlined: false
@@ -330,7 +361,53 @@ slots:
     range: DataGroupingFactor
     inlined: true
 
-  output: 
+  dataSubsetRef:
+    inlined: false
+    range: DataSubset
+
+  method:  
+    range: AnalysisMethod
+    inlined_as_list: true
+
+  description:
+
+  operations:
+    required: true
+    multivalued: true
+    range: Operation
+    inlined_as_list: true
+
+  resultPattern:
+  
+  results:
+    multivalued: true
+    range: OperationResult
+    inlined_as_list: true
+
+  groupRefs:
+    multivalued: true
+    range: AnalysisGroup
+    inlined: false
+
+  rawValue:
+
+  formattedValue:
+
+  referencedResultRelationships:
+    multivalued: true
+    range: ReferencedResultRelationship
+    inlined_as_list: true
+  
+  referencedResultRole:
+    required: true
+    range: OperationRole
+
+  operationRef:  
+    range: Operation
+    required: true
+    inlined: false
+
+  outputRef: 
     range: Output
     multivalued: false
     inlined: false
@@ -446,3 +523,8 @@ enums:
       Abbreviation:
       Legend:
       Rowlabel Header:
+
+  OperationRole:
+    permissible_values:
+      NUMERATOR:
+      DENOMINATOR:

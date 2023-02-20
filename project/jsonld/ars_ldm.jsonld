@@ -316,6 +316,19 @@
           "text": "Rowlabel Header"
         }
       ]
+    },
+    {
+      "name": "OperationRole",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/OperationRole",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "permissible_values": [
+        {
+          "text": "NUMERATOR"
+        },
+        {
+          "text": "DENOMINATOR"
+        }
+      ]
     }
   ],
   "slots": [
@@ -585,10 +598,10 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "analysis",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/analysis",
+      "name": "analysisRef",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/analysisRef",
       "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/analysis",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/analysisRef",
       "owner": "OrderedListItem",
       "domain_of": [
         "OrderedListItem"
@@ -597,10 +610,10 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "analysisSet",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/analysisSet",
+      "name": "analysisSetRef",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/analysisSetRef",
       "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/analysisSet",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/analysisSetRef",
       "owner": "Analysis",
       "domain_of": [
         "Analysis"
@@ -650,10 +663,169 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "output",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/output",
+      "name": "dataSubsetRef",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/dataSubsetRef",
       "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/output",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/dataSubsetRef",
+      "owner": "Analysis",
+      "domain_of": [
+        "Analysis"
+      ],
+      "range": "DataSubset",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "method",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/method",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/method",
+      "owner": "Analysis",
+      "domain_of": [
+        "Analysis"
+      ],
+      "range": "AnalysisMethod",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "description",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/description",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/description",
+      "owner": "AnalysisMethod",
+      "domain_of": [
+        "AnalysisMethod"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "operations",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/operations",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/operations",
+      "multivalued": true,
+      "owner": "AnalysisMethod",
+      "domain_of": [
+        "AnalysisMethod"
+      ],
+      "range": "Operation",
+      "required": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "resultPattern",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/resultPattern",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/resultPattern",
+      "owner": "Operation",
+      "domain_of": [
+        "Operation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "results",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/results",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/results",
+      "multivalued": true,
+      "owner": "Operation",
+      "domain_of": [
+        "Operation"
+      ],
+      "range": "OperationResult",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "groupRefs",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/groupRefs",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/groupRefs",
+      "multivalued": true,
+      "owner": "OperationResult",
+      "domain_of": [
+        "OperationResult"
+      ],
+      "range": "AnalysisGroup",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "rawValue",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/rawValue",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/rawValue",
+      "owner": "OperationResult",
+      "domain_of": [
+        "OperationResult"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "formattedValue",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/formattedValue",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/formattedValue",
+      "owner": "OperationResult",
+      "domain_of": [
+        "OperationResult"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "referencedResultRelationships",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/referencedResultRelationships",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/referencedResultRelationships",
+      "multivalued": true,
+      "owner": "Operation",
+      "domain_of": [
+        "Operation"
+      ],
+      "range": "ReferencedResultRelationship",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "referencedResultRole",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/referencedResultRole",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/referencedResultRole",
+      "owner": "ReferencedResultRelationship",
+      "domain_of": [
+        "ReferencedResultRelationship"
+      ],
+      "range": "OperationRole",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "operationRef",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/operationRef",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/operationRef",
+      "owner": "ReferencedResultRelationship",
+      "domain_of": [
+        "ReferencedResultRelationship"
+      ],
+      "range": "Operation",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "outputRef",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/outputRef",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/outputRef",
       "owner": "OrderedListItem",
       "domain_of": [
         "OrderedListItem"
@@ -672,6 +844,8 @@
         "AnalysisCategorization",
         "AnalysisCategory",
         "Analysis",
+        "AnalysisMethod",
+        "Operation",
         "Output",
         "Display",
         "DisplaySubSection",
@@ -931,6 +1105,7 @@
       "slot_uri": "https://www.cdisc.org/ars/1-0/variable",
       "owner": "Condition",
       "domain_of": [
+        "Analysis",
         "Condition"
       ],
       "range": "string",
@@ -970,6 +1145,8 @@
       "domain_of": [
         "AnalysisCategorization",
         "AnalysisCategory",
+        "AnalysisMethod",
+        "Operation",
         "AnalysisSet",
         "GroupingFactor",
         "Group",
@@ -1207,8 +1384,8 @@
         "name",
         "order",
         "sublist",
-        "analysis",
-        "output"
+        "analysisRef",
+        "outputRef"
       ],
       "slot_usage": {},
       "class_uri": "https://www.cdisc.org/ars/1-0/OrderedListItem",
@@ -1249,10 +1426,13 @@
       "slots": [
         "id",
         "version",
-        "analysisSet",
+        "categoryRefs",
+        "analysisSetRef",
         "orderedGroupings",
+        "dataSubsetRef",
         "dataset",
-        "categoryRefs"
+        "variable",
+        "method"
       ],
       "slot_usage": {},
       "class_uri": "https://www.cdisc.org/ars/1-0/Analysis",
@@ -1269,6 +1449,64 @@
       ],
       "slot_usage": {},
       "class_uri": "https://www.cdisc.org/ars/1-0/OrderedGroupingFactor",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "AnalysisMethod",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/AnalysisMethod",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "is_a": "NamedObject",
+      "slots": [
+        "name",
+        "id",
+        "label",
+        "description",
+        "operations"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://www.cdisc.org/ars/1-0/AnalysisMethod",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Operation",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/Operation",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "is_a": "NamedObject",
+      "slots": [
+        "name",
+        "id",
+        "label",
+        "referencedResultRelationships",
+        "resultPattern",
+        "results"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://www.cdisc.org/ars/1-0/Operation",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ReferencedResultRelationship",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/ReferencedResultRelationship",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slots": [
+        "referencedResultRole",
+        "operationRef"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://www.cdisc.org/ars/1-0/ReferencedResultRelationship",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "OperationResult",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/OperationResult",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slots": [
+        "groupRefs",
+        "rawValue",
+        "formattedValue"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://www.cdisc.org/ars/1-0/OperationResult",
       "@type": "ClassDefinition"
     },
     {
@@ -1570,9 +1808,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "ars_ldm.yaml",
-  "source_file_date": "2023-02-02T21:23:51",
-  "source_file_size": 8671,
-  "generation_date": "2023-02-15T16:51:07",
+  "source_file_date": "2023-02-20T17:17:53",
+  "source_file_size": 10091,
+  "generation_date": "2023-02-20T17:32:37",
   "@type": "SchemaDefinition",
   "@context": [
     ".\\analysis-results-standard\\project\\/jsonld/ars_ldm.context.jsonld",

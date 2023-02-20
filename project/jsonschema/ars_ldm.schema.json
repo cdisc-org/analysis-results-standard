@@ -4,7 +4,7 @@
             "additionalProperties": false,
             "description": "",
             "properties": {
-                "analysisSet": {
+                "analysisSetRef": {
                     "type": "string"
                 },
                 "categoryRefs": {
@@ -13,17 +13,26 @@
                     },
                     "type": "array"
                 },
+                "dataSubsetRef": {
+                    "type": "string"
+                },
                 "dataset": {
                     "type": "string"
                 },
                 "id": {
                     "type": "string"
                 },
+                "method": {
+                    "$ref": "#/$defs/AnalysisMethod"
+                },
                 "orderedGroupings": {
                     "items": {
                         "$ref": "#/$defs/OrderedGroupingFactor"
                     },
                     "type": "array"
+                },
+                "variable": {
+                    "type": "string"
                 },
                 "version": {
                     "type": "integer"
@@ -107,6 +116,37 @@
                 "id"
             ],
             "title": "AnalysisGroup",
+            "type": "object"
+        },
+        "AnalysisMethod": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "label": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "operations": {
+                    "items": {
+                        "$ref": "#/$defs/Operation"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "id",
+                "operations",
+                "name"
+            ],
+            "title": "AnalysisMethod",
             "type": "object"
         },
         "AnalysisSet": {
@@ -487,6 +527,71 @@
             "title": "NestedList",
             "type": "object"
         },
+        "Operation": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "label": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "referencedResultRelationships": {
+                    "items": {
+                        "$ref": "#/$defs/ReferencedResultRelationship"
+                    },
+                    "type": "array"
+                },
+                "resultPattern": {
+                    "type": "string"
+                },
+                "results": {
+                    "items": {
+                        "$ref": "#/$defs/OperationResult"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "id",
+                "name"
+            ],
+            "title": "Operation",
+            "type": "object"
+        },
+        "OperationResult": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "formattedValue": {
+                    "type": "string"
+                },
+                "groupRefs": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "rawValue": {
+                    "type": "string"
+                }
+            },
+            "title": "OperationResult",
+            "type": "object"
+        },
+        "OperationRole": {
+            "description": "",
+            "enum": [
+                "NUMERATOR",
+                "DENOMINATOR"
+            ],
+            "title": "OperationRole",
+            "type": "string"
+        },
         "OrderedGroupingFactor": {
             "additionalProperties": false,
             "description": "",
@@ -511,7 +616,7 @@
             "additionalProperties": false,
             "description": "",
             "properties": {
-                "analysis": {
+                "analysisRef": {
                     "type": "string"
                 },
                 "name": {
@@ -520,7 +625,7 @@
                 "order": {
                     "type": "integer"
                 },
-                "output": {
+                "outputRef": {
                     "type": "string"
                 },
                 "sublist": {
@@ -584,6 +689,24 @@
                 "order"
             ],
             "title": "OutputDisplay",
+            "type": "object"
+        },
+        "ReferencedResultRelationship": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "operationRef": {
+                    "type": "string"
+                },
+                "referencedResultRole": {
+                    "$ref": "#/$defs/OperationRole"
+                }
+            },
+            "required": [
+                "referencedResultRole",
+                "operationRef"
+            ],
+            "title": "ReferencedResultRelationship",
             "type": "object"
         },
         "ReportingEvent": {

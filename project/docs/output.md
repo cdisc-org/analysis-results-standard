@@ -7,11 +7,11 @@
 URI: [https://www.cdisc.org/ars/1-0/Output](https://www.cdisc.org/ars/1-0/Output)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[OutputDisplay],[AnalysisCategory]<categoryRefs%200..*-%20[Output&#124;id:string;version:integer%20%3F],[OutputDisplay]<outputDisplays%200..*-++[Output],[File]<fileSpecifications%200..*-++[Output],[OrderedListItem]-%20output%200..1>[Output],[ReportingEvent]++-%20outputs%200..*>[Output],[ReportingEvent],[OrderedListItem],[File],[AnalysisCategory])](https://yuml.me/diagram/nofunky;dir:TB/class/[OutputDisplay],[AnalysisCategory]<categoryRefs%200..*-%20[Output&#124;id:string;version:integer%20%3F],[OutputDisplay]<outputDisplays%200..*-++[Output],[File]<fileSpecifications%200..*-++[Output],[OrderedListItem]-%20output%200..1>[Output],[ReportingEvent]++-%20outputs%200..*>[Output],[ReportingEvent],[OrderedListItem],[File],[AnalysisCategory])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[OutputDisplay],[AnalysisCategory]<categoryRefs%200..*-%20[Output&#124;id:string;version:integer%20%3F],[OutputDisplay]<outputDisplays%200..*-++[Output],[File]<fileSpecifications%200..*-++[Output],[OrderedListItem]-%20outputRef%200..1>[Output],[ReportingEvent]++-%20outputs%200..*>[Output],[ReportingEvent],[OrderedListItem],[File],[AnalysisCategory])](https://yuml.me/diagram/nofunky;dir:TB/class/[OutputDisplay],[AnalysisCategory]<categoryRefs%200..*-%20[Output&#124;id:string;version:integer%20%3F],[OutputDisplay]<outputDisplays%200..*-++[Output],[File]<fileSpecifications%200..*-++[Output],[OrderedListItem]-%20outputRef%200..1>[Output],[ReportingEvent]++-%20outputs%200..*>[Output],[ReportingEvent],[OrderedListItem],[File],[AnalysisCategory])
 
 ## Referenced by Class
 
- *  **None** *[output](output.md)*  <sub>0..1</sub>  **[Output](Output.md)**
+ *  **None** *[outputRef](outputRef.md)*  <sub>0..1</sub>  **[Output](Output.md)**
  *  **None** *[outputs](outputs.md)*  <sub>0..\*</sub>  **[Output](Output.md)**
 
 ## Attributes

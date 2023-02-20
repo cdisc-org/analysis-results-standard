@@ -1,0 +1,2284 @@
+{
+  "name": "CDISC360 Pilot 1 CSR",
+  "listOfPlannedAnalyses": {
+    "listItems": [
+      {
+        "name": "STUDY POPULATION",
+        "order": 1,
+        "sublist": {
+          "listItems": [
+            {
+              "name": "Disposition of Subjects",
+              "order": 1,
+              "sublist": {
+                "listItems": [
+                  {
+                    "name": "Summary of Populations",
+                    "order": 1,
+                    "sublist": {
+                      "listItems": [
+                        {
+                          "name": "Summary by group of All Subjects",
+                          "order": 1,
+                          "analysisRef": "A9-1.01-01"
+                        },
+                        {
+                          "name": "Summary of All Subjects",
+                          "order": 2,
+                          "analysisRef": "A9-1.01-02"
+                        },
+                        {
+                          "name": "Summary by group of ITT Population",
+                          "order": 3,
+                          "analysisRef": "A9-1.01-03"
+                        },
+                        {
+                          "name": "Summary of ITT Population",
+                          "order": 4,
+                          "analysisRef": "A9-1.01-04"
+                        },
+                        {
+                          "name": "Summary by group of Safety Population",
+                          "order": 5,
+                          "analysisRef": "A9-1.01-05"
+                        },
+                        {
+                          "name": "Summary of Safety Population",
+                          "order": 6,
+                          "analysisRef": "A9-1.01-06"
+                        },
+                        {
+                          "name": "Summary by group of Efficacy Population",
+                          "order": 7,
+                          "analysisRef": "A9-1.01-07"
+                        },
+                        {
+                          "name": "Summary of Efficacy Population",
+                          "order": 8,
+                          "analysisRef": "A9-1.01-08"
+                        },
+                        {
+                          "name": "Summary by group of Completer Week 24 Population",
+                          "order": 9,
+                          "analysisRef": "A9-1.01-09"
+                        },
+                        {
+                          "name": "Summary of Completer Week 24 Population",
+                          "order": 10,
+                          "analysisRef": "A9-1.01-10"
+                        },
+                        {
+                          "name": "Summary by group of Complete Study Population",
+                          "order": 11,
+                          "analysisRef": "A9-1.01-11"
+                        },
+                        {
+                          "name": "Summary of Complete Study Population",
+                          "order": 12,
+                          "analysisRef": "A9-1.01-12"
+                        }
+                      ]
+                    },
+                    "outputRef": "O14-1.01"
+                  },
+                  {
+                    "name": "Summary of End of Study Data (ITT population)",
+                    "order": 2,
+                    "sublist": {
+                      "listItems": [
+                        {
+                          "name": "Summary by group of Completion Status",
+                          "order": 1,
+                          "analysisRef": "A9-1.02-01"
+                        },
+                        {
+                          "name": "Summary of Completion Status",
+                          "order": 2,
+                          "analysisRef": "A9-1.02-02"
+                        },
+                        {
+                          "name": "Summary by group of Reasons for Early Termination",
+                          "order": 3,
+                          "analysisRef": "A9-1.02-03"
+                        },
+                        {
+                          "name": "Summary of Reasons for Early Termination",
+                          "order": 4,
+                          "analysisRef": "A9-1.02-04"
+                        },
+                        {
+                          "name": "Comparison of Reasons for Study Discontinuation",
+                          "order": 5,
+                          "analysisRef": "A9-1.02-05"
+                        }
+                      ]
+                    },
+                    "outputRef": "O14-1.02"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Demographic and Baseline Characteristics",
+              "order": 2,
+              "sublist": {
+                "listItems": [
+                  {
+                    "name": "Summary of Demographic and Baseline Characteristics (ITT population)",
+                    "order": 1,
+                    "sublist": {
+                      "listItems": [
+                        {
+                          "name": "Summary by group for continuous variables",
+                          "order": 1,
+                          "analysisRef": "A9-2.01-01"
+                        },
+                        {
+                          "name": "Summary for continuous variables",
+                          "order": 2,
+                          "analysisRef": "A9-2.01-02"
+                        },
+                        {
+                          "name": "Group comparison for continuous variables",
+                          "order": 3,
+                          "analysisRef": "A9-2.01-03"
+                        },
+                        {
+                          "name": "Summary by group for categorical variables",
+                          "order": 4,
+                          "analysisRef": "A9-2.01-04"
+                        },
+                        {
+                          "name": "Summary for categorical variables",
+                          "order": 5,
+                          "analysisRef": "A9-2.01-05"
+                        },
+                        {
+                          "name": "Group comparison for categorical variables",
+                          "order": 6,
+                          "analysisRef": "A9-2.01-06"
+                        }
+                      ]
+                    },
+                    "outputRef": "O14-2.01"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Treatment Compliance",
+              "order": 3
+            }
+          ]
+        }
+      },
+      {
+        "name": "EFFICACY ANALYSES",
+        "order": 2,
+        "sublist": {
+          "listItems": [
+            {
+              "name": "Primary Efficacy Endpoints",
+              "order": 1,
+              "sublist": {
+                "listItems": [
+                  {
+                    "name": "ADAS-COG (11)",
+                    "order": 1
+                  },
+                  {
+                    "name": "CIBIC+",
+                    "order": 2
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Secondary Efficacy Endpoints",
+              "order": 1,
+              "sublist": {
+                "listItems": [
+                  {
+                    "name": "NPI-X",
+                    "order": 1
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "SAFETY ANALYSES",
+        "order": 3,
+        "sublist": {
+          "listItems": [
+            {
+              "name": "Extent of Exposure",
+              "order": 1,
+              "sublist": {
+                "listItems": [
+                  {
+                    "name": "Summary by group of Average Daily Dose (Completers at Week 24 Population)",
+                    "order": 1,
+                    "analysisRef": "A11-1.01-01"
+                  },
+                  {
+                    "name": "Summary by group of Average Daily Dose (Safety Population)",
+                    "order": 1,
+                    "analysisRef": "A11-1.01-02"
+                  },
+                  {
+                    "name": "Summary by group of Cumulative Dose (Completers at Week 24 Population)",
+                    "order": 2,
+                    "analysisRef": "A11-1.01-03"
+                  },
+                  {
+                    "name": "Summary by group of Cumulative Dose (Safety Population)",
+                    "order": 2,
+                    "analysisRef": "A11-1.01-04"
+                  }
+                ]
+              },
+              "outputRef": "O14-4.01"
+            },
+            {
+              "name": "Adverse Events",
+              "order": 2,
+              "sublist": {
+                "listItems": [
+                  {
+                    "name": "Summary of Treatment Emergent Adverse Events",
+                    "order": 1,
+                    "sublist": {
+                      "listItems": [
+                        {
+                          "name": "Summary by group of Incidence of Treatment Emergent Adverse Events",
+                          "order": 1,
+                          "analysisRef": "A11-2.01-01"
+                        },
+                        {
+                          "name": "Placebo to Active Treatment Comparison of Incidence of Treatment Emergent Adverse Events",
+                          "order": 2,
+                          "analysisRef": "A11-2.01-02"
+                        },
+                        {
+                          "name": "Summary by group of Incidence of Treatment Emergent Adverse Events by System Organ Class (SOC)",
+                          "order": 3,
+                          "analysisRef": "A11-2.01-03"
+                        },
+                        {
+                          "name": "Placebo to Active Treatment Comparison of Incidence of Treatment Emergent Adverse Events by System Organ Class (SOC)",
+                          "order": 4,
+                          "analysisRef": "A11-2.01-04"
+                        },
+                        {
+                          "name": "Summary by group of Incidence of Treatment Emergent Adverse Events by Preferred Term (PT)",
+                          "order": 5,
+                          "analysisRef": "A11-2.01-05"
+                        },
+                        {
+                          "name": "Placebo to Active Treatment Comparison of Incidence of Treatment Emergent Adverse Events by Preferred Term (PT)",
+                          "order": 6,
+                          "analysisRef": "A11-2.01-06"
+                        }
+                      ]
+                    },
+                    "outputRef": "O14-5.01"
+                  },
+                  {
+                    "name": "Summary of Dermatological Events",
+                    "order": 2
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Deaths and Serious Adverse Events",
+              "order": 3,
+              "sublist": {
+                "listItems": [
+                  {
+                    "name": "Summary of Serious Treatment Emergent Adverse Events",
+                    "order": 1,
+                    "sublist": {
+                      "listItems": [
+                        {
+                          "name": "Summary by group of Incidence of Serious Treatment Emergent Adverse Events",
+                          "order": 1,
+                          "analysisRef": "A11-3.01-01"
+                        },
+                        {
+                          "name": "Placebo to Active Treatment Comparison of Incidence of Serious Treatment Emergent Adverse Events",
+                          "order": 2,
+                          "analysisRef": "A11-3.01-02"
+                        },
+                        {
+                          "name": "Summary by group of Incidence of Serious Treatment Emergent Adverse Events by System Organ Class (SOC)",
+                          "order": 3,
+                          "analysisRef": "A11-3.01-03"
+                        },
+                        {
+                          "name": "Placebo to Active Treatment Comparison of Incidence of Serious Treatment Emergent Adverse Events by System Organ Class (SOC)",
+                          "order": 4,
+                          "analysisRef": "A11-3.01-04"
+                        },
+                        {
+                          "name": "Summary by group of Incidence of Serious Treatment Emergent Adverse Events by Preferred Term (PT)",
+                          "order": 5,
+                          "analysisRef": "A11-3.01-05"
+                        },
+                        {
+                          "name": "Placebo to Active Treatment Comparison of Incidence of Serious Treatment Emergent Adverse Events by Preferred Term (PT)",
+                          "order": 6,
+                          "analysisRef": "A11-3.01-06"
+                        }
+                      ]
+                    },
+                    "outputRef": "O14-5.02"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Adverse Events Leading to Discontinuation of Investigational Product and/or Withdrawal from the Study and Other Significant Adverse Events",
+              "order": 4
+            },
+            {
+              "name": "Clinical Laboratory Evaluations",
+              "order": 5
+            },
+            {
+              "name": "Other Safety Measures",
+              "order": 6,
+              "sublist": {
+                "listItems": [
+                  {
+                    "name": "Vital Signs",
+                    "order": 1,
+                    "sublist": {
+                      "listItems": [
+                        {
+                          "name": "Summary of Vital Signs at Baseline and End of Treatment",
+                          "order": 1,
+                          "analysisRef": "A11-6.01-01",
+                          "outputRef": "O14-7.01"
+                        },
+                        {
+                          "name": "Summary of Vital Signs Change from Baseline at End of Treatment",
+                          "order": 2,
+                          "analysisRef": "A11-6.01-02",
+                          "outputRef": "O14-7.02"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "name": "Concomitant Medications",
+                    "order": 2,
+                    "sublist": {
+                      "listItems": [
+                        {
+                          "name": "Summary of Concomitant Medications (Number of Subjects)",
+                          "order": 1,
+                          "analysisRef": "A11-6.02-01",
+                          "outputRef": "O14-7.04"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "analysisSets": [
+    {
+      "id": "AnalysisSet_01_ITT",
+      "condition": {
+        "dataset": "ADSL",
+        "variable": "ITTFL",
+        "comparator": "EQ",
+        "value": [
+          "Y"
+        ]
+      },
+      "order": 1,
+      "label": "Intent-to-Treat Population"
+    },
+    {
+      "id": "AnalysisSet_02_SAF",
+      "condition": {
+        "dataset": "ADSL",
+        "variable": "SAFFL",
+        "comparator": "EQ",
+        "value": [
+          "Y"
+        ]
+      },
+      "order": 1,
+      "label": "Safety Population"
+    },
+    {
+      "id": "AnalysisSet_03_EFF",
+      "condition": {
+        "dataset": "ADSL",
+        "variable": "EFFFL",
+        "comparator": "EQ",
+        "value": [
+          "Y"
+        ]
+      },
+      "order": 1,
+      "label": "Efficacy Population"
+    },
+    {
+      "id": "AnalysisSet_04_COMP24",
+      "condition": {
+        "dataset": "ADSL",
+        "variable": "COMP24FL",
+        "comparator": "EQ",
+        "value": [
+          "Y"
+        ]
+      },
+      "order": 1,
+      "label": "Completer Week 24 Population"
+    },
+    {
+      "id": "AnalysisSet_05_DISCON",
+      "condition": {
+        "dataset": "ADSL",
+        "variable": "DISCONFL",
+        "comparator": "NE",
+        "value": [
+          "Y"
+        ]
+      },
+      "order": 1,
+      "label": "Complete Study Population"
+    }
+  ],
+  "analysisGroupings": [
+    {
+      "id": "AnlsGrouping_01_Sex",
+      "dataDriven": false,
+      "label": "Sex",
+      "groupingVariable": "SEX",
+      "groups": [
+        {
+          "id": "AnlsGrouping_01_Sex_1",
+          "condition": {
+            "dataset": "ADSL",
+            "variable": "SEX",
+            "comparator": "EQ",
+            "value": [
+              "M"
+            ]
+          },
+          "order": 1,
+          "label": "Male"
+        },
+        {
+          "id": "AnlsGrouping_01_Sex_2",
+          "condition": {
+            "dataset": "ADSL",
+            "variable": "SEX",
+            "comparator": "EQ",
+            "value": [
+              "F"
+            ]
+          },
+          "order": 2,
+          "label": "Female"
+        }
+      ]
+    },
+    {
+      "id": "AnlsGrouping_02_Trt",
+      "dataDriven": false,
+      "label": "Treatment",
+      "groupingVariable": "TRT01A",
+      "groups": [
+        {
+          "id": "AnlsGrouping_02_Trt_1",
+          "condition": {
+            "dataset": "ADSL",
+            "variable": "TRT01A",
+            "comparator": "EQ",
+            "value": [
+              "Placebo"
+            ]
+          },
+          "order": 1,
+          "label": "Placebo"
+        },
+        {
+          "id": "AnlsGrouping_02_Trt_2",
+          "condition": {
+            "dataset": "ADSL",
+            "variable": "TRT01A",
+            "comparator": "EQ",
+            "value": [
+              "Xanomeline Low Dose"
+            ]
+          },
+          "order": 2,
+          "label": "Xanomeline Low Dose"
+        },
+        {
+          "id": "AnlsGrouping_02_Trt_3",
+          "condition": {
+            "dataset": "ADSL",
+            "variable": "TRT01A",
+            "comparator": "EQ",
+            "value": [
+              "Xanomeline High Dose"
+            ]
+          },
+          "order": 3,
+          "label": "Xanomeline High Dose"
+        }
+      ]
+    }
+  ],
+  "dataSubsets": [
+    {
+      "id": "DataSubset_01",
+      "condition": {
+        "dataset": "ADAE",
+        "variable": "TRTEMFL",
+        "comparator": "EQ",
+        "value": [
+          "Y"
+        ]
+      },
+      "label": "Treatment-Emergent Adverse Events"
+    }
+  ],
+  "globalDisplaySections": [
+    {
+      "sectionType": "Title",
+      "subSections": [
+        {
+          "id": "Global_ID_001-01",
+          "order": 1,
+          "text": "CDISC360 Pilot 1"
+        }
+      ]
+    },
+    {
+      "sectionType": "Footnote",
+      "subSections": [
+        {
+          "id": "Global_ID_001-02",
+          "order": 1,
+          "text": "Program: <pid>.sas, Output: <pid><oid>.rtf, Generated on: &outdate9.:&outtime."
+        }
+      ]
+    }
+  ],
+  "analysisCategorizations": [
+    {
+      "id": "AnCat1_Group",
+      "categories": [
+        {
+          "id": "AnCat1_Group_PopDesc",
+          "label": "Population Description"
+        },
+        {
+          "id": "AnCat1_Group_Safety",
+          "label": "Safety Analyses"
+        },
+        {
+          "id": "AnCat1_Group_Efficacy",
+          "label": "Efficacy Analyses"
+        }
+      ],
+      "label": "Group of Analyses"
+    },
+    {
+      "id": "AnCat2_Class",
+      "categories": [
+        {
+          "id": "AnCat2_Class_SubjLvl",
+          "label": "Subject-level",
+          "subCategorizations": [
+            {
+              "id": "AnCat2.1_SbjDType",
+              "categories": [
+                {
+                  "id": "AnCat2.1_SbjDType_Demo",
+                  "label": "Demographics"
+                }
+              ],
+              "label": "Subject-level Data Type"
+            }
+          ]
+        },
+        {
+          "id": "AnCat3_Class_Events",
+          "label": "Events",
+          "subCategorizations": [
+            {
+              "id": "AnCat3.1_EvtDType",
+              "categories": [
+                {
+                  "id": "AnCat3.1_EvtDType_AE",
+                  "label": "Adverse Events"
+                },
+                {
+                  "id": "AnCat3.1_EvtDType_CE",
+                  "label": "Clinical Events"
+                },
+                {
+                  "id": "AnCat3.1_EvtDType_Disp",
+                  "label": "Disposition"
+                }
+              ],
+              "label": "Event Data Type"
+            },
+            {
+              "id": "AnCat3.2_EvtAType",
+              "categories": [
+                {
+                  "id": "AnCat3.2_EvtAType_Occ",
+                  "label": "Occurrence"
+                },
+                {
+                  "id": "AnCat3.2_EvtAType_TTE",
+                  "label": "Time-to-Event"
+                }
+              ],
+              "label": "Event Analysis Type"
+            }
+          ]
+        },
+        {
+          "id": "AnCat4_Class_Findings",
+          "label": "Findings",
+          "subCategorizations": [
+            {
+              "id": "AnCat4.1_FndDType",
+              "categories": [
+                {
+                  "id": "AnCat4.1_FndDType_Vitals",
+                  "label": "Vital Sign"
+                },
+                {
+                  "id": "AnCat4.1_FndDType_Labs",
+                  "label": "Laboratory Tests"
+                }
+              ],
+              "label": "Findings Data Type"
+            },
+            {
+              "id": "AnCat4.2_FndAType",
+              "categories": [
+                {
+                  "id": "AnCat4.2_FndAType_Chg",
+                  "label": "Change from Baselines"
+                },
+                {
+                  "id": "AnCat4.2_FndAType_Shft",
+                  "label": "Shift Table"
+                }
+              ],
+              "label": "Findings Analysis Type"
+            }
+          ]
+        }
+      ],
+      "label": "Analysis Data Class"
+    },
+    {
+      "id": "AnCat5_EstAType",
+      "categories": [
+        {
+          "id": "AnCat5_EstAType_Prim",
+          "label": "Primary Estimator"
+        },
+        {
+          "id": "AnCat5_EstAType_Sens",
+          "label": "Sensitivity Analysis"
+        },
+        {
+          "id": "AnCat5_EstAType_Supp",
+          "label": "Supplementary Analysis"
+        }
+      ],
+      "label": "Estimand Analysis Type"
+    }
+  ],
+  "analyses": [
+    {
+      "id": "A9-1.01-01",
+      "version": 1,
+      "categoryRefs": [
+        "AnCat1_Group_PopDesc",
+        "AnCat2_Class_SubjLvl",
+        "AnCat2.1_SbjDType_Demo"
+      ],
+      "orderedGroupings": [
+        {
+          "order": 1,
+          "groupingRef": "AnlsGrouping_02_Trt"
+        }
+      ],
+      "dataset": "ADSL",
+      "variable": "USUBJID",
+      "method": {
+        "name": "Summary by subject",
+        "id": "M9-1.01-01",
+        "operations": [
+          {
+            "name": "Count",
+            "id": "OP9-1.01-01",
+            "label": "N",
+            "resultPattern": "(N=xx)",
+            "results": [
+              {
+                "groupRefs": [
+                  "AnlsGrouping_02_Trt_1"
+                ],
+                "rawValue": "86",
+                "formattedValue": "(N=86)"
+              },
+              {
+                "groupRefs": [
+                  "AnlsGrouping_02_Trt_2"
+                ],
+                "rawValue": "84",
+                "formattedValue": "(N=84)"
+              },
+              {
+                "groupRefs": [
+                  "AnlsGrouping_02_Trt_3"
+                ],
+                "rawValue": "84",
+                "formattedValue": "(N=84)"
+              }
+            ]
+          }
+        ],
+        "label": "Summary of occurrence of values",
+        "description": "Count of the number of subjects by group"
+      }
+    },
+    {
+      "id": "A9-1.01-02",
+      "version": 1,
+      "dataset": "ADSL",
+      "variable": "USUBJID",
+      "method": {
+        "name": "Summary by subject",
+        "id": "M9-1.01-02",
+        "operations": [
+          {
+            "name": "Count",
+            "id": "OP9-1.01-02",
+            "label": "N",
+            "resultPattern": "(N=xxx)",
+            "results": [
+              {
+                "rawValue": "254",
+                "formattedValue": "(N=254)"
+              }
+            ]
+          }
+        ],
+        "label": "Summary of occurrence of values",
+        "description": "Count of the number of subjects"
+      }
+    },
+    {
+      "id": "A9-1.01-03",
+      "version": 1,
+      "analysisSetRef": "AnalysisSet_01_ITT",
+      "orderedGroupings": [
+        {
+          "order": 1,
+          "groupingRef": "AnlsGrouping_02_Trt"
+        }
+      ],
+      "dataset": "ADSL",
+      "variable": "USUBJID",
+      "method": {
+        "name": "Summary by subject",
+        "id": "M9-1.01-03",
+        "operations": [
+          {
+            "name": "Count",
+            "id": "OP9-1.01-03-1",
+            "label": "n",
+            "resultPattern": "xx",
+            "results": [
+              {
+                "groupRefs": [
+                  "AnlsGrouping_02_Trt_1"
+                ],
+                "rawValue": "86",
+                "formattedValue": "86"
+              },
+              {
+                "groupRefs": [
+                  "AnlsGrouping_02_Trt_2"
+                ],
+                "rawValue": "84",
+                "formattedValue": "84"
+              },
+              {
+                "groupRefs": [
+                  "AnlsGrouping_02_Trt_3"
+                ],
+                "rawValue": "84",
+                "formattedValue": "84"
+              }
+            ]
+          },
+          {
+            "name": "Percent",
+            "id": "OP9-1.01-03-2",
+            "label": "%",
+            "referencedResultRelationships": [
+              {
+                "referencedResultRole": "NUMERATOR",
+                "operationRef": "OP9-1.01-02-1"
+              },
+              {
+                "referencedResultRole": "DENOMINATOR",
+                "operationRef": "OP9-1.01-01"
+              }
+            ],
+            "resultPattern": "(xxx%)",
+            "results": [
+              {
+                "groupRefs": [
+                  "AnlsGrouping_02_Trt_1"
+                ],
+                "rawValue": "100",
+                "formattedValue": "(100%)"
+              },
+              {
+                "groupRefs": [
+                  "AnlsGrouping_02_Trt_2"
+                ],
+                "rawValue": "100",
+                "formattedValue": "(100%)"
+              },
+              {
+                "groupRefs": [
+                  "AnlsGrouping_02_Trt_3"
+                ],
+                "rawValue": "100",
+                "formattedValue": "(100%)"
+              }
+            ]
+          }
+        ],
+        "label": "Summary of occurrence of values",
+        "description": "Count and percent of the number of subjects by group"
+      }
+    },
+    {
+      "id": "A9-1.01-04",
+      "version": 1,
+      "analysisSetRef": "AnalysisSet_01_ITT",
+      "dataset": "ADSL",
+      "variable": "USUBJID",
+      "method": {
+        "name": "Summary by subject",
+        "id": "M9-1.01-04",
+        "operations": [
+          {
+            "name": "Count",
+            "id": "OP9-1.01-04-1",
+            "label": "n",
+            "resultPattern": "(N=xxx)",
+            "results": [
+              {
+                "rawValue": "254",
+                "formattedValue": "(N=254)"
+              }
+            ]
+          },
+          {
+            "name": "Percent",
+            "id": "OP9-1.01-04-2",
+            "label": "%",
+            "referencedResultRelationships": [
+              {
+                "referencedResultRole": "NUMERATOR",
+                "operationRef": "OP9-1.01-04-1"
+              },
+              {
+                "referencedResultRole": "DENOMINATOR",
+                "operationRef": "OP9-1.01-02"
+              }
+            ],
+            "resultPattern": "(xxx%)",
+            "results": [
+              {
+                "rawValue": "100",
+                "formattedValue": "(100%)"
+              }
+            ]
+          }
+        ],
+        "label": "Summary of occurrence of values",
+        "description": "Count and percent of the number of subjects"
+      }
+    },
+    {
+      "id": "A9-1.01-05",
+      "version": 1,
+      "analysisSetRef": "AnalysisSet_02_SAF",
+      "orderedGroupings": [
+        {
+          "order": 1,
+          "groupingRef": "AnlsGrouping_02_Trt"
+        }
+      ],
+      "dataset": "ADSL",
+      "variable": "USUBJID",
+      "method": {
+        "name": "Summary by subject",
+        "id": "M9-1.01-05",
+        "operations": [
+          {
+            "name": "Count",
+            "id": "OP9-1.01-05-1",
+            "label": "n",
+            "resultPattern": "xx",
+            "results": [
+              {
+                "groupRefs": [
+                  "AnlsGrouping_02_Trt_1"
+                ],
+                "rawValue": "86",
+                "formattedValue": "86"
+              },
+              {
+                "groupRefs": [
+                  "AnlsGrouping_02_Trt_2"
+                ],
+                "rawValue": "84",
+                "formattedValue": "84"
+              },
+              {
+                "groupRefs": [
+                  "AnlsGrouping_02_Trt_3"
+                ],
+                "rawValue": "84",
+                "formattedValue": "84"
+              }
+            ]
+          },
+          {
+            "name": "Percent",
+            "id": "OP9-1.01-05-2",
+            "label": "%",
+            "referencedResultRelationships": [
+              {
+                "referencedResultRole": "NUMERATOR",
+                "operationRef": "OP9-1.01-05-1"
+              },
+              {
+                "referencedResultRole": "DENOMINATOR",
+                "operationRef": "OP9-1.01-01"
+              }
+            ],
+            "resultPattern": "(xxx%)",
+            "results": [
+              {
+                "groupRefs": [
+                  "AnlsGrouping_02_Trt_1"
+                ],
+                "rawValue": "100",
+                "formattedValue": "(100%)"
+              },
+              {
+                "groupRefs": [
+                  "AnlsGrouping_02_Trt_2"
+                ],
+                "rawValue": "100",
+                "formattedValue": "(100%)"
+              },
+              {
+                "groupRefs": [
+                  "AnlsGrouping_02_Trt_3"
+                ],
+                "rawValue": "100",
+                "formattedValue": "(100%)"
+              }
+            ]
+          }
+        ],
+        "label": "Summary of occurrence of values",
+        "description": "Count and percent of the number of subjects by group"
+      }
+    },
+    {
+      "id": "A9-1.01-06",
+      "version": 1,
+      "analysisSetRef": "AnalysisSet_02_SAF",
+      "dataset": "ADSL",
+      "variable": "USUBJID",
+      "method": {
+        "name": "Summary by subject",
+        "id": "M9-1.01-06",
+        "operations": [
+          {
+            "name": "Count",
+            "id": "OP9-1.01-06-1",
+            "label": "n",
+            "resultPattern": "(N=xxx)",
+            "results": [
+              {
+                "rawValue": "254",
+                "formattedValue": "(N=254)"
+              }
+            ]
+          },
+          {
+            "name": "Percent",
+            "id": "OP9-1.01-06-2",
+            "label": "%",
+            "referencedResultRelationships": [
+              {
+                "referencedResultRole": "NUMERATOR",
+                "operationRef": "OP9-1.01-06-1"
+              },
+              {
+                "referencedResultRole": "DENOMINATOR",
+                "operationRef": "OP9-1.01-02"
+              }
+            ],
+            "resultPattern": "(xxx%)",
+            "results": [
+              {
+                "rawValue": "100",
+                "formattedValue": "(100%)"
+              }
+            ]
+          }
+        ],
+        "label": "Summary of occurrence of values",
+        "description": "Count and percent of the number of subjects"
+      }
+    },
+    {
+      "id": "A9-1.01-07",
+      "version": 1,
+      "analysisSetRef": "AnalysisSet_03_EFF",
+      "orderedGroupings": [
+        {
+          "order": 1,
+          "groupingRef": "AnlsGrouping_02_Trt"
+        }
+      ],
+      "dataset": "ADSL",
+      "variable": "USUBJID",
+      "method": {
+        "name": "Summary by subject",
+        "id": "M9-1.01-07",
+        "operations": [
+          {
+            "name": "Count",
+            "id": "OP9-1.01-07-1",
+            "label": "n",
+            "resultPattern": "xx",
+            "results": [
+              {
+                "groupRefs": [
+                  "AnlsGrouping_02_Trt_1"
+                ],
+                "rawValue": "79",
+                "formattedValue": "79"
+              },
+              {
+                "groupRefs": [
+                  "AnlsGrouping_02_Trt_2"
+                ],
+                "rawValue": "81",
+                "formattedValue": "81"
+              },
+              {
+                "groupRefs": [
+                  "AnlsGrouping_02_Trt_3"
+                ],
+                "rawValue": "74",
+                "formattedValue": "74"
+              }
+            ]
+          },
+          {
+            "name": "Percent",
+            "id": "OP9-1.01-07-2",
+            "label": "%",
+            "referencedResultRelationships": [
+              {
+                "referencedResultRole": "NUMERATOR",
+                "operationRef": "OP9-1.01-07-1"
+              },
+              {
+                "referencedResultRole": "DENOMINATOR",
+                "operationRef": "OP9-1.01-01"
+              }
+            ],
+            "resultPattern": "(xxx%)",
+            "results": [
+              {
+                "groupRefs": [
+                  "AnlsGrouping_02_Trt_1"
+                ],
+                "rawValue": "92",
+                "formattedValue": "( 92%)"
+              },
+              {
+                "groupRefs": [
+                  "AnlsGrouping_02_Trt_2"
+                ],
+                "rawValue": "96",
+                "formattedValue": "( 96%)"
+              },
+              {
+                "groupRefs": [
+                  "AnlsGrouping_02_Trt_3"
+                ],
+                "rawValue": "88",
+                "formattedValue": "( 88%)"
+              }
+            ]
+          }
+        ],
+        "label": "Summary of occurrence of values",
+        "description": "Count and percent of the number of subjects by group"
+      }
+    },
+    {
+      "id": "A9-1.01-08",
+      "version": 1,
+      "analysisSetRef": "AnalysisSet_03_EFF",
+      "dataset": "ADSL",
+      "variable": "USUBJID",
+      "method": {
+        "name": "Summary by subject",
+        "id": "M9-1.01-08",
+        "operations": [
+          {
+            "name": "Count",
+            "id": "OP9-1.01-08-1",
+            "label": "n",
+            "resultPattern": "(N=xxx)",
+            "results": [
+              {
+                "rawValue": "234",
+                "formattedValue": "(N=234)"
+              }
+            ]
+          },
+          {
+            "name": "Percent",
+            "id": "OP9-1.01-08-2",
+            "label": "%",
+            "referencedResultRelationships": [
+              {
+                "referencedResultRole": "NUMERATOR",
+                "operationRef": "OP9-1.01-08-1"
+              },
+              {
+                "referencedResultRole": "DENOMINATOR",
+                "operationRef": "OP9-1.01-02"
+              }
+            ],
+            "resultPattern": "(xxx%)",
+            "results": [
+              {
+                "rawValue": "92",
+                "formattedValue": "( 92%)"
+              }
+            ]
+          }
+        ],
+        "label": "Summary of occurrence of values",
+        "description": "Count and percent of the number of subjects"
+      }
+    },
+    {
+      "id": "A9-1.01-09",
+      "version": 1,
+      "analysisSetRef": "AnalysisSet_04_COMP24",
+      "orderedGroupings": [
+        {
+          "order": 1,
+          "groupingRef": "AnlsGrouping_02_Trt"
+        }
+      ],
+      "dataset": "ADSL",
+      "variable": "USUBJID",
+      "method": {
+        "name": "Summary by subject",
+        "id": "M9-1.01-09",
+        "operations": [
+          {
+            "name": "Count",
+            "id": "OP9-1.01-09-1",
+            "label": "n",
+            "resultPattern": "xx",
+            "results": [
+              {
+                "groupRefs": [
+                  "AnlsGrouping_02_Trt_1"
+                ],
+                "rawValue": "60",
+                "formattedValue": "60"
+              },
+              {
+                "groupRefs": [
+                  "AnlsGrouping_02_Trt_2"
+                ],
+                "rawValue": "28",
+                "formattedValue": "28"
+              },
+              {
+                "groupRefs": [
+                  "AnlsGrouping_02_Trt_3"
+                ],
+                "rawValue": "30",
+                "formattedValue": "30"
+              }
+            ]
+          },
+          {
+            "name": "Percent",
+            "id": "OP9-1.01-09-2",
+            "label": "%",
+            "referencedResultRelationships": [
+              {
+                "referencedResultRole": "NUMERATOR",
+                "operationRef": "OP9-1.01-09-1"
+              },
+              {
+                "referencedResultRole": "DENOMINATOR",
+                "operationRef": "OP9-1.01-01"
+              }
+            ],
+            "resultPattern": "(xxx%)",
+            "results": [
+              {
+                "groupRefs": [
+                  "AnlsGrouping_02_Trt_1"
+                ],
+                "rawValue": "70",
+                "formattedValue": "( 70%)"
+              },
+              {
+                "groupRefs": [
+                  "AnlsGrouping_02_Trt_2"
+                ],
+                "rawValue": "33",
+                "formattedValue": "( 33%)"
+              },
+              {
+                "groupRefs": [
+                  "AnlsGrouping_02_Trt_3"
+                ],
+                "rawValue": "36",
+                "formattedValue": "( 36%)"
+              }
+            ]
+          }
+        ],
+        "label": "Summary of occurrence of values",
+        "description": "Count and percent of the number of subjects by group"
+      }
+    },
+    {
+      "id": "A9-1.01-10",
+      "version": 1,
+      "analysisSetRef": "AnalysisSet_04_COMP24",
+      "dataset": "ADSL",
+      "variable": "USUBJID",
+      "method": {
+        "name": "Summary by subject",
+        "id": "M9-1.01-10",
+        "operations": [
+          {
+            "name": "Count",
+            "id": "OP9-1.01-10-1",
+            "label": "n",
+            "resultPattern": "(N=xxx)",
+            "results": [
+              {
+                "rawValue": "118",
+                "formattedValue": "(N=118)"
+              }
+            ]
+          },
+          {
+            "name": "Percent",
+            "id": "OP9-1.01-10-2",
+            "label": "%",
+            "referencedResultRelationships": [
+              {
+                "referencedResultRole": "NUMERATOR",
+                "operationRef": "OP9-1.01-10-1"
+              },
+              {
+                "referencedResultRole": "DENOMINATOR",
+                "operationRef": "OP9-1.01-02"
+              }
+            ],
+            "resultPattern": "(xxx%)",
+            "results": [
+              {
+                "rawValue": "46",
+                "formattedValue": "( 46%)"
+              }
+            ]
+          }
+        ],
+        "label": "Summary of occurrence of values",
+        "description": "Count and percent of the number of subjects"
+      }
+    },
+    {
+      "id": "A9-1.01-11",
+      "version": 1,
+      "analysisSetRef": "AnalysisSet_05_DISCON",
+      "orderedGroupings": [
+        {
+          "order": 1,
+          "groupingRef": "AnlsGrouping_02_Trt"
+        }
+      ],
+      "dataset": "ADSL",
+      "variable": "USUBJID",
+      "method": {
+        "name": "Summary by subject",
+        "id": "M9-1.01-11",
+        "operations": [
+          {
+            "name": "Count",
+            "id": "OP9-1.01-11-1",
+            "label": "n",
+            "resultPattern": "xx",
+            "results": [
+              {
+                "groupRefs": [
+                  "AnlsGrouping_02_Trt_1"
+                ],
+                "rawValue": "58",
+                "formattedValue": "58"
+              },
+              {
+                "groupRefs": [
+                  "AnlsGrouping_02_Trt_2"
+                ],
+                "rawValue": "25",
+                "formattedValue": "25"
+              },
+              {
+                "groupRefs": [
+                  "AnlsGrouping_02_Trt_3"
+                ],
+                "rawValue": "27",
+                "formattedValue": "27"
+              }
+            ]
+          },
+          {
+            "name": "Percent",
+            "id": "OP9-1.01-11-2",
+            "label": "%",
+            "referencedResultRelationships": [
+              {
+                "referencedResultRole": "NUMERATOR",
+                "operationRef": "OP9-1.01-11-1"
+              },
+              {
+                "referencedResultRole": "DENOMINATOR",
+                "operationRef": "OP9-1.01-01"
+              }
+            ],
+            "resultPattern": "(xxx%)",
+            "results": [
+              {
+                "groupRefs": [
+                  "AnlsGrouping_02_Trt_1"
+                ],
+                "rawValue": "67",
+                "formattedValue": "( 67%)"
+              },
+              {
+                "groupRefs": [
+                  "AnlsGrouping_02_Trt_2"
+                ],
+                "rawValue": "30",
+                "formattedValue": "( 30%)"
+              },
+              {
+                "groupRefs": [
+                  "AnlsGrouping_02_Trt_3"
+                ],
+                "rawValue": "32",
+                "formattedValue": "( 32%)"
+              }
+            ]
+          }
+        ],
+        "label": "Summary of occurrence of values",
+        "description": "Count and percent of the number of subjects by group"
+      }
+    },
+    {
+      "id": "A9-1.01-12",
+      "version": 1,
+      "analysisSetRef": "AnalysisSet_05_DISCON",
+      "dataset": "ADSL",
+      "variable": "USUBJID",
+      "method": {
+        "name": "Summary by subject",
+        "id": "M9-1.01-12",
+        "operations": [
+          {
+            "name": "Count",
+            "id": "OP9-1.01-12-1",
+            "label": "n",
+            "resultPattern": "(N=xxx)",
+            "results": [
+              {
+                "rawValue": "110",
+                "formattedValue": "(N=110)"
+              }
+            ]
+          },
+          {
+            "name": "Percent",
+            "id": "OP9-1.01-12-2",
+            "label": "%",
+            "referencedResultRelationships": [
+              {
+                "referencedResultRole": "NUMERATOR",
+                "operationRef": "OP9-1.01-12-1"
+              },
+              {
+                "referencedResultRole": "DENOMINATOR",
+                "operationRef": "OP9-1.01-02"
+              }
+            ],
+            "resultPattern": "(xxx%)",
+            "results": [
+              {
+                "rawValue": "43",
+                "formattedValue": "( 43%)"
+              }
+            ]
+          }
+        ],
+        "label": "Summary of occurrence of values",
+        "description": "Count and percent of the number of subjects"
+      }
+    },
+    {
+      "id": "A9-1.02-01",
+      "version": 1,
+      "analysisSetRef": "AnalysisSet_01_ITT",
+      "orderedGroupings": [
+        {
+          "order": 1,
+          "groupingRef": "AnlsGrouping_02_Trt"
+        },
+        {
+          "order": 2,
+          "dataGrouping": {
+            "id": "DataGrouping_01_COMP24",
+            "dataDriven": false,
+            "label": "Completion Status Week 24",
+            "groupingVariable": "COMP24FL",
+            "groups": [
+              {
+                "id": "DataGrouping_01_COMP24_Y",
+                "condition": {
+                  "dataset": "ADSL",
+                  "variable": "COMP24FL",
+                  "comparator": "EQ",
+                  "value": [
+                    "Y"
+                  ]
+                },
+                "order": 1,
+                "label": "Completed Week 24"
+              },
+              {
+                "id": "DataGrouping_01_COMP24_N",
+                "condition": {
+                  "dataset": "ADSL",
+                  "variable": "COMP24FL",
+                  "comparator": "EQ",
+                  "value": [
+                    "N"
+                  ]
+                },
+                "order": 2,
+                "label": "Early Termination (prior to Week 24)"
+              }
+            ]
+          }
+        }
+      ],
+      "dataset": "ADSL",
+      "variable": "USUBJID",
+      "method": {
+        "name": "Summary by subject",
+        "id": "M9-1.02-01",
+        "operations": [
+          {
+            "name": "Count",
+            "id": "OP9-1.02-01-1",
+            "label": "n",
+            "resultPattern": "xx",
+            "results": [
+              {
+                "groupRefs": [
+                  "AnlsGrouping_02_Trt_1 DataGrouping_01_COMP24_Y"
+                ],
+                "rawValue": "60",
+                "formattedValue": "60"
+              },
+              {
+                "groupRefs": [
+                  "AnlsGrouping_02_Trt_1 DataGrouping_01_COMP24_N"
+                ],
+                "rawValue": "26",
+                "formattedValue": "26"
+              },
+              {
+                "groupRefs": [
+                  "AnlsGrouping_02_Trt_2 DataGrouping_01_COMP24_Y"
+                ],
+                "rawValue": "28",
+                "formattedValue": "28"
+              },
+              {
+                "groupRefs": [
+                  "AnlsGrouping_02_Trt_2 DataGrouping_01_COMP24_N"
+                ],
+                "rawValue": "56",
+                "formattedValue": "56"
+              },
+              {
+                "groupRefs": [
+                  "AnlsGrouping_02_Trt_3 DataGrouping_01_COMP24_Y"
+                ],
+                "rawValue": "30",
+                "formattedValue": "30"
+              },
+              {
+                "groupRefs": [
+                  "AnlsGrouping_02_Trt_3 DataGrouping_01_COMP24_N"
+                ],
+                "rawValue": "54",
+                "formattedValue": "54"
+              }
+            ]
+          },
+          {
+            "name": "Percent",
+            "id": "OP9-1.02-01-2",
+            "label": "%",
+            "referencedResultRelationships": [
+              {
+                "referencedResultRole": "NUMERATOR",
+                "operationRef": "OP9-1.02-01-1"
+              },
+              {
+                "referencedResultRole": "DENOMINATOR",
+                "operationRef": "OP9-1.01-03-1"
+              }
+            ],
+            "resultPattern": "(xxx%)",
+            "results": [
+              {
+                "groupRefs": [
+                  "AnlsGrouping_02_Trt_1 DataGrouping_01_COMP24_Y"
+                ],
+                "rawValue": "70",
+                "formattedValue": "( 70%)"
+              },
+              {
+                "groupRefs": [
+                  "AnlsGrouping_02_Trt_1 DataGrouping_01_COMP24_N"
+                ],
+                "rawValue": "30",
+                "formattedValue": "( 30%)"
+              },
+              {
+                "groupRefs": [
+                  "AnlsGrouping_02_Trt_2 DataGrouping_01_COMP24_Y"
+                ],
+                "rawValue": "33",
+                "formattedValue": "( 33%)"
+              },
+              {
+                "groupRefs": [
+                  "AnlsGrouping_02_Trt_2 DataGrouping_01_COMP24_N"
+                ],
+                "rawValue": "67",
+                "formattedValue": "( 67%)"
+              },
+              {
+                "groupRefs": [
+                  "AnlsGrouping_02_Trt_3 DataGrouping_01_COMP24_Y"
+                ],
+                "rawValue": "36",
+                "formattedValue": "( 36%)"
+              },
+              {
+                "groupRefs": [
+                  "AnlsGrouping_02_Trt_3 DataGrouping_01_COMP24_N"
+                ],
+                "rawValue": "64",
+                "formattedValue": "( 64%)"
+              }
+            ]
+          }
+        ],
+        "label": "Summary of occurrence of values",
+        "description": "Count and percent of the number of subjects by group"
+      }
+    },
+    {
+      "id": "A9-1.02-02",
+      "version": 1,
+      "analysisSetRef": "AnalysisSet_01_ITT",
+      "orderedGroupings": [
+        {
+          "order": 1,
+          "groupingRef": "DataGrouping_01_COMP24"
+        }
+      ],
+      "dataset": "ADSL",
+      "variable": "USUBJID",
+      "method": {
+        "name": "Summary by subject",
+        "id": "M9-1.02-02",
+        "operations": [
+          {
+            "name": "Count",
+            "id": "OP9-1.02-02-1",
+            "label": "n",
+            "resultPattern": "xx",
+            "results": [
+              {
+                "groupRefs": [
+                  "DataGrouping_01_COMP24_Y"
+                ],
+                "rawValue": "118",
+                "formattedValue": "118"
+              },
+              {
+                "groupRefs": [
+                  "DataGrouping_01_COMP24_N"
+                ],
+                "rawValue": "136",
+                "formattedValue": "136"
+              }
+            ]
+          },
+          {
+            "name": "Percent",
+            "id": "OP9-1.02-02-2",
+            "label": "%",
+            "referencedResultRelationships": [
+              {
+                "referencedResultRole": "NUMERATOR",
+                "operationRef": "OP9-1.02-02-1"
+              },
+              {
+                "referencedResultRole": "DENOMINATOR",
+                "operationRef": "OP9-1.01-04-1"
+              }
+            ],
+            "resultPattern": "(xxx%)",
+            "results": [
+              {
+                "groupRefs": [
+                  "DataGrouping_01_COMP24_Y"
+                ],
+                "rawValue": "46",
+                "formattedValue": "( 46%)"
+              },
+              {
+                "groupRefs": [
+                  "DataGrouping_01_COMP24_N"
+                ],
+                "rawValue": "54",
+                "formattedValue": "( 54%)"
+              }
+            ]
+          }
+        ],
+        "label": "Summary of occurrence of values",
+        "description": "Count and percent of the number of subjects by group"
+      }
+    },
+    {
+      "id": "A9-1.02-03",
+      "version": 1,
+      "analysisSetRef": "AnalysisSet_01_ITT",
+      "orderedGroupings": [
+        {
+          "order": 1,
+          "groupingRef": "AnlsGrouping_02_Trt"
+        },
+        {
+          "order": 2,
+          "dataGrouping": {
+            "id": "DataGrouping_02_RDC-DD",
+            "dataDriven": true,
+            "label": "Reason for Discontinuation",
+            "groupingVariable": "DCREASCD"
+          }
+        }
+      ],
+      "dataset": "ADSL"
+    },
+    {
+      "id": "A9-1.02-04",
+      "version": 1,
+      "analysisSetRef": "AnalysisSet_01_ITT",
+      "orderedGroupings": [
+        {
+          "order": 1,
+          "groupingRef": "DataGrouping_02_RDC-DD"
+        }
+      ],
+      "dataset": "ADSL"
+    },
+    {
+      "id": "A9-1.02-05",
+      "version": 1,
+      "analysisSetRef": "AnalysisSet_01_ITT",
+      "orderedGroupings": [
+        {
+          "order": 1,
+          "groupingRef": "AnlsGrouping_02_Trt"
+        },
+        {
+          "order": 2,
+          "dataGrouping": {
+            "id": "DataGrouping_03_RDC",
+            "dataDriven": false,
+            "label": "Reason for Discontinuation",
+            "groupingVariable": "DCREASCD",
+            "groups": [
+              {
+                "id": "DataGrouping_03_RDC_1",
+                "condition": {
+                  "dataset": "ADSL",
+                  "variable": "DCREASCD",
+                  "comparator": "EQ",
+                  "value": [
+                    "Completed"
+                  ]
+                },
+                "order": 1,
+                "label": "Completed"
+              },
+              {
+                "id": "DataGrouping_03_RDC_2",
+                "condition": {
+                  "dataset": "ADSL",
+                  "variable": "DCREASCD",
+                  "comparator": "EQ",
+                  "value": [
+                    "Adverse Event"
+                  ]
+                },
+                "order": 2,
+                "label": "Adverse Event"
+              },
+              {
+                "id": "DataGrouping_03_RDC_3",
+                "condition": {
+                  "dataset": "ADSL",
+                  "variable": "DCREASCD",
+                  "comparator": "EQ",
+                  "value": [
+                    "Lack of Efficacy"
+                  ]
+                },
+                "order": 3,
+                "label": "Lack of Efficacy"
+              }
+            ]
+          }
+        }
+      ],
+      "dataset": "ADSL"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "O14-1.01",
+      "version": 1,
+      "fileSpecifications": [
+        {
+          "name": "O-14-01-01-pop",
+          "fileType": "rtf",
+          "location": ".",
+          "style": "To be defined"
+        }
+      ],
+      "outputDisplays": [
+        {
+          "order": 1,
+          "display": {
+            "name": "Table 14-1.01",
+            "id": "T14101-POP",
+            "version": 1,
+            "displayTitle": "Summary of Populations",
+            "displaySections": [
+              {
+                "sectionType": "Title",
+                "subSections": [
+                  {
+                    "id": "T14101-POP-DISP-01",
+                    "order": 1,
+                    "text": "Table 14-1.01 Summary of Populations"
+                  },
+                  {
+                    "id": "T14101-POP-DISP-02",
+                    "order": 2,
+                    "text": "Population: All Subjects"
+                  },
+                  {
+                    "id": "Global_ID_001-01",
+                    "order": 3
+                  }
+                ]
+              },
+              {
+                "sectionType": "Legend",
+                "subSections": [
+                  {
+                    "id": "T14101-POP-DISP-03",
+                    "order": 1,
+                    "text": "NOTE: N in column headers represents number of subjects entered in study (i.e., signed informed consent). The ITT population includes all subjects randomized. The Safety population includes all randomized subjects known to have taken at least one dose of randomized study drug. The Efficacy population includes all subjects in the safety population who also have at least one post-baseline ADAS-Cog and CIBIC+ assessment"
+                  }
+                ]
+              },
+              {
+                "sectionType": "Footnote",
+                "subSections": [
+                  {
+                    "id": "T14101-POP-DISP-03",
+                    "order": 1,
+                    "text": "Source dataset: adsl, Generated on: &dsdate9.:&dstime."
+                  },
+                  {
+                    "id": "T14101-POP-DISP-06",
+                    "order": 2,
+                    "text": "Program: T-pop-all.sas, Output: O-14-01-01-pop.rtf, Generated on: &outdate9.:&outtime."
+                  }
+                ]
+              },
+              {
+                "sectionType": "Rowlabel Header",
+                "subSections": [
+                  {
+                    "id": "T1420-1-DEMOG-DISP-07",
+                    "order": 1,
+                    "text": "Population"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "categoryRefs": [
+        "AnCat1_Group_PopDesc",
+        "AnCat2_Class_SubjLvl",
+        "AnCat2.1_SbjDType_Demo"
+      ]
+    },
+    {
+      "id": "O14-1.02",
+      "version": 1,
+      "fileSpecifications": [
+        {
+          "name": "O-14-01-02-demog",
+          "fileType": "rtf",
+          "location": ".",
+          "style": "To be defined"
+        }
+      ],
+      "outputDisplays": [
+        {
+          "order": 1,
+          "display": {
+            "name": "Table 14.1.2",
+            "id": "T14102-DEMOG",
+            "version": 1,
+            "displayTitle": "Summary of Demographics and Baseline Characteristics - Safety",
+            "displaySections": [
+              {
+                "sectionType": "Title",
+                "subSections": [
+                  {
+                    "id": "T1420-1-DEMOG-DISP-01",
+                    "order": 1,
+                    "text": "Table 14.2.01 Summary of Demographics and Baseline Characteristics"
+                  },
+                  {
+                    "id": "T1420-1-DEMOG-DISP-02",
+                    "order": 2,
+                    "text": "Safety Population"
+                  },
+                  {
+                    "id": "Global_ID_001-01",
+                    "order": 3
+                  }
+                ]
+              },
+              {
+                "sectionType": "Legend",
+                "subSections": [
+                  {
+                    "id": "T1420-1-DEMOG-DISP-03",
+                    "order": 1,
+                    "text": "[1] P-values are results of ANOVA treatment group comparisons for continuous variables and Pearson’s chisquare test for categorical variables."
+                  },
+                  {
+                    "id": "T1420-1-DEMOG-DISP-04",
+                    "order": 2,
+                    "text": "NOTE: Duration of disease is computed as months between date of enrollment and date of onset of the first definite symptoms of Alzheimer's disease."
+                  }
+                ]
+              },
+              {
+                "sectionType": "Footnote",
+                "subSections": [
+                  {
+                    "id": "T1420-1-DEMOG-DISP-05",
+                    "order": 1,
+                    "text": "Source dataset: adsl, Generated on: &dsdate9.:&dstime."
+                  },
+                  {
+                    "id": "T1420-1-DEMOG-DISP-06",
+                    "order": 2,
+                    "text": "Program: T-demog-saf.sas, Output: T-14-01-02-01-demog-saf.rtf, Generated on: &outdate9.:&outtime."
+                  }
+                ]
+              },
+              {
+                "sectionType": "Rowlabel Header",
+                "subSections": [
+                  {
+                    "id": "T1420-1-DEMOG-DISP-07",
+                    "order": 1,
+                    "text": "Characteristics"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "O14-5.01",
+      "version": 1,
+      "fileSpecifications": [
+        {
+          "name": "O-14-05-01-aesum",
+          "fileType": "rtf",
+          "location": ".",
+          "style": "To be defined"
+        }
+      ],
+      "outputDisplays": [
+        {
+          "order": 1,
+          "display": {
+            "name": "Table 14.5.1",
+            "id": "T14501-AE-SUMM",
+            "version": 1,
+            "displayTitle": "Overall Summary of Treatment-Emergent Adverse Events",
+            "displaySections": [
+              {
+                "sectionType": "Title",
+                "subSections": [
+                  {
+                    "id": "T14301-AE-SUMM-DISP-01",
+                    "order": 1,
+                    "text": "Table 14-5.01"
+                  },
+                  {
+                    "id": "T14301-AE-SUMM-DISP-02",
+                    "order": 2,
+                    "text": "Incidence of Treatment Emergent Adverse Events by Treatment Group"
+                  },
+                  {
+                    "id": "T14701-VITALS-CHGBL-DISP-03",
+                    "order": 3
+                  }
+                ]
+              },
+              {
+                "sectionType": "Legend",
+                "subSections": [
+                  {
+                    "id": "T14501-AE-SUMM-DISP-04",
+                    "order": 1,
+                    "text": "Note: TEAE=Treatment-Emergent Adverse Events"
+                  },
+                  {
+                    "id": "T14501-AE-SUMM-DISP-05",
+                    "order": 2,
+                    "text": "Note: Treatment emergent events are defined as events which start on or after the start of treatment."
+                  },
+                  {
+                    "id": "T14501-AE-SUMM-DISP-06",
+                    "order": 3,
+                    "text": "Note: Adverse events are coded using MedDRA."
+                  },
+                  {
+                    "id": "T14501-AE-SUMM-DISP-07",
+                    "order": 4,
+                    "text": "Note: Percentages are based on the number of subjects in the safety population within each treatment group."
+                  },
+                  {
+                    "id": "T14501-AE-SUMM-DISP-08",
+                    "order": 5,
+                    "text": "Note: P-values are based on Fisher's Exact test for the comparison of placebo versus each active treatment group. An asterisk is appended to p-values that are less than 0.15."
+                  },
+                  {
+                    "id": "T14501-AE-SUMM-DISP-09",
+                    "order": 6,
+                    "text": "Note: The column [AE] represents the total number of times an event was recorded."
+                  }
+                ]
+              },
+              {
+                "sectionType": "Footnote",
+                "subSections": [
+                  {
+                    "id": "T14501-AE-SUMM-DISP-10",
+                    "order": 1,
+                    "text": "Source: C:\\cdisc_pilot\\PROGRAMS\\DRAFT\\TFLs\\aetable.sas, Generated on: &outdate9.:&outtime."
+                  }
+                ]
+              },
+              {
+                "sectionType": "Rowlabel Header",
+                "subSections": [
+                  {
+                    "id": "T14501-AE-SUMM-DISP-08",
+                    "order": 1,
+                    "text": "System Organ Class/Preferred Term"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "O14-7.01",
+      "version": 1,
+      "fileSpecifications": [
+        {
+          "name": "O-14-07-01-vitals-summ",
+          "fileType": "rtf",
+          "location": ".",
+          "style": "To be defined"
+        }
+      ],
+      "outputDisplays": [
+        {
+          "order": 1,
+          "display": {
+            "name": "Table 14-7.01",
+            "id": "T14701-VITALS-SUMM",
+            "displayTitle": "Summary of Vital Signs at Baseline and End of Treatment",
+            "displaySections": [
+              {
+                "sectionType": "Title",
+                "subSections": [
+                  {
+                    "id": "T14701-VITALS-SUMM-DISP-01",
+                    "order": 1,
+                    "text": "Table 14-7.01"
+                  },
+                  {
+                    "id": "T14701-VITALS-SUMM-DISP-02",
+                    "order": 2,
+                    "text": "Summary of Vital Signs at Baseline and End of Treatment"
+                  },
+                  {
+                    "id": "T14701-VITALS-SUMM-DISP-03",
+                    "order": 3,
+                    "text": "Safety Population"
+                  }
+                ]
+              },
+              {
+                "sectionType": "Legend",
+                "subSections": [
+                  {
+                    "id": "T14701-VITALS-SUMM-DISP-04",
+                    "order": 1,
+                    "text": "End of treatment is the last on-treatment assessment of the specified vital sign (on or before the Week 24 visit)."
+                  }
+                ]
+              },
+              {
+                "sectionType": "Footnote",
+                "subSections": [
+                  {
+                    "id": "T14701-VITALS-SUMM-DISP-05",
+                    "order": 1,
+                    "text": "Source: C:\\cdisc_pilot\\PROGRAMS\\DRAFT\\TFLs\\rtvs.sas, Generated on: &outdate9.:&outtime."
+                  }
+                ]
+              },
+              {
+                "sectionType": "Rowlabel Header",
+                "subSections": [
+                  {
+                    "id": "T14701-VITALS-SUMM-DISP-06",
+                    "order": 1,
+                    "text": "Measure"
+                  },
+                  {
+                    "id": "T14701-VITALS-SUMM-DISP-07",
+                    "order": 2,
+                    "text": "Position"
+                  },
+                  {
+                    "id": "T14701-VITALS-SUMM-DISP-08",
+                    "order": 3,
+                    "text": "Treatment"
+                  },
+                  {
+                    "id": "T14701-VITALS-SUMM-DISP-09",
+                    "order": 4,
+                    "text": "N"
+                  },
+                  {
+                    "id": "T14701-VITALS-SUMM-DISP-10",
+                    "order": 5,
+                    "text": "Planned Relative Time"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "O14-7.02",
+      "version": 1,
+      "fileSpecifications": [
+        {
+          "name": "O-14-07-02-vitals-chgbl",
+          "fileType": "rtf",
+          "location": ".",
+          "style": "To be defined"
+        }
+      ],
+      "outputDisplays": [
+        {
+          "order": 1,
+          "display": {
+            "name": "Table 14-7.02",
+            "id": "T14702-VITALS-CHGBL",
+            "displayTitle": "Summary of Vital Signs Change from Baseline at End of Treatment",
+            "displaySections": [
+              {
+                "sectionType": "Title",
+                "subSections": [
+                  {
+                    "id": "T14702-VITALS-CHGBL-DISP-01",
+                    "order": 1,
+                    "text": "Table 14-7.02"
+                  },
+                  {
+                    "id": "T14702-VITALS-CHGBL-DISP-02",
+                    "order": 2,
+                    "text": "Summary of Vital Signs Change from Baseline at End of Treatment"
+                  },
+                  {
+                    "id": "T14702-VITALS-CHGBL-DISP-03",
+                    "order": 3,
+                    "text": "Safety Population"
+                  }
+                ]
+              },
+              {
+                "sectionType": "Legend",
+                "subSections": [
+                  {
+                    "id": "T14702-VITALS-CHGBL-DISP-04",
+                    "order": 1,
+                    "text": "End of treatment is the last on-treatment assessment of the specified vital sign (on or before the Week 24 visit)."
+                  }
+                ]
+              },
+              {
+                "sectionType": "Footnote",
+                "subSections": [
+                  {
+                    "id": "T14702-VITALS-CHGBL-DISP-05",
+                    "order": 1,
+                    "text": "Source: C:\\cdisc_pilot\\PROGRAMS\\DRAFT\\TFLs\\rtvs.sas, Generated on: &outdate9.:&outtime."
+                  }
+                ]
+              },
+              {
+                "sectionType": "Rowlabel Header",
+                "subSections": [
+                  {
+                    "id": "T14702-VITALS-CHGBL-DISP-06",
+                    "order": 1,
+                    "text": "Measure"
+                  },
+                  {
+                    "id": "T14702-VITALS-CHGBL-DISP-07",
+                    "order": 2,
+                    "text": "Position"
+                  },
+                  {
+                    "id": "T14702-VITALS-CHGBL-DISP-08",
+                    "order": 3,
+                    "text": "Treatment"
+                  },
+                  {
+                    "id": "T14702-VITALS-CHGBL-DISP-09",
+                    "order": 4,
+                    "text": "N"
+                  },
+                  {
+                    "id": "T14702-VITALS-CHGBL-DISP-10",
+                    "order": 5,
+                    "text": "Planned Relative Time"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "@type": "ReportingEvent"
+}

@@ -19,8 +19,10 @@ None &#8594;  <sub>1..1</sub> [String](types/String.md)
 
 ## Used by
 
+ * [AnalysisMethod](AnalysisMethod.md)
  * [Display](Display.md)
  * [File](File.md)
  * [NamedObject](NamedObject.md)
+ * [Operation](Operation.md)
  * [OrderedListItem](OrderedListItem.md)
  * [ReportingEvent](ReportingEvent.md)

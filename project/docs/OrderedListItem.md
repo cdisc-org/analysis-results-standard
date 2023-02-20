@@ -7,7 +7,7 @@
 URI: [https://www.cdisc.org/ars/1-0/OrderedListItem](https://www.cdisc.org/ars/1-0/OrderedListItem)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Output],[Output]<output%200..1-%20[OrderedListItem&#124;order:integer;name(i):string],[Analysis]<analysis%200..1-%20[OrderedListItem],[NestedList]<sublist%200..1-++[OrderedListItem],[NestedList]++-%20listItems%200..*>[OrderedListItem],[NamedObject]^-[OrderedListItem],[NestedList],[NamedObject],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[Output],[Output]<output%200..1-%20[OrderedListItem&#124;order:integer;name(i):string],[Analysis]<analysis%200..1-%20[OrderedListItem],[NestedList]<sublist%200..1-++[OrderedListItem],[NestedList]++-%20listItems%200..*>[OrderedListItem],[NamedObject]^-[OrderedListItem],[NestedList],[NamedObject],[Analysis])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Output],[Output]<outputRef%200..1-%20[OrderedListItem&#124;order:integer;name(i):string],[Analysis]<analysisRef%200..1-%20[OrderedListItem],[NestedList]<sublist%200..1-++[OrderedListItem],[NestedList]++-%20listItems%200..*>[OrderedListItem],[NamedObject]^-[OrderedListItem],[NestedList],[NamedObject],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[Output],[Output]<outputRef%200..1-%20[OrderedListItem&#124;order:integer;name(i):string],[Analysis]<analysisRef%200..1-%20[OrderedListItem],[NestedList]<sublist%200..1-++[OrderedListItem],[NestedList]++-%20listItems%200..*>[OrderedListItem],[NamedObject]^-[OrderedListItem],[NestedList],[NamedObject],[Analysis])
 
 ## Parents
 
@@ -26,9 +26,9 @@ URI: [https://www.cdisc.org/ars/1-0/OrderedListItem](https://www.cdisc.org/ars/1
      * Range: [Integer](types/Integer.md)
  * [sublist](sublist.md)  <sub>0..1</sub>
      * Range: [NestedList](NestedList.md)
- * [analysis](analysis.md)  <sub>0..1</sub>
+ * [analysisRef](analysisRef.md)  <sub>0..1</sub>
      * Range: [Analysis](Analysis.md)
- * [output](output.md)  <sub>0..1</sub>
+ * [outputRef](outputRef.md)  <sub>0..1</sub>
      * Range: [Output](Output.md)
 
 ### Inherited from NamedObject:
