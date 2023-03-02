@@ -1,5 +1,5 @@
 id: https://www.cdisc.org/ars/1-0
-name: ARS-Schema
+name: ars_ldm
 
 imports:
   - linkml:types
@@ -181,6 +181,7 @@ classes:
     is_a: CompoundExpression
     slot_usage:
       whereClauses:
+        inlined: true
         inlined_as_list: true
 
   AnalysisSet:
@@ -263,11 +264,13 @@ slots:
 
   analysisSets:
     multivalued: true
+    inlined: true
     inlined_as_list: true
     range: AnalysisSet
 
   analysisGroupings:
     multivalued: true
+    inlined: true
     inlined_as_list: true
     range: SubjectGroupingFactor
 
@@ -282,27 +285,32 @@ slots:
   groups:
     multivalued: true
     list_elements_ordered: true
+    inlined: true
     inlined_as_list: true
     range: Group
 
   dataSubsets:
     multivalued: true
+    inlined: true
     inlined_as_list: true
     range: DataSubset
 
   analyses:
     multivalued: true
+    inlined: true
     inlined_as_list: true
     range: Analysis
 
   analysisCategorizations:
     multivalued: true
     range: AnalysisCategorization
+    inlined: true
     inlined_as_list: true
 
   categories:
     multivalued: true
     range: AnalysisCategory
+    inlined: true
     inlined_as_list: true
     required: true
 
@@ -315,16 +323,19 @@ slots:
   subCategorizations:
     multivalued: true
     range: AnalysisCategorization
+    inlined: true
     inlined_as_list: true
 
   outputs:
     multivalued: true
+    inlined: true
     inlined_as_list: true
     range: Output
 
   listItems:
     multivalued: true
     list_elements_ordered: true
+    inlined: true
     inlined_as_list: true
     range: OrderedListItem
 
@@ -351,6 +362,7 @@ slots:
     range: OrderedGroupingFactor
     multivalued: true
     list_elements_ordered: true
+    inlined: true
     inlined_as_list: true
 
   groupingRef: 
@@ -360,6 +372,7 @@ slots:
   dataGrouping: 
     range: DataGroupingFactor
     inlined: true
+    inlined_as_list: true
 
   dataSubsetRef:
     inlined: false
@@ -367,6 +380,7 @@ slots:
 
   method:  
     range: AnalysisMethod
+    inlined: true
     inlined_as_list: true
 
   description:
@@ -375,6 +389,7 @@ slots:
     required: true
     multivalued: true
     range: Operation
+    inlined: true
     inlined_as_list: true
 
   resultPattern:
@@ -382,6 +397,7 @@ slots:
   results:
     multivalued: true
     range: OperationResult
+    inlined: true
     inlined_as_list: true
 
   groupRefs:
@@ -396,6 +412,7 @@ slots:
   referencedResultRelationships:
     multivalued: true
     range: ReferencedResultRelationship
+    inlined: true
     inlined_as_list: true
   
   referencedResultRole:
@@ -423,6 +440,7 @@ slots:
 
   fileSpecifications:
     multivalued: true
+    inlined: true
     inlined_as_list: true
     range: File
 
@@ -436,6 +454,7 @@ slots:
   outputDisplays:
     range: OutputDisplay
     multivalued: true
+    inlined: true
     inlined_as_list: true
     list_elements_ordered: true
 
@@ -445,11 +464,13 @@ slots:
 
   globalDisplaySections:
     multivalued: true
+    inlined: true
     inlined_as_list: true
     range: DisplaySection
 
   displaySections:
     multivalued: true
+    inlined: true
     inlined_as_list: true
     range: DisplaySection
 
@@ -459,6 +480,7 @@ slots:
   subSections:
     multivalued: true
     list_elements_ordered: true
+    inlined: true
     inlined_as_list: true
     range: DisplaySubSection
 

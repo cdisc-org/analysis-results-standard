@@ -1,0 +1,1705 @@
+name: PHUSE Connect Examples
+listOfPlannedAnalyses:
+  listItems:
+  - name: Summary of Demographics
+    order: 1
+    sublist:
+      listItems:
+      - name: Summary of Subjects by Treatment
+        order: 1
+        analysisRef: An01.5_SAF_ByTrt
+      - name: Summary of Age by Treatment
+        order: 2
+        analysisRef: An03.1_Age_ByTrt
+      - name: Summary of Age Group by Treatment
+        order: 3
+        analysisRef: An03.2_AgeGrp_ByTrt
+      - name: Summary of Sex by Treatment
+        order: 4
+        analysisRef: An03.3_Sex_ByTrt
+      - name: Summary of Ethnicity by Treatment
+        order: 5
+        analysisRef: An03.4_Ethnic_ByTrt
+      - name: Summary of Race by Treatment
+        order: 6
+        analysisRef: An03.5_Race_ByTrt
+      - name: Summary of Height by Treatment
+        order: 7
+        analysisRef: An03.6_Height_ByTrt
+    outputRef: Out14.1.1
+  - name: Summary of TEAE by System Organ Class and Preferred Term
+    order: 2
+    sublist:
+      listItems:
+      - name: Summary of Subjects with At Least One Event by Treatment
+        order: 1
+        analysisRef: An07.1_AnyAE_ByTrt
+      - name: Summary of Subjects with System Organ Class by Treatment
+        order: 2
+        analysisRef: An07.2_Soc_ByTrt
+      - name: Summary of Subjects with Preferred Term by Treatment and System Organ
+          Class
+        order: 3
+        analysisRef: An07.3_SocPt_ByTrt
+    outputRef: Out14.3.1.1
+analysisSets:
+- id: AnalysisSet_01_ITT
+  condition:
+    dataset: ADSL
+    variable: ITTFL
+    comparator: EQ
+    value:
+    - Y
+  order: 1
+  label: Intent-to-Treat Population
+- id: AnalysisSet_02_SAF
+  condition:
+    dataset: ADSL
+    variable: SAFFL
+    comparator: EQ
+    value:
+    - Y
+  order: 1
+  label: Safety Population
+analysisGroupings:
+- id: AnlsGrouping_01_Sex
+  dataDriven: false
+  label: Gender
+  groupingVariable: SEX
+  groups:
+  - id: AnlsGrouping_01_Sex_1
+    condition:
+      dataset: ADSL
+      variable: SEX
+      comparator: EQ
+      value:
+      - M
+    order: 1
+    label: Male
+  - id: AnlsGrouping_01_Sex_2
+    condition:
+      dataset: ADSL
+      variable: SEX
+      comparator: EQ
+      value:
+      - F
+    order: 2
+    label: Female
+- id: AnlsGrouping_02_Trt
+  dataDriven: false
+  label: Treatment
+  groupingVariable: TRT01A
+  groups:
+  - id: AnlsGrouping_02_Trt_1
+    condition:
+      dataset: ADSL
+      variable: TRT01A
+      comparator: EQ
+      value:
+      - Placebo
+    order: 1
+    label: Placebo
+  - id: AnlsGrouping_02_Trt_2
+    condition:
+      dataset: ADSL
+      variable: TRT01A
+      comparator: EQ
+      value:
+      - Xanomeline Low Dose
+    order: 2
+    label: Xanomeline Low Dose
+  - id: AnlsGrouping_02_Trt_3
+    condition:
+      dataset: ADSL
+      variable: TRT01A
+      comparator: EQ
+      value:
+      - Xanomeline High Dose
+    order: 3
+    label: Xanomeline High Dose
+- id: AnlsGrouping_03_AgeGp
+  dataDriven: false
+  label: Age Group
+  groupingVariable: AGEGR1
+  groups:
+  - id: AnlsGrouping_03_AgeGp_1
+    condition:
+      dataset: ADSL
+      variable: AGEGR1
+      comparator: EQ
+      value:
+      - <65
+    order: 1
+    label: < 65 years
+  - id: AnlsGrouping_03_AgeGp_2
+    condition:
+      dataset: ADSL
+      variable: AGEGR1
+      comparator: IN
+      value:
+      - 65-80
+      - '>80'
+    order: 2
+    label: ≥ 65 years
+- id: AnlsGrouping_04_Race
+  dataDriven: false
+  label: Primary Race
+  groupingVariable: RACE
+  groups:
+  - id: AnlsGrouping_04_Race_1
+    condition:
+      dataset: ADSL
+      variable: RACE
+      comparator: EQ
+      value:
+      - AMERICAN INDIAN OR ALASKA NATIVE
+    order: 1
+    label: American Indian or Alaska Native
+  - id: AnlsGrouping_04_Race_2
+    condition:
+      dataset: ADSL
+      variable: RACE
+      comparator: EQ
+      value:
+      - ASIAN
+    order: 2
+    label: Asian
+  - id: AnlsGrouping_04_Race_3
+    condition:
+      dataset: ADSL
+      variable: RACE
+      comparator: EQ
+      value:
+      - BLACK OR AFRICAN AMERICAN
+    order: 3
+    label: Black or African American
+  - id: AnlsGrouping_04_Race_4
+    condition:
+      dataset: ADSL
+      variable: RACE
+      comparator: EQ
+      value:
+      - NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER
+    order: 4
+    label: Native Hawaiian or Other Pacific Islander
+  - id: AnlsGrouping_04_Race_5
+    condition:
+      dataset: ADSL
+      variable: RACE
+      comparator: EQ
+      value:
+      - WHITE
+    order: 5
+    label: White
+  - id: AnlsGrouping_04_Race_6
+    condition:
+      dataset: ADSL
+      variable: RACE
+      comparator: EQ
+      value:
+      - MULTIPLE
+    order: 6
+    label: Multiple
+  - id: AnlsGrouping_04_Race_7
+    condition:
+      dataset: ADSL
+      variable: RACE
+      comparator: EQ
+      value:
+      - NOT REPORTED
+    order: 7
+    label: Not Reported
+  - id: AnlsGrouping_04_Race_8
+    condition:
+      dataset: ADSL
+      variable: RACE
+      comparator: EQ
+      value:
+      - UNKNOWN
+    order: 8
+    label: Unknown
+  - id: AnlsGrouping_04_Race_9
+    condition:
+      dataset: ADSL
+      variable: RACE
+      comparator: EQ
+      value:
+      - OTHER
+    order: 9
+    label: Other
+- id: AnlsGrouping_05_Ethnic
+  dataDriven: false
+  label: Ethnicity
+  groupingVariable: ETHNIC
+  groups:
+  - id: AnlsGrouping_05_Ethnic_1
+    condition:
+      dataset: ADSL
+      variable: ETHNIC
+      comparator: EQ
+      value:
+      - HISPANIC OR LATINO
+    order: 1
+    label: Hispanic or Latino
+  - id: AnlsGrouping_05_Ethnic_2
+    condition:
+      dataset: ADSL
+      variable: ETHNIC
+      comparator: EQ
+      value:
+      - NOT HISPANIC OR LATINO
+    order: 2
+    label: Not Hispanic or Latino
+dataSubsets:
+- id: Dss01_TrtEm
+  condition:
+    dataset: ADAE
+    variable: TRTEMFL
+    comparator: EQ
+    value:
+    - Y
+  label: Treatment-Emergent Adverse Events
+analyses:
+- id: An01.5_SAF_ByTrt
+  version: 1
+  analysisSetRef: AnalysisSet_02_SAF
+  orderedGroupings:
+  - order: 1
+    groupingRef: AnlsGrouping_02_Trt
+  dataset: ADSL
+  variable: USUBJID
+  method:
+    name: Summary by group of subjects
+    id: Mth01.5_SAF_ByTrt
+    operations:
+    - name: Count of subjects
+      id: Mth01.5_SAF_ByTrt_n
+      label: n
+      resultPattern: (N=XX)
+      results:
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        rawValue: '1'
+        formattedValue: (N=XX)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        rawValue: '1'
+        formattedValue: (N=XX)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        rawValue: '1'
+        formattedValue: (N=XX)
+    label: Grouped summary of subjects
+    description: Descriptive summary statistics of subject occurrence for grouped
+      values
+- id: An03.1_Age_ByTrt
+  version: 1
+  analysisSetRef: AnalysisSet_02_SAF
+  orderedGroupings:
+  - order: 1
+    groupingRef: AnlsGrouping_02_Trt
+  dataset: ADSL
+  variable: AGE
+  method:
+    name: Summary by group of a continuous variable
+    id: Mth03.1_Age_ByTrt
+    operations:
+    - name: Count of non-missing values
+      id: Mth03.1_Age_ByTrt_n
+      label: n
+      resultPattern: XX
+      results:
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        rawValue: '1'
+        formattedValue: XX
+    - name: Mean
+      id: Mth03.1_Age_ByTrt_Mean
+      label: Mean
+      resultPattern: XX.X
+      results:
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        rawValue: '1'
+        formattedValue: XX.X
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        rawValue: '1'
+        formattedValue: XX.X
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        rawValue: '1'
+        formattedValue: XX.X
+    - name: Standard deviation
+      id: Mth03.1_Age_ByTrt_SD
+      label: SD
+      resultPattern: (XX.XX)
+      results:
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        rawValue: '1'
+        formattedValue: (XX.XX)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        rawValue: '1'
+        formattedValue: (XX.XX)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        rawValue: '1'
+        formattedValue: (XX.XX)
+    - name: Median
+      id: Mth03.1_Age_ByTrt_Median
+      label: Median
+      resultPattern: XX.X
+      results:
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        rawValue: '1'
+        formattedValue: XX.X
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        rawValue: '1'
+        formattedValue: XX.X
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        rawValue: '1'
+        formattedValue: XX.X
+    - name: First quartile
+      id: Mth03.1_Age_ByTrt_Q1
+      label: Q1
+      resultPattern: XX.X
+      results:
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        rawValue: '1'
+        formattedValue: XX.X
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        rawValue: '1'
+        formattedValue: XX.X
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        rawValue: '1'
+        formattedValue: XX.X
+    - name: Third quartile
+      id: Mth03.1_Age_ByTrt_Q3
+      label: Q3
+      resultPattern: XX.X
+      results:
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        rawValue: '1'
+        formattedValue: XX.X
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        rawValue: '1'
+        formattedValue: XX.X
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        rawValue: '1'
+        formattedValue: XX.X
+    - name: Minimum
+      id: Mth03.1_Age_ByTrt_Min
+      label: Min
+      resultPattern: XX
+      results:
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        rawValue: '1'
+        formattedValue: XX
+    - name: Maximum
+      id: Mth03.1_Age_ByTrt_Max
+      label: Max
+      resultPattern: XX
+      results:
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        rawValue: '1'
+        formattedValue: XX
+    label: Grouped summary of continuous variable
+    description: Descriptive summary statistics across groups for a continuous variable
+- id: An03.2_AgeGrp_ByTrt
+  version: 1
+  analysisSetRef: AnalysisSet_02_SAF
+  orderedGroupings:
+  - order: 1
+    groupingRef: AnlsGrouping_02_Trt
+  - order: 2
+    groupingRef: AnlsGrouping_03_AgeGp
+  dataset: ADSL
+  variable: USUBJID
+  method:
+    name: Summary by group of subjects
+    id: Mth03.2_AgeGrp_ByTrt
+    operations:
+    - name: Count of subjects
+      id: Mth03.2_AgeGrp_ByTrt_n
+      label: n
+      resultPattern: XX
+      results:
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        - AnlsGrouping_03_AgeGp_1
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        - AnlsGrouping_03_AgeGp_2
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        - AnlsGrouping_03_AgeGp_1
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        - AnlsGrouping_03_AgeGp_2
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        - AnlsGrouping_03_AgeGp_1
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        - AnlsGrouping_03_AgeGp_2
+        rawValue: '1'
+        formattedValue: XX
+    - name: Percent of subjects
+      id: Mth03.2_AgeGrp_ByTrt_%
+      label: '%'
+      referencedResultRelationships:
+      - referencedResultRole: NUMERATOR
+        operationRef: Mth03.2_AgeGrp_ByTrt_n
+      - referencedResultRole: DENOMINATOR
+        operationRef: Mth01.5_SAF_ByTrt_n
+      resultPattern: ( XX.X)
+      results:
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        - AnlsGrouping_03_AgeGp_1
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        - AnlsGrouping_03_AgeGp_2
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        - AnlsGrouping_03_AgeGp_1
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        - AnlsGrouping_03_AgeGp_2
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        - AnlsGrouping_03_AgeGp_1
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        - AnlsGrouping_03_AgeGp_2
+        rawValue: '1'
+        formattedValue: ( XX.X)
+    label: Grouped summary of subjects
+    description: Descriptive summary statistics of subject occurrence for grouped
+      values
+- id: An03.3_Sex_ByTrt
+  version: 1
+  analysisSetRef: AnalysisSet_02_SAF
+  orderedGroupings:
+  - order: 1
+    groupingRef: AnlsGrouping_02_Trt
+  - order: 2
+    groupingRef: AnlsGrouping_01_Sex
+  dataset: ADSL
+  variable: USUBJID
+  method:
+    name: Summary by group of subjects
+    id: Mth03.3_Sex_ByTrt
+    operations:
+    - name: Count of subjects
+      id: Mth03.3_Sex_ByTrt_n
+      label: n
+      resultPattern: XX
+      results:
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        - AnlsGrouping_01_Sex_1
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        - AnlsGrouping_01_Sex_2
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        - AnlsGrouping_01_Sex_1
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        - AnlsGrouping_01_Sex_2
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        - AnlsGrouping_01_Sex_1
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        - AnlsGrouping_01_Sex_2
+        rawValue: '1'
+        formattedValue: XX
+    - name: Percent of subjects
+      id: Mth03.3_Sex_ByTrt_%
+      label: '%'
+      referencedResultRelationships:
+      - referencedResultRole: NUMERATOR
+        operationRef: Mth03.3_Sex_ByTrt_n
+      - referencedResultRole: DENOMINATOR
+        operationRef: Mth01.5_SAF_ByTrt_n
+      resultPattern: ( XX.X)
+      results:
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        - AnlsGrouping_01_Sex_1
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        - AnlsGrouping_01_Sex_2
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        - AnlsGrouping_01_Sex_1
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        - AnlsGrouping_01_Sex_2
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        - AnlsGrouping_01_Sex_1
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        - AnlsGrouping_01_Sex_2
+        rawValue: '1'
+        formattedValue: ( XX.X)
+    label: Grouped summary of subjects
+    description: Descriptive summary statistics of subject occurrence for grouped
+      values
+- id: An03.4_Ethnic_ByTrt
+  version: 1
+  analysisSetRef: AnalysisSet_02_SAF
+  orderedGroupings:
+  - order: 1
+    groupingRef: AnlsGrouping_02_Trt
+  - order: 2
+    groupingRef: AnlsGrouping_05_Ethnic
+  dataset: ADSL
+  variable: USUBJID
+  method:
+    name: Summary by group of subjects
+    id: Mth03.4_Ethnic_ByTrt
+    operations:
+    - name: Count of subjects
+      id: Mth03.4_Ethnic_ByTrt_n
+      label: n
+      resultPattern: XX
+      results:
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        - AnlsGrouping_05_Ethnic_1
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        - AnlsGrouping_05_Ethnic_2
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        - AnlsGrouping_05_Ethnic_1
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        - AnlsGrouping_05_Ethnic_2
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        - AnlsGrouping_05_Ethnic_1
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        - AnlsGrouping_05_Ethnic_2
+        rawValue: '1'
+        formattedValue: XX
+    - name: Percent of subjects
+      id: Mth03.4_Ethnic_ByTrt_%
+      label: '%'
+      referencedResultRelationships:
+      - referencedResultRole: NUMERATOR
+        operationRef: Mth03.4_Ethnic_ByTrt_n
+      - referencedResultRole: DENOMINATOR
+        operationRef: Mth01.5_SAF_ByTrt_n
+      resultPattern: ( XX.X)
+      results:
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        - AnlsGrouping_05_Ethnic_1
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        - AnlsGrouping_05_Ethnic_2
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        - AnlsGrouping_05_Ethnic_1
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        - AnlsGrouping_05_Ethnic_2
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        - AnlsGrouping_05_Ethnic_1
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        - AnlsGrouping_05_Ethnic_2
+        rawValue: '1'
+        formattedValue: ( XX.X)
+    label: Grouped summary of subjects
+    description: Descriptive summary statistics of subject occurrence for grouped
+      values
+- id: An03.5_Race_ByTrt
+  version: 1
+  analysisSetRef: AnalysisSet_02_SAF
+  orderedGroupings:
+  - order: 1
+    groupingRef: AnlsGrouping_02_Trt
+  - order: 2
+    groupingRef: AnlsGrouping_04_Race
+  dataset: ADSL
+  variable: USUBJID
+  method:
+    name: Summary by group of subjects
+    id: Mth03.5_Race_ByTrt
+    operations:
+    - name: Count of subjects
+      id: Mth03.5_Race_ByTrt_n
+      label: n
+      resultPattern: XX
+      results:
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        - AnlsGrouping_04_Race_1
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        - AnlsGrouping_04_Race_2
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        - AnlsGrouping_04_Race_3
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        - AnlsGrouping_04_Race_4
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        - AnlsGrouping_04_Race_5
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        - AnlsGrouping_04_Race_6
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        - AnlsGrouping_04_Race_7
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        - AnlsGrouping_04_Race_8
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        - AnlsGrouping_04_Race_9
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        - AnlsGrouping_04_Race_1
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        - AnlsGrouping_04_Race_2
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        - AnlsGrouping_04_Race_3
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        - AnlsGrouping_04_Race_4
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        - AnlsGrouping_04_Race_5
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        - AnlsGrouping_04_Race_6
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        - AnlsGrouping_04_Race_7
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        - AnlsGrouping_04_Race_8
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        - AnlsGrouping_04_Race_9
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        - AnlsGrouping_04_Race_1
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        - AnlsGrouping_04_Race_2
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        - AnlsGrouping_04_Race_3
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        - AnlsGrouping_04_Race_4
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        - AnlsGrouping_04_Race_5
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        - AnlsGrouping_04_Race_6
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        - AnlsGrouping_04_Race_7
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        - AnlsGrouping_04_Race_8
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        - AnlsGrouping_04_Race_9
+        rawValue: '1'
+        formattedValue: XX
+    - name: Percent of subjects
+      id: Mth03.5_Race_ByTrt_%
+      label: '%'
+      referencedResultRelationships:
+      - referencedResultRole: NUMERATOR
+        operationRef: Mth03.5_Race_ByTrt_n
+      - referencedResultRole: DENOMINATOR
+        operationRef: Mth01.5_SAF_ByTrt_n
+      resultPattern: ( XX.X)
+      results:
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        - AnlsGrouping_04_Race_1
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        - AnlsGrouping_04_Race_2
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        - AnlsGrouping_04_Race_3
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        - AnlsGrouping_04_Race_4
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        - AnlsGrouping_04_Race_5
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        - AnlsGrouping_04_Race_6
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        - AnlsGrouping_04_Race_7
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        - AnlsGrouping_04_Race_8
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        - AnlsGrouping_04_Race_9
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        - AnlsGrouping_04_Race_1
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        - AnlsGrouping_04_Race_2
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        - AnlsGrouping_04_Race_3
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        - AnlsGrouping_04_Race_4
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        - AnlsGrouping_04_Race_5
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        - AnlsGrouping_04_Race_6
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        - AnlsGrouping_04_Race_7
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        - AnlsGrouping_04_Race_8
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        - AnlsGrouping_04_Race_9
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        - AnlsGrouping_04_Race_1
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        - AnlsGrouping_04_Race_2
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        - AnlsGrouping_04_Race_3
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        - AnlsGrouping_04_Race_4
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        - AnlsGrouping_04_Race_5
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        - AnlsGrouping_04_Race_6
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        - AnlsGrouping_04_Race_7
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        - AnlsGrouping_04_Race_8
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        - AnlsGrouping_04_Race_9
+        rawValue: '1'
+        formattedValue: ( XX.X)
+    label: Grouped summary of subjects
+    description: Descriptive summary statistics of subject occurrence for grouped
+      values
+- id: An03.6_Height_ByTrt
+  version: 1
+  analysisSetRef: AnalysisSet_02_SAF
+  orderedGroupings:
+  - order: 1
+    groupingRef: AnlsGrouping_02_Trt
+  dataset: ADSL
+  variable: HEIGHTBL
+  method:
+    name: Summary by group of a continuous variable
+    id: Mth03.6_Height_ByTrt
+    operations:
+    - name: Count of non-missing values
+      id: Mth03.6_Height_ByTrt_n
+      label: n
+      resultPattern: XX
+      results:
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        rawValue: '1'
+        formattedValue: XX
+    - name: Mean
+      id: Mth03.6_Height_ByTrt_Mean
+      label: Mean
+      resultPattern: XX.X
+      results:
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        rawValue: '1'
+        formattedValue: XX.X
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        rawValue: '1'
+        formattedValue: XX.X
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        rawValue: '1'
+        formattedValue: XX.X
+    - name: Standard deviation
+      id: Mth03.6_Height_ByTrt_SD
+      label: SD
+      resultPattern: XX.XX
+      results:
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        rawValue: '1'
+        formattedValue: XX.XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        rawValue: '1'
+        formattedValue: XX.XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        rawValue: '1'
+        formattedValue: XX.XX
+    - name: Median
+      id: Mth03.6_Height_ByTrt_Median
+      label: Median
+      resultPattern: XX.X
+      results:
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        rawValue: '1'
+        formattedValue: XX.X
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        rawValue: '1'
+        formattedValue: XX.X
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        rawValue: '1'
+        formattedValue: XX.X
+    - name: First quartile
+      id: Mth03.6_Height_ByTrt_Q1
+      label: Q1
+      resultPattern: XX.X
+      results:
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        rawValue: '1'
+        formattedValue: XX.X
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        rawValue: '1'
+        formattedValue: XX.X
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        rawValue: '1'
+        formattedValue: XX.X
+    - name: Third quartile
+      id: Mth03.6_Height_ByTrt_Q3
+      label: Q3
+      resultPattern: XX.X
+      results:
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        rawValue: '1'
+        formattedValue: XX.X
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        rawValue: '1'
+        formattedValue: XX.X
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        rawValue: '1'
+        formattedValue: XX.X
+    - name: Minimum
+      id: Mth03.6_Height_ByTrt_Min
+      label: Min
+      resultPattern: XX
+      results:
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        rawValue: '1'
+        formattedValue: XX
+    - name: Maximum
+      id: Mth03.6_Height_ByTrt_Max
+      label: Max
+      resultPattern: XX
+      results:
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        rawValue: '1'
+        formattedValue: XX
+    label: Grouped summary of continuous variable
+    description: Descriptive summary statistics across groups for a continuous variable
+- id: An07.1_AnyAE_ByTrt
+  version: 1
+  analysisSetRef: AnalysisSet_02_SAF
+  orderedGroupings:
+  - order: 1
+    groupingRef: AnlsGrouping_02_Trt
+  dataSubsetRef: Dss01_TrtEm
+  dataset: ADAE
+  variable: USUBJID
+  method:
+    name: Summary by group of subjects
+    id: Mth07.1_AnyAE_ByTrt
+    operations:
+    - name: Count of subjects
+      id: Mth07.1_AnyAE_ByTrt_n
+      label: n
+      resultPattern: XX
+      results:
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        rawValue: '1'
+        formattedValue: XX
+    - name: Percent of subjects
+      id: Mth07.1_AnyAE_ByTrt_%
+      label: '%'
+      referencedResultRelationships:
+      - referencedResultRole: NUMERATOR
+        operationRef: Mth07.1_AnyAE_ByTrt_n
+      - referencedResultRole: DENOMINATOR
+        operationRef: Mth01.5_SAF_ByTrt_n
+      resultPattern: ( XX.X)
+      results:
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        rawValue: '1'
+        formattedValue: ( XX.X)
+    label: Grouped summary of subjects
+    description: Descriptive summary statistics of subject occurrence for grouped
+      values
+- id: An07.2_Soc_ByTrt
+  version: 1
+  analysisSetRef: AnalysisSet_02_SAF
+  orderedGroupings:
+  - order: 1
+    groupingRef: AnlsGrouping_02_Trt
+  - order: 2
+    dataGrouping:
+      id: AnlsGrouping_06_Soc
+      dataDriven: true
+      label: System Organ Class
+      groupingVariable: AESOC
+      groups:
+      - id: AnlsGrouping_06_Soc_1
+        order: 1
+        label: <SOC 1>
+      - id: AnlsGrouping_06_Soc_2
+        order: 2
+        label: <SOC 2>
+  dataSubsetRef: Dss01_TrtEm
+  dataset: ADAE
+  variable: USUBJID
+  method:
+    name: Summary by group of subjects
+    id: Mth07.2_Soc_ByTrt
+    operations:
+    - name: Count of subjects
+      id: Mth07.2_Soc_ByTrt_n
+      label: n
+      resultPattern: XX
+      results:
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        - AnlsGrouping_06_Soc_1
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        - AnlsGrouping_06_Soc_2
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        - AnlsGrouping_06_Soc_1
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        - AnlsGrouping_06_Soc_2
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        - AnlsGrouping_06_Soc_1
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        - AnlsGrouping_06_Soc_2
+        rawValue: '1'
+        formattedValue: XX
+    - name: Percent of subjects
+      id: Mth07.2_Soc_ByTrt_%
+      label: '%'
+      referencedResultRelationships:
+      - referencedResultRole: NUMERATOR
+        operationRef: Mth07.2_Soc_ByTrt_n
+      - referencedResultRole: DENOMINATOR
+        operationRef: Mth01.5_SAF_ByTrt_n
+      resultPattern: ( XX.X)
+      results:
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        - AnlsGrouping_06_Soc_1
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        - AnlsGrouping_06_Soc_2
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        - AnlsGrouping_06_Soc_1
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        - AnlsGrouping_06_Soc_2
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        - AnlsGrouping_06_Soc_1
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        - AnlsGrouping_06_Soc_2
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_06_Soc_1
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_06_Soc_2
+        rawValue: '1'
+        formattedValue: ( XX.X)
+    label: Grouped summary of subjects
+    description: Descriptive summary statistics of subject occurrence for grouped
+      values
+- id: An07.3_SocPt_ByTrt
+  version: 1
+  analysisSetRef: AnalysisSet_02_SAF
+  orderedGroupings:
+  - order: 1
+    groupingRef: AnlsGrouping_02_Trt
+  - order: 2
+    groupingRef: AnlsGrouping_06_Soc
+  - order: 3
+    dataGrouping:
+      id: AnlsGrouping_07_Pt
+      dataDriven: true
+      label: Preferred Term
+      groupingVariable: AEDECOD
+      groups:
+      - id: AnlsGrouping_07_Pt_1
+        order: 1
+        label: <Preferred Term 1>
+      - id: AnlsGrouping_07_Pt_2
+        order: 2
+        label: '...'
+      - id: AnlsGrouping_07_Pt_3
+        order: 3
+        label: <Preferred Term n>
+  dataSubsetRef: Dss01_TrtEm
+  dataset: ADAE
+  variable: USUBJID
+  method:
+    name: Summary by group of subjects
+    id: Mth07.3_SocPt_ByTrt
+    operations:
+    - name: Count of subjects
+      id: Mth07.3_SocPt_ByTrt_n
+      label: n
+      resultPattern: XX
+      results:
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        - AnlsGrouping_06_Soc_1
+        - AnlsGrouping_07_Pt_1
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        - AnlsGrouping_06_Soc_1
+        - AnlsGrouping_07_Pt_2
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        - AnlsGrouping_06_Soc_1
+        - AnlsGrouping_07_Pt_3
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        - AnlsGrouping_06_Soc_2
+        - AnlsGrouping_07_Pt_1
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        - AnlsGrouping_06_Soc_2
+        - AnlsGrouping_07_Pt_2
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        - AnlsGrouping_06_Soc_2
+        - AnlsGrouping_07_Pt_3
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        - AnlsGrouping_06_Soc_1
+        - AnlsGrouping_07_Pt_1
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        - AnlsGrouping_06_Soc_1
+        - AnlsGrouping_07_Pt_2
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        - AnlsGrouping_06_Soc_1
+        - AnlsGrouping_07_Pt_3
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        - AnlsGrouping_06_Soc_2
+        - AnlsGrouping_07_Pt_1
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        - AnlsGrouping_06_Soc_2
+        - AnlsGrouping_07_Pt_2
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        - AnlsGrouping_06_Soc_2
+        - AnlsGrouping_07_Pt_3
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        - AnlsGrouping_06_Soc_1
+        - AnlsGrouping_07_Pt_1
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        - AnlsGrouping_06_Soc_1
+        - AnlsGrouping_07_Pt_2
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        - AnlsGrouping_06_Soc_1
+        - AnlsGrouping_07_Pt_3
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        - AnlsGrouping_06_Soc_2
+        - AnlsGrouping_07_Pt_1
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        - AnlsGrouping_06_Soc_2
+        - AnlsGrouping_07_Pt_2
+        rawValue: '1'
+        formattedValue: XX
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        - AnlsGrouping_06_Soc_2
+        - AnlsGrouping_07_Pt_3
+        rawValue: '1'
+        formattedValue: XX
+    - name: Percent of subjects
+      id: Mth07.3_SocPt_ByTrt_%
+      label: '%'
+      referencedResultRelationships:
+      - referencedResultRole: NUMERATOR
+        operationRef: Mth07.3_SocPt_ByTrt_n
+      - referencedResultRole: DENOMINATOR
+        operationRef: Mth01.5_SAF_ByTrt_n
+      resultPattern: ( XX.X)
+      results:
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        - AnlsGrouping_06_Soc_1
+        - AnlsGrouping_07_Pt_1
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        - AnlsGrouping_06_Soc_1
+        - AnlsGrouping_07_Pt_2
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        - AnlsGrouping_06_Soc_1
+        - AnlsGrouping_07_Pt_3
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        - AnlsGrouping_06_Soc_2
+        - AnlsGrouping_07_Pt_1
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        - AnlsGrouping_06_Soc_2
+        - AnlsGrouping_07_Pt_2
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_1
+        - AnlsGrouping_06_Soc_2
+        - AnlsGrouping_07_Pt_3
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        - AnlsGrouping_06_Soc_1
+        - AnlsGrouping_07_Pt_1
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        - AnlsGrouping_06_Soc_1
+        - AnlsGrouping_07_Pt_2
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        - AnlsGrouping_06_Soc_1
+        - AnlsGrouping_07_Pt_3
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        - AnlsGrouping_06_Soc_2
+        - AnlsGrouping_07_Pt_1
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        - AnlsGrouping_06_Soc_2
+        - AnlsGrouping_07_Pt_2
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_2
+        - AnlsGrouping_06_Soc_2
+        - AnlsGrouping_07_Pt_3
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        - AnlsGrouping_06_Soc_1
+        - AnlsGrouping_07_Pt_1
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        - AnlsGrouping_06_Soc_1
+        - AnlsGrouping_07_Pt_2
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        - AnlsGrouping_06_Soc_1
+        - AnlsGrouping_07_Pt_3
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        - AnlsGrouping_06_Soc_2
+        - AnlsGrouping_07_Pt_1
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        - AnlsGrouping_06_Soc_2
+        - AnlsGrouping_07_Pt_2
+        rawValue: '1'
+        formattedValue: ( XX.X)
+      - groupRefs:
+        - AnlsGrouping_02_Trt_3
+        - AnlsGrouping_06_Soc_2
+        - AnlsGrouping_07_Pt_3
+        rawValue: '1'
+        formattedValue: ( XX.X)
+    label: Grouped summary of subjects
+    description: Descriptive summary statistics of subject occurrence for grouped
+      values
+outputs:
+- id: Out14.1.1
+  version: 1
+  fileSpecifications:
+  - name: Demog_Table_Shell_PHUSE_Workshop
+    fileType: rtf
+    location: .
+  - name: Demog_Table_Shell_PHUSE_Workshop
+    fileType: pdf
+    location: .
+  outputDisplays:
+  - order: 1
+    display:
+      name: Demog
+      id: Disp14.1.1
+      version: 1
+      displayTitle: Summary of Demographics
+      displaySections:
+      - sectionType: Title
+        subSections:
+        - id: Disp14.1.1_Title_1
+          order: 1
+          text: Table 14.1.1
+        - id: Disp14.1.1_Title_2
+          order: 2
+          text: Summary of Demographics
+        - id: Disp14.1.1_Title_3
+          order: 3
+          text: Safety Population
+      - sectionType: Footnote
+        subSections:
+        - id: Disp14.1.1_Fnote_1
+          order: 1
+          text: 'Source dataset: adsl, Generated on: DDMONYYYY:HH:MM'
+        - id: Disp14.1.1_Fnote_2
+          order: 2
+          text: 'Program: <pid>.sas, Output: <pid><oid>.rtf, Generated on: DDMONYYYY:HH:MM'
+      - sectionType: Rowlabel Header
+        subSections:
+        - id: Disp14.1.1_RLbHd_1
+          order: 1
+          text: Characteristics
+- id: Out14.3.1.1
+  version: 1
+  fileSpecifications:
+  - name: AE_SOC_PT_Table_Shell_PHUSE_Workshop
+    fileType: rtf
+    location: .
+  - name: AE_SOC_PT_Table_Shell_PHUSE_Workshop
+    fileType: pdf
+    location: .
+  outputDisplays:
+  - order: 1
+    display:
+      name: AE_SOC_PT
+      id: Disp14.3.1.1
+      version: 1
+      displayTitle: Summary of TEAE by System Organ Class and Preferred Term
+      displaySections:
+      - sectionType: Title
+        subSections:
+        - id: Disp14.3.1.1_Title_1
+          order: 1
+          text: Table 14.3.1.1
+        - id: Disp14.3.1.1_Title_2
+          order: 2
+          text: Summary of TEAE by System Organ Class and Preferred Term
+        - id: Disp14.3.1.1_Title_3
+          order: 3
+          text: Safety Population
+      - sectionType: Abbreviation
+        subSections:
+        - id: Disp14.3.1.1_Abbrv_1
+          order: 1
+          text: 'Notes: TEAE=Treatment-Emergent Adverse Events.'
+      - sectionType: Legend
+        subSections:
+        - id: Disp14.3.1.1_Legnd_1
+          order: 1
+          text: '       Subjects are counted once within each system organ class and
+            preferred term.'
+        - id: Disp14.3.1.1_Legnd_2
+          order: 2
+          text: '[a] All investigators adverse events were coded using MedDRA version
+            xx.x.'
+      - sectionType: Footnote
+        subSections:
+        - id: Disp14.3.1.1_Fnote_1
+          order: 1
+          text: 'Source dataset: adae, Generated on: DDMONYYYY:HH:MM'
+        - id: Disp14.3.1.1_Fnote_2
+          order: 2
+          text: 'Program: <pid>.sas, Output: <pid><oid>.rtf, Generated on: DDMONYYYY:HH:MM'
+      - sectionType: Rowlabel Header
+        subSections:
+        - id: Disp14.3.1.1_RLbHd_1
+          order: 1
+          text: System Organ Class
+        - id: Disp14.3.1.1_RLbHd_2
+          order: 2
+          text: '    Preferred Term [a], n (%)'
