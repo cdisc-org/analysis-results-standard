@@ -418,22 +418,22 @@
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_1"
                 ],
-                "rawValue": "1",
-                "formattedValue": "(N=XX)"
+                "rawValue": "86",
+                "formattedValue": "(N=86)"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_2"
                 ],
-                "rawValue": "1",
-                "formattedValue": "(N=XX)"
+                "rawValue": "84",
+                "formattedValue": "(N=84)"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_3"
                 ],
-                "rawValue": "1",
-                "formattedValue": "(N=XX)"
+                "rawValue": "84",
+                "formattedValue": "(N=84)"
               }
             ]
           }
@@ -468,22 +468,22 @@
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_1"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "86",
+                "formattedValue": "86"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_2"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "84",
+                "formattedValue": "84"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_3"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "84",
+                "formattedValue": "84"
               }
             ]
           },
@@ -497,22 +497,22 @@
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_1"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX.X"
+                "rawValue": "75.2093023",
+                "formattedValue": "75.2"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_2"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX.X"
+                "rawValue": "75.6666667",
+                "formattedValue": "75.7"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_3"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX.X"
+                "rawValue": "74.3809524",
+                "formattedValue": "74.4"
               }
             ]
           },
@@ -526,22 +526,22 @@
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_1"
                 ],
-                "rawValue": "1",
-                "formattedValue": "(XX.XX)"
+                "rawValue": "8.5901671",
+                "formattedValue": "( 8.59)"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_2"
                 ],
-                "rawValue": "1",
-                "formattedValue": "(XX.XX)"
+                "rawValue": "8.2860506",
+                "formattedValue": "( 8.29)"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_3"
                 ],
-                "rawValue": "1",
-                "formattedValue": "(XX.XX)"
+                "rawValue": "7.8860938",
+                "formattedValue": "( 7.89)"
               }
             ]
           },
@@ -555,22 +555,22 @@
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_1"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX.X"
+                "rawValue": "76",
+                "formattedValue": "76.0"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_2"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX.X"
+                "rawValue": "77.5",
+                "formattedValue": "77.5"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_3"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX.X"
+                "rawValue": "76",
+                "formattedValue": "76.0"
               }
             ]
           },
@@ -584,22 +584,22 @@
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_1"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX.X"
+                "rawValue": "69",
+                "formattedValue": "69.0"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_2"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX.X"
+                "rawValue": "71",
+                "formattedValue": "71.0"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_3"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX.X"
+                "rawValue": "70",
+                "formattedValue": "70.0"
               }
             ]
           },
@@ -613,22 +613,22 @@
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_1"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX.X"
+                "rawValue": "82",
+                "formattedValue": "82.0"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_2"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX.X"
+                "rawValue": "82",
+                "formattedValue": "82.0"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_3"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX.X"
+                "rawValue": "80",
+                "formattedValue": "80.0"
               }
             ]
           },
@@ -642,22 +642,22 @@
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_1"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "52",
+                "formattedValue": "52"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_2"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "51",
+                "formattedValue": "51"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_3"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "56",
+                "formattedValue": "56"
               }
             ]
           },
@@ -671,22 +671,22 @@
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_1"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "89",
+                "formattedValue": "89"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_2"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "88",
+                "formattedValue": "88"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_3"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "88",
+                "formattedValue": "88"
               }
             ]
           }
@@ -726,48 +726,48 @@
                   "AnlsGrouping_02_Trt_1",
                   "AnlsGrouping_03_AgeGp_1"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "14",
+                "formattedValue": "14"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_1",
                   "AnlsGrouping_03_AgeGp_2"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "72",
+                "formattedValue": "72"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_2",
                   "AnlsGrouping_03_AgeGp_1"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "8",
+                "formattedValue": "8"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_2",
                   "AnlsGrouping_03_AgeGp_2"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "76",
+                "formattedValue": "76"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_3",
                   "AnlsGrouping_03_AgeGp_1"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "11",
+                "formattedValue": "11"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_3",
                   "AnlsGrouping_03_AgeGp_2"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "73",
+                "formattedValue": "73"
               }
             ]
           },
@@ -792,48 +792,48 @@
                   "AnlsGrouping_02_Trt_1",
                   "AnlsGrouping_03_AgeGp_1"
                 ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
+                "rawValue": "16.27906976744186",
+                "formattedValue": "( 16.3)"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_1",
                   "AnlsGrouping_03_AgeGp_2"
                 ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
+                "rawValue": "83.72093023255815",
+                "formattedValue": "( 83.7)"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_2",
                   "AnlsGrouping_03_AgeGp_1"
                 ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
+                "rawValue": "9.523809523809524",
+                "formattedValue": "(  9.5)"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_2",
                   "AnlsGrouping_03_AgeGp_2"
                 ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
+                "rawValue": "90.47619047619048",
+                "formattedValue": "( 90.5)"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_3",
                   "AnlsGrouping_03_AgeGp_1"
                 ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
+                "rawValue": "13.095238095238095",
+                "formattedValue": "( 13.1)"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_3",
                   "AnlsGrouping_03_AgeGp_2"
                 ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
+                "rawValue": "86.9047619047619",
+                "formattedValue": "( 86.9)"
               }
             ]
           }
@@ -873,48 +873,48 @@
                   "AnlsGrouping_02_Trt_1",
                   "AnlsGrouping_01_Sex_1"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "33",
+                "formattedValue": "33"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_1",
                   "AnlsGrouping_01_Sex_2"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "53",
+                "formattedValue": "53"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_2",
                   "AnlsGrouping_01_Sex_1"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "34",
+                "formattedValue": "34"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_2",
                   "AnlsGrouping_01_Sex_2"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "50",
+                "formattedValue": "50"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_3",
                   "AnlsGrouping_01_Sex_1"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "44",
+                "formattedValue": "44"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_3",
                   "AnlsGrouping_01_Sex_2"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "40",
+                "formattedValue": "40"
               }
             ]
           },
@@ -939,48 +939,48 @@
                   "AnlsGrouping_02_Trt_1",
                   "AnlsGrouping_01_Sex_1"
                 ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
+                "rawValue": "38.372093023255815",
+                "formattedValue": "( 38.4)"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_1",
                   "AnlsGrouping_01_Sex_2"
                 ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
+                "rawValue": "61.627906976744185",
+                "formattedValue": "( 61.6)"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_2",
                   "AnlsGrouping_01_Sex_1"
                 ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
+                "rawValue": "40.476190476190474",
+                "formattedValue": "( 40.5)"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_2",
                   "AnlsGrouping_01_Sex_2"
                 ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
+                "rawValue": "59.523809523809526",
+                "formattedValue": "( 59.5)"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_3",
                   "AnlsGrouping_01_Sex_1"
                 ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
+                "rawValue": "52.38095238095238",
+                "formattedValue": "( 52.4)"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_3",
                   "AnlsGrouping_01_Sex_2"
                 ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
+                "rawValue": "47.61904761904762",
+                "formattedValue": "( 47.6)"
               }
             ]
           }
@@ -1020,48 +1020,48 @@
                   "AnlsGrouping_02_Trt_1",
                   "AnlsGrouping_05_Ethnic_1"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "3",
+                "formattedValue": "3"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_1",
                   "AnlsGrouping_05_Ethnic_2"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "83",
+                "formattedValue": "83"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_2",
                   "AnlsGrouping_05_Ethnic_1"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "3",
+                "formattedValue": "3"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_2",
                   "AnlsGrouping_05_Ethnic_2"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "81",
+                "formattedValue": "81"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_3",
                   "AnlsGrouping_05_Ethnic_1"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "6",
+                "formattedValue": "6"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_3",
                   "AnlsGrouping_05_Ethnic_2"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "78",
+                "formattedValue": "78"
               }
             ]
           },
@@ -1086,48 +1086,48 @@
                   "AnlsGrouping_02_Trt_1",
                   "AnlsGrouping_05_Ethnic_1"
                 ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
+                "rawValue": "3.488372093023256",
+                "formattedValue": "(  3.5)"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_1",
                   "AnlsGrouping_05_Ethnic_2"
                 ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
+                "rawValue": "96.51162790697674",
+                "formattedValue": "( 96.5)"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_2",
                   "AnlsGrouping_05_Ethnic_1"
                 ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
+                "rawValue": "3.5714285714285716",
+                "formattedValue": "(  3.6)"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_2",
                   "AnlsGrouping_05_Ethnic_2"
                 ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
+                "rawValue": "96.42857142857143",
+                "formattedValue": "( 96.4)"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_3",
                   "AnlsGrouping_05_Ethnic_1"
                 ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
+                "rawValue": "7.142857142857143",
+                "formattedValue": "(  7.1)"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_3",
                   "AnlsGrouping_05_Ethnic_2"
                 ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
+                "rawValue": "92.85714285714286",
+                "formattedValue": "( 92.9)"
               }
             ]
           }
@@ -1167,72 +1167,72 @@
                   "AnlsGrouping_02_Trt_1",
                   "AnlsGrouping_04_Race_1"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "0",
+                "formattedValue": "0"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_1",
                   "AnlsGrouping_04_Race_2"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "0",
+                "formattedValue": "0"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_1",
                   "AnlsGrouping_04_Race_3"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "8",
+                "formattedValue": "8"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_1",
                   "AnlsGrouping_04_Race_4"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "0",
+                "formattedValue": "0"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_1",
                   "AnlsGrouping_04_Race_5"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "78",
+                "formattedValue": "78"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_1",
                   "AnlsGrouping_04_Race_6"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "0",
+                "formattedValue": "0"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_1",
                   "AnlsGrouping_04_Race_7"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "0",
+                "formattedValue": "0"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_1",
                   "AnlsGrouping_04_Race_8"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "0",
+                "formattedValue": "0"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_1",
                   "AnlsGrouping_04_Race_9"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "0",
+                "formattedValue": "0"
               },
               {
                 "groupRefs": [
@@ -1240,143 +1240,143 @@
                   "AnlsGrouping_04_Race_1"
                 ],
                 "rawValue": "1",
-                "formattedValue": "XX"
+                "formattedValue": "1"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_2",
                   "AnlsGrouping_04_Race_2"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "0",
+                "formattedValue": "0"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_2",
                   "AnlsGrouping_04_Race_3"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "9",
+                "formattedValue": "9"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_2",
                   "AnlsGrouping_04_Race_4"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "0",
+                "formattedValue": "0"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_2",
                   "AnlsGrouping_04_Race_5"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "74",
+                "formattedValue": "74"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_2",
                   "AnlsGrouping_04_Race_6"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "0",
+                "formattedValue": "0"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_2",
                   "AnlsGrouping_04_Race_7"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "0",
+                "formattedValue": "0"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_2",
                   "AnlsGrouping_04_Race_8"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "0",
+                "formattedValue": "0"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_2",
                   "AnlsGrouping_04_Race_9"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "0",
+                "formattedValue": "0"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_3",
                   "AnlsGrouping_04_Race_1"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "0",
+                "formattedValue": "0"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_3",
                   "AnlsGrouping_04_Race_2"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "0",
+                "formattedValue": "0"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_3",
                   "AnlsGrouping_04_Race_3"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "6",
+                "formattedValue": "6"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_3",
                   "AnlsGrouping_04_Race_4"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "0",
+                "formattedValue": "0"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_3",
                   "AnlsGrouping_04_Race_5"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "78",
+                "formattedValue": "78"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_3",
                   "AnlsGrouping_04_Race_6"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "0",
+                "formattedValue": "0"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_3",
                   "AnlsGrouping_04_Race_7"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "0",
+                "formattedValue": "0"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_3",
                   "AnlsGrouping_04_Race_8"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "0",
+                "formattedValue": "0"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_3",
                   "AnlsGrouping_04_Race_9"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "0",
+                "formattedValue": "0"
               }
             ]
           },
@@ -1401,216 +1401,216 @@
                   "AnlsGrouping_02_Trt_1",
                   "AnlsGrouping_04_Race_1"
                 ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
+                "rawValue": "0",
+                "formattedValue": "(  0.0)"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_1",
                   "AnlsGrouping_04_Race_2"
                 ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
+                "rawValue": "0",
+                "formattedValue": "(  0.0)"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_1",
                   "AnlsGrouping_04_Race_3"
                 ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
+                "rawValue": "9.30232558139535",
+                "formattedValue": "(  9.3)"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_1",
                   "AnlsGrouping_04_Race_4"
                 ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
+                "rawValue": "0",
+                "formattedValue": "(  0.0)"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_1",
                   "AnlsGrouping_04_Race_5"
                 ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
+                "rawValue": "90.69767441860465",
+                "formattedValue": "( 90.7)"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_1",
                   "AnlsGrouping_04_Race_6"
                 ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
+                "rawValue": "0",
+                "formattedValue": "(  0.0)"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_1",
                   "AnlsGrouping_04_Race_7"
                 ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
+                "rawValue": "0",
+                "formattedValue": "(  0.0)"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_1",
                   "AnlsGrouping_04_Race_8"
                 ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
+                "rawValue": "0",
+                "formattedValue": "(  0.0)"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_1",
                   "AnlsGrouping_04_Race_9"
                 ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
+                "rawValue": "0",
+                "formattedValue": "(  0.0)"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_2",
                   "AnlsGrouping_04_Race_1"
                 ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
+                "rawValue": "1.1904761904761905",
+                "formattedValue": "(  1.2)"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_2",
                   "AnlsGrouping_04_Race_2"
                 ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
+                "rawValue": "0",
+                "formattedValue": "(  0.0)"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_2",
                   "AnlsGrouping_04_Race_3"
                 ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
+                "rawValue": "10.714285714285714",
+                "formattedValue": "( 10.7)"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_2",
                   "AnlsGrouping_04_Race_4"
                 ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
+                "rawValue": "0",
+                "formattedValue": "(  0.0)"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_2",
                   "AnlsGrouping_04_Race_5"
                 ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
+                "rawValue": "88.0952380952381",
+                "formattedValue": "( 88.1)"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_2",
                   "AnlsGrouping_04_Race_6"
                 ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
+                "rawValue": "0",
+                "formattedValue": "(  0.0)"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_2",
                   "AnlsGrouping_04_Race_7"
                 ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
+                "rawValue": "0",
+                "formattedValue": "(  0.0)"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_2",
                   "AnlsGrouping_04_Race_8"
                 ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
+                "rawValue": "0",
+                "formattedValue": "(  0.0)"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_2",
                   "AnlsGrouping_04_Race_9"
                 ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
+                "rawValue": "0",
+                "formattedValue": "(  0.0)"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_3",
                   "AnlsGrouping_04_Race_1"
                 ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
+                "rawValue": "0",
+                "formattedValue": "(  0.0)"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_3",
                   "AnlsGrouping_04_Race_2"
                 ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
+                "rawValue": "0",
+                "formattedValue": "(  0.0)"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_3",
                   "AnlsGrouping_04_Race_3"
                 ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
+                "rawValue": "7.142857142857143",
+                "formattedValue": "(  7.1)"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_3",
                   "AnlsGrouping_04_Race_4"
                 ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
+                "rawValue": "0",
+                "formattedValue": "(  0.0)"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_3",
                   "AnlsGrouping_04_Race_5"
                 ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
+                "rawValue": "92.85714285714286",
+                "formattedValue": "( 92.9)"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_3",
                   "AnlsGrouping_04_Race_6"
                 ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
+                "rawValue": "0",
+                "formattedValue": "(  0.0)"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_3",
                   "AnlsGrouping_04_Race_7"
                 ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
+                "rawValue": "0",
+                "formattedValue": "(  0.0)"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_3",
                   "AnlsGrouping_04_Race_8"
                 ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
+                "rawValue": "0",
+                "formattedValue": "(  0.0)"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_3",
                   "AnlsGrouping_04_Race_9"
                 ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
+                "rawValue": "0",
+                "formattedValue": "(  0.0)"
               }
             ]
           }
@@ -1645,22 +1645,22 @@
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_1"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "86",
+                "formattedValue": "86"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_2"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "84",
+                "formattedValue": "84"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_3"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "84",
+                "formattedValue": "84"
               }
             ]
           },
@@ -1674,22 +1674,22 @@
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_1"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX.X"
+                "rawValue": "162.5732558",
+                "formattedValue": "162.6"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_2"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX.X"
+                "rawValue": "165.8202381",
+                "formattedValue": "165.8"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_3"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX.X"
+                "rawValue": "163.4333333",
+                "formattedValue": "163.4"
               }
             ]
           },
@@ -1697,28 +1697,28 @@
             "name": "Standard deviation",
             "id": "Mth03.6_Height_ByTrt_SD",
             "label": "SD",
-            "resultPattern": "XX.XX",
+            "resultPattern": "(XX.XX)",
             "results": [
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_1"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX.XX"
+                "rawValue": "11.5223611",
+                "formattedValue": "(11.52)"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_2"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX.XX"
+                "rawValue": "10.41924",
+                "formattedValue": "(10.42)"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_3"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX.XX"
+                "rawValue": "10.1313516",
+                "formattedValue": "(10.13)"
               }
             ]
           },
@@ -1732,22 +1732,22 @@
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_1"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX.X"
+                "rawValue": "162.6",
+                "formattedValue": "162.6"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_2"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX.X"
+                "rawValue": "162.2",
+                "formattedValue": "162.2"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_3"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX.X"
+                "rawValue": "165.1",
+                "formattedValue": "165.1"
               }
             ]
           },
@@ -1761,22 +1761,22 @@
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_1"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX.X"
+                "rawValue": "153.7",
+                "formattedValue": "153.7"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_2"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX.X"
+                "rawValue": "157.5",
+                "formattedValue": "157.5"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_3"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX.X"
+                "rawValue": "157.5",
+                "formattedValue": "157.5"
               }
             ]
           },
@@ -1790,22 +1790,22 @@
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_1"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX.X"
+                "rawValue": "171.5",
+                "formattedValue": "171.5"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_2"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX.X"
+                "rawValue": "170.2",
+                "formattedValue": "170.2"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_3"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX.X"
+                "rawValue": "172.85",
+                "formattedValue": "172.9"
               }
             ]
           },
@@ -1819,22 +1819,22 @@
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_1"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "137.2",
+                "formattedValue": "137.2"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_2"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "135.9",
+                "formattedValue": "135.9"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_3"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "146.1",
+                "formattedValue": "146.1"
               }
             ]
           },
@@ -1848,22 +1848,22 @@
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_1"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "185.4",
+                "formattedValue": "185.4"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_2"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "195.6",
+                "formattedValue": "195.6"
               },
               {
                 "groupRefs": [
                   "AnlsGrouping_02_Trt_3"
                 ],
-                "rawValue": "1",
-                "formattedValue": "XX"
+                "rawValue": "190.5",
+                "formattedValue": "190.5"
               }
             ]
           }
@@ -1893,30 +1893,7 @@
             "name": "Count of subjects",
             "id": "Mth07.1_AnyAE_ByTrt_n",
             "label": "n",
-            "resultPattern": "XX",
-            "results": [
-              {
-                "groupRefs": [
-                  "AnlsGrouping_02_Trt_1"
-                ],
-                "rawValue": "1",
-                "formattedValue": "XX"
-              },
-              {
-                "groupRefs": [
-                  "AnlsGrouping_02_Trt_2"
-                ],
-                "rawValue": "1",
-                "formattedValue": "XX"
-              },
-              {
-                "groupRefs": [
-                  "AnlsGrouping_02_Trt_3"
-                ],
-                "rawValue": "1",
-                "formattedValue": "XX"
-              }
-            ]
+            "resultPattern": "XX"
           },
           {
             "name": "Percent of subjects",
@@ -1932,30 +1909,7 @@
                 "operationRef": "Mth01.5_SAF_ByTrt_n"
               }
             ],
-            "resultPattern": "( XX.X)",
-            "results": [
-              {
-                "groupRefs": [
-                  "AnlsGrouping_02_Trt_1"
-                ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
-              },
-              {
-                "groupRefs": [
-                  "AnlsGrouping_02_Trt_2"
-                ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
-              },
-              {
-                "groupRefs": [
-                  "AnlsGrouping_02_Trt_3"
-                ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
-              }
-            ]
+            "resultPattern": "( XX.X)"
           }
         ],
         "label": "Grouped summary of subjects",
@@ -1977,19 +1931,7 @@
             "id": "AnlsGrouping_06_Soc",
             "dataDriven": true,
             "label": "System Organ Class",
-            "groupingVariable": "AESOC",
-            "groups": [
-              {
-                "id": "AnlsGrouping_06_Soc_1",
-                "order": 1,
-                "label": "<SOC 1>"
-              },
-              {
-                "id": "AnlsGrouping_06_Soc_2",
-                "order": 2,
-                "label": "<SOC 2>"
-              }
-            ]
+            "groupingVariable": "AESOC"
           }
         }
       ],
@@ -2004,57 +1946,7 @@
             "name": "Count of subjects",
             "id": "Mth07.2_Soc_ByTrt_n",
             "label": "n",
-            "resultPattern": "XX",
-            "results": [
-              {
-                "groupRefs": [
-                  "AnlsGrouping_02_Trt_1",
-                  "AnlsGrouping_06_Soc_1"
-                ],
-                "rawValue": "1",
-                "formattedValue": "XX"
-              },
-              {
-                "groupRefs": [
-                  "AnlsGrouping_02_Trt_1",
-                  "AnlsGrouping_06_Soc_2"
-                ],
-                "rawValue": "1",
-                "formattedValue": "XX"
-              },
-              {
-                "groupRefs": [
-                  "AnlsGrouping_02_Trt_2",
-                  "AnlsGrouping_06_Soc_1"
-                ],
-                "rawValue": "1",
-                "formattedValue": "XX"
-              },
-              {
-                "groupRefs": [
-                  "AnlsGrouping_02_Trt_2",
-                  "AnlsGrouping_06_Soc_2"
-                ],
-                "rawValue": "1",
-                "formattedValue": "XX"
-              },
-              {
-                "groupRefs": [
-                  "AnlsGrouping_02_Trt_3",
-                  "AnlsGrouping_06_Soc_1"
-                ],
-                "rawValue": "1",
-                "formattedValue": "XX"
-              },
-              {
-                "groupRefs": [
-                  "AnlsGrouping_02_Trt_3",
-                  "AnlsGrouping_06_Soc_2"
-                ],
-                "rawValue": "1",
-                "formattedValue": "XX"
-              }
-            ]
+            "resultPattern": "XX"
           },
           {
             "name": "Percent of subjects",
@@ -2070,71 +1962,7 @@
                 "operationRef": "Mth01.5_SAF_ByTrt_n"
               }
             ],
-            "resultPattern": "( XX.X)",
-            "results": [
-              {
-                "groupRefs": [
-                  "AnlsGrouping_02_Trt_1",
-                  "AnlsGrouping_06_Soc_1"
-                ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
-              },
-              {
-                "groupRefs": [
-                  "AnlsGrouping_02_Trt_1",
-                  "AnlsGrouping_06_Soc_2"
-                ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
-              },
-              {
-                "groupRefs": [
-                  "AnlsGrouping_02_Trt_2",
-                  "AnlsGrouping_06_Soc_1"
-                ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
-              },
-              {
-                "groupRefs": [
-                  "AnlsGrouping_02_Trt_2",
-                  "AnlsGrouping_06_Soc_2"
-                ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
-              },
-              {
-                "groupRefs": [
-                  "AnlsGrouping_02_Trt_3",
-                  "AnlsGrouping_06_Soc_1"
-                ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
-              },
-              {
-                "groupRefs": [
-                  "AnlsGrouping_02_Trt_3",
-                  "AnlsGrouping_06_Soc_2"
-                ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
-              },
-              {
-                "groupRefs": [
-                  "AnlsGrouping_06_Soc_1"
-                ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
-              },
-              {
-                "groupRefs": [
-                  "AnlsGrouping_06_Soc_2"
-                ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
-              }
-            ]
+            "resultPattern": "( XX.X)"
           }
         ],
         "label": "Grouped summary of subjects",
@@ -2160,24 +1988,7 @@
             "id": "AnlsGrouping_07_Pt",
             "dataDriven": true,
             "label": "Preferred Term",
-            "groupingVariable": "AEDECOD",
-            "groups": [
-              {
-                "id": "AnlsGrouping_07_Pt_1",
-                "order": 1,
-                "label": "<Preferred Term 1>"
-              },
-              {
-                "id": "AnlsGrouping_07_Pt_2",
-                "order": 2,
-                "label": "..."
-              },
-              {
-                "id": "AnlsGrouping_07_Pt_3",
-                "order": 3,
-                "label": "<Preferred Term n>"
-              }
-            ]
+            "groupingVariable": "AEDECOD"
           }
         }
       ],
@@ -2192,171 +2003,7 @@
             "name": "Count of subjects",
             "id": "Mth07.3_SocPt_ByTrt_n",
             "label": "n",
-            "resultPattern": "XX",
-            "results": [
-              {
-                "groupRefs": [
-                  "AnlsGrouping_02_Trt_1",
-                  "AnlsGrouping_06_Soc_1",
-                  "AnlsGrouping_07_Pt_1"
-                ],
-                "rawValue": "1",
-                "formattedValue": "XX"
-              },
-              {
-                "groupRefs": [
-                  "AnlsGrouping_02_Trt_1",
-                  "AnlsGrouping_06_Soc_1",
-                  "AnlsGrouping_07_Pt_2"
-                ],
-                "rawValue": "1",
-                "formattedValue": "XX"
-              },
-              {
-                "groupRefs": [
-                  "AnlsGrouping_02_Trt_1",
-                  "AnlsGrouping_06_Soc_1",
-                  "AnlsGrouping_07_Pt_3"
-                ],
-                "rawValue": "1",
-                "formattedValue": "XX"
-              },
-              {
-                "groupRefs": [
-                  "AnlsGrouping_02_Trt_1",
-                  "AnlsGrouping_06_Soc_2",
-                  "AnlsGrouping_07_Pt_1"
-                ],
-                "rawValue": "1",
-                "formattedValue": "XX"
-              },
-              {
-                "groupRefs": [
-                  "AnlsGrouping_02_Trt_1",
-                  "AnlsGrouping_06_Soc_2",
-                  "AnlsGrouping_07_Pt_2"
-                ],
-                "rawValue": "1",
-                "formattedValue": "XX"
-              },
-              {
-                "groupRefs": [
-                  "AnlsGrouping_02_Trt_1",
-                  "AnlsGrouping_06_Soc_2",
-                  "AnlsGrouping_07_Pt_3"
-                ],
-                "rawValue": "1",
-                "formattedValue": "XX"
-              },
-              {
-                "groupRefs": [
-                  "AnlsGrouping_02_Trt_2",
-                  "AnlsGrouping_06_Soc_1",
-                  "AnlsGrouping_07_Pt_1"
-                ],
-                "rawValue": "1",
-                "formattedValue": "XX"
-              },
-              {
-                "groupRefs": [
-                  "AnlsGrouping_02_Trt_2",
-                  "AnlsGrouping_06_Soc_1",
-                  "AnlsGrouping_07_Pt_2"
-                ],
-                "rawValue": "1",
-                "formattedValue": "XX"
-              },
-              {
-                "groupRefs": [
-                  "AnlsGrouping_02_Trt_2",
-                  "AnlsGrouping_06_Soc_1",
-                  "AnlsGrouping_07_Pt_3"
-                ],
-                "rawValue": "1",
-                "formattedValue": "XX"
-              },
-              {
-                "groupRefs": [
-                  "AnlsGrouping_02_Trt_2",
-                  "AnlsGrouping_06_Soc_2",
-                  "AnlsGrouping_07_Pt_1"
-                ],
-                "rawValue": "1",
-                "formattedValue": "XX"
-              },
-              {
-                "groupRefs": [
-                  "AnlsGrouping_02_Trt_2",
-                  "AnlsGrouping_06_Soc_2",
-                  "AnlsGrouping_07_Pt_2"
-                ],
-                "rawValue": "1",
-                "formattedValue": "XX"
-              },
-              {
-                "groupRefs": [
-                  "AnlsGrouping_02_Trt_2",
-                  "AnlsGrouping_06_Soc_2",
-                  "AnlsGrouping_07_Pt_3"
-                ],
-                "rawValue": "1",
-                "formattedValue": "XX"
-              },
-              {
-                "groupRefs": [
-                  "AnlsGrouping_02_Trt_3",
-                  "AnlsGrouping_06_Soc_1",
-                  "AnlsGrouping_07_Pt_1"
-                ],
-                "rawValue": "1",
-                "formattedValue": "XX"
-              },
-              {
-                "groupRefs": [
-                  "AnlsGrouping_02_Trt_3",
-                  "AnlsGrouping_06_Soc_1",
-                  "AnlsGrouping_07_Pt_2"
-                ],
-                "rawValue": "1",
-                "formattedValue": "XX"
-              },
-              {
-                "groupRefs": [
-                  "AnlsGrouping_02_Trt_3",
-                  "AnlsGrouping_06_Soc_1",
-                  "AnlsGrouping_07_Pt_3"
-                ],
-                "rawValue": "1",
-                "formattedValue": "XX"
-              },
-              {
-                "groupRefs": [
-                  "AnlsGrouping_02_Trt_3",
-                  "AnlsGrouping_06_Soc_2",
-                  "AnlsGrouping_07_Pt_1"
-                ],
-                "rawValue": "1",
-                "formattedValue": "XX"
-              },
-              {
-                "groupRefs": [
-                  "AnlsGrouping_02_Trt_3",
-                  "AnlsGrouping_06_Soc_2",
-                  "AnlsGrouping_07_Pt_2"
-                ],
-                "rawValue": "1",
-                "formattedValue": "XX"
-              },
-              {
-                "groupRefs": [
-                  "AnlsGrouping_02_Trt_3",
-                  "AnlsGrouping_06_Soc_2",
-                  "AnlsGrouping_07_Pt_3"
-                ],
-                "rawValue": "1",
-                "formattedValue": "XX"
-              }
-            ]
+            "resultPattern": "XX"
           },
           {
             "name": "Percent of subjects",
@@ -2372,171 +2019,7 @@
                 "operationRef": "Mth01.5_SAF_ByTrt_n"
               }
             ],
-            "resultPattern": "( XX.X)",
-            "results": [
-              {
-                "groupRefs": [
-                  "AnlsGrouping_02_Trt_1",
-                  "AnlsGrouping_06_Soc_1",
-                  "AnlsGrouping_07_Pt_1"
-                ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
-              },
-              {
-                "groupRefs": [
-                  "AnlsGrouping_02_Trt_1",
-                  "AnlsGrouping_06_Soc_1",
-                  "AnlsGrouping_07_Pt_2"
-                ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
-              },
-              {
-                "groupRefs": [
-                  "AnlsGrouping_02_Trt_1",
-                  "AnlsGrouping_06_Soc_1",
-                  "AnlsGrouping_07_Pt_3"
-                ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
-              },
-              {
-                "groupRefs": [
-                  "AnlsGrouping_02_Trt_1",
-                  "AnlsGrouping_06_Soc_2",
-                  "AnlsGrouping_07_Pt_1"
-                ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
-              },
-              {
-                "groupRefs": [
-                  "AnlsGrouping_02_Trt_1",
-                  "AnlsGrouping_06_Soc_2",
-                  "AnlsGrouping_07_Pt_2"
-                ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
-              },
-              {
-                "groupRefs": [
-                  "AnlsGrouping_02_Trt_1",
-                  "AnlsGrouping_06_Soc_2",
-                  "AnlsGrouping_07_Pt_3"
-                ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
-              },
-              {
-                "groupRefs": [
-                  "AnlsGrouping_02_Trt_2",
-                  "AnlsGrouping_06_Soc_1",
-                  "AnlsGrouping_07_Pt_1"
-                ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
-              },
-              {
-                "groupRefs": [
-                  "AnlsGrouping_02_Trt_2",
-                  "AnlsGrouping_06_Soc_1",
-                  "AnlsGrouping_07_Pt_2"
-                ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
-              },
-              {
-                "groupRefs": [
-                  "AnlsGrouping_02_Trt_2",
-                  "AnlsGrouping_06_Soc_1",
-                  "AnlsGrouping_07_Pt_3"
-                ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
-              },
-              {
-                "groupRefs": [
-                  "AnlsGrouping_02_Trt_2",
-                  "AnlsGrouping_06_Soc_2",
-                  "AnlsGrouping_07_Pt_1"
-                ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
-              },
-              {
-                "groupRefs": [
-                  "AnlsGrouping_02_Trt_2",
-                  "AnlsGrouping_06_Soc_2",
-                  "AnlsGrouping_07_Pt_2"
-                ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
-              },
-              {
-                "groupRefs": [
-                  "AnlsGrouping_02_Trt_2",
-                  "AnlsGrouping_06_Soc_2",
-                  "AnlsGrouping_07_Pt_3"
-                ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
-              },
-              {
-                "groupRefs": [
-                  "AnlsGrouping_02_Trt_3",
-                  "AnlsGrouping_06_Soc_1",
-                  "AnlsGrouping_07_Pt_1"
-                ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
-              },
-              {
-                "groupRefs": [
-                  "AnlsGrouping_02_Trt_3",
-                  "AnlsGrouping_06_Soc_1",
-                  "AnlsGrouping_07_Pt_2"
-                ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
-              },
-              {
-                "groupRefs": [
-                  "AnlsGrouping_02_Trt_3",
-                  "AnlsGrouping_06_Soc_1",
-                  "AnlsGrouping_07_Pt_3"
-                ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
-              },
-              {
-                "groupRefs": [
-                  "AnlsGrouping_02_Trt_3",
-                  "AnlsGrouping_06_Soc_2",
-                  "AnlsGrouping_07_Pt_1"
-                ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
-              },
-              {
-                "groupRefs": [
-                  "AnlsGrouping_02_Trt_3",
-                  "AnlsGrouping_06_Soc_2",
-                  "AnlsGrouping_07_Pt_2"
-                ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
-              },
-              {
-                "groupRefs": [
-                  "AnlsGrouping_02_Trt_3",
-                  "AnlsGrouping_06_Soc_2",
-                  "AnlsGrouping_07_Pt_3"
-                ],
-                "rawValue": "1",
-                "formattedValue": "( XX.X)"
-              }
-            ]
+            "resultPattern": "( XX.X)"
           }
         ],
         "label": "Grouped summary of subjects",
@@ -2550,12 +2033,12 @@
       "version": 1,
       "fileSpecifications": [
         {
-          "name": "Demog_Table_Shell_PHUSE_Workshop",
+          "name": "t14-1-1-demog",
           "fileType": "rtf",
           "location": "."
         },
         {
-          "name": "Demog_Table_Shell_PHUSE_Workshop",
+          "name": "t14-1-1-demog",
           "fileType": "pdf",
           "location": "."
         }
@@ -2624,12 +2107,12 @@
       "version": 1,
       "fileSpecifications": [
         {
-          "name": "AE_SOC_PT_Table_Shell_PHUSE_Workshop",
+          "name": "t14-3-1-1-teae-socpt",
           "fileType": "rtf",
           "location": "."
         },
         {
-          "name": "AE_SOC_PT_Table_Shell_PHUSE_Workshop",
+          "name": "t14-3-1-1-teae-socpt",
           "fileType": "pdf",
           "location": "."
         }
