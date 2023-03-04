@@ -492,7 +492,7 @@ analyses:
         rawValue: '73'
         formattedValue: '73'
     - name: Percent of subjects
-      id: Mth03.2_AgeGrp_ByTrt_%
+      id: Mth03.2_AgeGrp_ByTrt_pct
       label: '%'
       referencedResultRelationships:
       - referencedResultRole: NUMERATOR
@@ -584,7 +584,7 @@ analyses:
         rawValue: '40'
         formattedValue: '40'
     - name: Percent of subjects
-      id: Mth03.3_Sex_ByTrt_%
+      id: Mth03.3_Sex_ByTrt_pct
       label: '%'
       referencedResultRelationships:
       - referencedResultRole: NUMERATOR
@@ -676,7 +676,7 @@ analyses:
         rawValue: '78'
         formattedValue: '78'
     - name: Percent of subjects
-      id: Mth03.4_Ethnic_ByTrt_%
+      id: Mth03.4_Ethnic_ByTrt_pct
       label: '%'
       referencedResultRelationships:
       - referencedResultRole: NUMERATOR
@@ -873,7 +873,7 @@ analyses:
         rawValue: '0'
         formattedValue: '0'
     - name: Percent of subjects
-      id: Mth03.5_Race_ByTrt_%
+      id: Mth03.5_Race_ByTrt_pct
       label: '%'
       referencedResultRelationships:
       - referencedResultRole: NUMERATOR
@@ -1188,7 +1188,7 @@ analyses:
       label: n
       resultPattern: XX
     - name: Percent of subjects
-      id: Mth07.1_AnyAE_ByTrt_%
+      id: Mth07.1_AnyAE_ByTrt_pct
       label: '%'
       referencedResultRelationships:
       - referencedResultRole: NUMERATOR
@@ -1223,7 +1223,7 @@ analyses:
       label: n
       resultPattern: XX
     - name: Percent of subjects
-      id: Mth07.2_Soc_ByTrt_%
+      id: Mth07.2_Soc_ByTrt_pct
       label: '%'
       referencedResultRelationships:
       - referencedResultRole: NUMERATOR
@@ -1260,7 +1260,7 @@ analyses:
       label: n
       resultPattern: XX
     - name: Percent of subjects
-      id: Mth07.3_SocPt_ByTrt_%
+      id: Mth07.3_SocPt_ByTrt_pct
       label: '%'
       referencedResultRelationships:
       - referencedResultRole: NUMERATOR

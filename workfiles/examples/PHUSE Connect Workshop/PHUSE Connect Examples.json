@@ -773,7 +773,7 @@
           },
           {
             "name": "Percent of subjects",
-            "id": "Mth03.2_AgeGrp_ByTrt_%",
+            "id": "Mth03.2_AgeGrp_ByTrt_pct",
             "label": "%",
             "referencedResultRelationships": [
               {
@@ -920,7 +920,7 @@
           },
           {
             "name": "Percent of subjects",
-            "id": "Mth03.3_Sex_ByTrt_%",
+            "id": "Mth03.3_Sex_ByTrt_pct",
             "label": "%",
             "referencedResultRelationships": [
               {
@@ -1067,7 +1067,7 @@
           },
           {
             "name": "Percent of subjects",
-            "id": "Mth03.4_Ethnic_ByTrt_%",
+            "id": "Mth03.4_Ethnic_ByTrt_pct",
             "label": "%",
             "referencedResultRelationships": [
               {
@@ -1382,7 +1382,7 @@
           },
           {
             "name": "Percent of subjects",
-            "id": "Mth03.5_Race_ByTrt_%",
+            "id": "Mth03.5_Race_ByTrt_pct",
             "label": "%",
             "referencedResultRelationships": [
               {
@@ -1897,7 +1897,7 @@
           },
           {
             "name": "Percent of subjects",
-            "id": "Mth07.1_AnyAE_ByTrt_%",
+            "id": "Mth07.1_AnyAE_ByTrt_pct",
             "label": "%",
             "referencedResultRelationships": [
               {
@@ -1950,7 +1950,7 @@
           },
           {
             "name": "Percent of subjects",
-            "id": "Mth07.2_Soc_ByTrt_%",
+            "id": "Mth07.2_Soc_ByTrt_pct",
             "label": "%",
             "referencedResultRelationships": [
               {
@@ -2007,7 +2007,7 @@
           },
           {
             "name": "Percent of subjects",
-            "id": "Mth07.3_SocPt_ByTrt_%",
+            "id": "Mth07.3_SocPt_ByTrt_pct",
             "label": "%",
             "referencedResultRelationships": [
               {
