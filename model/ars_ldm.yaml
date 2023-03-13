@@ -28,6 +28,7 @@ classes:
       - globalDisplaySections
       - analysisCategorizations
       - analyses
+      - methods
       - outputs
 
   NestedList:
@@ -39,8 +40,8 @@ classes:
     slots:
       - order
       - sublist
-      - analysisRef
-      - outputRef
+      - analysisId
+      - outputId
 
   AnalysisCategorization:
     description: An implementer-defined categorization of analyses/outputs.
@@ -60,20 +61,43 @@ classes:
     slots:
       - id
       - version
-      - categoryRefs
-      - analysisSetRef
+      - categoryIds
+      - analysisSetId
       - orderedGroupings
-      - dataSubsetRef
+      - dataSubsetId
       - dataset
       - variable
-      - method
+      - methodId
+      - referencedAnalysisOperations
+      - results
 
   OrderedGroupingFactor:
     slots:
       - order
-      - groupingRef
+      - groupingId
       - dataGrouping
 
+  ReferencedAnalysisOperation:
+    slots:
+      - referencedOperationId
+      - analysisId
+    slot_usage:
+      analysisId:
+        required: true
+
+  OperationResult:
+    slots:
+      - operationId
+      - resultGroups
+      - rawValue
+      - formattedValue
+
+  ResultGroup:
+    slots:
+      - groupingId
+      - groupId
+      - groupValue
+  
   AnalysisMethod:
     is_a: NamedObject
     slots:
@@ -87,20 +111,16 @@ classes:
     slots:
       - id
       - label
-      - referencedResultRelationships
+      - referencedOperationRelationships
       - resultPattern
-      - results
 
-  ReferencedResultRelationship:
+  ReferencedOperationRelationship:
     slots:
-      - referencedResultRole
-      - operationRef
-
-  OperationResult:
-    slots:
-      - groupRefs
-      - rawValue
-      - formattedValue
+      - id
+      - referencedOperationRole
+      - operationId
+      - analysisId
+      - description
 
   Output:
     slots:
@@ -108,9 +128,9 @@ classes:
       - version
       - fileSpecifications
       - outputDisplays
-      - categoryRefs
+      - categoryIds
     slot_usage:
-      categoryRefs:
+      categoryIds:
         required: false
         inlined: false
 
@@ -301,6 +321,23 @@ slots:
     inlined_as_list: true
     range: Analysis
 
+  methods:
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    range: AnalysisMethod
+
+  operations:
+    required: true
+    multivalued: true
+    range: Operation
+    inlined: true
+    inlined_as_list: true
+
+  referencedOperationId:
+    range: ReferencedOperationRelationship
+    inlined: false
+
   analysisCategorizations:
     multivalued: true
     range: AnalysisCategorization
@@ -314,7 +351,7 @@ slots:
     inlined_as_list: true
     required: true
 
-  categoryRefs:
+  categoryIds:
     multivalued: true
     range: AnalysisCategory
     inlined: false
@@ -348,12 +385,12 @@ slots:
     multivalued: false
     inlined: true
 
-  analysisRef: 
+  analysisId: 
     range: Analysis
     multivalued: false
     inlined: false
 
-  analysisSetRef: 
+  analysisSetId: 
     range: AnalysisSet
     multivalued: false
     inlined: false
@@ -365,7 +402,7 @@ slots:
     inlined: true
     inlined_as_list: true
 
-  groupingRef: 
+  groupingId: 
     range: GroupingFactor
     inlined: false
 
@@ -374,23 +411,21 @@ slots:
     inlined: true
     inlined_as_list: true
 
-  dataSubsetRef:
+  dataSubsetId:
     inlined: false
     range: DataSubset
 
-  method:  
+  methodId:  
     range: AnalysisMethod
-    inlined: true
-    inlined_as_list: true
+    inlined: false
 
   description:
 
-  operations:
-    required: true
+  referencedAnalysisOperations:
     multivalued: true
-    range: Operation
+    range: ReferencedAnalysisOperation
     inlined: true
-    inlined_as_list: true
+    inlined_as_list: true    
 
   resultPattern:
   
@@ -400,31 +435,38 @@ slots:
     inlined: true
     inlined_as_list: true
 
-  groupRefs:
+  resultGroups:
     multivalued: true
-    range: AnalysisGroup
+    range: ResultGroup
+    inlined: true
+    inlined_as_list: true
+
+  groupId:
+    range: Group
     inlined: false
+
+  groupValue:
 
   rawValue:
 
   formattedValue:
 
-  referencedResultRelationships:
+  referencedOperationRelationships:
     multivalued: true
-    range: ReferencedResultRelationship
+    range: ReferencedOperationRelationship
     inlined: true
     inlined_as_list: true
   
-  referencedResultRole:
+  referencedOperationRole:
     required: true
     range: OperationRole
 
-  operationRef:  
+  operationId:  
     range: Operation
     required: true
     inlined: false
 
-  outputRef: 
+  outputId: 
     range: Output
     multivalued: false
     inlined: false

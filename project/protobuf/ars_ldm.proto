@@ -2,13 +2,15 @@ message Analysis
  {
   string id = 0
   integer version = 0
- repeated  analysisCategory categoryRefs = 0
-  analysisSet analysisSetRef = 0
+ repeated  analysisCategory categoryIds = 0
+  analysisSet analysisSetId = 0
  repeated  orderedGroupingFactor orderedGroupings = 0
-  dataSubset dataSubsetRef = 0
+  dataSubset dataSubsetId = 0
   string dataset = 0
   string variable = 0
-  analysisMethod method = 0
+  analysisMethod methodId = 0
+ repeated  referencedAnalysisOperation referencedAnalysisOperations = 0
+ repeated  operationResult results = 0
  }
 // An implementer-defined categorization of analyses/outputs.
 message AnalysisCategorization
@@ -147,20 +149,20 @@ message Operation
   string name = 0
   string id = 0
   string label = 0
- repeated  referencedResultRelationship referencedResultRelationships = 0
+ repeated  referencedOperationRelationship referencedOperationRelationships = 0
   string resultPattern = 0
- repeated  operationResult results = 0
  }
 message OperationResult
  {
- repeated  analysisGroup groupRefs = 0
+  operation operationId = 0
+ repeated  resultGroup resultGroups = 0
   string rawValue = 0
   string formattedValue = 0
  }
 message OrderedGroupingFactor
  {
   integer order = 0
-  groupingFactor groupingRef = 0
+  groupingFactor groupingId = 0
   dataGroupingFactor dataGrouping = 0
  }
 message OrderedListItem
@@ -168,8 +170,8 @@ message OrderedListItem
   string name = 0
   integer order = 0
   nestedList sublist = 0
-  analysis analysisRef = 0
-  output outputRef = 0
+  analysis analysisId = 0
+  output outputId = 0
  }
 message Output
  {
@@ -177,17 +179,25 @@ message Output
   integer version = 0
  repeated  file fileSpecifications = 0
  repeated  outputDisplay outputDisplays = 0
- repeated  analysisCategory categoryRefs = 0
+ repeated  analysisCategory categoryIds = 0
  }
 message OutputDisplay
  {
   integer order = 0
   display display = 0
  }
-message ReferencedResultRelationship
+message ReferencedAnalysisOperation
  {
-  operationRole referencedResultRole = 0
-  operation operationRef = 0
+  referencedOperationRelationship referencedOperationId = 0
+  analysis analysisId = 0
+ }
+message ReferencedOperationRelationship
+ {
+  string id = 0
+  operationRole referencedOperationRole = 0
+  operation operationId = 0
+  analysis analysisId = 0
+  string description = 0
  }
 message ReportingEvent
  {
@@ -200,7 +210,14 @@ message ReportingEvent
  repeated  displaySection globalDisplaySections = 0
  repeated  analysisCategorization analysisCategorizations = 0
  repeated  analysis analyses = 0
+ repeated  analysisMethod methods = 0
  repeated  output outputs = 0
+ }
+message ResultGroup
+ {
+  groupingFactor groupingId = 0
+  group groupId = 0
+  string groupValue = 0
  }
 // A factor used to subdivide the subject population for comparative analysis (e.g., treatment, sex, race, age).
 message SubjectGroupingFactor

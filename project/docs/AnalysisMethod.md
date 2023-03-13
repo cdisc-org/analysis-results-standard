@@ -7,7 +7,7 @@
 URI: [https://www.cdisc.org/ars/1-0/AnalysisMethod](https://www.cdisc.org/ars/1-0/AnalysisMethod)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Operation],[NamedObject],[Operation]<operations%201..*-++[AnalysisMethod&#124;id:string;label:string%20%3F;description:string%20%3F;name(i):string],[Analysis]++-%20method%200..1>[AnalysisMethod],[NamedObject]^-[AnalysisMethod],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[Operation],[NamedObject],[Operation]<operations%201..*-++[AnalysisMethod&#124;id:string;label:string%20%3F;description:string%20%3F;name(i):string],[Analysis]++-%20method%200..1>[AnalysisMethod],[NamedObject]^-[AnalysisMethod],[Analysis])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Operation],[NamedObject],[Operation]<operations%201..*-++[AnalysisMethod&#124;id:string;label:string%20%3F;description:string%20%3F;name(i):string],[Analysis]-%20methodId%200..1>[AnalysisMethod],[ReportingEvent]++-%20methods%200..*>[AnalysisMethod],[NamedObject]^-[AnalysisMethod],[ReportingEvent],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[Operation],[NamedObject],[Operation]<operations%201..*-++[AnalysisMethod&#124;id:string;label:string%20%3F;description:string%20%3F;name(i):string],[Analysis]-%20methodId%200..1>[AnalysisMethod],[ReportingEvent]++-%20methods%200..*>[AnalysisMethod],[NamedObject]^-[AnalysisMethod],[ReportingEvent],[Analysis])
 
 ## Parents
 
@@ -15,7 +15,8 @@ URI: [https://www.cdisc.org/ars/1-0/AnalysisMethod](https://www.cdisc.org/ars/1-
 
 ## Referenced by Class
 
- *  **None** *[method](method.md)*  <sub>0..1</sub>  **[AnalysisMethod](AnalysisMethod.md)**
+ *  **None** *[methodId](methodId.md)*  <sub>0..1</sub>  **[AnalysisMethod](AnalysisMethod.md)**
+ *  **None** *[methods](methods.md)*  <sub>0..\*</sub>  **[AnalysisMethod](AnalysisMethod.md)**
 
 ## Attributes
 

@@ -14,15 +14,6 @@ CREATE TABLE "AnalysisCategory" (
 	PRIMARY KEY (id)
 );
 
-CREATE TABLE "AnalysisGroup" (
-	id TEXT NOT NULL, 
-	condition TEXT, 
-	label TEXT, 
-	"order" INTEGER NOT NULL, 
-	"compoundExpression" TEXT, 
-	PRIMARY KEY (id)
-);
-
 CREATE TABLE "AnalysisMethod" (
 	name TEXT NOT NULL, 
 	id TEXT NOT NULL, 
@@ -129,6 +120,7 @@ CREATE TABLE "Operation" (
 	name TEXT NOT NULL, 
 	id TEXT NOT NULL, 
 	label TEXT, 
+	"referencedOperationRelationships" TEXT, 
 	"resultPattern" TEXT, 
 	PRIMARY KEY (id)
 );
@@ -136,7 +128,7 @@ CREATE TABLE "Operation" (
 CREATE TABLE "Output" (
 	id TEXT NOT NULL, 
 	version INTEGER, 
-	"categoryRefs" TEXT, 
+	"categoryIds" TEXT, 
 	PRIMARY KEY (id)
 );
 
@@ -150,8 +142,9 @@ CREATE TABLE "ReportingEvent" (
 	"globalDisplaySections" TEXT, 
 	"analysisCategorizations" TEXT, 
 	analyses TEXT, 
+	methods TEXT, 
 	outputs TEXT, 
-	PRIMARY KEY (name, "listOfPlannedAnalyses", "listOfPlannedOutputs", "analysisSets", "analysisGroupings", "dataSubsets", "globalDisplaySections", "analysisCategorizations", analyses, outputs)
+	PRIMARY KEY (name, "listOfPlannedAnalyses", "listOfPlannedOutputs", "analysisSets", "analysisGroupings", "dataSubsets", "globalDisplaySections", "analysisCategorizations", analyses, methods, outputs)
 );
 
 CREATE TABLE "SubjectGroupingFactor" (
@@ -159,7 +152,6 @@ CREATE TABLE "SubjectGroupingFactor" (
 	label TEXT, 
 	"groupingVariable" TEXT, 
 	"dataDriven" BOOLEAN NOT NULL, 
-	groups TEXT, 
 	PRIMARY KEY (id)
 );
 
@@ -173,16 +165,27 @@ CREATE TABLE "WhereClause" (
 CREATE TABLE "Analysis" (
 	id TEXT NOT NULL, 
 	version INTEGER, 
-	"categoryRefs" TEXT, 
-	"analysisSetRef" TEXT, 
-	"dataSubsetRef" TEXT, 
+	"categoryIds" TEXT, 
+	"analysisSetId" TEXT, 
+	"dataSubsetId" TEXT, 
 	dataset TEXT, 
 	variable TEXT, 
-	method TEXT, 
+	"methodId" TEXT, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY("analysisSetRef") REFERENCES "AnalysisSet" (id), 
-	FOREIGN KEY("dataSubsetRef") REFERENCES "DataSubset" (id), 
-	FOREIGN KEY(method) REFERENCES "AnalysisMethod" (id)
+	FOREIGN KEY("analysisSetId") REFERENCES "AnalysisSet" (id), 
+	FOREIGN KEY("dataSubsetId") REFERENCES "DataSubset" (id), 
+	FOREIGN KEY("methodId") REFERENCES "AnalysisMethod" (id)
+);
+
+CREATE TABLE "AnalysisGroup" (
+	id TEXT NOT NULL, 
+	condition TEXT, 
+	label TEXT, 
+	"order" INTEGER NOT NULL, 
+	"compoundExpression" TEXT, 
+	"SubjectGroupingFactor_id" TEXT, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY("SubjectGroupingFactor_id") REFERENCES "SubjectGroupingFactor" (id)
 );
 
 CREATE TABLE "DataGroup" (
@@ -206,15 +209,6 @@ CREATE TABLE "File" (
 	FOREIGN KEY("Output_id") REFERENCES "Output" (id)
 );
 
-CREATE TABLE "OperationResult" (
-	"groupRefs" TEXT, 
-	"rawValue" TEXT, 
-	"formattedValue" TEXT, 
-	"Operation_id" TEXT, 
-	PRIMARY KEY ("groupRefs", "rawValue", "formattedValue", "Operation_id"), 
-	FOREIGN KEY("Operation_id") REFERENCES "Operation" (id)
-);
-
 CREATE TABLE "OutputDisplay" (
 	"order" INTEGER NOT NULL, 
 	display TEXT, 
@@ -224,21 +218,31 @@ CREATE TABLE "OutputDisplay" (
 	FOREIGN KEY("Output_id") REFERENCES "Output" (id)
 );
 
-CREATE TABLE "ReferencedResultRelationship" (
-	"referencedResultRole" VARCHAR(11) NOT NULL, 
-	"operationRef" TEXT NOT NULL, 
-	"Operation_id" TEXT, 
-	PRIMARY KEY ("referencedResultRole", "operationRef", "Operation_id"), 
-	FOREIGN KEY("operationRef") REFERENCES "Operation" (id), 
-	FOREIGN KEY("Operation_id") REFERENCES "Operation" (id)
+CREATE TABLE "ResultGroup" (
+	"groupingId" TEXT, 
+	"groupId" TEXT, 
+	"groupValue" TEXT, 
+	PRIMARY KEY ("groupingId", "groupId", "groupValue"), 
+	FOREIGN KEY("groupId") REFERENCES "Group" (id)
+);
+
+CREATE TABLE "OperationResult" (
+	"operationId" TEXT NOT NULL, 
+	"resultGroups" TEXT, 
+	"rawValue" TEXT, 
+	"formattedValue" TEXT, 
+	"Analysis_id" TEXT, 
+	PRIMARY KEY ("operationId", "resultGroups", "rawValue", "formattedValue", "Analysis_id"), 
+	FOREIGN KEY("operationId") REFERENCES "Operation" (id), 
+	FOREIGN KEY("Analysis_id") REFERENCES "Analysis" (id)
 );
 
 CREATE TABLE "OrderedGroupingFactor" (
 	"order" INTEGER NOT NULL, 
-	"groupingRef" TEXT, 
+	"groupingId" TEXT, 
 	"dataGrouping" TEXT, 
 	"Analysis_id" TEXT, 
-	PRIMARY KEY ("order", "groupingRef", "dataGrouping", "Analysis_id"), 
+	PRIMARY KEY ("order", "groupingId", "dataGrouping", "Analysis_id"), 
 	FOREIGN KEY("dataGrouping") REFERENCES "DataGroupingFactor" (id), 
 	FOREIGN KEY("Analysis_id") REFERENCES "Analysis" (id)
 );
@@ -247,9 +251,30 @@ CREATE TABLE "OrderedListItem" (
 	name TEXT NOT NULL, 
 	"order" INTEGER NOT NULL, 
 	sublist TEXT, 
-	"analysisRef" TEXT, 
-	"outputRef" TEXT, 
-	PRIMARY KEY (name, "order", sublist, "analysisRef", "outputRef"), 
-	FOREIGN KEY("analysisRef") REFERENCES "Analysis" (id), 
-	FOREIGN KEY("outputRef") REFERENCES "Output" (id)
+	"analysisId" TEXT, 
+	"outputId" TEXT, 
+	PRIMARY KEY (name, "order", sublist, "analysisId", "outputId"), 
+	FOREIGN KEY("analysisId") REFERENCES "Analysis" (id), 
+	FOREIGN KEY("outputId") REFERENCES "Output" (id)
+);
+
+CREATE TABLE "ReferencedOperationRelationship" (
+	id TEXT NOT NULL, 
+	"referencedOperationRole" VARCHAR(11) NOT NULL, 
+	"operationId" TEXT NOT NULL, 
+	"analysisId" TEXT, 
+	description TEXT, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY("operationId") REFERENCES "Operation" (id), 
+	FOREIGN KEY("analysisId") REFERENCES "Analysis" (id)
+);
+
+CREATE TABLE "ReferencedAnalysisOperation" (
+	"referencedOperationId" TEXT, 
+	"analysisId" TEXT NOT NULL, 
+	"Analysis_id" TEXT, 
+	PRIMARY KEY ("referencedOperationId", "analysisId", "Analysis_id"), 
+	FOREIGN KEY("referencedOperationId") REFERENCES "ReferencedOperationRelationship" (id), 
+	FOREIGN KEY("analysisId") REFERENCES "Analysis" (id), 
+	FOREIGN KEY("Analysis_id") REFERENCES "Analysis" (id)
 );

@@ -7,7 +7,7 @@
 URI: [https://www.cdisc.org/ars/1-0/Operation](https://www.cdisc.org/ars/1-0/Operation)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[ReferencedResultRelationship],[OperationResult],[OperationResult]<results%200..*-++[Operation&#124;id:string;label:string%20%3F;resultPattern:string%20%3F;name(i):string],[ReferencedResultRelationship]<referencedResultRelationships%200..*-++[Operation],[ReferencedResultRelationship]-%20operationRef%201..1>[Operation],[AnalysisMethod]++-%20operations%201..*>[Operation],[NamedObject]^-[Operation],[NamedObject],[AnalysisMethod])](https://yuml.me/diagram/nofunky;dir:TB/class/[ReferencedResultRelationship],[OperationResult],[OperationResult]<results%200..*-++[Operation&#124;id:string;label:string%20%3F;resultPattern:string%20%3F;name(i):string],[ReferencedResultRelationship]<referencedResultRelationships%200..*-++[Operation],[ReferencedResultRelationship]-%20operationRef%201..1>[Operation],[AnalysisMethod]++-%20operations%201..*>[Operation],[NamedObject]^-[Operation],[NamedObject],[AnalysisMethod])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[ReferencedOperationRelationship],[ReferencedOperationRelationship]<referencedOperationRelationships%200..*-++[Operation&#124;id:string;label:string%20%3F;resultPattern:string%20%3F;name(i):string],[OperationResult]-%20operationId%201..1>[Operation],[ReferencedOperationRelationship]-%20operationId%201..1>[Operation],[AnalysisMethod]++-%20operations%201..*>[Operation],[NamedObject]^-[Operation],[OperationResult],[NamedObject],[AnalysisMethod])](https://yuml.me/diagram/nofunky;dir:TB/class/[ReferencedOperationRelationship],[ReferencedOperationRelationship]<referencedOperationRelationships%200..*-++[Operation&#124;id:string;label:string%20%3F;resultPattern:string%20%3F;name(i):string],[OperationResult]-%20operationId%201..1>[Operation],[ReferencedOperationRelationship]-%20operationId%201..1>[Operation],[AnalysisMethod]++-%20operations%201..*>[Operation],[NamedObject]^-[Operation],[OperationResult],[NamedObject],[AnalysisMethod])
 
 ## Parents
 
@@ -15,7 +15,7 @@ URI: [https://www.cdisc.org/ars/1-0/Operation](https://www.cdisc.org/ars/1-0/Ope
 
 ## Referenced by Class
 
- *  **None** *[operationRef](operationRef.md)*  <sub>1..1</sub>  **[Operation](Operation.md)**
+ *  **None** *[operationId](operationId.md)*  <sub>1..1</sub>  **[Operation](Operation.md)**
  *  **None** *[operations](operations.md)*  <sub>1..\*</sub>  **[Operation](Operation.md)**
 
 ## Attributes
@@ -27,12 +27,10 @@ URI: [https://www.cdisc.org/ars/1-0/Operation](https://www.cdisc.org/ars/1-0/Ope
      * Range: [String](types/String.md)
  * [label](label.md)  <sub>0..1</sub>
      * Range: [String](types/String.md)
- * [referencedResultRelationships](referencedResultRelationships.md)  <sub>0..\*</sub>
-     * Range: [ReferencedResultRelationship](ReferencedResultRelationship.md)
+ * [referencedOperationRelationships](referencedOperationRelationships.md)  <sub>0..\*</sub>
+     * Range: [ReferencedOperationRelationship](ReferencedOperationRelationship.md)
  * [resultPattern](resultPattern.md)  <sub>0..1</sub>
      * Range: [String](types/String.md)
- * [results](results.md)  <sub>0..\*</sub>
-     * Range: [OperationResult](OperationResult.md)
 
 ### Inherited from NamedObject:
 

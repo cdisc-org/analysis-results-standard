@@ -1,6 +1,6 @@
 # Auto generated from ars_ldm.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-02-20T17:43:13
-# Schema: ARS-Schema
+# Generation date: 2023-03-13T15:22:26
+# Schema: ars_ldm
 #
 # id: https://www.cdisc.org/ars/1-0
 # description:
@@ -56,6 +56,10 @@ class AnalysisMethodId(extended_str):
 
 
 class OperationId(extended_str):
+    pass
+
+
+class ReferencedOperationRelationshipId(extended_str):
     pass
 
 
@@ -145,6 +149,7 @@ class ReportingEvent(NamedObject):
     globalDisplaySections: Optional[Union[Union[dict, "DisplaySection"], List[Union[dict, "DisplaySection"]]]] = empty_list()
     analysisCategorizations: Optional[Union[Dict[Union[str, AnalysisCategorizationId], Union[dict, "AnalysisCategorization"]], List[Union[dict, "AnalysisCategorization"]]]] = empty_dict()
     analyses: Optional[Union[Dict[Union[str, AnalysisId], Union[dict, "Analysis"]], List[Union[dict, "Analysis"]]]] = empty_dict()
+    methods: Optional[Union[Dict[Union[str, AnalysisMethodId], Union[dict, "AnalysisMethod"]], List[Union[dict, "AnalysisMethod"]]]] = empty_dict()
     outputs: Optional[Union[Dict[Union[str, OutputId], Union[dict, "Output"]], List[Union[dict, "Output"]]]] = empty_dict()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -169,6 +174,8 @@ class ReportingEvent(NamedObject):
         self._normalize_inlined_as_list(slot_name="analysisCategorizations", slot_type=AnalysisCategorization, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="analyses", slot_type=Analysis, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="methods", slot_type=AnalysisMethod, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="outputs", slot_type=Output, key_name="id", keyed=True)
 
@@ -206,8 +213,8 @@ class OrderedListItem(NamedObject):
     name: str = None
     order: int = None
     sublist: Optional[Union[dict, NestedList]] = None
-    analysisRef: Optional[Union[str, AnalysisId]] = None
-    outputRef: Optional[Union[str, OutputId]] = None
+    analysisId: Optional[Union[str, AnalysisId]] = None
+    outputId: Optional[Union[str, OutputId]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.order):
@@ -218,11 +225,11 @@ class OrderedListItem(NamedObject):
         if self.sublist is not None and not isinstance(self.sublist, NestedList):
             self.sublist = NestedList(**as_dict(self.sublist))
 
-        if self.analysisRef is not None and not isinstance(self.analysisRef, AnalysisId):
-            self.analysisRef = AnalysisId(self.analysisRef)
+        if self.analysisId is not None and not isinstance(self.analysisId, AnalysisId):
+            self.analysisId = AnalysisId(self.analysisId)
 
-        if self.outputRef is not None and not isinstance(self.outputRef, OutputId):
-            self.outputRef = OutputId(self.outputRef)
+        if self.outputId is not None and not isinstance(self.outputId, OutputId):
+            self.outputId = OutputId(self.outputId)
 
         super().__post_init__(**kwargs)
 
@@ -300,13 +307,15 @@ class Analysis(YAMLRoot):
 
     id: Union[str, AnalysisId] = None
     version: Optional[int] = None
-    categoryRefs: Optional[Union[Union[str, AnalysisCategoryId], List[Union[str, AnalysisCategoryId]]]] = empty_list()
-    analysisSetRef: Optional[Union[str, AnalysisSetId]] = None
+    categoryIds: Optional[Union[Union[str, AnalysisCategoryId], List[Union[str, AnalysisCategoryId]]]] = empty_list()
+    analysisSetId: Optional[Union[str, AnalysisSetId]] = None
     orderedGroupings: Optional[Union[Union[dict, "OrderedGroupingFactor"], List[Union[dict, "OrderedGroupingFactor"]]]] = empty_list()
-    dataSubsetRef: Optional[Union[str, DataSubsetId]] = None
+    dataSubsetId: Optional[Union[str, DataSubsetId]] = None
     dataset: Optional[str] = None
     variable: Optional[str] = None
-    method: Optional[Union[dict, "AnalysisMethod"]] = None
+    methodId: Optional[Union[str, AnalysisMethodId]] = None
+    referencedAnalysisOperations: Optional[Union[Union[dict, "ReferencedAnalysisOperation"], List[Union[dict, "ReferencedAnalysisOperation"]]]] = empty_list()
+    results: Optional[Union[Union[dict, "OperationResult"], List[Union[dict, "OperationResult"]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -317,19 +326,19 @@ class Analysis(YAMLRoot):
         if self.version is not None and not isinstance(self.version, int):
             self.version = int(self.version)
 
-        if not isinstance(self.categoryRefs, list):
-            self.categoryRefs = [self.categoryRefs] if self.categoryRefs is not None else []
-        self.categoryRefs = [v if isinstance(v, AnalysisCategoryId) else AnalysisCategoryId(v) for v in self.categoryRefs]
+        if not isinstance(self.categoryIds, list):
+            self.categoryIds = [self.categoryIds] if self.categoryIds is not None else []
+        self.categoryIds = [v if isinstance(v, AnalysisCategoryId) else AnalysisCategoryId(v) for v in self.categoryIds]
 
-        if self.analysisSetRef is not None and not isinstance(self.analysisSetRef, AnalysisSetId):
-            self.analysisSetRef = AnalysisSetId(self.analysisSetRef)
+        if self.analysisSetId is not None and not isinstance(self.analysisSetId, AnalysisSetId):
+            self.analysisSetId = AnalysisSetId(self.analysisSetId)
 
         if not isinstance(self.orderedGroupings, list):
             self.orderedGroupings = [self.orderedGroupings] if self.orderedGroupings is not None else []
         self.orderedGroupings = [v if isinstance(v, OrderedGroupingFactor) else OrderedGroupingFactor(**as_dict(v)) for v in self.orderedGroupings]
 
-        if self.dataSubsetRef is not None and not isinstance(self.dataSubsetRef, DataSubsetId):
-            self.dataSubsetRef = DataSubsetId(self.dataSubsetRef)
+        if self.dataSubsetId is not None and not isinstance(self.dataSubsetId, DataSubsetId):
+            self.dataSubsetId = DataSubsetId(self.dataSubsetId)
 
         if self.dataset is not None and not isinstance(self.dataset, str):
             self.dataset = str(self.dataset)
@@ -337,8 +346,16 @@ class Analysis(YAMLRoot):
         if self.variable is not None and not isinstance(self.variable, str):
             self.variable = str(self.variable)
 
-        if self.method is not None and not isinstance(self.method, AnalysisMethod):
-            self.method = AnalysisMethod(**as_dict(self.method))
+        if self.methodId is not None and not isinstance(self.methodId, AnalysisMethodId):
+            self.methodId = AnalysisMethodId(self.methodId)
+
+        if not isinstance(self.referencedAnalysisOperations, list):
+            self.referencedAnalysisOperations = [self.referencedAnalysisOperations] if self.referencedAnalysisOperations is not None else []
+        self.referencedAnalysisOperations = [v if isinstance(v, ReferencedAnalysisOperation) else ReferencedAnalysisOperation(**as_dict(v)) for v in self.referencedAnalysisOperations]
+
+        if not isinstance(self.results, list):
+            self.results = [self.results] if self.results is not None else []
+        self.results = [v if isinstance(v, OperationResult) else OperationResult(**as_dict(v)) for v in self.results]
 
         super().__post_init__(**kwargs)
 
@@ -353,7 +370,7 @@ class OrderedGroupingFactor(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = URIRef("https://www.cdisc.org/ars/1-0/OrderedGroupingFactor")
 
     order: int = None
-    groupingRef: Optional[Union[str, GroupingFactorId]] = None
+    groupingId: Optional[Union[str, GroupingFactorId]] = None
     dataGrouping: Optional[Union[dict, "DataGroupingFactor"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -362,11 +379,94 @@ class OrderedGroupingFactor(YAMLRoot):
         if not isinstance(self.order, int):
             self.order = int(self.order)
 
-        if self.groupingRef is not None and not isinstance(self.groupingRef, GroupingFactorId):
-            self.groupingRef = GroupingFactorId(self.groupingRef)
+        if self.groupingId is not None and not isinstance(self.groupingId, GroupingFactorId):
+            self.groupingId = GroupingFactorId(self.groupingId)
 
         if self.dataGrouping is not None and not isinstance(self.dataGrouping, DataGroupingFactor):
             self.dataGrouping = DataGroupingFactor(**as_dict(self.dataGrouping))
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class ReferencedAnalysisOperation(YAMLRoot):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://www.cdisc.org/ars/1-0/ReferencedAnalysisOperation")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "ReferencedAnalysisOperation"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://www.cdisc.org/ars/1-0/ReferencedAnalysisOperation")
+
+    analysisId: Union[str, AnalysisId] = None
+    referencedOperationId: Optional[Union[str, ReferencedOperationRelationshipId]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.analysisId):
+            self.MissingRequiredField("analysisId")
+        if not isinstance(self.analysisId, AnalysisId):
+            self.analysisId = AnalysisId(self.analysisId)
+
+        if self.referencedOperationId is not None and not isinstance(self.referencedOperationId, ReferencedOperationRelationshipId):
+            self.referencedOperationId = ReferencedOperationRelationshipId(self.referencedOperationId)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class OperationResult(YAMLRoot):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://www.cdisc.org/ars/1-0/OperationResult")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "OperationResult"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://www.cdisc.org/ars/1-0/OperationResult")
+
+    operationId: Union[str, OperationId] = None
+    resultGroups: Optional[Union[Union[dict, "ResultGroup"], List[Union[dict, "ResultGroup"]]]] = empty_list()
+    rawValue: Optional[str] = None
+    formattedValue: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.operationId):
+            self.MissingRequiredField("operationId")
+        if not isinstance(self.operationId, OperationId):
+            self.operationId = OperationId(self.operationId)
+
+        if not isinstance(self.resultGroups, list):
+            self.resultGroups = [self.resultGroups] if self.resultGroups is not None else []
+        self.resultGroups = [v if isinstance(v, ResultGroup) else ResultGroup(**as_dict(v)) for v in self.resultGroups]
+
+        if self.rawValue is not None and not isinstance(self.rawValue, str):
+            self.rawValue = str(self.rawValue)
+
+        if self.formattedValue is not None and not isinstance(self.formattedValue, str):
+            self.formattedValue = str(self.formattedValue)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class ResultGroup(YAMLRoot):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://www.cdisc.org/ars/1-0/ResultGroup")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "ResultGroup"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://www.cdisc.org/ars/1-0/ResultGroup")
+
+    groupingId: Optional[Union[str, GroupingFactorId]] = None
+    groupId: Optional[Union[str, GroupId]] = None
+    groupValue: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.groupingId is not None and not isinstance(self.groupingId, GroupingFactorId):
+            self.groupingId = GroupingFactorId(self.groupingId)
+
+        if self.groupId is not None and not isinstance(self.groupId, GroupId):
+            self.groupId = GroupId(self.groupId)
+
+        if self.groupValue is not None and not isinstance(self.groupValue, str):
+            self.groupValue = str(self.groupValue)
 
         super().__post_init__(**kwargs)
 
@@ -417,9 +517,8 @@ class Operation(NamedObject):
     id: Union[str, OperationId] = None
     name: str = None
     label: Optional[str] = None
-    referencedResultRelationships: Optional[Union[Union[dict, "ReferencedResultRelationship"], List[Union[dict, "ReferencedResultRelationship"]]]] = empty_list()
+    referencedOperationRelationships: Optional[Union[Dict[Union[str, ReferencedOperationRelationshipId], Union[dict, "ReferencedOperationRelationship"]], List[Union[dict, "ReferencedOperationRelationship"]]]] = empty_dict()
     resultPattern: Optional[str] = None
-    results: Optional[Union[Union[dict, "OperationResult"], List[Union[dict, "OperationResult"]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -430,69 +529,50 @@ class Operation(NamedObject):
         if self.label is not None and not isinstance(self.label, str):
             self.label = str(self.label)
 
-        if not isinstance(self.referencedResultRelationships, list):
-            self.referencedResultRelationships = [self.referencedResultRelationships] if self.referencedResultRelationships is not None else []
-        self.referencedResultRelationships = [v if isinstance(v, ReferencedResultRelationship) else ReferencedResultRelationship(**as_dict(v)) for v in self.referencedResultRelationships]
+        self._normalize_inlined_as_list(slot_name="referencedOperationRelationships", slot_type=ReferencedOperationRelationship, key_name="id", keyed=True)
 
         if self.resultPattern is not None and not isinstance(self.resultPattern, str):
             self.resultPattern = str(self.resultPattern)
 
-        if not isinstance(self.results, list):
-            self.results = [self.results] if self.results is not None else []
-        self.results = [v if isinstance(v, OperationResult) else OperationResult(**as_dict(v)) for v in self.results]
-
         super().__post_init__(**kwargs)
 
 
 @dataclass
-class ReferencedResultRelationship(YAMLRoot):
+class ReferencedOperationRelationship(YAMLRoot):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://www.cdisc.org/ars/1-0/ReferencedResultRelationship")
+    class_class_uri: ClassVar[URIRef] = URIRef("https://www.cdisc.org/ars/1-0/ReferencedOperationRelationship")
     class_class_curie: ClassVar[str] = None
-    class_name: ClassVar[str] = "ReferencedResultRelationship"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://www.cdisc.org/ars/1-0/ReferencedResultRelationship")
+    class_name: ClassVar[str] = "ReferencedOperationRelationship"
+    class_model_uri: ClassVar[URIRef] = URIRef("https://www.cdisc.org/ars/1-0/ReferencedOperationRelationship")
 
-    referencedResultRole: Union[str, "OperationRole"] = None
-    operationRef: Union[str, OperationId] = None
+    id: Union[str, ReferencedOperationRelationshipId] = None
+    referencedOperationRole: Union[str, "OperationRole"] = None
+    operationId: Union[str, OperationId] = None
+    analysisId: Optional[Union[str, AnalysisId]] = None
+    description: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.referencedResultRole):
-            self.MissingRequiredField("referencedResultRole")
-        if not isinstance(self.referencedResultRole, OperationRole):
-            self.referencedResultRole = OperationRole(self.referencedResultRole)
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, ReferencedOperationRelationshipId):
+            self.id = ReferencedOperationRelationshipId(self.id)
 
-        if self._is_empty(self.operationRef):
-            self.MissingRequiredField("operationRef")
-        if not isinstance(self.operationRef, OperationId):
-            self.operationRef = OperationId(self.operationRef)
+        if self._is_empty(self.referencedOperationRole):
+            self.MissingRequiredField("referencedOperationRole")
+        if not isinstance(self.referencedOperationRole, OperationRole):
+            self.referencedOperationRole = OperationRole(self.referencedOperationRole)
 
-        super().__post_init__(**kwargs)
+        if self._is_empty(self.operationId):
+            self.MissingRequiredField("operationId")
+        if not isinstance(self.operationId, OperationId):
+            self.operationId = OperationId(self.operationId)
 
+        if self.analysisId is not None and not isinstance(self.analysisId, AnalysisId):
+            self.analysisId = AnalysisId(self.analysisId)
 
-@dataclass
-class OperationResult(YAMLRoot):
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = URIRef("https://www.cdisc.org/ars/1-0/OperationResult")
-    class_class_curie: ClassVar[str] = None
-    class_name: ClassVar[str] = "OperationResult"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://www.cdisc.org/ars/1-0/OperationResult")
-
-    groupRefs: Optional[Union[Union[str, AnalysisGroupId], List[Union[str, AnalysisGroupId]]]] = empty_list()
-    rawValue: Optional[str] = None
-    formattedValue: Optional[str] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if not isinstance(self.groupRefs, list):
-            self.groupRefs = [self.groupRefs] if self.groupRefs is not None else []
-        self.groupRefs = [v if isinstance(v, AnalysisGroupId) else AnalysisGroupId(v) for v in self.groupRefs]
-
-        if self.rawValue is not None and not isinstance(self.rawValue, str):
-            self.rawValue = str(self.rawValue)
-
-        if self.formattedValue is not None and not isinstance(self.formattedValue, str):
-            self.formattedValue = str(self.formattedValue)
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
 
         super().__post_init__(**kwargs)
 
@@ -510,7 +590,7 @@ class Output(YAMLRoot):
     version: Optional[int] = None
     fileSpecifications: Optional[Union[Union[dict, "File"], List[Union[dict, "File"]]]] = empty_list()
     outputDisplays: Optional[Union[Union[dict, "OutputDisplay"], List[Union[dict, "OutputDisplay"]]]] = empty_list()
-    categoryRefs: Optional[Union[Union[str, AnalysisCategoryId], List[Union[str, AnalysisCategoryId]]]] = empty_list()
+    categoryIds: Optional[Union[Union[str, AnalysisCategoryId], List[Union[str, AnalysisCategoryId]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -529,9 +609,9 @@ class Output(YAMLRoot):
             self.outputDisplays = [self.outputDisplays] if self.outputDisplays is not None else []
         self.outputDisplays = [v if isinstance(v, OutputDisplay) else OutputDisplay(**as_dict(v)) for v in self.outputDisplays]
 
-        if not isinstance(self.categoryRefs, list):
-            self.categoryRefs = [self.categoryRefs] if self.categoryRefs is not None else []
-        self.categoryRefs = [v if isinstance(v, AnalysisCategoryId) else AnalysisCategoryId(v) for v in self.categoryRefs]
+        if not isinstance(self.categoryIds, list):
+            self.categoryIds = [self.categoryIds] if self.categoryIds is not None else []
+        self.categoryIds = [v if isinstance(v, AnalysisCategoryId) else AnalysisCategoryId(v) for v in self.categoryIds]
 
         super().__post_init__(**kwargs)
 
@@ -1158,14 +1238,23 @@ slots.dataSubsets = Slot(uri=DEFAULT_.dataSubsets, name="dataSubsets", curie=DEF
 slots.analyses = Slot(uri=DEFAULT_.analyses, name="analyses", curie=DEFAULT_.curie('analyses'),
                    model_uri=DEFAULT_.analyses, domain=None, range=Optional[Union[Dict[Union[str, AnalysisId], Union[dict, Analysis]], List[Union[dict, Analysis]]]])
 
+slots.methods = Slot(uri=DEFAULT_.methods, name="methods", curie=DEFAULT_.curie('methods'),
+                   model_uri=DEFAULT_.methods, domain=None, range=Optional[Union[Dict[Union[str, AnalysisMethodId], Union[dict, AnalysisMethod]], List[Union[dict, AnalysisMethod]]]])
+
+slots.operations = Slot(uri=DEFAULT_.operations, name="operations", curie=DEFAULT_.curie('operations'),
+                   model_uri=DEFAULT_.operations, domain=None, range=Union[Dict[Union[str, OperationId], Union[dict, Operation]], List[Union[dict, Operation]]])
+
+slots.referencedOperationId = Slot(uri=DEFAULT_.referencedOperationId, name="referencedOperationId", curie=DEFAULT_.curie('referencedOperationId'),
+                   model_uri=DEFAULT_.referencedOperationId, domain=None, range=Optional[Union[str, ReferencedOperationRelationshipId]])
+
 slots.analysisCategorizations = Slot(uri=DEFAULT_.analysisCategorizations, name="analysisCategorizations", curie=DEFAULT_.curie('analysisCategorizations'),
                    model_uri=DEFAULT_.analysisCategorizations, domain=None, range=Optional[Union[Dict[Union[str, AnalysisCategorizationId], Union[dict, AnalysisCategorization]], List[Union[dict, AnalysisCategorization]]]])
 
 slots.categories = Slot(uri=DEFAULT_.categories, name="categories", curie=DEFAULT_.curie('categories'),
                    model_uri=DEFAULT_.categories, domain=None, range=Union[Dict[Union[str, AnalysisCategoryId], Union[dict, AnalysisCategory]], List[Union[dict, AnalysisCategory]]])
 
-slots.categoryRefs = Slot(uri=DEFAULT_.categoryRefs, name="categoryRefs", curie=DEFAULT_.curie('categoryRefs'),
-                   model_uri=DEFAULT_.categoryRefs, domain=None, range=Optional[Union[Union[str, AnalysisCategoryId], List[Union[str, AnalysisCategoryId]]]])
+slots.categoryIds = Slot(uri=DEFAULT_.categoryIds, name="categoryIds", curie=DEFAULT_.curie('categoryIds'),
+                   model_uri=DEFAULT_.categoryIds, domain=None, range=Optional[Union[Union[str, AnalysisCategoryId], List[Union[str, AnalysisCategoryId]]]])
 
 slots.subCategorizations = Slot(uri=DEFAULT_.subCategorizations, name="subCategorizations", curie=DEFAULT_.curie('subCategorizations'),
                    model_uri=DEFAULT_.subCategorizations, domain=None, range=Optional[Union[Dict[Union[str, AnalysisCategorizationId], Union[dict, AnalysisCategorization]], List[Union[dict, AnalysisCategorization]]]])
@@ -1182,32 +1271,32 @@ slots.order = Slot(uri=DEFAULT_.order, name="order", curie=DEFAULT_.curie('order
 slots.sublist = Slot(uri=DEFAULT_.sublist, name="sublist", curie=DEFAULT_.curie('sublist'),
                    model_uri=DEFAULT_.sublist, domain=None, range=Optional[Union[dict, NestedList]])
 
-slots.analysisRef = Slot(uri=DEFAULT_.analysisRef, name="analysisRef", curie=DEFAULT_.curie('analysisRef'),
-                   model_uri=DEFAULT_.analysisRef, domain=None, range=Optional[Union[str, AnalysisId]])
+slots.analysisId = Slot(uri=DEFAULT_.analysisId, name="analysisId", curie=DEFAULT_.curie('analysisId'),
+                   model_uri=DEFAULT_.analysisId, domain=None, range=Optional[Union[str, AnalysisId]])
 
-slots.analysisSetRef = Slot(uri=DEFAULT_.analysisSetRef, name="analysisSetRef", curie=DEFAULT_.curie('analysisSetRef'),
-                   model_uri=DEFAULT_.analysisSetRef, domain=None, range=Optional[Union[str, AnalysisSetId]])
+slots.analysisSetId = Slot(uri=DEFAULT_.analysisSetId, name="analysisSetId", curie=DEFAULT_.curie('analysisSetId'),
+                   model_uri=DEFAULT_.analysisSetId, domain=None, range=Optional[Union[str, AnalysisSetId]])
 
 slots.orderedGroupings = Slot(uri=DEFAULT_.orderedGroupings, name="orderedGroupings", curie=DEFAULT_.curie('orderedGroupings'),
                    model_uri=DEFAULT_.orderedGroupings, domain=None, range=Optional[Union[Union[dict, OrderedGroupingFactor], List[Union[dict, OrderedGroupingFactor]]]])
 
-slots.groupingRef = Slot(uri=DEFAULT_.groupingRef, name="groupingRef", curie=DEFAULT_.curie('groupingRef'),
-                   model_uri=DEFAULT_.groupingRef, domain=None, range=Optional[Union[str, GroupingFactorId]])
+slots.groupingId = Slot(uri=DEFAULT_.groupingId, name="groupingId", curie=DEFAULT_.curie('groupingId'),
+                   model_uri=DEFAULT_.groupingId, domain=None, range=Optional[Union[str, GroupingFactorId]])
 
 slots.dataGrouping = Slot(uri=DEFAULT_.dataGrouping, name="dataGrouping", curie=DEFAULT_.curie('dataGrouping'),
                    model_uri=DEFAULT_.dataGrouping, domain=None, range=Optional[Union[dict, DataGroupingFactor]])
 
-slots.dataSubsetRef = Slot(uri=DEFAULT_.dataSubsetRef, name="dataSubsetRef", curie=DEFAULT_.curie('dataSubsetRef'),
-                   model_uri=DEFAULT_.dataSubsetRef, domain=None, range=Optional[Union[str, DataSubsetId]])
+slots.dataSubsetId = Slot(uri=DEFAULT_.dataSubsetId, name="dataSubsetId", curie=DEFAULT_.curie('dataSubsetId'),
+                   model_uri=DEFAULT_.dataSubsetId, domain=None, range=Optional[Union[str, DataSubsetId]])
 
-slots.method = Slot(uri=DEFAULT_.method, name="method", curie=DEFAULT_.curie('method'),
-                   model_uri=DEFAULT_.method, domain=None, range=Optional[Union[dict, AnalysisMethod]])
+slots.methodId = Slot(uri=DEFAULT_.methodId, name="methodId", curie=DEFAULT_.curie('methodId'),
+                   model_uri=DEFAULT_.methodId, domain=None, range=Optional[Union[str, AnalysisMethodId]])
 
 slots.description = Slot(uri=DEFAULT_.description, name="description", curie=DEFAULT_.curie('description'),
                    model_uri=DEFAULT_.description, domain=None, range=Optional[str])
 
-slots.operations = Slot(uri=DEFAULT_.operations, name="operations", curie=DEFAULT_.curie('operations'),
-                   model_uri=DEFAULT_.operations, domain=None, range=Union[Dict[Union[str, OperationId], Union[dict, Operation]], List[Union[dict, Operation]]])
+slots.referencedAnalysisOperations = Slot(uri=DEFAULT_.referencedAnalysisOperations, name="referencedAnalysisOperations", curie=DEFAULT_.curie('referencedAnalysisOperations'),
+                   model_uri=DEFAULT_.referencedAnalysisOperations, domain=None, range=Optional[Union[Union[dict, ReferencedAnalysisOperation], List[Union[dict, ReferencedAnalysisOperation]]]])
 
 slots.resultPattern = Slot(uri=DEFAULT_.resultPattern, name="resultPattern", curie=DEFAULT_.curie('resultPattern'),
                    model_uri=DEFAULT_.resultPattern, domain=None, range=Optional[str])
@@ -1215,8 +1304,14 @@ slots.resultPattern = Slot(uri=DEFAULT_.resultPattern, name="resultPattern", cur
 slots.results = Slot(uri=DEFAULT_.results, name="results", curie=DEFAULT_.curie('results'),
                    model_uri=DEFAULT_.results, domain=None, range=Optional[Union[Union[dict, OperationResult], List[Union[dict, OperationResult]]]])
 
-slots.groupRefs = Slot(uri=DEFAULT_.groupRefs, name="groupRefs", curie=DEFAULT_.curie('groupRefs'),
-                   model_uri=DEFAULT_.groupRefs, domain=None, range=Optional[Union[Union[str, AnalysisGroupId], List[Union[str, AnalysisGroupId]]]])
+slots.resultGroups = Slot(uri=DEFAULT_.resultGroups, name="resultGroups", curie=DEFAULT_.curie('resultGroups'),
+                   model_uri=DEFAULT_.resultGroups, domain=None, range=Optional[Union[Union[dict, ResultGroup], List[Union[dict, ResultGroup]]]])
+
+slots.groupId = Slot(uri=DEFAULT_.groupId, name="groupId", curie=DEFAULT_.curie('groupId'),
+                   model_uri=DEFAULT_.groupId, domain=None, range=Optional[Union[str, GroupId]])
+
+slots.groupValue = Slot(uri=DEFAULT_.groupValue, name="groupValue", curie=DEFAULT_.curie('groupValue'),
+                   model_uri=DEFAULT_.groupValue, domain=None, range=Optional[str])
 
 slots.rawValue = Slot(uri=DEFAULT_.rawValue, name="rawValue", curie=DEFAULT_.curie('rawValue'),
                    model_uri=DEFAULT_.rawValue, domain=None, range=Optional[str])
@@ -1224,17 +1319,17 @@ slots.rawValue = Slot(uri=DEFAULT_.rawValue, name="rawValue", curie=DEFAULT_.cur
 slots.formattedValue = Slot(uri=DEFAULT_.formattedValue, name="formattedValue", curie=DEFAULT_.curie('formattedValue'),
                    model_uri=DEFAULT_.formattedValue, domain=None, range=Optional[str])
 
-slots.referencedResultRelationships = Slot(uri=DEFAULT_.referencedResultRelationships, name="referencedResultRelationships", curie=DEFAULT_.curie('referencedResultRelationships'),
-                   model_uri=DEFAULT_.referencedResultRelationships, domain=None, range=Optional[Union[Union[dict, ReferencedResultRelationship], List[Union[dict, ReferencedResultRelationship]]]])
+slots.referencedOperationRelationships = Slot(uri=DEFAULT_.referencedOperationRelationships, name="referencedOperationRelationships", curie=DEFAULT_.curie('referencedOperationRelationships'),
+                   model_uri=DEFAULT_.referencedOperationRelationships, domain=None, range=Optional[Union[Dict[Union[str, ReferencedOperationRelationshipId], Union[dict, ReferencedOperationRelationship]], List[Union[dict, ReferencedOperationRelationship]]]])
 
-slots.referencedResultRole = Slot(uri=DEFAULT_.referencedResultRole, name="referencedResultRole", curie=DEFAULT_.curie('referencedResultRole'),
-                   model_uri=DEFAULT_.referencedResultRole, domain=None, range=Union[str, "OperationRole"])
+slots.referencedOperationRole = Slot(uri=DEFAULT_.referencedOperationRole, name="referencedOperationRole", curie=DEFAULT_.curie('referencedOperationRole'),
+                   model_uri=DEFAULT_.referencedOperationRole, domain=None, range=Union[str, "OperationRole"])
 
-slots.operationRef = Slot(uri=DEFAULT_.operationRef, name="operationRef", curie=DEFAULT_.curie('operationRef'),
-                   model_uri=DEFAULT_.operationRef, domain=None, range=Union[str, OperationId])
+slots.operationId = Slot(uri=DEFAULT_.operationId, name="operationId", curie=DEFAULT_.curie('operationId'),
+                   model_uri=DEFAULT_.operationId, domain=None, range=Union[str, OperationId])
 
-slots.outputRef = Slot(uri=DEFAULT_.outputRef, name="outputRef", curie=DEFAULT_.curie('outputRef'),
-                   model_uri=DEFAULT_.outputRef, domain=None, range=Optional[Union[str, OutputId]])
+slots.outputId = Slot(uri=DEFAULT_.outputId, name="outputId", curie=DEFAULT_.curie('outputId'),
+                   model_uri=DEFAULT_.outputId, domain=None, range=Optional[Union[str, OutputId]])
 
 slots.id = Slot(uri=DEFAULT_.id, name="id", curie=DEFAULT_.curie('id'),
                    model_uri=DEFAULT_.id, domain=None, range=URIRef)
@@ -1305,8 +1400,11 @@ slots.value = Slot(uri=DEFAULT_.value, name="value", curie=DEFAULT_.curie('value
 slots.label = Slot(uri=DEFAULT_.label, name="label", curie=DEFAULT_.curie('label'),
                    model_uri=DEFAULT_.label, domain=None, range=Optional[str])
 
-slots.Output_categoryRefs = Slot(uri=DEFAULT_.categoryRefs, name="Output_categoryRefs", curie=DEFAULT_.curie('categoryRefs'),
-                   model_uri=DEFAULT_.Output_categoryRefs, domain=Output, range=Optional[Union[Union[str, AnalysisCategoryId], List[Union[str, AnalysisCategoryId]]]])
+slots.ReferencedAnalysisOperation_analysisId = Slot(uri=DEFAULT_.analysisId, name="ReferencedAnalysisOperation_analysisId", curie=DEFAULT_.curie('analysisId'),
+                   model_uri=DEFAULT_.ReferencedAnalysisOperation_analysisId, domain=ReferencedAnalysisOperation, range=Union[str, AnalysisId])
+
+slots.Output_categoryIds = Slot(uri=DEFAULT_.categoryIds, name="Output_categoryIds", curie=DEFAULT_.curie('categoryIds'),
+                   model_uri=DEFAULT_.Output_categoryIds, domain=Output, range=Optional[Union[Union[str, AnalysisCategoryId], List[Union[str, AnalysisCategoryId]]]])
 
 slots.CompoundSetExpression_whereClauses = Slot(uri=DEFAULT_.whereClauses, name="CompoundSetExpression_whereClauses", curie=DEFAULT_.curie('whereClauses'),
                    model_uri=DEFAULT_.CompoundSetExpression_whereClauses, domain=CompoundSetExpression, range=Optional[Union[Union[str, AnalysisSetId], List[Union[str, AnalysisSetId]]]])

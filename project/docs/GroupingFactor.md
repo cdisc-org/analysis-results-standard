@@ -7,7 +7,7 @@ A factor used to subdivide either the subject population or data records in an a
 URI: [https://www.cdisc.org/ars/1-0/GroupingFactor](https://www.cdisc.org/ars/1-0/GroupingFactor)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[SubjectGroupingFactor],[Group]<groups%200..*-++[GroupingFactor&#124;id:string;label:string%20%3F;groupingVariable:string%20%3F;dataDriven:boolean],[OrderedGroupingFactor]-%20groupingRef%200..1>[GroupingFactor],[GroupingFactor]^-[SubjectGroupingFactor],[GroupingFactor]^-[DataGroupingFactor],[OrderedGroupingFactor],[Group],[DataGroupingFactor])](https://yuml.me/diagram/nofunky;dir:TB/class/[SubjectGroupingFactor],[Group]<groups%200..*-++[GroupingFactor&#124;id:string;label:string%20%3F;groupingVariable:string%20%3F;dataDriven:boolean],[OrderedGroupingFactor]-%20groupingRef%200..1>[GroupingFactor],[GroupingFactor]^-[SubjectGroupingFactor],[GroupingFactor]^-[DataGroupingFactor],[OrderedGroupingFactor],[Group],[DataGroupingFactor])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[SubjectGroupingFactor],[Group]<groups%200..*-++[GroupingFactor&#124;id:string;label:string%20%3F;groupingVariable:string%20%3F;dataDriven:boolean],[OrderedGroupingFactor]-%20groupingId%200..1>[GroupingFactor],[ResultGroup]-%20groupingId%200..1>[GroupingFactor],[GroupingFactor]^-[SubjectGroupingFactor],[GroupingFactor]^-[DataGroupingFactor],[ResultGroup],[OrderedGroupingFactor],[Group],[DataGroupingFactor])](https://yuml.me/diagram/nofunky;dir:TB/class/[SubjectGroupingFactor],[Group]<groups%200..*-++[GroupingFactor&#124;id:string;label:string%20%3F;groupingVariable:string%20%3F;dataDriven:boolean],[OrderedGroupingFactor]-%20groupingId%200..1>[GroupingFactor],[ResultGroup]-%20groupingId%200..1>[GroupingFactor],[GroupingFactor]^-[SubjectGroupingFactor],[GroupingFactor]^-[DataGroupingFactor],[ResultGroup],[OrderedGroupingFactor],[Group],[DataGroupingFactor])
 
 ## Children
 
@@ -16,7 +16,7 @@ URI: [https://www.cdisc.org/ars/1-0/GroupingFactor](https://www.cdisc.org/ars/1-
 
 ## Referenced by Class
 
- *  **None** *[groupingRef](groupingRef.md)*  <sub>0..1</sub>  **[GroupingFactor](GroupingFactor.md)**
+ *  **None** *[groupingId](groupingId.md)*  <sub>0..1</sub>  **[GroupingFactor](GroupingFactor.md)**
 
 ## Attributes
 

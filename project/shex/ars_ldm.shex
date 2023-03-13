@@ -38,13 +38,15 @@ linkml:Nodeidentifier NONLITERAL
 
 <Analysis> CLOSED {
     (  $<Analysis_tes> (  <version> @linkml:Integer ? ;
-          <categoryRefs> @<AnalysisCategory> * ;
-          <analysisSetRef> @<AnalysisSet> ? ;
+          <categoryIds> @<AnalysisCategory> * ;
+          <analysisSetId> @<AnalysisSet> ? ;
           <orderedGroupings> @<OrderedGroupingFactor> * ;
-          <dataSubsetRef> @<DataSubset> ? ;
+          <dataSubsetId> @<DataSubset> ? ;
           <dataset> @linkml:String ? ;
           <variable> @linkml:String ? ;
-          <method> @<AnalysisMethod> ?
+          <methodId> @<AnalysisMethod> ? ;
+          <referencedAnalysisOperations> @<ReferencedAnalysisOperation> * ;
+          <results> @<OperationResult> *
        ) ;
        rdf:type [ <Analysis> ]
     )
@@ -255,16 +257,16 @@ linkml:Nodeidentifier NONLITERAL
     (  $<Operation_tes> (  &<NamedObject_tes> ;
           rdf:type [ <NamedObject> ] ? ;
           <label> @linkml:String ? ;
-          <referencedResultRelationships> @<ReferencedResultRelationship> * ;
-          <resultPattern> @linkml:String ? ;
-          <results> @<OperationResult> *
+          <referencedOperationRelationships> @<ReferencedOperationRelationship> * ;
+          <resultPattern> @linkml:String ?
        ) ;
        rdf:type [ <Operation> ]
     )
 }
 
 <OperationResult> CLOSED {
-    (  $<OperationResult_tes> (  <groupRefs> @<AnalysisGroup> * ;
+    (  $<OperationResult_tes> (  <operationId> @<Operation> ;
+          <resultGroups> @<ResultGroup> * ;
           <rawValue> @linkml:String ? ;
           <formattedValue> @linkml:String ?
        ) ;
@@ -274,7 +276,7 @@ linkml:Nodeidentifier NONLITERAL
 
 <OrderedGroupingFactor> CLOSED {
     (  $<OrderedGroupingFactor_tes> (  <order> @linkml:Integer ;
-          <groupingRef> @<GroupingFactor> ? ;
+          <groupingId> @<GroupingFactor> ? ;
           <dataGrouping> @<DataGroupingFactor> ?
        ) ;
        rdf:type [ <OrderedGroupingFactor> ] ?
@@ -286,8 +288,8 @@ linkml:Nodeidentifier NONLITERAL
           rdf:type [ <NamedObject> ] ? ;
           <order> @linkml:Integer ;
           <sublist> @<NestedList> ? ;
-          <analysisRef> @<Analysis> ? ;
-          <outputRef> @<Output> ?
+          <analysisId> @<Analysis> ? ;
+          <outputId> @<Output> ?
        ) ;
        rdf:type [ <OrderedListItem> ] ?
     )
@@ -297,7 +299,7 @@ linkml:Nodeidentifier NONLITERAL
     (  $<Output_tes> (  <version> @linkml:Integer ? ;
           <fileSpecifications> @<File> * ;
           <outputDisplays> @<OutputDisplay> * ;
-          <categoryRefs> @<AnalysisCategory> *
+          <categoryIds> @<AnalysisCategory> *
        ) ;
        rdf:type [ <Output> ]
     )
@@ -311,11 +313,21 @@ linkml:Nodeidentifier NONLITERAL
     )
 }
 
-<ReferencedResultRelationship> CLOSED {
-    (  $<ReferencedResultRelationship_tes> (  <referencedResultRole> @<OperationRole> ;
-          <operationRef> @<Operation>
+<ReferencedAnalysisOperation> CLOSED {
+    (  $<ReferencedAnalysisOperation_tes> (  <referencedOperationId> @<ReferencedOperationRelationship> ? ;
+          <analysisId> @<Analysis>
        ) ;
-       rdf:type [ <ReferencedResultRelationship> ] ?
+       rdf:type [ <ReferencedAnalysisOperation> ] ?
+    )
+}
+
+<ReferencedOperationRelationship> CLOSED {
+    (  $<ReferencedOperationRelationship_tes> (  <referencedOperationRole> @<OperationRole> ;
+          <operationId> @<Operation> ;
+          <analysisId> @<Analysis> ? ;
+          <description> @linkml:String ?
+       ) ;
+       rdf:type [ <ReferencedOperationRelationship> ]
     )
 }
 
@@ -330,9 +342,19 @@ linkml:Nodeidentifier NONLITERAL
           <globalDisplaySections> @<DisplaySection> * ;
           <analysisCategorizations> @<AnalysisCategorization> * ;
           <analyses> @<Analysis> * ;
+          <methods> @<AnalysisMethod> * ;
           <outputs> @<Output> *
        ) ;
        rdf:type [ <ReportingEvent> ] ?
+    )
+}
+
+<ResultGroup> CLOSED {
+    (  $<ResultGroup_tes> (  <groupingId> @<GroupingFactor> ? ;
+          <groupId> @<Group> ? ;
+          <groupValue> @linkml:String ?
+       ) ;
+       rdf:type [ <ResultGroup> ] ?
     )
 }
 

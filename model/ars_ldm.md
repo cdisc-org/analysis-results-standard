@@ -38,12 +38,6 @@ File {
     string style  
     string name  
 }
-Analysis {
-    string id  
-    integer version  
-    string dataset  
-    string variable  
-}
 AnalysisMethod {
     string id  
     string label  
@@ -56,11 +50,25 @@ Operation {
     string resultPattern  
     string name  
 }
+ReferencedOperationRelationship {
+    string id  
+    OperationRole referencedOperationRole  
+    string description  
+}
+Analysis {
+    string id  
+    integer version  
+    string dataset  
+    string variable  
+}
 OperationResult {
     string rawValue  
     string formattedValue  
 }
-AnalysisGroup {
+ResultGroup {
+    string groupValue  
+}
+Group {
     string label  
     integer order  
     string id  
@@ -68,19 +76,20 @@ AnalysisGroup {
 CompoundGroupExpression {
     AndOr logicalOperator  
 }
-Group {
-    string label  
-    integer order  
-    string id  
-}
 Condition {
     string dataset  
     string variable  
     Comparator comparator  
     stringList value  
 }
-ReferencedResultRelationship {
-    OperationRole referencedResultRole  
+GroupingFactor {
+    string id  
+    string label  
+    string groupingVariable  
+    boolean dataDriven  
+}
+ReferencedAnalysisOperation {
+
 }
 DataSubset {
     string label  
@@ -109,12 +118,6 @@ DataGroup {
     integer order  
     string id  
 }
-GroupingFactor {
-    string id  
-    string label  
-    string groupingVariable  
-    boolean dataDriven  
-}
 AnalysisSet {
     string label  
     integer order  
@@ -128,6 +131,11 @@ SubjectGroupingFactor {
     string label  
     string groupingVariable  
     boolean dataDriven  
+}
+AnalysisGroup {
+    string label  
+    integer order  
+    string id  
 }
 NestedList {
 
@@ -145,50 +153,58 @@ ReportingEvent ||--}o DataSubset : "dataSubsets"
 ReportingEvent ||--}o DisplaySection : "globalDisplaySections"
 ReportingEvent ||--}o AnalysisCategorization : "analysisCategorizations"
 ReportingEvent ||--}o Analysis : "analyses"
+ReportingEvent ||--}o AnalysisMethod : "methods"
 ReportingEvent ||--}o Output : "outputs"
 Output ||--}o File : "fileSpecifications"
 Output ||--}o OutputDisplay : "outputDisplays"
-Output ||--}o AnalysisCategory : "categoryRefs"
+Output ||--}o AnalysisCategory : "categoryIds"
 AnalysisCategory ||--}o AnalysisCategorization : "subCategorizations"
 AnalysisCategorization ||--}| AnalysisCategory : "categories"
 OutputDisplay ||--|o Display : "display"
 Display ||--}o DisplaySection : "displaySections"
 DisplaySection ||--}o DisplaySubSection : "subSections"
-Analysis ||--}o AnalysisCategory : "categoryRefs"
-Analysis ||--|o AnalysisSet : "analysisSetRef"
-Analysis ||--}o OrderedGroupingFactor : "orderedGroupings"
-Analysis ||--|o DataSubset : "dataSubsetRef"
-Analysis ||--|o AnalysisMethod : "method"
 AnalysisMethod ||--}| Operation : "operations"
-Operation ||--}o ReferencedResultRelationship : "referencedResultRelationships"
-Operation ||--}o OperationResult : "results"
-OperationResult ||--}o AnalysisGroup : "groupRefs"
-AnalysisGroup ||--|o Condition : "condition"
-AnalysisGroup ||--|o CompoundGroupExpression : "compoundExpression"
-CompoundGroupExpression ||--}o Group : "whereClauses"
+Operation ||--}o ReferencedOperationRelationship : "referencedOperationRelationships"
+ReferencedOperationRelationship ||--|| Operation : "operationId"
+ReferencedOperationRelationship ||--|o Analysis : "analysisId"
+Analysis ||--}o AnalysisCategory : "categoryIds"
+Analysis ||--|o AnalysisSet : "analysisSetId"
+Analysis ||--}o OrderedGroupingFactor : "orderedGroupings"
+Analysis ||--|o DataSubset : "dataSubsetId"
+Analysis ||--|o AnalysisMethod : "methodId"
+Analysis ||--}o ReferencedAnalysisOperation : "referencedAnalysisOperations"
+Analysis ||--}o OperationResult : "results"
+OperationResult ||--|| Operation : "operationId"
+OperationResult ||--}o ResultGroup : "resultGroups"
+ResultGroup ||--|o GroupingFactor : "groupingId"
+ResultGroup ||--|o Group : "groupId"
 Group ||--|o Condition : "condition"
 Group ||--|o CompoundGroupExpression : "compoundExpression"
-ReferencedResultRelationship ||--|| Operation : "operationRef"
+CompoundGroupExpression ||--}o Group : "whereClauses"
+GroupingFactor ||--}o Group : "groups"
+ReferencedAnalysisOperation ||--|o ReferencedOperationRelationship : "referencedOperationId"
+ReferencedAnalysisOperation ||--|| Analysis : "analysisId"
 DataSubset ||--|o Condition : "condition"
 DataSubset ||--|o CompoundSubsetExpression : "compoundExpression"
 CompoundSubsetExpression ||--}o WhereClause : "whereClauses"
 WhereClause ||--|o Condition : "condition"
 WhereClause ||--|o CompoundExpression : "compoundExpression"
 CompoundExpression ||--}o WhereClause : "whereClauses"
-OrderedGroupingFactor ||--|o GroupingFactor : "groupingRef"
+OrderedGroupingFactor ||--|o GroupingFactor : "groupingId"
 OrderedGroupingFactor ||--|o DataGroupingFactor : "dataGrouping"
 DataGroupingFactor ||--}o DataGroup : "groups"
 DataGroup ||--|o Condition : "condition"
 DataGroup ||--|o CompoundGroupExpression : "compoundExpression"
-GroupingFactor ||--}o Group : "groups"
 AnalysisSet ||--|o Condition : "condition"
 AnalysisSet ||--|o CompoundSetExpression : "compoundExpression"
 CompoundSetExpression ||--}o AnalysisSet : "whereClauses"
 SubjectGroupingFactor ||--}o AnalysisGroup : "groups"
+AnalysisGroup ||--|o Condition : "condition"
+AnalysisGroup ||--|o CompoundGroupExpression : "compoundExpression"
 NestedList ||--}o OrderedListItem : "listItems"
 OrderedListItem ||--|o NestedList : "sublist"
-OrderedListItem ||--|o Analysis : "analysisRef"
-OrderedListItem ||--|o Output : "outputRef"
+OrderedListItem ||--|o Analysis : "analysisId"
+OrderedListItem ||--|o Output : "outputId"
 
 ```
 

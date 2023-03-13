@@ -4,16 +4,16 @@
             "additionalProperties": false,
             "description": "",
             "properties": {
-                "analysisSetRef": {
+                "analysisSetId": {
                     "type": "string"
                 },
-                "categoryRefs": {
+                "categoryIds": {
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
                 },
-                "dataSubsetRef": {
+                "dataSubsetId": {
                     "type": "string"
                 },
                 "dataset": {
@@ -22,12 +22,24 @@
                 "id": {
                     "type": "string"
                 },
-                "method": {
-                    "$ref": "#/$defs/AnalysisMethod"
+                "methodId": {
+                    "type": "string"
                 },
                 "orderedGroupings": {
                     "items": {
                         "$ref": "#/$defs/OrderedGroupingFactor"
+                    },
+                    "type": "array"
+                },
+                "referencedAnalysisOperations": {
+                    "items": {
+                        "$ref": "#/$defs/ReferencedAnalysisOperation"
+                    },
+                    "type": "array"
+                },
+                "results": {
+                    "items": {
+                        "$ref": "#/$defs/OperationResult"
                     },
                     "type": "array"
                 },
@@ -540,20 +552,14 @@
                 "name": {
                     "type": "string"
                 },
-                "referencedResultRelationships": {
+                "referencedOperationRelationships": {
                     "items": {
-                        "$ref": "#/$defs/ReferencedResultRelationship"
+                        "$ref": "#/$defs/ReferencedOperationRelationship"
                     },
                     "type": "array"
                 },
                 "resultPattern": {
                     "type": "string"
-                },
-                "results": {
-                    "items": {
-                        "$ref": "#/$defs/OperationResult"
-                    },
-                    "type": "array"
                 }
             },
             "required": [
@@ -570,16 +576,22 @@
                 "formattedValue": {
                     "type": "string"
                 },
-                "groupRefs": {
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
+                "operationId": {
+                    "type": "string"
                 },
                 "rawValue": {
                     "type": "string"
+                },
+                "resultGroups": {
+                    "items": {
+                        "$ref": "#/$defs/ResultGroup"
+                    },
+                    "type": "array"
                 }
             },
+            "required": [
+                "operationId"
+            ],
             "title": "OperationResult",
             "type": "object"
         },
@@ -599,7 +611,7 @@
                 "dataGrouping": {
                     "$ref": "#/$defs/DataGroupingFactor"
                 },
-                "groupingRef": {
+                "groupingId": {
                     "type": "string"
                 },
                 "order": {
@@ -616,7 +628,7 @@
             "additionalProperties": false,
             "description": "",
             "properties": {
-                "analysisRef": {
+                "analysisId": {
                     "type": "string"
                 },
                 "name": {
@@ -625,7 +637,7 @@
                 "order": {
                     "type": "integer"
                 },
-                "outputRef": {
+                "outputId": {
                     "type": "string"
                 },
                 "sublist": {
@@ -643,7 +655,7 @@
             "additionalProperties": false,
             "description": "",
             "properties": {
-                "categoryRefs": {
+                "categoryIds": {
                     "items": {
                         "type": "string"
                     },
@@ -691,22 +703,49 @@
             "title": "OutputDisplay",
             "type": "object"
         },
-        "ReferencedResultRelationship": {
+        "ReferencedAnalysisOperation": {
             "additionalProperties": false,
             "description": "",
             "properties": {
-                "operationRef": {
+                "analysisId": {
                     "type": "string"
                 },
-                "referencedResultRole": {
+                "referencedOperationId": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "analysisId"
+            ],
+            "title": "ReferencedAnalysisOperation",
+            "type": "object"
+        },
+        "ReferencedOperationRelationship": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "analysisId": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "operationId": {
+                    "type": "string"
+                },
+                "referencedOperationRole": {
                     "$ref": "#/$defs/OperationRole"
                 }
             },
             "required": [
-                "referencedResultRole",
-                "operationRef"
+                "id",
+                "referencedOperationRole",
+                "operationId"
             ],
-            "title": "ReferencedResultRelationship",
+            "title": "ReferencedOperationRelationship",
             "type": "object"
         },
         "ReportingEvent": {
@@ -755,6 +794,12 @@
                 "listOfPlannedOutputs": {
                     "$ref": "#/$defs/NestedList"
                 },
+                "methods": {
+                    "items": {
+                        "$ref": "#/$defs/AnalysisMethod"
+                    },
+                    "type": "array"
+                },
                 "name": {
                     "type": "string"
                 },
@@ -770,6 +815,23 @@
                 "name"
             ],
             "title": "ReportingEvent",
+            "type": "object"
+        },
+        "ResultGroup": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "groupId": {
+                    "type": "string"
+                },
+                "groupValue": {
+                    "type": "string"
+                },
+                "groupingId": {
+                    "type": "string"
+                }
+            },
+            "title": "ResultGroup",
             "type": "object"
         },
         "SectionType": {
@@ -884,6 +946,12 @@
         "listOfPlannedOutputs": {
             "$ref": "#/$defs/NestedList"
         },
+        "methods": {
+            "items": {
+                "$ref": "#/$defs/AnalysisMethod"
+            },
+            "type": "array"
+        },
         "name": {
             "type": "string"
         },
@@ -898,7 +966,7 @@
         "listOfPlannedAnalyses",
         "name"
     ],
-    "title": "ARS-Schema",
+    "title": "ars_ldm",
     "type": "object",
     "version": null
 }

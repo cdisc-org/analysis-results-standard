@@ -19,4 +19,4 @@ None &#8594;  <sub>0..\*</sub> [OperationResult](OperationResult.md)
 
 ## Used by
 
- * [Operation](Operation.md)
+ * [Analysis](Analysis.md)

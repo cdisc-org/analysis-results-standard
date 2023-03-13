@@ -2,13 +2,15 @@ type Analysis
   {
     id: String!
     version: Integer
-    categoryRefs: [AnalysisCategory]
-    analysisSetRef: AnalysisSet
+    categoryIds: [AnalysisCategory]
+    analysisSetId: AnalysisSet
     orderedGroupings: [OrderedGroupingFactor]
-    dataSubsetRef: DataSubset
+    dataSubsetId: DataSubset
     dataset: String
     variable: String
-    method: AnalysisMethod
+    methodId: AnalysisMethod
+    referencedAnalysisOperations: [ReferencedAnalysisOperation]
+    results: [OperationResult]
   }
 
 type AnalysisCategorization
@@ -173,14 +175,14 @@ type Operation
     name: String!
     id: String!
     label: String
-    referencedResultRelationships: [ReferencedResultRelationship]
+    referencedOperationRelationships: [ReferencedOperationRelationship]
     resultPattern: String
-    results: [OperationResult]
   }
 
 type OperationResult
   {
-    groupRefs: [AnalysisGroup]
+    operationId: Operation!
+    resultGroups: [ResultGroup]
     rawValue: String
     formattedValue: String
   }
@@ -188,7 +190,7 @@ type OperationResult
 type OrderedGroupingFactor
   {
     order: Integer!
-    groupingRef: GroupingFactor
+    groupingId: GroupingFactor
     dataGrouping: DataGroupingFactor
   }
 
@@ -197,8 +199,8 @@ type OrderedListItem
     name: String!
     order: Integer!
     sublist: NestedList
-    analysisRef: Analysis
-    outputRef: Output
+    analysisId: Analysis
+    outputId: Output
   }
 
 type Output
@@ -207,7 +209,7 @@ type Output
     version: Integer
     fileSpecifications: [File]
     outputDisplays: [OutputDisplay]
-    categoryRefs: [AnalysisCategory]
+    categoryIds: [AnalysisCategory]
   }
 
 type OutputDisplay
@@ -216,10 +218,19 @@ type OutputDisplay
     display: Display
   }
 
-type ReferencedResultRelationship
+type ReferencedAnalysisOperation
   {
-    referencedResultRole: OperationRole!
-    operationRef: Operation!
+    referencedOperationId: ReferencedOperationRelationship
+    analysisId: Analysis!
+  }
+
+type ReferencedOperationRelationship
+  {
+    id: String!
+    referencedOperationRole: OperationRole!
+    operationId: Operation!
+    analysisId: Analysis
+    description: String
   }
 
 type ReportingEvent
@@ -233,7 +244,15 @@ type ReportingEvent
     globalDisplaySections: [DisplaySection]
     analysisCategorizations: [AnalysisCategorization]
     analyses: [Analysis]
+    methods: [AnalysisMethod]
     outputs: [Output]
+  }
+
+type ResultGroup
+  {
+    groupingId: GroupingFactor
+    groupId: Group
+    groupValue: String
   }
 
 type SubjectGroupingFactor
