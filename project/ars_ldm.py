@@ -1,5 +1,5 @@
 # Auto generated from ars_ldm.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-03-13T15:22:26
+# Generation date: 2023-03-31T11:41:02
 # Schema: ars_ldm
 #
 # id: https://www.cdisc.org/ars/1-0
@@ -75,11 +75,7 @@ class DisplaySubSectionId(extended_str):
     pass
 
 
-class WhereClauseId(extended_str):
-    pass
-
-
-class AnalysisSetId(WhereClauseId):
+class AnalysisSetId(extended_str):
     pass
 
 
@@ -95,7 +91,7 @@ class DataGroupingFactorId(GroupingFactorId):
     pass
 
 
-class GroupId(WhereClauseId):
+class GroupId(extended_str):
     pass
 
 
@@ -107,7 +103,7 @@ class DataGroupId(GroupId):
     pass
 
 
-class DataSubsetId(WhereClauseId):
+class DataSubsetId(extended_str):
     pass
 
 
@@ -211,12 +207,18 @@ class OrderedListItem(NamedObject):
     class_model_uri: ClassVar[URIRef] = URIRef("https://www.cdisc.org/ars/1-0/OrderedListItem")
 
     name: str = None
+    level: int = None
     order: int = None
     sublist: Optional[Union[dict, NestedList]] = None
     analysisId: Optional[Union[str, AnalysisId]] = None
     outputId: Optional[Union[str, OutputId]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.level):
+            self.MissingRequiredField("level")
+        if not isinstance(self.level, int):
+            self.level = int(self.level)
+
         if self._is_empty(self.order):
             self.MissingRequiredField("order")
         if not isinstance(self.order, int):
@@ -306,6 +308,7 @@ class Analysis(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = URIRef("https://www.cdisc.org/ars/1-0/Analysis")
 
     id: Union[str, AnalysisId] = None
+    methodId: Union[str, AnalysisMethodId] = None
     version: Optional[int] = None
     categoryIds: Optional[Union[Union[str, AnalysisCategoryId], List[Union[str, AnalysisCategoryId]]]] = empty_list()
     analysisSetId: Optional[Union[str, AnalysisSetId]] = None
@@ -313,7 +316,6 @@ class Analysis(YAMLRoot):
     dataSubsetId: Optional[Union[str, DataSubsetId]] = None
     dataset: Optional[str] = None
     variable: Optional[str] = None
-    methodId: Optional[Union[str, AnalysisMethodId]] = None
     referencedAnalysisOperations: Optional[Union[Union[dict, "ReferencedAnalysisOperation"], List[Union[dict, "ReferencedAnalysisOperation"]]]] = empty_list()
     results: Optional[Union[Union[dict, "OperationResult"], List[Union[dict, "OperationResult"]]]] = empty_list()
 
@@ -322,6 +324,11 @@ class Analysis(YAMLRoot):
             self.MissingRequiredField("id")
         if not isinstance(self.id, AnalysisId):
             self.id = AnalysisId(self.id)
+
+        if self._is_empty(self.methodId):
+            self.MissingRequiredField("methodId")
+        if not isinstance(self.methodId, AnalysisMethodId):
+            self.methodId = AnalysisMethodId(self.methodId)
 
         if self.version is not None and not isinstance(self.version, int):
             self.version = int(self.version)
@@ -345,9 +352,6 @@ class Analysis(YAMLRoot):
 
         if self.variable is not None and not isinstance(self.variable, str):
             self.variable = str(self.variable)
-
-        if self.methodId is not None and not isinstance(self.methodId, AnalysisMethodId):
-            self.methodId = AnalysisMethodId(self.methodId)
 
         if not isinstance(self.referencedAnalysisOperations, list):
             self.referencedAnalysisOperations = [self.referencedAnalysisOperations] if self.referencedAnalysisOperations is not None else []
@@ -761,15 +765,17 @@ class WhereClause(YAMLRoot):
     class_name: ClassVar[str] = "WhereClause"
     class_model_uri: ClassVar[URIRef] = URIRef("https://www.cdisc.org/ars/1-0/WhereClause")
 
-    id: Union[str, WhereClauseId] = None
+    level: Optional[int] = None
+    order: Optional[int] = None
     condition: Optional[Union[dict, "Condition"]] = None
     compoundExpression: Optional[Union[dict, "CompoundExpression"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, WhereClauseId):
-            self.id = WhereClauseId(self.id)
+        if self.level is not None and not isinstance(self.level, int):
+            self.level = int(self.level)
+
+        if self.order is not None and not isinstance(self.order, int):
+            self.order = int(self.order)
 
         if self.condition is not None and not isinstance(self.condition, Condition):
             self.condition = Condition(**as_dict(self.condition))
@@ -820,18 +826,18 @@ class CompoundExpression(YAMLRoot):
     class_name: ClassVar[str] = "CompoundExpression"
     class_model_uri: ClassVar[URIRef] = URIRef("https://www.cdisc.org/ars/1-0/CompoundExpression")
 
-    logicalOperator: Union[str, "AndOr"] = None
-    whereClauses: Optional[Union[Union[str, WhereClauseId], List[Union[str, WhereClauseId]]]] = empty_list()
+    logicalOperator: Union[str, "LogicalOperator"] = None
+    whereClauses: Optional[Union[Union[dict, WhereClause], List[Union[dict, WhereClause]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.logicalOperator):
             self.MissingRequiredField("logicalOperator")
-        if not isinstance(self.logicalOperator, AndOr):
-            self.logicalOperator = AndOr(self.logicalOperator)
+        if not isinstance(self.logicalOperator, LogicalOperator):
+            self.logicalOperator = LogicalOperator(self.logicalOperator)
 
         if not isinstance(self.whereClauses, list):
             self.whereClauses = [self.whereClauses] if self.whereClauses is not None else []
-        self.whereClauses = [v if isinstance(v, WhereClauseId) else WhereClauseId(v) for v in self.whereClauses]
+        self.whereClauses = [v if isinstance(v, WhereClause) else WhereClause(**as_dict(v)) for v in self.whereClauses]
 
         super().__post_init__(**kwargs)
 
@@ -845,7 +851,7 @@ class CompoundSetExpression(CompoundExpression):
     class_name: ClassVar[str] = "CompoundSetExpression"
     class_model_uri: ClassVar[URIRef] = URIRef("https://www.cdisc.org/ars/1-0/CompoundSetExpression")
 
-    logicalOperator: Union[str, "AndOr"] = None
+    logicalOperator: Union[str, "LogicalOperator"] = None
     whereClauses: Optional[Union[Union[str, AnalysisSetId], List[Union[str, AnalysisSetId]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -865,7 +871,7 @@ class CompoundGroupExpression(CompoundExpression):
     class_name: ClassVar[str] = "CompoundGroupExpression"
     class_model_uri: ClassVar[URIRef] = URIRef("https://www.cdisc.org/ars/1-0/CompoundGroupExpression")
 
-    logicalOperator: Union[str, "AndOr"] = None
+    logicalOperator: Union[str, "LogicalOperator"] = None
     whereClauses: Optional[Union[Union[str, GroupId], List[Union[str, GroupId]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -885,11 +891,13 @@ class CompoundSubsetExpression(CompoundExpression):
     class_name: ClassVar[str] = "CompoundSubsetExpression"
     class_model_uri: ClassVar[URIRef] = URIRef("https://www.cdisc.org/ars/1-0/CompoundSubsetExpression")
 
-    logicalOperator: Union[str, "AndOr"] = None
-    whereClauses: Optional[Union[Dict[Union[str, WhereClauseId], Union[dict, WhereClause]], List[Union[dict, WhereClause]]]] = empty_dict()
+    logicalOperator: Union[str, "LogicalOperator"] = None
+    whereClauses: Optional[Union[Union[dict, WhereClause], List[Union[dict, WhereClause]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        self._normalize_inlined_as_list(slot_name="whereClauses", slot_type=WhereClause, key_name="id", keyed=True)
+        if not isinstance(self.whereClauses, list):
+            self.whereClauses = [self.whereClauses] if self.whereClauses is not None else []
+        self.whereClauses = [v if isinstance(v, WhereClause) else WhereClause(**as_dict(v)) for v in self.whereClauses]
 
         super().__post_init__(**kwargs)
 
@@ -909,7 +917,6 @@ class AnalysisSet(WhereClause):
     class_model_uri: ClassVar[URIRef] = URIRef("https://www.cdisc.org/ars/1-0/AnalysisSet")
 
     id: Union[str, AnalysisSetId] = None
-    order: int = None
     label: Optional[str] = None
     compoundExpression: Optional[Union[dict, CompoundSetExpression]] = None
 
@@ -918,11 +925,6 @@ class AnalysisSet(WhereClause):
             self.MissingRequiredField("id")
         if not isinstance(self.id, AnalysisSetId):
             self.id = AnalysisSetId(self.id)
-
-        if self._is_empty(self.order):
-            self.MissingRequiredField("order")
-        if not isinstance(self.order, int):
-            self.order = int(self.order)
 
         if self.label is not None and not isinstance(self.label, str):
             self.label = str(self.label)
@@ -1040,7 +1042,6 @@ class Group(WhereClause):
     class_model_uri: ClassVar[URIRef] = URIRef("https://www.cdisc.org/ars/1-0/Group")
 
     id: Union[str, GroupId] = None
-    order: int = None
     label: Optional[str] = None
     compoundExpression: Optional[Union[dict, CompoundGroupExpression]] = None
 
@@ -1049,11 +1050,6 @@ class Group(WhereClause):
             self.MissingRequiredField("id")
         if not isinstance(self.id, GroupId):
             self.id = GroupId(self.id)
-
-        if self._is_empty(self.order):
-            self.MissingRequiredField("order")
-        if not isinstance(self.order, int):
-            self.order = int(self.order)
 
         if self.label is not None and not isinstance(self.label, str):
             self.label = str(self.label)
@@ -1078,7 +1074,6 @@ class AnalysisGroup(Group):
     class_model_uri: ClassVar[URIRef] = URIRef("https://www.cdisc.org/ars/1-0/AnalysisGroup")
 
     id: Union[str, AnalysisGroupId] = None
-    order: int = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -1102,7 +1097,6 @@ class DataGroup(Group):
     class_model_uri: ClassVar[URIRef] = URIRef("https://www.cdisc.org/ars/1-0/DataGroup")
 
     id: Union[str, DataGroupId] = None
-    order: int = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -1155,13 +1149,14 @@ class FileType(EnumDefinitionImpl):
         name="FileType",
     )
 
-class AndOr(EnumDefinitionImpl):
+class LogicalOperator(EnumDefinitionImpl):
 
     AND = PermissibleValue(text="AND")
     OR = PermissibleValue(text="OR")
+    NOT = PermissibleValue(text="NOT")
 
     _defn = EnumDefinition(
-        name="AndOr",
+        name="LogicalOperator",
     )
 
 class Comparator(EnumDefinitionImpl):
@@ -1265,8 +1260,11 @@ slots.outputs = Slot(uri=DEFAULT_.outputs, name="outputs", curie=DEFAULT_.curie(
 slots.listItems = Slot(uri=DEFAULT_.listItems, name="listItems", curie=DEFAULT_.curie('listItems'),
                    model_uri=DEFAULT_.listItems, domain=None, range=Optional[Union[Union[dict, OrderedListItem], List[Union[dict, OrderedListItem]]]])
 
+slots.level = Slot(uri=DEFAULT_.level, name="level", curie=DEFAULT_.curie('level'),
+                   model_uri=DEFAULT_.level, domain=None, range=Optional[int])
+
 slots.order = Slot(uri=DEFAULT_.order, name="order", curie=DEFAULT_.curie('order'),
-                   model_uri=DEFAULT_.order, domain=None, range=int)
+                   model_uri=DEFAULT_.order, domain=None, range=Optional[int])
 
 slots.sublist = Slot(uri=DEFAULT_.sublist, name="sublist", curie=DEFAULT_.curie('sublist'),
                    model_uri=DEFAULT_.sublist, domain=None, range=Optional[Union[dict, NestedList]])
@@ -1290,7 +1288,7 @@ slots.dataSubsetId = Slot(uri=DEFAULT_.dataSubsetId, name="dataSubsetId", curie=
                    model_uri=DEFAULT_.dataSubsetId, domain=None, range=Optional[Union[str, DataSubsetId]])
 
 slots.methodId = Slot(uri=DEFAULT_.methodId, name="methodId", curie=DEFAULT_.curie('methodId'),
-                   model_uri=DEFAULT_.methodId, domain=None, range=Optional[Union[str, AnalysisMethodId]])
+                   model_uri=DEFAULT_.methodId, domain=None, range=Union[str, AnalysisMethodId])
 
 slots.description = Slot(uri=DEFAULT_.description, name="description", curie=DEFAULT_.curie('description'),
                    model_uri=DEFAULT_.description, domain=None, range=Optional[str])
@@ -1374,7 +1372,7 @@ slots.text = Slot(uri=DEFAULT_.text, name="text", curie=DEFAULT_.curie('text'),
                    model_uri=DEFAULT_.text, domain=None, range=Optional[str])
 
 slots.logicalOperator = Slot(uri=DEFAULT_.logicalOperator, name="logicalOperator", curie=DEFAULT_.curie('logicalOperator'),
-                   model_uri=DEFAULT_.logicalOperator, domain=None, range=Union[str, "AndOr"])
+                   model_uri=DEFAULT_.logicalOperator, domain=None, range=Union[str, "LogicalOperator"])
 
 slots.condition = Slot(uri=DEFAULT_.condition, name="condition", curie=DEFAULT_.curie('condition'),
                    model_uri=DEFAULT_.condition, domain=None, range=Optional[Union[dict, Condition]])
@@ -1383,7 +1381,7 @@ slots.compoundExpression = Slot(uri=DEFAULT_.compoundExpression, name="compoundE
                    model_uri=DEFAULT_.compoundExpression, domain=None, range=Optional[Union[dict, CompoundExpression]])
 
 slots.whereClauses = Slot(uri=DEFAULT_.whereClauses, name="whereClauses", curie=DEFAULT_.curie('whereClauses'),
-                   model_uri=DEFAULT_.whereClauses, domain=None, range=Optional[Union[Union[str, WhereClauseId], List[Union[str, WhereClauseId]]]])
+                   model_uri=DEFAULT_.whereClauses, domain=None, range=Optional[Union[Union[dict, WhereClause], List[Union[dict, WhereClause]]]])
 
 slots.dataset = Slot(uri=DEFAULT_.dataset, name="dataset", curie=DEFAULT_.curie('dataset'),
                    model_uri=DEFAULT_.dataset, domain=None, range=Optional[str])
@@ -1400,11 +1398,26 @@ slots.value = Slot(uri=DEFAULT_.value, name="value", curie=DEFAULT_.curie('value
 slots.label = Slot(uri=DEFAULT_.label, name="label", curie=DEFAULT_.curie('label'),
                    model_uri=DEFAULT_.label, domain=None, range=Optional[str])
 
+slots.OrderedListItem_level = Slot(uri=DEFAULT_.level, name="OrderedListItem_level", curie=DEFAULT_.curie('level'),
+                   model_uri=DEFAULT_.OrderedListItem_level, domain=OrderedListItem, range=int)
+
+slots.OrderedListItem_order = Slot(uri=DEFAULT_.order, name="OrderedListItem_order", curie=DEFAULT_.curie('order'),
+                   model_uri=DEFAULT_.OrderedListItem_order, domain=OrderedListItem, range=int)
+
+slots.OrderedGroupingFactor_order = Slot(uri=DEFAULT_.order, name="OrderedGroupingFactor_order", curie=DEFAULT_.curie('order'),
+                   model_uri=DEFAULT_.OrderedGroupingFactor_order, domain=OrderedGroupingFactor, range=int)
+
 slots.ReferencedAnalysisOperation_analysisId = Slot(uri=DEFAULT_.analysisId, name="ReferencedAnalysisOperation_analysisId", curie=DEFAULT_.curie('analysisId'),
                    model_uri=DEFAULT_.ReferencedAnalysisOperation_analysisId, domain=ReferencedAnalysisOperation, range=Union[str, AnalysisId])
 
 slots.Output_categoryIds = Slot(uri=DEFAULT_.categoryIds, name="Output_categoryIds", curie=DEFAULT_.curie('categoryIds'),
                    model_uri=DEFAULT_.Output_categoryIds, domain=Output, range=Optional[Union[Union[str, AnalysisCategoryId], List[Union[str, AnalysisCategoryId]]]])
+
+slots.OutputDisplay_order = Slot(uri=DEFAULT_.order, name="OutputDisplay_order", curie=DEFAULT_.curie('order'),
+                   model_uri=DEFAULT_.OutputDisplay_order, domain=OutputDisplay, range=int)
+
+slots.DisplaySubSection_order = Slot(uri=DEFAULT_.order, name="DisplaySubSection_order", curie=DEFAULT_.curie('order'),
+                   model_uri=DEFAULT_.DisplaySubSection_order, domain=DisplaySubSection, range=int)
 
 slots.CompoundSetExpression_whereClauses = Slot(uri=DEFAULT_.whereClauses, name="CompoundSetExpression_whereClauses", curie=DEFAULT_.curie('whereClauses'),
                    model_uri=DEFAULT_.CompoundSetExpression_whereClauses, domain=CompoundSetExpression, range=Optional[Union[Union[str, AnalysisSetId], List[Union[str, AnalysisSetId]]]])
@@ -1413,7 +1426,7 @@ slots.CompoundGroupExpression_whereClauses = Slot(uri=DEFAULT_.whereClauses, nam
                    model_uri=DEFAULT_.CompoundGroupExpression_whereClauses, domain=CompoundGroupExpression, range=Optional[Union[Union[str, GroupId], List[Union[str, GroupId]]]])
 
 slots.CompoundSubsetExpression_whereClauses = Slot(uri=DEFAULT_.whereClauses, name="CompoundSubsetExpression_whereClauses", curie=DEFAULT_.curie('whereClauses'),
-                   model_uri=DEFAULT_.CompoundSubsetExpression_whereClauses, domain=CompoundSubsetExpression, range=Optional[Union[Dict[Union[str, WhereClauseId], Union[dict, WhereClause]], List[Union[dict, WhereClause]]]])
+                   model_uri=DEFAULT_.CompoundSubsetExpression_whereClauses, domain=CompoundSubsetExpression, range=Optional[Union[Union[dict, WhereClause], List[Union[dict, WhereClause]]]])
 
 slots.AnalysisSet_compoundExpression = Slot(uri=DEFAULT_.compoundExpression, name="AnalysisSet_compoundExpression", curie=DEFAULT_.curie('compoundExpression'),
                    model_uri=DEFAULT_.AnalysisSet_compoundExpression, domain=AnalysisSet, range=Optional[Union[dict, CompoundSetExpression]])

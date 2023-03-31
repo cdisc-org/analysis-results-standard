@@ -51,7 +51,8 @@
                 }
             },
             "required": [
-                "id"
+                "id",
+                "methodId"
             ],
             "title": "Analysis",
             "type": "object"
@@ -119,12 +120,14 @@
                 "label": {
                     "type": "string"
                 },
+                "level": {
+                    "type": "integer"
+                },
                 "order": {
                     "type": "integer"
                 }
             },
             "required": [
-                "order",
                 "id"
             ],
             "title": "AnalysisGroup",
@@ -177,25 +180,18 @@
                 "label": {
                     "type": "string"
                 },
+                "level": {
+                    "type": "integer"
+                },
                 "order": {
                     "type": "integer"
                 }
             },
             "required": [
-                "order",
                 "id"
             ],
             "title": "AnalysisSet",
             "type": "object"
-        },
-        "AndOr": {
-            "description": "",
-            "enum": [
-                "AND",
-                "OR"
-            ],
-            "title": "AndOr",
-            "type": "string"
         },
         "Comparator": {
             "description": "",
@@ -217,11 +213,11 @@
             "description": "",
             "properties": {
                 "logicalOperator": {
-                    "$ref": "#/$defs/AndOr"
+                    "$ref": "#/$defs/LogicalOperator"
                 },
                 "whereClauses": {
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/WhereClause"
                     },
                     "type": "array"
                 }
@@ -237,7 +233,7 @@
             "description": "",
             "properties": {
                 "logicalOperator": {
-                    "$ref": "#/$defs/AndOr"
+                    "$ref": "#/$defs/LogicalOperator"
                 },
                 "whereClauses": {
                     "items": {
@@ -257,7 +253,7 @@
             "description": "",
             "properties": {
                 "logicalOperator": {
-                    "$ref": "#/$defs/AndOr"
+                    "$ref": "#/$defs/LogicalOperator"
                 },
                 "whereClauses": {
                     "items": {
@@ -277,7 +273,7 @@
             "description": "",
             "properties": {
                 "logicalOperator": {
-                    "$ref": "#/$defs/AndOr"
+                    "$ref": "#/$defs/LogicalOperator"
                 },
                 "whereClauses": {
                     "items": {
@@ -331,12 +327,14 @@
                 "label": {
                     "type": "string"
                 },
+                "level": {
+                    "type": "integer"
+                },
                 "order": {
                     "type": "integer"
                 }
             },
             "required": [
-                "order",
                 "id"
             ],
             "title": "DataGroup",
@@ -389,6 +387,12 @@
                 },
                 "label": {
                     "type": "string"
+                },
+                "level": {
+                    "type": "integer"
+                },
+                "order": {
+                    "type": "integer"
                 }
             },
             "required": [
@@ -514,16 +518,28 @@
                 "label": {
                     "type": "string"
                 },
+                "level": {
+                    "type": "integer"
+                },
                 "order": {
                     "type": "integer"
                 }
             },
             "required": [
-                "order",
                 "id"
             ],
             "title": "Group",
             "type": "object"
+        },
+        "LogicalOperator": {
+            "description": "",
+            "enum": [
+                "AND",
+                "OR",
+                "NOT"
+            ],
+            "title": "LogicalOperator",
+            "type": "string"
         },
         "NestedList": {
             "additionalProperties": false,
@@ -631,6 +647,9 @@
                 "analysisId": {
                     "type": "string"
                 },
+                "level": {
+                    "type": "integer"
+                },
                 "name": {
                     "type": "string"
                 },
@@ -645,6 +664,7 @@
                 }
             },
             "required": [
+                "level",
                 "order",
                 "name"
             ],
@@ -888,13 +908,13 @@
                 "condition": {
                     "$ref": "#/$defs/Condition"
                 },
-                "id": {
-                    "type": "string"
+                "level": {
+                    "type": "integer"
+                },
+                "order": {
+                    "type": "integer"
                 }
             },
-            "required": [
-                "id"
-            ],
             "title": "WhereClause",
             "type": "object"
         }

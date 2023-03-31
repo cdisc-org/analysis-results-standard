@@ -69,12 +69,13 @@ ResultGroup {
     string groupValue  
 }
 Group {
-    string label  
-    integer order  
     string id  
+    string label  
+    integer level  
+    integer order  
 }
 CompoundGroupExpression {
-    AndOr logicalOperator  
+    LogicalOperator logicalOperator  
 }
 Condition {
     string dataset  
@@ -92,17 +93,20 @@ ReferencedAnalysisOperation {
 
 }
 DataSubset {
-    string label  
     string id  
+    string label  
+    integer level  
+    integer order  
 }
 CompoundSubsetExpression {
-    AndOr logicalOperator  
+    LogicalOperator logicalOperator  
 }
 WhereClause {
-    string id  
+    integer level  
+    integer order  
 }
 CompoundExpression {
-    AndOr logicalOperator  
+    LogicalOperator logicalOperator  
 }
 OrderedGroupingFactor {
     integer order  
@@ -114,17 +118,19 @@ DataGroupingFactor {
     boolean dataDriven  
 }
 DataGroup {
-    string label  
-    integer order  
     string id  
+    string label  
+    integer level  
+    integer order  
 }
 AnalysisSet {
-    string label  
-    integer order  
     string id  
+    string label  
+    integer level  
+    integer order  
 }
 CompoundSetExpression {
-    AndOr logicalOperator  
+    LogicalOperator logicalOperator  
 }
 SubjectGroupingFactor {
     string id  
@@ -133,14 +139,16 @@ SubjectGroupingFactor {
     boolean dataDriven  
 }
 AnalysisGroup {
-    string label  
-    integer order  
     string id  
+    string label  
+    integer level  
+    integer order  
 }
 NestedList {
 
 }
 OrderedListItem {
+    integer level  
     integer order  
     string name  
 }
@@ -171,7 +179,7 @@ Analysis ||--}o AnalysisCategory : "categoryIds"
 Analysis ||--|o AnalysisSet : "analysisSetId"
 Analysis ||--}o OrderedGroupingFactor : "orderedGroupings"
 Analysis ||--|o DataSubset : "dataSubsetId"
-Analysis ||--|o AnalysisMethod : "methodId"
+Analysis ||--|| AnalysisMethod : "methodId"
 Analysis ||--}o ReferencedAnalysisOperation : "referencedAnalysisOperations"
 Analysis ||--}o OperationResult : "results"
 OperationResult ||--|| Operation : "operationId"

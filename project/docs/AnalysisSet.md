@@ -7,7 +7,7 @@ A set of subjects whose data are to be included in the main analyses. This shoul
 URI: [https://www.cdisc.org/ars/1-0/AnalysisSet](https://www.cdisc.org/ars/1-0/AnalysisSet)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[WhereClause],[Condition],[CompoundSetExpression],[CompoundSetExpression]<compoundExpression%200..1-++[AnalysisSet&#124;label:string%20%3F;order:integer;id(i):string],[CompoundSetExpression]-%20whereClauses%200..*>[AnalysisSet],[Analysis]-%20analysisSetId%200..1>[AnalysisSet],[ReportingEvent]++-%20analysisSets%200..*>[AnalysisSet],[WhereClause]^-[AnalysisSet],[ReportingEvent],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[WhereClause],[Condition],[CompoundSetExpression],[CompoundSetExpression]<compoundExpression%200..1-++[AnalysisSet&#124;label:string%20%3F;order:integer;id(i):string],[CompoundSetExpression]-%20whereClauses%200..*>[AnalysisSet],[Analysis]-%20analysisSetId%200..1>[AnalysisSet],[ReportingEvent]++-%20analysisSets%200..*>[AnalysisSet],[WhereClause]^-[AnalysisSet],[ReportingEvent],[Analysis])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[WhereClause],[Condition],[CompoundSetExpression],[CompoundSetExpression]<compoundExpression%200..1-++[AnalysisSet&#124;id:string;label:string%20%3F;level(i):integer%20%3F;order(i):integer%20%3F],[CompoundSetExpression]-%20whereClauses%200..*>[AnalysisSet],[Analysis]-%20analysisSetId%200..1>[AnalysisSet],[ReportingEvent]++-%20analysisSets%200..*>[AnalysisSet],[WhereClause]^-[AnalysisSet],[ReportingEvent],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[WhereClause],[Condition],[CompoundSetExpression],[CompoundSetExpression]<compoundExpression%200..1-++[AnalysisSet&#124;id:string;label:string%20%3F;level(i):integer%20%3F;order(i):integer%20%3F],[CompoundSetExpression]-%20whereClauses%200..*>[AnalysisSet],[Analysis]-%20analysisSetId%200..1>[AnalysisSet],[ReportingEvent]++-%20analysisSets%200..*>[AnalysisSet],[WhereClause]^-[AnalysisSet],[ReportingEvent],[Analysis])
 
 ## Parents
 
@@ -24,16 +24,18 @@ URI: [https://www.cdisc.org/ars/1-0/AnalysisSet](https://www.cdisc.org/ars/1-0/A
 
 ### Own
 
+ * [id](id.md)  <sub>1..1</sub>
+     * Range: [String](types/String.md)
  * [label](label.md)  <sub>0..1</sub>
      * Range: [String](types/String.md)
- * [order](order.md)  <sub>1..1</sub>
-     * Range: [Integer](types/Integer.md)
  * [AnalysisSet➞compoundExpression](AnalysisSet_compoundExpression.md)  <sub>0..1</sub>
      * Range: [CompoundSetExpression](CompoundSetExpression.md)
 
 ### Inherited from WhereClause:
 
- * [id](id.md)  <sub>1..1</sub>
-     * Range: [String](types/String.md)
+ * [level](level.md)  <sub>0..1</sub>
+     * Range: [Integer](types/Integer.md)
+ * [order](order.md)  <sub>0..1</sub>
+     * Range: [Integer](types/Integer.md)
  * [condition](condition.md)  <sub>0..1</sub>
      * Range: [Condition](Condition.md)

@@ -9,7 +9,7 @@ URI: [https://www.cdisc.org/ars/1-0/logicalOperator](https://www.cdisc.org/ars/1
 
 ## Domain and Range
 
-None &#8594;  <sub>1..1</sub> [AndOr](AndOr.md)
+None &#8594;  <sub>1..1</sub> [LogicalOperator](LogicalOperator.md)
 
 ## Parents
 

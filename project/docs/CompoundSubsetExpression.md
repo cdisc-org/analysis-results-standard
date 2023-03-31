@@ -7,7 +7,7 @@
 URI: [https://www.cdisc.org/ars/1-0/CompoundSubsetExpression](https://www.cdisc.org/ars/1-0/CompoundSubsetExpression)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[WhereClause],[DataSubset],[WhereClause]<whereClauses%200..*-++[CompoundSubsetExpression&#124;logicalOperator(i):AndOr],[DataSubset]++-%20compoundExpression%200..1>[CompoundSubsetExpression],[CompoundExpression]^-[CompoundSubsetExpression],[CompoundExpression])](https://yuml.me/diagram/nofunky;dir:TB/class/[WhereClause],[DataSubset],[WhereClause]<whereClauses%200..*-++[CompoundSubsetExpression&#124;logicalOperator(i):AndOr],[DataSubset]++-%20compoundExpression%200..1>[CompoundSubsetExpression],[CompoundExpression]^-[CompoundSubsetExpression],[CompoundExpression])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[WhereClause],[DataSubset],[WhereClause]<whereClauses%200..*-++[CompoundSubsetExpression&#124;logicalOperator(i):LogicalOperator],[DataSubset]++-%20compoundExpression%200..1>[CompoundSubsetExpression],[CompoundExpression]^-[CompoundSubsetExpression],[CompoundExpression])](https://yuml.me/diagram/nofunky;dir:TB/class/[WhereClause],[DataSubset],[WhereClause]<whereClauses%200..*-++[CompoundSubsetExpression&#124;logicalOperator(i):LogicalOperator],[DataSubset]++-%20compoundExpression%200..1>[CompoundSubsetExpression],[CompoundExpression]^-[CompoundSubsetExpression],[CompoundExpression])
 
 ## Parents
 
@@ -28,4 +28,4 @@ URI: [https://www.cdisc.org/ars/1-0/CompoundSubsetExpression](https://www.cdisc.
 ### Inherited from CompoundExpression:
 
  * [logicalOperator](logicalOperator.md)  <sub>1..1</sub>
-     * Range: [AndOr](AndOr.md)
+     * Range: [LogicalOperator](LogicalOperator.md)

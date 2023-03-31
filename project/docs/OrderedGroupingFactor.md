@@ -18,7 +18,7 @@ URI: [https://www.cdisc.org/ars/1-0/OrderedGroupingFactor](https://www.cdisc.org
 
 ### Own
 
- * [order](order.md)  <sub>1..1</sub>
+ * [OrderedGroupingFactor➞order](OrderedGroupingFactor_order.md)  <sub>1..1</sub>
      * Range: [Integer](types/Integer.md)
  * [groupingId](groupingId.md)  <sub>0..1</sub>
      * Range: [GroupingFactor](GroupingFactor.md)

@@ -38,10 +38,16 @@ classes:
   OrderedListItem:
     is_a: NamedObject
     slots:
+      - level
       - order
       - sublist
       - analysisId
       - outputId
+    slot_usage:
+      level:
+        required: true
+      order:
+        required: true
 
   AnalysisCategorization:
     description: An implementer-defined categorization of analyses/outputs.
@@ -76,6 +82,9 @@ classes:
       - order
       - groupingId
       - dataGrouping
+    slot_usage:
+      order:
+        required: true
 
   ReferencedAnalysisOperation:
     slots:
@@ -145,6 +154,9 @@ classes:
     slots:
       - order
       - display
+    slot_usage:
+      order:
+        required: true
 
   Display:
     is_a: NamedObject
@@ -163,11 +175,15 @@ classes:
     slots:
       - id
       - order
-      - text      
+      - text    
+    slot_usage:
+      order:
+        required: true
 
   WhereClause:
     slots:
-      - id
+      - level
+      - order
       - condition
       - compoundExpression
 
@@ -215,8 +231,8 @@ classes:
       compoundExpression:
         range: CompoundSetExpression
     slots:
+      - id
       - label
-      - order
 
   GroupingFactor:
     abstract: true
@@ -249,8 +265,8 @@ classes:
       compoundExpression:
         range: CompoundGroupExpression
     slots:
+      - id
       - label
-      - order
 
   AnalysisGroup:
     description: A subdivision of the subject population based on a defined factor (e.g., subjects whose treatment is Drug A, subjects whose gender is male).
@@ -267,6 +283,7 @@ classes:
       compoundExpression:
         range: CompoundSubsetExpression
     slots:
+      - id
       - label
 
 slots:
@@ -376,8 +393,10 @@ slots:
     inlined_as_list: true
     range: OrderedListItem
 
+  level:
+    range: integer
+
   order:
-    required: true
     range: integer
 
   sublist: 
@@ -417,6 +436,7 @@ slots:
 
   methodId:  
     range: AnalysisMethod
+    required: true
     inlined: false
 
   description:
@@ -530,7 +550,7 @@ slots:
 
   logicalOperator:
     required: true
-    range: AndOr
+    range: LogicalOperator
 
   condition:
     range: Condition
@@ -564,10 +584,11 @@ enums:
       rtf:
       txt:
 
-  AndOr:
+  LogicalOperator:
     permissible_values:
       AND:
       OR:
+      NOT:
 
   Comparator:
     permissible_values:

@@ -20,7 +20,7 @@ URI: [https://www.cdisc.org/ars/1-0/DisplaySubSection](https://www.cdisc.org/ars
 
  * [id](id.md)  <sub>1..1</sub>
      * Range: [String](types/String.md)
- * [order](order.md)  <sub>1..1</sub>
+ * [DisplaySubSection➞order](DisplaySubSection_order.md)  <sub>1..1</sub>
      * Range: [Integer](types/Integer.md)
  * [text](text.md)  <sub>0..1</sub>
      * Range: [String](types/String.md)

@@ -18,7 +18,7 @@ URI: [https://www.cdisc.org/ars/1-0/OutputDisplay](https://www.cdisc.org/ars/1-0
 
 ### Own
 
- * [order](order.md)  <sub>1..1</sub>
+ * [OutputDisplay➞order](OutputDisplay_order.md)  <sub>1..1</sub>
      * Range: [Integer](types/Integer.md)
  * [display](display.md)  <sub>0..1</sub>
      * Range: [Display](Display.md)

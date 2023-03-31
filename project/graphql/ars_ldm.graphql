@@ -8,7 +8,7 @@ type Analysis
     dataSubsetId: DataSubset
     dataset: String
     variable: String
-    methodId: AnalysisMethod
+    methodId: AnalysisMethod!
     referencedAnalysisOperations: [ReferencedAnalysisOperation]
     results: [OperationResult]
   }
@@ -29,10 +29,11 @@ type AnalysisCategory
 
 type AnalysisGroup
   {
-    id: String!
+    level: Integer
+    order: Integer
     condition: Condition
+    id: String!
     label: String
-    order: Integer!
     compoundExpression: CompoundGroupExpression
   }
 
@@ -47,34 +48,35 @@ type AnalysisMethod
 
 type AnalysisSet
   {
-    id: String!
+    level: Integer
+    order: Integer
     condition: Condition
+    id: String!
     label: String
-    order: Integer!
     compoundExpression: CompoundSetExpression
   }
 
 type CompoundExpression
   {
-    logicalOperator: AndOr!
+    logicalOperator: LogicalOperator!
     whereClauses: [WhereClause]
   }
 
 type CompoundGroupExpression
   {
-    logicalOperator: AndOr!
+    logicalOperator: LogicalOperator!
     whereClauses: [Group]
   }
 
 type CompoundSetExpression
   {
-    logicalOperator: AndOr!
+    logicalOperator: LogicalOperator!
     whereClauses: [AnalysisSet]
   }
 
 type CompoundSubsetExpression
   {
-    logicalOperator: AndOr!
+    logicalOperator: LogicalOperator!
     whereClauses: [WhereClause]
   }
 
@@ -88,10 +90,11 @@ type Condition
 
 type DataGroup
   {
-    id: String!
+    level: Integer
+    order: Integer
     condition: Condition
+    id: String!
     label: String
-    order: Integer!
     compoundExpression: CompoundGroupExpression
   }
 
@@ -106,8 +109,10 @@ type DataGroupingFactor
 
 type DataSubset
   {
-    id: String!
+    level: Integer
+    order: Integer
     condition: Condition
+    id: String!
     label: String
     compoundExpression: CompoundSubsetExpression
   }
@@ -144,10 +149,11 @@ type File
 
 type Group
   {
-    id: String!
+    level: Integer
+    order: Integer
     condition: Condition
+    id: String!
     label: String
-    order: Integer!
     compoundExpression: CompoundGroupExpression
   }
 
@@ -197,6 +203,7 @@ type OrderedGroupingFactor
 type OrderedListItem
   {
     name: String!
+    level: Integer!
     order: Integer!
     sublist: NestedList
     analysisId: Analysis
@@ -266,7 +273,8 @@ type SubjectGroupingFactor
 
 type WhereClause
   {
-    id: String!
+    level: Integer
+    order: Integer
     condition: Condition
     compoundExpression: CompoundExpression
   }

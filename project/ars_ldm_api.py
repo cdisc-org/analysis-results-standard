@@ -165,6 +165,7 @@ class ArsLdmAPI:
         return results[0] if results else None
 
     def query_OrderedListItem(self,
+             level: Union[str, MatchExpression] = None,
              order: Union[str, MatchExpression] = None,
              sublist: Union[str, MatchExpression] = None,
              analysisId: Union[str, MatchExpression] = None,
@@ -175,6 +176,7 @@ class ArsLdmAPI:
         """
         Queries for instances of `OrderedListItem`
 
+        :param level: None
         :param order: None
         :param sublist: None
         :param analysisId: None
@@ -184,6 +186,8 @@ class ArsLdmAPI:
         :return: Person list matching constraints
         """
         results = self.query_engine.simple_query(OrderedListItem.class_name,
+                                                 
+                                                 level=level,
                                                  
                                                  order=order,
                                                  
@@ -921,7 +925,8 @@ class ArsLdmAPI:
         return results[0] if results else None
 
     def query_WhereClause(self,
-             id: Union[str, MatchExpression] = None,
+             level: Union[str, MatchExpression] = None,
+             order: Union[str, MatchExpression] = None,
              condition: Union[str, MatchExpression] = None,
              compoundExpression: Union[str, MatchExpression] = None,
              
@@ -929,7 +934,8 @@ class ArsLdmAPI:
         """
         Queries for instances of `WhereClause`
 
-        :param id: None
+        :param level: None
+        :param order: None
         :param condition: None
         :param compoundExpression: None
         
@@ -937,7 +943,9 @@ class ArsLdmAPI:
         """
         results = self.query_engine.simple_query(WhereClause.class_name,
                                                  
-                                                 id=id,
+                                                 level=level,
+                                                 
+                                                 order=order,
                                                  
                                                  condition=condition,
                                                  
@@ -1149,9 +1157,10 @@ class ArsLdmAPI:
         return results[0] if results else None
 
     def query_AnalysisSet(self,
-             label: Union[str, MatchExpression] = None,
-             order: Union[str, MatchExpression] = None,
              id: Union[str, MatchExpression] = None,
+             label: Union[str, MatchExpression] = None,
+             level: Union[str, MatchExpression] = None,
+             order: Union[str, MatchExpression] = None,
              condition: Union[str, MatchExpression] = None,
              compoundExpression: Union[str, MatchExpression] = None,
              
@@ -1159,9 +1168,10 @@ class ArsLdmAPI:
         """
         Queries for instances of `AnalysisSet`
 
-        :param label: None
-        :param order: None
         :param id: None
+        :param label: None
+        :param level: None
+        :param order: None
         :param condition: None
         :param compoundExpression: None
         
@@ -1169,11 +1179,13 @@ class ArsLdmAPI:
         """
         results = self.query_engine.simple_query(AnalysisSet.class_name,
                                                  
+                                                 id=id,
+                                                 
                                                  label=label,
                                                  
-                                                 order=order,
+                                                 level=level,
                                                  
-                                                 id=id,
+                                                 order=order,
                                                  
                                                  condition=condition,
                                                  
@@ -1341,9 +1353,10 @@ class ArsLdmAPI:
         return results[0] if results else None
 
     def query_Group(self,
-             label: Union[str, MatchExpression] = None,
-             order: Union[str, MatchExpression] = None,
              id: Union[str, MatchExpression] = None,
+             label: Union[str, MatchExpression] = None,
+             level: Union[str, MatchExpression] = None,
+             order: Union[str, MatchExpression] = None,
              condition: Union[str, MatchExpression] = None,
              compoundExpression: Union[str, MatchExpression] = None,
              
@@ -1351,9 +1364,10 @@ class ArsLdmAPI:
         """
         Queries for instances of `Group`
 
-        :param label: None
-        :param order: None
         :param id: None
+        :param label: None
+        :param level: None
+        :param order: None
         :param condition: None
         :param compoundExpression: None
         
@@ -1361,11 +1375,13 @@ class ArsLdmAPI:
         """
         results = self.query_engine.simple_query(Group.class_name,
                                                  
+                                                 id=id,
+                                                 
                                                  label=label,
                                                  
-                                                 order=order,
+                                                 level=level,
                                                  
-                                                 id=id,
+                                                 order=order,
                                                  
                                                  condition=condition,
                                                  
@@ -1389,9 +1405,10 @@ class ArsLdmAPI:
         return results[0] if results else None
 
     def query_AnalysisGroup(self,
-             label: Union[str, MatchExpression] = None,
-             order: Union[str, MatchExpression] = None,
              id: Union[str, MatchExpression] = None,
+             label: Union[str, MatchExpression] = None,
+             level: Union[str, MatchExpression] = None,
+             order: Union[str, MatchExpression] = None,
              condition: Union[str, MatchExpression] = None,
              compoundExpression: Union[str, MatchExpression] = None,
              
@@ -1399,9 +1416,10 @@ class ArsLdmAPI:
         """
         Queries for instances of `AnalysisGroup`
 
-        :param label: None
-        :param order: None
         :param id: None
+        :param label: None
+        :param level: None
+        :param order: None
         :param condition: None
         :param compoundExpression: None
         
@@ -1409,11 +1427,13 @@ class ArsLdmAPI:
         """
         results = self.query_engine.simple_query(AnalysisGroup.class_name,
                                                  
+                                                 id=id,
+                                                 
                                                  label=label,
                                                  
-                                                 order=order,
+                                                 level=level,
                                                  
-                                                 id=id,
+                                                 order=order,
                                                  
                                                  condition=condition,
                                                  
@@ -1437,9 +1457,10 @@ class ArsLdmAPI:
         return results[0] if results else None
 
     def query_DataGroup(self,
-             label: Union[str, MatchExpression] = None,
-             order: Union[str, MatchExpression] = None,
              id: Union[str, MatchExpression] = None,
+             label: Union[str, MatchExpression] = None,
+             level: Union[str, MatchExpression] = None,
+             order: Union[str, MatchExpression] = None,
              condition: Union[str, MatchExpression] = None,
              compoundExpression: Union[str, MatchExpression] = None,
              
@@ -1447,9 +1468,10 @@ class ArsLdmAPI:
         """
         Queries for instances of `DataGroup`
 
-        :param label: None
-        :param order: None
         :param id: None
+        :param label: None
+        :param level: None
+        :param order: None
         :param condition: None
         :param compoundExpression: None
         
@@ -1457,11 +1479,13 @@ class ArsLdmAPI:
         """
         results = self.query_engine.simple_query(DataGroup.class_name,
                                                  
+                                                 id=id,
+                                                 
                                                  label=label,
                                                  
-                                                 order=order,
+                                                 level=level,
                                                  
-                                                 id=id,
+                                                 order=order,
                                                  
                                                  condition=condition,
                                                  
@@ -1485,8 +1509,10 @@ class ArsLdmAPI:
         return results[0] if results else None
 
     def query_DataSubset(self,
-             label: Union[str, MatchExpression] = None,
              id: Union[str, MatchExpression] = None,
+             label: Union[str, MatchExpression] = None,
+             level: Union[str, MatchExpression] = None,
+             order: Union[str, MatchExpression] = None,
              condition: Union[str, MatchExpression] = None,
              compoundExpression: Union[str, MatchExpression] = None,
              
@@ -1494,8 +1520,10 @@ class ArsLdmAPI:
         """
         Queries for instances of `DataSubset`
 
-        :param label: None
         :param id: None
+        :param label: None
+        :param level: None
+        :param order: None
         :param condition: None
         :param compoundExpression: None
         
@@ -1503,9 +1531,13 @@ class ArsLdmAPI:
         """
         results = self.query_engine.simple_query(DataSubset.class_name,
                                                  
+                                                 id=id,
+                                                 
                                                  label=label,
                                                  
-                                                 id=id,
+                                                 level=level,
+                                                 
+                                                 order=order,
                                                  
                                                  condition=condition,
                                                  

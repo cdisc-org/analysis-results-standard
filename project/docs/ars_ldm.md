@@ -90,6 +90,8 @@
      * [SubjectGroupingFactor➞groups](SubjectGroupingFactor_groups.md)
  * [id](id.md)
  * [label](label.md)
+ * [level](level.md)
+     * [OrderedListItem➞level](OrderedListItem_level.md)
  * [listItems](listItems.md)
  * [listOfPlannedAnalyses](listOfPlannedAnalyses.md)
  * [listOfPlannedOutputs](listOfPlannedOutputs.md)
@@ -101,6 +103,10 @@
  * [operationId](operationId.md)
  * [operations](operations.md)
  * [order](order.md)
+     * [DisplaySubSection➞order](DisplaySubSection_order.md)
+     * [OrderedGroupingFactor➞order](OrderedGroupingFactor_order.md)
+     * [OrderedListItem➞order](OrderedListItem_order.md)
+     * [OutputDisplay➞order](OutputDisplay_order.md)
  * [orderedGroupings](orderedGroupings.md)
  * [outputDisplays](outputDisplays.md)
  * [outputId](outputId.md)
@@ -129,9 +135,9 @@
 
 ### Enums
 
- * [AndOr](AndOr.md)
  * [Comparator](Comparator.md)
  * [FileType](FileType.md)
+ * [LogicalOperator](LogicalOperator.md)
  * [OperationRole](OperationRole.md)
  * [SectionType](SectionType.md)
 

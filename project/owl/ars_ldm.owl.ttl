@@ -37,21 +37,28 @@ linkml:topValue a owl:DatatypeProperty ;
         <https://www.cdisc.org/ars/1-0/ResultGroup>,
         <https://www.cdisc.org/ars/1-0/WhereClause> ;
     dcterms:license "https://creativecommons.org/publicdomain/zero/1.0/" ;
-    linkml:generation_date "2023-03-13T15:22:21" ;
+    linkml:generation_date "2023-03-31T11:40:58" ;
     linkml:metamodel_version "1.7.0" ;
     linkml:source_file "ars_ldm.yaml" ;
-    linkml:source_file_date "2023-03-13T15:16:27" ;
-    linkml:source_file_size 11322 .
+    linkml:source_file_date "2023-03-31T11:33:38" ;
+    linkml:source_file_size 11681 .
 
 <https://www.cdisc.org/ars/1-0/ReportingEvent> a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "ReportingEvent" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass <https://www.cdisc.org/ars/1-0/NestedList> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/listOfPlannedAnalyses> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
             owl:allValuesFrom <https://www.cdisc.org/ars/1-0/Analysis> ;
             owl:onProperty <https://www.cdisc.org/ars/1-0/analyses> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom <https://www.cdisc.org/ars/1-0/DataSubset> ;
-            owl:onProperty <https://www.cdisc.org/ars/1-0/dataSubsets> ],
+            owl:allValuesFrom <https://www.cdisc.org/ars/1-0/AnalysisCategorization> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/analysisCategorizations> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://www.cdisc.org/ars/1-0/Output> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/outputs> ],
         [ a owl:Restriction ;
             owl:allValuesFrom <https://www.cdisc.org/ars/1-0/SubjectGroupingFactor> ;
             owl:onProperty <https://www.cdisc.org/ars/1-0/analysisGroupings> ],
@@ -59,25 +66,18 @@ linkml:topValue a owl:DatatypeProperty ;
             owl:allValuesFrom <https://www.cdisc.org/ars/1-0/DisplaySection> ;
             owl:onProperty <https://www.cdisc.org/ars/1-0/globalDisplaySections> ],
         [ a owl:Restriction ;
+            owl:allValuesFrom <https://www.cdisc.org/ars/1-0/AnalysisMethod> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/methods> ],
+        [ a owl:Restriction ;
             owl:allValuesFrom <https://www.cdisc.org/ars/1-0/AnalysisSet> ;
             owl:onProperty <https://www.cdisc.org/ars/1-0/analysisSets> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://www.cdisc.org/ars/1-0/Output> ;
-            owl:onProperty <https://www.cdisc.org/ars/1-0/outputs> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://www.cdisc.org/ars/1-0/AnalysisCategorization> ;
-            owl:onProperty <https://www.cdisc.org/ars/1-0/analysisCategorizations> ],
-        [ a owl:Restriction ;
-            owl:onClass <https://www.cdisc.org/ars/1-0/NestedList> ;
-            owl:onProperty <https://www.cdisc.org/ars/1-0/listOfPlannedAnalyses> ;
-            owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass <https://www.cdisc.org/ars/1-0/NestedList> ;
             owl:onProperty <https://www.cdisc.org/ars/1-0/listOfPlannedOutputs> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom <https://www.cdisc.org/ars/1-0/AnalysisMethod> ;
-            owl:onProperty <https://www.cdisc.org/ars/1-0/methods> ],
+            owl:allValuesFrom <https://www.cdisc.org/ars/1-0/DataSubset> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/dataSubsets> ],
         <https://www.cdisc.org/ars/1-0/NamedObject> .
 
 <https://www.cdisc.org/ars/1-0/AnalysisGroup> a owl:Class,
@@ -246,7 +246,7 @@ linkml:topValue a owl:DatatypeProperty ;
 <https://www.cdisc.org/ars/1-0/logicalOperator> a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "logicalOperator" ;
-    rdfs:range <https://www.cdisc.org/ars/1-0/AndOr> .
+    rdfs:range <https://www.cdisc.org/ars/1-0/LogicalOperator> .
 
 <https://www.cdisc.org/ars/1-0/methodId> a owl:ObjectProperty,
         linkml:SlotDefinition ;
@@ -358,14 +358,6 @@ linkml:topValue a owl:DatatypeProperty ;
     rdfs:label "value" ;
     rdfs:range linkml:String .
 
-<https://www.cdisc.org/ars/1-0/AndOr#AND> a owl:Class,
-        <https://www.cdisc.org/ars/1-0/AndOr> ;
-    rdfs:label "AND" .
-
-<https://www.cdisc.org/ars/1-0/AndOr#OR> a owl:Class,
-        <https://www.cdisc.org/ars/1-0/AndOr> ;
-    rdfs:label "OR" .
-
 <https://www.cdisc.org/ars/1-0/Comparator#EQ> a owl:Class,
         <https://www.cdisc.org/ars/1-0/Comparator> ;
     rdfs:label "EQ" .
@@ -411,6 +403,13 @@ linkml:topValue a owl:DatatypeProperty ;
         linkml:ClassDefinition ;
     rdfs:label "Display" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom <https://www.cdisc.org/ars/1-0/DisplaySection> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/displaySections> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/displayTitle> ],
+        [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty <https://www.cdisc.org/ars/1-0/id> ;
             owl:qualifiedCardinality 1 ],
@@ -418,13 +417,6 @@ linkml:topValue a owl:DatatypeProperty ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Integer ;
             owl:onProperty <https://www.cdisc.org/ars/1-0/version> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://www.cdisc.org/ars/1-0/DisplaySection> ;
-            owl:onProperty <https://www.cdisc.org/ars/1-0/displaySections> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty <https://www.cdisc.org/ars/1-0/displayTitle> ],
         <https://www.cdisc.org/ars/1-0/NamedObject> .
 
 <https://www.cdisc.org/ars/1-0/File> a owl:Class,
@@ -436,12 +428,12 @@ linkml:topValue a owl:DatatypeProperty ;
             owl:onProperty <https://www.cdisc.org/ars/1-0/style> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://www.cdisc.org/ars/1-0/FileType> ;
-            owl:onProperty <https://www.cdisc.org/ars/1-0/fileType> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty <https://www.cdisc.org/ars/1-0/location> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://www.cdisc.org/ars/1-0/FileType> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/fileType> ],
         <https://www.cdisc.org/ars/1-0/NamedObject> .
 
 <https://www.cdisc.org/ars/1-0/FileType#pdf> a owl:Class,
@@ -456,6 +448,18 @@ linkml:topValue a owl:DatatypeProperty ;
         <https://www.cdisc.org/ars/1-0/FileType> ;
     rdfs:label "txt" .
 
+<https://www.cdisc.org/ars/1-0/LogicalOperator#AND> a owl:Class,
+        <https://www.cdisc.org/ars/1-0/LogicalOperator> ;
+    rdfs:label "AND" .
+
+<https://www.cdisc.org/ars/1-0/LogicalOperator#NOT> a owl:Class,
+        <https://www.cdisc.org/ars/1-0/LogicalOperator> ;
+    rdfs:label "NOT" .
+
+<https://www.cdisc.org/ars/1-0/LogicalOperator#OR> a owl:Class,
+        <https://www.cdisc.org/ars/1-0/LogicalOperator> ;
+    rdfs:label "OR" .
+
 <https://www.cdisc.org/ars/1-0/OperationRole#DENOMINATOR> a owl:Class,
         <https://www.cdisc.org/ars/1-0/OperationRole> ;
     rdfs:label "DENOMINATOR" .
@@ -469,20 +473,24 @@ linkml:topValue a owl:DatatypeProperty ;
     rdfs:label "OrderedListItem" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://www.cdisc.org/ars/1-0/NestedList> ;
-            owl:onProperty <https://www.cdisc.org/ars/1-0/sublist> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
             owl:onClass <https://www.cdisc.org/ars/1-0/Analysis> ;
             owl:onProperty <https://www.cdisc.org/ars/1-0/analysisId> ],
         [ a owl:Restriction ;
             owl:onClass linkml:Integer ;
-            owl:onProperty <https://www.cdisc.org/ars/1-0/order> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/level> ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass <https://www.cdisc.org/ars/1-0/Output> ;
             owl:onProperty <https://www.cdisc.org/ars/1-0/outputId> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://www.cdisc.org/ars/1-0/NestedList> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/sublist> ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:Integer ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/order> ;
+            owl:qualifiedCardinality 1 ],
         <https://www.cdisc.org/ars/1-0/NamedObject> .
 
 <https://www.cdisc.org/ars/1-0/SectionType#Abbreviation> a owl:Class,
@@ -539,6 +547,11 @@ linkml:topValue a owl:DatatypeProperty ;
     rdfs:label "groupingId" ;
     rdfs:range <https://www.cdisc.org/ars/1-0/GroupingFactor> .
 
+<https://www.cdisc.org/ars/1-0/level> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "level" ;
+    rdfs:range linkml:Integer .
+
 <https://www.cdisc.org/ars/1-0/operationId> a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "operationId" ;
@@ -558,20 +571,20 @@ linkml:topValue a owl:DatatypeProperty ;
         linkml:ClassDefinition ;
     rdfs:label "Condition" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/value> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://www.cdisc.org/ars/1-0/Comparator> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/comparator> ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty <https://www.cdisc.org/ars/1-0/variable> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty <https://www.cdisc.org/ars/1-0/dataset> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty <https://www.cdisc.org/ars/1-0/value> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://www.cdisc.org/ars/1-0/Comparator> ;
-            owl:onProperty <https://www.cdisc.org/ars/1-0/comparator> ] .
+            owl:onProperty <https://www.cdisc.org/ars/1-0/dataset> ] .
 
 <https://www.cdisc.org/ars/1-0/DisplaySubSection> a owl:Class,
         linkml:ClassDefinition ;
@@ -593,12 +606,12 @@ linkml:topValue a owl:DatatypeProperty ;
         linkml:ClassDefinition ;
     rdfs:label "OperationResult" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom <https://www.cdisc.org/ars/1-0/ResultGroup> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/resultGroups> ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty <https://www.cdisc.org/ars/1-0/formattedValue> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://www.cdisc.org/ars/1-0/ResultGroup> ;
-            owl:onProperty <https://www.cdisc.org/ars/1-0/resultGroups> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -617,36 +630,36 @@ linkml:topValue a owl:DatatypeProperty ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://www.cdisc.org/ars/1-0/GroupingFactor> ;
-            owl:onProperty <https://www.cdisc.org/ars/1-0/groupingId> ],
+            owl:onClass <https://www.cdisc.org/ars/1-0/DataGroupingFactor> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/dataGrouping> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://www.cdisc.org/ars/1-0/DataGroupingFactor> ;
-            owl:onProperty <https://www.cdisc.org/ars/1-0/dataGrouping> ] .
+            owl:onClass <https://www.cdisc.org/ars/1-0/GroupingFactor> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/groupingId> ] .
 
 <https://www.cdisc.org/ars/1-0/OutputDisplay> a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "OutputDisplay" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://www.cdisc.org/ars/1-0/Display> ;
-            owl:onProperty <https://www.cdisc.org/ars/1-0/display> ],
-        [ a owl:Restriction ;
             owl:onClass linkml:Integer ;
             owl:onProperty <https://www.cdisc.org/ars/1-0/order> ;
-            owl:qualifiedCardinality 1 ] .
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://www.cdisc.org/ars/1-0/Display> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/display> ] .
 
 <https://www.cdisc.org/ars/1-0/ReferencedAnalysisOperation> a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "ReferencedAnalysisOperation" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass <https://www.cdisc.org/ars/1-0/Analysis> ;
-            owl:onProperty <https://www.cdisc.org/ars/1-0/analysisId> ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass <https://www.cdisc.org/ars/1-0/ReferencedOperationRelationship> ;
-            owl:onProperty <https://www.cdisc.org/ars/1-0/referencedOperationId> ] .
+            owl:onProperty <https://www.cdisc.org/ars/1-0/referencedOperationId> ],
+        [ a owl:Restriction ;
+            owl:onClass <https://www.cdisc.org/ars/1-0/Analysis> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/analysisId> ;
+            owl:qualifiedCardinality 1 ] .
 
 <https://www.cdisc.org/ars/1-0/ResultGroup> a owl:Class,
         linkml:ClassDefinition ;
@@ -657,12 +670,12 @@ linkml:topValue a owl:DatatypeProperty ;
             owl:onProperty <https://www.cdisc.org/ars/1-0/groupValue> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://www.cdisc.org/ars/1-0/Group> ;
-            owl:onProperty <https://www.cdisc.org/ars/1-0/groupId> ],
+            owl:onClass <https://www.cdisc.org/ars/1-0/GroupingFactor> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/groupingId> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://www.cdisc.org/ars/1-0/GroupingFactor> ;
-            owl:onProperty <https://www.cdisc.org/ars/1-0/groupingId> ] .
+            owl:onClass <https://www.cdisc.org/ars/1-0/Group> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/groupId> ] .
 
 <https://www.cdisc.org/ars/1-0/analysisId> a owl:ObjectProperty,
         linkml:SlotDefinition ;
@@ -691,23 +704,16 @@ linkml:topValue a owl:DatatypeProperty ;
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/label> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
             owl:onProperty <https://www.cdisc.org/ars/1-0/description> ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty <https://www.cdisc.org/ars/1-0/id> ;
             owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty <https://www.cdisc.org/ars/1-0/label> ],
         <https://www.cdisc.org/ars/1-0/NamedObject> .
-
-<https://www.cdisc.org/ars/1-0/AndOr> a owl:Class,
-        linkml:EnumDefinition ;
-    rdfs:label "AndOr" ;
-    owl:unionOf ( <https://www.cdisc.org/ars/1-0/AndOr#AND> <https://www.cdisc.org/ars/1-0/AndOr#OR> ) ;
-    linkml:permissible_values <https://www.cdisc.org/ars/1-0/AndOr#AND>,
-        <https://www.cdisc.org/ars/1-0/AndOr#OR> .
 
 <https://www.cdisc.org/ars/1-0/DataSubset> a owl:Class,
         linkml:ClassDefinition ;
@@ -716,6 +722,10 @@ linkml:topValue a owl:DatatypeProperty ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass <https://www.cdisc.org/ars/1-0/CompoundSubsetExpression> ;
             owl:onProperty <https://www.cdisc.org/ars/1-0/compoundExpression> ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/id> ;
+            owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -743,11 +753,7 @@ linkml:topValue a owl:DatatypeProperty ;
 <https://www.cdisc.org/ars/1-0/AnalysisCategorization> a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "AnalysisCategorization" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty <https://www.cdisc.org/ars/1-0/label> ],
-        [ a owl:Class ;
+    rdfs:subClassOf [ a owl:Class ;
             owl:intersectionOf ( [ a owl:Restriction ;
                         owl:allValuesFrom <https://www.cdisc.org/ars/1-0/AnalysisCategory> ;
                         owl:onProperty <https://www.cdisc.org/ars/1-0/categories> ] [ a owl:Restriction ;
@@ -756,15 +762,19 @@ linkml:topValue a owl:DatatypeProperty ;
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty <https://www.cdisc.org/ars/1-0/id> ;
-            owl:qualifiedCardinality 1 ] ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/label> ] ;
     skos:definition "An implementer-defined categorization of analyses/outputs." .
 
 <https://www.cdisc.org/ars/1-0/AnalysisSet> a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "AnalysisSet" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass linkml:Integer ;
-            owl:onProperty <https://www.cdisc.org/ars/1-0/order> ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/id> ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
@@ -781,12 +791,12 @@ linkml:topValue a owl:DatatypeProperty ;
         linkml:ClassDefinition ;
     rdfs:label "DisplaySection" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom <https://www.cdisc.org/ars/1-0/DisplaySubSection> ;
-            owl:onProperty <https://www.cdisc.org/ars/1-0/subSections> ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass <https://www.cdisc.org/ars/1-0/SectionType> ;
-            owl:onProperty <https://www.cdisc.org/ars/1-0/sectionType> ] .
+            owl:onProperty <https://www.cdisc.org/ars/1-0/sectionType> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://www.cdisc.org/ars/1-0/DisplaySubSection> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/subSections> ] .
 
 <https://www.cdisc.org/ars/1-0/FileType> a owl:Class,
         linkml:EnumDefinition ;
@@ -796,6 +806,14 @@ linkml:topValue a owl:DatatypeProperty ;
         <https://www.cdisc.org/ars/1-0/FileType#rtf>,
         <https://www.cdisc.org/ars/1-0/FileType#txt> .
 
+<https://www.cdisc.org/ars/1-0/LogicalOperator> a owl:Class,
+        linkml:EnumDefinition ;
+    rdfs:label "LogicalOperator" ;
+    owl:unionOf ( <https://www.cdisc.org/ars/1-0/LogicalOperator#AND> <https://www.cdisc.org/ars/1-0/LogicalOperator#OR> <https://www.cdisc.org/ars/1-0/LogicalOperator#NOT> ) ;
+    linkml:permissible_values <https://www.cdisc.org/ars/1-0/LogicalOperator#AND>,
+        <https://www.cdisc.org/ars/1-0/LogicalOperator#NOT>,
+        <https://www.cdisc.org/ars/1-0/LogicalOperator#OR> .
+
 <https://www.cdisc.org/ars/1-0/Output> a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Output" ;
@@ -803,32 +821,24 @@ linkml:topValue a owl:DatatypeProperty ;
             owl:allValuesFrom <https://www.cdisc.org/ars/1-0/OutputDisplay> ;
             owl:onProperty <https://www.cdisc.org/ars/1-0/outputDisplays> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom <https://www.cdisc.org/ars/1-0/File> ;
-            owl:onProperty <https://www.cdisc.org/ars/1-0/fileSpecifications> ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty <https://www.cdisc.org/ars/1-0/id> ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
             owl:allValuesFrom <https://www.cdisc.org/ars/1-0/AnalysisCategory> ;
             owl:onProperty <https://www.cdisc.org/ars/1-0/categoryIds> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Integer ;
-            owl:onProperty <https://www.cdisc.org/ars/1-0/version> ] .
+            owl:onProperty <https://www.cdisc.org/ars/1-0/version> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://www.cdisc.org/ars/1-0/File> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/fileSpecifications> ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/id> ;
+            owl:qualifiedCardinality 1 ] .
 
 <https://www.cdisc.org/ars/1-0/ReferencedOperationRelationship> a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "ReferencedOperationRelationship" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty <https://www.cdisc.org/ars/1-0/id> ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:onClass <https://www.cdisc.org/ars/1-0/Operation> ;
-            owl:onProperty <https://www.cdisc.org/ars/1-0/operationId> ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass <https://www.cdisc.org/ars/1-0/Analysis> ;
             owl:onProperty <https://www.cdisc.org/ars/1-0/analysisId> ],
@@ -837,15 +847,28 @@ linkml:topValue a owl:DatatypeProperty ;
             owl:onClass linkml:String ;
             owl:onProperty <https://www.cdisc.org/ars/1-0/description> ],
         [ a owl:Restriction ;
+            owl:onClass <https://www.cdisc.org/ars/1-0/Operation> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/operationId> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
             owl:onClass <https://www.cdisc.org/ars/1-0/OperationRole> ;
             owl:onProperty <https://www.cdisc.org/ars/1-0/referencedOperationRole> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/id> ;
             owl:qualifiedCardinality 1 ] .
+
+<https://www.cdisc.org/ars/1-0/order> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "order" ;
+    rdfs:range linkml:Integer .
 
 <https://www.cdisc.org/ars/1-0/CompoundExpression> a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "CompoundExpression" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass <https://www.cdisc.org/ars/1-0/AndOr> ;
+            owl:onClass <https://www.cdisc.org/ars/1-0/LogicalOperator> ;
             owl:onProperty <https://www.cdisc.org/ars/1-0/logicalOperator> ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
@@ -856,6 +879,9 @@ linkml:topValue a owl:DatatypeProperty ;
         linkml:ClassDefinition ;
     rdfs:label "GroupingFactor" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom <https://www.cdisc.org/ars/1-0/Group> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/groups> ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty <https://www.cdisc.org/ars/1-0/label> ],
@@ -864,15 +890,12 @@ linkml:topValue a owl:DatatypeProperty ;
             owl:onClass linkml:String ;
             owl:onProperty <https://www.cdisc.org/ars/1-0/groupingVariable> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom <https://www.cdisc.org/ars/1-0/Group> ;
-            owl:onProperty <https://www.cdisc.org/ars/1-0/groups> ],
+            owl:onClass linkml:String ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/id> ;
+            owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:Boolean ;
             owl:onProperty <https://www.cdisc.org/ars/1-0/dataDriven> ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty <https://www.cdisc.org/ars/1-0/id> ;
             owl:qualifiedCardinality 1 ] ;
     skos:definition "A factor used to subdivide either the subject population or data records in an analysis dataset for analysis." .
 
@@ -884,49 +907,51 @@ linkml:topValue a owl:DatatypeProperty ;
             owl:onProperty <https://www.cdisc.org/ars/1-0/id> ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty <https://www.cdisc.org/ars/1-0/resultPattern> ],
+            owl:allValuesFrom <https://www.cdisc.org/ars/1-0/ReferencedOperationRelationship> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/referencedOperationRelationships> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty <https://www.cdisc.org/ars/1-0/label> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom <https://www.cdisc.org/ars/1-0/ReferencedOperationRelationship> ;
-            owl:onProperty <https://www.cdisc.org/ars/1-0/referencedOperationRelationships> ],
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/resultPattern> ],
         <https://www.cdisc.org/ars/1-0/NamedObject> .
-
-<https://www.cdisc.org/ars/1-0/order> a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "order" ;
-    rdfs:range linkml:Integer .
 
 <https://www.cdisc.org/ars/1-0/Analysis> a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Analysis" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty <https://www.cdisc.org/ars/1-0/dataset> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty <https://www.cdisc.org/ars/1-0/variable> ],
+            owl:onClass <https://www.cdisc.org/ars/1-0/AnalysisMethod> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/methodId> ;
+            owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:allValuesFrom <https://www.cdisc.org/ars/1-0/OrderedGroupingFactor> ;
             owl:onProperty <https://www.cdisc.org/ars/1-0/orderedGroupings> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://www.cdisc.org/ars/1-0/AnalysisMethod> ;
-            owl:onProperty <https://www.cdisc.org/ars/1-0/methodId> ],
+            owl:onClass linkml:String ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/dataset> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://www.cdisc.org/ars/1-0/DataSubset> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/dataSubsetId> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://www.cdisc.org/ars/1-0/AnalysisCategory> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/categoryIds> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Integer ;
             owl:onProperty <https://www.cdisc.org/ars/1-0/version> ],
         [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/id> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://www.cdisc.org/ars/1-0/AnalysisSet> ;
-            owl:onProperty <https://www.cdisc.org/ars/1-0/analysisSetId> ],
+            owl:onClass linkml:String ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/variable> ],
         [ a owl:Restriction ;
             owl:allValuesFrom <https://www.cdisc.org/ars/1-0/ReferencedAnalysisOperation> ;
             owl:onProperty <https://www.cdisc.org/ars/1-0/referencedAnalysisOperations> ],
@@ -934,44 +959,37 @@ linkml:topValue a owl:DatatypeProperty ;
             owl:allValuesFrom <https://www.cdisc.org/ars/1-0/OperationResult> ;
             owl:onProperty <https://www.cdisc.org/ars/1-0/results> ],
         [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty <https://www.cdisc.org/ars/1-0/id> ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://www.cdisc.org/ars/1-0/DataSubset> ;
-            owl:onProperty <https://www.cdisc.org/ars/1-0/dataSubsetId> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://www.cdisc.org/ars/1-0/AnalysisCategory> ;
-            owl:onProperty <https://www.cdisc.org/ars/1-0/categoryIds> ] .
+            owl:onClass <https://www.cdisc.org/ars/1-0/AnalysisSet> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/analysisSetId> ] .
 
 <https://www.cdisc.org/ars/1-0/AnalysisCategory> a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "AnalysisCategory" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/label> ],
+        [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty <https://www.cdisc.org/ars/1-0/id> ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:allValuesFrom <https://www.cdisc.org/ars/1-0/AnalysisCategorization> ;
-            owl:onProperty <https://www.cdisc.org/ars/1-0/subCategorizations> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty <https://www.cdisc.org/ars/1-0/label> ] ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/subCategorizations> ] ;
     skos:definition "An implementer-defined category of analyses/outputs." .
 
 <https://www.cdisc.org/ars/1-0/Group> a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Group" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/id> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass <https://www.cdisc.org/ars/1-0/CompoundGroupExpression> ;
             owl:onProperty <https://www.cdisc.org/ars/1-0/compoundExpression> ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:Integer ;
-            owl:onProperty <https://www.cdisc.org/ars/1-0/order> ;
-            owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -1008,17 +1026,21 @@ linkml:topValue a owl:DatatypeProperty ;
         linkml:ClassDefinition ;
     rdfs:label "WhereClause" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty <https://www.cdisc.org/ars/1-0/id> ;
-            owl:qualifiedCardinality 1 ],
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://www.cdisc.org/ars/1-0/CompoundExpression> ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/compoundExpression> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass <https://www.cdisc.org/ars/1-0/Condition> ;
             owl:onProperty <https://www.cdisc.org/ars/1-0/condition> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://www.cdisc.org/ars/1-0/CompoundExpression> ;
-            owl:onProperty <https://www.cdisc.org/ars/1-0/compoundExpression> ] .
+            owl:onClass linkml:Integer ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/level> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Integer ;
+            owl:onProperty <https://www.cdisc.org/ars/1-0/order> ] .
 
 <https://www.cdisc.org/ars/1-0/label> a owl:ObjectProperty,
         linkml:SlotDefinition ;

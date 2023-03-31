@@ -7,7 +7,7 @@
 URI: [https://www.cdisc.org/ars/1-0/WhereClause](https://www.cdisc.org/ars/1-0/WhereClause)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[CompoundExpression]<compoundExpression%200..1-++[WhereClause&#124;id:string],[Condition]<condition%200..1-++[WhereClause],[CompoundSubsetExpression]++-%20whereClauses%200..*>[WhereClause],[CompoundExpression]-%20whereClauses%200..*>[WhereClause],[WhereClause]^-[Group],[WhereClause]^-[DataSubset],[WhereClause]^-[AnalysisSet],[Group],[DataSubset],[Condition],[CompoundSubsetExpression],[CompoundExpression],[AnalysisSet])](https://yuml.me/diagram/nofunky;dir:TB/class/[CompoundExpression]<compoundExpression%200..1-++[WhereClause&#124;id:string],[Condition]<condition%200..1-++[WhereClause],[CompoundSubsetExpression]++-%20whereClauses%200..*>[WhereClause],[CompoundExpression]-%20whereClauses%200..*>[WhereClause],[WhereClause]^-[Group],[WhereClause]^-[DataSubset],[WhereClause]^-[AnalysisSet],[Group],[DataSubset],[Condition],[CompoundSubsetExpression],[CompoundExpression],[AnalysisSet])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[CompoundExpression]<compoundExpression%200..1-++[WhereClause&#124;level:integer%20%3F;order:integer%20%3F],[Condition]<condition%200..1-++[WhereClause],[CompoundSubsetExpression]++-%20whereClauses%200..*>[WhereClause],[CompoundExpression]++-%20whereClauses%200..*>[WhereClause],[WhereClause]^-[Group],[WhereClause]^-[DataSubset],[WhereClause]^-[AnalysisSet],[Group],[DataSubset],[Condition],[CompoundSubsetExpression],[CompoundExpression],[AnalysisSet])](https://yuml.me/diagram/nofunky;dir:TB/class/[CompoundExpression]<compoundExpression%200..1-++[WhereClause&#124;level:integer%20%3F;order:integer%20%3F],[Condition]<condition%200..1-++[WhereClause],[CompoundSubsetExpression]++-%20whereClauses%200..*>[WhereClause],[CompoundExpression]++-%20whereClauses%200..*>[WhereClause],[WhereClause]^-[Group],[WhereClause]^-[DataSubset],[WhereClause]^-[AnalysisSet],[Group],[DataSubset],[Condition],[CompoundSubsetExpression],[CompoundExpression],[AnalysisSet])
 
 ## Children
 
@@ -25,8 +25,10 @@ URI: [https://www.cdisc.org/ars/1-0/WhereClause](https://www.cdisc.org/ars/1-0/W
 
 ### Own
 
- * [id](id.md)  <sub>1..1</sub>
-     * Range: [String](types/String.md)
+ * [level](level.md)  <sub>0..1</sub>
+     * Range: [Integer](types/Integer.md)
+ * [order](order.md)  <sub>0..1</sub>
+     * Range: [Integer](types/Integer.md)
  * [condition](condition.md)  <sub>0..1</sub>
      * Range: [Condition](Condition.md)
  * [compoundExpression](compoundExpression.md)  <sub>0..1</sub>

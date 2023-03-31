@@ -44,7 +44,7 @@ linkml:Nodeidentifier NONLITERAL
           <dataSubsetId> @<DataSubset> ? ;
           <dataset> @linkml:String ? ;
           <variable> @linkml:String ? ;
-          <methodId> @<AnalysisMethod> ? ;
+          <methodId> @<AnalysisMethod> ;
           <referencedAnalysisOperations> @<ReferencedAnalysisOperation> * ;
           <results> @<OperationResult> *
        ) ;
@@ -91,7 +91,6 @@ linkml:Nodeidentifier NONLITERAL
     (  $<AnalysisSet_tes> (  &<WhereClause_tes> ;
           rdf:type [ <WhereClause> ] ? ;
           <label> @linkml:String ? ;
-          <order> @linkml:Integer ;
           <compoundExpression> @<CompoundSetExpression> ?
        ) ;
        rdf:type [ <AnalysisSet> ]
@@ -100,7 +99,7 @@ linkml:Nodeidentifier NONLITERAL
 
 <CompoundExpression>  (
     CLOSED {
-       (  $<CompoundExpression_tes> (  <logicalOperator> @<AndOr> ;
+       (  $<CompoundExpression_tes> (  <logicalOperator> @<LogicalOperator> ;
              <whereClauses> @<WhereClause> *
           ) ;
           rdf:type [ <CompoundExpression> ] ?
@@ -215,7 +214,6 @@ linkml:Nodeidentifier NONLITERAL
        (  $<Group_tes> (  &<WhereClause_tes> ;
              rdf:type [ <WhereClause> ] ? ;
              <label> @linkml:String ? ;
-             <order> @linkml:Integer ;
              <compoundExpression> @<CompoundGroupExpression> ?
           ) ;
           rdf:type [ <Group> ]
@@ -286,6 +284,7 @@ linkml:Nodeidentifier NONLITERAL
 <OrderedListItem> CLOSED {
     (  $<OrderedListItem_tes> (  &<NamedObject_tes> ;
           rdf:type [ <NamedObject> ] ? ;
+          <level> @linkml:Integer ;
           <order> @linkml:Integer ;
           <sublist> @<NestedList> ? ;
           <analysisId> @<Analysis> ? ;
@@ -369,10 +368,12 @@ linkml:Nodeidentifier NONLITERAL
 
 <WhereClause>  (
     CLOSED {
-       (  $<WhereClause_tes> (  <condition> @<Condition> ? ;
+       (  $<WhereClause_tes> (  <level> @linkml:Integer ? ;
+             <order> @linkml:Integer ? ;
+             <condition> @<Condition> ? ;
              <compoundExpression> @<CompoundExpression> ?
           ) ;
-          rdf:type [ <WhereClause> ]
+          rdf:type [ <WhereClause> ] ?
        )
     } OR @<AnalysisSet> OR @<DataSubset> OR @<Group>
 )

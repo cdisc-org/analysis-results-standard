@@ -9,7 +9,7 @@ URI: [https://www.cdisc.org/ars/1-0/methodId](https://www.cdisc.org/ars/1-0/meth
 
 ## Domain and Range
 
-None &#8594;  <sub>0..1</sub> [AnalysisMethod](AnalysisMethod.md)
+None &#8594;  <sub>1..1</sub> [AnalysisMethod](AnalysisMethod.md)
 
 ## Parents
 

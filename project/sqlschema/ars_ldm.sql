@@ -24,10 +24,11 @@ CREATE TABLE "AnalysisMethod" (
 );
 
 CREATE TABLE "AnalysisSet" (
-	id TEXT NOT NULL, 
+	level INTEGER, 
+	"order" INTEGER, 
 	condition TEXT, 
+	id TEXT NOT NULL, 
 	label TEXT, 
-	"order" INTEGER NOT NULL, 
 	"compoundExpression" TEXT, 
 	PRIMARY KEY (id)
 );
@@ -73,8 +74,10 @@ CREATE TABLE "DataGroupingFactor" (
 );
 
 CREATE TABLE "DataSubset" (
-	id TEXT NOT NULL, 
+	level INTEGER, 
+	"order" INTEGER, 
 	condition TEXT, 
+	id TEXT NOT NULL, 
 	label TEXT, 
 	"compoundExpression" TEXT, 
 	PRIMARY KEY (id)
@@ -103,10 +106,11 @@ CREATE TABLE "DisplaySubSection" (
 );
 
 CREATE TABLE "Group" (
-	id TEXT NOT NULL, 
+	level INTEGER, 
+	"order" INTEGER, 
 	condition TEXT, 
+	id TEXT NOT NULL, 
 	label TEXT, 
-	"order" INTEGER NOT NULL, 
 	"compoundExpression" TEXT, 
 	PRIMARY KEY (id)
 );
@@ -156,10 +160,11 @@ CREATE TABLE "SubjectGroupingFactor" (
 );
 
 CREATE TABLE "WhereClause" (
-	id TEXT NOT NULL, 
+	level INTEGER, 
+	"order" INTEGER, 
 	condition TEXT, 
 	"compoundExpression" TEXT, 
-	PRIMARY KEY (id)
+	PRIMARY KEY (level, "order", condition, "compoundExpression")
 );
 
 CREATE TABLE "Analysis" (
@@ -170,7 +175,7 @@ CREATE TABLE "Analysis" (
 	"dataSubsetId" TEXT, 
 	dataset TEXT, 
 	variable TEXT, 
-	"methodId" TEXT, 
+	"methodId" TEXT NOT NULL, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY("analysisSetId") REFERENCES "AnalysisSet" (id), 
 	FOREIGN KEY("dataSubsetId") REFERENCES "DataSubset" (id), 
@@ -178,10 +183,11 @@ CREATE TABLE "Analysis" (
 );
 
 CREATE TABLE "AnalysisGroup" (
-	id TEXT NOT NULL, 
+	level INTEGER, 
+	"order" INTEGER, 
 	condition TEXT, 
+	id TEXT NOT NULL, 
 	label TEXT, 
-	"order" INTEGER NOT NULL, 
 	"compoundExpression" TEXT, 
 	"SubjectGroupingFactor_id" TEXT, 
 	PRIMARY KEY (id), 
@@ -189,10 +195,11 @@ CREATE TABLE "AnalysisGroup" (
 );
 
 CREATE TABLE "DataGroup" (
-	id TEXT NOT NULL, 
+	level INTEGER, 
+	"order" INTEGER, 
 	condition TEXT, 
+	id TEXT NOT NULL, 
 	label TEXT, 
-	"order" INTEGER NOT NULL, 
 	"compoundExpression" TEXT, 
 	"DataGroupingFactor_id" TEXT, 
 	PRIMARY KEY (id), 
@@ -249,11 +256,12 @@ CREATE TABLE "OrderedGroupingFactor" (
 
 CREATE TABLE "OrderedListItem" (
 	name TEXT NOT NULL, 
+	level INTEGER NOT NULL, 
 	"order" INTEGER NOT NULL, 
 	sublist TEXT, 
 	"analysisId" TEXT, 
 	"outputId" TEXT, 
-	PRIMARY KEY (name, "order", sublist, "analysisId", "outputId"), 
+	PRIMARY KEY (name, level, "order", sublist, "analysisId", "outputId"), 
 	FOREIGN KEY("analysisId") REFERENCES "Analysis" (id), 
 	FOREIGN KEY("outputId") REFERENCES "Output" (id)
 );
