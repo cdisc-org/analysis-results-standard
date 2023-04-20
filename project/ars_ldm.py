@@ -1,5 +1,5 @@
 # Auto generated from ars_ldm.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-03-31T11:41:02
+# Generation date: 2023-04-20T15:18:55
 # Schema: ars_ldm
 #
 # id: https://www.cdisc.org/ars/1-0
@@ -299,7 +299,7 @@ class AnalysisCategory(YAMLRoot):
 
 
 @dataclass
-class Analysis(YAMLRoot):
+class Analysis(NamedObject):
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = URIRef("https://www.cdisc.org/ars/1-0/Analysis")
@@ -308,6 +308,7 @@ class Analysis(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = URIRef("https://www.cdisc.org/ars/1-0/Analysis")
 
     id: Union[str, AnalysisId] = None
+    name: str = None
     methodId: Union[str, AnalysisMethodId] = None
     version: Optional[int] = None
     categoryIds: Optional[Union[Union[str, AnalysisCategoryId], List[Union[str, AnalysisCategoryId]]]] = empty_list()

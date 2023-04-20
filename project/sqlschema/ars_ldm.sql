@@ -168,6 +168,7 @@ CREATE TABLE "WhereClause" (
 );
 
 CREATE TABLE "Analysis" (
+	name TEXT NOT NULL, 
 	id TEXT NOT NULL, 
 	version INTEGER, 
 	"categoryIds" TEXT, 

@@ -308,6 +308,7 @@ class ArsLdmAPI:
              methodId: Union[str, MatchExpression] = None,
              referencedAnalysisOperations: Union[str, MatchExpression] = None,
              results: Union[str, MatchExpression] = None,
+             name: Union[str, MatchExpression] = None,
              
              _extra: Any = None) -> List[Analysis]:
         """
@@ -324,6 +325,7 @@ class ArsLdmAPI:
         :param methodId: None
         :param referencedAnalysisOperations: None
         :param results: None
+        :param name: None
         
         :return: Person list matching constraints
         """
@@ -350,6 +352,8 @@ class ArsLdmAPI:
                                                  referencedAnalysisOperations=referencedAnalysisOperations,
                                                  
                                                  results=results,
+                                                 
+                                                 name=name,
                                                  
                                                  _extra=_extra)
         return results

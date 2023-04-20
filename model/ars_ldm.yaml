@@ -64,6 +64,7 @@ classes:
       - subCategorizations
 
   Analysis:
+    is_a: NamedObject
     slots:
       - id
       - version

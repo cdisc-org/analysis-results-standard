@@ -1,5 +1,6 @@
 message Analysis
  {
+  string name = 0
   string id = 0
   integer version = 0
  repeated  analysisCategory categoryIds = 0

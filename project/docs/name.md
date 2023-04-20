@@ -19,6 +19,7 @@ None &#8594;  <sub>1..1</sub> [String](types/String.md)
 
 ## Used by
 
+ * [Analysis](Analysis.md)
  * [AnalysisMethod](AnalysisMethod.md)
  * [Display](Display.md)
  * [File](File.md)

@@ -60,6 +60,7 @@ Analysis {
     integer version  
     string dataset  
     string variable  
+    string name  
 }
 OperationResult {
     string rawValue  

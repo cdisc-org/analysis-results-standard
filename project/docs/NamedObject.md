@@ -7,10 +7,11 @@
 URI: [https://www.cdisc.org/ars/1-0/NamedObject](https://www.cdisc.org/ars/1-0/NamedObject)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[ReportingEvent],[OrderedListItem],[Operation],[NamedObject&#124;name:string]^-[ReportingEvent],[NamedObject]^-[OrderedListItem],[NamedObject]^-[Operation],[NamedObject]^-[File],[NamedObject]^-[Display],[NamedObject]^-[AnalysisMethod],[File],[Display],[AnalysisMethod])](https://yuml.me/diagram/nofunky;dir:TB/class/[ReportingEvent],[OrderedListItem],[Operation],[NamedObject&#124;name:string]^-[ReportingEvent],[NamedObject]^-[OrderedListItem],[NamedObject]^-[Operation],[NamedObject]^-[File],[NamedObject]^-[Display],[NamedObject]^-[AnalysisMethod],[File],[Display],[AnalysisMethod])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[ReportingEvent],[OrderedListItem],[Operation],[NamedObject&#124;name:string]^-[ReportingEvent],[NamedObject]^-[OrderedListItem],[NamedObject]^-[Operation],[NamedObject]^-[File],[NamedObject]^-[Display],[NamedObject]^-[AnalysisMethod],[NamedObject]^-[Analysis],[File],[Display],[AnalysisMethod],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[ReportingEvent],[OrderedListItem],[Operation],[NamedObject&#124;name:string]^-[ReportingEvent],[NamedObject]^-[OrderedListItem],[NamedObject]^-[Operation],[NamedObject]^-[File],[NamedObject]^-[Display],[NamedObject]^-[AnalysisMethod],[NamedObject]^-[Analysis],[File],[Display],[AnalysisMethod],[Analysis])
 
 ## Children
 
+ * [Analysis](Analysis.md)
  * [AnalysisMethod](AnalysisMethod.md)
  * [Display](Display.md)
  * [File](File.md)

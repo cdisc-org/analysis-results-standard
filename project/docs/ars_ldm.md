@@ -12,7 +12,6 @@
 
 ### Classes
 
- * [Analysis](Analysis.md)
  * [AnalysisCategorization](AnalysisCategorization.md) - An implementer-defined categorization of analyses/outputs.
  * [AnalysisCategory](AnalysisCategory.md) - An implementer-defined category of analyses/outputs.
  * [CompoundExpression](CompoundExpression.md)
@@ -26,6 +25,7 @@
      * [DataGroupingFactor](DataGroupingFactor.md) - A factor used to subdivide data records in an analysis dataset for analysis.
      * [SubjectGroupingFactor](SubjectGroupingFactor.md) - A factor used to subdivide the subject population for comparative analysis (e.g., treatment, sex, race, age).
  * [NamedObject](NamedObject.md)
+     * [Analysis](Analysis.md)
      * [AnalysisMethod](AnalysisMethod.md)
      * [Display](Display.md)
      * [File](File.md)

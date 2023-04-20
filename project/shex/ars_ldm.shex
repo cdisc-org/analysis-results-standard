@@ -16,7 +16,7 @@ linkml:Double xsd:double
 
 linkml:Decimal xsd:decimal
 
-linkml:Time xsd:dateTime
+linkml:Time xsd:time
 
 linkml:Date xsd:date
 
@@ -37,7 +37,9 @@ linkml:Objectidentifier IRI
 linkml:Nodeidentifier NONLITERAL
 
 <Analysis> CLOSED {
-    (  $<Analysis_tes> (  <version> @linkml:Integer ? ;
+    (  $<Analysis_tes> (  &<NamedObject_tes> ;
+          rdf:type [ <NamedObject> ] ? ;
+          <version> @linkml:Integer ? ;
           <categoryIds> @<AnalysisCategory> * ;
           <analysisSetId> @<AnalysisSet> ? ;
           <orderedGroupings> @<OrderedGroupingFactor> * ;
@@ -236,7 +238,7 @@ linkml:Nodeidentifier NONLITERAL
 }
 
 <NamedObject>  (
-    @<AnalysisMethod> OR @<Display> OR @<File> OR @<Operation> OR @<OrderedListItem> OR @<ReportingEvent>
+    @<Analysis> OR @<AnalysisMethod> OR @<Display> OR @<File> OR @<Operation> OR @<OrderedListItem> OR @<ReportingEvent>
 )
 
 <NamedObject_struct> {

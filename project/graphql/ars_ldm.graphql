@@ -1,5 +1,6 @@
 type Analysis
   {
+    name: String!
     id: String!
     version: Integer
     categoryIds: [AnalysisCategory]

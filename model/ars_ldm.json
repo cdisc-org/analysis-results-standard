@@ -25,6 +25,9 @@
                 "methodId": {
                     "type": "string"
                 },
+                "name": {
+                    "type": "string"
+                },
                 "orderedGroupings": {
                     "items": {
                         "$ref": "#/$defs/OrderedGroupingFactor"
@@ -52,7 +55,8 @@
             },
             "required": [
                 "id",
-                "methodId"
+                "methodId",
+                "name"
             ],
             "title": "Analysis",
             "type": "object"

@@ -106,7 +106,7 @@
         "schema:Time"
       ],
       "base": "XSDTime",
-      "uri": "http://www.w3.org/2001/XMLSchema#dateTime",
+      "uri": "http://www.w3.org/2001/XMLSchema#time",
       "repr": "str",
       "@type": "TypeDefinition"
     },
@@ -1624,7 +1624,9 @@
       "name": "Analysis",
       "definition_uri": "https://www.cdisc.org/ars/1-0/Analysis",
       "from_schema": "https://www.cdisc.org/ars/1-0",
+      "is_a": "NamedObject",
       "slots": [
+        "name",
         "id",
         "version",
         "categoryIds",
@@ -2046,9 +2048,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "ars_ldm.yaml",
-  "source_file_date": "2023-03-31T11:33:38",
-  "source_file_size": 11681,
-  "generation_date": "2023-03-31T11:40:33",
+  "source_file_date": "2023-04-03T14:48:48",
+  "source_file_size": 11704,
+  "generation_date": "2023-04-20T15:18:20",
   "@type": "SchemaDefinition",
   "@context": [
     ".\\analysis-results-standard\\project\\/jsonld/ars_ldm.context.jsonld",
