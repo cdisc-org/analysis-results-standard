@@ -823,6 +823,7 @@
   ],
   "analyses": [
     {
+      "name": "Summary of Subjects by Treatment",
       "id": "An01.05_SAF_ByTrt",
       "methodId": "Mth01_CatVar_ByGrp",
       "version": 1,
@@ -872,6 +873,7 @@
       ]
     },
     {
+      "name": "Summary of Age by Treatment",
       "id": "An03.01_Age_ByTrt",
       "methodId": "Mth02_ContVar_ByGrp",
       "version": 1,
@@ -1152,6 +1154,7 @@
       ]
     },
     {
+      "name": "Summary of Subjects by Treatment and Age Group",
       "id": "An03.02_AgeGrp_ByTrt",
       "methodId": "Mth01_CatVar_ByGrp",
       "version": 1,
@@ -1362,6 +1365,7 @@
       ]
     },
     {
+      "name": "Summary of Subjects by Treatment and Sex",
       "id": "An03.03_Sex_ByTrt",
       "methodId": "Mth01_CatVar_ByGrp",
       "version": 1,
@@ -1572,6 +1576,7 @@
       ]
     },
     {
+      "name": "Summary of Subjects by Treatment and Ethnicity",
       "id": "An03.04_Ethnic_ByTrt",
       "methodId": "Mth01_CatVar_ByGrp",
       "version": 1,
@@ -1782,6 +1787,7 @@
       ]
     },
     {
+      "name": "Summary of Subjects by Treatment and Race",
       "id": "An03.05_Race_ByTrt",
       "methodId": "Mth01_CatVar_ByGrp",
       "version": 1,
@@ -2622,6 +2628,7 @@
       ]
     },
     {
+      "name": "Summary of Height by Treatment",
       "id": "An03.06_Height_ByTrt",
       "methodId": "Mth02_ContVar_ByGrp",
       "version": 1,
@@ -2902,6 +2909,7 @@
       ]
     },
     {
+      "name": "Summary of Subjects with At Least One TEAE, by Treatment",
       "id": "An07.01_TEAE_ByTrt",
       "methodId": "Mth01_CatVar_ByGrp",
       "version": 1,
@@ -2995,6 +3003,7 @@
       ]
     },
     {
+      "name": "Summary of Subjects with At Least One Related TEAE, by Treatment",
       "id": "An07.02_RelTEAE_ByTrt",
       "methodId": "Mth01_CatVar_ByGrp",
       "version": 1,
@@ -3088,6 +3097,7 @@
       ]
     },
     {
+      "name": "Summary of Subjects with At Least One Serious TEAE, by Treatment",
       "id": "An07.03_SerTEAE_ByTrt",
       "methodId": "Mth01_CatVar_ByGrp",
       "version": 1,
@@ -3181,6 +3191,7 @@
       ]
     },
     {
+      "name": "Summary of Subjects with At Least One Related Serious TEAE, by Treatment",
       "id": "An07.04_RelSerTEAE_ByTrt",
       "methodId": "Mth01_CatVar_ByGrp",
       "version": 1,
@@ -3274,6 +3285,7 @@
       ]
     },
     {
+      "name": "Summary of Subjects with At Least One TEAE Leading to Death, by Treatment",
       "id": "An07.05_TEAELd2Dth_ByTrt",
       "methodId": "Mth01_CatVar_ByGrp",
       "version": 1,
@@ -3367,6 +3379,7 @@
       ]
     },
     {
+      "name": "Summary of Subjects with At Least One Related TEAE Leading to Death, by Treatment",
       "id": "An07.06_RelTEAELd2Dth_ByTrt",
       "methodId": "Mth01_CatVar_ByGrp",
       "version": 1,
@@ -3460,6 +3473,7 @@
       ]
     },
     {
+      "name": "Summary of Subjects with At Least One TEAE Leading to Dose Modification, by Treatment",
       "id": "An07.07_TEAELd2DoseMod_ByTrt",
       "methodId": "Mth01_CatVar_ByGrp",
       "version": 1,
@@ -3553,6 +3567,7 @@
       ]
     },
     {
+      "name": "Summary of Subjects with At Least One TEAE Leading to Treatment Discontinuation, by Treatment",
       "id": "An07.08_TEAELd2TrtDsc_ByTrt",
       "methodId": "Mth01_CatVar_ByGrp",
       "version": 1,
@@ -3646,6 +3661,7 @@
       ]
     },
     {
+      "name": "Summary of Subjects by Treatment and System Organ Class ",
       "id": "An07.09_Soc_ByTrt",
       "methodId": "Mth01_CatVar_ByGrp",
       "version": 1,
@@ -5752,6 +5768,7 @@
       ]
     },
     {
+      "name": "Summary of Subjects by Treatment, System Organ Class and Preferred Term ",
       "id": "An07.10_SocPt_ByTrt",
       "methodId": "Mth01_CatVar_ByGrp",
       "version": 1,
@@ -32012,6 +32029,7 @@
       ]
     },
     {
+      "name": "Summary of Observed Value by Treatment, Parameter and Visit",
       "id": "An08.01_Obs_ByTrt",
       "methodId": "Mth02_ContVar_ByGrp",
       "version": 1,
@@ -52310,6 +52328,7 @@
       ]
     },
     {
+      "name": "Summary of Change from Baseline by Treatment, Parameter and Visit",
       "id": "An08.02_ChgBl_ByTrt",
       "methodId": "Mth02_ContVar_ByGrp",
       "version": 1,

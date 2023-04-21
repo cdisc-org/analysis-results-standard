@@ -552,7 +552,8 @@ dataSubsets:
   id: Dss10_VS_NonBl_AnRec
   label: Vital Signs Non-baseline Analysis Records
 analyses:
-- id: An01.05_SAF_ByTrt
+- name: Summary of Subjects by Treatment
+  id: An01.05_SAF_ByTrt
   methodId: Mth01_CatVar_ByGrp
   version: 1
   analysisSetId: AnalysisSet_02_SAF
@@ -580,7 +581,8 @@ analyses:
       groupId: AnlsGrouping_02_Trt_3
     rawValue: '84'
     formattedValue: (N=84)
-- id: An03.01_Age_ByTrt
+- name: Summary of Age by Treatment
+  id: An03.01_Age_ByTrt
   methodId: Mth02_ContVar_ByGrp
   version: 1
   analysisSetId: AnalysisSet_02_SAF
@@ -734,7 +736,8 @@ analyses:
       groupId: AnlsGrouping_02_Trt_3
     rawValue: '88'
     formattedValue: '88'
-- id: An03.02_AgeGrp_ByTrt
+- name: Summary of Subjects by Treatment and Age Group
+  id: An03.02_AgeGrp_ByTrt
   methodId: Mth01_CatVar_ByGrp
   version: 1
   analysisSetId: AnalysisSet_02_SAF
@@ -847,7 +850,8 @@ analyses:
       groupId: AnlsGrouping_03_AgeGp_2
     rawValue: '86.9047619047619'
     formattedValue: ( 86.9)
-- id: An03.03_Sex_ByTrt
+- name: Summary of Subjects by Treatment and Sex
+  id: An03.03_Sex_ByTrt
   methodId: Mth01_CatVar_ByGrp
   version: 1
   analysisSetId: AnalysisSet_02_SAF
@@ -960,7 +964,8 @@ analyses:
       groupId: AnlsGrouping_01_Sex_2
     rawValue: '47.61904761904762'
     formattedValue: ( 47.6)
-- id: An03.04_Ethnic_ByTrt
+- name: Summary of Subjects by Treatment and Ethnicity
+  id: An03.04_Ethnic_ByTrt
   methodId: Mth01_CatVar_ByGrp
   version: 1
   analysisSetId: AnalysisSet_02_SAF
@@ -1073,7 +1078,8 @@ analyses:
       groupId: AnlsGrouping_05_Ethnic_2
     rawValue: '92.85714285714286'
     formattedValue: ( 92.9)
-- id: An03.05_Race_ByTrt
+- name: Summary of Subjects by Treatment and Race
+  id: An03.05_Race_ByTrt
   methodId: Mth01_CatVar_ByGrp
   version: 1
   analysisSetId: AnalysisSet_02_SAF
@@ -1522,7 +1528,8 @@ analyses:
       groupId: AnlsGrouping_04_Race_9
     rawValue: '0'
     formattedValue: (  0.0)
-- id: An03.06_Height_ByTrt
+- name: Summary of Height by Treatment
+  id: An03.06_Height_ByTrt
   methodId: Mth02_ContVar_ByGrp
   version: 1
   analysisSetId: AnalysisSet_02_SAF
@@ -1676,7 +1683,8 @@ analyses:
       groupId: AnlsGrouping_02_Trt_3
     rawValue: '190.5'
     formattedValue: '190.5'
-- id: An07.01_TEAE_ByTrt
+- name: Summary of Subjects with At Least One TEAE, by Treatment
+  id: An07.01_TEAE_ByTrt
   methodId: Mth01_CatVar_ByGrp
   version: 1
   analysisSetId: AnalysisSet_02_SAF
@@ -1728,7 +1736,8 @@ analyses:
       groupId: AnlsGrouping_02_Trt_3
     rawValue: '90.476190476'
     formattedValue: ( 90.5)
-- id: An07.02_RelTEAE_ByTrt
+- name: Summary of Subjects with At Least One Related TEAE, by Treatment
+  id: An07.02_RelTEAE_ByTrt
   methodId: Mth01_CatVar_ByGrp
   version: 1
   analysisSetId: AnalysisSet_02_SAF
@@ -1780,7 +1789,8 @@ analyses:
       groupId: AnlsGrouping_02_Trt_3
     rawValue: '83.33333333333333'
     formattedValue: ( 83.3)
-- id: An07.03_SerTEAE_ByTrt
+- name: Summary of Subjects with At Least One Serious TEAE, by Treatment
+  id: An07.03_SerTEAE_ByTrt
   methodId: Mth01_CatVar_ByGrp
   version: 1
   analysisSetId: AnalysisSet_02_SAF
@@ -1832,7 +1842,8 @@ analyses:
       groupId: AnlsGrouping_02_Trt_3
     rawValue: '2.380952380952381'
     formattedValue: (  2.4)
-- id: An07.04_RelSerTEAE_ByTrt
+- name: Summary of Subjects with At Least One Related Serious TEAE, by Treatment
+  id: An07.04_RelSerTEAE_ByTrt
   methodId: Mth01_CatVar_ByGrp
   version: 1
   analysisSetId: AnalysisSet_02_SAF
@@ -1884,7 +1895,8 @@ analyses:
       groupId: AnlsGrouping_02_Trt_3
     rawValue: '1.1904761904761905'
     formattedValue: (  1.2)
-- id: An07.05_TEAELd2Dth_ByTrt
+- name: Summary of Subjects with At Least One TEAE Leading to Death, by Treatment
+  id: An07.05_TEAELd2Dth_ByTrt
   methodId: Mth01_CatVar_ByGrp
   version: 1
   analysisSetId: AnalysisSet_02_SAF
@@ -1936,7 +1948,8 @@ analyses:
       groupId: AnlsGrouping_02_Trt_3
     rawValue: '0'
     formattedValue: (  0.0)
-- id: An07.06_RelTEAELd2Dth_ByTrt
+- name: Summary of Subjects with At Least One Related TEAE Leading to Death, by Treatment
+  id: An07.06_RelTEAELd2Dth_ByTrt
   methodId: Mth01_CatVar_ByGrp
   version: 1
   analysisSetId: AnalysisSet_02_SAF
@@ -1988,7 +2001,9 @@ analyses:
       groupId: AnlsGrouping_02_Trt_3
     rawValue: '0'
     formattedValue: (  0.0)
-- id: An07.07_TEAELd2DoseMod_ByTrt
+- name: Summary of Subjects with At Least One TEAE Leading to Dose Modification, by
+    Treatment
+  id: An07.07_TEAELd2DoseMod_ByTrt
   methodId: Mth01_CatVar_ByGrp
   version: 1
   analysisSetId: AnalysisSet_02_SAF
@@ -2040,7 +2055,9 @@ analyses:
       groupId: AnlsGrouping_02_Trt_3
     rawValue: '0'
     formattedValue: (  0.0)
-- id: An07.08_TEAELd2TrtDsc_ByTrt
+- name: Summary of Subjects with At Least One TEAE Leading to Treatment Discontinuation,
+    by Treatment
+  id: An07.08_TEAELd2TrtDsc_ByTrt
   methodId: Mth01_CatVar_ByGrp
   version: 1
   analysisSetId: AnalysisSet_02_SAF
@@ -2092,7 +2109,8 @@ analyses:
       groupId: AnlsGrouping_02_Trt_3
     rawValue: '0'
     formattedValue: (  0.0)
-- id: An07.09_Soc_ByTrt
+- name: 'Summary of Subjects by Treatment and System Organ Class '
+  id: An07.09_Soc_ByTrt
   methodId: Mth01_CatVar_ByGrp
   version: 1
   analysisSetId: AnalysisSet_02_SAF
@@ -3218,7 +3236,8 @@ analyses:
       groupValue: VASCULAR DISORDERS
     rawValue: '1.1905'
     formattedValue: (  1.2)
-- id: An07.10_SocPt_ByTrt
+- name: 'Summary of Subjects by Treatment, System Organ Class and Preferred Term '
+  id: An07.10_SocPt_ByTrt
   methodId: Mth01_CatVar_ByGrp
   version: 1
   analysisSetId: AnalysisSet_02_SAF
@@ -17042,7 +17061,8 @@ analyses:
       groupValue: WOUND HAEMORRHAGE
     rawValue: '1.1905'
     formattedValue: (  1.2)
-- id: An08.01_Obs_ByTrt
+- name: Summary of Observed Value by Treatment, Parameter and Visit
+  id: An08.01_Obs_ByTrt
   methodId: Mth02_ContVar_ByGrp
   version: 1
   analysisSetId: AnalysisSet_02_SAF
@@ -27762,7 +27782,8 @@ analyses:
       groupId: AnlsGrouping_09_Visit_11
     rawValue: '37.33'
     formattedValue: '37.33'
-- id: An08.02_ChgBl_ByTrt
+- name: Summary of Change from Baseline by Treatment, Parameter and Visit
+  id: An08.02_ChgBl_ByTrt
   methodId: Mth02_ContVar_ByGrp
   version: 1
   analysisSetId: AnalysisSet_02_SAF
