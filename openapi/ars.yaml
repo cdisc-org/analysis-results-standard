@@ -1,0 +1,1889 @@
+openapi: 3.0.0
+info:
+  title: CDISC Analysis Results Standard (ARS)
+  description: REST API documentation for ARS
+  version: '0.1'
+  contact:
+    name: CDISC Library Support
+    email: cdisc_library_support@cdisc.org
+  license:
+    name: License for CDISC Members & Open Source Developers
+    url: https://www.cdisc.org/cdisc-library/api-account-request
+externalDocs:
+  description: Media Type Support Matrix
+  url: https://wiki.cdisc.org/display/LIBSUPRT/Media+Type+Support+Matrix
+servers:
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/CDISC1/cdisc-library/1.5
+  - description: Production CDISC Libray
+    url: https://library.cdisc.org/api
+security:
+  - ApiKeyAuth: []
+paths:
+
+################################################################################
+
+# Analysis Results Standard Paths
+
+  /mdr/ars/packages:
+    get:
+      operationId: api.products.ars.get_packages
+      description: Get a list of available ARS packages.
+      tags:
+        - Analysis Results Standards (ARS)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/arsPackages'
+        '400':
+          $ref: '#/components/responses/statusBadRequest'
+        '401':
+          $ref: '#/components/responses/statusUnauthorized'
+        '403':
+          $ref: '#/components/responses/statusForbidden'
+        '404':
+          $ref: '#/components/responses/statusNotFound'
+        '405':
+          $ref: '#/components/responses/statusNotAllowed'
+        '406':
+          $ref: '#/components/responses/statusNotAcceptable'
+        '500':
+          $ref: '#/components/responses/statusInternalError'
+        '503':
+          $ref: '#/components/responses/statusServiceUnavailable'
+        '504':
+          $ref: '#/components/responses/statusGatewayTimeout'
+
+
+  /mdr/ars/packages/{package}/reportingevents:
+    get:
+      operationId: api.products.ars.get_package_reportingevents
+      description: Get a list of reporting events in an ARS package.
+      tags:
+        - Analysis Results Standards (ARS)
+      parameters:
+        - $ref: '#/components/parameters/arsPackage'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/arsReportingEvents'
+        '400':
+          $ref: '#/components/responses/statusBadRequest'
+        '401':
+          $ref: '#/components/responses/statusUnauthorized'
+        '403':
+          $ref: '#/components/responses/statusForbidden'
+        '404':
+          $ref: '#/components/responses/statusNotFound'
+        '405':
+          $ref: '#/components/responses/statusNotAllowed'
+        '406':
+          $ref: '#/components/responses/statusNotAcceptable'
+        '500':
+          $ref: '#/components/responses/statusInternalError'
+        '503':
+          $ref: '#/components/responses/statusServiceUnavailable'
+        '504':
+          $ref: '#/components/responses/statusGatewayTimeout'
+
+  /mdr/ars/packages/{package}/reportingevents/{reportingevent}:
+    get:
+      operationId: api.products.ars.get_package_reportingevent
+      description: Get the contents of a reporting event.
+      tags:
+        - Analysis Results Standards (ARS)
+      parameters:
+        - $ref: '#/components/parameters/arsPackage'
+        - $ref: '#/components/parameters/arsReportingEvent'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/arsReportingEvent'
+        '400':
+          $ref: '#/components/responses/statusBadRequest'
+        '401':
+          $ref: '#/components/responses/statusUnauthorized'
+        '403':
+          $ref: '#/components/responses/statusForbidden'
+        '404':
+          $ref: '#/components/responses/statusNotFound'
+        '405':
+          $ref: '#/components/responses/statusNotAllowed'
+        '406':
+          $ref: '#/components/responses/statusNotAcceptable'
+        '500':
+          $ref: '#/components/responses/statusInternalError'
+        '503':
+          $ref: '#/components/responses/statusServiceUnavailable'
+        '504':
+          $ref: '#/components/responses/statusGatewayTimeout'
+
+  /mdr/ars/packages/{package}/reportingevents/{reportingevent}/analysissets/{analysisset}:
+    get:
+      operationId: api.products.ars.get_package_reportingevent_analysisset
+      description: Get the details of an analysis set for a reporting event 
+      tags:
+        - Analysis Results Standards (ARS)
+      parameters:
+        - $ref: '#/components/parameters/arsPackage'
+        - $ref: '#/components/parameters/arsReportingEvent'
+        - $ref: '#/components/parameters/arsAnalysisSet'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/arsAnalysisSet'
+        '400':
+          $ref: '#/components/responses/statusBadRequest'
+        '401':
+          $ref: '#/components/responses/statusUnauthorized'
+        '403':
+          $ref: '#/components/responses/statusForbidden'
+        '404':
+          $ref: '#/components/responses/statusNotFound'
+        '405':
+          $ref: '#/components/responses/statusNotAllowed'
+        '406':
+          $ref: '#/components/responses/statusNotAcceptable'
+        '500':
+          $ref: '#/components/responses/statusInternalError'
+        '503':
+          $ref: '#/components/responses/statusServiceUnavailable'
+        '504':
+          $ref: '#/components/responses/statusGatewayTimeout'
+
+  /mdr/ars/packages/{package}/reportingevents/{reportingevent}/datasubsets/{datasubset}:
+    get:
+      operationId: api.products.ars.get_package_reportingevent_datasubset
+      description: Get the details of a data subset for a reporting event 
+      tags:
+        - Analysis Results Standards (ARS)
+      parameters:
+        - $ref: '#/components/parameters/arsPackage'
+        - $ref: '#/components/parameters/arsReportingEvent'
+        - $ref: '#/components/parameters/arsDataSubset'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/arsDataSubset'
+        '400':
+          $ref: '#/components/responses/statusBadRequest'
+        '401':
+          $ref: '#/components/responses/statusUnauthorized'
+        '403':
+          $ref: '#/components/responses/statusForbidden'
+        '404':
+          $ref: '#/components/responses/statusNotFound'
+        '405':
+          $ref: '#/components/responses/statusNotAllowed'
+        '406':
+          $ref: '#/components/responses/statusNotAcceptable'
+        '500':
+          $ref: '#/components/responses/statusInternalError'
+        '503':
+          $ref: '#/components/responses/statusServiceUnavailable'
+        '504':
+          $ref: '#/components/responses/statusGatewayTimeout'
+
+  /mdr/ars/packages/{package}/reportingevents/{reportingevent}/analysisgroupings/{analysisgrouping}:
+    get:
+      operationId: api.products.ars.get_package_reportingevent_analysisgrouping
+      description: Get the details of an analysis grouping for a reporting event 
+      tags:
+        - Analysis Results Standards (ARS)
+      parameters:
+        - $ref: '#/components/parameters/arsPackage'
+        - $ref: '#/components/parameters/arsReportingEvent'
+        - $ref: '#/components/parameters/arsSubjectGroupingFactor'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/arsSubjectGroupingFactor'
+        '400':
+          $ref: '#/components/responses/statusBadRequest'
+        '401':
+          $ref: '#/components/responses/statusUnauthorized'
+        '403':
+          $ref: '#/components/responses/statusForbidden'
+        '404':
+          $ref: '#/components/responses/statusNotFound'
+        '405':
+          $ref: '#/components/responses/statusNotAllowed'
+        '406':
+          $ref: '#/components/responses/statusNotAcceptable'
+        '500':
+          $ref: '#/components/responses/statusInternalError'
+        '503':
+          $ref: '#/components/responses/statusServiceUnavailable'
+        '504':
+          $ref: '#/components/responses/statusGatewayTimeout'
+
+  /mdr/ars/packages/{package}/reportingevents/{reportingevent}/analysisgroupings/{analysisgrouping}/analysisgroups/{analysisgroup}:
+    get:
+      operationId: api.products.ars.get_package_reportingevent_analysisgrouping_analysisgrou
+      description: Get the details of an analysis grouping for a reporting event 
+      tags:
+        - Analysis Results Standards (ARS)
+      parameters:
+        - $ref: '#/components/parameters/arsPackage'
+        - $ref: '#/components/parameters/arsReportingEvent'
+        - $ref: '#/components/parameters/arsSubjectGroupingFactor'
+        - $ref: '#/components/parameters/arsAnalysisGroup'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/arsAnalysisGroup'
+        '400':
+          $ref: '#/components/responses/statusBadRequest'
+        '401':
+          $ref: '#/components/responses/statusUnauthorized'
+        '403':
+          $ref: '#/components/responses/statusForbidden'
+        '404':
+          $ref: '#/components/responses/statusNotFound'
+        '405':
+          $ref: '#/components/responses/statusNotAllowed'
+        '406':
+          $ref: '#/components/responses/statusNotAcceptable'
+        '500':
+          $ref: '#/components/responses/statusInternalError'
+        '503':
+          $ref: '#/components/responses/statusServiceUnavailable'
+        '504':
+          $ref: '#/components/responses/statusGatewayTimeout'
+
+  /mdr/ars/packages/{package}/reportingevents/{reportingevent}/methods/{method}:
+    get:
+      operationId: api.products.ars.get_package_reportingevent_method
+      description: Get the details of a method for a reporting event 
+      tags:
+        - Analysis Results Standards (ARS)
+      parameters:
+        - $ref: '#/components/parameters/arsPackage'
+        - $ref: '#/components/parameters/arsReportingEvent'
+        - $ref: '#/components/parameters/arsAnalysisMethod'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/arsAnalysisMethod'
+        '400':
+          $ref: '#/components/responses/statusBadRequest'
+        '401':
+          $ref: '#/components/responses/statusUnauthorized'
+        '403':
+          $ref: '#/components/responses/statusForbidden'
+        '404':
+          $ref: '#/components/responses/statusNotFound'
+        '405':
+          $ref: '#/components/responses/statusNotAllowed'
+        '406':
+          $ref: '#/components/responses/statusNotAcceptable'
+        '500':
+          $ref: '#/components/responses/statusInternalError'
+        '503':
+          $ref: '#/components/responses/statusServiceUnavailable'
+        '504':
+          $ref: '#/components/responses/statusGatewayTimeout'
+
+  /mdr/ars/packages/{package}/reportingevents/{reportingevent}/methods/{method}/operations/{operation}:
+    get:
+      operationId: api.products.ars.get_package_reportingevent_method_operation
+      description: Get the details of a method operation for a reporting event 
+      tags:
+        - Analysis Results Standards (ARS)
+      parameters:
+        - $ref: '#/components/parameters/arsPackage'
+        - $ref: '#/components/parameters/arsReportingEvent'
+        - $ref: '#/components/parameters/arsAnalysisMethod'
+        - $ref: '#/components/parameters/arsOperation'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/arsOperation'
+        '400':
+          $ref: '#/components/responses/statusBadRequest'
+        '401':
+          $ref: '#/components/responses/statusUnauthorized'
+        '403':
+          $ref: '#/components/responses/statusForbidden'
+        '404':
+          $ref: '#/components/responses/statusNotFound'
+        '405':
+          $ref: '#/components/responses/statusNotAllowed'
+        '406':
+          $ref: '#/components/responses/statusNotAcceptable'
+        '500':
+          $ref: '#/components/responses/statusInternalError'
+        '503':
+          $ref: '#/components/responses/statusServiceUnavailable'
+        '504':
+          $ref: '#/components/responses/statusGatewayTimeout'
+
+  /mdr/ars/packages/{package}/reportingevents/{reportingevent}/methods/{method}/operations/{operation}/refoprels/{refoprel}:
+    get:
+      operationId: api.products.ars.get_package_reportingevent_method_operation_refoprel
+      description: Get the details of a referenced operation relationship for a reporting event 
+      tags:
+        - Analysis Results Standards (ARS)
+      parameters:
+        - $ref: '#/components/parameters/arsPackage'
+        - $ref: '#/components/parameters/arsReportingEvent'
+        - $ref: '#/components/parameters/arsAnalysisMethod'
+        - $ref: '#/components/parameters/arsOperation'
+        - $ref: '#/components/parameters/arsReferencedOperationRelationship'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/arsReferencedOperationRelationship'
+        '400':
+          $ref: '#/components/responses/statusBadRequest'
+        '401':
+          $ref: '#/components/responses/statusUnauthorized'
+        '403':
+          $ref: '#/components/responses/statusForbidden'
+        '404':
+          $ref: '#/components/responses/statusNotFound'
+        '405':
+          $ref: '#/components/responses/statusNotAllowed'
+        '406':
+          $ref: '#/components/responses/statusNotAcceptable'
+        '500':
+          $ref: '#/components/responses/statusInternalError'
+        '503':
+          $ref: '#/components/responses/statusServiceUnavailable'
+        '504':
+          $ref: '#/components/responses/statusGatewayTimeout'
+
+  /mdr/ars/packages/{package}/reportingevents/{reportingevent}/analyses/{analysis}:
+    get:
+      operationId: api.products.ars.get_package_reportingevent_analysis
+      description: Get the details of an analysis for a reporting event, optionally including results 
+      tags:
+        - Analysis Results Standards (ARS)
+      parameters:
+        - $ref: '#/components/parameters/arsPackage'
+        - $ref: '#/components/parameters/arsReportingEvent'
+        - $ref: '#/components/parameters/arsAnalysis'
+        - $ref: '#/components/parameters/arsIncludeResults'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/arsAnalysis'
+        '400':
+          $ref: '#/components/responses/statusBadRequest'
+        '401':
+          $ref: '#/components/responses/statusUnauthorized'
+        '403':
+          $ref: '#/components/responses/statusForbidden'
+        '404':
+          $ref: '#/components/responses/statusNotFound'
+        '405':
+          $ref: '#/components/responses/statusNotAllowed'
+        '406':
+          $ref: '#/components/responses/statusNotAcceptable'
+        '500':
+          $ref: '#/components/responses/statusInternalError'
+        '503':
+          $ref: '#/components/responses/statusServiceUnavailable'
+        '504':
+          $ref: '#/components/responses/statusGatewayTimeout'
+
+  /mdr/ars/packages/{package}/reportingevents/{reportingevent}/analyses/{analysis}/datagroupings/{datagrouping}:
+    get:
+      operationId: api.products.ars.get_package_reportingevent_analysis_datagrouping
+      description: Get the details of a data grouping for a reporting event 
+      tags:
+        - Analysis Results Standards (ARS)
+      parameters:
+        - $ref: '#/components/parameters/arsPackage'
+        - $ref: '#/components/parameters/arsReportingEvent'
+        - $ref: '#/components/parameters/arsAnalysis'
+        - $ref: '#/components/parameters/arsDataGrouping'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/arsDataGroupingFactor'
+        '400':
+          $ref: '#/components/responses/statusBadRequest'
+        '401':
+          $ref: '#/components/responses/statusUnauthorized'
+        '403':
+          $ref: '#/components/responses/statusForbidden'
+        '404':
+          $ref: '#/components/responses/statusNotFound'
+        '405':
+          $ref: '#/components/responses/statusNotAllowed'
+        '406':
+          $ref: '#/components/responses/statusNotAcceptable'
+        '500':
+          $ref: '#/components/responses/statusInternalError'
+        '503':
+          $ref: '#/components/responses/statusServiceUnavailable'
+        '504':
+          $ref: '#/components/responses/statusGatewayTimeout'
+
+  /mdr/ars/packages/{package}/reportingevents/{reportingevent}/analyses/{analysis}/datagroupings/{datagrouping}/datagroups/{datagroup}:
+    get:
+      operationId: api.products.ars.get_package_reportingevent_analysis_datagrouping_datagroup
+      description: Get the details of a data grouping for a reporting event 
+      tags:
+        - Analysis Results Standards (ARS)
+      parameters:
+        - $ref: '#/components/parameters/arsPackage'
+        - $ref: '#/components/parameters/arsReportingEvent'
+        - $ref: '#/components/parameters/arsAnalysis'
+        - $ref: '#/components/parameters/arsDataGrouping'
+        - $ref: '#/components/parameters/arsDataGroup'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/arsDataGroup'
+        '400':
+          $ref: '#/components/responses/statusBadRequest'
+        '401':
+          $ref: '#/components/responses/statusUnauthorized'
+        '403':
+          $ref: '#/components/responses/statusForbidden'
+        '404':
+          $ref: '#/components/responses/statusNotFound'
+        '405':
+          $ref: '#/components/responses/statusNotAllowed'
+        '406':
+          $ref: '#/components/responses/statusNotAcceptable'
+        '500':
+          $ref: '#/components/responses/statusInternalError'
+        '503':
+          $ref: '#/components/responses/statusServiceUnavailable'
+        '504':
+          $ref: '#/components/responses/statusGatewayTimeout'
+
+  /mdr/ars/packages/{package}/reportingevents/{reportingevent}/outputs/{output}:
+    get:
+      operationId: api.products.ars.get_package_reportingevent_output
+      description: Get the details of an output for a reporting event 
+      tags:
+        - Analysis Results Standards (ARS)
+      parameters:
+        - $ref: '#/components/parameters/arsPackage'
+        - $ref: '#/components/parameters/arsReportingEvent'
+        - $ref: '#/components/parameters/arsOutput'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/arsOutput'
+        '400':
+          $ref: '#/components/responses/statusBadRequest'
+        '401':
+          $ref: '#/components/responses/statusUnauthorized'
+        '403':
+          $ref: '#/components/responses/statusForbidden'
+        '404':
+          $ref: '#/components/responses/statusNotFound'
+        '405':
+          $ref: '#/components/responses/statusNotAllowed'
+        '406':
+          $ref: '#/components/responses/statusNotAcceptable'
+        '500':
+          $ref: '#/components/responses/statusInternalError'
+        '503':
+          $ref: '#/components/responses/statusServiceUnavailable'
+        '504':
+          $ref: '#/components/responses/statusGatewayTimeout'
+
+  /mdr/ars/packages/{package}/reportingevents/{reportingevent}/outputs/{output}/displays/{display}:
+    get:
+      operationId: api.products.ars.get_package_reportingevent_output_display
+      description: Get the details of a displayfor a reporting event 
+      tags:
+        - Analysis Results Standards (ARS)
+      parameters:
+        - $ref: '#/components/parameters/arsPackage'
+        - $ref: '#/components/parameters/arsReportingEvent'
+        - $ref: '#/components/parameters/arsOutput'
+        - $ref: '#/components/parameters/arsDisplay'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/arsDisplay'
+        '400':
+          $ref: '#/components/responses/statusBadRequest'
+        '401':
+          $ref: '#/components/responses/statusUnauthorized'
+        '403':
+          $ref: '#/components/responses/statusForbidden'
+        '404':
+          $ref: '#/components/responses/statusNotFound'
+        '405':
+          $ref: '#/components/responses/statusNotAllowed'
+        '406':
+          $ref: '#/components/responses/statusNotAcceptable'
+        '500':
+          $ref: '#/components/responses/statusInternalError'
+        '503':
+          $ref: '#/components/responses/statusServiceUnavailable'
+        '504':
+          $ref: '#/components/responses/statusGatewayTimeout'
+
+  /mdr/ars/packages/{package}/reportingevents/{reportingevent}/categorizations/{categorization}:
+    get:
+      operationId: api.products.ars.get_package_reportingevent_categorization
+      description: Get the details of a categorization for a reporting event 
+      tags:
+        - Analysis Results Standards (ARS)
+      parameters:
+        - $ref: '#/components/parameters/arsPackage'
+        - $ref: '#/components/parameters/arsReportingEvent'
+        - $ref: '#/components/parameters/arsAnalysisCategorization'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/arsAnalysisCategorization'
+        '400':
+          $ref: '#/components/responses/statusBadRequest'
+        '401':
+          $ref: '#/components/responses/statusUnauthorized'
+        '403':
+          $ref: '#/components/responses/statusForbidden'
+        '404':
+          $ref: '#/components/responses/statusNotFound'
+        '405':
+          $ref: '#/components/responses/statusNotAllowed'
+        '406':
+          $ref: '#/components/responses/statusNotAcceptable'
+        '500':
+          $ref: '#/components/responses/statusInternalError'
+        '503':
+          $ref: '#/components/responses/statusServiceUnavailable'
+        '504':
+          $ref: '#/components/responses/statusGatewayTimeout'
+
+  /mdr/ars/packages/{package}/reportingevents/{reportingevent}/categorizations/{categorization}/categories/{category}:
+    get:
+      operationId: api.products.ars.get_package_reportingevent_categorization_category
+      description: Get the details of a category for a reporting event 
+      tags:
+        - Analysis Results Standards (ARS)
+      parameters:
+        - $ref: '#/components/parameters/arsPackage'
+        - $ref: '#/components/parameters/arsReportingEvent'
+        - $ref: '#/components/parameters/arsAnalysisCategorization'
+        - $ref: '#/components/parameters/arsAnalysisCategory'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/arsAnalysisCategory'
+        '400':
+          $ref: '#/components/responses/statusBadRequest'
+        '401':
+          $ref: '#/components/responses/statusUnauthorized'
+        '403':
+          $ref: '#/components/responses/statusForbidden'
+        '404':
+          $ref: '#/components/responses/statusNotFound'
+        '405':
+          $ref: '#/components/responses/statusNotAllowed'
+        '406':
+          $ref: '#/components/responses/statusNotAcceptable'
+        '500':
+          $ref: '#/components/responses/statusInternalError'
+        '503':
+          $ref: '#/components/responses/statusServiceUnavailable'
+        '504':
+          $ref: '#/components/responses/statusGatewayTimeout'
+
+################################################################################
+
+components:
+
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: api-key
+
+  parameters:
+
+# Analysis Results Standard Parameters
+
+    arsPackage:
+      in: path
+      name: package
+      required: true
+      description: Analysis Results Standard Package Identifier
+      schema:
+        type: string
+        example: 2023-10-26
+    arsReportingEvent:
+      in: path
+      name: reportingevent
+      required: true
+      description: Reporting Event Identifier
+      schema:
+        type: string
+        example: ARS-CSD-v1
+    arsAnalysisSet:
+      in: path
+      name: analysisset
+      required: true
+      description: Analysis Set Identifier
+      schema:
+        type: string
+        example: AnalysisSet_01_ITT
+    arsDataSubset:
+      in: path
+      name: datasubset
+      required: true
+      description: Data Subset Identifier
+      schema:
+        type: string
+        example: Dss01_TEAE
+    arsSubjectGroupingFactor:
+      in: path
+      name: analysisgrouping
+      required: true
+      description: Analysis Grouping Identifier
+      schema:
+        type: string
+        example: AnlsGrouping_02_Trt
+    arsAnalysisGroup:
+      in: path
+      name: analysisgroup
+      required: true
+      description: Analysis Group Identifier
+      schema:
+        type: string
+        example: AnlsGrouping_02_Trt_1
+    arsAnalysisMethod:
+      in: path
+      name: method
+      required: true
+      description: Analysis Method Identifier
+      schema:
+        type: string
+        example: Mth01_CatVar_ByGrp
+    arsOperation:
+      in: path
+      name: operation
+      required: true
+      description: Analysis Method Operation Identifier
+      schema:
+        type: string
+        example: Mth01_CatVar_ByGrp_1_n
+    arsReferencedOperationRelationship:
+      in: path
+      name: refoprel
+      required: true
+      description: Referenced Operation Relationship Identifier
+      schema:
+        type: string
+        example: Mth01_CatVar_ByGrp_2_pct_NUM
+    arsAnalysis:
+      in: path
+      name: analysis
+      required: true
+      description: Analysis Identifier
+      schema:
+        type: string
+        example: An01.05_SAF_ByTrt
+    arsDataGrouping:
+      in: path
+      name: datagrouping
+      required: true
+      description: Data Grouping Identifier
+      schema:
+        type: string
+        example: AnlsGrouping_06_Soc
+    arsDataGroup:
+      in: path
+      name: datagroup
+      required: true
+      description: Data Group Identifier
+      schema:
+        type: string
+        example: AnlsGrouping_09_Visit_01
+    arsOutput:
+      in: path
+      name: output
+      required: true
+      description: Output Identifier
+      schema:
+        type: string
+        example: Out14.1.1
+    arsDisplay:
+      in: path
+      name: display
+      required: true
+      description: Display Identifier
+      schema:
+        type: string
+        example: Out14.1.1
+    arsAnalysisCategorization:
+      in: path
+      name: categorization
+      required: true
+      description: Categorization Identifier
+      schema:
+        type: string
+        example: AnCat1_Group
+    arsAnalysisCategory:
+      in: path
+      name: category
+      required: true
+      description: Category Identifier
+      schema:
+        type: string
+        example: AnCat1_Group_Safety
+    arsIncludeResults:
+      in: query
+      name: includeresults
+      description: Include Analysis Results
+      schema:
+        type: boolean
+        example: false
+
+# Responses
+
+  responses:
+    statusBadRequest:
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/defaultErrorResponse'
+    statusForbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/defaultErrorResponse'
+    statusUnauthorized:
+      description: Unauthorized
+      headers:
+        WWW_Authenticate:
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/defaultErrorResponse'
+    statusNotFound:
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/defaultErrorResponse'
+    statusNotAllowed:
+      description: Method Not Allowed
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/defaultErrorResponse'
+    statusNotAcceptable:
+      description: Not Acceptable
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/defaultErrorResponse'
+    statusInternalError:
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/defaultErrorResponse'
+    statusServiceUnavailable:
+      description: Service Unavailable
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/defaultErrorResponse'
+    statusGatewayTimeout:
+      description: Gateway Timeout Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/defaultErrorResponse'
+
+# Schemas
+
+  schemas:
+
+    defaultErrorResponse:
+      properties:
+        statusCode:
+          description: HTTP Status Code
+          type: string
+        detail:
+          description: Detail
+          type: string
+        message:
+          description: Message
+          type: string
+
+################################################################################
+
+# Analysis Results Standard Packages
+    arsPackages:
+      type: object
+      properties:
+        _links:
+          $ref: '#/components/schemas/arsPackagesLinks'
+
+    arsPackagesLinks:
+      type: object
+      properties:
+        self:
+          $ref: '#/components/schemas/arsPackagesRef'
+        packages:
+          type: array
+          items:
+            $ref: '#/components/schemas/arsPackageRef'
+
+    arsPackagesRef:
+      type: object
+      properties:
+        href:
+          type: string
+          example: /mdr/ars/packages
+        title:
+          type: string
+          example: Product Group Analysis Results Standards
+        type:
+          type: string
+          example: Analysis Results Standard Package List
+
+    arsPackageRef:
+      type: object
+      properties:
+        href:
+          type: string
+          example: /mdr/ars/packages/2023-10-26/reportingevents
+        title:
+          type: string
+          example: Analysis Results Standard Package Effective 2023-10-26
+        type:
+          type: string
+          example: Analysis Results Standard Package
+
+# Analysis Results Standards by Package
+    arsReportingEvents:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Analysis Results Standards 2023-10-26
+        label:
+          type: string
+          example: Analysis Results Standard Package Effective 2023-10-26
+        effectiveDate:
+          type: string
+          example: '2023-10-26'
+        version:
+          type: string
+          example: '2023-10-26'
+        _links:
+          $ref: '#/components/schemas/arsReportingEventsLinks'
+
+    arsReportingEventsLinks:
+      type: object
+      properties:
+        self:
+          $ref: '#/components/schemas/arsReportingEventsRef'
+        reportingEvents:
+          type: array
+          items:
+            $ref: '#/components/schemas/arsReportingEventRef'
+
+    arsReportingEventsRef:
+      type: object
+      description: Analysis Results Standards Reference
+      properties:
+        href:
+          type: string
+          example: /mdr/ars/packages/2023-10-26/reportingevents
+        title:
+          type: string
+          example: Analysis Results Standards
+        type:
+          type: string
+          example: Analysis Results Standard List
+
+    arsReportingEventRef:
+      type: object
+      description: Analysis Results Standard Reporting Event Reference
+      properties:
+        href:
+          type: string
+          example: /mdr/ars/packages/2023-10-26/reportingevents/ARS-CSD-v1
+        title:
+          type: string
+          example: Common Safety Displays Version 1
+        type:
+          type: string
+          example: Analysis Results Standard Example Reporting Event
+
+# Analysis Results Standard by Package
+    arsReportingEvent:
+      type: object
+      properties:
+        id:
+          type: string
+          example: ARS-CSD-v1
+        name:
+          type: string
+          example: Common Safety Displays Version 1
+        description:
+          type: string
+          example: An example reporting event containing a set of common safety displays
+        listOfPlannedAnalyses:
+          $ref: '#/components/schemas/arsListOfPlannedAnalyses'
+        listOfPlannedOutputs:
+          $ref: '#/components/schemas/arsListOfPlannedOutputs'
+        analysisSets:
+          type: array
+          items:
+            $ref: '#/components/schemas/arsAnalysisSetRef'
+        analysisGroupings:
+          type: array
+          items:
+            $ref: '#/components/schemas/arsSubjectGroupingFactorRef'
+        dataSubsets:
+          type: array
+          items:
+            $ref: '#/components/schemas/arsDataSubsetRef'
+        methods:
+          type: array
+          items:
+            $ref: '#/components/schemas/arsAnalysisMethodRef'
+        analyses:
+          type: array
+          items:
+            $ref: '#/components/schemas/arsAnalysisRef'
+        outputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/arsOutputRef'
+        analysisCategorizations:
+          type: array
+          items:
+            $ref: '#/components/schemas/arsAnalysisCategorizationRef'
+        _links:
+          $ref: '#/components/schemas/arsReportingEventLinks'
+      required:
+        - id
+        - name
+        - listOfPlannedAnalyses
+        
+    arsNestedList:
+      type: object
+      properties:
+        listItems:
+          type: array
+          items:
+            $ref: '#/components/schemas/arsOrderedListItem'
+        
+    arsOrderedListItem:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Summary of Demographics
+        level:
+          type: integer
+          example: 1
+        order:
+          type: integer
+          example: 1
+        sublist:
+          $ref: '#/components/schemas/arsNestedList'
+        analysis:
+          $ref: '#/components/schemas/arsAnalysisRef'
+        output:
+          $ref: '#/components/schemas/arsOutputRef'
+      required:
+        - name
+        - level
+        - order
+        
+    arsListOfPlannedAnalyses:
+      allOf:
+        - type: object
+          description: Analysis Results Standard List of Planned Analyses
+        - $ref: '#/components/schemas/arsNestedList'
+        
+    arsListOfPlannedOutputs:
+      allOf:
+        - type: object
+          description: Analysis Results Standard List of Planned Outputs
+        - $ref: '#/components/schemas/arsNestedList'
+        
+    arsReportingEventLinks:
+      type: object
+      properties:
+        self:
+          $ref: '#/components/schemas/arsReportingEventRef'
+        parentPackage:
+          $ref: '#/components/schemas/arsPackageRef'
+
+    arsAnalysisSetRef:
+      type: object
+      description: Analysis Results Standard Analysis Set Reference
+      properties:
+        href:
+          type: string
+          example: /mdr/ars/packages/2023-10-26/reportingevents/ARS-CSD-v1/analysissets/AnalysisSet_01_ITT
+        title:
+          type: string
+          example: Intent-to-Treat Population
+        type:
+          type: string
+          example: Analysis Results Standards Analysis Set
+          
+    arsSubjectGroupingFactorRef:
+      type: object
+      description: Analysis Results Standard Subject Grouping Factor Reference
+      properties:
+        href:
+          type: string
+          example: /mdr/ars/packages/2023-10-26/reportingevents/ARS-CSD-v1/analysisgroupings/AnlsGrouping_02_Trt
+        title:
+          type: string
+          example: Treatment
+        type:
+          type: string
+          example: Analysis Results Standards Analysis Grouping
+          
+    arsDataSubsetRef:
+      type: object
+      description: Analysis Results Standard Data Subset Reference
+      properties:
+        href:
+          type: string
+          example: /mdr/ars/packages/2023-10-26/reportingevents/ARS-CSD-v1/datasubsets/Dss01_TEAE
+        title:
+          type: string
+          example: Treatment-Emergent Adverse Events
+        type:
+          type: string
+          example: Analysis Results Standards Data Subset
+          
+    arsAnalysisMethodRef:
+      type: object
+      description: Analysis Results Standard Analysis Method Reference
+      properties:
+        href:
+          type: string
+          example: /mdr/ars/packages/2023-10-26/reportingevents/ARS-CSD-v1/methods/Mth01_CatVar_ByGrp
+        title:
+          type: string
+          example: Summary by group of a categorical variable
+        type:
+          type: string
+          example: Analysis Results Standards Analysis Method
+          
+    arsAnalysisRef:
+      type: object
+      description: Analysis Results Standard Analysis Reference
+      properties:
+        href:
+          type: string
+          example: /mdr/ars/packages/2023-10-26/reportingevents/ARS-CSD-v1/analyses/An01.05_SAF_ByTrt
+        title:
+          type: string
+          example: Summary of Subjects by Treatment
+        type:
+          type: string
+          example: Analysis Results Standards Analysis
+          
+    arsOutputRef:
+      type: object
+      description: Analysis Results Standard Reference
+      properties:
+        href:
+          type: string
+          example: /mdr/ars/packages/2023-10-26/reportingevents/ARS-CSD-v1/outputs/Out14.1.1
+        title:
+          type: string
+          example: Summary of Demographics
+        type:
+          type: string
+          example: Analysis Results Standards Output
+          
+    arsAnalysisCategorizationRef:
+      type: object
+      description: Analysis Results Standard Categorization Reference
+      properties:
+        href:
+          type: string
+          example: /mdr/ars/packages/2023-10-26/reportingevents/ARS-CSD-v1/categorizations/AnCat1_Group
+        title:
+          type: string
+          example: Group of Analyses
+        type:
+          type: string
+          example: Analysis Results Standards Categorization
+          
+    arsWhereClause:
+      type: object
+      description: Analysis Results Standard Where Clause
+      properties:
+        level:
+          type: integer
+        order:
+          type: integer
+        condition:
+          $ref: '#/components/schemas/arsCondition'
+        compoundExpression:
+          $ref: '#/components/schemas/arsCompoundExpression'
+          
+    arsCondition:
+      type: object
+      description: Analysis Results Standard Condition
+      properties:
+        dataset:
+          type: string
+        variable:
+          type: string
+        comparator:
+          type: string
+          enum:
+            - EQ
+            - NE
+            - GT
+            - GE
+            - LT
+            - LE
+            - IN
+            - NOTIN
+        value:
+          type: array
+          items: 
+            type: string
+          
+    arsCompoundExpression:
+      type: object
+      description: Analysis Results Standard Compound Expression
+      properties:
+        logicalOperator:
+          type: string
+          enum:
+            - AND
+            - OR
+            - NOT
+        whereClauses:
+          type: array
+          items:
+            $ref: '#/components/schemas/arsWhereClause'
+            
+    arsAnalysisSetLinks:
+      type: object
+      properties:
+        self:
+          $ref: '#/components/schemas/arsAnalysisSetRef'
+        parentReportingEvent:
+          $ref: '#/components/schemas/arsReportingEventRef'
+          
+    arsAnalysisSet:
+      allOf:
+        - type: object
+          description: Analysis Results Standard Analysis Set
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+          required:
+            - id
+            - name
+        - $ref: '#/components/schemas/arsWhereClause'
+        - type: object
+          properties:
+            _links:
+              $ref: '#/components/schemas/arsAnalysisSetLinks'
+            
+    arsSubjectGroupingFactorLinks:
+      type: object
+      properties:
+        self:
+          $ref: '#/components/schemas/arsSubjectGroupingFactorRef'
+        parentReportingEvent:
+          $ref: '#/components/schemas/arsReportingEventRef'
+          
+    arsSubjectGroupingFactor:
+      type: object
+      description: Analysis Results Standard Subject Grouping Factor
+      properties:
+        id:
+          type: string
+          example: AnlsGrouping_01_Sex
+        label:
+          type: string
+          example: Gender
+        groupingVariable:
+          type: string
+          example: SEX
+        dataDriven:
+          type: boolean
+          example: false
+        groupings:
+          type: array
+          items:
+            $ref: '#/components/schemas/arsAnalysisGroupRef'
+        _links:
+          $ref: '#/components/schemas/arsSubjectGroupingFactorLinks'
+    
+    arsAnalysisGroupRef:
+      type: object
+      description: Analysis Results Standard Analysis Group Reference
+      properties:
+        href:
+          type: string
+          example: /mdr/ars/packages/2023-10-26/reportingevents/ARS-CSD-v1/analysisgroupings/AnlsGrouping_02_Trt/analysisgroups/AnlsGrouping_02_Trt_1
+        title:
+          type: string
+          example: Placebo
+        type:
+          type: string
+          example: Analysis Results Standards Analysis Group
+          
+    arsAnalysisGroupLinks:
+      type: object
+      properties:
+        self:
+          $ref: '#/components/schemas/arsAnalysisGroupRef'
+        parentAnalysisGroupingFactor:
+          $ref: '#/components/schemas/arsAnalysisRef'
+        parentReportingEvent:
+          $ref: '#/components/schemas/arsReportingEventRef'
+          
+    arsAnalysisGroup:
+      allOf:
+        - type: object
+          description: Analysis Results Standard Analysis Group
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+          required:
+            - id
+            - name
+        - $ref: '#/components/schemas/arsWhereClause'
+        - type: object
+          properties:
+            _links:
+              $ref: '#/components/schemas/arsAnalysisGroupLinks'
+    
+    arsDataGroupingFactorRef:
+      type: object
+      description: Analysis Results Standard Data Grouping Factor Reference
+      properties:
+        href:
+          type: string
+          example: /mdr/ars/packages/2023-10-26/reportingevents/ARS-CSD-v1/analyses/An07.09_Soc_ByTrt/datagroupings/AnlsGrouping_06_Soc
+        title:
+          type: string
+          example: Treatment
+        type:
+          type: string
+          example: Analysis Results Standards Data Grouping Factor
+          
+    arsDataGroupingFactorLinks:
+      type: object
+      properties:
+        self:
+          $ref: '#/components/schemas/arsDataGroupingFactorRef'
+        parentAnalysis:
+          $ref: '#/components/schemas/arsAnalysisRef'
+        parentReportingEvent:
+          $ref: '#/components/schemas/arsReportingEventRef'
+          
+    arsDataGroupingFactor:
+      type: object
+      description: Analysis Results Standard Data Grouping Factor
+      properties:
+        id:
+          type: string
+          example: AnlsGrouping_06_Soc
+        label:
+          type: string
+          example: System Organ Class
+        groupingVariable:
+          type: string
+          example: AESOC
+        dataDriven:
+          type: boolean
+          example: true
+        groupings:
+          type: array
+          items:
+            $ref: '#/components/schemas/arsDataGroupRef'
+          example:
+        _links:
+          $ref: '#/components/schemas/arsDataGroupingFactorLinks'
+    
+    arsDataGroupRef:
+      type: object
+      description: Analysis Results Standard Data Group Reference
+      properties:
+        href:
+          type: string
+          example: /mdr/ars/packages/2023-10-26/reportingevents/ARS-CSD-v1/analyses/An07.09_Soc_ByTrt/datagroupings/AnlsGrouping_09_Visit/datagroups/AnlsGrouping_09_Visit_01
+        title:
+          type: string
+          example: Baseline
+        type:
+          type: string
+          example: Analysis Results Standards Data Group
+          
+    arsDataGroupLinks:
+      type: object
+      properties:
+        self:
+          $ref: '#/components/schemas/arsDataGroupRef'
+        parentDataGroupingFactor:
+          $ref: '#/components/schemas/arsAnalysisRef'
+        parentReportingEvent:
+          $ref: '#/components/schemas/arsReportingEventRef'
+          
+    arsDataGroup:
+      allOf:
+        - type: object
+          description: Analysis Results Standard Analysis Group
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+          required:
+            - id
+            - name
+        - $ref: '#/components/schemas/arsWhereClause'
+        - type: object
+          properties:
+            _links:
+              $ref: '#/components/schemas/arsDataGroupLinks'
+    
+    arsDataSubsetLinks:
+      type: object
+      properties:
+        self:
+          $ref: '#/components/schemas/arsDataSubsetRef'
+        parentReportingEvent:
+          $ref: '#/components/schemas/arsReportingEventRef'
+          
+    arsDataSubset:
+      allOf:
+        - type: object
+          description: Analysis Results Standard Data Subset
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+          required:
+            - id
+            - name
+        - $ref: '#/components/schemas/arsWhereClause'
+        - type: object
+          properties:
+            _links:
+              $ref: '#/components/schemas/arsDataSubsetLinks'
+    
+    arsAnalysisMethodLinks:
+      type: object
+      properties:
+        self:
+          $ref: '#/components/schemas/arsAnalysisMethodRef'
+        parentReportingEvent:
+          $ref: '#/components/schemas/arsReportingEventRef'
+          
+    arsAnalysisMethod:
+      type: object
+      description: Analysis Results Standard Analysis Method
+      properties:
+        id:
+          type: string
+          example: Mth01_CatVar_ByGrp
+        name:
+          type: string
+          example: Summary by group of a categorical variable
+        label:
+          type: string
+          example: Grouped summary of categorical variable
+        description:
+          type: string
+          example: Descriptive summary statistics across groups for a categorical variable, based on subject occurrence
+        operations:
+          type: array
+          items:
+            $ref: '#/components/schemas/arsOperationRef'
+        _links:
+          $ref: '#/components/schemas/arsAnalysisMethodLinks'
+          
+    arsOperationRef:
+      type: object
+      description: Analysis Results Standard Analysis Method Operation Reference
+      properties:
+        href:
+          type: string
+          example: /mdr/ars/packages/2023-10-26/reportingevents/ARS-CSD-v1/methods/Mth01_CatVar_ByGrp/operations/Mth01_CatVar_ByGrp_1_n
+        title:
+          type: string
+          example: Count of subjects
+        type:
+          type: string
+          example: Analysis Results Standards Analysis Method Operation
+          
+    arsOperationLinks:
+      type: object
+      properties:
+        self:
+          $ref: '#/components/schemas/arsOperationRef'
+        parentMethod:
+          $ref: '#/components/schemas/arsAnalysisMethodRef'
+        parentReportingEvent:
+          $ref: '#/components/schemas/arsReportingEventRef'
+          
+    arsOperation:
+      type: object
+      description: Analysis Results Standard Analysis Method Operation
+      properties:
+        id:
+          type: string
+          example: Mth01_CatVar_ByGrp_2_pct
+        name:
+          type: string
+          example: Percent of subjects
+        label:
+          type: string
+          example: '%'
+        referencedOperationRelationships:
+          type: array
+          items:
+            $ref: '#/components/schemas/arsReferencedOperationRelationshipRef'
+        resultPattern:
+          type: string
+          example: ( XX.X)
+        _links:
+          $ref: '#/components/schemas/arsOperationLinks'
+          
+    arsReferencedOperationRelationshipRef:
+      type: object
+      description: Analysis Results Standard Referenced Operation Relationship Reference
+      properties:
+        href:
+          type: string
+          example: /mdr/ars/packages/2023-10-26/reportingevents/ARS-CSD-v1/methods/Mth01_CatVar_ByGrp/operations/Mth01_CatVar_ByGrp_1_n/refoprels/Mth01_CatVar_ByGrp_2_pct_NUM
+        title:
+          type: string
+          example: Percent of subjects Numerator
+        type:
+          type: string
+          example: Analysis Results Standards Referenced Operation Relationship
+          
+    arsReferencedOperationRelationshipLinks:
+      type: object
+      properties:
+        self:
+          $ref: '#/components/schemas/arsReferencedOperationRelationshipRef'
+        parentOperation:
+          $ref: '#/components/schemas/arsOperationRef'
+        parentMethod:
+          $ref: '#/components/schemas/arsAnalysisMethodRef'
+        parentReportingEvent:
+          $ref: '#/components/schemas/arsReportingEventRef'
+          
+    arsReferencedOperationRelationship:
+      type: object
+      description: Analysis Results Standard Referenced Operation Relationship
+      properties:
+        id:
+          type: string
+          example: Mth01_CatVar_ByGrp_2_pct_NUM
+        referencedOperationRole:
+          type: string
+          enum:
+            - NUMERATOR
+            - DEMONIATOR
+        operation:
+          $ref: '#/components/schemas/arsOperationRef'
+        analysis:
+          $ref: '#/components/schemas/arsAnalysisRef'
+        description:
+          type: string
+          example: The count operation whose result provides the numerator for calculation of the percentage. The referenced analysis should be the analysis that contains this percent operation.
+        _links:
+          $ref: '#/components/schemas/arsReferencedOperationRelationshipLinks'
+      required:
+        - id
+        - referencedOperationRole
+        - operation
+        
+    arsOrderedGrouping:
+      type: object
+      description: Analysis Results Standard Ordered Grouping
+      properties:
+        order:
+          type: integer
+          example: 1
+        grouping:
+          anyOf:
+            - $ref: '#/components/schemas/arsSubjectGroupingFactorRef'
+            - $ref: '#/components/schemas/arsDataGroupingFactorRef'
+        dataGrouping:
+          $ref: '#/components/schemas/arsDataGroupingFactor'
+        
+    arsReferencedAnalysisOperation:
+      type: object
+      description: Analysis Results Standard Referenced Analysis Operation
+      properties:
+        referencedOperationRelationship:
+          $ref: '#/components/schemas/arsReferencedOperationRelationshipRef'
+        analysis:
+          $ref: '#/components/schemas/arsAnalysisRef'
+      required:
+        - referencedOperationRelationship
+        - analysis
+
+    arsAnalysisLinks:
+      type: object
+      properties:
+        self:
+          $ref: '#/components/schemas/arsAnalysisRef'
+        parentReportingEvent:
+          $ref: '#/components/schemas/arsReportingEventRef'
+          
+    arsAnalysis:
+      type: object
+      description: Analysis Results Standard Analysis
+      properties:
+        id:
+          type: string
+          example: An03.02_AgeGrp_ByTrt
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/arsAnalysisCategoryRef'
+        analsysisSet:
+          $ref: '#/components/schemas/arsAnalysisSetRef'
+        orderedGroupings:
+          type: array
+          items:
+            $ref: '#/components/schemas/arsOrderedGrouping'
+        dataSubset:
+          $ref: '#/components/schemas/arsDataSubsetRef'
+        dataset:
+          type: string
+          example: ADSL
+        variable: 
+          type: string
+          example: USUBJID
+        method:
+          $ref: '#/components/schemas/arsAnalysisMethodRef'
+        referenceAnalysisOperations:
+          type: array
+          items:
+            $ref: '#/components/schemas/arsReferencedAnalysisOperation'
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/arsOperationResult'
+        _links:
+          $ref: '#/components/schemas/arsAnalysisLinks'
+      required:
+        - id
+        - name
+        - dataset
+        - variable
+        - method
+        
+    arsResultGroup:
+      type: object
+      properties:
+        grouping:
+          anyOf:
+            - $ref: '#/components/schemas/arsSubjectGroupingFactorRef'
+            - $ref: '#/components/schemas/arsDataGroupingFactorRef'
+        group:
+          anyOf:
+            - $ref: '#/components/schemas/arsAnalysisGroupRef'
+            - $ref: '#/components/schemas/arsDataGroupRef'
+        groupValue:
+          type: string
+          example: CARDIAC DISORDERS
+        
+    arsOperationResult:
+      type: object
+      description: Analysis Results Standard Operation Result
+      properties:
+        operation:
+          $ref: '#/components/schemas/arsOperationRef'
+        resultGroups:
+          type: array
+          items:
+            $ref: '#/components/schemas/arsResultGroup'
+        rawValue:
+          type: string
+          example: 16.2790697674419
+        formattedValue:
+          type: string
+          example: ( 16.3)
+          
+    arsOutputLinks:
+      type: object
+      properties:
+        self:
+          $ref: '#/components/schemas/arsOutputRef'
+        parentReportingEvent:
+          $ref: '#/components/schemas/arsReportingEventRef'
+    
+    arsOutput:
+      type: object
+      description: Analysis Results Standard Output
+      properties:
+        id:
+          type: string
+          example: Out14.1.1
+        version:
+          type: integer
+          example: 1
+        fileSpecifications:
+          type: array
+          items:
+            $ref: '#/components/schemas/arsFile'
+        outputDisplays:
+          type: array
+          items:
+            $ref: '#/components/schemas/arsOutputDisplay'
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/arsAnalysisCategoryRef'
+        _links:
+          $ref: '#/components/schemas/arsOutputLinks'
+          
+    arsFile:
+      type: object
+      properties:
+        fileType:
+          type: string
+          enum:
+            - pdf
+            - rtf
+            - txt
+        location:
+          type: string
+        style:
+          type: string
+          
+    arsDisplayRef:
+      type: object
+      description: Analysis Results Standard Display Reference
+      properties:
+        href:
+          type: string
+          example: /mdr/ars/packages/2023-10-26/reportingevents/ARS-CSD-v1/outputs/Out14.1.1/displays/Disp14.1.1
+        title:
+          type: string
+          example: Summary of Demographics
+        type:
+          type: string
+          example: Analysis Results Standard Display
+    
+    arsDisplayLinks:
+      type: object
+      properties:
+        self:
+          $ref: '#/components/schemas/arsDisplayRef'
+        parentOutput:
+          $ref: '#/components/schemas/arsOutputRef'
+        parentReportingEvent:
+          $ref: '#/components/schemas/arsReportingEventRef'
+          
+    arsOutputDisplay:
+      type: object
+      properties:
+        order:
+          type: integer
+          example: 1
+        display:
+          $ref: '#/components/schemas/arsDisplayRef'
+          
+    arsDisplay:
+      type: object
+      description: Analysis Results Standard Display
+      properties:
+        id:
+          type: string
+          example: Disp14.1.1
+        name:
+          type: string
+          example: Demog
+        displayTitle:
+          type: string
+          example: Summary of Demographics
+        displaySections:
+          type: array
+          items:
+            $ref: '#/components/schemas/arsDisplaySection'
+        _links:
+          $ref: '#/components/schemas/arsDisplayLinks'
+          
+    arsDisplaySection:
+      type: object
+      properties:
+        sectionType:
+          type: string
+          enum:
+            - Title
+            - Footnote
+            - Abbreviation
+            - Legend
+            - Rowlabel Header
+        subSections:
+          type: array
+          items:
+            $ref: '#/components/schemas/arsDisplaySubSection'
+            
+    arsDisplaySubSection:
+      type: object
+      description: Analysis Results Standard Display Subsection
+      properties:
+        id:
+          type: string
+          example: Disp14.1.1_Title_1
+        order:
+          type: integer
+          example: 1
+        text:
+          type: string
+          example: Table 14.1.1
+      
+    arsAnalysisCategorizationLinks:
+      type: object
+      properties:
+        self:
+          $ref: '#/components/schemas/arsAnalysisCategorizationRef'
+        parentReportingEvent:
+          $ref: '#/components/schemas/arsReportingEventRef'
+          
+    arsAnalysisCategorization:
+      type: object
+      description: Analysis Results Standard Categorization
+      properties:
+        id:
+          type: string
+          example: AnCat1_Group
+        label:
+          type: string
+          example: Group of Analyses
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/arsAnalysisCategoryRef'
+        _links:
+          $ref: '#/components/schemas/arsAnalysisCategorizationLinks'
+      required:
+        - id
+        - label
+          
+    arsAnalysisCategoryRef:
+      type: object
+      description: Analysis Results Standard Category Reference
+      properties:
+        href:
+          type: string
+          example: /mdr/ars/packages/2023-10-26/reportingevents/ARS-CSD-v1/categorizations/AnCat1_Group/categories/AnCat1_Group_Safety
+        title:
+          type: string
+          example: Safety Analyses
+        type:
+          type: string
+          example: Analysis Results Standards Category
+    
+    arsAnalysisCategoryLinks:
+      type: object
+      properties:
+        self:
+          $ref: '#/components/schemas/arsAnalysisCategoryRef'
+        parentCategorization:
+          $ref: '#/components/schemas/arsAnalysisCategorizationRef'
+        parentReportingEvent:
+          $ref: '#/components/schemas/arsReportingEventRef'
+        analyses:
+          type: array
+          items:
+            $ref: '#/components/schemas/arsAnalysisRef'
+        outputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/arsOutputRef'
+            
+    arsAnalysisCategory:
+      type: object
+      properties:
+        id:
+          type: string
+          example: AnCat1_Group_Safety
+        label:
+          type: string
+          example: Safety Analyses
+        subCategorizations:
+          type: array
+          items:
+            $ref: '#/components/schemas/arsAnalysisCategorizationRef'
+        _links:
+          $ref: '#/components/schemas/arsAnalysisCategoryLinks'
+      required:
+        - id
+        - label
