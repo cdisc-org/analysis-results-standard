@@ -57,7 +57,6 @@ paths:
         '504':
           $ref: '#/components/responses/statusGatewayTimeout'
 
-
   /mdr/ars/packages/{package}/reportingevents:
     get:
       operationId: api.products.ars.get_package_reportingevents
