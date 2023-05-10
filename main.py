@@ -1,5 +1,6 @@
 from fastapi import FastAPI, APIRouter
 import uvicorn
+import json
 
 app = FastAPI(
         title="ARS API",
@@ -9,12 +10,18 @@ ars_router = APIRouter(prefix="/mdr/ars")
 
 @ars_router.get("/packages/")
 def get_all_ars_packages():
-    pass
+    data = None
+    with open("./workfiles/examples/Sprint 10 Examples.json") as f:
+        data = json.load(f)
+    return [data]
     
 
 @ars_router.get("/packages/{package_id}/reportingevents/")
 def get_all_package_reporting_events(package_id):
-    pass
+    data = None
+    with open("./workfiles/examples/Sprint 10 Examples.json") as f:
+        data = json.load(f)
+    return data
     
 
 @ars_router.get("/reportingevents/{reportingevent_id}/")
