@@ -249,8 +249,9 @@ CREATE TABLE "OrderedGroupingFactor" (
 	"order" INTEGER NOT NULL, 
 	"groupingId" TEXT, 
 	"dataGrouping" TEXT, 
+	"resultsByGroup" BOOLEAN NOT NULL, 
 	"Analysis_id" TEXT, 
-	PRIMARY KEY ("order", "groupingId", "dataGrouping", "Analysis_id"), 
+	PRIMARY KEY ("order", "groupingId", "dataGrouping", "resultsByGroup", "Analysis_id"), 
 	FOREIGN KEY("dataGrouping") REFERENCES "DataGroupingFactor" (id), 
 	FOREIGN KEY("Analysis_id") REFERENCES "Analysis" (id)
 );

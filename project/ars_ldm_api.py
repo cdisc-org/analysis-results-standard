@@ -376,6 +376,7 @@ class ArsLdmAPI:
              order: Union[str, MatchExpression] = None,
              groupingId: Union[str, MatchExpression] = None,
              dataGrouping: Union[str, MatchExpression] = None,
+             resultsByGroup: Union[str, MatchExpression] = None,
              
              _extra: Any = None) -> List[OrderedGroupingFactor]:
         """
@@ -384,6 +385,7 @@ class ArsLdmAPI:
         :param order: None
         :param groupingId: None
         :param dataGrouping: None
+        :param resultsByGroup: Indicates whether a result is expected for each group in the grouping.
         
         :return: Person list matching constraints
         """
@@ -394,6 +396,8 @@ class ArsLdmAPI:
                                                  groupingId=groupingId,
                                                  
                                                  dataGrouping=dataGrouping,
+                                                 
+                                                 resultsByGroup=resultsByGroup,
                                                  
                                                  _extra=_extra)
         return results

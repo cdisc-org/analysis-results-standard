@@ -724,6 +724,20 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "resultsByGroup",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/resultsByGroup",
+      "description": "Indicates whether a result is expected for each group in the grouping.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/resultsByGroup",
+      "owner": "OrderedGroupingFactor",
+      "domain_of": [
+        "OrderedGroupingFactor"
+      ],
+      "range": "boolean",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "dataSubsetId",
       "definition_uri": "https://www.cdisc.org/ars/1-0/dataSubsetId",
       "from_schema": "https://www.cdisc.org/ars/1-0",
@@ -1650,7 +1664,8 @@
       "slots": [
         "OrderedGroupingFactor_order",
         "groupingId",
-        "dataGrouping"
+        "dataGrouping",
+        "resultsByGroup"
       ],
       "slot_usage": {},
       "class_uri": "https://www.cdisc.org/ars/1-0/OrderedGroupingFactor",
@@ -2048,9 +2063,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "ars_ldm.yaml",
-  "source_file_date": "2023-04-03T14:48:48",
-  "source_file_size": 11704,
-  "generation_date": "2023-04-20T15:18:20",
+  "source_file_date": "2023-05-11T21:26:16",
+  "source_file_size": 11878,
+  "generation_date": "2023-05-11T21:26:39",
   "@type": "SchemaDefinition",
   "@context": [
     ".\\analysis-results-standard\\project\\/jsonld/ars_ldm.context.jsonld",

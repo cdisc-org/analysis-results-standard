@@ -83,6 +83,7 @@ classes:
       - order
       - groupingId
       - dataGrouping
+      - resultsByGroup
     slot_usage:
       order:
         required: true
@@ -430,6 +431,11 @@ slots:
     range: DataGroupingFactor
     inlined: true
     inlined_as_list: true
+
+  resultsByGroup:
+    description: Indicates whether a result is expected for each group in the grouping.
+    range: boolean
+    required: true
 
   dataSubsetId:
     inlined: false

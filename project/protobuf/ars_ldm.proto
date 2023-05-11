@@ -171,6 +171,7 @@ message OrderedGroupingFactor
   integer order = 0
   groupingFactor groupingId = 0
   dataGroupingFactor dataGrouping = 0
+  boolean resultsByGroup = 0
  }
 message OrderedListItem
  {

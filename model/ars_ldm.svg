@@ -105,7 +105,7 @@
 <text style='font-size:10px; font-family:Verdana;' text-anchor='middle' transform='translate(0,0)' x='468' y='-836.3'>level(i):integer ?</text>
 <text style='font-size:10px; font-family:Verdana;' text-anchor='middle' transform='translate(0,0)' x='468' y='-821.3'>order(i):integer ?</text>
 </g><g class='edge' id='edge5'><title>WhereClause-&gt;Group</title>
-<path d='M332.801,-2590.55C350.988,-2567.76 370.553,-2538.31 380,-2508 393.755,-2463.87 385.195,-2449.93 380,-2404 367.7,-2295.26 344.152,-2271.74 325,-2164 294.794,-1994.07 143.24,-1534.92 240,-1392 300.382,-1302.81 401.223,-1388.79 465,-1302 509.286,-1241.73 487.436,-1015.88 474.823,-913.731' fill='none' stroke='black'/>
+<path d='M332.801,-2590.55C350.988,-2567.76 370.553,-2538.31 380,-2508 393.755,-2463.87 385.195,-2449.93 380,-2404 367.7,-2295.26 344.152,-2271.74 325,-2164 294.794,-1994.07 143.131,-1534.84 240,-1392 300.681,-1302.52 402.136,-1389.24 466,-1302 510.177,-1241.66 487.797,-1015.84 474.944,-913.718' fill='none' stroke='black'/>
 <polygon fill='none' points='330.063,-2588.37 326.444,-2598.33 335.482,-2592.8 330.063,-2588.37' stroke='black'/>
 </g><g class='node' id='node6'><title>DataSubset</title>
 <polygon fill='white' points='249.5,-1392.5 249.5,-1495.5 356.5,-1495.5 356.5,-1392.5 249.5,-1392.5' stroke='black' style='fill:white;stroke:black;'/>
@@ -268,15 +268,16 @@
 <path d='M356.43,-995.436C317.553,-930.474 258.719,-822.091 231,-720 213.226,-654.537 210.201,-575.881 210.461,-525.672' fill='none' stroke='black'/>
 <polygon fill='none' points='353.618,-997.552 361.778,-1004.31 359.613,-993.938 353.618,-997.552' stroke='black'/>
 </g><g class='node' id='node30'><title>OrderedGroupingFactor</title>
-<polygon fill='white' points='311.5,-1221 311.5,-1279 456.5,-1279 456.5,-1221 311.5,-1221' stroke='black' style='fill:white;stroke:black;'/>
-<text style='font-size:10px; font-family:Verdana;' text-anchor='middle' transform='translate(0,0)' x='384' y='-1260.8'>OrderedGroupingFactor</text>
-<polyline fill='none' points='311.5,-1250 456.5,-1250 ' stroke='black'/>
-<text style='font-size:10px; font-family:Verdana;' text-anchor='middle' transform='translate(0,0)' x='384' y='-1231.8'>order:integer</text>
+<polygon fill='white' points='310.5,-1213.5 310.5,-1286.5 457.5,-1286.5 457.5,-1213.5 310.5,-1213.5' stroke='black' style='fill:white;stroke:black;'/>
+<text style='font-size:10px; font-family:Verdana;' text-anchor='middle' transform='translate(0,0)' x='384' y='-1268.3'>OrderedGroupingFactor</text>
+<polyline fill='none' points='310.5,-1257.5 457.5,-1257.5 ' stroke='black'/>
+<text style='font-size:10px; font-family:Verdana;' text-anchor='middle' transform='translate(0,0)' x='384' y='-1239.3'>order:integer</text>
+<text style='font-size:10px; font-family:Verdana;' text-anchor='middle' transform='translate(0,0)' x='384' y='-1224.3'>resultsByGroup:boolean</text>
 </g><g class='edge' id='edge41'><title>GroupingFactor-&gt;OrderedGroupingFactor</title>
-<path d='M397.15,-1118.26C396.205,-1152.61 393.597,-1193.82 390.431,-1220.67' fill='none' stroke='black'/>
-<polygon fill='black' points='397.389,-1107.84 401.659,-1117.94 397.274,-1112.84 397.16,-1117.84 397.16,-1117.84 397.16,-1117.84 397.274,-1112.84 392.661,-1117.73 397.389,-1107.84 397.389,-1107.84' stroke='black'/>
-<text style='font-size:8px; font-family:Verdana;' text-anchor='middle' transform='translate(0,0)' x='399.287' y='-1199.04'> </text>
-<text style='font-size:8px; font-family:Verdana;' text-anchor='middle' transform='translate(0,0)' x='390.12' y='-1122.77'>groupingId 0..1</text>
+<path d='M397.155,-1118.08C396.296,-1149.47 394.044,-1186.64 391.245,-1213.34' fill='none' stroke='black'/>
+<polygon fill='black' points='397.392,-1107.68 401.663,-1117.78 397.278,-1112.67 397.164,-1117.67 397.164,-1117.67 397.164,-1117.67 397.278,-1112.67 392.665,-1117.57 397.392,-1107.68 397.392,-1107.68' stroke='black'/>
+<text style='font-size:8px; font-family:Verdana;' text-anchor='middle' transform='translate(0,0)' x='399.904' y='-1191.61'> </text>
+<text style='font-size:8px; font-family:Verdana;' text-anchor='middle' transform='translate(0,0)' x='390.126' y='-1122.61'>groupingId 0..1</text>
 </g><g class='node' id='node10'><title>OperationResult</title>
 <polygon fill='white' points='606,-1407.5 606,-1480.5 750,-1480.5 750,-1407.5 606,-1407.5' stroke='black' style='fill:white;stroke:black;'/>
 <text style='font-size:10px; font-family:Verdana;' text-anchor='middle' transform='translate(0,0)' x='678' y='-1462.3'>OperationResult</text>
@@ -284,22 +285,22 @@
 <text style='font-size:10px; font-family:Verdana;' text-anchor='middle' transform='translate(0,0)' x='678' y='-1433.3'>rawValue:string ?</text>
 <text style='font-size:10px; font-family:Verdana;' text-anchor='middle' transform='translate(0,0)' x='678' y='-1418.3'>formattedValue:string ?</text>
 </g><g class='edge' id='edge10'><title>OperationResult-&gt;ResultGroup</title>
-<path d='M686.815,-1395.23C693.936,-1340.77 696.169,-1252.3 649,-1198 546.201,-1079.67 404.5,-1231.52 308,-1108 259.942,-1046.49 284.944,-802.386 296.862,-707.245' fill='none' stroke='black'/>
-<polygon fill='black' points='686.787,-1395.43 689.894,-1401.93 685.083,-1407.31 681.976,-1400.8 686.787,-1395.43' stroke='black'/>
-<polygon fill='black' points='298.142,-697.191 301.342,-707.679 297.51,-702.151 296.879,-707.111 296.879,-707.111 296.879,-707.111 297.51,-702.151 292.415,-706.542 298.142,-697.191 298.142,-697.191' stroke='black'/>
-<text style='font-size:8px; font-family:Verdana;' text-anchor='middle' transform='translate(0,0)' x='284.402' y='-720.159'> resultGroups 0..*</text>
+<path d='M687.049,-1395.25C694.429,-1340.81 697.058,-1252.35 650,-1198 547.116,-1079.18 404.809,-1231.82 308,-1108 259.92,-1046.5 284.935,-802.392 296.859,-707.247' fill='none' stroke='black'/>
+<polygon fill='black' points='687.019,-1395.45 690.096,-1401.97 685.259,-1407.32 682.183,-1400.8 687.019,-1395.45' stroke='black'/>
+<polygon fill='black' points='298.14,-697.192 301.34,-707.681 297.508,-702.152 296.876,-707.112 296.876,-707.112 296.876,-707.112 297.508,-702.152 292.412,-706.543 298.14,-697.192 298.14,-697.192' stroke='black'/>
+<text style='font-size:8px; font-family:Verdana;' text-anchor='middle' transform='translate(0,0)' x='284.398' y='-720.16'> resultGroups 0..*</text>
 </g><g class='node' id='node13'><title>Operation</title>
-<polygon fill='white' points='513.5,-1198.5 513.5,-1301.5 640.5,-1301.5 640.5,-1198.5 513.5,-1198.5' stroke='black' style='fill:white;stroke:black;'/>
-<text style='font-size:10px; font-family:Verdana;' text-anchor='middle' transform='translate(0,0)' x='577' y='-1283.3'>Operation</text>
-<polyline fill='none' points='513.5,-1272.5 640.5,-1272.5 ' stroke='black'/>
-<text style='font-size:10px; font-family:Verdana;' text-anchor='middle' transform='translate(0,0)' x='577' y='-1254.3'>id:string</text>
-<text style='font-size:10px; font-family:Verdana;' text-anchor='middle' transform='translate(0,0)' x='577' y='-1239.3'>label:string ?</text>
-<text style='font-size:10px; font-family:Verdana;' text-anchor='middle' transform='translate(0,0)' x='577' y='-1224.3'>resultPattern:string ?</text>
-<text style='font-size:10px; font-family:Verdana;' text-anchor='middle' transform='translate(0,0)' x='577' y='-1209.3'>name(i):string</text>
+<polygon fill='white' points='514.5,-1198.5 514.5,-1301.5 641.5,-1301.5 641.5,-1198.5 514.5,-1198.5' stroke='black' style='fill:white;stroke:black;'/>
+<text style='font-size:10px; font-family:Verdana;' text-anchor='middle' transform='translate(0,0)' x='578' y='-1283.3'>Operation</text>
+<polyline fill='none' points='514.5,-1272.5 641.5,-1272.5 ' stroke='black'/>
+<text style='font-size:10px; font-family:Verdana;' text-anchor='middle' transform='translate(0,0)' x='578' y='-1254.3'>id:string</text>
+<text style='font-size:10px; font-family:Verdana;' text-anchor='middle' transform='translate(0,0)' x='578' y='-1239.3'>label:string ?</text>
+<text style='font-size:10px; font-family:Verdana;' text-anchor='middle' transform='translate(0,0)' x='578' y='-1224.3'>resultPattern:string ?</text>
+<text style='font-size:10px; font-family:Verdana;' text-anchor='middle' transform='translate(0,0)' x='578' y='-1209.3'>name(i):string</text>
 </g><g class='edge' id='edge45'><title>OperationResult-&gt;Operation</title>
-<path d='M653.852,-1407.34C638.198,-1380.29 618.014,-1342.5 602.18,-1310.85' fill='none' stroke='black'/>
-<polygon fill='black' points='597.626,-1301.68 606.102,-1308.63 599.849,-1306.15 602.071,-1310.63 602.071,-1310.63 602.071,-1310.63 599.849,-1306.15 598.04,-1312.63 597.626,-1301.68 597.626,-1301.68' stroke='black'/>
-<text style='font-size:8px; font-family:Verdana;' text-anchor='middle' transform='translate(0,0)' x='599.852' y='-1317.85'> operationId 1..1</text>
+<path d='M654.037,-1407.34C638.524,-1380.29 618.537,-1342.5 602.868,-1310.85' fill='none' stroke='black'/>
+<polygon fill='black' points='598.362,-1301.68 606.809,-1308.67 600.566,-1306.16 602.769,-1310.65 602.769,-1310.65 602.769,-1310.65 600.566,-1306.16 598.73,-1312.64 598.362,-1301.68 598.362,-1301.68' stroke='black'/>
+<text style='font-size:8px; font-family:Verdana;' text-anchor='middle' transform='translate(0,0)' x='600.505' y='-1317.86'> operationId 1..1</text>
 </g><g class='node' id='node11'><title>Analysis</title>
 <polygon fill='white' points='752.5,-1587 752.5,-1705 857.5,-1705 857.5,-1587 752.5,-1587' stroke='black' style='fill:white;stroke:black;'/>
 <text style='font-size:10px; font-family:Verdana;' text-anchor='middle' transform='translate(0,0)' x='805' y='-1686.8'>Analysis</text>
@@ -387,33 +388,33 @@
 <polygon fill='black' points='493.865,-1487.92 504.768,-1489.09 498.179,-1490.45 502.493,-1492.97 502.493,-1492.97 502.493,-1492.97 498.179,-1490.45 500.218,-1496.86 493.865,-1487.92 493.865,-1487.92' stroke='black'/>
 <text style='font-size:8px; font-family:Verdana;' text-anchor='middle' transform='translate(0,0)' x='506.622' y='-1499.62'> methodId 1..1</text>
 </g><g class='edge' id='edge42'><title>Analysis-&gt;OrderedGroupingFactor</title>
-<path d='M742.662,-1590.32C740.766,-1588.85 738.876,-1587.41 737,-1586 677.801,-1541.65 652.939,-1544.4 597,-1496 576.665,-1478.41 468.281,-1350.89 414.423,-1287.12' fill='none' stroke='black'/>
+<path d='M742.662,-1590.32C740.766,-1588.85 738.876,-1587.41 737,-1586 677.801,-1541.65 652.939,-1544.4 597,-1496 577.442,-1479.08 476.443,-1360.49 420.834,-1294.71' fill='none' stroke='black'/>
 <polygon fill='black' points='742.761,-1590.4 749.947,-1591.01 752.148,-1597.88 744.962,-1597.27 742.761,-1590.4' stroke='black'/>
-<polygon fill='black' points='407.823,-1279.3 417.712,-1284.04 411.048,-1283.12 414.273,-1286.94 414.273,-1286.94 414.273,-1286.94 411.048,-1283.12 410.834,-1289.85 407.823,-1279.3 407.823,-1279.3' stroke='black'/>
-<text style='font-size:8px; font-family:Verdana;' text-anchor='middle' transform='translate(0,0)' x='418.165' y='-1303.76'> orderedGroupings 0..*</text>
+<polygon fill='black' points='414.286,-1286.96 424.177,-1291.69 417.513,-1290.78 420.74,-1294.6 420.74,-1294.6 420.74,-1294.6 417.513,-1290.78 417.303,-1297.5 414.286,-1286.96 414.286,-1286.96' stroke='black'/>
+<text style='font-size:8px; font-family:Verdana;' text-anchor='middle' transform='translate(0,0)' x='424.643' y='-1311.41'> orderedGroupings 0..*</text>
 </g><g class='edge' id='edge109'><title>ReferencedOperationRelationship-&gt;Analysis</title>
 <path d='M884.562,-712.127C888,-783.463 888,-930.522 888,-1055 888,-1251 888,-1251 888,-1251 888,-1367.13 856.561,-1499.27 832.175,-1577.2' fill='none' stroke='black'/>
 <polygon fill='black' points='829.087,-1586.9 827.833,-1576 830.604,-1582.13 832.121,-1577.37 832.121,-1577.37 832.121,-1577.37 830.604,-1582.13 836.409,-1578.74 829.087,-1586.9 829.087,-1586.9' stroke='black'/>
 <text style='font-size:8px; font-family:Verdana;' text-anchor='middle' transform='translate(0,0)' x='841.307' y='-1567.37'> analysisId 0..1</text>
 </g><g class='edge' id='edge46'><title>ReferencedOperationRelationship-&gt;Operation</title>
-<path d='M856.512,-712.154C814.749,-773.789 728.051,-891.996 674,-1004 644.895,-1064.31 622.796,-1137.96 605.863,-1188.66' fill='none' stroke='black'/>
-<polygon fill='black' points='602.653,-1198.17 601.588,-1187.26 604.253,-1193.44 605.852,-1188.7 605.852,-1188.7 605.852,-1188.7 604.253,-1193.44 610.115,-1190.14 602.653,-1198.17 602.653,-1198.17' stroke='black'/>
-<text style='font-size:8px; font-family:Verdana;' text-anchor='middle' transform='translate(0,0)' x='615.146' y='-1178.85'> operationId 1..1</text>
+<path d='M856.454,-712.126C814.622,-773.728 727.844,-891.897 674,-1004 645.041,-1064.29 623.26,-1137.94 606.565,-1188.66' fill='none' stroke='black'/>
+<polygon fill='black' points='603.4,-1198.17 602.289,-1187.26 604.979,-1193.42 606.558,-1188.68 606.558,-1188.68 606.558,-1188.68 604.979,-1193.42 610.828,-1190.1 603.4,-1198.17 603.4,-1198.17' stroke='black'/>
+<text style='font-size:8px; font-family:Verdana;' text-anchor='middle' transform='translate(0,0)' x='615.826' y='-1178.79'> operationId 1..1</text>
 </g><g class='edge' id='edge43'><title>Operation-&gt;OperationResult</title>
-<path d='M614.565,-1310.45C632.087,-1342.18 651.773,-1380.18 664.627,-1407.34' fill='none' stroke='black'/>
-<polygon fill='black' points='609.688,-1301.68 618.481,-1308.23 612.119,-1306.05 614.549,-1310.41 614.549,-1310.41 614.549,-1310.41 612.119,-1306.05 610.616,-1312.6 609.688,-1301.68 609.688,-1301.68' stroke='black'/>
-<text style='font-size:8px; font-family:Verdana;' text-anchor='middle' transform='translate(0,0)' x='662.674' y='-1383.73'> </text>
-<text style='font-size:8px; font-family:Verdana;' text-anchor='middle' transform='translate(0,0)' x='612.844' y='-1317.72'>operationId 1..1</text>
+<path d='M615.256,-1310.45C632.612,-1342.18 652.1,-1380.18 664.813,-1407.34' fill='none' stroke='black'/>
+<polygon fill='black' points='610.425,-1301.68 619.191,-1308.26 612.837,-1306.05 615.25,-1310.43 615.25,-1310.43 615.25,-1310.43 612.837,-1306.05 611.308,-1312.61 610.425,-1301.68 610.425,-1301.68' stroke='black'/>
+<text style='font-size:8px; font-family:Verdana;' text-anchor='middle' transform='translate(0,0)' x='662.944' y='-1383.72'> </text>
+<text style='font-size:8px; font-family:Verdana;' text-anchor='middle' transform='translate(0,0)' x='613.502' y='-1317.74'>operationId 1..1</text>
 </g><g class='edge' id='edge12'><title>Operation-&gt;ReferencedOperationRelationship</title>
-<path d='M577.204,-1188.03C586.98,-1137.34 609.016,-1064.06 638,-1004 692.051,-891.996 778.749,-773.789 832.613,-712.154' fill='none' stroke='black'/>
-<polygon fill='black' points='575.36,-1198.17 572.722,-1187.53 576.255,-1193.25 577.149,-1188.33 577.149,-1188.33 577.149,-1188.33 576.255,-1193.25 581.577,-1189.14 575.36,-1198.17 575.36,-1198.17' stroke='black'/>
-<text style='font-size:8px; font-family:Verdana;' text-anchor='middle' transform='translate(0,0)' x='815.237' y='-718.357'> </text>
-<text style='font-size:8px; font-family:Verdana;' text-anchor='middle' transform='translate(0,0)' x='585.452' y='-1177.21'>operationId 1..1</text>
+<path d='M577.903,-1188.02C587.441,-1137.33 609.161,-1064.04 638,-1004 691.844,-891.897 778.622,-773.728 832.556,-712.126' fill='none' stroke='black'/>
+<polygon fill='black' points='576.107,-1198.17 573.42,-1187.53 576.979,-1193.24 577.851,-1188.32 577.851,-1188.32 577.851,-1188.32 576.979,-1193.24 582.282,-1189.1 576.107,-1198.17 576.107,-1198.17' stroke='black'/>
+<text style='font-size:8px; font-family:Verdana;' text-anchor='middle' transform='translate(0,0)' x='815.171' y='-718.315'> </text>
+<text style='font-size:8px; font-family:Verdana;' text-anchor='middle' transform='translate(0,0)' x='586.12' y='-1177.15'>operationId 1..1</text>
 </g><g class='edge' id='edge14'><title>Operation-&gt;ReferencedOperationRelationship</title>
-<path d='M592.06,-1186.44C605.441,-1135.82 627.318,-1063.43 656,-1004 707.729,-896.809 789.359,-783.936 838.189,-720.407' fill='none' stroke='black'/>
-<polygon fill='black' points='592.028,-1186.56 594.389,-1193.37 589.007,-1198.17 586.646,-1191.36 592.028,-1186.56' stroke='black'/>
-<polygon fill='black' points='844.562,-712.154 842.012,-722.819 841.507,-716.111 838.451,-720.069 838.451,-720.069 838.451,-720.069 841.507,-716.111 834.889,-717.319 844.562,-712.154 844.562,-712.154' stroke='black'/>
-<text style='font-size:8px; font-family:Verdana;' text-anchor='middle' transform='translate(0,0)' x='793.861' y='-740.538'> referencedOperationRelationships 0..*</text>
+<path d='M592.752,-1186.43C605.895,-1135.8 627.462,-1063.42 656,-1004 707.53,-896.714 789.226,-783.872 838.123,-720.375' fill='none' stroke='black'/>
+<polygon fill='black' points='592.723,-1186.54 595.114,-1193.34 589.754,-1198.17 587.363,-1191.36 592.723,-1186.54' stroke='black'/>
+<polygon fill='black' points='844.505,-712.126 841.945,-722.789 841.445,-716.081 838.386,-720.036 838.386,-720.036 838.386,-720.036 841.445,-716.081 834.826,-717.282 844.505,-712.126 844.505,-712.126' stroke='black'/>
+<text style='font-size:8px; font-family:Verdana;' text-anchor='middle' transform='translate(0,0)' x='793.774' y='-740.463'> referencedOperationRelationships 0..*</text>
 </g><g class='edge' id='edge105'><title>ReferencedAnalysisOperation-&gt;Analysis</title>
 <path d='M757.968,-1074.18C769.286,-1148.11 795.424,-1441.62 803.582,-1576.53' fill='none' stroke='black'/>
 <polygon fill='black' points='804.182,-1586.74 799.103,-1577.02 803.889,-1581.75 803.595,-1576.76 803.595,-1576.76 803.595,-1576.76 803.889,-1581.75 808.088,-1576.49 804.182,-1586.74 804.182,-1586.74' stroke='black'/>
@@ -579,10 +580,10 @@
 <polygon fill='black' points='1055.83,-2013.02 1059.96,-2023.18 1055.65,-2018.02 1055.47,-2023.01 1055.47,-2023.01 1055.47,-2023.01 1055.65,-2018.02 1050.97,-2022.85 1055.83,-2013.02 1055.83,-2013.02' stroke='black'/>
 <text style='font-size:8px; font-family:Verdana;' text-anchor='middle' transform='translate(0,0)' x='1040.79' y='-2046.38'> listOfPlannedOutputs 0..1</text>
 </g><g class='edge' id='edge47'><title>AnalysisMethod-&gt;Operation</title>
-<path d='M479.022,-1382.55C496.278,-1359.38 515.93,-1333 533.081,-1309.97' fill='none' stroke='black'/>
-<polygon fill='black' points='478.927,-1382.68 478.551,-1389.88 471.759,-1392.3 472.135,-1385.1 478.927,-1382.68' stroke='black'/>
-<polygon fill='black' points='539.278,-1301.65 536.914,-1312.36 536.291,-1305.66 533.305,-1309.67 533.305,-1309.67 533.305,-1309.67 536.291,-1305.66 529.696,-1306.98 539.278,-1301.65 539.278,-1301.65' stroke='black'/>
-<text style='font-size:8px; font-family:Verdana;' text-anchor='middle' transform='translate(0,0)' x='522.566' y='-1308.93'> operations 1..*</text>
+<path d='M479.337,-1382.55C496.79,-1359.28 516.677,-1332.76 534.001,-1309.67' fill='none' stroke='black'/>
+<polygon fill='black' points='479.223,-1382.7 478.823,-1389.9 472.023,-1392.3 472.423,-1385.1 479.223,-1382.7' stroke='black'/>
+<polygon fill='black' points='540.014,-1301.65 537.614,-1312.35 537.014,-1305.65 534.014,-1309.65 534.014,-1309.65 534.014,-1309.65 537.014,-1305.65 530.414,-1306.95 540.014,-1301.65 540.014,-1301.65' stroke='black'/>
+<text style='font-size:8px; font-family:Verdana;' text-anchor='middle' transform='translate(0,0)' x='523.266' y='-1308.88'> operations 1..*</text>
 </g><g class='edge' id='edge23'><title>AnalysisMethod-&gt;ReportingEvent</title>
 <path d='M501.992,-1489.93C504.702,-1491.98 507.38,-1494.01 510,-1496 562.827,-1536.08 586.395,-1535.19 629,-1586 722.758,-1697.82 909.803,-2112.68 962.271,-2243.33' fill='none' stroke='black'/>
 <polygon fill='black' points='493.788,-1483.72 504.479,-1486.16 497.776,-1486.74 501.765,-1489.75 501.765,-1489.75 501.765,-1489.75 497.776,-1486.74 499.051,-1493.34 493.788,-1483.72 493.788,-1483.72' stroke='black'/>
@@ -659,11 +660,11 @@
 <path d='M957.537,-2417.41C944.496,-2389.48 927.533,-2350.12 917,-2314 852.898,-2094.19 821.467,-1822.24 810.128,-1705.12' fill='none' stroke='black'/>
 <polygon fill='none' points='954.532,-2419.25 961.968,-2426.79 960.861,-2416.26 954.532,-2419.25' stroke='black'/>
 </g><g class='edge' id='edge48'><title>NamedObject-&gt;Operation</title>
-<path d='M953.066,-2418.15C883.317,-2293 674.736,-1871.21 588,-1496 572.765,-1430.1 568.729,-1351.88 570,-1301.87' fill='none' stroke='black'/>
-<polygon fill='none' points='950.082,-2419.98 958.037,-2426.98 956.182,-2416.55 950.082,-2419.98' stroke='black'/>
+<path d='M953.007,-2418.16C883.074,-2293.05 673.975,-1871.39 588,-1496 572.904,-1430.09 569.218,-1351.88 570.736,-1301.86' fill='none' stroke='black'/>
+<polygon fill='none' points='950.028,-2420 957.992,-2426.99 956.124,-2416.56 950.028,-2420' stroke='black'/>
 </g><g class='edge' id='edge54'><title>NamedObject-&gt;Operation</title>
-<path d='M960.208,-2417.77C900.899,-2292.15 692.649,-1870.84 606,-1496 590.765,-1430.1 586.729,-1351.88 583.728,-1301.87' fill='none' stroke='black'/>
-<polygon fill='none' points='957.114,-2419.42 964.535,-2426.98 963.45,-2416.44 957.114,-2419.42' stroke='black'/>
+<path d='M960.149,-2417.78C900.655,-2292.21 691.889,-1871.01 606,-1496 590.904,-1430.09 587.218,-1351.88 584.463,-1301.86' fill='none' stroke='black'/>
+<polygon fill='none' points='957.059,-2419.44 964.49,-2426.99 963.391,-2416.45 957.059,-2419.44' stroke='black'/>
 </g><g class='edge' id='edge56'><title>NamedObject-&gt;Display</title>
 <path d='M1031.02,-2440.19C1094.9,-2420.57 1200.15,-2380.47 1268,-2314 1331.75,-2251.54 1359,-2224.25 1359,-2135 1359,-2135 1359,-2135 1359,-1645 1359,-1382.48 1415,-1319.52 1415,-1057 1415,-1057 1415,-1057 1415,-861 1415,-751.784 1416.97,-723.185 1396,-616 1390.03,-585.487 1379.65,-552.318 1370.36,-525.821' fill='none' stroke='black'/>
 <polygon fill='none' points='1029.7,-2436.93 1021.13,-2443.16 1031.72,-2443.63 1029.7,-2436.93' stroke='black'/>
@@ -691,9 +692,9 @@
 <polygon fill='black' points='615.571,-536.367 614.695,-529.21 620.965,-525.648 621.841,-532.805 615.571,-536.367' stroke='black'/>
 <text style='font-size:8px; font-family:Verdana;' text-anchor='middle' transform='translate(0,0)' x='591.877' y='-598.204'>groups 0..*</text>
 </g><g class='edge' id='edge40'><title>DataGroupingFactor-&gt;OrderedGroupingFactor</title>
-<path d='M211.242,-535.767C206.294,-652.235 198.917,-912.659 284,-1108 301.001,-1147.03 331.218,-1184.84 354.133,-1211.47' fill='none' stroke='black'/>
+<path d='M211.242,-535.767C206.294,-652.235 198.917,-912.659 284,-1108 299.516,-1143.62 326.038,-1178.23 347.972,-1204.24' fill='none' stroke='black'/>
 <polygon fill='black' points='211.681,-525.62 215.744,-535.805 211.465,-530.616 211.249,-535.611 211.249,-535.611 211.249,-535.611 211.465,-530.616 206.753,-535.417 211.681,-525.62 211.681,-525.62' stroke='black'/>
-<polygon fill='black' points='354.332,-1211.69 361.288,-1213.6 362.207,-1220.75 355.251,-1218.85 354.332,-1211.69' stroke='black'/>
+<polygon fill='black' points='348.022,-1204.29 354.96,-1206.26 355.817,-1213.42 348.878,-1211.45 348.022,-1204.29' stroke='black'/>
 <text style='font-size:8px; font-family:Verdana;' text-anchor='middle' transform='translate(0,0)' x='204.035' y='-540.401'>dataGrouping 0..1</text>
 </g><g class='edge' id='edge80'><title>DataGroupingFactor-&gt;DataGroup</title>
 <path d='M286.422,-533.674C315.084,-557.796 347.413,-585.641 374.601,-609.625' fill='none' stroke='black'/>
@@ -701,12 +702,12 @@
 <polygon fill='black' points='382.15,-616.303 371.678,-613.048 378.405,-612.99 374.659,-609.677 374.659,-609.677 374.659,-609.677 378.405,-612.99 377.641,-606.307 382.15,-616.303 382.15,-616.303' stroke='black'/>
 <text style='font-size:8px; font-family:Verdana;' text-anchor='middle' transform='translate(0,0)' x='372.605' y='-595.027'> groups 0..*</text>
 </g><g class='edge' id='edge60'><title>OrderedGroupingFactor-&gt;GroupingFactor</title>
-<path d='M380.52,-1220.67C380.149,-1193.71 381.85,-1152.25 384.503,-1117.81' fill='none' stroke='black'/>
-<polygon fill='black' points='385.315,-1107.84 388.989,-1118.17 384.909,-1112.82 384.503,-1117.81 384.503,-1117.81 384.503,-1117.81 384.909,-1112.82 380.018,-1117.44 385.315,-1107.84 385.315,-1107.84' stroke='black'/>
-<text style='font-size:8px; font-family:Verdana;' text-anchor='middle' transform='translate(0,0)' x='376.972' y='-1122.31'> groupingId 0..1</text>
+<path d='M380.47,-1213.34C380.451,-1186.52 382.085,-1149.15 384.514,-1117.67' fill='none' stroke='black'/>
+<polygon fill='black' points='385.33,-1107.68 389.001,-1118.01 384.923,-1112.66 384.516,-1117.64 384.516,-1117.64 384.516,-1117.64 384.923,-1112.66 380.031,-1117.28 385.33,-1107.68 385.33,-1107.68' stroke='black'/>
+<text style='font-size:8px; font-family:Verdana;' text-anchor='middle' transform='translate(0,0)' x='376.983' y='-1122.15'> groupingId 0..1</text>
 </g><g class='edge' id='edge79'><title>OrderedGroupingFactor-&gt;DataGroupingFactor</title>
-<path d='M339.604,-1212.16C313.749,-1185.51 283.151,-1147.38 266,-1108 180.917,-912.659 188.294,-652.235 200.946,-535.767' fill='none' stroke='black'/>
-<polygon fill='black' points='339.691,-1212.25 346.76,-1213.68 348.164,-1220.75 341.095,-1219.32 339.691,-1212.25' stroke='black'/>
+<path d='M332.414,-1204.58C308.271,-1178.53 281.584,-1143.78 266,-1108 180.917,-912.659 188.294,-652.235 200.946,-535.767' fill='none' stroke='black'/>
+<polygon fill='black' points='332.552,-1204.72 339.586,-1206.31 340.825,-1213.42 333.791,-1211.83 332.552,-1204.72' stroke='black'/>
 <polygon fill='black' points='202.104,-525.62 205.441,-536.066 201.537,-530.588 200.97,-535.556 200.97,-535.556 200.97,-535.556 201.537,-530.588 196.499,-535.046 202.104,-525.62 202.104,-525.62' stroke='black'/>
 <text style='font-size:8px; font-family:Verdana;' text-anchor='middle' transform='translate(0,0)' x='188.714' y='-548.766'> dataGrouping 0..1</text>
 </g><g class='edge' id='edge64'><title>CompoundGroupExpression-&gt;Group</title>

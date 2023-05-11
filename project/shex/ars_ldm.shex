@@ -277,7 +277,8 @@ linkml:Nodeidentifier NONLITERAL
 <OrderedGroupingFactor> CLOSED {
     (  $<OrderedGroupingFactor_tes> (  <order> @linkml:Integer ;
           <groupingId> @<GroupingFactor> ? ;
-          <dataGrouping> @<DataGroupingFactor> ?
+          <dataGrouping> @<DataGroupingFactor> ? ;
+          <resultsByGroup> @linkml:Boolean
        ) ;
        rdf:type [ <OrderedGroupingFactor> ] ?
     )

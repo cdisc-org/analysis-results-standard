@@ -119,6 +119,7 @@
  * [resultGroups](resultGroups.md)
  * [resultPattern](resultPattern.md)
  * [results](results.md)
+ * [resultsByGroup](resultsByGroup.md) - Indicates whether a result is expected for each group in the grouping.
  * [sectionType](sectionType.md)
  * [style](style.md)
  * [subCategorizations](subCategorizations.md)

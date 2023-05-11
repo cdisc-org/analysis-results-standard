@@ -1,5 +1,5 @@
 # Auto generated from ars_ldm.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-04-20T15:18:00
+# Generation date: 2023-05-11T21:26:22
 # Schema: ars_ldm
 #
 # id: https://www.cdisc.org/ars/1-0
@@ -375,6 +375,7 @@ class OrderedGroupingFactor(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = URIRef("https://www.cdisc.org/ars/1-0/OrderedGroupingFactor")
 
     order: int = None
+    resultsByGroup: Union[bool, Bool] = None
     groupingId: Optional[Union[str, GroupingFactorId]] = None
     dataGrouping: Optional[Union[dict, "DataGroupingFactor"]] = None
 
@@ -383,6 +384,11 @@ class OrderedGroupingFactor(YAMLRoot):
             self.MissingRequiredField("order")
         if not isinstance(self.order, int):
             self.order = int(self.order)
+
+        if self._is_empty(self.resultsByGroup):
+            self.MissingRequiredField("resultsByGroup")
+        if not isinstance(self.resultsByGroup, Bool):
+            self.resultsByGroup = Bool(self.resultsByGroup)
 
         if self.groupingId is not None and not isinstance(self.groupingId, GroupingFactorId):
             self.groupingId = GroupingFactorId(self.groupingId)
@@ -1284,6 +1290,9 @@ slots.groupingId = Slot(uri=DEFAULT_.groupingId, name="groupingId", curie=DEFAUL
 
 slots.dataGrouping = Slot(uri=DEFAULT_.dataGrouping, name="dataGrouping", curie=DEFAULT_.curie('dataGrouping'),
                    model_uri=DEFAULT_.dataGrouping, domain=None, range=Optional[Union[dict, DataGroupingFactor]])
+
+slots.resultsByGroup = Slot(uri=DEFAULT_.resultsByGroup, name="resultsByGroup", curie=DEFAULT_.curie('resultsByGroup'),
+                   model_uri=DEFAULT_.resultsByGroup, domain=None, range=Union[bool, Bool])
 
 slots.dataSubsetId = Slot(uri=DEFAULT_.dataSubsetId, name="dataSubsetId", curie=DEFAULT_.curie('dataSubsetId'),
                    model_uri=DEFAULT_.dataSubsetId, domain=None, range=Optional[Union[str, DataSubsetId]])
