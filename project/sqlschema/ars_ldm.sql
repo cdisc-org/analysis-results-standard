@@ -143,12 +143,13 @@ CREATE TABLE "ReportingEvent" (
 	"analysisSets" TEXT, 
 	"analysisGroupings" TEXT, 
 	"dataSubsets" TEXT, 
+	"dataGroupings" TEXT, 
 	"globalDisplaySections" TEXT, 
 	"analysisCategorizations" TEXT, 
 	analyses TEXT, 
 	methods TEXT, 
 	outputs TEXT, 
-	PRIMARY KEY (name, "listOfPlannedAnalyses", "listOfPlannedOutputs", "analysisSets", "analysisGroupings", "dataSubsets", "globalDisplaySections", "analysisCategorizations", analyses, methods, outputs)
+	PRIMARY KEY (name, "listOfPlannedAnalyses", "listOfPlannedOutputs", "analysisSets", "analysisGroupings", "dataSubsets", "dataGroupings", "globalDisplaySections", "analysisCategorizations", analyses, methods, outputs)
 );
 
 CREATE TABLE "SubjectGroupingFactor" (

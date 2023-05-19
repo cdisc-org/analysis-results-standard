@@ -70,6 +70,7 @@
  * [condition](condition.md)
  * [dataDriven](dataDriven.md) - Indicates whether the groups defined by the grouping are prespecified (false) or obtained from distinct data values of the groupingVariable (true).
  * [dataGrouping](dataGrouping.md)
+ * [dataGroupings](dataGroupings.md)
  * [dataSubsetId](dataSubsetId.md)
  * [dataSubsets](dataSubsets.md)
  * [dataset](dataset.md)

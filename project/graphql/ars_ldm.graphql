@@ -250,6 +250,7 @@ type ReportingEvent
     analysisSets: [AnalysisSet]
     analysisGroupings: [SubjectGroupingFactor]
     dataSubsets: [DataSubset]
+    dataGroupings: [DataGroupingFactor]
     globalDisplaySections: [DisplaySection]
     analysisCategorizations: [AnalysisCategorization]
     analyses: [Analysis]

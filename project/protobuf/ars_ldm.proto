@@ -216,6 +216,7 @@ message ReportingEvent
  repeated  analysisSet analysisSets = 0
  repeated  subjectGroupingFactor analysisGroupings = 0
  repeated  dataSubset dataSubsets = 0
+ repeated  dataGroupingFactor dataGroupings = 0
  repeated  displaySection globalDisplaySections = 0
  repeated  analysisCategorization analysisCategorizations = 0
  repeated  analysis analyses = 0

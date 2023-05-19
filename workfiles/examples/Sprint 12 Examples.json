@@ -15,76 +15,130 @@
               "analysisId": "An01.05_SAF_Summ_ByTrt"
             },
             {
-              "name": "Summary of Age by Treatment",
+              "name": "Age",
               "level": 2,
               "order": 2,
-              "analysisId": "An03.01_Age_Summ_ByTrt"
+              "sublist": {
+                "listItems": [
+                  {
+                    "name": "Summary by Treatment",
+                    "level": 3,
+                    "order": 1,
+                    "analysisId": "An03.01_Age_Summ_ByTrt"
+                  },
+                  {
+                    "name": "Comparison by Treatment",
+                    "level": 3,
+                    "order": 2,
+                    "analysisId": "An03.01_Age_Comp_ByTrt"
+                  }
+                ]
+              }
             },
             {
-              "name": "Comparison of Age by Treatment",
+              "name": "Age Group",
               "level": 2,
               "order": 3,
-              "analysisId": "An03.01_Age_Comp_ByTrt"
+              "sublist": {
+                "listItems": [
+                  {
+                    "name": "Summary of Subjects by Treatment",
+                    "level": 3,
+                    "order": 1,
+                    "analysisId": "An03.02_AgeGrp_Summ_ByTrt"
+                  },
+                  {
+                    "name": "Comparison of Subjects by Treatment",
+                    "level": 3,
+                    "order": 2,
+                    "analysisId": "An03.02_AgeGrp_Comp_ByTrt"
+                  }
+                ]
+              }
             },
             {
-              "name": "Summary of Subjects by Treatment and Age Group",
+              "name": "Sex",
               "level": 2,
               "order": 4,
-              "analysisId": "An03.02_AgeGrp_Summ_ByTrt"
+              "sublist": {
+                "listItems": [
+                  {
+                    "name": "Summary of Subjects by Treatment",
+                    "level": 3,
+                    "order": 1,
+                    "analysisId": "An03.03_Sex_Summ_ByTrt"
+                  },
+                  {
+                    "name": "Comparison of Subjects by Treatment",
+                    "level": 3,
+                    "order": 2,
+                    "analysisId": "An03.03_Sex_Comp_ByTrt"
+                  }
+                ]
+              }
             },
             {
-              "name": "Comparison of Age Group by Treatment",
+              "name": "Ethnicity",
               "level": 2,
               "order": 5,
-              "analysisId": "An03.02_AgeGrp_Comp_ByTrt"
+              "sublist": {
+                "listItems": [
+                  {
+                    "name": "Summary of Subjects by Treatment",
+                    "level": 3,
+                    "order": 1,
+                    "analysisId": "An03.04_Ethnic_Summ_ByTrt"
+                  },
+                  {
+                    "name": "Comparison of Subjects by Treatment",
+                    "level": 3,
+                    "order": 2,
+                    "analysisId": "An03.04_Ethnic_Comp_ByTrt"
+                  }
+                ]
+              }
             },
             {
-              "name": "Summary of Subjects by Treatment and Sex",
+              "name": "Race",
               "level": 2,
               "order": 6,
-              "analysisId": "An03.03_Sex_Summ_ByTrt"
+              "sublist": {
+                "listItems": [
+                  {
+                    "name": "Summary of Subjects by Treatment",
+                    "level": 3,
+                    "order": 1,
+                    "analysisId": "An03.05_Race_Summ_ByTrt"
+                  },
+                  {
+                    "name": "Comparison of Subjects by Treatment",
+                    "level": 3,
+                    "order": 2,
+                    "analysisId": "An03.05_Race_Comp_ByTrt"
+                  }
+                ]
+              }
             },
             {
-              "name": "Comparison of Sex by Treatment",
+              "name": "Height",
               "level": 2,
               "order": 7,
-              "analysisId": "An03.03_Sex_Comp_ByTrt"
-            },
-            {
-              "name": "Summary of Subjects by Treatment and Ethnicity",
-              "level": 2,
-              "order": 8,
-              "analysisId": "An03.04_Ethnic_Summ_ByTrt"
-            },
-            {
-              "name": "Comparison of Ethnicity by Treatment",
-              "level": 2,
-              "order": 9,
-              "analysisId": "An03.04_Ethnic_Comp_ByTrt"
-            },
-            {
-              "name": "Summary of Subjects by Treatment and Race",
-              "level": 2,
-              "order": 10,
-              "analysisId": "An03.05_Race_Summ_ByTrt"
-            },
-            {
-              "name": "Comparison of Race by Treatment",
-              "level": 2,
-              "order": 11,
-              "analysisId": "An03.05_Race_Comp_ByTrt"
-            },
-            {
-              "name": "Summary of Height by Treatment",
-              "level": 2,
-              "order": 12,
-              "analysisId": "An03.06_Height_Summ_ByTrt"
-            },
-            {
-              "name": "Comparison of Height by Treatment",
-              "level": 2,
-              "order": 13,
-              "analysisId": "An03.06_Height_Comp_ByTrt"
+              "sublist": {
+                "listItems": [
+                  {
+                    "name": "Summary by Treatment",
+                    "level": 3,
+                    "order": 1,
+                    "analysisId": "An03.06_Height_Summ_ByTrt"
+                  },
+                  {
+                    "name": "Comparison by Treatment",
+                    "level": 3,
+                    "order": 2,
+                    "analysisId": "An03.06_Height_Comp_ByTrt"
+                  }
+                ]
+              }
             }
           ]
         },
@@ -97,63 +151,72 @@
         "sublist": {
           "listItems": [
             {
-              "name": "Summary of Subjects with At Least One TEAE, by Treatment",
+              "name": "At Least One TEAE",
               "level": 2,
               "order": 1,
-              "analysisId": "An07.01_TEAE_Summ_ByTrt"
-            },
-            {
-              "name": "Comparison of Subjects with TEAEs by Treatment - Placebo vs Low Dose",
-              "level": 2,
-              "order": 2,
-              "analysisId": "An07.01_TEAE_Comp_ByTrt_PlacLow"
-            },
-            {
-              "name": "Comparison of Subjects with TEAEs by Treatment - Placebo vs High Dose",
-              "level": 2,
-              "order": 3,
-              "analysisId": "An07.01_TEAE_Comp_ByTrt_PlacHigh"
+              "sublist": {
+                "listItems": [
+                  {
+                    "name": "Summary of Subjects by Treatment",
+                    "level": 3,
+                    "order": 1,
+                    "analysisId": "An07.01_TEAE_Summ_ByTrt"
+                  },
+                  {
+                    "name": "Comparison of Subjects by Treatment - Placebo vs Low Dose",
+                    "level": 3,
+                    "order": 2,
+                    "analysisId": "An07.01_TEAE_Comp_ByTrt_PlacLow"
+                  },
+                  {
+                    "name": "Comparison of Subjects by Treatment - Placebo vs High Dose",
+                    "level": 3,
+                    "order": 3,
+                    "analysisId": "An07.01_TEAE_Comp_ByTrt_PlacHigh"
+                  }
+                ]
+              }
             },
             {
               "name": "Summary of Subjects with At Least One Related TEAE, by Treatment",
               "level": 2,
-              "order": 4,
+              "order": 2,
               "analysisId": "An07.02_RelTEAE_Summ_ByTrt"
             },
             {
               "name": "Summary of Subjects with At Least One Serious TEAE, by Treatment",
               "level": 2,
-              "order": 5,
+              "order": 3,
               "analysisId": "An07.03_SerTEAE_Summ_ByTrt"
             },
             {
               "name": "Summary of Subjects with At Least One Related Serious TEAE, by Treatment",
               "level": 2,
-              "order": 6,
+              "order": 4,
               "analysisId": "An07.04_RelSerTEAE_Summ_ByTrt"
             },
             {
               "name": "Summary of Subjects with At Least One TEAE Leading to Death, by Treatment",
               "level": 2,
-              "order": 7,
+              "order": 5,
               "analysisId": "An07.05_TEAELd2Dth_Summ_ByTrt"
             },
             {
               "name": "Summary of Subjects with At Least One Related TEAE Leading to Death, by Treatment",
               "level": 2,
-              "order": 8,
+              "order": 6,
               "analysisId": "An07.06_RelTEAELd2Dth_Summ_ByTrt"
             },
             {
               "name": "Summary of Subjects with At Least One TEAE Leading to Dose Modification, by Treatment",
               "level": 2,
-              "order": 9,
+              "order": 7,
               "analysisId": "An07.07_TEAELd2DoseMod_Summ_ByTrt"
             },
             {
               "name": "Summary of Subjects with At Least One TEAE Leading to Treatment Discontinuation, by Treatment",
               "level": 2,
-              "order": 10,
+              "order": 8,
               "analysisId": "An07.08_TEAELd2TrtDsc_Summ_ByTrt"
             }
           ]
@@ -167,40 +230,58 @@
         "sublist": {
           "listItems": [
             {
-              "name": "Summary of Subjects with TEAEs by Treatment and System Organ Class",
+              "name": "System Organ Class",
               "level": 2,
               "order": 1,
-              "analysisId": "An07.09_Soc_Summ_ByTrt"
+              "sublist": {
+                "listItems": [
+                  {
+                    "name": "Summary of Subjects by Treatment and System Organ Class",
+                    "level": 3,
+                    "order": 1,
+                    "analysisId": "An07.09_Soc_Summ_ByTrt"
+                  },
+                  {
+                    "name": "Comparison of Subjects with TEAEs by Treatment and System Organ Class - Placebo vs Low Dose",
+                    "level": 3,
+                    "order": 2,
+                    "analysisId": "An07.09_Soc_Comp_ByTrt_PlacLow"
+                  },
+                  {
+                    "name": "Comparison of Subjects with TEAEs by Treatment and System Organ Class - Placebo vs High Dose",
+                    "level": 3,
+                    "order": 3,
+                    "analysisId": "An07.09_Soc_Comp_ByTrt_PlacHigh"
+                  }
+                ]
+              }
             },
             {
-              "name": "Comparison of Subjects with TEAEs by Treatment and System Organ Class - Placebo vs Low Dose",
+              "name": "Preferred Term",
               "level": 2,
               "order": 2,
-              "analysisId": "An07.09_Soc_Comp_ByTrt_PlacLow"
-            },
-            {
-              "name": "Comparison of Subjects with TEAEs by Treatment and System Organ Class - Placebo vs High Dose",
-              "level": 2,
-              "order": 3,
-              "analysisId": "An07.09_Soc_Comp_ByTrt_PlacHigh"
-            },
-            {
-              "name": "Summary of Subjects with TEAEs by Treatment, System Organ Class and Preferred Term",
-              "level": 2,
-              "order": 4,
-              "analysisId": "An07.10_SocPt_Summ_ByTrt"
-            },
-            {
-              "name": "Comparison of Subjects with TEAEs by Treatment, System Organ Class and Preferred Term - Placebo vs Low Dose",
-              "level": 2,
-              "order": 5,
-              "analysisId": "An07.10_SocPt_Comp_ByTrt_PlacLow"
-            },
-            {
-              "name": "Comparison of Subjects with TEAEs by Treatment, System Organ Class and Preferred Term - Placebo vs High Dose",
-              "level": 2,
-              "order": 6,
-              "analysisId": "An07.10_SocPt_Comp_ByTrt_PlacHigh"
+              "sublist": {
+                "listItems": [
+                  {
+                    "name": "Summary of Subjects by Treatment, System Organ Class and Preferred Term",
+                    "level": 3,
+                    "order": 1,
+                    "analysisId": "An07.10_SocPt_Summ_ByTrt"
+                  },
+                  {
+                    "name": "Comparison of Subjects with TEAEs by Treatment, System Organ Class and Preferred Term - Placebo vs Low Dose",
+                    "level": 3,
+                    "order": 2,
+                    "analysisId": "An07.10_SocPt_Comp_ByTrt_PlacLow"
+                  },
+                  {
+                    "name": "Comparison of Subjects with TEAEs by Treatment, System Organ Class and Preferred Term - Placebo vs High Dose",
+                    "level": 3,
+                    "order": 3,
+                    "analysisId": "An07.10_SocPt_Comp_ByTrt_PlacHigh"
+                  }
+                ]
+              }
             }
           ]
         },
@@ -963,6 +1044,231 @@
       },
       "id": "Dss12_TEAE_PlacHigh",
       "label": "Treatment-Emergent Adverse Events for Placebo and High Active Dose"
+    }
+  ],
+  "dataGroupings": [
+    {
+      "id": "AnlsGrouping_06_Soc",
+      "dataDriven": true,
+      "label": "System Organ Class",
+      "groupingVariable": "AESOC"
+    },
+    {
+      "id": "AnlsGrouping_07_Pt",
+      "dataDriven": true,
+      "label": "Preferred Term",
+      "groupingVariable": "AEDECOD"
+    },
+    {
+      "id": "AnlsGrouping_08_Param",
+      "dataDriven": false,
+      "label": "Parameter",
+      "groupingVariable": "PARAMCD",
+      "groups": [
+        {
+          "order": 1,
+          "condition": {
+            "dataset": "ADVS",
+            "variable": "PARAMCD",
+            "comparator": "EQ",
+            "value": [
+              "SYSBP"
+            ]
+          },
+          "id": "AnlsGrouping_08_Param_1",
+          "label": "Systolic Blood Pressure (mmHg)"
+        },
+        {
+          "order": 2,
+          "condition": {
+            "dataset": "ADVS",
+            "variable": "PARAMCD",
+            "comparator": "EQ",
+            "value": [
+              "DIABP"
+            ]
+          },
+          "id": "AnlsGrouping_08_Param_2",
+          "label": "Diastolic Blood Pressure (mmHg)"
+        },
+        {
+          "order": 3,
+          "condition": {
+            "dataset": "ADVS",
+            "variable": "PARAMCD",
+            "comparator": "EQ",
+            "value": [
+              "PULSE"
+            ]
+          },
+          "id": "AnlsGrouping_08_Param_3",
+          "label": "Pulse Rate (beats/min)"
+        },
+        {
+          "order": 4,
+          "condition": {
+            "dataset": "ADVS",
+            "variable": "PARAMCD",
+            "comparator": "EQ",
+            "value": [
+              "TEMP"
+            ]
+          },
+          "id": "AnlsGrouping_08_Param_4",
+          "label": "Temperature (C)"
+        }
+      ]
+    },
+    {
+      "id": "AnlsGrouping_09_Visit",
+      "dataDriven": false,
+      "label": "Visit",
+      "groupingVariable": "AVISIT",
+      "groups": [
+        {
+          "order": 1,
+          "condition": {
+            "dataset": "ADVS",
+            "variable": "AVISIT",
+            "comparator": "EQ",
+            "value": [
+              "Baseline"
+            ]
+          },
+          "id": "AnlsGrouping_09_Visit_01",
+          "label": "Baseline"
+        },
+        {
+          "order": 2,
+          "condition": {
+            "dataset": "ADVS",
+            "variable": "AVISIT",
+            "comparator": "EQ",
+            "value": [
+              "Week 2"
+            ]
+          },
+          "id": "AnlsGrouping_09_Visit_02",
+          "label": "Week 2"
+        },
+        {
+          "order": 3,
+          "condition": {
+            "dataset": "ADVS",
+            "variable": "AVISIT",
+            "comparator": "EQ",
+            "value": [
+              "Week 4"
+            ]
+          },
+          "id": "AnlsGrouping_09_Visit_03",
+          "label": "Week 4"
+        },
+        {
+          "order": 4,
+          "condition": {
+            "dataset": "ADVS",
+            "variable": "AVISIT",
+            "comparator": "EQ",
+            "value": [
+              "Week 6"
+            ]
+          },
+          "id": "AnlsGrouping_09_Visit_04",
+          "label": "Week 6"
+        },
+        {
+          "order": 5,
+          "condition": {
+            "dataset": "ADVS",
+            "variable": "AVISIT",
+            "comparator": "EQ",
+            "value": [
+              "Week 8"
+            ]
+          },
+          "id": "AnlsGrouping_09_Visit_05",
+          "label": "Week 8"
+        },
+        {
+          "order": 6,
+          "condition": {
+            "dataset": "ADVS",
+            "variable": "AVISIT",
+            "comparator": "EQ",
+            "value": [
+              "Week 12"
+            ]
+          },
+          "id": "AnlsGrouping_09_Visit_06",
+          "label": "Week 12"
+        },
+        {
+          "order": 7,
+          "condition": {
+            "dataset": "ADVS",
+            "variable": "AVISIT",
+            "comparator": "EQ",
+            "value": [
+              "Week 16"
+            ]
+          },
+          "id": "AnlsGrouping_09_Visit_07",
+          "label": "Week 16"
+        },
+        {
+          "order": 8,
+          "condition": {
+            "dataset": "ADVS",
+            "variable": "AVISIT",
+            "comparator": "EQ",
+            "value": [
+              "Week 20"
+            ]
+          },
+          "id": "AnlsGrouping_09_Visit_08",
+          "label": "Week 20"
+        },
+        {
+          "order": 9,
+          "condition": {
+            "dataset": "ADVS",
+            "variable": "AVISIT",
+            "comparator": "EQ",
+            "value": [
+              "Week 24"
+            ]
+          },
+          "id": "AnlsGrouping_09_Visit_09",
+          "label": "Week 24"
+        },
+        {
+          "order": 10,
+          "condition": {
+            "dataset": "ADVS",
+            "variable": "AVISIT",
+            "comparator": "EQ",
+            "value": [
+              "Week 26"
+            ]
+          },
+          "id": "AnlsGrouping_09_Visit_10",
+          "label": "Week 26"
+        },
+        {
+          "order": 11,
+          "condition": {
+            "dataset": "ADVS",
+            "variable": "AVISIT",
+            "comparator": "EQ",
+            "value": [
+              "End of Treatment"
+            ]
+          },
+          "id": "AnlsGrouping_09_Visit_11",
+          "label": "End of Treatment"
+        }
+      ]
     }
   ],
   "analyses": [
@@ -4096,12 +4402,7 @@
         {
           "order": 2,
           "resultsByGroup": true,
-          "dataGrouping": {
-            "id": "AnlsGrouping_06_Soc",
-            "dataDriven": true,
-            "label": "System Organ Class",
-            "groupingVariable": "AESOC"
-          }
+          "groupingId": "AnlsGrouping_06_Soc"
         }
       ],
       "dataSubsetId": "Dss01_TEAE",
@@ -6286,12 +6587,7 @@
         {
           "order": 3,
           "resultsByGroup": true,
-          "dataGrouping": {
-            "id": "AnlsGrouping_07_Pt",
-            "dataDriven": true,
-            "label": "Preferred Term",
-            "groupingVariable": "AEDECOD"
-          }
+          "groupingId": "AnlsGrouping_07_Pt"
         }
       ],
       "dataSubsetId": "Dss01_TEAE",
@@ -32638,221 +32934,12 @@
         {
           "order": 2,
           "resultsByGroup": true,
-          "dataGrouping": {
-            "id": "AnlsGrouping_08_Param",
-            "dataDriven": false,
-            "label": "Parameter",
-            "groupingVariable": "PARAMCD",
-            "groups": [
-              {
-                "order": 1,
-                "condition": {
-                  "dataset": "ADVS",
-                  "variable": "PARAMCD",
-                  "comparator": "EQ",
-                  "value": [
-                    "SYSBP"
-                  ]
-                },
-                "id": "AnlsGrouping_08_Param_1",
-                "label": "Systolic Blood Pressure (mmHg)"
-              },
-              {
-                "order": 2,
-                "condition": {
-                  "dataset": "ADVS",
-                  "variable": "PARAMCD",
-                  "comparator": "EQ",
-                  "value": [
-                    "DIABP"
-                  ]
-                },
-                "id": "AnlsGrouping_08_Param_2",
-                "label": "Diastolic Blood Pressure (mmHg)"
-              },
-              {
-                "order": 3,
-                "condition": {
-                  "dataset": "ADVS",
-                  "variable": "PARAMCD",
-                  "comparator": "EQ",
-                  "value": [
-                    "PULSE"
-                  ]
-                },
-                "id": "AnlsGrouping_08_Param_3",
-                "label": "Pulse Rate (beats/min)"
-              },
-              {
-                "order": 4,
-                "condition": {
-                  "dataset": "ADVS",
-                  "variable": "PARAMCD",
-                  "comparator": "EQ",
-                  "value": [
-                    "TEMP"
-                  ]
-                },
-                "id": "AnlsGrouping_08_Param_4",
-                "label": "Temperature (C)"
-              }
-            ]
-          }
+          "groupingId": "AnlsGrouping_08_Param"
         },
         {
           "order": 3,
           "resultsByGroup": true,
-          "dataGrouping": {
-            "id": "AnlsGrouping_09_Visit",
-            "dataDriven": false,
-            "label": "Visit",
-            "groupingVariable": "AVISIT",
-            "groups": [
-              {
-                "order": 1,
-                "condition": {
-                  "dataset": "ADVS",
-                  "variable": "AVISIT",
-                  "comparator": "EQ",
-                  "value": [
-                    "Baseline"
-                  ]
-                },
-                "id": "AnlsGrouping_09_Visit_01",
-                "label": "Baseline"
-              },
-              {
-                "order": 2,
-                "condition": {
-                  "dataset": "ADVS",
-                  "variable": "AVISIT",
-                  "comparator": "EQ",
-                  "value": [
-                    "Week 2"
-                  ]
-                },
-                "id": "AnlsGrouping_09_Visit_02",
-                "label": "Week 2"
-              },
-              {
-                "order": 3,
-                "condition": {
-                  "dataset": "ADVS",
-                  "variable": "AVISIT",
-                  "comparator": "EQ",
-                  "value": [
-                    "Week 4"
-                  ]
-                },
-                "id": "AnlsGrouping_09_Visit_03",
-                "label": "Week 4"
-              },
-              {
-                "order": 4,
-                "condition": {
-                  "dataset": "ADVS",
-                  "variable": "AVISIT",
-                  "comparator": "EQ",
-                  "value": [
-                    "Week 6"
-                  ]
-                },
-                "id": "AnlsGrouping_09_Visit_04",
-                "label": "Week 6"
-              },
-              {
-                "order": 5,
-                "condition": {
-                  "dataset": "ADVS",
-                  "variable": "AVISIT",
-                  "comparator": "EQ",
-                  "value": [
-                    "Week 8"
-                  ]
-                },
-                "id": "AnlsGrouping_09_Visit_05",
-                "label": "Week 8"
-              },
-              {
-                "order": 6,
-                "condition": {
-                  "dataset": "ADVS",
-                  "variable": "AVISIT",
-                  "comparator": "EQ",
-                  "value": [
-                    "Week 12"
-                  ]
-                },
-                "id": "AnlsGrouping_09_Visit_06",
-                "label": "Week 12"
-              },
-              {
-                "order": 7,
-                "condition": {
-                  "dataset": "ADVS",
-                  "variable": "AVISIT",
-                  "comparator": "EQ",
-                  "value": [
-                    "Week 16"
-                  ]
-                },
-                "id": "AnlsGrouping_09_Visit_07",
-                "label": "Week 16"
-              },
-              {
-                "order": 8,
-                "condition": {
-                  "dataset": "ADVS",
-                  "variable": "AVISIT",
-                  "comparator": "EQ",
-                  "value": [
-                    "Week 20"
-                  ]
-                },
-                "id": "AnlsGrouping_09_Visit_08",
-                "label": "Week 20"
-              },
-              {
-                "order": 9,
-                "condition": {
-                  "dataset": "ADVS",
-                  "variable": "AVISIT",
-                  "comparator": "EQ",
-                  "value": [
-                    "Week 24"
-                  ]
-                },
-                "id": "AnlsGrouping_09_Visit_09",
-                "label": "Week 24"
-              },
-              {
-                "order": 10,
-                "condition": {
-                  "dataset": "ADVS",
-                  "variable": "AVISIT",
-                  "comparator": "EQ",
-                  "value": [
-                    "Week 26"
-                  ]
-                },
-                "id": "AnlsGrouping_09_Visit_10",
-                "label": "Week 26"
-              },
-              {
-                "order": 11,
-                "condition": {
-                  "dataset": "ADVS",
-                  "variable": "AVISIT",
-                  "comparator": "EQ",
-                  "value": [
-                    "End of Treatment"
-                  ]
-                },
-                "id": "AnlsGrouping_09_Visit_11",
-                "label": "End of Treatment"
-              }
-            ]
-          }
+          "groupingId": "AnlsGrouping_09_Visit"
         }
       ],
       "dataSubsetId": "Dss09_VS_AnRec",

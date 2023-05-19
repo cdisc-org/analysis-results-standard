@@ -25,6 +25,7 @@ classes:
       - analysisSets
       - analysisGroupings
       - dataSubsets
+      - dataGroupings
       - globalDisplaySections
       - analysisCategorizations
       - analyses
@@ -82,7 +83,6 @@ classes:
     slots:
       - order
       - groupingId
-      - dataGrouping
       - resultsByGroup
     slot_usage:
       order:
@@ -334,6 +334,12 @@ slots:
     inlined_as_list: true
     range: DataSubset
 
+  dataGroupings:
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    range: DataGroupingFactor
+
   analyses:
     multivalued: true
     inlined: true
@@ -427,11 +433,6 @@ slots:
     range: GroupingFactor
     inlined: false
 
-  dataGrouping: 
-    range: DataGroupingFactor
-    inlined: true
-    inlined_as_list: true
-
   resultsByGroup:
     description: Indicates whether a result is expected for each group in the grouping.
     range: boolean
@@ -501,6 +502,7 @@ slots:
   id:
     required: true
     identifier: true
+    range: string
 
   version:
     range: integer

@@ -805,6 +805,12 @@
                     },
                     "type": "array"
                 },
+                "dataGroupings": {
+                    "items": {
+                        "$ref": "#/$defs/DataGroupingFactor"
+                    },
+                    "type": "array"
+                },
                 "dataSubsets": {
                     "items": {
                         "$ref": "#/$defs/DataSubset"
@@ -954,6 +960,12 @@
         "analysisSets": {
             "items": {
                 "$ref": "#/$defs/AnalysisSet"
+            },
+            "type": "array"
+        },
+        "dataGroupings": {
+            "items": {
+                "$ref": "#/$defs/DataGroupingFactor"
             },
             "type": "array"
         },

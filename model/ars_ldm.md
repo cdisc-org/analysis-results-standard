@@ -160,6 +160,7 @@ ReportingEvent ||IdentifyingType.IDENTIFYING|o NestedList : "listOfPlannedOutput
 ReportingEvent ||IdentifyingType.IDENTIFYING}o AnalysisSet : "analysisSets"
 ReportingEvent ||IdentifyingType.IDENTIFYING}o SubjectGroupingFactor : "analysisGroupings"
 ReportingEvent ||IdentifyingType.IDENTIFYING}o DataSubset : "dataSubsets"
+ReportingEvent ||IdentifyingType.IDENTIFYING}o DataGroupingFactor : "dataGroupings"
 ReportingEvent ||IdentifyingType.IDENTIFYING}o DisplaySection : "globalDisplaySections"
 ReportingEvent ||IdentifyingType.IDENTIFYING}o AnalysisCategorization : "analysisCategorizations"
 ReportingEvent ||IdentifyingType.IDENTIFYING}o Analysis : "analyses"

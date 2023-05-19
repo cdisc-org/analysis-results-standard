@@ -7,7 +7,7 @@ A factor used to subdivide data records in an analysis dataset for analysis.
 URI: [https://www.cdisc.org/ars/1-0/DataGroupingFactor](https://www.cdisc.org/ars/1-0/DataGroupingFactor)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[GroupingFactor],[DataGroup]<groups%200..*-++[DataGroupingFactor&#124;id(i):string;label(i):string%20%3F;groupingVariable(i):string%20%3F;dataDriven(i):boolean],[OrderedGroupingFactor]++-%20dataGrouping%200..1>[DataGroupingFactor],[GroupingFactor]^-[DataGroupingFactor],[OrderedGroupingFactor],[DataGroup])](https://yuml.me/diagram/nofunky;dir:TB/class/[GroupingFactor],[DataGroup]<groups%200..*-++[DataGroupingFactor&#124;id(i):string;label(i):string%20%3F;groupingVariable(i):string%20%3F;dataDriven(i):boolean],[OrderedGroupingFactor]++-%20dataGrouping%200..1>[DataGroupingFactor],[GroupingFactor]^-[DataGroupingFactor],[OrderedGroupingFactor],[DataGroup])
+[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[GroupingFactor],[DataGroup]<groups%200..*-++[DataGroupingFactor&#124;id(i):string;label(i):string%20%3F;groupingVariable(i):string%20%3F;dataDriven(i):boolean],[OrderedGroupingFactor]++-%20dataGrouping%200..1>[DataGroupingFactor],[ReportingEvent]++-%20dataGroupings%200..*>[DataGroupingFactor],[GroupingFactor]^-[DataGroupingFactor],[ReportingEvent],[OrderedGroupingFactor],[DataGroup])](https://yuml.me/diagram/nofunky;dir:TB/class/[GroupingFactor],[DataGroup]<groups%200..*-++[DataGroupingFactor&#124;id(i):string;label(i):string%20%3F;groupingVariable(i):string%20%3F;dataDriven(i):boolean],[OrderedGroupingFactor]++-%20dataGrouping%200..1>[DataGroupingFactor],[ReportingEvent]++-%20dataGroupings%200..*>[DataGroupingFactor],[GroupingFactor]^-[DataGroupingFactor],[ReportingEvent],[OrderedGroupingFactor],[DataGroup])
 
 ## Parents
 
@@ -16,6 +16,7 @@ URI: [https://www.cdisc.org/ars/1-0/DataGroupingFactor](https://www.cdisc.org/ar
 ## Referenced by Class
 
  *  **None** *[dataGrouping](dataGrouping.md)*  <sub>0..1</sub>  **[DataGroupingFactor](DataGroupingFactor.md)**
+ *  **None** *[dataGroupings](dataGroupings.md)*  <sub>0..\*</sub>  **[DataGroupingFactor](DataGroupingFactor.md)**
 
 ## Attributes
 

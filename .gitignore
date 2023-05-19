@@ -1,1 +1,3 @@
 workfiles/examples/~$*.xlsx
+venv
+__pycache__

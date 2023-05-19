@@ -464,6 +464,21 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "dataGroupings",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/dataGroupings",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/dataGroupings",
+      "multivalued": true,
+      "owner": "ReportingEvent",
+      "domain_of": [
+        "ReportingEvent"
+      ],
+      "range": "DataGroupingFactor",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "analyses",
       "definition_uri": "https://www.cdisc.org/ars/1-0/analyses",
       "from_schema": "https://www.cdisc.org/ars/1-0",
@@ -1567,6 +1582,7 @@
         "analysisSets",
         "analysisGroupings",
         "dataSubsets",
+        "dataGroupings",
         "globalDisplaySections",
         "analysisCategorizations",
         "analyses",
@@ -2063,9 +2079,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "ars_ldm.yaml",
-  "source_file_date": "2023-05-11T21:26:16",
-  "source_file_size": 11878,
-  "generation_date": "2023-05-11T21:26:39",
+  "source_file_date": "2023-05-18T12:23:27",
+  "source_file_size": 12040,
+  "generation_date": "2023-05-18T12:24:04",
   "@type": "SchemaDefinition",
   "@context": [
     ".\\analysis-results-standard\\project\\/jsonld/ars_ldm.context.jsonld",

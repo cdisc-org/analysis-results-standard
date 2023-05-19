@@ -1,5 +1,5 @@
 # Auto generated from ars_ldm.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-05-11T21:26:22
+# Generation date: 2023-05-18T12:23:50
 # Schema: ars_ldm
 #
 # id: https://www.cdisc.org/ars/1-0
@@ -142,6 +142,7 @@ class ReportingEvent(NamedObject):
     analysisSets: Optional[Union[Dict[Union[str, AnalysisSetId], Union[dict, "AnalysisSet"]], List[Union[dict, "AnalysisSet"]]]] = empty_dict()
     analysisGroupings: Optional[Union[Dict[Union[str, SubjectGroupingFactorId], Union[dict, "SubjectGroupingFactor"]], List[Union[dict, "SubjectGroupingFactor"]]]] = empty_dict()
     dataSubsets: Optional[Union[Dict[Union[str, DataSubsetId], Union[dict, "DataSubset"]], List[Union[dict, "DataSubset"]]]] = empty_dict()
+    dataGroupings: Optional[Union[Dict[Union[str, DataGroupingFactorId], Union[dict, "DataGroupingFactor"]], List[Union[dict, "DataGroupingFactor"]]]] = empty_dict()
     globalDisplaySections: Optional[Union[Union[dict, "DisplaySection"], List[Union[dict, "DisplaySection"]]]] = empty_list()
     analysisCategorizations: Optional[Union[Dict[Union[str, AnalysisCategorizationId], Union[dict, "AnalysisCategorization"]], List[Union[dict, "AnalysisCategorization"]]]] = empty_dict()
     analyses: Optional[Union[Dict[Union[str, AnalysisId], Union[dict, "Analysis"]], List[Union[dict, "Analysis"]]]] = empty_dict()
@@ -162,6 +163,8 @@ class ReportingEvent(NamedObject):
         self._normalize_inlined_as_list(slot_name="analysisGroupings", slot_type=SubjectGroupingFactor, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="dataSubsets", slot_type=DataSubset, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="dataGroupings", slot_type=DataGroupingFactor, key_name="id", keyed=True)
 
         if not isinstance(self.globalDisplaySections, list):
             self.globalDisplaySections = [self.globalDisplaySections] if self.globalDisplaySections is not None else []
@@ -1236,6 +1239,9 @@ slots.groups = Slot(uri=DEFAULT_.groups, name="groups", curie=DEFAULT_.curie('gr
 
 slots.dataSubsets = Slot(uri=DEFAULT_.dataSubsets, name="dataSubsets", curie=DEFAULT_.curie('dataSubsets'),
                    model_uri=DEFAULT_.dataSubsets, domain=None, range=Optional[Union[Dict[Union[str, DataSubsetId], Union[dict, DataSubset]], List[Union[dict, DataSubset]]]])
+
+slots.dataGroupings = Slot(uri=DEFAULT_.dataGroupings, name="dataGroupings", curie=DEFAULT_.curie('dataGroupings'),
+                   model_uri=DEFAULT_.dataGroupings, domain=None, range=Optional[Union[Dict[Union[str, DataGroupingFactorId], Union[dict, DataGroupingFactor]], List[Union[dict, DataGroupingFactor]]]])
 
 slots.analyses = Slot(uri=DEFAULT_.analyses, name="analyses", curie=DEFAULT_.curie('analyses'),
                    model_uri=DEFAULT_.analyses, domain=None, range=Optional[Union[Dict[Union[str, AnalysisId], Union[dict, Analysis]], List[Union[dict, Analysis]]]])

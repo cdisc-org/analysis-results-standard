@@ -66,6 +66,7 @@ class ArsLdmAPI:
              analysisSets: Union[str, MatchExpression] = None,
              analysisGroupings: Union[str, MatchExpression] = None,
              dataSubsets: Union[str, MatchExpression] = None,
+             dataGroupings: Union[str, MatchExpression] = None,
              globalDisplaySections: Union[str, MatchExpression] = None,
              analysisCategorizations: Union[str, MatchExpression] = None,
              analyses: Union[str, MatchExpression] = None,
@@ -82,6 +83,7 @@ class ArsLdmAPI:
         :param analysisSets: None
         :param analysisGroupings: None
         :param dataSubsets: None
+        :param dataGroupings: None
         :param globalDisplaySections: None
         :param analysisCategorizations: None
         :param analyses: None
@@ -102,6 +104,8 @@ class ArsLdmAPI:
                                                  analysisGroupings=analysisGroupings,
                                                  
                                                  dataSubsets=dataSubsets,
+                                                 
+                                                 dataGroupings=dataGroupings,
                                                  
                                                  globalDisplaySections=globalDisplaySections,
                                                  
