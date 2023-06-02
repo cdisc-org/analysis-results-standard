@@ -1,36 +1,215 @@
-
 # Class: DataGroup
 
 
-A subdivision of the analysis dataset records based on a defined factor.
-
-URI: [https://www.cdisc.org/ars/1-0/DataGroup](https://www.cdisc.org/ars/1-0/DataGroup)
+_A subdivision of the analysis dataset records based on a defined factor._
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Group],[DataGroupingFactor],[DataGroupingFactor]++-%20groups%200..*>[DataGroup&#124;id(i):string;label(i):string%20%3F;level(i):integer%20%3F;order(i):integer%20%3F],[Group]^-[DataGroup],[Condition],[CompoundGroupExpression])](https://yuml.me/diagram/nofunky;dir:TB/class/[Group],[DataGroupingFactor],[DataGroupingFactor]++-%20groups%200..*>[DataGroup&#124;id(i):string;label(i):string%20%3F;level(i):integer%20%3F;order(i):integer%20%3F],[Group]^-[DataGroup],[Condition],[CompoundGroupExpression])
-
-## Parents
-
- *  is_a: [Group](Group.md) - A subdivision of the subject population or analysis dataset record set based on a defined factor.
-
-## Referenced by Class
-
- *  **[DataGroupingFactor](DataGroupingFactor.md)** *[DataGroupingFactor➞groups](DataGroupingFactor_groups.md)*  <sub>0..\*</sub>  **[DataGroup](DataGroup.md)**
-
-## Attributes
 
 
-### Inherited from Group:
 
- * [level](level.md)  <sub>0..1</sub>
-     * Range: [Integer](types/Integer.md)
- * [order](order.md)  <sub>0..1</sub>
-     * Range: [Integer](types/Integer.md)
- * [condition](condition.md)  <sub>0..1</sub>
-     * Range: [Condition](Condition.md)
- * [id](id.md)  <sub>1..1</sub>
-     * Range: [String](types/String.md)
- * [label](label.md)  <sub>0..1</sub>
-     * Range: [String](types/String.md)
- * [Group➞compoundExpression](Group_compoundExpression.md)  <sub>0..1</sub>
-     * Range: [CompoundGroupExpression](CompoundGroupExpression.md)
+URI: [ars:DataGroup](https://www.cdisc.org/ars/1-0DataGroup)
+
+
+
+```mermaid
+ classDiagram
+    class DataGroup
+      Group <|-- DataGroup
+      
+      DataGroup : compoundExpression
+        
+          DataGroup --|> CompoundGroupExpression : compoundExpression
+        
+      DataGroup : condition
+        
+          DataGroup --|> WhereClauseCondition : condition
+        
+      DataGroup : id
+        
+      DataGroup : label
+        
+      DataGroup : level
+        
+      DataGroup : order
+        
+      
+```
+
+
+
+
+
+## Inheritance
+* [WhereClause](WhereClause.md)
+    * [Group](Group.md)
+        * **DataGroup**
+
+
+
+## Slots
+
+| Name | Cardinality and Range | Description | Inheritance |
+| ---  | --- | --- | --- |
+| [id](id.md) | 1..1 <br/> [String](String.md) |  | [Group](Group.md) |
+| [label](label.md) | 0..1 <br/> [String](String.md) |  | [Group](Group.md) |
+| [level](level.md) | 0..1 <br/> [Integer](Integer.md) |  | [WhereClause](WhereClause.md) |
+| [order](order.md) | 0..1 <br/> [Integer](Integer.md) |  | [WhereClause](WhereClause.md) |
+| [condition](condition.md) | 0..1 <br/> [WhereClauseCondition](WhereClauseCondition.md) |  | [WhereClause](WhereClause.md) |
+| [compoundExpression](compoundExpression.md) | 0..1 <br/> [CompoundGroupExpression](CompoundGroupExpression.md) |  | [WhereClause](WhereClause.md) |
+
+
+
+
+
+## Usages
+
+| used by | used in | type | used |
+| ---  | --- | --- | --- |
+| [DataGroupingFactor](DataGroupingFactor.md) | [groups](groups.md) | range | [DataGroup](DataGroup.md) |
+
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://www.cdisc.org/ars/1-0
+
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | ars:DataGroup |
+| native | ars:DataGroup |
+
+
+
+
+
+## LinkML Source
+
+<!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
+
+### Direct
+
+<details>
+```yaml
+name: DataGroup
+description: A subdivision of the analysis dataset records based on a defined factor.
+from_schema: https://www.cdisc.org/ars/1-0
+rank: 1000
+is_a: Group
+
+```
+</details>
+
+### Induced
+
+<details>
+```yaml
+name: DataGroup
+description: A subdivision of the analysis dataset records based on a defined factor.
+from_schema: https://www.cdisc.org/ars/1-0
+rank: 1000
+is_a: Group
+attributes:
+  id:
+    name: id
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    identifier: true
+    alias: id
+    owner: DataGroup
+    domain_of:
+    - AnalysisCategorization
+    - AnalysisCategory
+    - Analysis
+    - AnalysisMethod
+    - Operation
+    - ReferencedOperationRelationship
+    - Output
+    - OutputDisplay
+    - DisplaySubSection
+    - AnalysisSet
+    - GroupingFactor
+    - Group
+    - DataSubset
+    - ReferenceDocument
+    - SponsorTerm
+    range: string
+    required: true
+  label:
+    name: label
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: label
+    owner: DataGroup
+    domain_of:
+    - AnalysisCategorization
+    - AnalysisCategory
+    - AnalysisMethod
+    - Operation
+    - AnalysisSet
+    - GroupingFactor
+    - Group
+    - DataSubset
+    - PageRef
+    range: string
+  level:
+    name: level
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: level
+    owner: DataGroup
+    domain_of:
+    - OrderedListItem
+    - WhereClause
+    range: integer
+  order:
+    name: order
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: order
+    owner: DataGroup
+    domain_of:
+    - OrderedListItem
+    - OrderedGroupingFactor
+    - OrderedDisplay
+    - DisplaySubSection
+    - WhereClause
+    range: integer
+  condition:
+    name: condition
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: condition
+    owner: DataGroup
+    domain_of:
+    - WhereClause
+    range: WhereClauseCondition
+  compoundExpression:
+    name: compoundExpression
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: compoundExpression
+    owner: DataGroup
+    domain_of:
+    - WhereClause
+    range: CompoundGroupExpression
+
+```
+</details>

@@ -1,26 +1,150 @@
-
 # Class: ResultGroup
 
 
+_For the specified grouping factor, an indication of the specific group of subjects or data records associated with the analysis result._
 
 
-URI: [https://www.cdisc.org/ars/1-0/ResultGroup](https://www.cdisc.org/ars/1-0/ResultGroup)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Group]<groupId%200..1-%20[ResultGroup&#124;groupValue:string%20%3F],[GroupingFactor]<groupingId%200..1-%20[ResultGroup],[OperationResult]++-%20resultGroups%200..*>[ResultGroup],[OperationResult],[GroupingFactor],[Group])](https://yuml.me/diagram/nofunky;dir:TB/class/[Group]<groupId%200..1-%20[ResultGroup&#124;groupValue:string%20%3F],[GroupingFactor]<groupingId%200..1-%20[ResultGroup],[OperationResult]++-%20resultGroups%200..*>[ResultGroup],[OperationResult],[GroupingFactor],[Group])
 
-## Referenced by Class
-
- *  **None** *[resultGroups](resultGroups.md)*  <sub>0..\*</sub>  **[ResultGroup](ResultGroup.md)**
-
-## Attributes
+URI: [ars:ResultGroup](https://www.cdisc.org/ars/1-0ResultGroup)
 
 
-### Own
 
- * [groupingId](groupingId.md)  <sub>0..1</sub>
-     * Range: [GroupingFactor](GroupingFactor.md)
- * [groupId](groupId.md)  <sub>0..1</sub>
-     * Range: [Group](Group.md)
- * [groupValue](groupValue.md)  <sub>0..1</sub>
-     * Range: [String](types/String.md)
+```mermaid
+ classDiagram
+    class ResultGroup
+      ResultGroup : groupId
+        
+          ResultGroup --|> Group : groupId
+        
+      ResultGroup : groupingId
+        
+          ResultGroup --|> GroupingFactor : groupingId
+        
+      ResultGroup : groupValue
+        
+      
+```
+
+
+
+
+<!-- no inheritance hierarchy -->
+
+
+## Slots
+
+| Name | Cardinality and Range | Description | Inheritance |
+| ---  | --- | --- | --- |
+| [groupingId](groupingId.md) | 0..1 <br/> [GroupingFactor](GroupingFactor.md) |  | direct |
+| [groupId](groupId.md) | 0..1 <br/> [Group](Group.md) |  | direct |
+| [groupValue](groupValue.md) | 0..1 <br/> [String](String.md) |  | direct |
+
+
+
+
+
+## Usages
+
+| used by | used in | type | used |
+| ---  | --- | --- | --- |
+| [OperationResult](OperationResult.md) | [resultGroups](resultGroups.md) | range | [ResultGroup](ResultGroup.md) |
+
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://www.cdisc.org/ars/1-0
+
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | ars:ResultGroup |
+| native | ars:ResultGroup |
+
+
+
+
+
+## LinkML Source
+
+<!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
+
+### Direct
+
+<details>
+```yaml
+name: ResultGroup
+description: For the specified grouping factor, an indication of the specific group
+  of subjects or data records associated with the analysis result.
+from_schema: https://www.cdisc.org/ars/1-0
+rank: 1000
+slots:
+- groupingId
+- groupId
+- groupValue
+
+```
+</details>
+
+### Induced
+
+<details>
+```yaml
+name: ResultGroup
+description: For the specified grouping factor, an indication of the specific group
+  of subjects or data records associated with the analysis result.
+from_schema: https://www.cdisc.org/ars/1-0
+rank: 1000
+attributes:
+  groupingId:
+    name: groupingId
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: groupingId
+    owner: ResultGroup
+    domain_of:
+    - OrderedGroupingFactor
+    - ResultGroup
+    range: GroupingFactor
+    inlined: false
+  groupId:
+    name: groupId
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: groupId
+    owner: ResultGroup
+    domain_of:
+    - ResultGroup
+    range: Group
+    inlined: false
+  groupValue:
+    name: groupValue
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: groupValue
+    owner: ResultGroup
+    domain_of:
+    - ResultGroup
+    range: string
+
+```
+</details>

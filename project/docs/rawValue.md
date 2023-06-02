@@ -1,22 +1,61 @@
-
 # Slot: rawValue
 
+URI: [ars:rawValue](https://www.cdisc.org/ars/1-0rawValue)
 
 
 
-URI: [https://www.cdisc.org/ars/1-0/rawValue](https://www.cdisc.org/ars/1-0/rawValue)
+<!-- no inheritance hierarchy -->
 
 
-## Domain and Range
-
-None &#8594;  <sub>0..1</sub> [String](types/String.md)
-
-## Parents
 
 
-## Children
+## Applicable Classes
+
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+[OperationResult](OperationResult.md) | The result of an analysis method operation performed on a subdivision of subj... |  no  |
 
 
-## Used by
 
- * [OperationResult](OperationResult.md)
+
+
+
+
+## Properties
+
+* Range: [String](String.md)
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://www.cdisc.org/ars/1-0
+
+
+
+
+## LinkML Source
+
+<details>
+```yaml
+name: rawValue
+from_schema: https://www.cdisc.org/ars/1-0
+rank: 1000
+alias: rawValue
+domain_of:
+- OperationResult
+range: string
+
+```
+</details>

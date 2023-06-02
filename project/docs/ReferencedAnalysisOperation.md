@@ -1,24 +1,154 @@
-
 # Class: ReferencedAnalysisOperation
 
 
+_An indication of the analysis that contains results of a referenced operation._
 
 
-URI: [https://www.cdisc.org/ars/1-0/ReferencedAnalysisOperation](https://www.cdisc.org/ars/1-0/ReferencedAnalysisOperation)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[ReferencedOperationRelationship],[Analysis]<analysisId%201..1-%20[ReferencedAnalysisOperation],[ReferencedOperationRelationship]<referencedOperationId%200..1-%20[ReferencedAnalysisOperation],[Analysis]++-%20referencedAnalysisOperations%200..*>[ReferencedAnalysisOperation],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[ReferencedOperationRelationship],[Analysis]<analysisId%201..1-%20[ReferencedAnalysisOperation],[ReferencedOperationRelationship]<referencedOperationId%200..1-%20[ReferencedAnalysisOperation],[Analysis]++-%20referencedAnalysisOperations%200..*>[ReferencedAnalysisOperation],[Analysis])
 
-## Referenced by Class
-
- *  **None** *[referencedAnalysisOperations](referencedAnalysisOperations.md)*  <sub>0..\*</sub>  **[ReferencedAnalysisOperation](ReferencedAnalysisOperation.md)**
-
-## Attributes
+URI: [ars:ReferencedAnalysisOperation](https://www.cdisc.org/ars/1-0ReferencedAnalysisOperation)
 
 
-### Own
 
- * [referencedOperationId](referencedOperationId.md)  <sub>0..1</sub>
-     * Range: [ReferencedOperationRelationship](ReferencedOperationRelationship.md)
- * [ReferencedAnalysisOperation➞analysisId](ReferencedAnalysisOperation_analysisId.md)  <sub>1..1</sub>
-     * Range: [Analysis](Analysis.md)
+```mermaid
+ classDiagram
+    class ReferencedAnalysisOperation
+      ReferencedAnalysisOperation : analysisId
+        
+          ReferencedAnalysisOperation --|> Analysis : analysisId
+        
+      ReferencedAnalysisOperation : referencedOperationId
+        
+          ReferencedAnalysisOperation --|> ReferencedOperationRelationship : referencedOperationId
+        
+      
+```
+
+
+
+
+<!-- no inheritance hierarchy -->
+
+
+## Slots
+
+| Name | Cardinality and Range | Description | Inheritance |
+| ---  | --- | --- | --- |
+| [referencedOperationId](referencedOperationId.md) | 0..1 <br/> [ReferencedOperationRelationship](ReferencedOperationRelationship.md) |  | direct |
+| [analysisId](analysisId.md) | 1..1 <br/> [Analysis](Analysis.md) |  | direct |
+
+
+
+
+
+## Usages
+
+| used by | used in | type | used |
+| ---  | --- | --- | --- |
+| [Analysis](Analysis.md) | [referencedAnalysisOperations](referencedAnalysisOperations.md) | range | [ReferencedAnalysisOperation](ReferencedAnalysisOperation.md) |
+
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://www.cdisc.org/ars/1-0
+
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | ars:ReferencedAnalysisOperation |
+| native | ars:ReferencedAnalysisOperation |
+
+
+
+
+
+## LinkML Source
+
+<!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
+
+### Direct
+
+<details>
+```yaml
+name: ReferencedAnalysisOperation
+description: An indication of the analysis that contains results of a referenced operation.
+from_schema: https://www.cdisc.org/ars/1-0
+rank: 1000
+slots:
+- referencedOperationId
+- analysisId
+slot_usage:
+  analysisId:
+    name: analysisId
+    domain_of:
+    - OrderedListItem
+    - ReferencedAnalysisOperation
+    - ReferencedOperationRelationship
+    required: true
+
+```
+</details>
+
+### Induced
+
+<details>
+```yaml
+name: ReferencedAnalysisOperation
+description: An indication of the analysis that contains results of a referenced operation.
+from_schema: https://www.cdisc.org/ars/1-0
+rank: 1000
+slot_usage:
+  analysisId:
+    name: analysisId
+    domain_of:
+    - OrderedListItem
+    - ReferencedAnalysisOperation
+    - ReferencedOperationRelationship
+    required: true
+attributes:
+  referencedOperationId:
+    name: referencedOperationId
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: referencedOperationId
+    owner: ReferencedAnalysisOperation
+    domain_of:
+    - ReferencedAnalysisOperation
+    range: ReferencedOperationRelationship
+    inlined: false
+  analysisId:
+    name: analysisId
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    multivalued: false
+    alias: analysisId
+    owner: ReferencedAnalysisOperation
+    domain_of:
+    - OrderedListItem
+    - ReferencedAnalysisOperation
+    - ReferencedOperationRelationship
+    range: Analysis
+    required: true
+    inlined: false
+
+```
+</details>

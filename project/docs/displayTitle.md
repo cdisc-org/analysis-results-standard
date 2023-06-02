@@ -1,22 +1,61 @@
-
 # Slot: displayTitle
 
+URI: [ars:displayTitle](https://www.cdisc.org/ars/1-0displayTitle)
 
 
 
-URI: [https://www.cdisc.org/ars/1-0/displayTitle](https://www.cdisc.org/ars/1-0/displayTitle)
+<!-- no inheritance hierarchy -->
 
 
-## Domain and Range
-
-None &#8594;  <sub>0..1</sub> [String](types/String.md)
-
-## Parents
 
 
-## Children
+## Applicable Classes
+
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+[OutputDisplay](OutputDisplay.md) |  |  no  |
 
 
-## Used by
 
- * [Display](Display.md)
+
+
+
+
+## Properties
+
+* Range: [String](String.md)
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://www.cdisc.org/ars/1-0
+
+
+
+
+## LinkML Source
+
+<details>
+```yaml
+name: displayTitle
+from_schema: https://www.cdisc.org/ars/1-0
+rank: 1000
+alias: displayTitle
+domain_of:
+- OutputDisplay
+range: string
+
+```
+</details>

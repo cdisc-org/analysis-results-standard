@@ -1,22 +1,63 @@
-
 # Slot: analysisSetId
 
+URI: [ars:analysisSetId](https://www.cdisc.org/ars/1-0analysisSetId)
 
 
 
-URI: [https://www.cdisc.org/ars/1-0/analysisSetId](https://www.cdisc.org/ars/1-0/analysisSetId)
+<!-- no inheritance hierarchy -->
 
 
-## Domain and Range
-
-None &#8594;  <sub>0..1</sub> [AnalysisSet](AnalysisSet.md)
-
-## Parents
 
 
-## Children
+## Applicable Classes
+
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+[Analysis](Analysis.md) | An analysis that is designed to meet a requirement of the reporting event |  no  |
 
 
-## Used by
 
- * [Analysis](Analysis.md)
+
+
+
+
+## Properties
+
+* Range: [AnalysisSet](AnalysisSet.md)
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://www.cdisc.org/ars/1-0
+
+
+
+
+## LinkML Source
+
+<details>
+```yaml
+name: analysisSetId
+from_schema: https://www.cdisc.org/ars/1-0
+rank: 1000
+multivalued: false
+alias: analysisSetId
+domain_of:
+- Analysis
+range: AnalysisSet
+inlined: false
+
+```
+</details>

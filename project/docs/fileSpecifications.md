@@ -1,22 +1,66 @@
-
 # Slot: fileSpecifications
 
+URI: [ars:fileSpecifications](https://www.cdisc.org/ars/1-0fileSpecifications)
 
 
 
-URI: [https://www.cdisc.org/ars/1-0/fileSpecifications](https://www.cdisc.org/ars/1-0/fileSpecifications)
+<!-- no inheritance hierarchy -->
 
 
-## Domain and Range
-
-None &#8594;  <sub>0..\*</sub> [File](File.md)
-
-## Parents
 
 
-## Children
+## Applicable Classes
+
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+[Output](Output.md) |  |  no  |
 
 
-## Used by
 
- * [Output](Output.md)
+
+
+
+
+## Properties
+
+* Range: [File](File.md)
+
+* Multivalued: True
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://www.cdisc.org/ars/1-0
+
+
+
+
+## LinkML Source
+
+<details>
+```yaml
+name: fileSpecifications
+from_schema: https://www.cdisc.org/ars/1-0
+rank: 1000
+multivalued: true
+alias: fileSpecifications
+domain_of:
+- Output
+range: File
+inlined: true
+inlined_as_list: true
+
+```
+</details>

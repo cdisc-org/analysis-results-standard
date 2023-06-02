@@ -4,6 +4,10 @@ type Analysis
     id: String!
     version: Integer
     categoryIds: [AnalysisCategory]
+    description: String
+    documentRefs: [DocumentRef]
+    reason: String!
+    purpose: String!
     analysisSetId: AnalysisSet
     orderedGroupings: [OrderedGroupingFactor]
     dataSubsetId: DataSubset
@@ -32,7 +36,7 @@ type AnalysisGroup
   {
     level: Integer
     order: Integer
-    condition: Condition
+    condition: WhereClauseCondition
     id: String!
     label: String
     compoundExpression: CompoundGroupExpression
@@ -45,55 +49,49 @@ type AnalysisMethod
     label: String
     description: String
     operations: [Operation]!
+    codeTemplate: ProgrammingCodeTemplate
   }
 
 type AnalysisSet
   {
     level: Integer
     order: Integer
-    condition: Condition
+    condition: WhereClauseCondition
     id: String!
     label: String
     compoundExpression: CompoundSetExpression
   }
 
-type CompoundExpression
+type CodeParameter
   {
-    logicalOperator: LogicalOperator!
-    whereClauses: [WhereClause]
+    name: String!
+    description: String
+    valueSource: String
   }
 
 type CompoundGroupExpression
   {
-    logicalOperator: LogicalOperator!
+    logicalOperator: ExpressionLogicalOperator!
     whereClauses: [Group]
   }
 
 type CompoundSetExpression
   {
-    logicalOperator: LogicalOperator!
+    logicalOperator: ExpressionLogicalOperator!
     whereClauses: [AnalysisSet]
   }
 
 type CompoundSubsetExpression
   {
-    logicalOperator: LogicalOperator!
+    logicalOperator: ExpressionLogicalOperator!
     whereClauses: [WhereClause]
-  }
-
-type Condition
-  {
-    dataset: String
-    variable: String
-    comparator: Comparator
-    value: [String]
   }
 
 type DataGroup
   {
     level: Integer
     order: Integer
-    condition: Condition
+    condition: WhereClauseCondition
     id: String!
     label: String
     compoundExpression: CompoundGroupExpression
@@ -112,24 +110,15 @@ type DataSubset
   {
     level: Integer
     order: Integer
-    condition: Condition
+    condition: WhereClauseCondition
     id: String!
     label: String
     compoundExpression: CompoundSubsetExpression
   }
 
-type Display
-  {
-    name: String!
-    id: String!
-    version: Integer
-    displayTitle: String
-    displaySections: [DisplaySection]
-  }
-
 type DisplaySection
   {
-    sectionType: SectionType
+    sectionType: DisplaySectionType
     subSections: [DisplaySubSection]
   }
 
@@ -140,11 +129,17 @@ type DisplaySubSection
     text: String
   }
 
+type DocumentRef
+  {
+    referenceDocumentId: ReferenceDocument!
+    pageRefs: [PageRef]
+  }
+
 type File
   {
     name: String!
-    fileType: FileType
-    location: String
+    fileType: String
+    location: Uri
     style: String
   }
 
@@ -152,7 +147,7 @@ type Group
   {
     level: Integer
     order: Integer
-    condition: Condition
+    condition: WhereClauseCondition
     id: String!
     label: String
     compoundExpression: CompoundGroupExpression
@@ -194,11 +189,16 @@ type OperationResult
     formattedValue: String
   }
 
+type OrderedDisplay
+  {
+    order: Integer!
+    display: OutputDisplay
+  }
+
 type OrderedGroupingFactor
   {
     order: Integer!
     groupingId: GroupingFactor
-    dataGrouping: DataGroupingFactor
     resultsByGroup: Boolean!
   }
 
@@ -217,14 +217,68 @@ type Output
     id: String!
     version: Integer
     fileSpecifications: [File]
-    outputDisplays: [OutputDisplay]
+    displays: [OrderedDisplay]
     categoryIds: [AnalysisCategory]
   }
 
 type OutputDisplay
   {
-    order: Integer!
-    display: Display
+    name: String!
+    id: String!
+    version: Integer
+    displayTitle: String
+    displaySections: [DisplaySection]
+  }
+
+type PageNameList
+  {
+    pageNames: [Integer]!
+  }
+
+type PageNameRef
+  {
+    label: String
+    refType: PageRefType!
+    pages: PageNameList
+  }
+
+type PageNumberList
+  {
+    pageNumbers: [Integer]!
+  }
+
+type PageNumberListRef
+  {
+    label: String
+    refType: PageRefType!
+    pages: PageNumberList
+  }
+
+type PageNumberRangeRef
+  {
+    label: String
+    refType: PageRefType!
+    pages: PageRange
+  }
+
+type PageRange
+  {
+    firstPage: Integer!
+    lastPage: Integer!
+  }
+
+type PageRef
+  {
+    refType: PageRefType!
+    label: String
+    pages: String
+  }
+
+type ProgrammingCodeTemplate
+  {
+    context: String!
+    parameters: [CodeParameter]
+    templateCode: String
   }
 
 type ReferencedAnalysisOperation
@@ -233,10 +287,17 @@ type ReferencedAnalysisOperation
     analysisId: Analysis!
   }
 
+type ReferenceDocument
+  {
+    name: String!
+    id: String!
+    location: Uri
+  }
+
 type ReferencedOperationRelationship
   {
     id: String!
-    referencedOperationRole: OperationRole!
+    referencedOperationRole: String!
     operationId: Operation!
     analysisId: Analysis
     description: String
@@ -256,6 +317,8 @@ type ReportingEvent
     analyses: [Analysis]
     methods: [AnalysisMethod]
     outputs: [Output]
+    referenceDocuments: [ReferenceDocument]
+    terminologyExtentions: [TerminologyExtension]
   }
 
 type ResultGroup
@@ -263,6 +326,13 @@ type ResultGroup
     groupingId: GroupingFactor
     groupId: Group
     groupValue: String
+  }
+
+type SponsorTerm
+  {
+    id: String!
+    submissionValue: String!
+    description: String
   }
 
 type SubjectGroupingFactor
@@ -274,11 +344,31 @@ type SubjectGroupingFactor
     groups: [AnalysisGroup]
   }
 
+type TerminologyExtension
+  {
+    enumeration: ExtensibleTerminology
+    sponsorTerms: [SponsorTerm]!
+  }
+
 type WhereClause
   {
     level: Integer
     order: Integer
-    condition: Condition
-    compoundExpression: CompoundExpression
+    condition: WhereClauseCondition
+    compoundExpression: WhereClauseCompoundExpression
+  }
+
+type WhereClauseCompoundExpression
+  {
+    logicalOperator: ExpressionLogicalOperator!
+    whereClauses: [WhereClause]
+  }
+
+type WhereClauseCondition
+  {
+    dataset: String
+    variable: String
+    comparator: ConditionComparator
+    value: [String]
   }
 

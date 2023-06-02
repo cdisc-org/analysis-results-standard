@@ -1,29 +1,73 @@
-
 # Slot: name
 
+URI: [ars:name](https://www.cdisc.org/ars/1-0name)
 
 
 
-URI: [https://www.cdisc.org/ars/1-0/name](https://www.cdisc.org/ars/1-0/name)
+<!-- no inheritance hierarchy -->
 
 
-## Domain and Range
-
-None &#8594;  <sub>1..1</sub> [String](types/String.md)
-
-## Parents
 
 
-## Children
+## Applicable Classes
+
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+[NamedObject](NamedObject.md) |  |  no  |
+[ReportingEvent](ReportingEvent.md) | A set of analyses and outputs created to meet a specific reporting requiremen... |  no  |
+[OrderedListItem](OrderedListItem.md) | An item (analysis, output or sub-list) ordered relative to other items within... |  no  |
+[Analysis](Analysis.md) | An analysis that is designed to meet a requirement of the reporting event |  no  |
+[AnalysisMethod](AnalysisMethod.md) | A set of one or more statistical operations |  no  |
+[Operation](Operation.md) | A statistical operation that produces a single analysis result value as part ... |  no  |
+[CodeParameter](CodeParameter.md) |  |  no  |
+[File](File.md) |  |  no  |
+[OutputDisplay](OutputDisplay.md) |  |  no  |
+[ReferenceDocument](ReferenceDocument.md) |  |  no  |
 
 
-## Used by
 
- * [Analysis](Analysis.md)
- * [AnalysisMethod](AnalysisMethod.md)
- * [Display](Display.md)
- * [File](File.md)
- * [NamedObject](NamedObject.md)
- * [Operation](Operation.md)
- * [OrderedListItem](OrderedListItem.md)
- * [ReportingEvent](ReportingEvent.md)
+
+
+
+
+## Properties
+
+* Range: [String](String.md)
+
+* Required: True
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://www.cdisc.org/ars/1-0
+
+
+
+
+## LinkML Source
+
+<details>
+```yaml
+name: name
+from_schema: https://www.cdisc.org/ars/1-0
+rank: 1000
+alias: name
+domain_of:
+- NamedObject
+range: string
+required: true
+
+```
+</details>

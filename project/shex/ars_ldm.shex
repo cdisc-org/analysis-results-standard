@@ -36,350 +36,491 @@ linkml:Objectidentifier IRI
 
 linkml:Nodeidentifier NONLITERAL
 
-<Analysis> CLOSED {
-    (  $<Analysis_tes> (  &<NamedObject_tes> ;
-          rdf:type [ <NamedObject> ] ? ;
-          <version> @linkml:Integer ? ;
-          <categoryIds> @<AnalysisCategory> * ;
-          <analysisSetId> @<AnalysisSet> ? ;
-          <orderedGroupings> @<OrderedGroupingFactor> * ;
-          <dataSubsetId> @<DataSubset> ? ;
-          <dataset> @linkml:String ? ;
-          <variable> @linkml:String ? ;
-          <methodId> @<AnalysisMethod> ;
-          <referencedAnalysisOperations> @<ReferencedAnalysisOperation> * ;
-          <results> @<OperationResult> *
+<https://www.cdisc.org/ars/1-0Analysis> CLOSED {
+    (  $<https://www.cdisc.org/ars/1-0Analysis_tes> (  &<https://www.cdisc.org/ars/1-0NamedObject_tes> ;
+          rdf:type [ <https://www.cdisc.org/ars/1-0NamedObject> ] ? ;
+          <https://www.cdisc.org/ars/1-0version> @linkml:Integer ? ;
+          <https://www.cdisc.org/ars/1-0categoryIds> @<https://www.cdisc.org/ars/1-0AnalysisCategory> * ;
+          <https://www.cdisc.org/ars/1-0description> @linkml:String ? ;
+          <https://www.cdisc.org/ars/1-0documentRefs> @<https://www.cdisc.org/ars/1-0DocumentRef> * ;
+          <https://www.cdisc.org/ars/1-0reason> @linkml:String ;
+          <https://www.cdisc.org/ars/1-0purpose> @linkml:String ;
+          <https://www.cdisc.org/ars/1-0analysisSetId> @<https://www.cdisc.org/ars/1-0AnalysisSet> ? ;
+          <https://www.cdisc.org/ars/1-0orderedGroupings> @<https://www.cdisc.org/ars/1-0OrderedGroupingFactor> * ;
+          <https://www.cdisc.org/ars/1-0dataSubsetId> @<https://www.cdisc.org/ars/1-0DataSubset> ? ;
+          <https://www.cdisc.org/ars/1-0dataset> @linkml:String ? ;
+          <https://www.cdisc.org/ars/1-0variable> @linkml:String ? ;
+          <https://www.cdisc.org/ars/1-0methodId> @<https://www.cdisc.org/ars/1-0AnalysisMethod> ;
+          <https://www.cdisc.org/ars/1-0referencedAnalysisOperations> @<https://www.cdisc.org/ars/1-0ReferencedAnalysisOperation> *
+          ;
+          <https://www.cdisc.org/ars/1-0results> @<https://www.cdisc.org/ars/1-0OperationResult> *
        ) ;
-       rdf:type [ <Analysis> ]
+       rdf:type [ <https://www.cdisc.org/ars/1-0Analysis> ]
     )
 }
 
-<AnalysisCategorization> CLOSED {
-    (  $<AnalysisCategorization_tes> (  <label> @linkml:String ? ;
-          <categories> @<AnalysisCategory> +
+<https://www.cdisc.org/ars/1-0AnalysisCategorization> CLOSED {
+    (  $<https://www.cdisc.org/ars/1-0AnalysisCategorization_tes> (  <https://www.cdisc.org/ars/1-0label> @linkml:String ? ;
+          <https://www.cdisc.org/ars/1-0categories> @<https://www.cdisc.org/ars/1-0AnalysisCategory> +
        ) ;
-       rdf:type [ <AnalysisCategorization> ]
+       rdf:type [ <https://www.cdisc.org/ars/1-0AnalysisCategorization> ]
     )
 }
 
-<AnalysisCategory> CLOSED {
-    (  $<AnalysisCategory_tes> (  <label> @linkml:String ? ;
-          <subCategorizations> @<AnalysisCategorization> *
+<https://www.cdisc.org/ars/1-0AnalysisCategory> CLOSED {
+    (  $<https://www.cdisc.org/ars/1-0AnalysisCategory_tes> (  <https://www.cdisc.org/ars/1-0label> @linkml:String ? ;
+          <https://www.cdisc.org/ars/1-0subCategorizations> @<https://www.cdisc.org/ars/1-0AnalysisCategorization> *
        ) ;
-       rdf:type [ <AnalysisCategory> ]
+       rdf:type [ <https://www.cdisc.org/ars/1-0AnalysisCategory> ]
     )
 }
 
-<AnalysisGroup> CLOSED {
-    (  $<AnalysisGroup_tes> (  &<Group_tes> ;
-          rdf:type [ <Group> ] ?
+<https://www.cdisc.org/ars/1-0AnalysisGroup> CLOSED {
+    (  $<https://www.cdisc.org/ars/1-0AnalysisGroup_tes> (  &<https://www.cdisc.org/ars/1-0Group_tes> ;
+          rdf:type [ <https://www.cdisc.org/ars/1-0Group> ] ?
        ) ;
-       rdf:type [ <AnalysisGroup> ]
+       rdf:type [ <https://www.cdisc.org/ars/1-0AnalysisGroup> ]
     )
 }
 
-<AnalysisMethod> CLOSED {
-    (  $<AnalysisMethod_tes> (  &<NamedObject_tes> ;
-          rdf:type [ <NamedObject> ] ? ;
-          <label> @linkml:String ? ;
-          <description> @linkml:String ? ;
-          <operations> @<Operation> +
+<https://www.cdisc.org/ars/1-0AnalysisMethod> CLOSED {
+    (  $<https://www.cdisc.org/ars/1-0AnalysisMethod_tes> (  &<https://www.cdisc.org/ars/1-0NamedObject_tes> ;
+          rdf:type [ <https://www.cdisc.org/ars/1-0NamedObject> ] ? ;
+          <https://www.cdisc.org/ars/1-0label> @linkml:String ? ;
+          <https://www.cdisc.org/ars/1-0description> @linkml:String ? ;
+          <https://www.cdisc.org/ars/1-0operations> @<https://www.cdisc.org/ars/1-0Operation> + ;
+          <https://www.cdisc.org/ars/1-0codeTemplate> @<https://www.cdisc.org/ars/1-0ProgrammingCodeTemplate> ?
        ) ;
-       rdf:type [ <AnalysisMethod> ]
+       rdf:type [ <https://www.cdisc.org/ars/1-0AnalysisMethod> ]
     )
 }
 
-<AnalysisSet> CLOSED {
-    (  $<AnalysisSet_tes> (  &<WhereClause_tes> ;
-          rdf:type [ <WhereClause> ] ? ;
-          <label> @linkml:String ? ;
-          <compoundExpression> @<CompoundSetExpression> ?
+<https://www.cdisc.org/ars/1-0AnalysisSet> CLOSED {
+    (  $<https://www.cdisc.org/ars/1-0AnalysisSet_tes> (  &<https://www.cdisc.org/ars/1-0WhereClause_tes> ;
+          rdf:type [ <https://www.cdisc.org/ars/1-0WhereClause> ] ? ;
+          <https://www.cdisc.org/ars/1-0label> @linkml:String ? ;
+          <https://www.cdisc.org/ars/1-0compoundExpression> @<https://www.cdisc.org/ars/1-0CompoundSetExpression> ?
        ) ;
-       rdf:type [ <AnalysisSet> ]
+       rdf:type [ <https://www.cdisc.org/ars/1-0AnalysisSet> ]
     )
 }
 
-<CompoundExpression>  (
+<https://www.cdisc.org/ars/1-0CodeParameter> CLOSED {
+    (  $<https://www.cdisc.org/ars/1-0CodeParameter_tes> (  &<https://www.cdisc.org/ars/1-0NamedObject_tes> ;
+          rdf:type [ <https://www.cdisc.org/ars/1-0NamedObject> ] ? ;
+          <https://www.cdisc.org/ars/1-0description> @linkml:String ? ;
+          <https://www.cdisc.org/ars/1-0valueSource> @linkml:String ?
+       ) ;
+       rdf:type [ <https://www.cdisc.org/ars/1-0CodeParameter> ] ?
+    )
+}
+
+<https://www.cdisc.org/ars/1-0CompoundGroupExpression> CLOSED {
+    (  $<https://www.cdisc.org/ars/1-0CompoundGroupExpression_tes> ( 
+          &<https://www.cdisc.org/ars/1-0WhereClauseCompoundExpression_tes> ;
+          rdf:type [ <https://www.cdisc.org/ars/1-0WhereClauseCompoundExpression> ] ? ;
+          <https://www.cdisc.org/ars/1-0whereClauses> @<https://www.cdisc.org/ars/1-0Group> *
+       ) ;
+       rdf:type [ <https://www.cdisc.org/ars/1-0CompoundGroupExpression> ] ?
+    )
+}
+
+<https://www.cdisc.org/ars/1-0CompoundSetExpression> CLOSED {
+    (  $<https://www.cdisc.org/ars/1-0CompoundSetExpression_tes> ( 
+          &<https://www.cdisc.org/ars/1-0WhereClauseCompoundExpression_tes> ;
+          rdf:type [ <https://www.cdisc.org/ars/1-0WhereClauseCompoundExpression> ] ? ;
+          <https://www.cdisc.org/ars/1-0whereClauses> @<https://www.cdisc.org/ars/1-0AnalysisSet> *
+       ) ;
+       rdf:type [ <https://www.cdisc.org/ars/1-0CompoundSetExpression> ] ?
+    )
+}
+
+<https://www.cdisc.org/ars/1-0CompoundSubsetExpression> CLOSED {
+    (  $<https://www.cdisc.org/ars/1-0CompoundSubsetExpression_tes> ( 
+          &<https://www.cdisc.org/ars/1-0WhereClauseCompoundExpression_tes> ;
+          rdf:type [ <https://www.cdisc.org/ars/1-0WhereClauseCompoundExpression> ] ? ;
+          <https://www.cdisc.org/ars/1-0whereClauses> @<https://www.cdisc.org/ars/1-0WhereClause> *
+       ) ;
+       rdf:type [ <https://www.cdisc.org/ars/1-0CompoundSubsetExpression> ] ?
+    )
+}
+
+<https://www.cdisc.org/ars/1-0DataGroup> CLOSED {
+    (  $<https://www.cdisc.org/ars/1-0DataGroup_tes> (  &<https://www.cdisc.org/ars/1-0Group_tes> ;
+          rdf:type [ <https://www.cdisc.org/ars/1-0Group> ] ?
+       ) ;
+       rdf:type [ <https://www.cdisc.org/ars/1-0DataGroup> ]
+    )
+}
+
+<https://www.cdisc.org/ars/1-0DataGroupingFactor> CLOSED {
+    (  $<https://www.cdisc.org/ars/1-0DataGroupingFactor_tes> (  &<https://www.cdisc.org/ars/1-0GroupingFactor_tes> ;
+          rdf:type [ <https://www.cdisc.org/ars/1-0GroupingFactor> ] ? ;
+          <https://www.cdisc.org/ars/1-0groups> @<https://www.cdisc.org/ars/1-0DataGroup> *
+       ) ;
+       rdf:type [ <https://www.cdisc.org/ars/1-0DataGroupingFactor> ]
+    )
+}
+
+<https://www.cdisc.org/ars/1-0DataSubset> CLOSED {
+    (  $<https://www.cdisc.org/ars/1-0DataSubset_tes> (  &<https://www.cdisc.org/ars/1-0WhereClause_tes> ;
+          rdf:type [ <https://www.cdisc.org/ars/1-0WhereClause> ] ? ;
+          <https://www.cdisc.org/ars/1-0label> @linkml:String ? ;
+          <https://www.cdisc.org/ars/1-0compoundExpression> @<https://www.cdisc.org/ars/1-0CompoundSubsetExpression> ?
+       ) ;
+       rdf:type [ <https://www.cdisc.org/ars/1-0DataSubset> ]
+    )
+}
+
+<https://www.cdisc.org/ars/1-0DisplaySection> CLOSED {
+    (  $<https://www.cdisc.org/ars/1-0DisplaySection_tes> (  <https://www.cdisc.org/ars/1-0sectionType>
+          @<https://www.cdisc.org/ars/1-0DisplaySectionType> ? ;
+          <https://www.cdisc.org/ars/1-0subSections> @<https://www.cdisc.org/ars/1-0DisplaySubSection> *
+       ) ;
+       rdf:type [ <https://www.cdisc.org/ars/1-0DisplaySection> ] ?
+    )
+}
+
+<https://www.cdisc.org/ars/1-0DisplaySubSection> CLOSED {
+    (  $<https://www.cdisc.org/ars/1-0DisplaySubSection_tes> (  <https://www.cdisc.org/ars/1-0order> @linkml:Integer ;
+          <https://www.cdisc.org/ars/1-0text> @linkml:String ?
+       ) ;
+       rdf:type [ <https://www.cdisc.org/ars/1-0DisplaySubSection> ]
+    )
+}
+
+<https://www.cdisc.org/ars/1-0DocumentRef> CLOSED {
+    (  $<https://www.cdisc.org/ars/1-0DocumentRef_tes> (  <https://www.cdisc.org/ars/1-0referenceDocumentId>
+          @<https://www.cdisc.org/ars/1-0ReferenceDocument> ;
+          <https://www.cdisc.org/ars/1-0pageRefs> @<https://www.cdisc.org/ars/1-0PageRef> *
+       ) ;
+       rdf:type [ <https://www.cdisc.org/ars/1-0DocumentRef> ] ?
+    )
+}
+
+<https://www.cdisc.org/ars/1-0File> CLOSED {
+    (  $<https://www.cdisc.org/ars/1-0File_tes> (  &<https://www.cdisc.org/ars/1-0NamedObject_tes> ;
+          rdf:type [ <https://www.cdisc.org/ars/1-0NamedObject> ] ? ;
+          <https://www.cdisc.org/ars/1-0fileType> @linkml:String ? ;
+          <https://www.cdisc.org/ars/1-0location> @linkml:Uri ? ;
+          <https://www.cdisc.org/ars/1-0style> @linkml:String ?
+       ) ;
+       rdf:type [ <https://www.cdisc.org/ars/1-0File> ] ?
+    )
+}
+
+<https://www.cdisc.org/ars/1-0Group>  (
     CLOSED {
-       (  $<CompoundExpression_tes> (  <logicalOperator> @<LogicalOperator> ;
-             <whereClauses> @<WhereClause> *
+       (  $<https://www.cdisc.org/ars/1-0Group_tes> (  &<https://www.cdisc.org/ars/1-0WhereClause_tes> ;
+             rdf:type [ <https://www.cdisc.org/ars/1-0WhereClause> ] ? ;
+             <https://www.cdisc.org/ars/1-0label> @linkml:String ? ;
+             <https://www.cdisc.org/ars/1-0compoundExpression> @<https://www.cdisc.org/ars/1-0CompoundGroupExpression> ?
           ) ;
-          rdf:type [ <CompoundExpression> ] ?
+          rdf:type [ <https://www.cdisc.org/ars/1-0Group> ]
        )
-    } OR @<CompoundGroupExpression> OR @<CompoundSetExpression> OR @<CompoundSubsetExpression>
+    } OR @<https://www.cdisc.org/ars/1-0AnalysisGroup> OR @<https://www.cdisc.org/ars/1-0DataGroup>
 )
 
-<CompoundGroupExpression> CLOSED {
-    (  $<CompoundGroupExpression_tes> (  &<CompoundExpression_tes> ;
-          rdf:type [ <CompoundExpression> ] ? ;
-          <whereClauses> @<Group> *
+<https://www.cdisc.org/ars/1-0GroupingFactor>  (
+    @<https://www.cdisc.org/ars/1-0DataGroupingFactor> OR @<https://www.cdisc.org/ars/1-0SubjectGroupingFactor>
+)
+
+<https://www.cdisc.org/ars/1-0GroupingFactor_struct> {
+    (  $<https://www.cdisc.org/ars/1-0GroupingFactor_tes> (  <https://www.cdisc.org/ars/1-0label> @linkml:String ? ;
+          <https://www.cdisc.org/ars/1-0groupingVariable> @linkml:String ? ;
+          <https://www.cdisc.org/ars/1-0dataDriven> @linkml:Boolean ;
+          <https://www.cdisc.org/ars/1-0groups> @<https://www.cdisc.org/ars/1-0Group> *
        ) ;
-       rdf:type [ <CompoundGroupExpression> ] ?
+       rdf:type [ <https://www.cdisc.org/ars/1-0GroupingFactor> ]
     )
 }
 
-<CompoundSetExpression> CLOSED {
-    (  $<CompoundSetExpression_tes> (  &<CompoundExpression_tes> ;
-          rdf:type [ <CompoundExpression> ] ? ;
-          <whereClauses> @<AnalysisSet> *
-       ) ;
-       rdf:type [ <CompoundSetExpression> ] ?
+<https://www.cdisc.org/ars/1-0NamedObject>  (
+    @<https://www.cdisc.org/ars/1-0Analysis> OR @<https://www.cdisc.org/ars/1-0AnalysisMethod> OR
+    @<https://www.cdisc.org/ars/1-0CodeParameter> OR @<https://www.cdisc.org/ars/1-0File> OR
+    @<https://www.cdisc.org/ars/1-0Operation> OR @<https://www.cdisc.org/ars/1-0OrderedListItem> OR
+    @<https://www.cdisc.org/ars/1-0OutputDisplay> OR @<https://www.cdisc.org/ars/1-0ReferenceDocument> OR
+    @<https://www.cdisc.org/ars/1-0ReportingEvent>
+)
+
+<https://www.cdisc.org/ars/1-0NamedObject_struct> {
+    (  $<https://www.cdisc.org/ars/1-0NamedObject_tes> <https://www.cdisc.org/ars/1-0name> @linkml:String ;
+       rdf:type [ <https://www.cdisc.org/ars/1-0NamedObject> ] ?
     )
 }
 
-<CompoundSubsetExpression> CLOSED {
-    (  $<CompoundSubsetExpression_tes> (  &<CompoundExpression_tes> ;
-          rdf:type [ <CompoundExpression> ] ? ;
-          <whereClauses> @<WhereClause> *
-       ) ;
-       rdf:type [ <CompoundSubsetExpression> ] ?
+<https://www.cdisc.org/ars/1-0NestedList> CLOSED {
+    (  $<https://www.cdisc.org/ars/1-0NestedList_tes> <https://www.cdisc.org/ars/1-0listItems>
+       @<https://www.cdisc.org/ars/1-0OrderedListItem> * ;
+       rdf:type [ <https://www.cdisc.org/ars/1-0NestedList> ] ?
     )
 }
 
-<Condition> CLOSED {
-    (  $<Condition_tes> (  <dataset> @linkml:String ? ;
-          <variable> @linkml:String ? ;
-          <comparator> @<Comparator> ? ;
-          <value> @linkml:String *
+<https://www.cdisc.org/ars/1-0Operation> CLOSED {
+    (  $<https://www.cdisc.org/ars/1-0Operation_tes> (  &<https://www.cdisc.org/ars/1-0NamedObject_tes> ;
+          rdf:type [ <https://www.cdisc.org/ars/1-0NamedObject> ] ? ;
+          <https://www.cdisc.org/ars/1-0label> @linkml:String ? ;
+          <https://www.cdisc.org/ars/1-0referencedOperationRelationships>
+          @<https://www.cdisc.org/ars/1-0ReferencedOperationRelationship> * ;
+          <https://www.cdisc.org/ars/1-0resultPattern> @linkml:String ?
        ) ;
-       rdf:type [ <Condition> ] ?
+       rdf:type [ <https://www.cdisc.org/ars/1-0Operation> ]
     )
 }
 
-<DataGroup> CLOSED {
-    (  $<DataGroup_tes> (  &<Group_tes> ;
-          rdf:type [ <Group> ] ?
+<https://www.cdisc.org/ars/1-0OperationResult> CLOSED {
+    (  $<https://www.cdisc.org/ars/1-0OperationResult_tes> (  <https://www.cdisc.org/ars/1-0operationId>
+          @<https://www.cdisc.org/ars/1-0Operation> ;
+          <https://www.cdisc.org/ars/1-0resultGroups> @<https://www.cdisc.org/ars/1-0ResultGroup> * ;
+          <https://www.cdisc.org/ars/1-0rawValue> @linkml:String ? ;
+          <https://www.cdisc.org/ars/1-0formattedValue> @linkml:String ?
        ) ;
-       rdf:type [ <DataGroup> ]
+       rdf:type [ <https://www.cdisc.org/ars/1-0OperationResult> ] ?
     )
 }
 
-<DataGroupingFactor> CLOSED {
-    (  $<DataGroupingFactor_tes> (  &<GroupingFactor_tes> ;
-          rdf:type [ <GroupingFactor> ] ? ;
-          <groups> @<DataGroup> *
+<https://www.cdisc.org/ars/1-0OrderedDisplay> CLOSED {
+    (  $<https://www.cdisc.org/ars/1-0OrderedDisplay_tes> (  <https://www.cdisc.org/ars/1-0order> @linkml:Integer ;
+          <https://www.cdisc.org/ars/1-0display> @<https://www.cdisc.org/ars/1-0OutputDisplay> ?
        ) ;
-       rdf:type [ <DataGroupingFactor> ]
+       rdf:type [ <https://www.cdisc.org/ars/1-0OrderedDisplay> ] ?
     )
 }
 
-<DataSubset> CLOSED {
-    (  $<DataSubset_tes> (  &<WhereClause_tes> ;
-          rdf:type [ <WhereClause> ] ? ;
-          <label> @linkml:String ? ;
-          <compoundExpression> @<CompoundSubsetExpression> ?
+<https://www.cdisc.org/ars/1-0OrderedGroupingFactor> CLOSED {
+    (  $<https://www.cdisc.org/ars/1-0OrderedGroupingFactor_tes> (  <https://www.cdisc.org/ars/1-0order> @linkml:Integer ;
+          <https://www.cdisc.org/ars/1-0groupingId> @<https://www.cdisc.org/ars/1-0GroupingFactor> ? ;
+          <https://www.cdisc.org/ars/1-0resultsByGroup> @linkml:Boolean
        ) ;
-       rdf:type [ <DataSubset> ]
+       rdf:type [ <https://www.cdisc.org/ars/1-0OrderedGroupingFactor> ] ?
     )
 }
 
-<Display> CLOSED {
-    (  $<Display_tes> (  &<NamedObject_tes> ;
-          rdf:type [ <NamedObject> ] ? ;
-          <version> @linkml:Integer ? ;
-          <displayTitle> @linkml:String ? ;
-          <displaySections> @<DisplaySection> *
+<https://www.cdisc.org/ars/1-0OrderedListItem> CLOSED {
+    (  $<https://www.cdisc.org/ars/1-0OrderedListItem_tes> (  &<https://www.cdisc.org/ars/1-0NamedObject_tes> ;
+          rdf:type [ <https://www.cdisc.org/ars/1-0NamedObject> ] ? ;
+          <https://www.cdisc.org/ars/1-0level> @linkml:Integer ;
+          <https://www.cdisc.org/ars/1-0order> @linkml:Integer ;
+          <https://www.cdisc.org/ars/1-0sublist> @<https://www.cdisc.org/ars/1-0NestedList> ? ;
+          <https://www.cdisc.org/ars/1-0analysisId> @<https://www.cdisc.org/ars/1-0Analysis> ? ;
+          <https://www.cdisc.org/ars/1-0outputId> @<https://www.cdisc.org/ars/1-0Output> ?
        ) ;
-       rdf:type [ <Display> ]
+       rdf:type [ <https://www.cdisc.org/ars/1-0OrderedListItem> ] ?
     )
 }
 
-<DisplaySection> CLOSED {
-    (  $<DisplaySection_tes> (  <sectionType> @<SectionType> ? ;
-          <subSections> @<DisplaySubSection> *
+<https://www.cdisc.org/ars/1-0Output> CLOSED {
+    (  $<https://www.cdisc.org/ars/1-0Output_tes> (  <https://www.cdisc.org/ars/1-0version> @linkml:Integer ? ;
+          <https://www.cdisc.org/ars/1-0fileSpecifications> @<https://www.cdisc.org/ars/1-0File> * ;
+          <https://www.cdisc.org/ars/1-0displays> @<https://www.cdisc.org/ars/1-0OrderedDisplay> * ;
+          <https://www.cdisc.org/ars/1-0categoryIds> @<https://www.cdisc.org/ars/1-0AnalysisCategory> *
        ) ;
-       rdf:type [ <DisplaySection> ] ?
+       rdf:type [ <https://www.cdisc.org/ars/1-0Output> ]
     )
 }
 
-<DisplaySubSection> CLOSED {
-    (  $<DisplaySubSection_tes> (  <order> @linkml:Integer ;
-          <text> @linkml:String ?
+<https://www.cdisc.org/ars/1-0OutputDisplay> CLOSED {
+    (  $<https://www.cdisc.org/ars/1-0OutputDisplay_tes> (  &<https://www.cdisc.org/ars/1-0NamedObject_tes> ;
+          rdf:type [ <https://www.cdisc.org/ars/1-0NamedObject> ] ? ;
+          <https://www.cdisc.org/ars/1-0version> @linkml:Integer ? ;
+          <https://www.cdisc.org/ars/1-0displayTitle> @linkml:String ? ;
+          <https://www.cdisc.org/ars/1-0displaySections> @<https://www.cdisc.org/ars/1-0DisplaySection> *
        ) ;
-       rdf:type [ <DisplaySubSection> ]
+       rdf:type [ <https://www.cdisc.org/ars/1-0OutputDisplay> ]
     )
 }
 
-<File> CLOSED {
-    (  $<File_tes> (  &<NamedObject_tes> ;
-          rdf:type [ <NamedObject> ] ? ;
-          <fileType> @<FileType> ? ;
-          <location> @linkml:String ? ;
-          <style> @linkml:String ?
-       ) ;
-       rdf:type [ <File> ] ?
+<https://www.cdisc.org/ars/1-0PageNameList> CLOSED {
+    (  $<https://www.cdisc.org/ars/1-0PageNameList_tes> <https://www.cdisc.org/ars/1-0pageNames> @linkml:Integer + ;
+       rdf:type [ <https://www.cdisc.org/ars/1-0PageNameList> ] ?
     )
 }
 
-<Group>  (
+<https://www.cdisc.org/ars/1-0PageNameRef> CLOSED {
+    (  $<https://www.cdisc.org/ars/1-0PageNameRef_tes> (  &<https://www.cdisc.org/ars/1-0PageRef_tes> ;
+          rdf:type [ <https://www.cdisc.org/ars/1-0PageRef> ] ? ;
+          <https://www.cdisc.org/ars/1-0refType> @<https://www.cdisc.org/ars/1-0PageRefType> ;
+          <https://www.cdisc.org/ars/1-0pages> @<https://www.cdisc.org/ars/1-0PageNameList> ?
+       ) ;
+       rdf:type [ <https://www.cdisc.org/ars/1-0PageNameRef> ] ?
+    )
+}
+
+<https://www.cdisc.org/ars/1-0PageNumberList> CLOSED {
+    (  $<https://www.cdisc.org/ars/1-0PageNumberList_tes> <https://www.cdisc.org/ars/1-0pageNumbers> @linkml:Integer + ;
+       rdf:type [ <https://www.cdisc.org/ars/1-0PageNumberList> ] ?
+    )
+}
+
+<https://www.cdisc.org/ars/1-0PageNumberListRef> CLOSED {
+    (  $<https://www.cdisc.org/ars/1-0PageNumberListRef_tes> (  &<https://www.cdisc.org/ars/1-0PageRef_tes> ;
+          rdf:type [ <https://www.cdisc.org/ars/1-0PageRef> ] ? ;
+          <https://www.cdisc.org/ars/1-0refType> @<https://www.cdisc.org/ars/1-0PageRefType> ;
+          <https://www.cdisc.org/ars/1-0pages> @<https://www.cdisc.org/ars/1-0PageNumberList> ?
+       ) ;
+       rdf:type [ <https://www.cdisc.org/ars/1-0PageNumberListRef> ] ?
+    )
+}
+
+<https://www.cdisc.org/ars/1-0PageNumberRangeRef> CLOSED {
+    (  $<https://www.cdisc.org/ars/1-0PageNumberRangeRef_tes> (  &<https://www.cdisc.org/ars/1-0PageRef_tes> ;
+          rdf:type [ <https://www.cdisc.org/ars/1-0PageRef> ] ? ;
+          <https://www.cdisc.org/ars/1-0refType> @<https://www.cdisc.org/ars/1-0PageRefType> ;
+          <https://www.cdisc.org/ars/1-0pages> @<https://www.cdisc.org/ars/1-0PageRange> ?
+       ) ;
+       rdf:type [ <https://www.cdisc.org/ars/1-0PageNumberRangeRef> ] ?
+    )
+}
+
+<https://www.cdisc.org/ars/1-0PageRange> CLOSED {
+    (  $<https://www.cdisc.org/ars/1-0PageRange_tes> (  <https://www.cdisc.org/ars/1-0firstPage> @linkml:Integer ;
+          <https://www.cdisc.org/ars/1-0lastPage> @linkml:Integer
+       ) ;
+       rdf:type [ <https://www.cdisc.org/ars/1-0PageRange> ] ?
+    )
+}
+
+<https://www.cdisc.org/ars/1-0PageRef>  (
     CLOSED {
-       (  $<Group_tes> (  &<WhereClause_tes> ;
-             rdf:type [ <WhereClause> ] ? ;
-             <label> @linkml:String ? ;
-             <compoundExpression> @<CompoundGroupExpression> ?
+       (  $<https://www.cdisc.org/ars/1-0PageRef_tes> (  <https://www.cdisc.org/ars/1-0refType>
+             @<https://www.cdisc.org/ars/1-0PageRefType> ;
+             <https://www.cdisc.org/ars/1-0label> @linkml:String ? ;
+             <https://www.cdisc.org/ars/1-0pages> @linkml:String ?
           ) ;
-          rdf:type [ <Group> ]
+          rdf:type [ <https://www.cdisc.org/ars/1-0PageRef> ] ?
        )
-    } OR @<AnalysisGroup> OR @<DataGroup>
+    } OR @<https://www.cdisc.org/ars/1-0PageNameRef> OR @<https://www.cdisc.org/ars/1-0PageNumberListRef> OR
+    @<https://www.cdisc.org/ars/1-0PageNumberRangeRef>
 )
 
-<GroupingFactor>  (
-    @<DataGroupingFactor> OR @<SubjectGroupingFactor>
-)
-
-<GroupingFactor_struct> {
-    (  $<GroupingFactor_tes> (  <label> @linkml:String ? ;
-          <groupingVariable> @linkml:String ? ;
-          <dataDriven> @linkml:Boolean ;
-          <groups> @<Group> *
+<https://www.cdisc.org/ars/1-0ProgrammingCodeTemplate> CLOSED {
+    (  $<https://www.cdisc.org/ars/1-0ProgrammingCodeTemplate_tes> (  <https://www.cdisc.org/ars/1-0context> @linkml:String ;
+          <https://www.cdisc.org/ars/1-0parameters> @<https://www.cdisc.org/ars/1-0CodeParameter> * ;
+          <https://www.cdisc.org/ars/1-0templateCode> @linkml:String ?
        ) ;
-       rdf:type [ <GroupingFactor> ]
+       rdf:type [ <https://www.cdisc.org/ars/1-0ProgrammingCodeTemplate> ] ?
     )
 }
 
-<NamedObject>  (
-    @<Analysis> OR @<AnalysisMethod> OR @<Display> OR @<File> OR @<Operation> OR @<OrderedListItem> OR @<ReportingEvent>
-)
-
-<NamedObject_struct> {
-    (  $<NamedObject_tes> <name> @linkml:String ;
-       rdf:type [ <NamedObject> ] ?
-    )
-}
-
-<NestedList> CLOSED {
-    (  $<NestedList_tes> <listItems> @<OrderedListItem> * ;
-       rdf:type [ <NestedList> ] ?
-    )
-}
-
-<Operation> CLOSED {
-    (  $<Operation_tes> (  &<NamedObject_tes> ;
-          rdf:type [ <NamedObject> ] ? ;
-          <label> @linkml:String ? ;
-          <referencedOperationRelationships> @<ReferencedOperationRelationship> * ;
-          <resultPattern> @linkml:String ?
+<https://www.cdisc.org/ars/1-0ReferencedAnalysisOperation> CLOSED {
+    (  $<https://www.cdisc.org/ars/1-0ReferencedAnalysisOperation_tes> (  <https://www.cdisc.org/ars/1-0referencedOperationId>
+          @<https://www.cdisc.org/ars/1-0ReferencedOperationRelationship> ? ;
+          <https://www.cdisc.org/ars/1-0analysisId> @<https://www.cdisc.org/ars/1-0Analysis>
        ) ;
-       rdf:type [ <Operation> ]
+       rdf:type [ <https://www.cdisc.org/ars/1-0ReferencedAnalysisOperation> ] ?
     )
 }
 
-<OperationResult> CLOSED {
-    (  $<OperationResult_tes> (  <operationId> @<Operation> ;
-          <resultGroups> @<ResultGroup> * ;
-          <rawValue> @linkml:String ? ;
-          <formattedValue> @linkml:String ?
+<https://www.cdisc.org/ars/1-0ReferenceDocument> CLOSED {
+    (  $<https://www.cdisc.org/ars/1-0ReferenceDocument_tes> (  &<https://www.cdisc.org/ars/1-0NamedObject_tes> ;
+          rdf:type [ <https://www.cdisc.org/ars/1-0NamedObject> ] ? ;
+          <https://www.cdisc.org/ars/1-0location> @linkml:Uri ?
        ) ;
-       rdf:type [ <OperationResult> ] ?
+       rdf:type [ <https://www.cdisc.org/ars/1-0ReferenceDocument> ]
     )
 }
 
-<OrderedGroupingFactor> CLOSED {
-    (  $<OrderedGroupingFactor_tes> (  <order> @linkml:Integer ;
-          <groupingId> @<GroupingFactor> ? ;
-          <dataGrouping> @<DataGroupingFactor> ? ;
-          <resultsByGroup> @linkml:Boolean
+<https://www.cdisc.org/ars/1-0ReferencedOperationRelationship> CLOSED {
+    (  $<https://www.cdisc.org/ars/1-0ReferencedOperationRelationship_tes> ( 
+          <https://www.cdisc.org/ars/1-0referencedOperationRole> @linkml:String ;
+          <https://www.cdisc.org/ars/1-0operationId> @<https://www.cdisc.org/ars/1-0Operation> ;
+          <https://www.cdisc.org/ars/1-0analysisId> @<https://www.cdisc.org/ars/1-0Analysis> ? ;
+          <https://www.cdisc.org/ars/1-0description> @linkml:String ?
        ) ;
-       rdf:type [ <OrderedGroupingFactor> ] ?
+       rdf:type [ <https://www.cdisc.org/ars/1-0ReferencedOperationRelationship> ]
     )
 }
 
-<OrderedListItem> CLOSED {
-    (  $<OrderedListItem_tes> (  &<NamedObject_tes> ;
-          rdf:type [ <NamedObject> ] ? ;
-          <level> @linkml:Integer ;
-          <order> @linkml:Integer ;
-          <sublist> @<NestedList> ? ;
-          <analysisId> @<Analysis> ? ;
-          <outputId> @<Output> ?
+<https://www.cdisc.org/ars/1-0ReportingEvent> CLOSED {
+    (  $<https://www.cdisc.org/ars/1-0ReportingEvent_tes> (  &<https://www.cdisc.org/ars/1-0NamedObject_tes> ;
+          rdf:type [ <https://www.cdisc.org/ars/1-0NamedObject> ] ? ;
+          <https://www.cdisc.org/ars/1-0listOfPlannedAnalyses> @<https://www.cdisc.org/ars/1-0NestedList> ;
+          <https://www.cdisc.org/ars/1-0listOfPlannedOutputs> @<https://www.cdisc.org/ars/1-0NestedList> ? ;
+          <https://www.cdisc.org/ars/1-0analysisSets> @<https://www.cdisc.org/ars/1-0AnalysisSet> * ;
+          <https://www.cdisc.org/ars/1-0analysisGroupings> @<https://www.cdisc.org/ars/1-0SubjectGroupingFactor> * ;
+          <https://www.cdisc.org/ars/1-0dataSubsets> @<https://www.cdisc.org/ars/1-0DataSubset> * ;
+          <https://www.cdisc.org/ars/1-0dataGroupings> @<https://www.cdisc.org/ars/1-0DataGroupingFactor> * ;
+          <https://www.cdisc.org/ars/1-0globalDisplaySections> @<https://www.cdisc.org/ars/1-0DisplaySection> * ;
+          <https://www.cdisc.org/ars/1-0analysisCategorizations> @<https://www.cdisc.org/ars/1-0AnalysisCategorization> * ;
+          <https://www.cdisc.org/ars/1-0analyses> @<https://www.cdisc.org/ars/1-0Analysis> * ;
+          <https://www.cdisc.org/ars/1-0methods> @<https://www.cdisc.org/ars/1-0AnalysisMethod> * ;
+          <https://www.cdisc.org/ars/1-0outputs> @<https://www.cdisc.org/ars/1-0Output> * ;
+          <https://www.cdisc.org/ars/1-0referenceDocuments> @<https://www.cdisc.org/ars/1-0ReferenceDocument> * ;
+          <https://www.cdisc.org/ars/1-0terminologyExtentions> @<https://www.cdisc.org/ars/1-0TerminologyExtension> *
        ) ;
-       rdf:type [ <OrderedListItem> ] ?
+       rdf:type [ <https://www.cdisc.org/ars/1-0ReportingEvent> ] ?
     )
 }
 
-<Output> CLOSED {
-    (  $<Output_tes> (  <version> @linkml:Integer ? ;
-          <fileSpecifications> @<File> * ;
-          <outputDisplays> @<OutputDisplay> * ;
-          <categoryIds> @<AnalysisCategory> *
+<https://www.cdisc.org/ars/1-0ResultGroup> CLOSED {
+    (  $<https://www.cdisc.org/ars/1-0ResultGroup_tes> (  <https://www.cdisc.org/ars/1-0groupingId>
+          @<https://www.cdisc.org/ars/1-0GroupingFactor> ? ;
+          <https://www.cdisc.org/ars/1-0groupId> @<https://www.cdisc.org/ars/1-0Group> ? ;
+          <https://www.cdisc.org/ars/1-0groupValue> @linkml:String ?
        ) ;
-       rdf:type [ <Output> ]
+       rdf:type [ <https://www.cdisc.org/ars/1-0ResultGroup> ] ?
     )
 }
 
-<OutputDisplay> CLOSED {
-    (  $<OutputDisplay_tes> (  <order> @linkml:Integer ;
-          <display> @<Display> ?
+<https://www.cdisc.org/ars/1-0SponsorTerm> CLOSED {
+    (  $<https://www.cdisc.org/ars/1-0SponsorTerm_tes> (  <https://www.cdisc.org/ars/1-0submissionValue> @linkml:String ;
+          <https://www.cdisc.org/ars/1-0description> @linkml:String ?
        ) ;
-       rdf:type [ <OutputDisplay> ] ?
+       rdf:type [ <https://www.cdisc.org/ars/1-0SponsorTerm> ]
     )
 }
 
-<ReferencedAnalysisOperation> CLOSED {
-    (  $<ReferencedAnalysisOperation_tes> (  <referencedOperationId> @<ReferencedOperationRelationship> ? ;
-          <analysisId> @<Analysis>
+<https://www.cdisc.org/ars/1-0SubjectGroupingFactor> CLOSED {
+    (  $<https://www.cdisc.org/ars/1-0SubjectGroupingFactor_tes> (  &<https://www.cdisc.org/ars/1-0GroupingFactor_tes> ;
+          rdf:type [ <https://www.cdisc.org/ars/1-0GroupingFactor> ] ? ;
+          <https://www.cdisc.org/ars/1-0groups> @<https://www.cdisc.org/ars/1-0AnalysisGroup> *
        ) ;
-       rdf:type [ <ReferencedAnalysisOperation> ] ?
+       rdf:type [ <https://www.cdisc.org/ars/1-0SubjectGroupingFactor> ]
     )
 }
 
-<ReferencedOperationRelationship> CLOSED {
-    (  $<ReferencedOperationRelationship_tes> (  <referencedOperationRole> @<OperationRole> ;
-          <operationId> @<Operation> ;
-          <analysisId> @<Analysis> ? ;
-          <description> @linkml:String ?
+<https://www.cdisc.org/ars/1-0TerminologyExtension> CLOSED {
+    (  $<https://www.cdisc.org/ars/1-0TerminologyExtension_tes> (  <https://www.cdisc.org/ars/1-0enumeration>
+          @<https://www.cdisc.org/ars/1-0ExtensibleTerminology> ? ;
+          <https://www.cdisc.org/ars/1-0sponsorTerms> @<https://www.cdisc.org/ars/1-0SponsorTerm> +
        ) ;
-       rdf:type [ <ReferencedOperationRelationship> ]
+       rdf:type [ <https://www.cdisc.org/ars/1-0TerminologyExtension> ] ?
     )
 }
 
-<ReportingEvent> CLOSED {
-    (  $<ReportingEvent_tes> (  &<NamedObject_tes> ;
-          rdf:type [ <NamedObject> ] ? ;
-          <listOfPlannedAnalyses> @<NestedList> ;
-          <listOfPlannedOutputs> @<NestedList> ? ;
-          <analysisSets> @<AnalysisSet> * ;
-          <analysisGroupings> @<SubjectGroupingFactor> * ;
-          <dataSubsets> @<DataSubset> * ;
-          <dataGroupings> @<DataGroupingFactor> * ;
-          <globalDisplaySections> @<DisplaySection> * ;
-          <analysisCategorizations> @<AnalysisCategorization> * ;
-          <analyses> @<Analysis> * ;
-          <methods> @<AnalysisMethod> * ;
-          <outputs> @<Output> *
-       ) ;
-       rdf:type [ <ReportingEvent> ] ?
-    )
-}
-
-<ResultGroup> CLOSED {
-    (  $<ResultGroup_tes> (  <groupingId> @<GroupingFactor> ? ;
-          <groupId> @<Group> ? ;
-          <groupValue> @linkml:String ?
-       ) ;
-       rdf:type [ <ResultGroup> ] ?
-    )
-}
-
-<SubjectGroupingFactor> CLOSED {
-    (  $<SubjectGroupingFactor_tes> (  &<GroupingFactor_tes> ;
-          rdf:type [ <GroupingFactor> ] ? ;
-          <groups> @<AnalysisGroup> *
-       ) ;
-       rdf:type [ <SubjectGroupingFactor> ]
-    )
-}
-
-<WhereClause>  (
+<https://www.cdisc.org/ars/1-0WhereClause>  (
     CLOSED {
-       (  $<WhereClause_tes> (  <level> @linkml:Integer ? ;
-             <order> @linkml:Integer ? ;
-             <condition> @<Condition> ? ;
-             <compoundExpression> @<CompoundExpression> ?
+       (  $<https://www.cdisc.org/ars/1-0WhereClause_tes> (  <https://www.cdisc.org/ars/1-0level> @linkml:Integer ? ;
+             <https://www.cdisc.org/ars/1-0order> @linkml:Integer ? ;
+             <https://www.cdisc.org/ars/1-0condition> @<https://www.cdisc.org/ars/1-0WhereClauseCondition> ? ;
+             <https://www.cdisc.org/ars/1-0compoundExpression> @<https://www.cdisc.org/ars/1-0WhereClauseCompoundExpression> ?
           ) ;
-          rdf:type [ <WhereClause> ] ?
+          rdf:type [ <https://www.cdisc.org/ars/1-0WhereClause> ] ?
        )
-    } OR @<AnalysisSet> OR @<DataSubset> OR @<Group>
+    } OR @<https://www.cdisc.org/ars/1-0AnalysisSet> OR @<https://www.cdisc.org/ars/1-0DataSubset> OR
+    @<https://www.cdisc.org/ars/1-0Group>
 )
+
+<https://www.cdisc.org/ars/1-0WhereClauseCompoundExpression>  (
+    CLOSED {
+       (  $<https://www.cdisc.org/ars/1-0WhereClauseCompoundExpression_tes> (  <https://www.cdisc.org/ars/1-0logicalOperator>
+             @<https://www.cdisc.org/ars/1-0ExpressionLogicalOperator> ;
+             <https://www.cdisc.org/ars/1-0whereClauses> @<https://www.cdisc.org/ars/1-0WhereClause> *
+          ) ;
+          rdf:type [ <https://www.cdisc.org/ars/1-0WhereClauseCompoundExpression> ] ?
+       )
+    } OR @<https://www.cdisc.org/ars/1-0CompoundGroupExpression> OR @<https://www.cdisc.org/ars/1-0CompoundSetExpression> OR
+    @<https://www.cdisc.org/ars/1-0CompoundSubsetExpression>
+)
+
+<https://www.cdisc.org/ars/1-0WhereClauseCondition> CLOSED {
+    (  $<https://www.cdisc.org/ars/1-0WhereClauseCondition_tes> (  <https://www.cdisc.org/ars/1-0dataset> @linkml:String ? ;
+          <https://www.cdisc.org/ars/1-0variable> @linkml:String ? ;
+          <https://www.cdisc.org/ars/1-0comparator> @<https://www.cdisc.org/ars/1-0ConditionComparator> ? ;
+          <https://www.cdisc.org/ars/1-0value> @linkml:String *
+       ) ;
+       rdf:type [ <https://www.cdisc.org/ars/1-0WhereClauseCondition> ] ?
+    )
+}
 
 

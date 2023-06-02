@@ -1,22 +1,62 @@
-
 # Slot: referencedOperationId
 
+URI: [ars:referencedOperationId](https://www.cdisc.org/ars/1-0referencedOperationId)
 
 
 
-URI: [https://www.cdisc.org/ars/1-0/referencedOperationId](https://www.cdisc.org/ars/1-0/referencedOperationId)
+<!-- no inheritance hierarchy -->
 
 
-## Domain and Range
-
-None &#8594;  <sub>0..1</sub> [ReferencedOperationRelationship](ReferencedOperationRelationship.md)
-
-## Parents
 
 
-## Children
+## Applicable Classes
+
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+[ReferencedAnalysisOperation](ReferencedAnalysisOperation.md) | An indication of the analysis that contains results of a referenced operation |  no  |
 
 
-## Used by
 
- * [ReferencedAnalysisOperation](ReferencedAnalysisOperation.md)
+
+
+
+
+## Properties
+
+* Range: [ReferencedOperationRelationship](ReferencedOperationRelationship.md)
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://www.cdisc.org/ars/1-0
+
+
+
+
+## LinkML Source
+
+<details>
+```yaml
+name: referencedOperationId
+from_schema: https://www.cdisc.org/ars/1-0
+rank: 1000
+alias: referencedOperationId
+domain_of:
+- ReferencedAnalysisOperation
+range: ReferencedOperationRelationship
+inlined: false
+
+```
+</details>

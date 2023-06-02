@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://cdisc-org.github.io/analysis-results-standard/Operation/" rel="canonical"/>
+<link href="../img/favicon.ico" rel="shortcut icon"/>
+<title>Class: Operation - Analysis Results Standard (ARS)</title>
+<link href="../css/bootstrap.min.css" rel="stylesheet"/>
+<link href="../css/font-awesome.min.css" rel="stylesheet"/>
+<link href="../css/base.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" rel="stylesheet"/>
+<script defer="" src="../js/jquery-1.10.2.min.js"></script>
+<script defer="" src="../js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+<div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+<div class="container">
+<a class="navbar-brand" href="..">Analysis Results Standard (ARS)</a>
+<!-- Expanded navigation -->
+<div class="navbar-collapse collapse" id="navbar-collapse">
+<ul class="nav navbar-nav ml-auto">
+<li class="nav-item">
+<a class="nav-link" data-target="#mkdocs_search_modal" data-toggle="modal" href="#">
+<i class="fa fa-search"></i> Search
+                            </a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="container">
+<div class="row">
+<div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+<div class="navbar-header">
+<button class="navbar-toggler collapsed" data-target="#toc-collapse" data-toggle="collapse" title="Table of Contents" type="button">
+<span class="fa fa-angle-down"></span>
+</button>
+</div>
+<div class="navbar-collapse collapse card bg-secondary" id="toc-collapse">
+<ul class="nav flex-column">
+<li class="nav-item" data-level="1"><a class="nav-link" href="#class-operation">Class: Operation</a>
+<ul class="nav flex-column">
+<li class="nav-item" data-level="2"><a class="nav-link" href="#inheritance">Inheritance</a>
+<ul class="nav flex-column">
+</ul>
+</li>
+<li class="nav-item" data-level="2"><a class="nav-link" href="#slots">Slots</a>
+<ul class="nav flex-column">
+</ul>
+</li>
+<li class="nav-item" data-level="2"><a class="nav-link" href="#usages">Usages</a>
+<ul class="nav flex-column">
+</ul>
+</li>
+<li class="nav-item" data-level="2"><a class="nav-link" href="#identifier-and-mapping-information">Identifier and Mapping Information</a>
+<ul class="nav flex-column">
+</ul>
+</li>
+<li class="nav-item" data-level="2"><a class="nav-link" href="#mappings">Mappings</a>
+<ul class="nav flex-column">
+</ul>
+</li>
+<li class="nav-item" data-level="2"><a class="nav-link" href="#linkml-source">LinkML Source</a>
+<ul class="nav flex-column">
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div></div>
+<div class="col-md-9" role="main">
+<h1 id="class-operation">Class: Operation</h1>
+<p><em>A statistical operation that produces a single analysis result value as part of an analysis method.</em></p>
+<p>URI: <a href="https://www.cdisc.org/ars/1-0Operation">ars:Operation</a></p>
+<div class="mermaid"> classDiagram
+    class Operation
+      NamedObject &lt;|-- Operation
+
+      Operation : id
+
+      Operation : label
+
+      Operation : name
+
+      Operation : referencedOperationRelationships
+
+          Operation --|&gt; ReferencedOperationRelationship : referencedOperationRelationships
+
+      Operation : resultPattern
+
+
+</div>
+<h2 id="inheritance">Inheritance</h2>
+<ul>
+<li><a href="../NamedObject/">NamedObject</a><ul>
+<li><strong>Operation</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="slots">Slots</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Cardinality and Range</th>
+<th>Description</th>
+<th>Inheritance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../id/">id</a></td>
+<td>1..1 <br/> <a href="../String/">String</a></td>
+<td></td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../label/">label</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td></td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../referencedOperationRelationships/">referencedOperationRelationships</a></td>
+<td>0..* <br/> <a href="../ReferencedOperationRelationship/">ReferencedOperationRelationship</a></td>
+<td></td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../resultPattern/">resultPattern</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td></td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../name/">name</a></td>
+<td>1..1 <br/> <a href="../String/">String</a></td>
+<td></td>
+<td><a href="../NamedObject/">NamedObject</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="usages">Usages</h2>
+<table>
+<thead>
+<tr>
+<th>used by</th>
+<th>used in</th>
+<th>type</th>
+<th>used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../OperationResult/">OperationResult</a></td>
+<td><a href="../operationId/">operationId</a></td>
+<td>range</td>
+<td><a href="./">Operation</a></td>
+</tr>
+<tr>
+<td><a href="../AnalysisMethod/">AnalysisMethod</a></td>
+<td><a href="../operations/">operations</a></td>
+<td>range</td>
+<td><a href="./">Operation</a></td>
+</tr>
+<tr>
+<td><a href="../ReferencedOperationRelationship/">ReferencedOperationRelationship</a></td>
+<td><a href="../operationId/">operationId</a></td>
+<td>range</td>
+<td><a href="./">Operation</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="schema-source">Schema Source</h3>
+<ul>
+<li>from schema: https://www.cdisc.org/ars/1-0</li>
+</ul>
+<h2 id="mappings">Mappings</h2>
+<table>
+<thead>
+<tr>
+<th>Mapping Type</th>
+<th>Mapped Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>self</td>
+<td>ars:Operation</td>
+</tr>
+<tr>
+<td>native</td>
+<td>ars:Operation</td>
+</tr>
+</tbody>
+</table>
+<h2 id="linkml-source">LinkML Source</h2>
+<!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
+<h3 id="direct">Direct</h3>
+<details>
+<pre><code class="language-yaml">name: Operation
+description: A statistical operation that produces a single analysis result value
+  as part of an analysis method.
+from_schema: https://www.cdisc.org/ars/1-0
+rank: 1000
+is_a: NamedObject
+slots:
+- id
+- label
+- referencedOperationRelationships
+- resultPattern
+
+</code></pre>
+</details>
+<h3 id="induced">Induced</h3>
+<details>
+<pre><code class="language-yaml">name: Operation
+description: A statistical operation that produces a single analysis result value
+  as part of an analysis method.
+from_schema: https://www.cdisc.org/ars/1-0
+rank: 1000
+is_a: NamedObject
+attributes:
+  id:
+    name: id
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    identifier: true
+    alias: id
+    owner: Operation
+    domain_of:
+    - AnalysisCategorization
+    - AnalysisCategory
+    - Analysis
+    - AnalysisMethod
+    - Operation
+    - ReferencedOperationRelationship
+    - Output
+    - OutputDisplay
+    - DisplaySubSection
+    - AnalysisSet
+    - GroupingFactor
+    - Group
+    - DataSubset
+    - ReferenceDocument
+    - SponsorTerm
+    range: string
+    required: true
+  label:
+    name: label
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: label
+    owner: Operation
+    domain_of:
+    - AnalysisCategorization
+    - AnalysisCategory
+    - AnalysisMethod
+    - Operation
+    - AnalysisSet
+    - GroupingFactor
+    - Group
+    - DataSubset
+    - PageRef
+    range: string
+  referencedOperationRelationships:
+    name: referencedOperationRelationships
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    multivalued: true
+    alias: referencedOperationRelationships
+    owner: Operation
+    domain_of:
+    - Operation
+    range: ReferencedOperationRelationship
+    inlined: true
+    inlined_as_list: true
+  resultPattern:
+    name: resultPattern
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: resultPattern
+    owner: Operation
+    domain_of:
+    - Operation
+    range: string
+  name:
+    name: name
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: name
+    owner: Operation
+    domain_of:
+    - NamedObject
+    range: string
+    required: true
+
+</code></pre>
+</details></div>
+</div>
+</div>
+<footer class="col-md-12">
+<hr/>
+<p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+</footer>
+<script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+<script defer="" src="../js/base.js"></script>
+<script defer="" src="../search/main.js"></script>
+<div aria-hidden="true" aria-labelledby="searchModalLabel" class="modal" id="mkdocs_search_modal" role="dialog" tabindex="-1">
+<div class="modal-dialog modal-lg">
+<div class="modal-content">
+<div class="modal-header">
+<h4 class="modal-title" id="searchModalLabel">Search</h4>
+<button class="close" data-dismiss="modal" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+</div>
+<div class="modal-body">
+<p>From here you can search these documents. Enter your search terms below.</p>
+<form>
+<div class="form-group">
+<input class="form-control" id="mkdocs-search-query" placeholder="Search..." title="Type search term here" type="search"/>
+</div>
+</form>
+<div data-no-results-text="No results found" id="mkdocs-search-results"></div>
+</div>
+<div class="modal-footer">
+</div>
+</div>
+</div>
+</div><div aria-hidden="true" aria-labelledby="keyboardModalLabel" class="modal" id="mkdocs_keyboard_modal" role="dialog" tabindex="-1">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+<button class="close" data-dismiss="modal" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+</div>
+<div class="modal-body">
+<table class="table">
+<thead>
+<tr>
+<th style="width: 20%;">Keys</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="help shortcut"><kbd>?</kbd></td>
+<td>Open this help</td>
+</tr>
+<tr>
+<td class="next shortcut"><kbd>n</kbd></td>
+<td>Next page</td>
+</tr>
+<tr>
+<td class="prev shortcut"><kbd>p</kbd></td>
+<td>Previous page</td>
+</tr>
+<tr>
+<td class="search shortcut"><kbd>s</kbd></td>
+<td>Search</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="modal-footer">
+</div>
+</div>
+</div>
+</div>
+<script src="https://unpkg.com/mermaid@8.8.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
+</html>

@@ -1,30 +1,66 @@
+# Slot: compoundExpression
 
-# Class: CompoundExpression
-
-
-
-
-URI: [https://www.cdisc.org/ars/1-0/CompoundExpression](https://www.cdisc.org/ars/1-0/CompoundExpression)
+URI: [ars:compoundExpression](https://www.cdisc.org/ars/1-0compoundExpression)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[WhereClause],[CompoundSubsetExpression],[CompoundSetExpression],[CompoundGroupExpression],[WhereClause]<whereClauses%200..*-++[CompoundExpression&#124;logicalOperator:LogicalOperator],[WhereClause]++-%20compoundExpression%200..1>[CompoundExpression],[CompoundExpression]^-[CompoundSubsetExpression],[CompoundExpression]^-[CompoundSetExpression],[CompoundExpression]^-[CompoundGroupExpression])](https://yuml.me/diagram/nofunky;dir:TB/class/[WhereClause],[CompoundSubsetExpression],[CompoundSetExpression],[CompoundGroupExpression],[WhereClause]<whereClauses%200..*-++[CompoundExpression&#124;logicalOperator:LogicalOperator],[WhereClause]++-%20compoundExpression%200..1>[CompoundExpression],[CompoundExpression]^-[CompoundSubsetExpression],[CompoundExpression]^-[CompoundSetExpression],[CompoundExpression]^-[CompoundGroupExpression])
 
-## Children
-
- * [CompoundGroupExpression](CompoundGroupExpression.md)
- * [CompoundSetExpression](CompoundSetExpression.md)
- * [CompoundSubsetExpression](CompoundSubsetExpression.md)
-
-## Referenced by Class
-
- *  **None** *[compoundExpression](compoundExpression.md)*  <sub>0..1</sub>  **[CompoundExpression](CompoundExpression.md)**
-
-## Attributes
+<!-- no inheritance hierarchy -->
 
 
-### Own
 
- * [logicalOperator](logicalOperator.md)  <sub>1..1</sub>
-     * Range: [LogicalOperator](LogicalOperator.md)
- * [whereClauses](whereClauses.md)  <sub>0..\*</sub>
-     * Range: [WhereClause](WhereClause.md)
+
+## Applicable Classes
+
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+[WhereClause](WhereClause.md) |  |  no  |
+[AnalysisSet](AnalysisSet.md) | A set of subjects whose data are to be included in the main analyses |  yes  |
+[Group](Group.md) | A subdivision of the subject population or analysis dataset record set based ... |  yes  |
+[AnalysisGroup](AnalysisGroup.md) | A subdivision of the subject population based on a defined factor (e |  no  |
+[DataGroup](DataGroup.md) | A subdivision of the analysis dataset records based on a defined factor |  no  |
+[DataSubset](DataSubset.md) | A subset of data identified by selection criteria for inclusion in the analys... |  yes  |
+
+
+
+
+
+
+
+## Properties
+
+* Range: [WhereClauseCompoundExpression](WhereClauseCompoundExpression.md)
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://www.cdisc.org/ars/1-0
+
+
+
+
+## LinkML Source
+
+<details>
+```yaml
+name: compoundExpression
+from_schema: https://www.cdisc.org/ars/1-0
+rank: 1000
+alias: compoundExpression
+domain_of:
+- WhereClause
+range: WhereClauseCompoundExpression
+
+```
+</details>

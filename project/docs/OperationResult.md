@@ -1,28 +1,166 @@
-
 # Class: OperationResult
 
 
+_The result of an analysis method operation performed on a subdivision of subjects or data records._
 
 
-URI: [https://www.cdisc.org/ars/1-0/OperationResult](https://www.cdisc.org/ars/1-0/OperationResult)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[ResultGroup],[ResultGroup]<resultGroups%200..*-++[OperationResult&#124;rawValue:string%20%3F;formattedValue:string%20%3F],[Operation]<operationId%201..1-%20[OperationResult],[Analysis]++-%20results%200..*>[OperationResult],[Operation],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[ResultGroup],[ResultGroup]<resultGroups%200..*-++[OperationResult&#124;rawValue:string%20%3F;formattedValue:string%20%3F],[Operation]<operationId%201..1-%20[OperationResult],[Analysis]++-%20results%200..*>[OperationResult],[Operation],[Analysis])
 
-## Referenced by Class
-
- *  **None** *[results](results.md)*  <sub>0..\*</sub>  **[OperationResult](OperationResult.md)**
-
-## Attributes
+URI: [ars:OperationResult](https://www.cdisc.org/ars/1-0OperationResult)
 
 
-### Own
 
- * [operationId](operationId.md)  <sub>1..1</sub>
-     * Range: [Operation](Operation.md)
- * [resultGroups](resultGroups.md)  <sub>0..\*</sub>
-     * Range: [ResultGroup](ResultGroup.md)
- * [rawValue](rawValue.md)  <sub>0..1</sub>
-     * Range: [String](types/String.md)
- * [formattedValue](formattedValue.md)  <sub>0..1</sub>
-     * Range: [String](types/String.md)
+```mermaid
+ classDiagram
+    class OperationResult
+      OperationResult : formattedValue
+        
+      OperationResult : operationId
+        
+          OperationResult --|> Operation : operationId
+        
+      OperationResult : rawValue
+        
+      OperationResult : resultGroups
+        
+          OperationResult --|> ResultGroup : resultGroups
+        
+      
+```
+
+
+
+
+<!-- no inheritance hierarchy -->
+
+
+## Slots
+
+| Name | Cardinality and Range | Description | Inheritance |
+| ---  | --- | --- | --- |
+| [operationId](operationId.md) | 1..1 <br/> [Operation](Operation.md) |  | direct |
+| [resultGroups](resultGroups.md) | 0..* <br/> [ResultGroup](ResultGroup.md) |  | direct |
+| [rawValue](rawValue.md) | 0..1 <br/> [String](String.md) |  | direct |
+| [formattedValue](formattedValue.md) | 0..1 <br/> [String](String.md) |  | direct |
+
+
+
+
+
+## Usages
+
+| used by | used in | type | used |
+| ---  | --- | --- | --- |
+| [Analysis](Analysis.md) | [results](results.md) | range | [OperationResult](OperationResult.md) |
+
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://www.cdisc.org/ars/1-0
+
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | ars:OperationResult |
+| native | ars:OperationResult |
+
+
+
+
+
+## LinkML Source
+
+<!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
+
+### Direct
+
+<details>
+```yaml
+name: OperationResult
+description: The result of an analysis method operation performed on a subdivision
+  of subjects or data records.
+from_schema: https://www.cdisc.org/ars/1-0
+rank: 1000
+slots:
+- operationId
+- resultGroups
+- rawValue
+- formattedValue
+
+```
+</details>
+
+### Induced
+
+<details>
+```yaml
+name: OperationResult
+description: The result of an analysis method operation performed on a subdivision
+  of subjects or data records.
+from_schema: https://www.cdisc.org/ars/1-0
+rank: 1000
+attributes:
+  operationId:
+    name: operationId
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: operationId
+    owner: OperationResult
+    domain_of:
+    - OperationResult
+    - ReferencedOperationRelationship
+    range: Operation
+    required: true
+    inlined: false
+  resultGroups:
+    name: resultGroups
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    multivalued: true
+    alias: resultGroups
+    owner: OperationResult
+    domain_of:
+    - OperationResult
+    range: ResultGroup
+    inlined: true
+    inlined_as_list: true
+  rawValue:
+    name: rawValue
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: rawValue
+    owner: OperationResult
+    domain_of:
+    - OperationResult
+    range: string
+  formattedValue:
+    name: formattedValue
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: formattedValue
+    owner: OperationResult
+    domain_of:
+    - OperationResult
+    range: string
+
+```
+</details>

@@ -1,37 +1,62 @@
+# Slot: display
 
-# Class: Display
-
-
-
-
-URI: [https://www.cdisc.org/ars/1-0/Display](https://www.cdisc.org/ars/1-0/Display)
+URI: [ars:display](https://www.cdisc.org/ars/1-0display)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[NamedObject],[DisplaySection],[DisplaySection]<displaySections%200..*-++[Display&#124;id:string;version:integer%20%3F;displayTitle:string%20%3F;name(i):string],[OutputDisplay]++-%20display%200..1>[Display],[NamedObject]^-[Display],[OutputDisplay])](https://yuml.me/diagram/nofunky;dir:TB/class/[NamedObject],[DisplaySection],[DisplaySection]<displaySections%200..*-++[Display&#124;id:string;version:integer%20%3F;displayTitle:string%20%3F;name(i):string],[OutputDisplay]++-%20display%200..1>[Display],[NamedObject]^-[Display],[OutputDisplay])
 
-## Parents
-
- *  is_a: [NamedObject](NamedObject.md)
-
-## Referenced by Class
-
- *  **None** *[display](display.md)*  <sub>0..1</sub>  **[Display](Display.md)**
-
-## Attributes
+<!-- no inheritance hierarchy -->
 
 
-### Own
 
- * [id](id.md)  <sub>1..1</sub>
-     * Range: [String](types/String.md)
- * [version](version.md)  <sub>0..1</sub>
-     * Range: [Integer](types/Integer.md)
- * [displayTitle](displayTitle.md)  <sub>0..1</sub>
-     * Range: [String](types/String.md)
- * [displaySections](displaySections.md)  <sub>0..\*</sub>
-     * Range: [DisplaySection](DisplaySection.md)
 
-### Inherited from NamedObject:
+## Applicable Classes
 
- * [name](name.md)  <sub>1..1</sub>
-     * Range: [String](types/String.md)
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+[OrderedDisplay](OrderedDisplay.md) |  |  no  |
+
+
+
+
+
+
+
+## Properties
+
+* Range: [OutputDisplay](OutputDisplay.md)
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://www.cdisc.org/ars/1-0
+
+
+
+
+## LinkML Source
+
+<details>
+```yaml
+name: display
+from_schema: https://www.cdisc.org/ars/1-0
+rank: 1000
+alias: display
+domain_of:
+- OrderedDisplay
+range: OutputDisplay
+inlined: true
+
+```
+</details>

@@ -1,3 +1,4 @@
 workfiles/examples/~$*.xlsx
 venv
 __pycache__
+.vscode

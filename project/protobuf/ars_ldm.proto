@@ -1,9 +1,20 @@
+// An analysis that is designed to meet a requirement of the reporting event. Each analysis is defined as a set of specifications, including:
+// - The analysis variable that is the subject of the analysis.
+// - The analysis method (set of statistical operations) that is performed for the analysis variable.
+// - The analysis set (subject population) for which the analysis is performed.
+// - The subset of data records on which the analysis is performed (optional).
+// - One or more factors by which either subjects or data records are grouped for analysis (optional).
+// 
 message Analysis
  {
   string name = 0
   string id = 0
   integer version = 0
  repeated  analysisCategory categoryIds = 0
+  string description = 0
+ repeated  documentRef documentRefs = 0
+  string reason = 0
+  string purpose = 0
   analysisSet analysisSetId = 0
  repeated  orderedGroupingFactor orderedGroupings = 0
   dataSubset dataSubsetId = 0
@@ -13,14 +24,14 @@ message Analysis
  repeated  referencedAnalysisOperation referencedAnalysisOperations = 0
  repeated  operationResult results = 0
  }
-// An implementer-defined categorization of analyses/outputs.
+// A set of related implementer-defined categories that can be used to categorize analyses or outputs.
 message AnalysisCategorization
  {
   string id = 0
   string label = 0
  repeated  analysisCategory categories = 0
  }
-// An implementer-defined category of analyses/outputs.
+// An implementer-defined category of analyses/outputs, which may include one or more sub-categorization.
 message AnalysisCategory
  {
   string id = 0
@@ -32,11 +43,12 @@ message AnalysisGroup
  {
   integer level = 0
   integer order = 0
-  condition condition = 0
+  whereClauseCondition condition = 0
   string id = 0
   string label = 0
   compoundGroupExpression compoundExpression = 0
  }
+// A set of one or more statistical operations.
 message AnalysisMethod
  {
   string name = 0
@@ -44,50 +56,45 @@ message AnalysisMethod
   string label = 0
   string description = 0
  repeated  operation operations = 0
+  programmingCodeTemplate codeTemplate = 0
  }
 // A set of subjects whose data are to be included in the main analyses. This should be defined in the statistical section of the protocol. NOTE: There are a number of potential analysis sets, including, for example, the set based upon the intent-to-treat principle. [ICH E9]
 message AnalysisSet
  {
   integer level = 0
   integer order = 0
-  condition condition = 0
+  whereClauseCondition condition = 0
   string id = 0
   string label = 0
   compoundSetExpression compoundExpression = 0
  }
-message CompoundExpression
+message CodeParameter
  {
-  logicalOperator logicalOperator = 0
- repeated  whereClause whereClauses = 0
+  string name = 0
+  string description = 0
+  string valueSource = 0
  }
 message CompoundGroupExpression
  {
-  logicalOperator logicalOperator = 0
+  expressionLogicalOperator logicalOperator = 0
  repeated  group whereClauses = 0
  }
 message CompoundSetExpression
  {
-  logicalOperator logicalOperator = 0
+  expressionLogicalOperator logicalOperator = 0
  repeated  analysisSet whereClauses = 0
  }
 message CompoundSubsetExpression
  {
-  logicalOperator logicalOperator = 0
+  expressionLogicalOperator logicalOperator = 0
  repeated  whereClause whereClauses = 0
- }
-message Condition
- {
-  string dataset = 0
-  string variable = 0
-  comparator comparator = 0
- repeated  string value = 0
  }
 // A subdivision of the analysis dataset records based on a defined factor.
 message DataGroup
  {
   integer level = 0
   integer order = 0
-  condition condition = 0
+  whereClauseCondition condition = 0
   string id = 0
   string label = 0
   compoundGroupExpression compoundExpression = 0
@@ -106,22 +113,14 @@ message DataSubset
  {
   integer level = 0
   integer order = 0
-  condition condition = 0
+  whereClauseCondition condition = 0
   string id = 0
   string label = 0
   compoundSubsetExpression compoundExpression = 0
  }
-message Display
- {
-  string name = 0
-  string id = 0
-  integer version = 0
-  string displayTitle = 0
- repeated  displaySection displaySections = 0
- }
 message DisplaySection
  {
-  sectionType sectionType = 0
+  displaySectionType sectionType = 0
  repeated  displaySubSection subSections = 0
  }
 message DisplaySubSection
@@ -130,11 +129,16 @@ message DisplaySubSection
   integer order = 0
   string text = 0
  }
+message DocumentRef
+ {
+  referenceDocument referenceDocumentId = 0
+ repeated  pageRef pageRefs = 0
+ }
 message File
  {
   string name = 0
-  fileType fileType = 0
-  string location = 0
+  string fileType = 0
+  uri location = 0
   string style = 0
  }
 // A subdivision of the subject population or analysis dataset record set based on a defined factor.
@@ -142,15 +146,17 @@ message Group
  {
   integer level = 0
   integer order = 0
-  condition condition = 0
+  whereClauseCondition condition = 0
   string id = 0
   string label = 0
   compoundGroupExpression compoundExpression = 0
  }
+// A list of items (analyses or outputs) that may be organized within sub-lists.
 message NestedList
  {
  repeated  orderedListItem listItems = 0
  }
+// A statistical operation that produces a single analysis result value as part of an analysis method.
 message Operation
  {
   string name = 0
@@ -159,6 +165,7 @@ message Operation
  repeated  referencedOperationRelationship referencedOperationRelationships = 0
   string resultPattern = 0
  }
+// The result of an analysis method operation performed on a subdivision of subjects or data records.
 message OperationResult
  {
   operation operationId = 0
@@ -166,13 +173,19 @@ message OperationResult
   string rawValue = 0
   string formattedValue = 0
  }
+message OrderedDisplay
+ {
+  integer order = 0
+  outputDisplay display = 0
+ }
+// A reference to a defined factor by which subjects or data records are grouped for the analysis, ordered with respect to other grouping factors.
 message OrderedGroupingFactor
  {
   integer order = 0
   groupingFactor groupingId = 0
-  dataGroupingFactor dataGrouping = 0
   boolean resultsByGroup = 0
  }
+// An item (analysis, output or sub-list) ordered relative to other items within a list or sub-list.
 message OrderedListItem
  {
   string name = 0
@@ -187,27 +200,88 @@ message Output
   string id = 0
   integer version = 0
  repeated  file fileSpecifications = 0
- repeated  outputDisplay outputDisplays = 0
+ repeated  orderedDisplay displays = 0
  repeated  analysisCategory categoryIds = 0
  }
 message OutputDisplay
  {
-  integer order = 0
-  display display = 0
+  string name = 0
+  string id = 0
+  integer version = 0
+  string displayTitle = 0
+ repeated  displaySection displaySections = 0
  }
+// A list of one or more named document references, each of which corresponds with a page.
+message PageNameList
+ {
+ repeated  integer pageNames = 0
+ }
+// One or more pages in the reference document, referenced by named destination.
+message PageNameRef
+ {
+  string label = 0
+  pageRefType refType = 0
+  pageNameList pages = 0
+ }
+// A list of one or more page numbers.
+message PageNumberList
+ {
+ repeated  integer pageNumbers = 0
+ }
+// One or more individual pages in the reference document, referenced by page number.
+message PageNumberListRef
+ {
+  string label = 0
+  pageRefType refType = 0
+  pageNumberList pages = 0
+ }
+// A range of pages in the reference document, indicated by the first and last page number in the range.
+message PageNumberRangeRef
+ {
+  string label = 0
+  pageRefType refType = 0
+  pageRange pages = 0
+ }
+// A set of pages in a document that includes the specified first and last page, and all pages in between.
+message PageRange
+ {
+  integer firstPage = 0
+  integer lastPage = 0
+ }
+message PageRef
+ {
+  pageRefType refType = 0
+  string label = 0
+  string pages = 0
+ }
+message ProgrammingCodeTemplate
+ {
+  string context = 0
+ repeated  codeParameter parameters = 0
+  string templateCode = 0
+ }
+// An indication of the analysis that contains results of a referenced operation.
 message ReferencedAnalysisOperation
  {
   referencedOperationRelationship referencedOperationId = 0
   analysis analysisId = 0
  }
+message ReferenceDocument
+ {
+  string name = 0
+  string id = 0
+  uri location = 0
+ }
+// A reference to an statistical operation whose results is used in the calculation of the result for this operation.
 message ReferencedOperationRelationship
  {
   string id = 0
-  operationRole referencedOperationRole = 0
+  string referencedOperationRole = 0
   operation operationId = 0
   analysis analysisId = 0
   string description = 0
  }
+// A set of analyses and outputs created to meet a specific reporting requirement, such as a CSR or interim analysis.
 message ReportingEvent
  {
   string name = 0
@@ -222,12 +296,22 @@ message ReportingEvent
  repeated  analysis analyses = 0
  repeated  analysisMethod methods = 0
  repeated  output outputs = 0
+ repeated  referenceDocument referenceDocuments = 0
+ repeated  terminologyExtension terminologyExtentions = 0
  }
+// For the specified grouping factor, an indication of the specific group of subjects or data records associated with the analysis result.
 message ResultGroup
  {
   groupingFactor groupingId = 0
   group groupId = 0
   string groupValue = 0
+ }
+// A sponsor-defined term that is included in an extensible set of controlled terminology.
+message SponsorTerm
+ {
+  string id = 0
+  string submissionValue = 0
+  string description = 0
  }
 // A factor used to subdivide the subject population for comparative analysis (e.g., treatment, sex, race, age).
 message SubjectGroupingFactor
@@ -238,10 +322,28 @@ message SubjectGroupingFactor
   boolean dataDriven = 0
  repeated  analysisGroup groups = 0
  }
+// A sponsor-defined term that is included in an extensible set of controlled terminology.
+message TerminologyExtension
+ {
+  extensibleTerminology enumeration = 0
+ repeated  sponsorTerm sponsorTerms = 0
+ }
 message WhereClause
  {
   integer level = 0
   integer order = 0
-  condition condition = 0
-  compoundExpression compoundExpression = 0
+  whereClauseCondition condition = 0
+  whereClauseCompoundExpression compoundExpression = 0
+ }
+message WhereClauseCompoundExpression
+ {
+  expressionLogicalOperator logicalOperator = 0
+ repeated  whereClause whereClauses = 0
+ }
+message WhereClauseCondition
+ {
+  string dataset = 0
+  string variable = 0
+  conditionComparator comparator = 0
+ repeated  string value = 0
  }

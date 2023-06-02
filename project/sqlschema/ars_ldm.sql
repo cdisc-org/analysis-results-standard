@@ -20,6 +20,7 @@ CREATE TABLE "AnalysisMethod" (
 	label TEXT, 
 	description TEXT, 
 	operations TEXT NOT NULL, 
+	"codeTemplate" TEXT, 
 	PRIMARY KEY (id)
 );
 
@@ -33,10 +34,11 @@ CREATE TABLE "AnalysisSet" (
 	PRIMARY KEY (id)
 );
 
-CREATE TABLE "CompoundExpression" (
-	"logicalOperator" VARCHAR(3) NOT NULL, 
-	"whereClauses" TEXT, 
-	PRIMARY KEY ("logicalOperator", "whereClauses")
+CREATE TABLE "CodeParameter" (
+	name TEXT NOT NULL, 
+	description TEXT, 
+	"valueSource" TEXT, 
+	PRIMARY KEY (name, description, "valueSource")
 );
 
 CREATE TABLE "CompoundGroupExpression" (
@@ -57,14 +59,6 @@ CREATE TABLE "CompoundSubsetExpression" (
 	PRIMARY KEY ("logicalOperator", "whereClauses")
 );
 
-CREATE TABLE "Condition" (
-	dataset TEXT, 
-	variable TEXT, 
-	comparator VARCHAR(5), 
-	value TEXT, 
-	PRIMARY KEY (dataset, variable, comparator, value)
-);
-
 CREATE TABLE "DataGroupingFactor" (
 	id TEXT NOT NULL, 
 	label TEXT, 
@@ -80,15 +74,6 @@ CREATE TABLE "DataSubset" (
 	id TEXT NOT NULL, 
 	label TEXT, 
 	"compoundExpression" TEXT, 
-	PRIMARY KEY (id)
-);
-
-CREATE TABLE "Display" (
-	name TEXT NOT NULL, 
-	id TEXT NOT NULL, 
-	version INTEGER, 
-	"displayTitle" TEXT, 
-	"displaySections" TEXT, 
 	PRIMARY KEY (id)
 );
 
@@ -136,6 +121,73 @@ CREATE TABLE "Output" (
 	PRIMARY KEY (id)
 );
 
+CREATE TABLE "OutputDisplay" (
+	name TEXT NOT NULL, 
+	id TEXT NOT NULL, 
+	version INTEGER, 
+	"displayTitle" TEXT, 
+	"displaySections" TEXT, 
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE "PageNameList" (
+	"pageNames" INTEGER NOT NULL, 
+	PRIMARY KEY ("pageNames")
+);
+
+CREATE TABLE "PageNameRef" (
+	label TEXT, 
+	"refType" VARCHAR(16) NOT NULL, 
+	pages TEXT, 
+	PRIMARY KEY (label, "refType", pages)
+);
+
+CREATE TABLE "PageNumberList" (
+	"pageNumbers" INTEGER NOT NULL, 
+	PRIMARY KEY ("pageNumbers")
+);
+
+CREATE TABLE "PageNumberListRef" (
+	label TEXT, 
+	"refType" VARCHAR(16) NOT NULL, 
+	pages TEXT, 
+	PRIMARY KEY (label, "refType", pages)
+);
+
+CREATE TABLE "PageNumberRangeRef" (
+	label TEXT, 
+	"refType" VARCHAR(16) NOT NULL, 
+	pages TEXT, 
+	PRIMARY KEY (label, "refType", pages)
+);
+
+CREATE TABLE "PageRange" (
+	"firstPage" INTEGER NOT NULL, 
+	"lastPage" INTEGER NOT NULL, 
+	PRIMARY KEY ("firstPage", "lastPage")
+);
+
+CREATE TABLE "PageRef" (
+	"refType" VARCHAR(16) NOT NULL, 
+	label TEXT, 
+	pages TEXT, 
+	PRIMARY KEY ("refType", label, pages)
+);
+
+CREATE TABLE "ProgrammingCodeTemplate" (
+	context TEXT NOT NULL, 
+	parameters TEXT, 
+	"templateCode" TEXT, 
+	PRIMARY KEY (context, parameters, "templateCode")
+);
+
+CREATE TABLE "ReferenceDocument" (
+	name TEXT NOT NULL, 
+	id TEXT NOT NULL, 
+	location TEXT, 
+	PRIMARY KEY (id)
+);
+
 CREATE TABLE "ReportingEvent" (
 	name TEXT NOT NULL, 
 	"listOfPlannedAnalyses" TEXT NOT NULL, 
@@ -149,7 +201,16 @@ CREATE TABLE "ReportingEvent" (
 	analyses TEXT, 
 	methods TEXT, 
 	outputs TEXT, 
-	PRIMARY KEY (name, "listOfPlannedAnalyses", "listOfPlannedOutputs", "analysisSets", "analysisGroupings", "dataSubsets", "dataGroupings", "globalDisplaySections", "analysisCategorizations", analyses, methods, outputs)
+	"referenceDocuments" TEXT, 
+	"terminologyExtentions" TEXT, 
+	PRIMARY KEY (name, "listOfPlannedAnalyses", "listOfPlannedOutputs", "analysisSets", "analysisGroupings", "dataSubsets", "dataGroupings", "globalDisplaySections", "analysisCategorizations", analyses, methods, outputs, "referenceDocuments", "terminologyExtentions")
+);
+
+CREATE TABLE "SponsorTerm" (
+	id TEXT NOT NULL, 
+	"submissionValue" TEXT NOT NULL, 
+	description TEXT, 
+	PRIMARY KEY (id)
 );
 
 CREATE TABLE "SubjectGroupingFactor" (
@@ -160,6 +221,12 @@ CREATE TABLE "SubjectGroupingFactor" (
 	PRIMARY KEY (id)
 );
 
+CREATE TABLE "TerminologyExtension" (
+	enumeration VARCHAR(15), 
+	"sponsorTerms" TEXT NOT NULL, 
+	PRIMARY KEY (enumeration, "sponsorTerms")
+);
+
 CREATE TABLE "WhereClause" (
 	level INTEGER, 
 	"order" INTEGER, 
@@ -168,11 +235,28 @@ CREATE TABLE "WhereClause" (
 	PRIMARY KEY (level, "order", condition, "compoundExpression")
 );
 
+CREATE TABLE "WhereClauseCompoundExpression" (
+	"logicalOperator" VARCHAR(3) NOT NULL, 
+	"whereClauses" TEXT, 
+	PRIMARY KEY ("logicalOperator", "whereClauses")
+);
+
+CREATE TABLE "WhereClauseCondition" (
+	dataset TEXT, 
+	variable TEXT, 
+	comparator VARCHAR(5), 
+	value TEXT, 
+	PRIMARY KEY (dataset, variable, comparator, value)
+);
+
 CREATE TABLE "Analysis" (
 	name TEXT NOT NULL, 
 	id TEXT NOT NULL, 
 	version INTEGER, 
 	"categoryIds" TEXT, 
+	description TEXT, 
+	reason TEXT NOT NULL, 
+	purpose TEXT NOT NULL, 
 	"analysisSetId" TEXT, 
 	"dataSubsetId" TEXT, 
 	dataset TEXT, 
@@ -210,7 +294,7 @@ CREATE TABLE "DataGroup" (
 
 CREATE TABLE "File" (
 	name TEXT NOT NULL, 
-	"fileType" VARCHAR(3), 
+	"fileType" TEXT, 
 	location TEXT, 
 	style TEXT, 
 	"Output_id" TEXT, 
@@ -218,12 +302,12 @@ CREATE TABLE "File" (
 	FOREIGN KEY("Output_id") REFERENCES "Output" (id)
 );
 
-CREATE TABLE "OutputDisplay" (
+CREATE TABLE "OrderedDisplay" (
 	"order" INTEGER NOT NULL, 
 	display TEXT, 
 	"Output_id" TEXT, 
 	PRIMARY KEY ("order", display, "Output_id"), 
-	FOREIGN KEY(display) REFERENCES "Display" (id), 
+	FOREIGN KEY(display) REFERENCES "OutputDisplay" (id), 
 	FOREIGN KEY("Output_id") REFERENCES "Output" (id)
 );
 
@@ -233,6 +317,15 @@ CREATE TABLE "ResultGroup" (
 	"groupValue" TEXT, 
 	PRIMARY KEY ("groupingId", "groupId", "groupValue"), 
 	FOREIGN KEY("groupId") REFERENCES "Group" (id)
+);
+
+CREATE TABLE "DocumentRef" (
+	"referenceDocumentId" TEXT NOT NULL, 
+	"pageRefs" TEXT, 
+	"Analysis_id" TEXT, 
+	PRIMARY KEY ("referenceDocumentId", "pageRefs", "Analysis_id"), 
+	FOREIGN KEY("referenceDocumentId") REFERENCES "ReferenceDocument" (id), 
+	FOREIGN KEY("Analysis_id") REFERENCES "Analysis" (id)
 );
 
 CREATE TABLE "OperationResult" (
@@ -249,11 +342,9 @@ CREATE TABLE "OperationResult" (
 CREATE TABLE "OrderedGroupingFactor" (
 	"order" INTEGER NOT NULL, 
 	"groupingId" TEXT, 
-	"dataGrouping" TEXT, 
 	"resultsByGroup" BOOLEAN NOT NULL, 
 	"Analysis_id" TEXT, 
-	PRIMARY KEY ("order", "groupingId", "dataGrouping", "resultsByGroup", "Analysis_id"), 
-	FOREIGN KEY("dataGrouping") REFERENCES "DataGroupingFactor" (id), 
+	PRIMARY KEY ("order", "groupingId", "resultsByGroup", "Analysis_id"), 
 	FOREIGN KEY("Analysis_id") REFERENCES "Analysis" (id)
 );
 
@@ -271,7 +362,7 @@ CREATE TABLE "OrderedListItem" (
 
 CREATE TABLE "ReferencedOperationRelationship" (
 	id TEXT NOT NULL, 
-	"referencedOperationRole" VARCHAR(11) NOT NULL, 
+	"referencedOperationRole" TEXT NOT NULL, 
 	"operationId" TEXT NOT NULL, 
 	"analysisId" TEXT, 
 	description TEXT, 

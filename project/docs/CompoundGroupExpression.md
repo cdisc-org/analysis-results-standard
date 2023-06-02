@@ -1,31 +1,150 @@
-
 # Class: CompoundGroupExpression
 
 
 
-
-URI: [https://www.cdisc.org/ars/1-0/CompoundGroupExpression](https://www.cdisc.org/ars/1-0/CompoundGroupExpression)
-
-
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Group],[Group]<whereClauses%200..*-%20[CompoundGroupExpression&#124;logicalOperator(i):LogicalOperator],[Group]++-%20compoundExpression%200..1>[CompoundGroupExpression],[CompoundExpression]^-[CompoundGroupExpression],[CompoundExpression])](https://yuml.me/diagram/nofunky;dir:TB/class/[Group],[Group]<whereClauses%200..*-%20[CompoundGroupExpression&#124;logicalOperator(i):LogicalOperator],[Group]++-%20compoundExpression%200..1>[CompoundGroupExpression],[CompoundExpression]^-[CompoundGroupExpression],[CompoundExpression])
-
-## Parents
-
- *  is_a: [CompoundExpression](CompoundExpression.md)
-
-## Referenced by Class
-
- *  **[Group](Group.md)** *[Group➞compoundExpression](Group_compoundExpression.md)*  <sub>0..1</sub>  **[CompoundGroupExpression](CompoundGroupExpression.md)**
-
-## Attributes
+URI: [ars:CompoundGroupExpression](https://www.cdisc.org/ars/1-0CompoundGroupExpression)
 
 
-### Own
 
- * [CompoundGroupExpression➞whereClauses](CompoundGroupExpression_whereClauses.md)  <sub>0..\*</sub>
-     * Range: [Group](Group.md)
+```mermaid
+ classDiagram
+    class CompoundGroupExpression
+      WhereClauseCompoundExpression <|-- CompoundGroupExpression
+      
+      CompoundGroupExpression : logicalOperator
+        
+          CompoundGroupExpression --|> ExpressionLogicalOperator : logicalOperator
+        
+      CompoundGroupExpression : whereClauses
+        
+          CompoundGroupExpression --|> Group : whereClauses
+        
+      
+```
 
-### Inherited from CompoundExpression:
 
- * [logicalOperator](logicalOperator.md)  <sub>1..1</sub>
-     * Range: [LogicalOperator](LogicalOperator.md)
+
+
+
+## Inheritance
+* [WhereClauseCompoundExpression](WhereClauseCompoundExpression.md)
+    * **CompoundGroupExpression**
+
+
+
+## Slots
+
+| Name | Cardinality and Range | Description | Inheritance |
+| ---  | --- | --- | --- |
+| [logicalOperator](logicalOperator.md) | 1..1 <br/> [ExpressionLogicalOperator](ExpressionLogicalOperator.md) |  | [WhereClauseCompoundExpression](WhereClauseCompoundExpression.md) |
+| [whereClauses](whereClauses.md) | 0..* <br/> [Group](Group.md) |  | [WhereClauseCompoundExpression](WhereClauseCompoundExpression.md) |
+
+
+
+
+
+## Usages
+
+| used by | used in | type | used |
+| ---  | --- | --- | --- |
+| [Group](Group.md) | [compoundExpression](compoundExpression.md) | range | [CompoundGroupExpression](CompoundGroupExpression.md) |
+| [AnalysisGroup](AnalysisGroup.md) | [compoundExpression](compoundExpression.md) | range | [CompoundGroupExpression](CompoundGroupExpression.md) |
+| [DataGroup](DataGroup.md) | [compoundExpression](compoundExpression.md) | range | [CompoundGroupExpression](CompoundGroupExpression.md) |
+
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://www.cdisc.org/ars/1-0
+
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | ars:CompoundGroupExpression |
+| native | ars:CompoundGroupExpression |
+
+
+
+
+
+## LinkML Source
+
+<!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
+
+### Direct
+
+<details>
+```yaml
+name: CompoundGroupExpression
+from_schema: https://www.cdisc.org/ars/1-0
+rank: 1000
+is_a: WhereClauseCompoundExpression
+slot_usage:
+  whereClauses:
+    name: whereClauses
+    domain_of:
+    - WhereClauseCompoundExpression
+    range: Group
+    inlined: false
+
+```
+</details>
+
+### Induced
+
+<details>
+```yaml
+name: CompoundGroupExpression
+from_schema: https://www.cdisc.org/ars/1-0
+rank: 1000
+is_a: WhereClauseCompoundExpression
+slot_usage:
+  whereClauses:
+    name: whereClauses
+    domain_of:
+    - WhereClauseCompoundExpression
+    range: Group
+    inlined: false
+attributes:
+  logicalOperator:
+    name: logicalOperator
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: logicalOperator
+    owner: CompoundGroupExpression
+    domain_of:
+    - WhereClauseCompoundExpression
+    range: ExpressionLogicalOperator
+    required: true
+  whereClauses:
+    name: whereClauses
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    multivalued: true
+    list_elements_ordered: true
+    alias: whereClauses
+    owner: CompoundGroupExpression
+    domain_of:
+    - WhereClauseCompoundExpression
+    range: Group
+    inlined: false
+
+```
+</details>

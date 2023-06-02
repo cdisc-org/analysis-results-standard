@@ -1,53 +1,438 @@
-
 # Class: Analysis
 
 
+_An analysis that is designed to meet a requirement of the reporting event. Each analysis is defined as a set of specifications, including:_
+
+_- The analysis variable that is the subject of the analysis._
+
+_- The analysis method (set of statistical operations) that is performed for the analysis variable._
+
+_- The analysis set (subject population) for which the analysis is performed._
+
+_- The subset of data records on which the analysis is performed (optional)._
+
+_- One or more factors by which either subjects or data records are grouped for analysis (optional)._
+
+__
 
 
-URI: [https://www.cdisc.org/ars/1-0/Analysis](https://www.cdisc.org/ars/1-0/Analysis)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[ReferencedAnalysisOperation],[OrderedGroupingFactor],[OperationResult],[NamedObject],[DataSubset],[AnalysisSet],[AnalysisMethod],[AnalysisCategory],[OperationResult]<results%200..*-++[Analysis&#124;id:string;version:integer%20%3F;dataset:string%20%3F;variable:string%20%3F;name(i):string],[ReferencedAnalysisOperation]<referencedAnalysisOperations%200..*-++[Analysis],[AnalysisMethod]<methodId%201..1-%20[Analysis],[DataSubset]<dataSubsetId%200..1-%20[Analysis],[OrderedGroupingFactor]<orderedGroupings%200..*-++[Analysis],[AnalysisSet]<analysisSetId%200..1-%20[Analysis],[AnalysisCategory]<categoryIds%200..*-%20[Analysis],[ReferencedAnalysisOperation]-%20analysisId%201..1>[Analysis],[ReportingEvent]++-%20analyses%200..*>[Analysis],[OrderedListItem]-%20analysisId%200..1>[Analysis],[ReferencedAnalysisOperation]-%20analysisId(i)%200..1>[Analysis],[ReferencedOperationRelationship]-%20analysisId%200..1>[Analysis],[NamedObject]^-[Analysis],[ReportingEvent],[ReferencedOperationRelationship],[OrderedListItem])](https://yuml.me/diagram/nofunky;dir:TB/class/[ReferencedAnalysisOperation],[OrderedGroupingFactor],[OperationResult],[NamedObject],[DataSubset],[AnalysisSet],[AnalysisMethod],[AnalysisCategory],[OperationResult]<results%200..*-++[Analysis&#124;id:string;version:integer%20%3F;dataset:string%20%3F;variable:string%20%3F;name(i):string],[ReferencedAnalysisOperation]<referencedAnalysisOperations%200..*-++[Analysis],[AnalysisMethod]<methodId%201..1-%20[Analysis],[DataSubset]<dataSubsetId%200..1-%20[Analysis],[OrderedGroupingFactor]<orderedGroupings%200..*-++[Analysis],[AnalysisSet]<analysisSetId%200..1-%20[Analysis],[AnalysisCategory]<categoryIds%200..*-%20[Analysis],[ReferencedAnalysisOperation]-%20analysisId%201..1>[Analysis],[ReportingEvent]++-%20analyses%200..*>[Analysis],[OrderedListItem]-%20analysisId%200..1>[Analysis],[ReferencedAnalysisOperation]-%20analysisId(i)%200..1>[Analysis],[ReferencedOperationRelationship]-%20analysisId%200..1>[Analysis],[NamedObject]^-[Analysis],[ReportingEvent],[ReferencedOperationRelationship],[OrderedListItem])
 
-## Parents
-
- *  is_a: [NamedObject](NamedObject.md)
-
-## Referenced by Class
-
- *  **[ReferencedAnalysisOperation](ReferencedAnalysisOperation.md)** *[ReferencedAnalysisOperation➞analysisId](ReferencedAnalysisOperation_analysisId.md)*  <sub>1..1</sub>  **[Analysis](Analysis.md)**
- *  **None** *[analyses](analyses.md)*  <sub>0..\*</sub>  **[Analysis](Analysis.md)**
- *  **None** *[analysisId](analysisId.md)*  <sub>0..1</sub>  **[Analysis](Analysis.md)**
-
-## Attributes
+URI: [ars:Analysis](https://www.cdisc.org/ars/1-0Analysis)
 
 
-### Own
 
- * [id](id.md)  <sub>1..1</sub>
-     * Range: [String](types/String.md)
- * [version](version.md)  <sub>0..1</sub>
-     * Range: [Integer](types/Integer.md)
- * [categoryIds](categoryIds.md)  <sub>0..\*</sub>
-     * Range: [AnalysisCategory](AnalysisCategory.md)
- * [analysisSetId](analysisSetId.md)  <sub>0..1</sub>
-     * Range: [AnalysisSet](AnalysisSet.md)
- * [orderedGroupings](orderedGroupings.md)  <sub>0..\*</sub>
-     * Range: [OrderedGroupingFactor](OrderedGroupingFactor.md)
- * [dataSubsetId](dataSubsetId.md)  <sub>0..1</sub>
-     * Range: [DataSubset](DataSubset.md)
- * [dataset](dataset.md)  <sub>0..1</sub>
-     * Range: [String](types/String.md)
- * [variable](variable.md)  <sub>0..1</sub>
-     * Range: [String](types/String.md)
- * [methodId](methodId.md)  <sub>1..1</sub>
-     * Range: [AnalysisMethod](AnalysisMethod.md)
- * [referencedAnalysisOperations](referencedAnalysisOperations.md)  <sub>0..\*</sub>
-     * Range: [ReferencedAnalysisOperation](ReferencedAnalysisOperation.md)
- * [results](results.md)  <sub>0..\*</sub>
-     * Range: [OperationResult](OperationResult.md)
+```mermaid
+ classDiagram
+    class Analysis
+      NamedObject <|-- Analysis
+      
+      Analysis : analysisSetId
+        
+          Analysis --|> AnalysisSet : analysisSetId
+        
+      Analysis : categoryIds
+        
+          Analysis --|> AnalysisCategory : categoryIds
+        
+      Analysis : dataset
+        
+      Analysis : dataSubsetId
+        
+          Analysis --|> DataSubset : dataSubsetId
+        
+      Analysis : description
+        
+      Analysis : documentRefs
+        
+          Analysis --|> DocumentRef : documentRefs
+        
+      Analysis : id
+        
+      Analysis : methodId
+        
+          Analysis --|> AnalysisMethod : methodId
+        
+      Analysis : name
+        
+      Analysis : orderedGroupings
+        
+          Analysis --|> OrderedGroupingFactor : orderedGroupings
+        
+      Analysis : purpose
+        
+      Analysis : reason
+        
+      Analysis : referencedAnalysisOperations
+        
+          Analysis --|> ReferencedAnalysisOperation : referencedAnalysisOperations
+        
+      Analysis : results
+        
+          Analysis --|> OperationResult : results
+        
+      Analysis : variable
+        
+      Analysis : version
+        
+      
+```
 
-### Inherited from NamedObject:
 
- * [name](name.md)  <sub>1..1</sub>
-     * Range: [String](types/String.md)
+
+
+
+## Inheritance
+* [NamedObject](NamedObject.md)
+    * **Analysis**
+
+
+
+## Slots
+
+| Name | Cardinality and Range | Description | Inheritance |
+| ---  | --- | --- | --- |
+| [id](id.md) | 1..1 <br/> [String](String.md) |  | direct |
+| [version](version.md) | 0..1 <br/> [Integer](Integer.md) |  | direct |
+| [categoryIds](categoryIds.md) | 0..* <br/> [AnalysisCategory](AnalysisCategory.md) |  | direct |
+| [description](description.md) | 0..1 <br/> [String](String.md) |  | direct |
+| [documentRefs](documentRefs.md) | 0..* <br/> [DocumentRef](DocumentRef.md) |  | direct |
+| [reason](reason.md) | 1..1 <br/> [String](String.md) | The rationale for performing this analysis | direct |
+| [purpose](purpose.md) | 1..1 <br/> [String](String.md) | The purpose of the analysis within the body of evidence (e | direct |
+| [analysisSetId](analysisSetId.md) | 0..1 <br/> [AnalysisSet](AnalysisSet.md) |  | direct |
+| [orderedGroupings](orderedGroupings.md) | 0..* <br/> [OrderedGroupingFactor](OrderedGroupingFactor.md) |  | direct |
+| [dataSubsetId](dataSubsetId.md) | 0..1 <br/> [DataSubset](DataSubset.md) |  | direct |
+| [dataset](dataset.md) | 0..1 <br/> [String](String.md) |  | direct |
+| [variable](variable.md) | 0..1 <br/> [String](String.md) |  | direct |
+| [methodId](methodId.md) | 1..1 <br/> [AnalysisMethod](AnalysisMethod.md) |  | direct |
+| [referencedAnalysisOperations](referencedAnalysisOperations.md) | 0..* <br/> [ReferencedAnalysisOperation](ReferencedAnalysisOperation.md) |  | direct |
+| [results](results.md) | 0..* <br/> [OperationResult](OperationResult.md) |  | direct |
+| [name](name.md) | 1..1 <br/> [String](String.md) |  | [NamedObject](NamedObject.md) |
+
+
+
+
+
+## Usages
+
+| used by | used in | type | used |
+| ---  | --- | --- | --- |
+| [ReportingEvent](ReportingEvent.md) | [analyses](analyses.md) | range | [Analysis](Analysis.md) |
+| [OrderedListItem](OrderedListItem.md) | [analysisId](analysisId.md) | range | [Analysis](Analysis.md) |
+| [ReferencedAnalysisOperation](ReferencedAnalysisOperation.md) | [analysisId](analysisId.md) | range | [Analysis](Analysis.md) |
+| [ReferencedOperationRelationship](ReferencedOperationRelationship.md) | [analysisId](analysisId.md) | range | [Analysis](Analysis.md) |
+
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://www.cdisc.org/ars/1-0
+
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | ars:Analysis |
+| native | ars:Analysis |
+
+
+
+
+
+## LinkML Source
+
+<!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
+
+### Direct
+
+<details>
+```yaml
+name: Analysis
+description: 'An analysis that is designed to meet a requirement of the reporting
+  event. Each analysis is defined as a set of specifications, including:
+
+  - The analysis variable that is the subject of the analysis.
+
+  - The analysis method (set of statistical operations) that is performed for the
+  analysis variable.
+
+  - The analysis set (subject population) for which the analysis is performed.
+
+  - The subset of data records on which the analysis is performed (optional).
+
+  - One or more factors by which either subjects or data records are grouped for analysis
+  (optional).
+
+  '
+from_schema: https://www.cdisc.org/ars/1-0
+rank: 1000
+is_a: NamedObject
+slots:
+- id
+- version
+- categoryIds
+- description
+- documentRefs
+- reason
+- purpose
+- analysisSetId
+- orderedGroupings
+- dataSubsetId
+- dataset
+- variable
+- methodId
+- referencedAnalysisOperations
+- results
+
+```
+</details>
+
+### Induced
+
+<details>
+```yaml
+name: Analysis
+description: 'An analysis that is designed to meet a requirement of the reporting
+  event. Each analysis is defined as a set of specifications, including:
+
+  - The analysis variable that is the subject of the analysis.
+
+  - The analysis method (set of statistical operations) that is performed for the
+  analysis variable.
+
+  - The analysis set (subject population) for which the analysis is performed.
+
+  - The subset of data records on which the analysis is performed (optional).
+
+  - One or more factors by which either subjects or data records are grouped for analysis
+  (optional).
+
+  '
+from_schema: https://www.cdisc.org/ars/1-0
+rank: 1000
+is_a: NamedObject
+attributes:
+  id:
+    name: id
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    identifier: true
+    alias: id
+    owner: Analysis
+    domain_of:
+    - AnalysisCategorization
+    - AnalysisCategory
+    - Analysis
+    - AnalysisMethod
+    - Operation
+    - ReferencedOperationRelationship
+    - Output
+    - OutputDisplay
+    - DisplaySubSection
+    - AnalysisSet
+    - GroupingFactor
+    - Group
+    - DataSubset
+    - ReferenceDocument
+    - SponsorTerm
+    range: string
+    required: true
+  version:
+    name: version
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: version
+    owner: Analysis
+    domain_of:
+    - Analysis
+    - Output
+    - OutputDisplay
+    range: integer
+  categoryIds:
+    name: categoryIds
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    multivalued: true
+    alias: categoryIds
+    owner: Analysis
+    domain_of:
+    - Analysis
+    - Output
+    range: AnalysisCategory
+    required: false
+    inlined: false
+  description:
+    name: description
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: description
+    owner: Analysis
+    domain_of:
+    - Analysis
+    - AnalysisMethod
+    - ReferencedOperationRelationship
+    - CodeParameter
+    - SponsorTerm
+    range: string
+  documentRefs:
+    name: documentRefs
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    multivalued: true
+    alias: documentRefs
+    owner: Analysis
+    domain_of:
+    - Analysis
+    range: DocumentRef
+    inlined: true
+  reason:
+    name: reason
+    description: The rationale for performing this analysis. It indicates when the
+      analysis was planned.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: reason
+    owner: Analysis
+    domain_of:
+    - Analysis
+    range: string
+    required: true
+    inlined: false
+    any_of:
+    - range: AnalysisReason
+    - range: SponsorTerm
+  purpose:
+    name: purpose
+    description: The purpose of the analysis within the body of evidence (e.g., section
+      in the clinical study report).
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: purpose
+    owner: Analysis
+    domain_of:
+    - Analysis
+    range: string
+    required: true
+    inlined: false
+    any_of:
+    - range: AnalysisPurpose
+    - range: SponsorTerm
+  analysisSetId:
+    name: analysisSetId
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    multivalued: false
+    alias: analysisSetId
+    owner: Analysis
+    domain_of:
+    - Analysis
+    range: AnalysisSet
+    inlined: false
+  orderedGroupings:
+    name: orderedGroupings
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    multivalued: true
+    list_elements_ordered: true
+    alias: orderedGroupings
+    owner: Analysis
+    domain_of:
+    - Analysis
+    range: OrderedGroupingFactor
+    inlined: true
+    inlined_as_list: true
+  dataSubsetId:
+    name: dataSubsetId
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: dataSubsetId
+    owner: Analysis
+    domain_of:
+    - Analysis
+    range: DataSubset
+    inlined: false
+  dataset:
+    name: dataset
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: dataset
+    owner: Analysis
+    domain_of:
+    - Analysis
+    - WhereClauseCondition
+    range: string
+  variable:
+    name: variable
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: variable
+    owner: Analysis
+    domain_of:
+    - Analysis
+    - WhereClauseCondition
+    range: string
+  methodId:
+    name: methodId
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: methodId
+    owner: Analysis
+    domain_of:
+    - Analysis
+    range: AnalysisMethod
+    required: true
+    inlined: false
+  referencedAnalysisOperations:
+    name: referencedAnalysisOperations
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    multivalued: true
+    alias: referencedAnalysisOperations
+    owner: Analysis
+    domain_of:
+    - Analysis
+    range: ReferencedAnalysisOperation
+    inlined: true
+    inlined_as_list: true
+  results:
+    name: results
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    multivalued: true
+    alias: results
+    owner: Analysis
+    domain_of:
+    - Analysis
+    range: OperationResult
+    inlined: true
+    inlined_as_list: true
+  name:
+    name: name
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: name
+    owner: Analysis
+    domain_of:
+    - NamedObject
+    range: string
+    required: true
+
+```
+</details>

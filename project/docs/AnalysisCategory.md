@@ -1,28 +1,174 @@
-
 # Class: AnalysisCategory
 
 
-An implementer-defined category of analyses/outputs.
-
-URI: [https://www.cdisc.org/ars/1-0/AnalysisCategory](https://www.cdisc.org/ars/1-0/AnalysisCategory)
+_An implementer-defined category of analyses/outputs, which may include one or more sub-categorization._
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[Output],[AnalysisCategorization]<subCategorizations%200..*-++[AnalysisCategory&#124;id:string;label:string%20%3F],[Output]-%20categoryIds%200..*>[AnalysisCategory],[AnalysisCategorization]++-%20categories%201..*>[AnalysisCategory],[Analysis]-%20categoryIds%200..*>[AnalysisCategory],[Output]-%20categoryIds(i)%200..*>[AnalysisCategory],[AnalysisCategorization],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[Output],[AnalysisCategorization]<subCategorizations%200..*-++[AnalysisCategory&#124;id:string;label:string%20%3F],[Output]-%20categoryIds%200..*>[AnalysisCategory],[AnalysisCategorization]++-%20categories%201..*>[AnalysisCategory],[Analysis]-%20categoryIds%200..*>[AnalysisCategory],[Output]-%20categoryIds(i)%200..*>[AnalysisCategory],[AnalysisCategorization],[Analysis])
-
-## Referenced by Class
-
- *  **[Output](Output.md)** *[Output➞categoryIds](Output_categoryIds.md)*  <sub>0..\*</sub>  **[AnalysisCategory](AnalysisCategory.md)**
- *  **None** *[categories](categories.md)*  <sub>1..\*</sub>  **[AnalysisCategory](AnalysisCategory.md)**
- *  **None** *[categoryIds](categoryIds.md)*  <sub>0..\*</sub>  **[AnalysisCategory](AnalysisCategory.md)**
-
-## Attributes
 
 
-### Own
 
- * [id](id.md)  <sub>1..1</sub>
-     * Range: [String](types/String.md)
- * [label](label.md)  <sub>0..1</sub>
-     * Range: [String](types/String.md)
- * [subCategorizations](subCategorizations.md)  <sub>0..\*</sub>
-     * Range: [AnalysisCategorization](AnalysisCategorization.md)
+URI: [ars:AnalysisCategory](https://www.cdisc.org/ars/1-0AnalysisCategory)
+
+
+
+```mermaid
+ classDiagram
+    class AnalysisCategory
+      AnalysisCategory : id
+        
+      AnalysisCategory : label
+        
+      AnalysisCategory : subCategorizations
+        
+          AnalysisCategory --|> AnalysisCategorization : subCategorizations
+        
+      
+```
+
+
+
+
+<!-- no inheritance hierarchy -->
+
+
+## Slots
+
+| Name | Cardinality and Range | Description | Inheritance |
+| ---  | --- | --- | --- |
+| [id](id.md) | 1..1 <br/> [String](String.md) |  | direct |
+| [label](label.md) | 0..1 <br/> [String](String.md) |  | direct |
+| [subCategorizations](subCategorizations.md) | 0..* <br/> [AnalysisCategorization](AnalysisCategorization.md) |  | direct |
+
+
+
+
+
+## Usages
+
+| used by | used in | type | used |
+| ---  | --- | --- | --- |
+| [AnalysisCategorization](AnalysisCategorization.md) | [categories](categories.md) | range | [AnalysisCategory](AnalysisCategory.md) |
+| [Analysis](Analysis.md) | [categoryIds](categoryIds.md) | range | [AnalysisCategory](AnalysisCategory.md) |
+| [Output](Output.md) | [categoryIds](categoryIds.md) | range | [AnalysisCategory](AnalysisCategory.md) |
+
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://www.cdisc.org/ars/1-0
+
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | ars:AnalysisCategory |
+| native | ars:AnalysisCategory |
+
+
+
+
+
+## LinkML Source
+
+<!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
+
+### Direct
+
+<details>
+```yaml
+name: AnalysisCategory
+description: An implementer-defined category of analyses/outputs, which may include
+  one or more sub-categorization.
+from_schema: https://www.cdisc.org/ars/1-0
+rank: 1000
+slots:
+- id
+- label
+- subCategorizations
+
+```
+</details>
+
+### Induced
+
+<details>
+```yaml
+name: AnalysisCategory
+description: An implementer-defined category of analyses/outputs, which may include
+  one or more sub-categorization.
+from_schema: https://www.cdisc.org/ars/1-0
+rank: 1000
+attributes:
+  id:
+    name: id
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    identifier: true
+    alias: id
+    owner: AnalysisCategory
+    domain_of:
+    - AnalysisCategorization
+    - AnalysisCategory
+    - Analysis
+    - AnalysisMethod
+    - Operation
+    - ReferencedOperationRelationship
+    - Output
+    - OutputDisplay
+    - DisplaySubSection
+    - AnalysisSet
+    - GroupingFactor
+    - Group
+    - DataSubset
+    - ReferenceDocument
+    - SponsorTerm
+    range: string
+    required: true
+  label:
+    name: label
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: label
+    owner: AnalysisCategory
+    domain_of:
+    - AnalysisCategorization
+    - AnalysisCategory
+    - AnalysisMethod
+    - Operation
+    - AnalysisSet
+    - GroupingFactor
+    - Group
+    - DataSubset
+    - PageRef
+    range: string
+  subCategorizations:
+    name: subCategorizations
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    multivalued: true
+    alias: subCategorizations
+    owner: AnalysisCategory
+    domain_of:
+    - AnalysisCategory
+    range: AnalysisCategorization
+    inlined: true
+    inlined_as_list: true
+
+```
+</details>

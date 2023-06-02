@@ -1,22 +1,62 @@
-
 # Slot: dataSubsetId
 
+URI: [ars:dataSubsetId](https://www.cdisc.org/ars/1-0dataSubsetId)
 
 
 
-URI: [https://www.cdisc.org/ars/1-0/dataSubsetId](https://www.cdisc.org/ars/1-0/dataSubsetId)
+<!-- no inheritance hierarchy -->
 
 
-## Domain and Range
-
-None &#8594;  <sub>0..1</sub> [DataSubset](DataSubset.md)
-
-## Parents
 
 
-## Children
+## Applicable Classes
+
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+[Analysis](Analysis.md) | An analysis that is designed to meet a requirement of the reporting event |  no  |
 
 
-## Used by
 
- * [Analysis](Analysis.md)
+
+
+
+
+## Properties
+
+* Range: [DataSubset](DataSubset.md)
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://www.cdisc.org/ars/1-0
+
+
+
+
+## LinkML Source
+
+<details>
+```yaml
+name: dataSubsetId
+from_schema: https://www.cdisc.org/ars/1-0
+rank: 1000
+alias: dataSubsetId
+domain_of:
+- Analysis
+range: DataSubset
+inlined: false
+
+```
+</details>

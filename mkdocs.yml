@@ -1,0 +1,10 @@
+site_name: Analysis Results Standard (ARS)
+site_url: https://cdisc-org.github.io/analysis-results-standard/
+nav:
+    - Home: index.md
+    #- About: about.md
+plugins:
+    - search
+    - mermaid2
+docs_dir: project/docs
+site_dir: docs

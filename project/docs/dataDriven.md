@@ -1,24 +1,73 @@
-
 # Slot: dataDriven
 
 
-Indicates whether the groups defined by the grouping are prespecified (false) or obtained from distinct data values of the groupingVariable (true).
-
-URI: [https://www.cdisc.org/ars/1-0/dataDriven](https://www.cdisc.org/ars/1-0/dataDriven)
+_Indicates whether the groups defined by the grouping are prespecified (false) or obtained from distinct data values of the groupingVariable (true)._
 
 
-## Domain and Range
 
-None &#8594;  <sub>1..1</sub> [Boolean](types/Boolean.md)
-
-## Parents
+URI: [ars:dataDriven](https://www.cdisc.org/ars/1-0dataDriven)
 
 
-## Children
+
+<!-- no inheritance hierarchy -->
 
 
-## Used by
 
- * [DataGroupingFactor](DataGroupingFactor.md)
- * [GroupingFactor](GroupingFactor.md)
- * [SubjectGroupingFactor](SubjectGroupingFactor.md)
+
+## Applicable Classes
+
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+[GroupingFactor](GroupingFactor.md) | A factor used to subdivide either the subject population or data records in a... |  no  |
+[SubjectGroupingFactor](SubjectGroupingFactor.md) | A factor used to subdivide the subject population for comparative analysis (e |  no  |
+[DataGroupingFactor](DataGroupingFactor.md) | A factor used to subdivide data records in an analysis dataset for analysis |  no  |
+
+
+
+
+
+
+
+## Properties
+
+* Range: [Boolean](Boolean.md)
+
+* Required: True
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://www.cdisc.org/ars/1-0
+
+
+
+
+## LinkML Source
+
+<details>
+```yaml
+name: dataDriven
+description: Indicates whether the groups defined by the grouping are prespecified
+  (false) or obtained from distinct data values of the groupingVariable (true).
+from_schema: https://www.cdisc.org/ars/1-0
+rank: 1000
+alias: dataDriven
+domain_of:
+- GroupingFactor
+range: boolean
+required: true
+
+```
+</details>

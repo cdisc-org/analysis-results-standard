@@ -1,23 +1,69 @@
-
 # Slot: description
 
+URI: [ars:description](https://www.cdisc.org/ars/1-0description)
 
 
 
-URI: [https://www.cdisc.org/ars/1-0/description](https://www.cdisc.org/ars/1-0/description)
+<!-- no inheritance hierarchy -->
 
 
-## Domain and Range
-
-None &#8594;  <sub>0..1</sub> [String](types/String.md)
-
-## Parents
 
 
-## Children
+## Applicable Classes
+
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+[Analysis](Analysis.md) | An analysis that is designed to meet a requirement of the reporting event |  no  |
+[AnalysisMethod](AnalysisMethod.md) | A set of one or more statistical operations |  no  |
+[ReferencedOperationRelationship](ReferencedOperationRelationship.md) | A reference to an statistical operation whose results is used in the calculat... |  no  |
+[CodeParameter](CodeParameter.md) |  |  no  |
+[SponsorTerm](SponsorTerm.md) | A sponsor-defined term that is included in an extensible set of controlled te... |  no  |
 
 
-## Used by
 
- * [AnalysisMethod](AnalysisMethod.md)
- * [ReferencedOperationRelationship](ReferencedOperationRelationship.md)
+
+
+
+
+## Properties
+
+* Range: [String](String.md)
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://www.cdisc.org/ars/1-0
+
+
+
+
+## LinkML Source
+
+<details>
+```yaml
+name: description
+from_schema: https://www.cdisc.org/ars/1-0
+rank: 1000
+alias: description
+domain_of:
+- Analysis
+- AnalysisMethod
+- ReferencedOperationRelationship
+- CodeParameter
+- SponsorTerm
+range: string
+
+```
+</details>

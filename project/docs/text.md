@@ -1,22 +1,61 @@
-
 # Slot: text
 
+URI: [ars:text](https://www.cdisc.org/ars/1-0text)
 
 
 
-URI: [https://www.cdisc.org/ars/1-0/text](https://www.cdisc.org/ars/1-0/text)
+<!-- no inheritance hierarchy -->
 
 
-## Domain and Range
-
-None &#8594;  <sub>0..1</sub> [String](types/String.md)
-
-## Parents
 
 
-## Children
+## Applicable Classes
+
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+[DisplaySubSection](DisplaySubSection.md) |  |  no  |
 
 
-## Used by
 
- * [DisplaySubSection](DisplaySubSection.md)
+
+
+
+
+## Properties
+
+* Range: [String](String.md)
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://www.cdisc.org/ars/1-0
+
+
+
+
+## LinkML Source
+
+<details>
+```yaml
+name: text
+from_schema: https://www.cdisc.org/ars/1-0
+rank: 1000
+alias: text
+domain_of:
+- DisplaySubSection
+range: string
+
+```
+</details>

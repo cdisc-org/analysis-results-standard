@@ -1,22 +1,66 @@
-
 # Slot: resultGroups
 
+URI: [ars:resultGroups](https://www.cdisc.org/ars/1-0resultGroups)
 
 
 
-URI: [https://www.cdisc.org/ars/1-0/resultGroups](https://www.cdisc.org/ars/1-0/resultGroups)
+<!-- no inheritance hierarchy -->
 
 
-## Domain and Range
-
-None &#8594;  <sub>0..\*</sub> [ResultGroup](ResultGroup.md)
-
-## Parents
 
 
-## Children
+## Applicable Classes
+
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+[OperationResult](OperationResult.md) | The result of an analysis method operation performed on a subdivision of subj... |  no  |
 
 
-## Used by
 
- * [OperationResult](OperationResult.md)
+
+
+
+
+## Properties
+
+* Range: [ResultGroup](ResultGroup.md)
+
+* Multivalued: True
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://www.cdisc.org/ars/1-0
+
+
+
+
+## LinkML Source
+
+<details>
+```yaml
+name: resultGroups
+from_schema: https://www.cdisc.org/ars/1-0
+rank: 1000
+multivalued: true
+alias: resultGroups
+domain_of:
+- OperationResult
+range: ResultGroup
+inlined: true
+inlined_as_list: true
+
+```
+</details>

@@ -1,492 +1,711 @@
+@prefix NCIT: <http://purl.obolibrary.org/obo/NCIT_> .
+@prefix ars: <https://www.cdisc.org/ars/1-0> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://www.cdisc.org/ars/1-0/:NamedObject> a sh:NodeShape ;
+ars:NamedObject a sh:NodeShape ;
     sh:closed false ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 0 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:name> ] ;
-    sh:targetClass <https://www.cdisc.org/ars/1-0/:NamedObject> .
+            sh:path ars:name ] ;
+    sh:targetClass ars:NamedObject .
 
-<https://www.cdisc.org/ars/1-0/:ReportingEvent> a sh:NodeShape ;
+ars:PageNameRef a sh:NodeShape ;
     sh:closed true ;
+    sh:description "One or more pages in the reference document, referenced by named destination." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class <https://www.cdisc.org/ars/1-0/:AnalysisSet> ;
-            sh:nodeKind sh:IRI ;
-            sh:order 2 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:analysisSets> ],
-        [ sh:maxCount 1 ;
+    sh:property [ sh:in ( "PhysicalRef" "NamedDestination" ) ;
+            sh:maxCount 1 ;
             sh:minCount 1 ;
-            sh:order 11 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:name> ],
-        [ sh:class <https://www.cdisc.org/ars/1-0/:DataSubset> ;
-            sh:nodeKind sh:IRI ;
-            sh:order 4 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:dataSubsets> ],
-        [ sh:class <https://www.cdisc.org/ars/1-0/:DataGroupingFactor> ;
-            sh:nodeKind sh:IRI ;
-            sh:order 5 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:dataGroupings> ],
-        [ sh:class <https://www.cdisc.org/ars/1-0/:Output> ;
-            sh:nodeKind sh:IRI ;
-            sh:order 10 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:outputs> ],
-        [ sh:class <https://www.cdisc.org/ars/1-0/:AnalysisMethod> ;
+            sh:order 0 ;
+            sh:path ars:refType ],
+        [ sh:class ars:PageNameList ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 2 ;
+            sh:path ars:pages ],
+        [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path ars:label ] ;
+    sh:targetClass ars:PageNameRef .
+
+ars:PageNumberListRef a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "One or more individual pages in the reference document, referenced by page number." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path ars:label ],
+        [ sh:in ( "PhysicalRef" "NamedDestination" ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path ars:refType ],
+        [ sh:class ars:PageNumberList ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 2 ;
+            sh:path ars:pages ] ;
+    sh:targetClass ars:PageNumberListRef .
+
+ars:PageNumberRangeRef a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A range of pages in the reference document, indicated by the first and last page number in the range." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path ars:label ],
+        [ sh:in ( "PhysicalRef" "NamedDestination" ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path ars:refType ],
+        [ sh:class ars:PageRange ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 2 ;
+            sh:path ars:pages ] ;
+    sh:targetClass ars:PageNumberRangeRef .
+
+ars:ReportingEvent a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A set of analyses and outputs created to meet a specific reporting requirement, such as a CSR or interim analysis." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class ars:AnalysisMethod ;
+            sh:description "The defined methods used to analyze any analysis variable." ;
             sh:nodeKind sh:IRI ;
             sh:order 9 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:methods> ],
-        [ sh:class <https://www.cdisc.org/ars/1-0/:DisplaySection> ;
+            sh:path ars:methods ],
+        [ sh:class ars:NestedList ;
+            sh:description "An optional structured list of the outputs defined for the reporting event." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 1 ;
+            sh:path ars:listOfPlannedOutputs ],
+        [ sh:class ars:DataSubset ;
+            sh:nodeKind sh:IRI ;
+            sh:order 4 ;
+            sh:path ars:dataSubsets ],
+        [ sh:class ars:SubjectGroupingFactor ;
+            sh:description "Characteristics used to subdivide the subject population (e.g., treatment, sex, age group)." ;
+            sh:nodeKind sh:IRI ;
+            sh:order 3 ;
+            sh:path ars:analysisGroupings ],
+        [ sh:class ars:DataGroupingFactor ;
+            sh:description "Characteristics used to subdivide data records in the analysis dataset (e.g., visit, system organ class)." ;
+            sh:nodeKind sh:IRI ;
+            sh:order 5 ;
+            sh:path ars:dataGroupings ],
+        [ sh:class ars:DisplaySection ;
             sh:nodeKind sh:BlankNode ;
             sh:order 6 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:globalDisplaySections> ],
-        [ sh:class <https://www.cdisc.org/ars/1-0/:Analysis> ;
+            sh:path ars:globalDisplaySections ],
+        [ sh:class ars:TerminologyExtension ;
+            sh:description "Any sponsor-defined extensions to extensible terminology." ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 12 ;
+            sh:path ars:terminologyExtentions ],
+        [ sh:class ars:AnalysisSet ;
+            sh:description "The analysis sets (subject populations) defined for the reporting event." ;
             sh:nodeKind sh:IRI ;
-            sh:order 8 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:analyses> ],
-        [ sh:class <https://www.cdisc.org/ars/1-0/:AnalysisCategorization> ;
+            sh:order 2 ;
+            sh:path ars:analysisSets ],
+        [ sh:class ars:ReferenceDocument ;
+            sh:nodeKind sh:IRI ;
+            sh:order 11 ;
+            sh:path ars:referenceDocuments ],
+        [ sh:class ars:AnalysisCategorization ;
             sh:nodeKind sh:IRI ;
             sh:order 7 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:analysisCategorizations> ],
-        [ sh:class <https://www.cdisc.org/ars/1-0/:NestedList> ;
+            sh:path ars:analysisCategorizations ],
+        [ sh:class ars:Analysis ;
+            sh:description "The analyses defined for the reporting event." ;
+            sh:nodeKind sh:IRI ;
+            sh:order 8 ;
+            sh:path ars:analyses ],
+        [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 13 ;
+            sh:path ars:name ],
+        [ sh:class ars:Output ;
+            sh:nodeKind sh:IRI ;
+            sh:order 10 ;
+            sh:path ars:outputs ],
+        [ sh:class ars:NestedList ;
+            sh:description "A structured list of the analyses defined for the reporting event." ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:BlankNode ;
             sh:order 0 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:listOfPlannedAnalyses> ],
-        [ sh:class <https://www.cdisc.org/ars/1-0/:SubjectGroupingFactor> ;
-            sh:nodeKind sh:IRI ;
-            sh:order 3 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:analysisGroupings> ],
-        [ sh:class <https://www.cdisc.org/ars/1-0/:NestedList> ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 1 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:listOfPlannedOutputs> ] ;
-    sh:targetClass <https://www.cdisc.org/ars/1-0/:ReportingEvent> .
+            sh:path ars:listOfPlannedAnalyses ] ;
+    sh:targetClass ars:ReportingEvent .
 
-<https://www.cdisc.org/ars/1-0/:AnalysisGroup> a sh:NodeShape ;
+ars:AnalysisGroup a sh:NodeShape ;
     sh:closed true ;
     sh:description "A subdivision of the subject population based on a defined factor (e.g., subjects whose treatment is Drug A, subjects whose gender is male)." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class <https://www.cdisc.org/ars/1-0/:CompoundGroupExpression> ;
+    sh:property [ sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path ars:order ],
+        [ sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path ars:level ],
+        [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path ars:label ],
+        [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path ars:id ],
+        [ sh:class ars:CompoundGroupExpression ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNode ;
             sh:order 5 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:compoundExpression> ],
-        [ sh:maxCount 1 ;
-            sh:order 2 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:level> ],
-        [ sh:class <https://www.cdisc.org/ars/1-0/:Condition> ;
+            sh:path ars:compoundExpression ],
+        [ sh:class ars:WhereClauseCondition ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNode ;
             sh:order 4 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:condition> ],
-        [ sh:maxCount 1 ;
-            sh:order 3 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:order> ],
-        [ sh:maxCount 1 ;
-            sh:order 1 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:label> ],
-        [ sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 0 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:id> ] ;
-    sh:targetClass <https://www.cdisc.org/ars/1-0/:AnalysisGroup> .
+            sh:path ars:condition ] ;
+    sh:targetClass ars:AnalysisGroup .
 
-<https://www.cdisc.org/ars/1-0/:CompoundExpression> a sh:NodeShape ;
+ars:CodeParameter a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 2 ;
+            sh:path ars:name ],
+        [ sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path ars:description ],
+        [ sh:description "A reference to the prespecified source of the value for the parameter." ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path ars:valueSource ] ;
+    sh:targetClass ars:CodeParameter .
+
+ars:CompoundSetExpression a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:in ( "AND" "OR" "NOT" ) ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 0 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:logicalOperator> ],
-        [ sh:class <https://www.cdisc.org/ars/1-0/:WhereClause> ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 1 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:whereClauses> ] ;
-    sh:targetClass <https://www.cdisc.org/ars/1-0/:CompoundExpression> .
-
-<https://www.cdisc.org/ars/1-0/:CompoundSetExpression> a sh:NodeShape ;
-    sh:closed true ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:in ( "AND" "OR" "NOT" ) ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 0 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:logicalOperator> ],
-        [ sh:class <https://www.cdisc.org/ars/1-0/:AnalysisSet> ;
+            sh:path ars:logicalOperator ],
+        [ sh:class ars:AnalysisSet ;
             sh:nodeKind sh:IRI ;
             sh:order 1 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:whereClauses> ] ;
-    sh:targetClass <https://www.cdisc.org/ars/1-0/:CompoundSetExpression> .
+            sh:path ars:whereClauses ] ;
+    sh:targetClass ars:CompoundSetExpression .
 
-<https://www.cdisc.org/ars/1-0/:CompoundSubsetExpression> a sh:NodeShape ;
+ars:CompoundSubsetExpression a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class <https://www.cdisc.org/ars/1-0/:WhereClause> ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 1 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:whereClauses> ],
-        [ sh:in ( "AND" "OR" "NOT" ) ;
+    sh:property [ sh:in ( "AND" "OR" "NOT" ) ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 0 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:logicalOperator> ] ;
-    sh:targetClass <https://www.cdisc.org/ars/1-0/:CompoundSubsetExpression> .
+            sh:path ars:logicalOperator ],
+        [ sh:class ars:WhereClause ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 1 ;
+            sh:path ars:whereClauses ] ;
+    sh:targetClass ars:CompoundSubsetExpression .
 
-<https://www.cdisc.org/ars/1-0/:DataGroup> a sh:NodeShape ;
+ars:DataGroup a sh:NodeShape ;
     sh:closed true ;
     sh:description "A subdivision of the analysis dataset records based on a defined factor." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:maxCount 1 ;
-            sh:order 3 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:order> ],
-        [ sh:maxCount 1 ;
-            sh:order 2 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:level> ],
-        [ sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 0 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:id> ],
-        [ sh:maxCount 1 ;
-            sh:order 1 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:label> ],
-        [ sh:class <https://www.cdisc.org/ars/1-0/:CompoundGroupExpression> ;
+    sh:property [ sh:class ars:CompoundGroupExpression ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNode ;
             sh:order 5 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:compoundExpression> ],
-        [ sh:class <https://www.cdisc.org/ars/1-0/:Condition> ;
+            sh:path ars:compoundExpression ],
+        [ sh:class ars:WhereClauseCondition ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNode ;
             sh:order 4 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:condition> ] ;
-    sh:targetClass <https://www.cdisc.org/ars/1-0/:DataGroup> .
-
-<https://www.cdisc.org/ars/1-0/:Display> a sh:NodeShape ;
-    sh:closed true ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class <https://www.cdisc.org/ars/1-0/:DisplaySection> ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 3 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:displaySections> ],
+            sh:path ars:condition ],
         [ sh:maxCount 1 ;
             sh:order 1 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:version> ],
-        [ sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 4 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:name> ],
-        [ sh:maxCount 1 ;
-            sh:order 2 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:displayTitle> ],
+            sh:path ars:label ],
         [ sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 0 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:id> ] ;
-    sh:targetClass <https://www.cdisc.org/ars/1-0/:Display> .
+            sh:path ars:id ],
+        [ sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path ars:order ],
+        [ sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path ars:level ] ;
+    sh:targetClass ars:DataGroup .
 
-<https://www.cdisc.org/ars/1-0/:DisplaySubSection> a sh:NodeShape ;
+ars:DataGroupingFactor a sh:NodeShape ;
     sh:closed true ;
+    sh:description "A factor used to subdivide data records in an analysis dataset for analysis." ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 0 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:id> ],
-        [ sh:maxCount 1 ;
-            sh:order 2 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:text> ],
-        [ sh:maxCount 1 ;
-            sh:minCount 1 ;
             sh:order 1 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:order> ] ;
-    sh:targetClass <https://www.cdisc.org/ars/1-0/:DisplaySubSection> .
-
-<https://www.cdisc.org/ars/1-0/:File> a sh:NodeShape ;
-    sh:closed true ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:maxCount 1 ;
-            sh:order 2 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:style> ],
-        [ sh:in ( "pdf" "rtf" "txt" ) ;
-            sh:maxCount 1 ;
-            sh:order 0 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:fileType> ],
-        [ sh:maxCount 1 ;
-            sh:order 1 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:location> ],
-        [ sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 3 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:name> ] ;
-    sh:targetClass <https://www.cdisc.org/ars/1-0/:File> .
-
-<https://www.cdisc.org/ars/1-0/:OperationResult> a sh:NodeShape ;
-    sh:closed true ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class <https://www.cdisc.org/ars/1-0/:Operation> ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 0 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:operationId> ],
-        [ sh:maxCount 1 ;
-            sh:order 2 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:rawValue> ],
-        [ sh:class <https://www.cdisc.org/ars/1-0/:ResultGroup> ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 1 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:resultGroups> ],
-        [ sh:maxCount 1 ;
-            sh:order 3 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:formattedValue> ] ;
-    sh:targetClass <https://www.cdisc.org/ars/1-0/:OperationResult> .
-
-<https://www.cdisc.org/ars/1-0/:OrderedGroupingFactor> a sh:NodeShape ;
-    sh:closed true ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class <https://www.cdisc.org/ars/1-0/:GroupingFactor> ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 1 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:groupingId> ],
-        [ sh:class <https://www.cdisc.org/ars/1-0/:DataGroupingFactor> ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 2 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:dataGrouping> ],
-        [ sh:description "Indicates whether a result is expected for each group in the grouping." ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 3 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:resultsByGroup> ],
-        [ sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 0 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:order> ] ;
-    sh:targetClass <https://www.cdisc.org/ars/1-0/:OrderedGroupingFactor> .
-
-<https://www.cdisc.org/ars/1-0/:OrderedListItem> a sh:NodeShape ;
-    sh:closed true ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 0 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:level> ],
-        [ sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 5 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:name> ],
-        [ sh:class <https://www.cdisc.org/ars/1-0/:Analysis> ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 3 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:analysisId> ],
-        [ sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 1 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:order> ],
-        [ sh:class <https://www.cdisc.org/ars/1-0/:Output> ;
-            sh:maxCount 1 ;
+            sh:path ars:label ],
+        [ sh:class ars:DataGroup ;
             sh:nodeKind sh:IRI ;
             sh:order 4 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:outputId> ],
-        [ sh:class <https://www.cdisc.org/ars/1-0/:NestedList> ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 2 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:sublist> ] ;
-    sh:targetClass <https://www.cdisc.org/ars/1-0/:OrderedListItem> .
-
-<https://www.cdisc.org/ars/1-0/:OutputDisplay> a sh:NodeShape ;
-    sh:closed true ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 0 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:order> ],
-        [ sh:class <https://www.cdisc.org/ars/1-0/:Display> ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 1 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:display> ] ;
-    sh:targetClass <https://www.cdisc.org/ars/1-0/:OutputDisplay> .
-
-<https://www.cdisc.org/ars/1-0/:ReferencedAnalysisOperation> a sh:NodeShape ;
-    sh:closed true ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class <https://www.cdisc.org/ars/1-0/:Analysis> ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 1 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:analysisId> ],
-        [ sh:class <https://www.cdisc.org/ars/1-0/:ReferencedOperationRelationship> ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 0 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:referencedOperationId> ] ;
-    sh:targetClass <https://www.cdisc.org/ars/1-0/:ReferencedAnalysisOperation> .
-
-<https://www.cdisc.org/ars/1-0/:ResultGroup> a sh:NodeShape ;
-    sh:closed true ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class <https://www.cdisc.org/ars/1-0/:GroupingFactor> ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 0 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:groupingId> ],
-        [ sh:class <https://www.cdisc.org/ars/1-0/:Group> ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 1 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:groupId> ],
-        [ sh:maxCount 1 ;
-            sh:order 2 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:groupValue> ] ;
-    sh:targetClass <https://www.cdisc.org/ars/1-0/:ResultGroup> .
-
-<https://www.cdisc.org/ars/1-0/:SubjectGroupingFactor> a sh:NodeShape ;
-    sh:closed true ;
-    sh:description "A factor used to subdivide the subject population for comparative analysis (e.g., treatment, sex, race, age)." ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:maxCount 1 ;
-            sh:order 1 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:label> ],
-        [ sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 0 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:id> ],
+            sh:path ars:groups ],
         [ sh:description "For groupings based on a single variable, a reference to the dataset variable upon which grouping is based." ;
             sh:maxCount 1 ;
             sh:order 2 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:groupingVariable> ],
-        [ sh:class <https://www.cdisc.org/ars/1-0/:AnalysisGroup> ;
-            sh:nodeKind sh:IRI ;
-            sh:order 4 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:groups> ],
+            sh:path ars:groupingVariable ],
         [ sh:description "Indicates whether the groups defined by the grouping are prespecified (false) or obtained from distinct data values of the groupingVariable (true)." ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 3 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:dataDriven> ] ;
-    sh:targetClass <https://www.cdisc.org/ars/1-0/:SubjectGroupingFactor> .
-
-<https://www.cdisc.org/ars/1-0/:AnalysisCategorization> a sh:NodeShape ;
-    sh:closed true ;
-    sh:description "An implementer-defined categorization of analyses/outputs." ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:maxCount 1 ;
-            sh:order 1 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:label> ],
+            sh:path ars:dataDriven ],
         [ sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 0 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:id> ],
-        [ sh:class <https://www.cdisc.org/ars/1-0/:AnalysisCategory> ;
+            sh:path ars:id ] ;
+    sh:targetClass ars:DataGroupingFactor .
+
+ars:DisplaySubSection a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 1 ;
+            sh:path ars:order ],
+        [ sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path ars:text ],
+        [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path ars:id ] ;
+    sh:targetClass ars:DisplaySubSection .
+
+ars:DocumentRef a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class ars:ReferenceDocument ;
+            sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:IRI ;
-            sh:order 2 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:categories> ] ;
-    sh:targetClass <https://www.cdisc.org/ars/1-0/:AnalysisCategorization> .
+            sh:order 0 ;
+            sh:path ars:referenceDocumentId ],
+        [ sh:class ars:PageRef ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 1 ;
+            sh:path ars:pageRefs ] ;
+    sh:targetClass ars:DocumentRef .
 
-<https://www.cdisc.org/ars/1-0/:AnalysisMethod> a sh:NodeShape ;
+ars:File a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 3 ;
+            sh:path ars:name ],
+        [ sh:maxCount 1 ;
             sh:order 1 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:label> ],
+            sh:path ars:location ],
+        [ sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path ars:fileType ],
         [ sh:maxCount 1 ;
             sh:order 2 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:description> ],
+            sh:path ars:style ] ;
+    sh:targetClass ars:File .
+
+ars:OperationResult a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "The result of an analysis method operation performed on a subdivision of subjects or data records." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class ars:ResultGroup ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 1 ;
+            sh:path ars:resultGroups ],
+        [ sh:class ars:Operation ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 0 ;
+            sh:path ars:operationId ],
+        [ sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path ars:formattedValue ],
+        [ sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path ars:rawValue ] ;
+    sh:targetClass ars:OperationResult .
+
+ars:OrderedDisplay a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class ars:OutputDisplay ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 1 ;
+            sh:path ars:display ],
         [ sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 0 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:id> ],
-        [ sh:class <https://www.cdisc.org/ars/1-0/:Operation> ;
+            sh:path ars:order ] ;
+    sh:targetClass ars:OrderedDisplay .
+
+ars:OrderedGroupingFactor a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A reference to a defined factor by which subjects or data records are grouped for the analysis, ordered with respect to other grouping factors." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:description "Indicates whether a result is expected for each group in the grouping." ;
+            sh:maxCount 1 ;
             sh:minCount 1 ;
+            sh:order 2 ;
+            sh:path ars:resultsByGroup ],
+        [ sh:class ars:GroupingFactor ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 1 ;
+            sh:path ars:groupingId ],
+        [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path ars:order ] ;
+    sh:targetClass ars:OrderedGroupingFactor .
+
+ars:OrderedListItem a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "An item (analysis, output or sub-list) ordered relative to other items within a list or sub-list." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path ars:level ],
+        [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 5 ;
+            sh:path ars:name ],
+        [ sh:class ars:Output ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 4 ;
+            sh:path ars:outputId ],
+        [ sh:class ars:NestedList ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 2 ;
+            sh:path ars:sublist ],
+        [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 1 ;
+            sh:path ars:order ],
+        [ sh:class ars:Analysis ;
+            sh:maxCount 1 ;
             sh:nodeKind sh:IRI ;
             sh:order 3 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:operations> ],
+            sh:path ars:analysisId ] ;
+    sh:targetClass ars:OrderedListItem .
+
+ars:OutputDisplay a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path ars:id ],
+        [ sh:class ars:DisplaySection ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 3 ;
+            sh:path ars:displaySections ],
+        [ sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path ars:displayTitle ],
+        [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path ars:version ],
         [ sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 4 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:name> ] ;
-    sh:targetClass <https://www.cdisc.org/ars/1-0/:AnalysisMethod> .
+            sh:path ars:name ] ;
+    sh:targetClass ars:OutputDisplay .
 
-<https://www.cdisc.org/ars/1-0/:DataGroupingFactor> a sh:NodeShape ;
+ars:PageNameList a sh:NodeShape ;
     sh:closed true ;
-    sh:description "A factor used to subdivide data records in an analysis dataset for analysis." ;
+    sh:description "A list of one or more named document references, each of which corresponds with a page." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:description "Indicates whether the groups defined by the grouping are prespecified (false) or obtained from distinct data values of the groupingVariable (true)." ;
+    sh:property [ sh:description "One or more named document references which each correspond with a page." ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path ars:pageNames ] ;
+    sh:targetClass ars:PageNameList .
+
+ars:PageNumberList a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A list of one or more page numbers." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:description "One or more page numbers." ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path ars:pageNumbers ] ;
+    sh:targetClass ars:PageNumberList .
+
+ars:PageRange a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A set of pages in a document that includes the specified first and last page, and all pages in between." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:description "The page number of the first page in a range of pages." ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
-            sh:order 3 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:dataDriven> ],
+            sh:order 0 ;
+            sh:path ars:firstPage ],
+        [ sh:description "The page number of the last page in a range of pages." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 1 ;
+            sh:path ars:lastPage ] ;
+    sh:targetClass ars:PageRange .
+
+ars:PageRef a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:in ( "PhysicalRef" "NamedDestination" ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path ars:refType ],
         [ sh:maxCount 1 ;
             sh:order 1 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:label> ],
+            sh:path ars:label ],
+        [ sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path ars:pages ] ;
+    sh:targetClass ars:PageRef .
+
+ars:ProgrammingCodeTemplate a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class ars:CodeParameter ;
+            sh:description "Replacement parameters referenced in the programming code template." ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 1 ;
+            sh:path ars:parameters ],
+        [ sh:description "The name and version of the computer language used for the actual programming statements provided." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path ars:context ],
+        [ sh:description "Template programming statements and/or a reference to the template program used to perform the specific analysis." ;
+            sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path ars:templateCode ] ;
+    sh:targetClass ars:ProgrammingCodeTemplate .
+
+ars:ReferencedAnalysisOperation a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "An indication of the analysis that contains results of a referenced operation." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class ars:ReferencedOperationRelationship ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 0 ;
+            sh:path ars:referencedOperationId ],
+        [ sh:class ars:Analysis ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 1 ;
+            sh:path ars:analysisId ] ;
+    sh:targetClass ars:ReferencedAnalysisOperation .
+
+ars:ResultGroup a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "For the specified grouping factor, an indication of the specific group of subjects or data records associated with the analysis result." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class ars:GroupingFactor ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 0 ;
+            sh:path ars:groupingId ],
+        [ sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path ars:groupValue ],
+        [ sh:class ars:Group ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 1 ;
+            sh:path ars:groupId ] ;
+    sh:targetClass ars:ResultGroup .
+
+ars:SponsorTerm a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A sponsor-defined term that is included in an extensible set of controlled terminology." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:description "The specific value expected for submissions." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 1 ;
+            sh:path ars:submissionValue ],
         [ sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 0 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:id> ],
+            sh:path ars:id ],
+        [ sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path ars:description ] ;
+    sh:targetClass ars:SponsorTerm .
+
+ars:SubjectGroupingFactor a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A factor used to subdivide the subject population for comparative analysis (e.g., treatment, sex, race, age)." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path ars:id ],
+        [ sh:description "Indicates whether the groups defined by the grouping are prespecified (false) or obtained from distinct data values of the groupingVariable (true)." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 3 ;
+            sh:path ars:dataDriven ],
         [ sh:description "For groupings based on a single variable, a reference to the dataset variable upon which grouping is based." ;
             sh:maxCount 1 ;
             sh:order 2 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:groupingVariable> ],
-        [ sh:class <https://www.cdisc.org/ars/1-0/:DataGroup> ;
+            sh:path ars:groupingVariable ],
+        [ sh:class ars:AnalysisGroup ;
             sh:nodeKind sh:IRI ;
             sh:order 4 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:groups> ] ;
-    sh:targetClass <https://www.cdisc.org/ars/1-0/:DataGroupingFactor> .
+            sh:path ars:groups ],
+        [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path ars:label ] ;
+    sh:targetClass ars:SubjectGroupingFactor .
 
-<https://www.cdisc.org/ars/1-0/:DataSubset> a sh:NodeShape ;
+ars:TerminologyExtension a sh:NodeShape ;
     sh:closed true ;
-    sh:description "A subset of data identified by selection criteria for inclusion in the analysis." ;
+    sh:description "A sponsor-defined term that is included in an extensible set of controlled terminology." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class <https://www.cdisc.org/ars/1-0/:Condition> ;
+    sh:property [ sh:class ars:SponsorTerm ;
+            sh:description "The sponsor-defined terms added to the extensible terminology." ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 1 ;
+            sh:path ars:sponsorTerms ],
+        [ sh:description "The name of the extensible enumeration." ;
+            sh:in ( NCIT:C117744 NCIT:C117745 "OperationRole" "OutputFileType" ) ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path ars:enumeration ] ;
+    sh:targetClass ars:TerminologyExtension .
+
+ars:WhereClauseCompoundExpression a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:in ( "AND" "OR" "NOT" ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path ars:logicalOperator ],
+        [ sh:class ars:WhereClause ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 1 ;
+            sh:path ars:whereClauses ] ;
+    sh:targetClass ars:WhereClauseCompoundExpression .
+
+ars:AnalysisCategorization a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A set of related implementer-defined categories that can be used to categorize analyses or outputs." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path ars:id ],
+        [ sh:class ars:AnalysisCategory ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 2 ;
+            sh:path ars:categories ],
+        [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path ars:label ] ;
+    sh:targetClass ars:AnalysisCategorization .
+
+ars:AnalysisMethod a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A set of one or more statistical operations." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class ars:ProgrammingCodeTemplate ;
+            sh:description "Template programming statements and/or a reference to the template program used to perform the specific analysis." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNode ;
             sh:order 4 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:condition> ],
+            sh:path ars:codeTemplate ],
+        [ sh:class ars:Operation ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 3 ;
+            sh:path ars:operations ],
+        [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path ars:label ],
+        [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 5 ;
+            sh:path ars:name ],
+        [ sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path ars:description ],
         [ sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 0 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:id> ],
-        [ sh:maxCount 1 ;
-            sh:order 1 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:label> ],
-        [ sh:maxCount 1 ;
+            sh:path ars:id ] ;
+    sh:targetClass ars:AnalysisMethod .
+
+ars:DataSubset a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A subset of data identified by selection criteria for inclusion in the analysis." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
             sh:order 2 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:level> ],
+            sh:path ars:level ],
         [ sh:maxCount 1 ;
             sh:order 3 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:order> ],
-        [ sh:class <https://www.cdisc.org/ars/1-0/:CompoundSubsetExpression> ;
+            sh:path ars:order ],
+        [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path ars:id ],
+        [ sh:class ars:CompoundSubsetExpression ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNode ;
             sh:order 5 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:compoundExpression> ] ;
-    sh:targetClass <https://www.cdisc.org/ars/1-0/:DataSubset> .
+            sh:path ars:compoundExpression ],
+        [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path ars:label ],
+        [ sh:class ars:WhereClauseCondition ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 4 ;
+            sh:path ars:condition ] ;
+    sh:targetClass ars:DataSubset .
 
-<https://www.cdisc.org/ars/1-0/:DisplaySection> a sh:NodeShape ;
+ars:DisplaySection a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class <https://www.cdisc.org/ars/1-0/:DisplaySubSection> ;
-            sh:nodeKind sh:IRI ;
-            sh:order 1 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:subSections> ],
-        [ sh:in ( "Title" "Footnote" "Abbreviation" "Legend" "Rowlabel Header" ) ;
+    sh:property [ sh:in ( "Title" "Footnote" "Abbreviation" "Legend" "Rowlabel Header" ) ;
             sh:maxCount 1 ;
             sh:order 0 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:sectionType> ] ;
-    sh:targetClass <https://www.cdisc.org/ars/1-0/:DisplaySection> .
+            sh:path ars:sectionType ],
+        [ sh:class ars:DisplaySubSection ;
+            sh:nodeKind sh:IRI ;
+            sh:order 1 ;
+            sh:path ars:subSections ] ;
+    sh:targetClass ars:DisplaySection .
 
-<https://www.cdisc.org/ars/1-0/:GroupingFactor> a sh:NodeShape ;
+ars:GroupingFactor a sh:NodeShape ;
     sh:closed false ;
     sh:description "A factor used to subdivide either the subject population or data records in an analysis dataset for analysis." ;
     sh:ignoredProperties ( rdf:type ) ;
@@ -494,286 +713,328 @@
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 3 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:dataDriven> ],
-        [ sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 0 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:id> ],
-        [ sh:class <https://www.cdisc.org/ars/1-0/:Group> ;
+            sh:path ars:dataDriven ],
+        [ sh:class ars:Group ;
             sh:nodeKind sh:IRI ;
             sh:order 4 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:groups> ],
+            sh:path ars:groups ],
         [ sh:description "For groupings based on a single variable, a reference to the dataset variable upon which grouping is based." ;
             sh:maxCount 1 ;
             sh:order 2 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:groupingVariable> ],
+            sh:path ars:groupingVariable ],
         [ sh:maxCount 1 ;
             sh:order 1 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:label> ] ;
-    sh:targetClass <https://www.cdisc.org/ars/1-0/:GroupingFactor> .
-
-<https://www.cdisc.org/ars/1-0/:Output> a sh:NodeShape ;
-    sh:closed true ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:maxCount 1 ;
+            sh:path ars:label ],
+        [ sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 0 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:id> ],
-        [ sh:class <https://www.cdisc.org/ars/1-0/:File> ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 2 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:fileSpecifications> ],
-        [ sh:class <https://www.cdisc.org/ars/1-0/:OutputDisplay> ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 3 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:outputDisplays> ],
-        [ sh:class <https://www.cdisc.org/ars/1-0/:AnalysisCategory> ;
+            sh:path ars:id ] ;
+    sh:targetClass ars:GroupingFactor .
+
+ars:Output a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class ars:AnalysisCategory ;
             sh:nodeKind sh:IRI ;
             sh:order 4 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:categoryIds> ],
+            sh:path ars:categoryIds ],
+        [ sh:class ars:OrderedDisplay ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 3 ;
+            sh:path ars:displays ],
         [ sh:maxCount 1 ;
             sh:order 1 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:version> ] ;
-    sh:targetClass <https://www.cdisc.org/ars/1-0/:Output> .
+            sh:path ars:version ],
+        [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path ars:id ],
+        [ sh:class ars:File ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 2 ;
+            sh:path ars:fileSpecifications ] ;
+    sh:targetClass ars:Output .
 
-<https://www.cdisc.org/ars/1-0/:ReferencedOperationRelationship> a sh:NodeShape ;
+ars:ReferenceDocument a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:in ( "NUMERATOR" "DENOMINATOR" ) ;
-            sh:maxCount 1 ;
+    sh:property [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 2 ;
+            sh:path ars:name ],
+        [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path ars:id ],
+        [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path ars:location ] ;
+    sh:targetClass ars:ReferenceDocument .
+
+ars:ReferencedOperationRelationship a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A reference to an statistical operation whose results is used in the calculation of the result for this operation." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 1 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:referencedOperationRole> ],
-        [ sh:class <https://www.cdisc.org/ars/1-0/:Operation> ;
+            sh:path ars:referencedOperationRole ],
+        [ sh:class ars:Operation ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:IRI ;
             sh:order 2 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:operationId> ],
-        [ sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 0 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:id> ],
+            sh:path ars:operationId ],
         [ sh:maxCount 1 ;
             sh:order 4 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:description> ],
-        [ sh:class <https://www.cdisc.org/ars/1-0/:Analysis> ;
+            sh:path ars:description ],
+        [ sh:class ars:Analysis ;
             sh:maxCount 1 ;
             sh:nodeKind sh:IRI ;
             sh:order 3 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:analysisId> ] ;
-    sh:targetClass <https://www.cdisc.org/ars/1-0/:ReferencedOperationRelationship> .
+            sh:path ars:analysisId ],
+        [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path ars:id ] ;
+    sh:targetClass ars:ReferencedOperationRelationship .
 
-<https://www.cdisc.org/ars/1-0/:WhereClause> a sh:NodeShape ;
+ars:WhereClause a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:maxCount 1 ;
-            sh:order 0 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:level> ],
-        [ sh:maxCount 1 ;
-            sh:order 1 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:order> ],
-        [ sh:class <https://www.cdisc.org/ars/1-0/:CompoundExpression> ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 3 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:compoundExpression> ],
-        [ sh:class <https://www.cdisc.org/ars/1-0/:Condition> ;
+    sh:property [ sh:class ars:WhereClauseCondition ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNode ;
             sh:order 2 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:condition> ] ;
-    sh:targetClass <https://www.cdisc.org/ars/1-0/:WhereClause> .
+            sh:path ars:condition ],
+        [ sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path ars:level ],
+        [ sh:class ars:WhereClauseCompoundExpression ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 3 ;
+            sh:path ars:compoundExpression ],
+        [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path ars:order ] ;
+    sh:targetClass ars:WhereClause .
 
-<https://www.cdisc.org/ars/1-0/:AnalysisCategory> a sh:NodeShape ;
+ars:AnalysisCategory a sh:NodeShape ;
     sh:closed true ;
-    sh:description "An implementer-defined category of analyses/outputs." ;
+    sh:description "An implementer-defined category of analyses/outputs, which may include one or more sub-categorization." ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 0 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:id> ],
+            sh:path ars:id ],
         [ sh:maxCount 1 ;
             sh:order 1 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:label> ],
-        [ sh:class <https://www.cdisc.org/ars/1-0/:AnalysisCategorization> ;
+            sh:path ars:label ],
+        [ sh:class ars:AnalysisCategorization ;
             sh:nodeKind sh:IRI ;
             sh:order 2 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:subCategorizations> ] ;
-    sh:targetClass <https://www.cdisc.org/ars/1-0/:AnalysisCategory> .
+            sh:path ars:subCategorizations ] ;
+    sh:targetClass ars:AnalysisCategory .
 
-<https://www.cdisc.org/ars/1-0/:AnalysisSet> a sh:NodeShape ;
+ars:AnalysisSet a sh:NodeShape ;
     sh:closed true ;
     sh:description "A set of subjects whose data are to be included in the main analyses. This should be defined in the statistical section of the protocol. NOTE: There are a number of potential analysis sets, including, for example, the set based upon the intent-to-treat principle. [ICH E9]" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:maxCount 1 ;
-            sh:order 3 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:order> ],
-        [ sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 0 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:id> ],
-        [ sh:maxCount 1 ;
-            sh:order 2 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:level> ],
-        [ sh:class <https://www.cdisc.org/ars/1-0/:Condition> ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 4 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:condition> ],
-        [ sh:maxCount 1 ;
-            sh:order 1 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:label> ],
-        [ sh:class <https://www.cdisc.org/ars/1-0/:CompoundSetExpression> ;
+    sh:property [ sh:class ars:CompoundSetExpression ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNode ;
             sh:order 5 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:compoundExpression> ] ;
-    sh:targetClass <https://www.cdisc.org/ars/1-0/:AnalysisSet> .
+            sh:path ars:compoundExpression ],
+        [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path ars:label ],
+        [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path ars:id ],
+        [ sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path ars:order ],
+        [ sh:class ars:WhereClauseCondition ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 4 ;
+            sh:path ars:condition ],
+        [ sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path ars:level ] ;
+    sh:targetClass ars:AnalysisSet .
 
-<https://www.cdisc.org/ars/1-0/:CompoundGroupExpression> a sh:NodeShape ;
+ars:CompoundGroupExpression a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:in ( "AND" "OR" "NOT" ) ;
+    sh:property [ sh:class ars:Group ;
+            sh:nodeKind sh:IRI ;
+            sh:order 1 ;
+            sh:path ars:whereClauses ],
+        [ sh:in ( "AND" "OR" "NOT" ) ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 0 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:logicalOperator> ],
-        [ sh:class <https://www.cdisc.org/ars/1-0/:Group> ;
-            sh:nodeKind sh:IRI ;
-            sh:order 1 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:whereClauses> ] ;
-    sh:targetClass <https://www.cdisc.org/ars/1-0/:CompoundGroupExpression> .
+            sh:path ars:logicalOperator ] ;
+    sh:targetClass ars:CompoundGroupExpression .
 
-<https://www.cdisc.org/ars/1-0/:Group> a sh:NodeShape ;
+ars:Group a sh:NodeShape ;
     sh:closed true ;
     sh:description "A subdivision of the subject population or analysis dataset record set based on a defined factor." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class <https://www.cdisc.org/ars/1-0/:CompoundGroupExpression> ;
+    sh:property [ sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path ars:level ],
+        [ sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path ars:order ],
+        [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path ars:id ],
+        [ sh:class ars:WhereClauseCondition ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 4 ;
+            sh:path ars:condition ],
+        [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path ars:label ],
+        [ sh:class ars:CompoundGroupExpression ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNode ;
             sh:order 5 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:compoundExpression> ],
-        [ sh:maxCount 1 ;
-            sh:order 3 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:order> ],
-        [ sh:maxCount 1 ;
-            sh:order 1 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:label> ],
-        [ sh:maxCount 1 ;
-            sh:order 2 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:level> ],
-        [ sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 0 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:id> ],
-        [ sh:class <https://www.cdisc.org/ars/1-0/:Condition> ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 4 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:condition> ] ;
-    sh:targetClass <https://www.cdisc.org/ars/1-0/:Group> .
+            sh:path ars:compoundExpression ] ;
+    sh:targetClass ars:Group .
 
-<https://www.cdisc.org/ars/1-0/:NestedList> a sh:NodeShape ;
+ars:NestedList a sh:NodeShape ;
     sh:closed true ;
+    sh:description "A list of items (analyses or outputs) that may be organized within sub-lists." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class <https://www.cdisc.org/ars/1-0/:OrderedListItem> ;
+    sh:property [ sh:class ars:OrderedListItem ;
             sh:nodeKind sh:BlankNode ;
             sh:order 0 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:listItems> ] ;
-    sh:targetClass <https://www.cdisc.org/ars/1-0/:NestedList> .
+            sh:path ars:listItems ] ;
+    sh:targetClass ars:NestedList .
 
-<https://www.cdisc.org/ars/1-0/:Operation> a sh:NodeShape ;
+ars:Operation a sh:NodeShape ;
     sh:closed true ;
+    sh:description "A statistical operation that produces a single analysis result value as part of an analysis method." ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:maxCount 1 ;
-            sh:order 3 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:resultPattern> ],
+            sh:minCount 1 ;
+            sh:order 4 ;
+            sh:path ars:name ],
         [ sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 0 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:id> ],
-        [ sh:class <https://www.cdisc.org/ars/1-0/:ReferencedOperationRelationship> ;
+            sh:path ars:id ],
+        [ sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path ars:resultPattern ],
+        [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path ars:label ],
+        [ sh:class ars:ReferencedOperationRelationship ;
             sh:nodeKind sh:IRI ;
             sh:order 2 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:referencedOperationRelationships> ],
-        [ sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 4 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:name> ],
-        [ sh:maxCount 1 ;
-            sh:order 1 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:label> ] ;
-    sh:targetClass <https://www.cdisc.org/ars/1-0/:Operation> .
+            sh:path ars:referencedOperationRelationships ] ;
+    sh:targetClass ars:Operation .
 
-<https://www.cdisc.org/ars/1-0/:Analysis> a sh:NodeShape ;
+ars:Analysis a sh:NodeShape ;
     sh:closed true ;
+    sh:description """An analysis that is designed to meet a requirement of the reporting event. Each analysis is defined as a set of specifications, including:
+- The analysis variable that is the subject of the analysis.
+- The analysis method (set of statistical operations) that is performed for the analysis variable.
+- The analysis set (subject population) for which the analysis is performed.
+- The subset of data records on which the analysis is performed (optional).
+- One or more factors by which either subjects or data records are grouped for analysis (optional).
+""" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:maxCount 1 ;
-            sh:order 6 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:dataset> ],
-        [ sh:class <https://www.cdisc.org/ars/1-0/:ReferencedAnalysisOperation> ;
-            sh:nodeKind sh:BlankNode ;
+            sh:order 1 ;
+            sh:path ars:version ],
+        [ sh:class ars:DataSubset ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
             sh:order 9 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:referencedAnalysisOperations> ],
-        [ sh:class <https://www.cdisc.org/ars/1-0/:OrderedGroupingFactor> ;
+            sh:path ars:dataSubsetId ],
+        [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 15 ;
+            sh:path ars:name ],
+        [ sh:description "The rationale for performing this analysis. It indicates when the analysis was planned." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 5 ;
+            sh:path ars:reason ],
+        [ sh:class ars:DocumentRef ;
             sh:nodeKind sh:BlankNode ;
             sh:order 4 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:orderedGroupings> ],
+            sh:path ars:documentRefs ],
         [ sh:maxCount 1 ;
-            sh:order 1 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:version> ],
-        [ sh:class <https://www.cdisc.org/ars/1-0/:AnalysisCategory> ;
-            sh:nodeKind sh:IRI ;
-            sh:order 2 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:categoryIds> ],
-        [ sh:class <https://www.cdisc.org/ars/1-0/:OperationResult> ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 10 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:results> ],
-        [ sh:class <https://www.cdisc.org/ars/1-0/:AnalysisMethod> ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 8 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:methodId> ],
-        [ sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 11 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:name> ],
-        [ sh:class <https://www.cdisc.org/ars/1-0/:AnalysisSet> ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:IRI ;
             sh:order 3 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:analysisSetId> ],
+            sh:path ars:description ],
+        [ sh:maxCount 1 ;
+            sh:order 11 ;
+            sh:path ars:variable ],
+        [ sh:class ars:AnalysisMethod ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 12 ;
+            sh:path ars:methodId ],
         [ sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 0 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:id> ],
+            sh:path ars:id ],
+        [ sh:class ars:OperationResult ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 14 ;
+            sh:path ars:results ],
+        [ sh:class ars:OrderedGroupingFactor ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 8 ;
+            sh:path ars:orderedGroupings ],
         [ sh:maxCount 1 ;
-            sh:order 7 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:variable> ],
-        [ sh:class <https://www.cdisc.org/ars/1-0/:DataSubset> ;
+            sh:order 10 ;
+            sh:path ars:dataset ],
+        [ sh:class ars:AnalysisSet ;
             sh:maxCount 1 ;
             sh:nodeKind sh:IRI ;
-            sh:order 5 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:dataSubsetId> ] ;
-    sh:targetClass <https://www.cdisc.org/ars/1-0/:Analysis> .
+            sh:order 7 ;
+            sh:path ars:analysisSetId ],
+        [ sh:class ars:AnalysisCategory ;
+            sh:nodeKind sh:IRI ;
+            sh:order 2 ;
+            sh:path ars:categoryIds ],
+        [ sh:class ars:ReferencedAnalysisOperation ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 13 ;
+            sh:path ars:referencedAnalysisOperations ],
+        [ sh:description "The purpose of the analysis within the body of evidence (e.g., section in the clinical study report)." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 6 ;
+            sh:path ars:purpose ] ;
+    sh:targetClass ars:Analysis .
 
-<https://www.cdisc.org/ars/1-0/:Condition> a sh:NodeShape ;
+ars:WhereClauseCondition a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:maxCount 1 ;
-            sh:order 0 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:dataset> ],
-        [ sh:maxCount 1 ;
-            sh:order 1 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:variable> ],
-        [ sh:in ( "EQ" "NE" "GT" "GE" "LT" "LE" "IN" "NOTIN" ) ;
+    sh:property [ sh:in ( "EQ" "NE" "GT" "GE" "LT" "LE" "IN" "NOTIN" ) ;
             sh:maxCount 1 ;
             sh:order 2 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:comparator> ],
+            sh:path ars:comparator ],
         [ sh:order 3 ;
-            sh:path <https://www.cdisc.org/ars/1-0/:value> ] ;
-    sh:targetClass <https://www.cdisc.org/ars/1-0/:Condition> .
+            sh:path ars:value ],
+        [ sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path ars:dataset ],
+        [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path ars:variable ] ;
+    sh:targetClass ars:WhereClauseCondition .
 

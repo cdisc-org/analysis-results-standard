@@ -1,4 +1,5 @@
 id: https://www.cdisc.org/ars/1-0
+title: Analysis Results Standard (ARS)
 name: ars_ldm
 
 imports:
@@ -6,6 +7,14 @@ imports:
 
 prefixes:
   linkml: https://w3id.org/linkml/
+  ars: https://www.cdisc.org/ars/1-0
+  bioregistry: https://bioregistry.io/registry/
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+#  def: http://www.cdisc.org/ns/def/v2.1
+  NCIThesaurus: http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#
+  defCT: https://api.library.cdisc.org/api/mdr/root/ct/define/codelists/
+
+default_prefix: ars
 
 default_range: string
 
@@ -17,6 +26,7 @@ classes:
       - name
 
   ReportingEvent:
+    description: A set of analyses and outputs created to meet a specific reporting requirement, such as a CSR or interim analysis.
     tree_root: true
     is_a: NamedObject
     slots:
@@ -31,12 +41,16 @@ classes:
       - analyses
       - methods
       - outputs
+      - referenceDocuments
+      - terminologyExtentions
 
   NestedList:
+    description: A list of items (analyses or outputs) that may be organized within sub-lists.
     slots:
       - listItems
 
   OrderedListItem:
+    description: An item (analysis, output or sub-list) ordered relative to other items within a list or sub-list.
     is_a: NamedObject
     slots:
       - level
@@ -51,25 +65,36 @@ classes:
         required: true
 
   AnalysisCategorization:
-    description: An implementer-defined categorization of analyses/outputs.
+    description: A set of related implementer-defined categories that can be used to categorize analyses or outputs.
     slots:
       - id
       - label
       - categories
 
   AnalysisCategory:
-    description: An implementer-defined category of analyses/outputs.
+    description: An implementer-defined category of analyses/outputs, which may include one or more sub-categorization.
     slots:
       - id
       - label
       - subCategorizations
 
   Analysis:
+    description: |
+      An analysis that is designed to meet a requirement of the reporting event. Each analysis is defined as a set of specifications, including:
+      - The analysis variable that is the subject of the analysis.
+      - The analysis method (set of statistical operations) that is performed for the analysis variable.
+      - The analysis set (subject population) for which the analysis is performed.
+      - The subset of data records on which the analysis is performed (optional).
+      - One or more factors by which either subjects or data records are grouped for analysis (optional).
     is_a: NamedObject
     slots:
       - id
       - version
       - categoryIds
+      - description
+      - documentRefs
+      - reason
+      - purpose
       - analysisSetId
       - orderedGroupings
       - dataSubsetId
@@ -80,6 +105,7 @@ classes:
       - results
 
   OrderedGroupingFactor:
+    description: A reference to a defined factor by which subjects or data records are grouped for the analysis, ordered with respect to other grouping factors.      
     slots:
       - order
       - groupingId
@@ -89,6 +115,7 @@ classes:
         required: true
 
   ReferencedAnalysisOperation:
+    description: An indication of the analysis that contains results of a referenced operation.
     slots:
       - referencedOperationId
       - analysisId
@@ -97,6 +124,7 @@ classes:
         required: true
 
   OperationResult:
+    description: The result of an analysis method operation performed on a subdivision of subjects or data records.
     slots:
       - operationId
       - resultGroups
@@ -104,20 +132,24 @@ classes:
       - formattedValue
 
   ResultGroup:
+    description: For the specified grouping factor, an indication of the specific group of subjects or data records associated with the analysis result.
     slots:
       - groupingId
       - groupId
       - groupValue
   
   AnalysisMethod:
+    description: A set of one or more statistical operations.
     is_a: NamedObject
     slots:
       - id
       - label
       - description
       - operations
+      - codeTemplate
 
   Operation:
+    description: A statistical operation that produces a single analysis result value as part of an analysis method.
     is_a: NamedObject
     slots:
       - id
@@ -126,6 +158,7 @@ classes:
       - resultPattern
 
   ReferencedOperationRelationship:
+    description: A reference to an statistical operation whose results is used in the calculation of the result for this operation.
     slots:
       - id
       - referencedOperationRole
@@ -133,12 +166,26 @@ classes:
       - analysisId
       - description
 
+  ProgrammingCodeTemplate:
+    description: 
+    slots:
+      - context
+      - parameters
+      - templateCode
+
+  CodeParameter:
+    is_a: NamedObject
+    description:
+    slots:
+      - description
+      - valueSource
+
   Output:
     slots:
       - id
       - version
       - fileSpecifications
-      - outputDisplays
+      - displays
       - categoryIds
     slot_usage:
       categoryIds:
@@ -152,7 +199,7 @@ classes:
       - location
       - style
 
-  OutputDisplay:
+  OrderedDisplay:
     slots:
       - order
       - display
@@ -160,7 +207,7 @@ classes:
       order:
         required: true
 
-  Display:
+  OutputDisplay:
     is_a: NamedObject
     slots:
       - id
@@ -189,34 +236,34 @@ classes:
       - condition
       - compoundExpression
 
-  Condition:
+  WhereClauseCondition:
     slots:
       - dataset
       - variable
       - comparator
       - value
 
-  CompoundExpression:
+  WhereClauseCompoundExpression:
     slots:
       - logicalOperator
       - whereClauses
 
   CompoundSetExpression:
-    is_a: CompoundExpression
+    is_a: WhereClauseCompoundExpression
     slot_usage:
       whereClauses:
         range: AnalysisSet
         inlined: false
 
   CompoundGroupExpression:
-    is_a: CompoundExpression
+    is_a: WhereClauseCompoundExpression
     slot_usage:
       whereClauses:
         range: Group
         inlined: false
 
   CompoundSubsetExpression:
-    is_a: CompoundExpression
+    is_a: WhereClauseCompoundExpression
     slot_usage:
       whereClauses:
         inlined: true
@@ -288,26 +335,108 @@ classes:
       - id
       - label
 
+  ReferenceDocument:
+    is_a: NamedObject
+    slots:
+      - id
+      - location
+
+  DocumentRef:
+    slots:
+      - referenceDocumentId
+      - pageRefs
+
+  PageRef:
+    slots:
+      - refType
+      - label
+      - pages
+
+  PageNumberListRef:
+    description: One or more individual pages in the reference document, referenced by page number.
+    is_a: PageRef
+    slot_usage:
+      refType:
+        equals_string: PhysicalRef
+      pages:
+        range: PageNumberList
+
+  PageNumberRangeRef:
+    description: A range of pages in the reference document, indicated by the first and last page number in the range.
+    is_a: PageRef
+    slot_usage:
+      refType:
+        equals_string: PhysicalRef
+      pages:
+        range: PageRange
+
+  PageNameRef:
+    description: One or more pages in the reference document, referenced by named destination.
+    is_a: PageRef
+    slot_usage:
+      refType:
+        equals_string: NamedDestination
+      pages:
+        range: PageNameList
+
+  PageNumberList:
+    description: A list of one or more page numbers.
+    slots:
+      - pageNumbers
+
+  PageNameList:
+    description: A list of one or more named document references, each of which corresponds with a page.
+    slots:
+      - pageNames
+
+  PageRange:
+    description: A set of pages in a document that includes the specified first and last page, and all pages in between.
+    slots:
+      - firstPage
+      - lastPage
+
+  TerminologyExtension:
+    description: A sponsor-defined term that is included in an extensible set of controlled terminology.
+    slots:
+      - enumeration
+      - sponsorTerms
+    unique_keys:
+      enumeration:
+        description: There should only be one terminology extension for any enumeration, which of which may contain multiple sponsor terms.
+        unique_key_slots:
+          - enumeration
+
+  SponsorTerm:
+    description: A sponsor-defined term that is included in an extensible set of controlled terminology.
+    slots:
+      - id
+      - submissionValue
+      - description
+
 slots:
 
   name:
     required: true
 
   listOfPlannedAnalyses:
+    description: A structured list of the analyses defined for the reporting event.
     required: true
     range: NestedList
 
   listOfPlannedOutputs:
+    description: An optional structured list of the outputs defined for the reporting event.
     required: false
     range: NestedList
 
   analysisSets:
+    description: The analysis sets (subject populations) defined for the reporting event.
     multivalued: true
     inlined: true
     inlined_as_list: true
     range: AnalysisSet
 
   analysisGroupings:
+    description: Characteristics used to subdivide the subject population (e.g., treatment, sex, age group).
     multivalued: true
     inlined: true
     inlined_as_list: true
@@ -335,18 +464,37 @@ slots:
     range: DataSubset
 
   dataGroupings:
+    description: Characteristics used to subdivide data records in the analysis dataset (e.g., visit, system organ class).
     multivalued: true
     inlined: true
     inlined_as_list: true
     range: DataGroupingFactor
 
   analyses:
+    description: The analyses defined for the reporting event.
     multivalued: true
     inlined: true
     inlined_as_list: true
     range: Analysis
 
+  reason:
+    description: The rationale for performing this analysis. It indicates when the analysis was planned.
+    required: true
+    any_of:
+      - range: AnalysisReason
+      - range: SponsorTerm
+    inlined: false
+
+  purpose:
+    description: The purpose of the analysis within the body of evidence (e.g., section in the clinical study report).
+    required: true
+    any_of:
+      - range: AnalysisPurpose
+      - range: SponsorTerm
+    inlined: false
+
   methods:
+    description: The defined methods used to analyze any analysis variable.
     multivalued: true
     inlined: true
     inlined_as_list: true
@@ -487,12 +635,44 @@ slots:
   
   referencedOperationRole:
     required: true
-    range: OperationRole
+    any_of:
+      - range: OperationRole
+      - range: SponsorTerm
+    inlined: false
 
   operationId:  
     range: Operation
     required: true
     inlined: false
+
+  codeTemplate:
+    description: Template programming statements and/or a reference to the template program used to perform the specific analysis.
+    range: ProgrammingCodeTemplate
+
+  context:
+    description: The name and version of the computer language used for the actual programming statements provided.
+    examples:
+      - value: SAS Version 9.2
+    range: string
+    required: true
+
+  parameters:
+    description: Replacement parameters referenced in the programming code template.
+    range: CodeParameter
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+
+  templateCode:
+    description: Template programming statements and/or a reference to the template program used to perform the specific analysis.
+    any_of:
+      - range: string
+      - range: DocumentRef
+
+  valueSource:
+    # TODO: restrict to formal references to attributes of instances of the parent Analysis class.
+    description: A reference to the prespecified source of the value for the parameter.
+    range: string
 
   outputId: 
     range: Output
@@ -516,21 +696,25 @@ slots:
     range: File
 
   fileType:
-    range: FileType
+    any_of:
+      - range: OutputFileType
+      - range: SponsorTerm
+    inlined: false
 
   location:
+    range: uri
 
   style:
 
-  outputDisplays:
-    range: OutputDisplay
+  displays:
+    range: OrderedDisplay
     multivalued: true
     inlined: true
     inlined_as_list: true
     list_elements_ordered: true
 
   display:
-    range: Display
+    range: OutputDisplay
     inlined: true
 
   globalDisplaySections:
@@ -546,7 +730,7 @@ slots:
     range: DisplaySection
 
   sectionType:
-    range: SectionType
+    range: DisplaySectionType
 
   subSections:
     multivalued: true
@@ -559,13 +743,13 @@ slots:
 
   logicalOperator:
     required: true
-    range: LogicalOperator
+    range: ExpressionLogicalOperator
 
   condition:
-    range: Condition
+    range: WhereClauseCondition
 
   compoundExpression:
-    range: CompoundExpression
+    range: WhereClauseCompoundExpression
 
   whereClauses:
     multivalued: true
@@ -578,28 +762,103 @@ slots:
   variable:
 
   comparator:
-    range: Comparator
+    range: ConditionComparator
 
   value:
     multivalued: true
 
   label:
 
+  referenceDocuments:
+    multivalued: true
+    range: ReferenceDocument
+    inlined: true
+
+  documentRefs:
+    multivalued: true
+    range: DocumentRef
+    inlined: true
+
+  referenceDocumentId:
+    range: ReferenceDocument
+    required: true
+    inlined: false
+
+  pageRefs:
+    multivalued: true
+    range: PageRef
+
+  refType:
+    required: true
+    range: PageRefType
+
+  pages:
+    any_of:
+      - range: PageNumberList
+      - range: PageNameList
+      - range: PageRange
+
+  pageNumbers:
+    description: One or more page numbers.
+    range: integer
+    multivalued: true
+    required: true
+
+  pageNames:
+    description: One or more named document references which each correspond with a page.
+    range: integer
+    multivalued: true
+    required: true 
+
+  firstPage:
+    description: The page number of the first page in a range of pages.
+    range: integer
+    required: true
+
+  lastPage:
+    description: The page number of the last page in a range of pages.
+    range: integer
+    required: true
+
+  terminologyExtentions:
+    description: Any sponsor-defined extensions to extensible terminology.
+    range: TerminologyExtension
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+
+  enumeration:
+    description: The name of the extensible enumeration.
+    range: ExtensibleTerminology
+
+  sponsorTerms:
+    description: The sponsor-defined terms added to the extensible terminology.
+    multivalued: true
+    required: true
+    range: SponsorTerm
+    inlined: true
+    inlined_as_list: true
+
+  submissionValue:
+    description: The specific value expected for submissions.
+    range: string
+    required: true
+
 enums:
 
-  FileType:
+  OutputFileType:
     permissible_values:
       pdf:
       rtf:
       txt:
 
-  LogicalOperator:
+  ExpressionLogicalOperator:
     permissible_values:
       AND:
       OR:
       NOT:
 
-  Comparator:
+  ConditionComparator:
     permissible_values:
       EQ:
       NE:
@@ -610,7 +869,7 @@ enums:
       IN:
       NOTIN:
 
-  SectionType:
+  DisplaySectionType:
     permissible_values:
       Title:
       Footnote:
@@ -622,3 +881,65 @@ enums:
     permissible_values:
       NUMERATOR:
       DENOMINATOR:
+
+  AnalysisReason:
+  # TODO: change to a dynamic enum based on the NCI or CDISC terminology with extending terms.
+    description: The rationale for performing this analysis. It indicates when the analysis was planned.
+    code_set: NCIT:C117744
+    permissible_values:
+      SPECIFIED IN PROTOCOL:
+        description: The analysis is specified in a protocol.
+        meaning: NCIT:C117752
+      SPECIFIED IN SAP:
+        description: The analysis is specified in a statistical analysis plan.
+        meaning: NCIT:C117753
+      DATA DRIVEN:
+        description: The analysis was triggered by findings in the data.
+        meaning: NCIT:C117750
+      REQUESTED BY REGULATORY AGENCY:
+        description: The analysis has been requested by a regulatory agency.
+        meaning: NCIT:C117751
+
+  AnalysisPurpose:
+  # TODO: change to a dynamic enum based on the NCI or CDISC terminology with extending terms.
+    description: The purpose of the analysis within the body of evidence (e.g., section in the clinical study report).
+    code_set: NCIT:C117745
+    permissible_values:
+      PRIMARY OUTCOME MEASURE:
+        description: >-
+          The outcome measure(s) of greatest importance specified in the protocol, usually the one(s) used in the power
+          calculation, to evaluate the primary endpoint(s) associated with the primary study objective(s). (After
+          Clinicaltrials.gov)
+        meaning: NCIT:C98772
+      SECONDARY OUTCOME MEASURE:
+        description: >-
+          The outcome measure(s) that is part of a pre-specified analysis plan used to evaluate the secondary endpoint(s)
+          associated with secondary study objective(s) and/or used to evaluate any measure(s) ancillary to the primary or
+          secondary endpoint(s). (After Clinicaltrials.gov).
+        meaning: NCIT:C98781
+      EXPLORATORY OUTCOME MEASURE:
+        description: >-
+          The outcome measure(s) that is part of a pre-specified analysis plan used to evaluate the exploratory endpoint(s)
+          associated with exploratory study objective(s) and/or any other measures, excluding post-hoc measures, that are a
+          focus of the study. (After clinicaltrials.gov)
+        meaning: NCIT:C98724
+
+  ExtensibleTerminology:
+    description: Extensible ARS enumerations.
+    permissible_values:
+      AnalysisReason:
+        description: The rationale for performing this analysis. It indicates when the analysis was planned.
+        meaning: NCIT:C117744
+      AnalysisPurpose:
+        description: The purpose of the analysis within the body of evidence (e.g., section in the clinical study report).
+        meaning: NCIT:C117745
+      OperationRole:
+      OutputFileType:
+
+  PageRefType:
+    description: Type of page for page references.
+    permissible_values:
+      PhysicalRef:
+        description: References are to page numbers.
+      NamedDestination:
+        description: References are to named destinations in the referenced document.

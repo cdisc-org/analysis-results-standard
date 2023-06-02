@@ -1,31 +1,74 @@
-
 # Slot: order
 
+URI: [ars:order](https://www.cdisc.org/ars/1-0order)
 
 
 
-URI: [https://www.cdisc.org/ars/1-0/order](https://www.cdisc.org/ars/1-0/order)
+<!-- no inheritance hierarchy -->
 
 
-## Domain and Range
-
-None &#8594;  <sub>0..1</sub> [Integer](types/Integer.md)
-
-## Parents
 
 
-## Children
+## Applicable Classes
 
- *  [DisplaySubSection➞order](DisplaySubSection_order.md)
- *  [OrderedGroupingFactor➞order](OrderedGroupingFactor_order.md)
- *  [OrderedListItem➞order](OrderedListItem_order.md)
- *  [OutputDisplay➞order](OutputDisplay_order.md)
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+[OrderedListItem](OrderedListItem.md) | An item (analysis, output or sub-list) ordered relative to other items within... |  yes  |
+[OrderedGroupingFactor](OrderedGroupingFactor.md) | A reference to a defined factor by which subjects or data records are grouped... |  yes  |
+[OrderedDisplay](OrderedDisplay.md) |  |  yes  |
+[DisplaySubSection](DisplaySubSection.md) |  |  yes  |
+[WhereClause](WhereClause.md) |  |  no  |
+[AnalysisSet](AnalysisSet.md) | A set of subjects whose data are to be included in the main analyses |  no  |
+[Group](Group.md) | A subdivision of the subject population or analysis dataset record set based ... |  no  |
+[AnalysisGroup](AnalysisGroup.md) | A subdivision of the subject population based on a defined factor (e |  no  |
+[DataGroup](DataGroup.md) | A subdivision of the analysis dataset records based on a defined factor |  no  |
+[DataSubset](DataSubset.md) | A subset of data identified by selection criteria for inclusion in the analys... |  no  |
 
-## Used by
 
- * [AnalysisGroup](AnalysisGroup.md)
- * [AnalysisSet](AnalysisSet.md)
- * [DataGroup](DataGroup.md)
- * [DataSubset](DataSubset.md)
- * [Group](Group.md)
- * [WhereClause](WhereClause.md)
+
+
+
+
+
+## Properties
+
+* Range: [Integer](Integer.md)
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://www.cdisc.org/ars/1-0
+
+
+
+
+## LinkML Source
+
+<details>
+```yaml
+name: order
+from_schema: https://www.cdisc.org/ars/1-0
+rank: 1000
+alias: order
+domain_of:
+- OrderedListItem
+- OrderedGroupingFactor
+- OrderedDisplay
+- DisplaySubSection
+- WhereClause
+range: integer
+
+```
+</details>

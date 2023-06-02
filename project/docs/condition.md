@@ -1,28 +1,66 @@
+# Slot: condition
 
-# Class: Condition
-
-
-
-
-URI: [https://www.cdisc.org/ars/1-0/Condition](https://www.cdisc.org/ars/1-0/Condition)
+URI: [ars:condition](https://www.cdisc.org/ars/1-0condition)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[WhereClause]++-%20condition%200..1>[Condition&#124;dataset:string%20%3F;variable:string%20%3F;comparator:Comparator%20%3F;value:string%20*],[WhereClause])](https://yuml.me/diagram/nofunky;dir:TB/class/[WhereClause]++-%20condition%200..1>[Condition&#124;dataset:string%20%3F;variable:string%20%3F;comparator:Comparator%20%3F;value:string%20*],[WhereClause])
 
-## Referenced by Class
-
- *  **None** *[condition](condition.md)*  <sub>0..1</sub>  **[Condition](Condition.md)**
-
-## Attributes
+<!-- no inheritance hierarchy -->
 
 
-### Own
 
- * [dataset](dataset.md)  <sub>0..1</sub>
-     * Range: [String](types/String.md)
- * [variable](variable.md)  <sub>0..1</sub>
-     * Range: [String](types/String.md)
- * [comparator](comparator.md)  <sub>0..1</sub>
-     * Range: [Comparator](Comparator.md)
- * [value](value.md)  <sub>0..\*</sub>
-     * Range: [String](types/String.md)
+
+## Applicable Classes
+
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+[WhereClause](WhereClause.md) |  |  no  |
+[AnalysisSet](AnalysisSet.md) | A set of subjects whose data are to be included in the main analyses |  no  |
+[Group](Group.md) | A subdivision of the subject population or analysis dataset record set based ... |  no  |
+[AnalysisGroup](AnalysisGroup.md) | A subdivision of the subject population based on a defined factor (e |  no  |
+[DataGroup](DataGroup.md) | A subdivision of the analysis dataset records based on a defined factor |  no  |
+[DataSubset](DataSubset.md) | A subset of data identified by selection criteria for inclusion in the analys... |  no  |
+
+
+
+
+
+
+
+## Properties
+
+* Range: [WhereClauseCondition](WhereClauseCondition.md)
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://www.cdisc.org/ars/1-0
+
+
+
+
+## LinkML Source
+
+<details>
+```yaml
+name: condition
+from_schema: https://www.cdisc.org/ars/1-0
+rank: 1000
+alias: condition
+domain_of:
+- WhereClause
+range: WhereClauseCondition
+
+```
+</details>

@@ -1,22 +1,63 @@
-
 # Slot: location
 
+URI: [ars:location](https://www.cdisc.org/ars/1-0location)
 
 
 
-URI: [https://www.cdisc.org/ars/1-0/location](https://www.cdisc.org/ars/1-0/location)
+<!-- no inheritance hierarchy -->
 
 
-## Domain and Range
-
-None &#8594;  <sub>0..1</sub> [String](types/String.md)
-
-## Parents
 
 
-## Children
+## Applicable Classes
+
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+[File](File.md) |  |  no  |
+[ReferenceDocument](ReferenceDocument.md) |  |  no  |
 
 
-## Used by
 
- * [File](File.md)
+
+
+
+
+## Properties
+
+* Range: [Uri](Uri.md)
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://www.cdisc.org/ars/1-0
+
+
+
+
+## LinkML Source
+
+<details>
+```yaml
+name: location
+from_schema: https://www.cdisc.org/ars/1-0
+rank: 1000
+alias: location
+domain_of:
+- File
+- ReferenceDocument
+range: uri
+
+```
+</details>

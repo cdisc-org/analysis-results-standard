@@ -1,22 +1,61 @@
-
 # Slot: style
 
+URI: [ars:style](https://www.cdisc.org/ars/1-0style)
 
 
 
-URI: [https://www.cdisc.org/ars/1-0/style](https://www.cdisc.org/ars/1-0/style)
+<!-- no inheritance hierarchy -->
 
 
-## Domain and Range
-
-None &#8594;  <sub>0..1</sub> [String](types/String.md)
-
-## Parents
 
 
-## Children
+## Applicable Classes
+
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+[File](File.md) |  |  no  |
 
 
-## Used by
 
- * [File](File.md)
+
+
+
+
+## Properties
+
+* Range: [String](String.md)
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://www.cdisc.org/ars/1-0
+
+
+
+
+## LinkML Source
+
+<details>
+```yaml
+name: style
+from_schema: https://www.cdisc.org/ars/1-0
+rank: 1000
+alias: style
+domain_of:
+- File
+range: string
+
+```
+</details>

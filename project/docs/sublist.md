@@ -1,22 +1,63 @@
-
 # Slot: sublist
 
+URI: [ars:sublist](https://www.cdisc.org/ars/1-0sublist)
 
 
 
-URI: [https://www.cdisc.org/ars/1-0/sublist](https://www.cdisc.org/ars/1-0/sublist)
+<!-- no inheritance hierarchy -->
 
 
-## Domain and Range
-
-None &#8594;  <sub>0..1</sub> [NestedList](NestedList.md)
-
-## Parents
 
 
-## Children
+## Applicable Classes
+
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+[OrderedListItem](OrderedListItem.md) | An item (analysis, output or sub-list) ordered relative to other items within... |  no  |
 
 
-## Used by
 
- * [OrderedListItem](OrderedListItem.md)
+
+
+
+
+## Properties
+
+* Range: [NestedList](NestedList.md)
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://www.cdisc.org/ars/1-0
+
+
+
+
+## LinkML Source
+
+<details>
+```yaml
+name: sublist
+from_schema: https://www.cdisc.org/ars/1-0
+rank: 1000
+multivalued: false
+alias: sublist
+domain_of:
+- OrderedListItem
+range: NestedList
+inlined: true
+
+```
+</details>

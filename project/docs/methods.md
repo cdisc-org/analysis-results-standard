@@ -1,22 +1,72 @@
-
 # Slot: methods
 
 
+_The defined methods used to analyze any analysis variable._
 
 
-URI: [https://www.cdisc.org/ars/1-0/methods](https://www.cdisc.org/ars/1-0/methods)
+
+URI: [ars:methods](https://www.cdisc.org/ars/1-0methods)
 
 
-## Domain and Range
 
-None &#8594;  <sub>0..\*</sub> [AnalysisMethod](AnalysisMethod.md)
-
-## Parents
+<!-- no inheritance hierarchy -->
 
 
-## Children
 
 
-## Used by
+## Applicable Classes
 
- * [ReportingEvent](ReportingEvent.md)
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+[ReportingEvent](ReportingEvent.md) | A set of analyses and outputs created to meet a specific reporting requiremen... |  no  |
+
+
+
+
+
+
+
+## Properties
+
+* Range: [AnalysisMethod](AnalysisMethod.md)
+
+* Multivalued: True
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://www.cdisc.org/ars/1-0
+
+
+
+
+## LinkML Source
+
+<details>
+```yaml
+name: methods
+description: The defined methods used to analyze any analysis variable.
+from_schema: https://www.cdisc.org/ars/1-0
+rank: 1000
+multivalued: true
+alias: methods
+domain_of:
+- ReportingEvent
+range: AnalysisMethod
+inlined: true
+inlined_as_list: true
+
+```
+</details>

@@ -1,28 +1,68 @@
-
 # Slot: level
 
+URI: [ars:level](https://www.cdisc.org/ars/1-0level)
 
 
 
-URI: [https://www.cdisc.org/ars/1-0/level](https://www.cdisc.org/ars/1-0/level)
+<!-- no inheritance hierarchy -->
 
 
-## Domain and Range
-
-None &#8594;  <sub>0..1</sub> [Integer](types/Integer.md)
-
-## Parents
 
 
-## Children
+## Applicable Classes
 
- *  [OrderedListItem➞level](OrderedListItem_level.md)
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+[OrderedListItem](OrderedListItem.md) | An item (analysis, output or sub-list) ordered relative to other items within... |  yes  |
+[WhereClause](WhereClause.md) |  |  no  |
+[AnalysisSet](AnalysisSet.md) | A set of subjects whose data are to be included in the main analyses |  no  |
+[Group](Group.md) | A subdivision of the subject population or analysis dataset record set based ... |  no  |
+[AnalysisGroup](AnalysisGroup.md) | A subdivision of the subject population based on a defined factor (e |  no  |
+[DataGroup](DataGroup.md) | A subdivision of the analysis dataset records based on a defined factor |  no  |
+[DataSubset](DataSubset.md) | A subset of data identified by selection criteria for inclusion in the analys... |  no  |
 
-## Used by
 
- * [AnalysisGroup](AnalysisGroup.md)
- * [AnalysisSet](AnalysisSet.md)
- * [DataGroup](DataGroup.md)
- * [DataSubset](DataSubset.md)
- * [Group](Group.md)
- * [WhereClause](WhereClause.md)
+
+
+
+
+
+## Properties
+
+* Range: [Integer](Integer.md)
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://www.cdisc.org/ars/1-0
+
+
+
+
+## LinkML Source
+
+<details>
+```yaml
+name: level
+from_schema: https://www.cdisc.org/ars/1-0
+rank: 1000
+alias: level
+domain_of:
+- OrderedListItem
+- WhereClause
+range: integer
+
+```
+</details>

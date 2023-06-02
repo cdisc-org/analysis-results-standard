@@ -1,22 +1,66 @@
-
 # Slot: referencedAnalysisOperations
 
+URI: [ars:referencedAnalysisOperations](https://www.cdisc.org/ars/1-0referencedAnalysisOperations)
 
 
 
-URI: [https://www.cdisc.org/ars/1-0/referencedAnalysisOperations](https://www.cdisc.org/ars/1-0/referencedAnalysisOperations)
+<!-- no inheritance hierarchy -->
 
 
-## Domain and Range
-
-None &#8594;  <sub>0..\*</sub> [ReferencedAnalysisOperation](ReferencedAnalysisOperation.md)
-
-## Parents
 
 
-## Children
+## Applicable Classes
+
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+[Analysis](Analysis.md) | An analysis that is designed to meet a requirement of the reporting event |  no  |
 
 
-## Used by
 
- * [Analysis](Analysis.md)
+
+
+
+
+## Properties
+
+* Range: [ReferencedAnalysisOperation](ReferencedAnalysisOperation.md)
+
+* Multivalued: True
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://www.cdisc.org/ars/1-0
+
+
+
+
+## LinkML Source
+
+<details>
+```yaml
+name: referencedAnalysisOperations
+from_schema: https://www.cdisc.org/ars/1-0
+rank: 1000
+multivalued: true
+alias: referencedAnalysisOperations
+domain_of:
+- Analysis
+range: ReferencedAnalysisOperation
+inlined: true
+inlined_as_list: true
+
+```
+</details>

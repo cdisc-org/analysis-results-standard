@@ -1,22 +1,66 @@
-
 # Slot: displaySections
 
+URI: [ars:displaySections](https://www.cdisc.org/ars/1-0displaySections)
 
 
 
-URI: [https://www.cdisc.org/ars/1-0/displaySections](https://www.cdisc.org/ars/1-0/displaySections)
+<!-- no inheritance hierarchy -->
 
 
-## Domain and Range
-
-None &#8594;  <sub>0..\*</sub> [DisplaySection](DisplaySection.md)
-
-## Parents
 
 
-## Children
+## Applicable Classes
+
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+[OutputDisplay](OutputDisplay.md) |  |  no  |
 
 
-## Used by
 
- * [Display](Display.md)
+
+
+
+
+## Properties
+
+* Range: [DisplaySection](DisplaySection.md)
+
+* Multivalued: True
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://www.cdisc.org/ars/1-0
+
+
+
+
+## LinkML Source
+
+<details>
+```yaml
+name: displaySections
+from_schema: https://www.cdisc.org/ars/1-0
+rank: 1000
+multivalued: true
+alias: displaySections
+domain_of:
+- OutputDisplay
+range: DisplaySection
+inlined: true
+inlined_as_list: true
+
+```
+</details>

@@ -1,37 +1,217 @@
-
 # Class: GroupingFactor
 
 
-A factor used to subdivide either the subject population or data records in an analysis dataset for analysis.
-
-URI: [https://www.cdisc.org/ars/1-0/GroupingFactor](https://www.cdisc.org/ars/1-0/GroupingFactor)
+_A factor used to subdivide either the subject population or data records in an analysis dataset for analysis._
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[SubjectGroupingFactor],[Group]<groups%200..*-++[GroupingFactor&#124;id:string;label:string%20%3F;groupingVariable:string%20%3F;dataDriven:boolean],[OrderedGroupingFactor]-%20groupingId%200..1>[GroupingFactor],[ResultGroup]-%20groupingId%200..1>[GroupingFactor],[GroupingFactor]^-[SubjectGroupingFactor],[GroupingFactor]^-[DataGroupingFactor],[ResultGroup],[OrderedGroupingFactor],[Group],[DataGroupingFactor])](https://yuml.me/diagram/nofunky;dir:TB/class/[SubjectGroupingFactor],[Group]<groups%200..*-++[GroupingFactor&#124;id:string;label:string%20%3F;groupingVariable:string%20%3F;dataDriven:boolean],[OrderedGroupingFactor]-%20groupingId%200..1>[GroupingFactor],[ResultGroup]-%20groupingId%200..1>[GroupingFactor],[GroupingFactor]^-[SubjectGroupingFactor],[GroupingFactor]^-[DataGroupingFactor],[ResultGroup],[OrderedGroupingFactor],[Group],[DataGroupingFactor])
-
-## Children
-
- * [DataGroupingFactor](DataGroupingFactor.md) - A factor used to subdivide data records in an analysis dataset for analysis.
- * [SubjectGroupingFactor](SubjectGroupingFactor.md) - A factor used to subdivide the subject population for comparative analysis (e.g., treatment, sex, race, age).
-
-## Referenced by Class
-
- *  **None** *[groupingId](groupingId.md)*  <sub>0..1</sub>  **[GroupingFactor](GroupingFactor.md)**
-
-## Attributes
 
 
-### Own
+* __NOTE__: this is an abstract class and should not be instantiated directly
 
- * [id](id.md)  <sub>1..1</sub>
-     * Range: [String](types/String.md)
- * [label](label.md)  <sub>0..1</sub>
-     * Range: [String](types/String.md)
- * [groupingVariable](groupingVariable.md)  <sub>0..1</sub>
-     * Description: For groupings based on a single variable, a reference to the dataset variable upon which grouping is based.
-     * Range: [String](types/String.md)
- * [dataDriven](dataDriven.md)  <sub>1..1</sub>
-     * Description: Indicates whether the groups defined by the grouping are prespecified (false) or obtained from distinct data values of the groupingVariable (true).
-     * Range: [Boolean](types/Boolean.md)
- * [groups](groups.md)  <sub>0..\*</sub>
-     * Range: [Group](Group.md)
+
+URI: [ars:GroupingFactor](https://www.cdisc.org/ars/1-0GroupingFactor)
+
+
+
+```mermaid
+ classDiagram
+    class GroupingFactor
+      GroupingFactor <|-- SubjectGroupingFactor
+      GroupingFactor <|-- DataGroupingFactor
+      
+      GroupingFactor : dataDriven
+        
+      GroupingFactor : groupingVariable
+        
+      GroupingFactor : groups
+        
+          GroupingFactor --|> Group : groups
+        
+      GroupingFactor : id
+        
+      GroupingFactor : label
+        
+      
+```
+
+
+
+
+
+## Inheritance
+* **GroupingFactor**
+    * [SubjectGroupingFactor](SubjectGroupingFactor.md)
+    * [DataGroupingFactor](DataGroupingFactor.md)
+
+
+
+## Slots
+
+| Name | Cardinality and Range | Description | Inheritance |
+| ---  | --- | --- | --- |
+| [id](id.md) | 1..1 <br/> [String](String.md) |  | direct |
+| [label](label.md) | 0..1 <br/> [String](String.md) |  | direct |
+| [groupingVariable](groupingVariable.md) | 0..1 <br/> [String](String.md) | For groupings based on a single variable, a reference to the dataset variable... | direct |
+| [dataDriven](dataDriven.md) | 1..1 <br/> [Boolean](Boolean.md) | Indicates whether the groups defined by the grouping are prespecified (false)... | direct |
+| [groups](groups.md) | 0..* <br/> [Group](Group.md) |  | direct |
+
+
+
+
+
+## Usages
+
+| used by | used in | type | used |
+| ---  | --- | --- | --- |
+| [OrderedGroupingFactor](OrderedGroupingFactor.md) | [groupingId](groupingId.md) | range | [GroupingFactor](GroupingFactor.md) |
+| [ResultGroup](ResultGroup.md) | [groupingId](groupingId.md) | range | [GroupingFactor](GroupingFactor.md) |
+
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://www.cdisc.org/ars/1-0
+
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | ars:GroupingFactor |
+| native | ars:GroupingFactor |
+
+
+
+
+
+## LinkML Source
+
+<!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
+
+### Direct
+
+<details>
+```yaml
+name: GroupingFactor
+description: A factor used to subdivide either the subject population or data records
+  in an analysis dataset for analysis.
+from_schema: https://www.cdisc.org/ars/1-0
+rank: 1000
+abstract: true
+slots:
+- id
+- label
+- groupingVariable
+- dataDriven
+- groups
+
+```
+</details>
+
+### Induced
+
+<details>
+```yaml
+name: GroupingFactor
+description: A factor used to subdivide either the subject population or data records
+  in an analysis dataset for analysis.
+from_schema: https://www.cdisc.org/ars/1-0
+rank: 1000
+abstract: true
+attributes:
+  id:
+    name: id
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    identifier: true
+    alias: id
+    owner: GroupingFactor
+    domain_of:
+    - AnalysisCategorization
+    - AnalysisCategory
+    - Analysis
+    - AnalysisMethod
+    - Operation
+    - ReferencedOperationRelationship
+    - Output
+    - OutputDisplay
+    - DisplaySubSection
+    - AnalysisSet
+    - GroupingFactor
+    - Group
+    - DataSubset
+    - ReferenceDocument
+    - SponsorTerm
+    range: string
+    required: true
+  label:
+    name: label
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: label
+    owner: GroupingFactor
+    domain_of:
+    - AnalysisCategorization
+    - AnalysisCategory
+    - AnalysisMethod
+    - Operation
+    - AnalysisSet
+    - GroupingFactor
+    - Group
+    - DataSubset
+    - PageRef
+    range: string
+  groupingVariable:
+    name: groupingVariable
+    description: For groupings based on a single variable, a reference to the dataset
+      variable upon which grouping is based.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: groupingVariable
+    owner: GroupingFactor
+    domain_of:
+    - GroupingFactor
+    range: string
+  dataDriven:
+    name: dataDriven
+    description: Indicates whether the groups defined by the grouping are prespecified
+      (false) or obtained from distinct data values of the groupingVariable (true).
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: dataDriven
+    owner: GroupingFactor
+    domain_of:
+    - GroupingFactor
+    range: boolean
+    required: true
+  groups:
+    name: groups
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    multivalued: true
+    list_elements_ordered: true
+    alias: groups
+    owner: GroupingFactor
+    domain_of:
+    - GroupingFactor
+    range: Group
+    inlined: true
+    inlined_as_list: true
+
+```
+</details>

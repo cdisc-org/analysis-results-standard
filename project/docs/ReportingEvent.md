@@ -1,47 +1,361 @@
-
 # Class: ReportingEvent
 
 
+_A set of analyses and outputs created to meet a specific reporting requirement, such as a CSR or interim analysis._
 
 
-URI: [https://www.cdisc.org/ars/1-0/ReportingEvent](https://www.cdisc.org/ars/1-0/ReportingEvent)
 
 
-[![img](https://yuml.me/diagram/nofunky;dir:TB/class/[SubjectGroupingFactor],[Output]<outputs%200..*-++[ReportingEvent&#124;name(i):string],[AnalysisMethod]<methods%200..*-++[ReportingEvent],[Analysis]<analyses%200..*-++[ReportingEvent],[AnalysisCategorization]<analysisCategorizations%200..*-++[ReportingEvent],[DisplaySection]<globalDisplaySections%200..*-++[ReportingEvent],[DataGroupingFactor]<dataGroupings%200..*-++[ReportingEvent],[DataSubset]<dataSubsets%200..*-++[ReportingEvent],[SubjectGroupingFactor]<analysisGroupings%200..*-++[ReportingEvent],[AnalysisSet]<analysisSets%200..*-++[ReportingEvent],[NestedList]<listOfPlannedOutputs%200..1-++[ReportingEvent],[NestedList]<listOfPlannedAnalyses%201..1-++[ReportingEvent],[NamedObject]^-[ReportingEvent],[Output],[NestedList],[NamedObject],[DisplaySection],[DataSubset],[DataGroupingFactor],[AnalysisSet],[AnalysisMethod],[AnalysisCategorization],[Analysis])](https://yuml.me/diagram/nofunky;dir:TB/class/[SubjectGroupingFactor],[Output]<outputs%200..*-++[ReportingEvent&#124;name(i):string],[AnalysisMethod]<methods%200..*-++[ReportingEvent],[Analysis]<analyses%200..*-++[ReportingEvent],[AnalysisCategorization]<analysisCategorizations%200..*-++[ReportingEvent],[DisplaySection]<globalDisplaySections%200..*-++[ReportingEvent],[DataGroupingFactor]<dataGroupings%200..*-++[ReportingEvent],[DataSubset]<dataSubsets%200..*-++[ReportingEvent],[SubjectGroupingFactor]<analysisGroupings%200..*-++[ReportingEvent],[AnalysisSet]<analysisSets%200..*-++[ReportingEvent],[NestedList]<listOfPlannedOutputs%200..1-++[ReportingEvent],[NestedList]<listOfPlannedAnalyses%201..1-++[ReportingEvent],[NamedObject]^-[ReportingEvent],[Output],[NestedList],[NamedObject],[DisplaySection],[DataSubset],[DataGroupingFactor],[AnalysisSet],[AnalysisMethod],[AnalysisCategorization],[Analysis])
 
-## Parents
-
- *  is_a: [NamedObject](NamedObject.md)
-
-## Attributes
+URI: [ars:ReportingEvent](https://www.cdisc.org/ars/1-0ReportingEvent)
 
 
-### Own
 
- * [listOfPlannedAnalyses](listOfPlannedAnalyses.md)  <sub>1..1</sub>
-     * Range: [NestedList](NestedList.md)
- * [listOfPlannedOutputs](listOfPlannedOutputs.md)  <sub>0..1</sub>
-     * Range: [NestedList](NestedList.md)
- * [analysisSets](analysisSets.md)  <sub>0..\*</sub>
-     * Range: [AnalysisSet](AnalysisSet.md)
- * [analysisGroupings](analysisGroupings.md)  <sub>0..\*</sub>
-     * Range: [SubjectGroupingFactor](SubjectGroupingFactor.md)
- * [dataSubsets](dataSubsets.md)  <sub>0..\*</sub>
-     * Range: [DataSubset](DataSubset.md)
- * [dataGroupings](dataGroupings.md)  <sub>0..\*</sub>
-     * Range: [DataGroupingFactor](DataGroupingFactor.md)
- * [globalDisplaySections](globalDisplaySections.md)  <sub>0..\*</sub>
-     * Range: [DisplaySection](DisplaySection.md)
- * [analysisCategorizations](analysisCategorizations.md)  <sub>0..\*</sub>
-     * Range: [AnalysisCategorization](AnalysisCategorization.md)
- * [analyses](analyses.md)  <sub>0..\*</sub>
-     * Range: [Analysis](Analysis.md)
- * [methods](methods.md)  <sub>0..\*</sub>
-     * Range: [AnalysisMethod](AnalysisMethod.md)
- * [outputs](outputs.md)  <sub>0..\*</sub>
-     * Range: [Output](Output.md)
+```mermaid
+ classDiagram
+    class ReportingEvent
+      NamedObject <|-- ReportingEvent
+      
+      ReportingEvent : analyses
+        
+          ReportingEvent --|> Analysis : analyses
+        
+      ReportingEvent : analysisCategorizations
+        
+          ReportingEvent --|> AnalysisCategorization : analysisCategorizations
+        
+      ReportingEvent : analysisGroupings
+        
+          ReportingEvent --|> SubjectGroupingFactor : analysisGroupings
+        
+      ReportingEvent : analysisSets
+        
+          ReportingEvent --|> AnalysisSet : analysisSets
+        
+      ReportingEvent : dataGroupings
+        
+          ReportingEvent --|> DataGroupingFactor : dataGroupings
+        
+      ReportingEvent : dataSubsets
+        
+          ReportingEvent --|> DataSubset : dataSubsets
+        
+      ReportingEvent : globalDisplaySections
+        
+          ReportingEvent --|> DisplaySection : globalDisplaySections
+        
+      ReportingEvent : listOfPlannedAnalyses
+        
+          ReportingEvent --|> NestedList : listOfPlannedAnalyses
+        
+      ReportingEvent : listOfPlannedOutputs
+        
+          ReportingEvent --|> NestedList : listOfPlannedOutputs
+        
+      ReportingEvent : methods
+        
+          ReportingEvent --|> AnalysisMethod : methods
+        
+      ReportingEvent : name
+        
+      ReportingEvent : outputs
+        
+          ReportingEvent --|> Output : outputs
+        
+      ReportingEvent : referenceDocuments
+        
+          ReportingEvent --|> ReferenceDocument : referenceDocuments
+        
+      ReportingEvent : terminologyExtentions
+        
+          ReportingEvent --|> TerminologyExtension : terminologyExtentions
+        
+      
+```
 
-### Inherited from NamedObject:
 
- * [name](name.md)  <sub>1..1</sub>
-     * Range: [String](types/String.md)
+
+
+
+## Inheritance
+* [NamedObject](NamedObject.md)
+    * **ReportingEvent**
+
+
+
+## Slots
+
+| Name | Cardinality and Range | Description | Inheritance |
+| ---  | --- | --- | --- |
+| [listOfPlannedAnalyses](listOfPlannedAnalyses.md) | 1..1 <br/> [NestedList](NestedList.md) | A structured list of the analyses defined for the reporting event | direct |
+| [listOfPlannedOutputs](listOfPlannedOutputs.md) | 0..1 <br/> [NestedList](NestedList.md) | An optional structured list of the outputs defined for the reporting event | direct |
+| [analysisSets](analysisSets.md) | 0..* <br/> [AnalysisSet](AnalysisSet.md) | The analysis sets (subject populations) defined for the reporting event | direct |
+| [analysisGroupings](analysisGroupings.md) | 0..* <br/> [SubjectGroupingFactor](SubjectGroupingFactor.md) | Characteristics used to subdivide the subject population (e | direct |
+| [dataSubsets](dataSubsets.md) | 0..* <br/> [DataSubset](DataSubset.md) |  | direct |
+| [dataGroupings](dataGroupings.md) | 0..* <br/> [DataGroupingFactor](DataGroupingFactor.md) | Characteristics used to subdivide data records in the analysis dataset (e | direct |
+| [globalDisplaySections](globalDisplaySections.md) | 0..* <br/> [DisplaySection](DisplaySection.md) |  | direct |
+| [analysisCategorizations](analysisCategorizations.md) | 0..* <br/> [AnalysisCategorization](AnalysisCategorization.md) |  | direct |
+| [analyses](analyses.md) | 0..* <br/> [Analysis](Analysis.md) | The analyses defined for the reporting event | direct |
+| [methods](methods.md) | 0..* <br/> [AnalysisMethod](AnalysisMethod.md) | The defined methods used to analyze any analysis variable | direct |
+| [outputs](outputs.md) | 0..* <br/> [Output](Output.md) |  | direct |
+| [referenceDocuments](referenceDocuments.md) | 0..* <br/> [ReferenceDocument](ReferenceDocument.md) |  | direct |
+| [terminologyExtentions](terminologyExtentions.md) | 0..* <br/> [TerminologyExtension](TerminologyExtension.md) | Any sponsor-defined extensions to extensible terminology | direct |
+| [name](name.md) | 1..1 <br/> [String](String.md) |  | [NamedObject](NamedObject.md) |
+
+
+
+
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://www.cdisc.org/ars/1-0
+
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | ars:ReportingEvent |
+| native | ars:ReportingEvent |
+
+
+
+
+
+## LinkML Source
+
+<!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
+
+### Direct
+
+<details>
+```yaml
+name: ReportingEvent
+description: A set of analyses and outputs created to meet a specific reporting requirement,
+  such as a CSR or interim analysis.
+from_schema: https://www.cdisc.org/ars/1-0
+rank: 1000
+is_a: NamedObject
+slots:
+- listOfPlannedAnalyses
+- listOfPlannedOutputs
+- analysisSets
+- analysisGroupings
+- dataSubsets
+- dataGroupings
+- globalDisplaySections
+- analysisCategorizations
+- analyses
+- methods
+- outputs
+- referenceDocuments
+- terminologyExtentions
+tree_root: true
+
+```
+</details>
+
+### Induced
+
+<details>
+```yaml
+name: ReportingEvent
+description: A set of analyses and outputs created to meet a specific reporting requirement,
+  such as a CSR or interim analysis.
+from_schema: https://www.cdisc.org/ars/1-0
+rank: 1000
+is_a: NamedObject
+attributes:
+  listOfPlannedAnalyses:
+    name: listOfPlannedAnalyses
+    description: A structured list of the analyses defined for the reporting event.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: listOfPlannedAnalyses
+    owner: ReportingEvent
+    domain_of:
+    - ReportingEvent
+    range: NestedList
+    required: true
+  listOfPlannedOutputs:
+    name: listOfPlannedOutputs
+    description: An optional structured list of the outputs defined for the reporting
+      event.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: listOfPlannedOutputs
+    owner: ReportingEvent
+    domain_of:
+    - ReportingEvent
+    range: NestedList
+    required: false
+  analysisSets:
+    name: analysisSets
+    description: The analysis sets (subject populations) defined for the reporting
+      event.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    multivalued: true
+    alias: analysisSets
+    owner: ReportingEvent
+    domain_of:
+    - ReportingEvent
+    range: AnalysisSet
+    inlined: true
+    inlined_as_list: true
+  analysisGroupings:
+    name: analysisGroupings
+    description: Characteristics used to subdivide the subject population (e.g., treatment,
+      sex, age group).
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    multivalued: true
+    alias: analysisGroupings
+    owner: ReportingEvent
+    domain_of:
+    - ReportingEvent
+    range: SubjectGroupingFactor
+    inlined: true
+    inlined_as_list: true
+  dataSubsets:
+    name: dataSubsets
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    multivalued: true
+    alias: dataSubsets
+    owner: ReportingEvent
+    domain_of:
+    - ReportingEvent
+    range: DataSubset
+    inlined: true
+    inlined_as_list: true
+  dataGroupings:
+    name: dataGroupings
+    description: Characteristics used to subdivide data records in the analysis dataset
+      (e.g., visit, system organ class).
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    multivalued: true
+    alias: dataGroupings
+    owner: ReportingEvent
+    domain_of:
+    - ReportingEvent
+    range: DataGroupingFactor
+    inlined: true
+    inlined_as_list: true
+  globalDisplaySections:
+    name: globalDisplaySections
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    multivalued: true
+    alias: globalDisplaySections
+    owner: ReportingEvent
+    domain_of:
+    - ReportingEvent
+    range: DisplaySection
+    inlined: true
+    inlined_as_list: true
+  analysisCategorizations:
+    name: analysisCategorizations
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    multivalued: true
+    alias: analysisCategorizations
+    owner: ReportingEvent
+    domain_of:
+    - ReportingEvent
+    range: AnalysisCategorization
+    inlined: true
+    inlined_as_list: true
+  analyses:
+    name: analyses
+    description: The analyses defined for the reporting event.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    multivalued: true
+    alias: analyses
+    owner: ReportingEvent
+    domain_of:
+    - ReportingEvent
+    range: Analysis
+    inlined: true
+    inlined_as_list: true
+  methods:
+    name: methods
+    description: The defined methods used to analyze any analysis variable.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    multivalued: true
+    alias: methods
+    owner: ReportingEvent
+    domain_of:
+    - ReportingEvent
+    range: AnalysisMethod
+    inlined: true
+    inlined_as_list: true
+  outputs:
+    name: outputs
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    multivalued: true
+    alias: outputs
+    owner: ReportingEvent
+    domain_of:
+    - ReportingEvent
+    range: Output
+    inlined: true
+    inlined_as_list: true
+  referenceDocuments:
+    name: referenceDocuments
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    multivalued: true
+    alias: referenceDocuments
+    owner: ReportingEvent
+    domain_of:
+    - ReportingEvent
+    range: ReferenceDocument
+    inlined: true
+  terminologyExtentions:
+    name: terminologyExtentions
+    description: Any sponsor-defined extensions to extensible terminology.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    multivalued: true
+    alias: terminologyExtentions
+    owner: ReportingEvent
+    domain_of:
+    - ReportingEvent
+    range: TerminologyExtension
+    inlined: true
+    inlined_as_list: true
+  name:
+    name: name
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: name
+    owner: ReportingEvent
+    domain_of:
+    - NamedObject
+    range: string
+    required: true
+tree_root: true
+
+```
+</details>

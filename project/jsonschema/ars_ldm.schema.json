@@ -2,7 +2,7 @@
     "$defs": {
         "Analysis": {
             "additionalProperties": false,
-            "description": "",
+            "description": "An analysis that is designed to meet a requirement of the reporting event. Each analysis is defined as a set of specifications, including:\n- The analysis variable that is the subject of the analysis.\n- The analysis method (set of statistical operations) that is performed for the analysis variable.\n- The analysis set (subject population) for which the analysis is performed.\n- The subset of data records on which the analysis is performed (optional).\n- One or more factors by which either subjects or data records are grouped for analysis (optional).",
             "properties": {
                 "analysisSetId": {
                     "type": "string"
@@ -19,6 +19,15 @@
                 "dataset": {
                     "type": "string"
                 },
+                "description": {
+                    "type": "string"
+                },
+                "documentRefs": {
+                    "items": {
+                        "$ref": "#/$defs/DocumentRef"
+                    },
+                    "type": "array"
+                },
                 "id": {
                     "type": "string"
                 },
@@ -33,6 +42,28 @@
                         "$ref": "#/$defs/OrderedGroupingFactor"
                     },
                     "type": "array"
+                },
+                "purpose": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/AnalysisPurpose"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "description": "The purpose of the analysis within the body of evidence (e.g., section in the clinical study report)."
+                },
+                "reason": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/AnalysisReason"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "description": "The rationale for performing this analysis. It indicates when the analysis was planned."
                 },
                 "referencedAnalysisOperations": {
                     "items": {
@@ -55,6 +86,8 @@
             },
             "required": [
                 "id",
+                "reason",
+                "purpose",
                 "methodId",
                 "name"
             ],
@@ -63,7 +96,7 @@
         },
         "AnalysisCategorization": {
             "additionalProperties": false,
-            "description": "An implementer-defined categorization of analyses/outputs.",
+            "description": "A set of related implementer-defined categories that can be used to categorize analyses or outputs.",
             "properties": {
                 "categories": {
                     "items": {
@@ -87,7 +120,7 @@
         },
         "AnalysisCategory": {
             "additionalProperties": false,
-            "description": "An implementer-defined category of analyses/outputs.",
+            "description": "An implementer-defined category of analyses/outputs, which may include one or more sub-categorization.",
             "properties": {
                 "id": {
                     "type": "string"
@@ -116,7 +149,7 @@
                     "$ref": "#/$defs/CompoundGroupExpression"
                 },
                 "condition": {
-                    "$ref": "#/$defs/Condition"
+                    "$ref": "#/$defs/WhereClauseCondition"
                 },
                 "id": {
                     "type": "string"
@@ -139,8 +172,12 @@
         },
         "AnalysisMethod": {
             "additionalProperties": false,
-            "description": "",
+            "description": "A set of one or more statistical operations.",
             "properties": {
+                "codeTemplate": {
+                    "$ref": "#/$defs/ProgrammingCodeTemplate",
+                    "description": "Template programming statements and/or a reference to the template program used to perform the specific analysis."
+                },
                 "description": {
                     "type": "string"
                 },
@@ -168,6 +205,27 @@
             "title": "AnalysisMethod",
             "type": "object"
         },
+        "AnalysisPurpose": {
+            "description": "The purpose of the analysis within the body of evidence (e.g., section in the clinical study report).",
+            "enum": [
+                "PRIMARY OUTCOME MEASURE",
+                "SECONDARY OUTCOME MEASURE",
+                "EXPLORATORY OUTCOME MEASURE"
+            ],
+            "title": "AnalysisPurpose",
+            "type": "string"
+        },
+        "AnalysisReason": {
+            "description": "The rationale for performing this analysis. It indicates when the analysis was planned.",
+            "enum": [
+                "SPECIFIED IN PROTOCOL",
+                "SPECIFIED IN SAP",
+                "DATA DRIVEN",
+                "REQUESTED BY REGULATORY AGENCY"
+            ],
+            "title": "AnalysisReason",
+            "type": "string"
+        },
         "AnalysisSet": {
             "additionalProperties": false,
             "description": "A set of subjects whose data are to be included in the main analyses. This should be defined in the statistical section of the protocol. NOTE: There are a number of potential analysis sets, including, for example, the set based upon the intent-to-treat principle. [ICH E9]",
@@ -176,7 +234,7 @@
                     "$ref": "#/$defs/CompoundSetExpression"
                 },
                 "condition": {
-                    "$ref": "#/$defs/Condition"
+                    "$ref": "#/$defs/WhereClauseCondition"
                 },
                 "id": {
                     "type": "string"
@@ -197,39 +255,25 @@
             "title": "AnalysisSet",
             "type": "object"
         },
-        "Comparator": {
-            "description": "",
-            "enum": [
-                "EQ",
-                "NE",
-                "GT",
-                "GE",
-                "LT",
-                "LE",
-                "IN",
-                "NOTIN"
-            ],
-            "title": "Comparator",
-            "type": "string"
-        },
-        "CompoundExpression": {
+        "CodeParameter": {
             "additionalProperties": false,
             "description": "",
             "properties": {
-                "logicalOperator": {
-                    "$ref": "#/$defs/LogicalOperator"
+                "description": {
+                    "type": "string"
                 },
-                "whereClauses": {
-                    "items": {
-                        "$ref": "#/$defs/WhereClause"
-                    },
-                    "type": "array"
+                "name": {
+                    "type": "string"
+                },
+                "valueSource": {
+                    "description": "A reference to the prespecified source of the value for the parameter.",
+                    "type": "string"
                 }
             },
             "required": [
-                "logicalOperator"
+                "name"
             ],
-            "title": "CompoundExpression",
+            "title": "CodeParameter",
             "type": "object"
         },
         "CompoundGroupExpression": {
@@ -237,7 +281,7 @@
             "description": "",
             "properties": {
                 "logicalOperator": {
-                    "$ref": "#/$defs/LogicalOperator"
+                    "$ref": "#/$defs/ExpressionLogicalOperator"
                 },
                 "whereClauses": {
                     "items": {
@@ -257,7 +301,7 @@
             "description": "",
             "properties": {
                 "logicalOperator": {
-                    "$ref": "#/$defs/LogicalOperator"
+                    "$ref": "#/$defs/ExpressionLogicalOperator"
                 },
                 "whereClauses": {
                     "items": {
@@ -277,7 +321,7 @@
             "description": "",
             "properties": {
                 "logicalOperator": {
-                    "$ref": "#/$defs/LogicalOperator"
+                    "$ref": "#/$defs/ExpressionLogicalOperator"
                 },
                 "whereClauses": {
                     "items": {
@@ -292,28 +336,20 @@
             "title": "CompoundSubsetExpression",
             "type": "object"
         },
-        "Condition": {
-            "additionalProperties": false,
+        "ConditionComparator": {
             "description": "",
-            "properties": {
-                "comparator": {
-                    "$ref": "#/$defs/Comparator"
-                },
-                "dataset": {
-                    "type": "string"
-                },
-                "value": {
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "variable": {
-                    "type": "string"
-                }
-            },
-            "title": "Condition",
-            "type": "object"
+            "enum": [
+                "EQ",
+                "NE",
+                "GT",
+                "GE",
+                "LT",
+                "LE",
+                "IN",
+                "NOTIN"
+            ],
+            "title": "ConditionComparator",
+            "type": "string"
         },
         "DataGroup": {
             "additionalProperties": false,
@@ -323,7 +359,7 @@
                     "$ref": "#/$defs/CompoundGroupExpression"
                 },
                 "condition": {
-                    "$ref": "#/$defs/Condition"
+                    "$ref": "#/$defs/WhereClauseCondition"
                 },
                 "id": {
                     "type": "string"
@@ -384,7 +420,7 @@
                     "$ref": "#/$defs/CompoundSubsetExpression"
                 },
                 "condition": {
-                    "$ref": "#/$defs/Condition"
+                    "$ref": "#/$defs/WhereClauseCondition"
                 },
                 "id": {
                     "type": "string"
@@ -405,42 +441,12 @@
             "title": "DataSubset",
             "type": "object"
         },
-        "Display": {
-            "additionalProperties": false,
-            "description": "",
-            "properties": {
-                "displaySections": {
-                    "items": {
-                        "$ref": "#/$defs/DisplaySection"
-                    },
-                    "type": "array"
-                },
-                "displayTitle": {
-                    "type": "string"
-                },
-                "id": {
-                    "type": "string"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "version": {
-                    "type": "integer"
-                }
-            },
-            "required": [
-                "id",
-                "name"
-            ],
-            "title": "Display",
-            "type": "object"
-        },
         "DisplaySection": {
             "additionalProperties": false,
             "description": "",
             "properties": {
                 "sectionType": {
-                    "$ref": "#/$defs/SectionType"
+                    "$ref": "#/$defs/DisplaySectionType"
                 },
                 "subSections": {
                     "items": {
@@ -451,6 +457,18 @@
             },
             "title": "DisplaySection",
             "type": "object"
+        },
+        "DisplaySectionType": {
+            "description": "",
+            "enum": [
+                "Title",
+                "Footnote",
+                "Abbreviation",
+                "Legend",
+                "Rowlabel Header"
+            ],
+            "title": "DisplaySectionType",
+            "type": "string"
         },
         "DisplaySubSection": {
             "additionalProperties": false,
@@ -473,12 +491,60 @@
             "title": "DisplaySubSection",
             "type": "object"
         },
+        "DocumentRef": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "pageRefs": {
+                    "items": {
+                        "$ref": "#/$defs/PageRef"
+                    },
+                    "type": "array"
+                },
+                "referenceDocumentId": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "referenceDocumentId"
+            ],
+            "title": "DocumentRef",
+            "type": "object"
+        },
+        "ExpressionLogicalOperator": {
+            "description": "",
+            "enum": [
+                "AND",
+                "OR",
+                "NOT"
+            ],
+            "title": "ExpressionLogicalOperator",
+            "type": "string"
+        },
+        "ExtensibleTerminology": {
+            "description": "Extensible ARS enumerations.",
+            "enum": [
+                "AnalysisReason",
+                "AnalysisPurpose",
+                "OperationRole",
+                "OutputFileType"
+            ],
+            "title": "ExtensibleTerminology",
+            "type": "string"
+        },
         "File": {
             "additionalProperties": false,
             "description": "",
             "properties": {
                 "fileType": {
-                    "$ref": "#/$defs/FileType"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/OutputFileType"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
                 },
                 "location": {
                     "type": "string"
@@ -496,16 +562,6 @@
             "title": "File",
             "type": "object"
         },
-        "FileType": {
-            "description": "",
-            "enum": [
-                "pdf",
-                "rtf",
-                "txt"
-            ],
-            "title": "FileType",
-            "type": "string"
-        },
         "Group": {
             "additionalProperties": false,
             "description": "A subdivision of the subject population or analysis dataset record set based on a defined factor.",
@@ -514,7 +570,7 @@
                     "$ref": "#/$defs/CompoundGroupExpression"
                 },
                 "condition": {
-                    "$ref": "#/$defs/Condition"
+                    "$ref": "#/$defs/WhereClauseCondition"
                 },
                 "id": {
                     "type": "string"
@@ -535,19 +591,9 @@
             "title": "Group",
             "type": "object"
         },
-        "LogicalOperator": {
-            "description": "",
-            "enum": [
-                "AND",
-                "OR",
-                "NOT"
-            ],
-            "title": "LogicalOperator",
-            "type": "string"
-        },
         "NestedList": {
             "additionalProperties": false,
-            "description": "",
+            "description": "A list of items (analyses or outputs) that may be organized within sub-lists.",
             "properties": {
                 "listItems": {
                     "items": {
@@ -561,7 +607,7 @@
         },
         "Operation": {
             "additionalProperties": false,
-            "description": "",
+            "description": "A statistical operation that produces a single analysis result value as part of an analysis method.",
             "properties": {
                 "id": {
                     "type": "string"
@@ -591,7 +637,7 @@
         },
         "OperationResult": {
             "additionalProperties": false,
-            "description": "",
+            "description": "The result of an analysis method operation performed on a subdivision of subjects or data records.",
             "properties": {
                 "formattedValue": {
                     "type": "string"
@@ -624,13 +670,27 @@
             "title": "OperationRole",
             "type": "string"
         },
-        "OrderedGroupingFactor": {
+        "OrderedDisplay": {
             "additionalProperties": false,
             "description": "",
             "properties": {
-                "dataGrouping": {
-                    "$ref": "#/$defs/DataGroupingFactor"
+                "display": {
+                    "$ref": "#/$defs/OutputDisplay"
                 },
+                "order": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "order"
+            ],
+            "title": "OrderedDisplay",
+            "type": "object"
+        },
+        "OrderedGroupingFactor": {
+            "additionalProperties": false,
+            "description": "A reference to a defined factor by which subjects or data records are grouped for the analysis, ordered with respect to other grouping factors.",
+            "properties": {
                 "groupingId": {
                     "type": "string"
                 },
@@ -651,7 +711,7 @@
         },
         "OrderedListItem": {
             "additionalProperties": false,
-            "description": "",
+            "description": "An item (analysis, output or sub-list) ordered relative to other items within a list or sub-list.",
             "properties": {
                 "analysisId": {
                     "type": "string"
@@ -690,6 +750,12 @@
                     },
                     "type": "array"
                 },
+                "displays": {
+                    "items": {
+                        "$ref": "#/$defs/OrderedDisplay"
+                    },
+                    "type": "array"
+                },
                 "fileSpecifications": {
                     "items": {
                         "$ref": "#/$defs/File"
@@ -698,12 +764,6 @@
                 },
                 "id": {
                     "type": "string"
-                },
-                "outputDisplays": {
-                    "items": {
-                        "$ref": "#/$defs/OutputDisplay"
-                    },
-                    "type": "array"
                 },
                 "version": {
                     "type": "integer"
@@ -719,22 +779,277 @@
             "additionalProperties": false,
             "description": "",
             "properties": {
-                "display": {
-                    "$ref": "#/$defs/Display"
+                "displaySections": {
+                    "items": {
+                        "$ref": "#/$defs/DisplaySection"
+                    },
+                    "type": "array"
                 },
-                "order": {
+                "displayTitle": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "version": {
                     "type": "integer"
                 }
             },
             "required": [
-                "order"
+                "id",
+                "name"
             ],
             "title": "OutputDisplay",
             "type": "object"
         },
-        "ReferencedAnalysisOperation": {
+        "OutputFileType": {
+            "description": "",
+            "enum": [
+                "pdf",
+                "rtf",
+                "txt"
+            ],
+            "title": "OutputFileType",
+            "type": "string"
+        },
+        "PageNameList": {
+            "additionalProperties": false,
+            "description": "A list of one or more named document references, each of which corresponds with a page.",
+            "properties": {
+                "pageNames": {
+                    "description": "One or more named document references which each correspond with a page.",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "pageNames"
+            ],
+            "title": "PageNameList",
+            "type": "object"
+        },
+        "PageNameRef": {
+            "additionalProperties": false,
+            "description": "One or more pages in the reference document, referenced by named destination.",
+            "properties": {
+                "label": {
+                    "type": "string"
+                },
+                "pages": {
+                    "$ref": "#/$defs/PageNameList"
+                },
+                "refType": {
+                    "$ref": "#/$defs/PageRefType",
+                    "const": "NamedDestination"
+                }
+            },
+            "required": [
+                "refType"
+            ],
+            "title": "PageNameRef",
+            "type": "object"
+        },
+        "PageNumberList": {
+            "additionalProperties": false,
+            "description": "A list of one or more page numbers.",
+            "properties": {
+                "pageNumbers": {
+                    "description": "One or more page numbers.",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "pageNumbers"
+            ],
+            "title": "PageNumberList",
+            "type": "object"
+        },
+        "PageNumberListRef": {
+            "additionalProperties": false,
+            "description": "One or more individual pages in the reference document, referenced by page number.",
+            "properties": {
+                "label": {
+                    "type": "string"
+                },
+                "pages": {
+                    "$ref": "#/$defs/PageNumberList"
+                },
+                "refType": {
+                    "$ref": "#/$defs/PageRefType",
+                    "const": "PhysicalRef"
+                }
+            },
+            "required": [
+                "refType"
+            ],
+            "title": "PageNumberListRef",
+            "type": "object"
+        },
+        "PageNumberRangeRef": {
+            "additionalProperties": false,
+            "description": "A range of pages in the reference document, indicated by the first and last page number in the range.",
+            "properties": {
+                "label": {
+                    "type": "string"
+                },
+                "pages": {
+                    "$ref": "#/$defs/PageRange"
+                },
+                "refType": {
+                    "$ref": "#/$defs/PageRefType",
+                    "const": "PhysicalRef"
+                }
+            },
+            "required": [
+                "refType"
+            ],
+            "title": "PageNumberRangeRef",
+            "type": "object"
+        },
+        "PageRange": {
+            "additionalProperties": false,
+            "description": "A set of pages in a document that includes the specified first and last page, and all pages in between.",
+            "properties": {
+                "firstPage": {
+                    "description": "The page number of the first page in a range of pages.",
+                    "type": "integer"
+                },
+                "lastPage": {
+                    "description": "The page number of the last page in a range of pages.",
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "firstPage",
+                "lastPage"
+            ],
+            "title": "PageRange",
+            "type": "object"
+        },
+        "PageRef": {
             "additionalProperties": false,
             "description": "",
+            "properties": {
+                "label": {
+                    "type": "string"
+                },
+                "pages": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/PageNumberList"
+                        },
+                        {
+                            "$ref": "#/$defs/PageNameList"
+                        },
+                        {
+                            "$ref": "#/$defs/PageRange"
+                        }
+                    ]
+                },
+                "refType": {
+                    "$ref": "#/$defs/PageRefType"
+                }
+            },
+            "required": [
+                "refType"
+            ],
+            "title": "PageRef",
+            "type": "object"
+        },
+        "PageRefType": {
+            "description": "Type of page for page references.",
+            "enum": [
+                "PhysicalRef",
+                "NamedDestination"
+            ],
+            "title": "PageRefType",
+            "type": "string"
+        },
+        "ProgrammingCodeTemplate": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "context": {
+                    "description": "The name and version of the computer language used for the actual programming statements provided.",
+                    "type": "string"
+                },
+                "parameters": {
+                    "description": "Replacement parameters referenced in the programming code template.",
+                    "items": {
+                        "$ref": "#/$defs/CodeParameter"
+                    },
+                    "type": "array"
+                },
+                "templateCode": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "$ref": "#/$defs/DocumentRef"
+                        }
+                    ],
+                    "description": "Template programming statements and/or a reference to the template program used to perform the specific analysis."
+                }
+            },
+            "required": [
+                "context"
+            ],
+            "title": "ProgrammingCodeTemplate",
+            "type": "object"
+        },
+        "ReferenceDocument": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "location": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "name"
+            ],
+            "title": "ReferenceDocument",
+            "type": "object"
+        },
+        "ReferenceDocument__identifier_optional": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "location": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "title": "ReferenceDocument",
+            "type": "object"
+        },
+        "ReferencedAnalysisOperation": {
+            "additionalProperties": false,
+            "description": "An indication of the analysis that contains results of a referenced operation.",
             "properties": {
                 "analysisId": {
                     "type": "string"
@@ -751,7 +1066,7 @@
         },
         "ReferencedOperationRelationship": {
             "additionalProperties": false,
-            "description": "",
+            "description": "A reference to an statistical operation whose results is used in the calculation of the result for this operation.",
             "properties": {
                 "analysisId": {
                     "type": "string"
@@ -766,7 +1081,14 @@
                     "type": "string"
                 },
                 "referencedOperationRole": {
-                    "$ref": "#/$defs/OperationRole"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/OperationRole"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
                 }
             },
             "required": [
@@ -779,9 +1101,10 @@
         },
         "ReportingEvent": {
             "additionalProperties": false,
-            "description": "",
+            "description": "A set of analyses and outputs created to meet a specific reporting requirement, such as a CSR or interim analysis.",
             "properties": {
                 "analyses": {
+                    "description": "The analyses defined for the reporting event.",
                     "items": {
                         "$ref": "#/$defs/Analysis"
                     },
@@ -794,18 +1117,21 @@
                     "type": "array"
                 },
                 "analysisGroupings": {
+                    "description": "Characteristics used to subdivide the subject population (e.g., treatment, sex, age group).",
                     "items": {
                         "$ref": "#/$defs/SubjectGroupingFactor"
                     },
                     "type": "array"
                 },
                 "analysisSets": {
+                    "description": "The analysis sets (subject populations) defined for the reporting event.",
                     "items": {
                         "$ref": "#/$defs/AnalysisSet"
                     },
                     "type": "array"
                 },
                 "dataGroupings": {
+                    "description": "Characteristics used to subdivide data records in the analysis dataset (e.g., visit, system organ class).",
                     "items": {
                         "$ref": "#/$defs/DataGroupingFactor"
                     },
@@ -824,12 +1150,15 @@
                     "type": "array"
                 },
                 "listOfPlannedAnalyses": {
-                    "$ref": "#/$defs/NestedList"
+                    "$ref": "#/$defs/NestedList",
+                    "description": "A structured list of the analyses defined for the reporting event."
                 },
                 "listOfPlannedOutputs": {
-                    "$ref": "#/$defs/NestedList"
+                    "$ref": "#/$defs/NestedList",
+                    "description": "An optional structured list of the outputs defined for the reporting event."
                 },
                 "methods": {
+                    "description": "The defined methods used to analyze any analysis variable.",
                     "items": {
                         "$ref": "#/$defs/AnalysisMethod"
                     },
@@ -843,6 +1172,19 @@
                         "$ref": "#/$defs/Output"
                     },
                     "type": "array"
+                },
+                "referenceDocuments": {
+                    "additionalProperties": {
+                        "$ref": "#/$defs/ReferenceDocument__identifier_optional"
+                    },
+                    "type": "object"
+                },
+                "terminologyExtentions": {
+                    "description": "Any sponsor-defined extensions to extensible terminology.",
+                    "items": {
+                        "$ref": "#/$defs/TerminologyExtension"
+                    },
+                    "type": "array"
                 }
             },
             "required": [
@@ -854,7 +1196,7 @@
         },
         "ResultGroup": {
             "additionalProperties": false,
-            "description": "",
+            "description": "For the specified grouping factor, an indication of the specific group of subjects or data records associated with the analysis result.",
             "properties": {
                 "groupId": {
                     "type": "string"
@@ -869,17 +1211,27 @@
             "title": "ResultGroup",
             "type": "object"
         },
-        "SectionType": {
-            "description": "",
-            "enum": [
-                "Title",
-                "Footnote",
-                "Abbreviation",
-                "Legend",
-                "Rowlabel Header"
+        "SponsorTerm": {
+            "additionalProperties": false,
+            "description": "A sponsor-defined term that is included in an extensible set of controlled terminology.",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "submissionValue": {
+                    "description": "The specific value expected for submissions.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "submissionValue"
             ],
-            "title": "SectionType",
-            "type": "string"
+            "title": "SponsorTerm",
+            "type": "object"
         },
         "SubjectGroupingFactor": {
             "additionalProperties": false,
@@ -913,15 +1265,37 @@
             "title": "SubjectGroupingFactor",
             "type": "object"
         },
+        "TerminologyExtension": {
+            "additionalProperties": false,
+            "description": "A sponsor-defined term that is included in an extensible set of controlled terminology.",
+            "properties": {
+                "enumeration": {
+                    "$ref": "#/$defs/ExtensibleTerminology",
+                    "description": "The name of the extensible enumeration."
+                },
+                "sponsorTerms": {
+                    "description": "The sponsor-defined terms added to the extensible terminology.",
+                    "items": {
+                        "$ref": "#/$defs/SponsorTerm"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "sponsorTerms"
+            ],
+            "title": "TerminologyExtension",
+            "type": "object"
+        },
         "WhereClause": {
             "additionalProperties": false,
             "description": "",
             "properties": {
                 "compoundExpression": {
-                    "$ref": "#/$defs/CompoundExpression"
+                    "$ref": "#/$defs/WhereClauseCompoundExpression"
                 },
                 "condition": {
-                    "$ref": "#/$defs/Condition"
+                    "$ref": "#/$defs/WhereClauseCondition"
                 },
                 "level": {
                     "type": "integer"
@@ -932,14 +1306,59 @@
             },
             "title": "WhereClause",
             "type": "object"
+        },
+        "WhereClauseCompoundExpression": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "logicalOperator": {
+                    "$ref": "#/$defs/ExpressionLogicalOperator"
+                },
+                "whereClauses": {
+                    "items": {
+                        "$ref": "#/$defs/WhereClause"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "logicalOperator"
+            ],
+            "title": "WhereClauseCompoundExpression",
+            "type": "object"
+        },
+        "WhereClauseCondition": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "comparator": {
+                    "$ref": "#/$defs/ConditionComparator"
+                },
+                "dataset": {
+                    "type": "string"
+                },
+                "value": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "variable": {
+                    "type": "string"
+                }
+            },
+            "title": "WhereClauseCondition",
+            "type": "object"
         }
     },
     "$id": "https://www.cdisc.org/ars/1-0",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "additionalProperties": true,
+    "description": "A set of analyses and outputs created to meet a specific reporting requirement, such as a CSR or interim analysis.",
     "metamodel_version": "1.7.0",
     "properties": {
         "analyses": {
+            "description": "The analyses defined for the reporting event.",
             "items": {
                 "$ref": "#/$defs/Analysis"
             },
@@ -952,18 +1371,21 @@
             "type": "array"
         },
         "analysisGroupings": {
+            "description": "Characteristics used to subdivide the subject population (e.g., treatment, sex, age group).",
             "items": {
                 "$ref": "#/$defs/SubjectGroupingFactor"
             },
             "type": "array"
         },
         "analysisSets": {
+            "description": "The analysis sets (subject populations) defined for the reporting event.",
             "items": {
                 "$ref": "#/$defs/AnalysisSet"
             },
             "type": "array"
         },
         "dataGroupings": {
+            "description": "Characteristics used to subdivide data records in the analysis dataset (e.g., visit, system organ class).",
             "items": {
                 "$ref": "#/$defs/DataGroupingFactor"
             },
@@ -982,12 +1404,15 @@
             "type": "array"
         },
         "listOfPlannedAnalyses": {
-            "$ref": "#/$defs/NestedList"
+            "$ref": "#/$defs/NestedList",
+            "description": "A structured list of the analyses defined for the reporting event."
         },
         "listOfPlannedOutputs": {
-            "$ref": "#/$defs/NestedList"
+            "$ref": "#/$defs/NestedList",
+            "description": "An optional structured list of the outputs defined for the reporting event."
         },
         "methods": {
+            "description": "The defined methods used to analyze any analysis variable.",
             "items": {
                 "$ref": "#/$defs/AnalysisMethod"
             },
@@ -999,6 +1424,19 @@
         "outputs": {
             "items": {
                 "$ref": "#/$defs/Output"
+            },
+            "type": "array"
+        },
+        "referenceDocuments": {
+            "additionalProperties": {
+                "$ref": "#/$defs/ReferenceDocument__identifier_optional"
+            },
+            "type": "object"
+        },
+        "terminologyExtentions": {
+            "description": "Any sponsor-defined extensions to extensible terminology.",
+            "items": {
+                "$ref": "#/$defs/TerminologyExtension"
             },
             "type": "array"
         }
