@@ -5,7 +5,7 @@ _The purpose of the analysis within the body of evidence (e.g., section in the c
 
 
 
-URI: [ars:purpose](https://www.cdisc.org/ars/1-0purpose)
+URI: [ars:purpose](https://www.cdisc.org/ars/1-0/purpose)
 
 
 

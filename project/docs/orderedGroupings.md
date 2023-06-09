@@ -1,6 +1,6 @@
 # Slot: orderedGroupings
 
-URI: [ars:orderedGroupings](https://www.cdisc.org/ars/1-0orderedGroupings)
+URI: [ars:orderedGroupings](https://www.cdisc.org/ars/1-0/orderedGroupings)
 
 
 

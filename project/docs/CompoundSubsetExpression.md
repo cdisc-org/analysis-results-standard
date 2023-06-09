@@ -2,7 +2,7 @@
 
 
 
-URI: [ars:CompoundSubsetExpression](https://www.cdisc.org/ars/1-0CompoundSubsetExpression)
+URI: [ars:CompoundSubsetExpression](https://www.cdisc.org/ars/1-0/CompoundSubsetExpression)
 
 
 

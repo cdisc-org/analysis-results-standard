@@ -5,7 +5,7 @@ _An optional structured list of the outputs defined for the reporting event._
 
 
 
-URI: [ars:listOfPlannedOutputs](https://www.cdisc.org/ars/1-0listOfPlannedOutputs)
+URI: [ars:listOfPlannedOutputs](https://www.cdisc.org/ars/1-0/listOfPlannedOutputs)
 
 
 

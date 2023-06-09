@@ -1,6 +1,6 @@
 # Slot: whereClauses
 
-URI: [ars:whereClauses](https://www.cdisc.org/ars/1-0whereClauses)
+URI: [ars:whereClauses](https://www.cdisc.org/ars/1-0/whereClauses)
 
 
 

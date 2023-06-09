@@ -1,6 +1,6 @@
 # Slot: outputId
 
-URI: [ars:outputId](https://www.cdisc.org/ars/1-0outputId)
+URI: [ars:outputId](https://www.cdisc.org/ars/1-0/outputId)
 
 
 

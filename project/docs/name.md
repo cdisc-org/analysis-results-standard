@@ -1,6 +1,6 @@
 # Slot: name
 
-URI: [ars:name](https://www.cdisc.org/ars/1-0name)
+URI: [ars:name](https://www.cdisc.org/ars/1-0/name)
 
 
 
@@ -19,9 +19,11 @@ URI: [ars:name](https://www.cdisc.org/ars/1-0name)
 [Analysis](Analysis.md) | An analysis that is designed to meet a requirement of the reporting event |  no  |
 [AnalysisMethod](AnalysisMethod.md) | A set of one or more statistical operations |  no  |
 [Operation](Operation.md) | A statistical operation that produces a single analysis result value as part ... |  no  |
-[CodeParameter](CodeParameter.md) |  |  no  |
-[File](File.md) |  |  no  |
-[OutputDisplay](OutputDisplay.md) |  |  no  |
+[CodeParameter](CodeParameter.md) | A replacement parameter whose value is substituted in template programming co... |  no  |
+[TemplateCodeParameter](TemplateCodeParameter.md) | A replacement parameter whose value is substituted in template programming co... |  no  |
+[Output](Output.md) | A report of results and their evaluation based on planned analyses performed ... |  no  |
+[OutputFile](OutputFile.md) | A file containing analysis output displays |  no  |
+[OutputDisplay](OutputDisplay.md) | A tabular representation of the results of one or more analyses |  no  |
 [ReferenceDocument](ReferenceDocument.md) |  |  no  |
 
 

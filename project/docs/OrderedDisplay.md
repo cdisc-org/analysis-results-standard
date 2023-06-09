@@ -1,8 +1,13 @@
 # Class: OrderedDisplay
 
 
+_A display ordered with respect to other displays in an analysis output._
 
-URI: [ars:OrderedDisplay](https://www.cdisc.org/ars/1-0OrderedDisplay)
+
+
+
+
+URI: [ars:OrderedDisplay](https://www.cdisc.org/ars/1-0/OrderedDisplay)
 
 
 
@@ -83,6 +88,7 @@ URI: [ars:OrderedDisplay](https://www.cdisc.org/ars/1-0OrderedDisplay)
 <details>
 ```yaml
 name: OrderedDisplay
+description: A display ordered with respect to other displays in an analysis output.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 slots:
@@ -107,6 +113,7 @@ slot_usage:
 <details>
 ```yaml
 name: OrderedDisplay
+description: A display ordered with respect to other displays in an analysis output.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 slot_usage:

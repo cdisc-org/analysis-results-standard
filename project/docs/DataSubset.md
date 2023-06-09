@@ -7,7 +7,7 @@ _A subset of data identified by selection criteria for inclusion in the analysis
 
 
 
-URI: [ars:DataSubset](https://www.cdisc.org/ars/1-0DataSubset)
+URI: [ars:DataSubset](https://www.cdisc.org/ars/1-0/DataSubset)
 
 
 

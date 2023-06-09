@@ -1,8 +1,13 @@
 # Class: CodeParameter
 
 
+_A replacement parameter whose value is substituted in template programming code to create statements required for a specific analysis._
 
-URI: [ars:CodeParameter](https://www.cdisc.org/ars/1-0CodeParameter)
+
+
+
+
+URI: [ars:CodeParameter](https://www.cdisc.org/ars/1-0/CodeParameter)
 
 
 
@@ -11,11 +16,15 @@ URI: [ars:CodeParameter](https://www.cdisc.org/ars/1-0CodeParameter)
     class CodeParameter
       NamedObject <|-- CodeParameter
       
+
+      CodeParameter <|-- TemplateCodeParameter
+      
+      
       CodeParameter : description
         
       CodeParameter : name
         
-      CodeParameter : valueSource
+      CodeParameter : value
         
       
 ```
@@ -27,6 +36,7 @@ URI: [ars:CodeParameter](https://www.cdisc.org/ars/1-0CodeParameter)
 ## Inheritance
 * [NamedObject](NamedObject.md)
     * **CodeParameter**
+        * [TemplateCodeParameter](TemplateCodeParameter.md)
 
 
 
@@ -35,7 +45,7 @@ URI: [ars:CodeParameter](https://www.cdisc.org/ars/1-0CodeParameter)
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [description](description.md) | 0..1 <br/> [String](String.md) |  | direct |
-| [valueSource](valueSource.md) | 0..1 <br/> [String](String.md) | A reference to the prespecified source of the value for the parameter | direct |
+| [value](value.md) | 1..1 <br/> [String](String.md) | The value of the parameter | direct |
 | [name](name.md) | 1..1 <br/> [String](String.md) |  | [NamedObject](NamedObject.md) |
 
 
@@ -46,7 +56,7 @@ URI: [ars:CodeParameter](https://www.cdisc.org/ars/1-0CodeParameter)
 
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
-| [ProgrammingCodeTemplate](ProgrammingCodeTemplate.md) | [parameters](parameters.md) | range | [CodeParameter](CodeParameter.md) |
+| [AnalysisOutputProgrammingCode](AnalysisOutputProgrammingCode.md) | [parameters](parameters.md) | range | [CodeParameter](CodeParameter.md) |
 
 
 
@@ -90,12 +100,22 @@ URI: [ars:CodeParameter](https://www.cdisc.org/ars/1-0CodeParameter)
 <details>
 ```yaml
 name: CodeParameter
+description: A replacement parameter whose value is substituted in template programming
+  code to create statements required for a specific analysis.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 is_a: NamedObject
 slots:
 - description
-- valueSource
+- value
+slot_usage:
+  value:
+    name: value
+    description: The value of the parameter.
+    domain_of:
+    - CodeParameter
+    - WhereClauseCondition
+    required: true
 
 ```
 </details>
@@ -105,9 +125,19 @@ slots:
 <details>
 ```yaml
 name: CodeParameter
+description: A replacement parameter whose value is substituted in template programming
+  code to create statements required for a specific analysis.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 is_a: NamedObject
+slot_usage:
+  value:
+    name: value
+    description: The value of the parameter.
+    domain_of:
+    - CodeParameter
+    - WhereClauseCondition
+    required: true
 attributes:
   description:
     name: description
@@ -122,16 +152,18 @@ attributes:
     - CodeParameter
     - SponsorTerm
     range: string
-  valueSource:
-    name: valueSource
-    description: A reference to the prespecified source of the value for the parameter.
+  value:
+    name: value
+    description: The value of the parameter.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
-    alias: valueSource
+    alias: value
     owner: CodeParameter
     domain_of:
     - CodeParameter
+    - WhereClauseCondition
     range: string
+    required: true
   name:
     name: name
     from_schema: https://www.cdisc.org/ars/1-0

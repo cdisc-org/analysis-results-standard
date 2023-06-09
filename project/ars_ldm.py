@@ -1,9 +1,10 @@
 # Auto generated from ars_ldm.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-06-02T12:56:01
+# Generation date: 2023-06-09T13:52:16
 # Schema: ars_ldm
 #
 # id: https://www.cdisc.org/ars/1-0
-# description:
+# description: DRAFT Logical model to support both the prospective specification of analyses and the fully contextualized representation of the results of the analyses.
+#
 # license: https://creativecommons.org/publicdomain/zero/1.0/
 
 import dataclasses
@@ -32,10 +33,7 @@ dataclasses._init_fn = dataclasses_init_fn_with_kwargs
 
 # Namespaces
 NCIT = CurieNamespace('NCIT', 'http://purl.obolibrary.org/obo/NCIT_')
-NCITHESAURUS = CurieNamespace('NCIThesaurus', 'http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#')
-ARS = CurieNamespace('ars', 'https://www.cdisc.org/ars/1-0')
-BIOREGISTRY = CurieNamespace('bioregistry', 'https://bioregistry.io/registry/')
-DEFCT = CurieNamespace('defCT', 'https://api.library.cdisc.org/api/mdr/root/ct/define/codelists/')
+ARS = CurieNamespace('ars', 'https://www.cdisc.org/ars/1-0/')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
 DEFAULT_ = ARS
 
@@ -335,11 +333,11 @@ class Analysis(NamedObject):
     """
     An analysis that is designed to meet a requirement of the reporting event. Each analysis is defined as a set of
     specifications, including:
-    - The analysis variable that is the subject of the analysis.
-    - The analysis method (set of statistical operations) that is performed for the analysis variable.
-    - The analysis set (subject population) for which the analysis is performed.
-    - The subset of data records on which the analysis is performed (optional).
-    - One or more factors by which either subjects or data records are grouped for analysis (optional).
+    * The analysis variable that is the subject of the analysis.
+    * The analysis method (set of statistical operations) that is performed for the analysis variable.
+    * The analysis set (subject population) for which the analysis is performed.
+    * The subset of data records on which the analysis is performed (optional).
+    * One or more factors by which either subjects or data records are grouped for analysis (optional).
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -363,6 +361,7 @@ class Analysis(NamedObject):
     dataset: Optional[str] = None
     variable: Optional[str] = None
     referencedAnalysisOperations: Optional[Union[Union[dict, "ReferencedAnalysisOperation"], List[Union[dict, "ReferencedAnalysisOperation"]]]] = empty_list()
+    programmingCode: Optional[Union[dict, "AnalysisOutputProgrammingCode"]] = None
     results: Optional[Union[Union[dict, "OperationResult"], List[Union[dict, "OperationResult"]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -396,7 +395,9 @@ class Analysis(NamedObject):
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
 
-        self._normalize_inlined_as_dict(slot_name="documentRefs", slot_type=DocumentRef, key_name="referenceDocumentId", keyed=False)
+        if not isinstance(self.documentRefs, list):
+            self.documentRefs = [self.documentRefs] if self.documentRefs is not None else []
+        self.documentRefs = [v if isinstance(v, DocumentRef) else DocumentRef(**as_dict(v)) for v in self.documentRefs]
 
         if self.analysisSetId is not None and not isinstance(self.analysisSetId, AnalysisSetId):
             self.analysisSetId = AnalysisSetId(self.analysisSetId)
@@ -417,6 +418,9 @@ class Analysis(NamedObject):
         if not isinstance(self.referencedAnalysisOperations, list):
             self.referencedAnalysisOperations = [self.referencedAnalysisOperations] if self.referencedAnalysisOperations is not None else []
         self.referencedAnalysisOperations = [v if isinstance(v, ReferencedAnalysisOperation) else ReferencedAnalysisOperation(**as_dict(v)) for v in self.referencedAnalysisOperations]
+
+        if self.programmingCode is not None and not isinstance(self.programmingCode, AnalysisOutputProgrammingCode):
+            self.programmingCode = AnalysisOutputProgrammingCode(**as_dict(self.programmingCode))
 
         if not isinstance(self.results, list):
             self.results = [self.results] if self.results is not None else []
@@ -569,7 +573,8 @@ class AnalysisMethod(NamedObject):
     operations: Union[Dict[Union[str, OperationId], Union[dict, "Operation"]], List[Union[dict, "Operation"]]] = empty_dict()
     label: Optional[str] = None
     description: Optional[str] = None
-    codeTemplate: Optional[Union[dict, "ProgrammingCodeTemplate"]] = None
+    documentRefs: Optional[Union[Union[dict, "DocumentRef"], List[Union[dict, "DocumentRef"]]]] = empty_list()
+    codeTemplate: Optional[Union[dict, "AnalysisProgrammingCodeTemplate"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -587,8 +592,12 @@ class AnalysisMethod(NamedObject):
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
 
-        if self.codeTemplate is not None and not isinstance(self.codeTemplate, ProgrammingCodeTemplate):
-            self.codeTemplate = ProgrammingCodeTemplate(**as_dict(self.codeTemplate))
+        if not isinstance(self.documentRefs, list):
+            self.documentRefs = [self.documentRefs] if self.documentRefs is not None else []
+        self.documentRefs = [v if isinstance(v, DocumentRef) else DocumentRef(**as_dict(v)) for v in self.documentRefs]
+
+        if self.codeTemplate is not None and not isinstance(self.codeTemplate, AnalysisProgrammingCodeTemplate):
+            self.codeTemplate = AnalysisProgrammingCodeTemplate(**as_dict(self.codeTemplate))
 
         super().__post_init__(**kwargs)
 
@@ -672,17 +681,22 @@ class ReferencedOperationRelationship(YAMLRoot):
 
 
 @dataclass
-class ProgrammingCodeTemplate(YAMLRoot):
+class AnalysisOutputProgrammingCode(YAMLRoot):
+    """
+    Programming statements and/or a reference to the program used to perform a specific analysis or create a specific
+    output.
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ARS.ProgrammingCodeTemplate
-    class_class_curie: ClassVar[str] = "ars:ProgrammingCodeTemplate"
-    class_name: ClassVar[str] = "ProgrammingCodeTemplate"
-    class_model_uri: ClassVar[URIRef] = ARS.ProgrammingCodeTemplate
+    class_class_uri: ClassVar[URIRef] = ARS.AnalysisOutputProgrammingCode
+    class_class_curie: ClassVar[str] = "ars:AnalysisOutputProgrammingCode"
+    class_name: ClassVar[str] = "AnalysisOutputProgrammingCode"
+    class_model_uri: ClassVar[URIRef] = ARS.AnalysisOutputProgrammingCode
 
     context: str = None
+    code: Optional[str] = None
+    documentRefs: Optional[Union[Union[dict, "DocumentRef"], List[Union[dict, "DocumentRef"]]]] = empty_list()
     parameters: Optional[Union[Union[dict, "CodeParameter"], List[Union[dict, "CodeParameter"]]]] = empty_list()
-    templateCode: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.context):
@@ -690,18 +704,50 @@ class ProgrammingCodeTemplate(YAMLRoot):
         if not isinstance(self.context, str):
             self.context = str(self.context)
 
+        if self.code is not None and not isinstance(self.code, str):
+            self.code = str(self.code)
+
+        if not isinstance(self.documentRefs, list):
+            self.documentRefs = [self.documentRefs] if self.documentRefs is not None else []
+        self.documentRefs = [v if isinstance(v, DocumentRef) else DocumentRef(**as_dict(v)) for v in self.documentRefs]
+
         if not isinstance(self.parameters, list):
             self.parameters = [self.parameters] if self.parameters is not None else []
         self.parameters = [v if isinstance(v, CodeParameter) else CodeParameter(**as_dict(v)) for v in self.parameters]
 
-        if self.templateCode is not None and not isinstance(self.templateCode, str):
-            self.templateCode = str(self.templateCode)
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class AnalysisProgrammingCodeTemplate(AnalysisOutputProgrammingCode):
+    """
+    Programming statements and/or a reference to a used as a template for creation of a program to perform method
+    operations for a specific analysis.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ARS.AnalysisProgrammingCodeTemplate
+    class_class_curie: ClassVar[str] = "ars:AnalysisProgrammingCodeTemplate"
+    class_name: ClassVar[str] = "AnalysisProgrammingCodeTemplate"
+    class_model_uri: ClassVar[URIRef] = ARS.AnalysisProgrammingCodeTemplate
+
+    context: str = None
+    parameters: Optional[Union[Union[dict, "TemplateCodeParameter"], List[Union[dict, "TemplateCodeParameter"]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if not isinstance(self.parameters, list):
+            self.parameters = [self.parameters] if self.parameters is not None else []
+        self.parameters = [v if isinstance(v, TemplateCodeParameter) else TemplateCodeParameter(**as_dict(v)) for v in self.parameters]
 
         super().__post_init__(**kwargs)
 
 
 @dataclass
 class CodeParameter(NamedObject):
+    """
+    A replacement parameter whose value is substituted in template programming code to create statements required for
+    a specific analysis.
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ARS.CodeParameter
@@ -710,21 +756,53 @@ class CodeParameter(NamedObject):
     class_model_uri: ClassVar[URIRef] = ARS.CodeParameter
 
     name: str = None
+    value: str = None
     description: Optional[str] = None
-    valueSource: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.value):
+            self.MissingRequiredField("value")
+        if not isinstance(self.value, str):
+            self.value = str(self.value)
+
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
-
-        if self.valueSource is not None and not isinstance(self.valueSource, str):
-            self.valueSource = str(self.valueSource)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass
-class Output(YAMLRoot):
+class TemplateCodeParameter(CodeParameter):
+    """
+    A replacement parameter whose value is substituted in template programming code to create statements required for
+    a specific analysis.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ARS.TemplateCodeParameter
+    class_class_curie: ClassVar[str] = "ars:TemplateCodeParameter"
+    class_name: ClassVar[str] = "TemplateCodeParameter"
+    class_model_uri: ClassVar[URIRef] = ARS.TemplateCodeParameter
+
+    name: str = None
+    valueSource: Optional[str] = None
+    value: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.valueSource is not None and not isinstance(self.valueSource, str):
+            self.valueSource = str(self.valueSource)
+
+        if self.value is not None and not isinstance(self.value, str):
+            self.value = str(self.value)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class Output(NamedObject):
+    """
+    A report of results and their evaluation based on planned analyses performed during the course of a trial.
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ARS.Output
@@ -733,10 +811,13 @@ class Output(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = ARS.Output
 
     id: Union[str, OutputId] = None
+    name: str = None
     version: Optional[int] = None
-    fileSpecifications: Optional[Union[Union[dict, "File"], List[Union[dict, "File"]]]] = empty_list()
+    fileSpecifications: Optional[Union[Union[dict, "OutputFile"], List[Union[dict, "OutputFile"]]]] = empty_list()
     displays: Optional[Union[Union[dict, "OrderedDisplay"], List[Union[dict, "OrderedDisplay"]]]] = empty_list()
     categoryIds: Optional[Union[Union[str, AnalysisCategoryId], List[Union[str, AnalysisCategoryId]]]] = empty_list()
+    documentRefs: Optional[Union[Union[dict, "DocumentRef"], List[Union[dict, "DocumentRef"]]]] = empty_list()
+    programmingCode: Optional[Union[dict, AnalysisOutputProgrammingCode]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -749,7 +830,7 @@ class Output(YAMLRoot):
 
         if not isinstance(self.fileSpecifications, list):
             self.fileSpecifications = [self.fileSpecifications] if self.fileSpecifications is not None else []
-        self.fileSpecifications = [v if isinstance(v, File) else File(**as_dict(v)) for v in self.fileSpecifications]
+        self.fileSpecifications = [v if isinstance(v, OutputFile) else OutputFile(**as_dict(v)) for v in self.fileSpecifications]
 
         if not isinstance(self.displays, list):
             self.displays = [self.displays] if self.displays is not None else []
@@ -759,17 +840,27 @@ class Output(YAMLRoot):
             self.categoryIds = [self.categoryIds] if self.categoryIds is not None else []
         self.categoryIds = [v if isinstance(v, AnalysisCategoryId) else AnalysisCategoryId(v) for v in self.categoryIds]
 
+        if not isinstance(self.documentRefs, list):
+            self.documentRefs = [self.documentRefs] if self.documentRefs is not None else []
+        self.documentRefs = [v if isinstance(v, DocumentRef) else DocumentRef(**as_dict(v)) for v in self.documentRefs]
+
+        if self.programmingCode is not None and not isinstance(self.programmingCode, AnalysisOutputProgrammingCode):
+            self.programmingCode = AnalysisOutputProgrammingCode(**as_dict(self.programmingCode))
+
         super().__post_init__(**kwargs)
 
 
 @dataclass
-class File(NamedObject):
+class OutputFile(NamedObject):
+    """
+    A file containing analysis output displays.
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ARS.File
-    class_class_curie: ClassVar[str] = "ars:File"
-    class_name: ClassVar[str] = "File"
-    class_model_uri: ClassVar[URIRef] = ARS.File
+    class_class_uri: ClassVar[URIRef] = ARS.OutputFile
+    class_class_curie: ClassVar[str] = "ars:OutputFile"
+    class_name: ClassVar[str] = "OutputFile"
+    class_model_uri: ClassVar[URIRef] = ARS.OutputFile
 
     name: str = None
     fileType: Optional[str] = None
@@ -791,6 +882,9 @@ class File(NamedObject):
 
 @dataclass
 class OrderedDisplay(YAMLRoot):
+    """
+    A display ordered with respect to other displays in an analysis output.
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ARS.OrderedDisplay
@@ -815,6 +909,9 @@ class OrderedDisplay(YAMLRoot):
 
 @dataclass
 class OutputDisplay(NamedObject):
+    """
+    A tabular representation of the results of one or more analyses.
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ARS.OutputDisplay
@@ -849,6 +946,9 @@ class OutputDisplay(NamedObject):
 
 @dataclass
 class DisplaySection(YAMLRoot):
+    """
+    A part of a tabular display containing one or more pieces of informational text.
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ARS.DisplaySection
@@ -870,6 +970,10 @@ class DisplaySection(YAMLRoot):
 
 @dataclass
 class DisplaySubSection(YAMLRoot):
+    """
+    An occurrence of a display section containing text that is ordered with respect to other occurrences of the same
+    type of display section.
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ARS.DisplaySubSection
@@ -940,7 +1044,7 @@ class WhereClauseCondition(YAMLRoot):
     dataset: Optional[str] = None
     variable: Optional[str] = None
     comparator: Optional[Union[str, "ConditionComparator"]] = None
-    value: Optional[Union[str, List[str]]] = empty_list()
+    value: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self.dataset is not None and not isinstance(self.dataset, str):
@@ -952,9 +1056,8 @@ class WhereClauseCondition(YAMLRoot):
         if self.comparator is not None and not isinstance(self.comparator, ConditionComparator):
             self.comparator = ConditionComparator(self.comparator)
 
-        if not isinstance(self.value, list):
-            self.value = [self.value] if self.value is not None else []
-        self.value = [v if isinstance(v, str) else str(v) for v in self.value]
+        if self.value is not None and not isinstance(self.value, str):
+            self.value = str(self.value)
 
         super().__post_init__(**kwargs)
 
@@ -1867,8 +1970,11 @@ slots.referencedOperationRole = Slot(uri=ARS.referencedOperationRole, name="refe
 slots.operationId = Slot(uri=ARS.operationId, name="operationId", curie=ARS.curie('operationId'),
                    model_uri=ARS.operationId, domain=None, range=Union[str, OperationId])
 
+slots.programmingCode = Slot(uri=ARS.programmingCode, name="programmingCode", curie=ARS.curie('programmingCode'),
+                   model_uri=ARS.programmingCode, domain=None, range=Optional[Union[dict, AnalysisOutputProgrammingCode]])
+
 slots.codeTemplate = Slot(uri=ARS.codeTemplate, name="codeTemplate", curie=ARS.curie('codeTemplate'),
-                   model_uri=ARS.codeTemplate, domain=None, range=Optional[Union[dict, ProgrammingCodeTemplate]])
+                   model_uri=ARS.codeTemplate, domain=None, range=Optional[Union[dict, AnalysisProgrammingCodeTemplate]])
 
 slots.context = Slot(uri=ARS.context, name="context", curie=ARS.curie('context'),
                    model_uri=ARS.context, domain=None, range=str)
@@ -1876,8 +1982,8 @@ slots.context = Slot(uri=ARS.context, name="context", curie=ARS.curie('context')
 slots.parameters = Slot(uri=ARS.parameters, name="parameters", curie=ARS.curie('parameters'),
                    model_uri=ARS.parameters, domain=None, range=Optional[Union[Union[dict, CodeParameter], List[Union[dict, CodeParameter]]]])
 
-slots.templateCode = Slot(uri=ARS.templateCode, name="templateCode", curie=ARS.curie('templateCode'),
-                   model_uri=ARS.templateCode, domain=None, range=Optional[str])
+slots.code = Slot(uri=ARS.code, name="code", curie=ARS.curie('code'),
+                   model_uri=ARS.code, domain=None, range=Optional[str])
 
 slots.valueSource = Slot(uri=ARS.valueSource, name="valueSource", curie=ARS.curie('valueSource'),
                    model_uri=ARS.valueSource, domain=None, range=Optional[str])
@@ -1895,7 +2001,7 @@ slots.displayTitle = Slot(uri=ARS.displayTitle, name="displayTitle", curie=ARS.c
                    model_uri=ARS.displayTitle, domain=None, range=Optional[str])
 
 slots.fileSpecifications = Slot(uri=ARS.fileSpecifications, name="fileSpecifications", curie=ARS.curie('fileSpecifications'),
-                   model_uri=ARS.fileSpecifications, domain=None, range=Optional[Union[Union[dict, File], List[Union[dict, File]]]])
+                   model_uri=ARS.fileSpecifications, domain=None, range=Optional[Union[Union[dict, OutputFile], List[Union[dict, OutputFile]]]])
 
 slots.fileType = Slot(uri=ARS.fileType, name="fileType", curie=ARS.curie('fileType'),
                    model_uri=ARS.fileType, domain=None, range=Optional[str])
@@ -1949,7 +2055,7 @@ slots.comparator = Slot(uri=ARS.comparator, name="comparator", curie=ARS.curie('
                    model_uri=ARS.comparator, domain=None, range=Optional[Union[str, "ConditionComparator"]])
 
 slots.value = Slot(uri=ARS.value, name="value", curie=ARS.curie('value'),
-                   model_uri=ARS.value, domain=None, range=Optional[Union[str, List[str]]])
+                   model_uri=ARS.value, domain=None, range=Optional[str])
 
 slots.label = Slot(uri=ARS.label, name="label", curie=ARS.curie('label'),
                    model_uri=ARS.label, domain=None, range=Optional[str])
@@ -2002,14 +2108,32 @@ slots.OrderedListItem_level = Slot(uri=ARS.level, name="OrderedListItem_level", 
 slots.OrderedListItem_order = Slot(uri=ARS.order, name="OrderedListItem_order", curie=ARS.curie('order'),
                    model_uri=ARS.OrderedListItem_order, domain=OrderedListItem, range=int)
 
+slots.Analysis_programmingCode = Slot(uri=ARS.programmingCode, name="Analysis_programmingCode", curie=ARS.curie('programmingCode'),
+                   model_uri=ARS.Analysis_programmingCode, domain=Analysis, range=Optional[Union[dict, "AnalysisOutputProgrammingCode"]])
+
 slots.OrderedGroupingFactor_order = Slot(uri=ARS.order, name="OrderedGroupingFactor_order", curie=ARS.curie('order'),
                    model_uri=ARS.OrderedGroupingFactor_order, domain=OrderedGroupingFactor, range=int)
 
 slots.ReferencedAnalysisOperation_analysisId = Slot(uri=ARS.analysisId, name="ReferencedAnalysisOperation_analysisId", curie=ARS.curie('analysisId'),
                    model_uri=ARS.ReferencedAnalysisOperation_analysisId, domain=ReferencedAnalysisOperation, range=Union[str, AnalysisId])
 
+slots.AnalysisOutputProgrammingCode_parameters = Slot(uri=ARS.parameters, name="AnalysisOutputProgrammingCode_parameters", curie=ARS.curie('parameters'),
+                   model_uri=ARS.AnalysisOutputProgrammingCode_parameters, domain=AnalysisOutputProgrammingCode, range=Optional[Union[Union[dict, "CodeParameter"], List[Union[dict, "CodeParameter"]]]])
+
+slots.AnalysisProgrammingCodeTemplate_parameters = Slot(uri=ARS.parameters, name="AnalysisProgrammingCodeTemplate_parameters", curie=ARS.curie('parameters'),
+                   model_uri=ARS.AnalysisProgrammingCodeTemplate_parameters, domain=AnalysisProgrammingCodeTemplate, range=Optional[Union[Union[dict, "TemplateCodeParameter"], List[Union[dict, "TemplateCodeParameter"]]]])
+
+slots.CodeParameter_value = Slot(uri=ARS.value, name="CodeParameter_value", curie=ARS.curie('value'),
+                   model_uri=ARS.CodeParameter_value, domain=CodeParameter, range=str)
+
+slots.TemplateCodeParameter_value = Slot(uri=ARS.value, name="TemplateCodeParameter_value", curie=ARS.curie('value'),
+                   model_uri=ARS.TemplateCodeParameter_value, domain=TemplateCodeParameter, range=Optional[str])
+
 slots.Output_categoryIds = Slot(uri=ARS.categoryIds, name="Output_categoryIds", curie=ARS.curie('categoryIds'),
                    model_uri=ARS.Output_categoryIds, domain=Output, range=Optional[Union[Union[str, AnalysisCategoryId], List[Union[str, AnalysisCategoryId]]]])
+
+slots.Output_programmingCode = Slot(uri=ARS.programmingCode, name="Output_programmingCode", curie=ARS.curie('programmingCode'),
+                   model_uri=ARS.Output_programmingCode, domain=Output, range=Optional[Union[dict, AnalysisOutputProgrammingCode]])
 
 slots.OrderedDisplay_order = Slot(uri=ARS.order, name="OrderedDisplay_order", curie=ARS.curie('order'),
                    model_uri=ARS.OrderedDisplay_order, domain=OrderedDisplay, range=int)
@@ -2040,6 +2164,9 @@ slots.Group_compoundExpression = Slot(uri=ARS.compoundExpression, name="Group_co
 
 slots.DataSubset_compoundExpression = Slot(uri=ARS.compoundExpression, name="DataSubset_compoundExpression", curie=ARS.curie('compoundExpression'),
                    model_uri=ARS.DataSubset_compoundExpression, domain=DataSubset, range=Optional[Union[dict, CompoundSubsetExpression]])
+
+slots.PageRef_label = Slot(uri=ARS.label, name="PageRef_label", curie=ARS.curie('label'),
+                   model_uri=ARS.PageRef_label, domain=PageRef, range=Optional[str])
 
 slots.PageNumberListRef_refType = Slot(uri=ARS.refType, name="PageNumberListRef_refType", curie=ARS.curie('refType'),
                    model_uri=ARS.PageNumberListRef_refType, domain=PageNumberListRef, range=Union[str, "PageRefType"])

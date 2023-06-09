@@ -7,7 +7,7 @@ _A subdivision of the subject population or analysis dataset record set based on
 
 
 
-URI: [ars:Group](https://www.cdisc.org/ars/1-0Group)
+URI: [ars:Group](https://www.cdisc.org/ars/1-0/Group)
 
 
 

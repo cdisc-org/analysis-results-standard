@@ -5,7 +5,7 @@ _Characteristics used to subdivide data records in the analysis dataset (e.g., v
 
 
 
-URI: [ars:dataGroupings](https://www.cdisc.org/ars/1-0dataGroupings)
+URI: [ars:dataGroupings](https://www.cdisc.org/ars/1-0/dataGroupings)
 
 
 

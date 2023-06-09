@@ -1,6 +1,6 @@
 # Slot: level
 
-URI: [ars:level](https://www.cdisc.org/ars/1-0level)
+URI: [ars:level](https://www.cdisc.org/ars/1-0/level)
 
 
 

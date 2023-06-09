@@ -2,7 +2,7 @@
 
 
 
-URI: [ars:WhereClauseCompoundExpression](https://www.cdisc.org/ars/1-0WhereClauseCompoundExpression)
+URI: [ars:WhereClauseCompoundExpression](https://www.cdisc.org/ars/1-0/WhereClauseCompoundExpression)
 
 
 

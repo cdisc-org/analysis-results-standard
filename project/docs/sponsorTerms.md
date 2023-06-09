@@ -5,7 +5,7 @@ _The sponsor-defined terms added to the extensible terminology._
 
 
 
-URI: [ars:sponsorTerms](https://www.cdisc.org/ars/1-0sponsorTerms)
+URI: [ars:sponsorTerms](https://www.cdisc.org/ars/1-0/sponsorTerms)
 
 
 

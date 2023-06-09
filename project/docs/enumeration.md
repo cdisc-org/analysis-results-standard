@@ -5,7 +5,7 @@ _The name of the extensible enumeration._
 
 
 
-URI: [ars:enumeration](https://www.cdisc.org/ars/1-0enumeration)
+URI: [ars:enumeration](https://www.cdisc.org/ars/1-0/enumeration)
 
 
 

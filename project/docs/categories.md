@@ -1,6 +1,6 @@
 # Slot: categories
 
-URI: [ars:categories](https://www.cdisc.org/ars/1-0categories)
+URI: [ars:categories](https://www.cdisc.org/ars/1-0/categories)
 
 
 

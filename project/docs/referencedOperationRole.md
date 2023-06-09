@@ -1,6 +1,6 @@
 # Slot: referencedOperationRole
 
-URI: [ars:referencedOperationRole](https://www.cdisc.org/ars/1-0referencedOperationRole)
+URI: [ars:referencedOperationRole](https://www.cdisc.org/ars/1-0/referencedOperationRole)
 
 
 

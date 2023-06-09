@@ -4,7 +4,7 @@
 * __NOTE__: this is an abstract class and should not be instantiated directly
 
 
-URI: [ars:NamedObject](https://www.cdisc.org/ars/1-0NamedObject)
+URI: [ars:NamedObject](https://www.cdisc.org/ars/1-0/NamedObject)
 
 
 
@@ -17,7 +17,8 @@ URI: [ars:NamedObject](https://www.cdisc.org/ars/1-0NamedObject)
       NamedObject <|-- AnalysisMethod
       NamedObject <|-- Operation
       NamedObject <|-- CodeParameter
-      NamedObject <|-- File
+      NamedObject <|-- Output
+      NamedObject <|-- OutputFile
       NamedObject <|-- OutputDisplay
       NamedObject <|-- ReferenceDocument
       
@@ -38,7 +39,8 @@ URI: [ars:NamedObject](https://www.cdisc.org/ars/1-0NamedObject)
     * [AnalysisMethod](AnalysisMethod.md)
     * [Operation](Operation.md)
     * [CodeParameter](CodeParameter.md)
-    * [File](File.md)
+    * [Output](Output.md)
+    * [OutputFile](OutputFile.md)
     * [OutputDisplay](OutputDisplay.md)
     * [ReferenceDocument](ReferenceDocument.md)
 

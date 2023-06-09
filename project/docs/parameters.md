@@ -1,11 +1,13 @@
 # Slot: parameters
 
 
-_Replacement parameters referenced in the programming code template._
+_Replacement parameters that are referenced in the programming code or programming code template and  are used to generate or execute the programming code._
+
+__
 
 
 
-URI: [ars:parameters](https://www.cdisc.org/ars/1-0parameters)
+URI: [ars:parameters](https://www.cdisc.org/ars/1-0/parameters)
 
 
 
@@ -18,7 +20,8 @@ URI: [ars:parameters](https://www.cdisc.org/ars/1-0parameters)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-[ProgrammingCodeTemplate](ProgrammingCodeTemplate.md) |  |  no  |
+[AnalysisOutputProgrammingCode](AnalysisOutputProgrammingCode.md) | Programming statements and/or a reference to the program used to perform a sp... |  yes  |
+[AnalysisProgrammingCodeTemplate](AnalysisProgrammingCodeTemplate.md) | Programming statements and/or a reference to a used as a template for creatio... |  yes  |
 
 
 
@@ -57,13 +60,16 @@ URI: [ars:parameters](https://www.cdisc.org/ars/1-0parameters)
 <details>
 ```yaml
 name: parameters
-description: Replacement parameters referenced in the programming code template.
+description: 'Replacement parameters that are referenced in the programming code or
+  programming code template and  are used to generate or execute the programming code.
+
+  '
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 multivalued: true
 alias: parameters
 domain_of:
-- ProgrammingCodeTemplate
+- AnalysisOutputProgrammingCode
 range: CodeParameter
 inlined: true
 inlined_as_list: true

@@ -1,6 +1,6 @@
 # Slot: display
 
-URI: [ars:display](https://www.cdisc.org/ars/1-0display)
+URI: [ars:display](https://www.cdisc.org/ars/1-0/display)
 
 
 
@@ -13,7 +13,7 @@ URI: [ars:display](https://www.cdisc.org/ars/1-0display)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-[OrderedDisplay](OrderedDisplay.md) |  |  no  |
+[OrderedDisplay](OrderedDisplay.md) | A display ordered with respect to other displays in an analysis output |  no  |
 
 
 

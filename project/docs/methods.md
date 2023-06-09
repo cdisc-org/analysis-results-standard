@@ -5,7 +5,7 @@ _The defined methods used to analyze any analysis variable._
 
 
 
-URI: [ars:methods](https://www.cdisc.org/ars/1-0methods)
+URI: [ars:methods](https://www.cdisc.org/ars/1-0/methods)
 
 
 

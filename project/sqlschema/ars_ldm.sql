@@ -20,8 +20,25 @@ CREATE TABLE "AnalysisMethod" (
 	label TEXT, 
 	description TEXT, 
 	operations TEXT NOT NULL, 
+	"documentRefs" TEXT, 
 	"codeTemplate" TEXT, 
 	PRIMARY KEY (id)
+);
+
+CREATE TABLE "AnalysisOutputProgrammingCode" (
+	context TEXT NOT NULL, 
+	code TEXT, 
+	"documentRefs" TEXT, 
+	parameters TEXT, 
+	PRIMARY KEY (context, code, "documentRefs", parameters)
+);
+
+CREATE TABLE "AnalysisProgrammingCodeTemplate" (
+	context TEXT NOT NULL, 
+	code TEXT, 
+	"documentRefs" TEXT, 
+	parameters TEXT, 
+	PRIMARY KEY (context, code, "documentRefs", parameters)
 );
 
 CREATE TABLE "AnalysisSet" (
@@ -37,8 +54,8 @@ CREATE TABLE "AnalysisSet" (
 CREATE TABLE "CodeParameter" (
 	name TEXT NOT NULL, 
 	description TEXT, 
-	"valueSource" TEXT, 
-	PRIMARY KEY (name, description, "valueSource")
+	value TEXT NOT NULL, 
+	PRIMARY KEY (name, description, value)
 );
 
 CREATE TABLE "CompoundGroupExpression" (
@@ -115,9 +132,12 @@ CREATE TABLE "Operation" (
 );
 
 CREATE TABLE "Output" (
+	name TEXT NOT NULL, 
 	id TEXT NOT NULL, 
 	version INTEGER, 
 	"categoryIds" TEXT, 
+	"documentRefs" TEXT, 
+	"programmingCode" TEXT, 
 	PRIMARY KEY (id)
 );
 
@@ -174,13 +194,6 @@ CREATE TABLE "PageRef" (
 	PRIMARY KEY ("refType", label, pages)
 );
 
-CREATE TABLE "ProgrammingCodeTemplate" (
-	context TEXT NOT NULL, 
-	parameters TEXT, 
-	"templateCode" TEXT, 
-	PRIMARY KEY (context, parameters, "templateCode")
-);
-
 CREATE TABLE "ReferenceDocument" (
 	name TEXT NOT NULL, 
 	id TEXT NOT NULL, 
@@ -221,6 +234,14 @@ CREATE TABLE "SubjectGroupingFactor" (
 	PRIMARY KEY (id)
 );
 
+CREATE TABLE "TemplateCodeParameter" (
+	name TEXT NOT NULL, 
+	description TEXT, 
+	"valueSource" TEXT, 
+	value TEXT, 
+	PRIMARY KEY (name, description, "valueSource", value)
+);
+
 CREATE TABLE "TerminologyExtension" (
 	enumeration VARCHAR(15), 
 	"sponsorTerms" TEXT NOT NULL, 
@@ -257,11 +278,13 @@ CREATE TABLE "Analysis" (
 	description TEXT, 
 	reason TEXT NOT NULL, 
 	purpose TEXT NOT NULL, 
+	"documentRefs" TEXT, 
 	"analysisSetId" TEXT, 
 	"dataSubsetId" TEXT, 
 	dataset TEXT, 
 	variable TEXT, 
 	"methodId" TEXT NOT NULL, 
+	"programmingCode" TEXT, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY("analysisSetId") REFERENCES "AnalysisSet" (id), 
 	FOREIGN KEY("dataSubsetId") REFERENCES "DataSubset" (id), 
@@ -292,14 +315,11 @@ CREATE TABLE "DataGroup" (
 	FOREIGN KEY("DataGroupingFactor_id") REFERENCES "DataGroupingFactor" (id)
 );
 
-CREATE TABLE "File" (
-	name TEXT NOT NULL, 
-	"fileType" TEXT, 
-	location TEXT, 
-	style TEXT, 
-	"Output_id" TEXT, 
-	PRIMARY KEY (name, "fileType", location, style, "Output_id"), 
-	FOREIGN KEY("Output_id") REFERENCES "Output" (id)
+CREATE TABLE "DocumentRef" (
+	"referenceDocumentId" TEXT NOT NULL, 
+	"pageRefs" TEXT, 
+	PRIMARY KEY ("referenceDocumentId", "pageRefs"), 
+	FOREIGN KEY("referenceDocumentId") REFERENCES "ReferenceDocument" (id)
 );
 
 CREATE TABLE "OrderedDisplay" (
@@ -311,21 +331,22 @@ CREATE TABLE "OrderedDisplay" (
 	FOREIGN KEY("Output_id") REFERENCES "Output" (id)
 );
 
+CREATE TABLE "OutputFile" (
+	name TEXT NOT NULL, 
+	"fileType" TEXT, 
+	location TEXT, 
+	style TEXT, 
+	"Output_id" TEXT, 
+	PRIMARY KEY (name, "fileType", location, style, "Output_id"), 
+	FOREIGN KEY("Output_id") REFERENCES "Output" (id)
+);
+
 CREATE TABLE "ResultGroup" (
 	"groupingId" TEXT, 
 	"groupId" TEXT, 
 	"groupValue" TEXT, 
 	PRIMARY KEY ("groupingId", "groupId", "groupValue"), 
 	FOREIGN KEY("groupId") REFERENCES "Group" (id)
-);
-
-CREATE TABLE "DocumentRef" (
-	"referenceDocumentId" TEXT NOT NULL, 
-	"pageRefs" TEXT, 
-	"Analysis_id" TEXT, 
-	PRIMARY KEY ("referenceDocumentId", "pageRefs", "Analysis_id"), 
-	FOREIGN KEY("referenceDocumentId") REFERENCES "ReferenceDocument" (id), 
-	FOREIGN KEY("Analysis_id") REFERENCES "Analysis" (id)
 );
 
 CREATE TABLE "OperationResult" (

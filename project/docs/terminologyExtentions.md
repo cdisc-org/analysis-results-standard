@@ -5,7 +5,7 @@ _Any sponsor-defined extensions to extensible terminology._
 
 
 
-URI: [ars:terminologyExtentions](https://www.cdisc.org/ars/1-0terminologyExtentions)
+URI: [ars:terminologyExtentions](https://www.cdisc.org/ars/1-0/terminologyExtentions)
 
 
 

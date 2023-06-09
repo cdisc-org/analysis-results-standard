@@ -5,7 +5,7 @@ _The page number of the last page in a range of pages._
 
 
 
-URI: [ars:lastPage](https://www.cdisc.org/ars/1-0lastPage)
+URI: [ars:lastPage](https://www.cdisc.org/ars/1-0/lastPage)
 
 
 

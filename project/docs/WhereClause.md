@@ -2,7 +2,7 @@
 
 
 
-URI: [ars:WhereClause](https://www.cdisc.org/ars/1-0WhereClause)
+URI: [ars:WhereClause](https://www.cdisc.org/ars/1-0/WhereClause)
 
 
 

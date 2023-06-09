@@ -1,8 +1,13 @@
 # Class: DisplaySection
 
 
+_A part of a tabular display containing one or more pieces of informational text._
 
-URI: [ars:DisplaySection](https://www.cdisc.org/ars/1-0DisplaySection)
+
+
+
+
+URI: [ars:DisplaySection](https://www.cdisc.org/ars/1-0/DisplaySection)
 
 
 
@@ -49,6 +54,16 @@ URI: [ars:DisplaySection](https://www.cdisc.org/ars/1-0DisplaySection)
 
 
 
+
+## Examples
+
+| Value |
+| --- |
+| Title |
+| Footnote |
+| Legend |
+| Abbreviation |
+
 ## Identifier and Mapping Information
 
 
@@ -86,6 +101,13 @@ URI: [ars:DisplaySection](https://www.cdisc.org/ars/1-0DisplaySection)
 <details>
 ```yaml
 name: DisplaySection
+description: A part of a tabular display containing one or more pieces of informational
+  text.
+examples:
+- value: Title
+- value: Footnote
+- value: Legend
+- value: Abbreviation
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 slots:
@@ -100,6 +122,13 @@ slots:
 <details>
 ```yaml
 name: DisplaySection
+description: A part of a tabular display containing one or more pieces of informational
+  text.
+examples:
+- value: Title
+- value: Footnote
+- value: Legend
+- value: Abbreviation
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 attributes:

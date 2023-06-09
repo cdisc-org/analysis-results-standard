@@ -1,6 +1,6 @@
 # Slot: version
 
-URI: [ars:version](https://www.cdisc.org/ars/1-0version)
+URI: [ars:version](https://www.cdisc.org/ars/1-0/version)
 
 
 
@@ -14,8 +14,8 @@ URI: [ars:version](https://www.cdisc.org/ars/1-0version)
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 [Analysis](Analysis.md) | An analysis that is designed to meet a requirement of the reporting event |  no  |
-[Output](Output.md) |  |  no  |
-[OutputDisplay](OutputDisplay.md) |  |  no  |
+[Output](Output.md) | A report of results and their evaluation based on planned analyses performed ... |  no  |
+[OutputDisplay](OutputDisplay.md) | A tabular representation of the results of one or more analyses |  no  |
 
 
 

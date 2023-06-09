@@ -1,6 +1,6 @@
 # Slot: results
 
-URI: [ars:results](https://www.cdisc.org/ars/1-0results)
+URI: [ars:results](https://www.cdisc.org/ars/1-0/results)
 
 
 

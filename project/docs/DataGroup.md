@@ -7,7 +7,7 @@ _A subdivision of the analysis dataset records based on a defined factor._
 
 
 
-URI: [ars:DataGroup](https://www.cdisc.org/ars/1-0DataGroup)
+URI: [ars:DataGroup](https://www.cdisc.org/ars/1-0/DataGroup)
 
 
 

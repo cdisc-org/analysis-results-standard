@@ -1,6 +1,6 @@
 # Slot: compoundExpression
 
-URI: [ars:compoundExpression](https://www.cdisc.org/ars/1-0compoundExpression)
+URI: [ars:compoundExpression](https://www.cdisc.org/ars/1-0/compoundExpression)
 
 
 

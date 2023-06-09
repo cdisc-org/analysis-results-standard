@@ -1,6 +1,6 @@
 # Slot: logicalOperator
 
-URI: [ars:logicalOperator](https://www.cdisc.org/ars/1-0logicalOperator)
+URI: [ars:logicalOperator](https://www.cdisc.org/ars/1-0/logicalOperator)
 
 
 

@@ -2,7 +2,7 @@
 
 
 
-URI: [ars:CompoundGroupExpression](https://www.cdisc.org/ars/1-0CompoundGroupExpression)
+URI: [ars:CompoundGroupExpression](https://www.cdisc.org/ars/1-0/CompoundGroupExpression)
 
 
 

@@ -1,6 +1,6 @@
 # Slot: subCategorizations
 
-URI: [ars:subCategorizations](https://www.cdisc.org/ars/1-0subCategorizations)
+URI: [ars:subCategorizations](https://www.cdisc.org/ars/1-0/subCategorizations)
 
 
 

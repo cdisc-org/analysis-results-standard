@@ -1,6 +1,6 @@
 # Slot: location
 
-URI: [ars:location](https://www.cdisc.org/ars/1-0location)
+URI: [ars:location](https://www.cdisc.org/ars/1-0/location)
 
 
 
@@ -13,7 +13,7 @@ URI: [ars:location](https://www.cdisc.org/ars/1-0location)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-[File](File.md) |  |  no  |
+[OutputFile](OutputFile.md) | A file containing analysis output displays |  no  |
 [ReferenceDocument](ReferenceDocument.md) |  |  no  |
 
 
@@ -55,7 +55,7 @@ from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 alias: location
 domain_of:
-- File
+- OutputFile
 - ReferenceDocument
 range: uri
 

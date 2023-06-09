@@ -7,7 +7,7 @@ _A subdivision of the subject population based on a defined factor (e.g., subjec
 
 
 
-URI: [ars:AnalysisGroup](https://www.cdisc.org/ars/1-0AnalysisGroup)
+URI: [ars:AnalysisGroup](https://www.cdisc.org/ars/1-0/AnalysisGroup)
 
 
 

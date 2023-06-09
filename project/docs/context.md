@@ -5,7 +5,7 @@ _The name and version of the computer language used for the actual programming s
 
 
 
-URI: [ars:context](https://www.cdisc.org/ars/1-0context)
+URI: [ars:context](https://www.cdisc.org/ars/1-0/context)
 
 
 
@@ -18,7 +18,8 @@ URI: [ars:context](https://www.cdisc.org/ars/1-0context)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-[ProgrammingCodeTemplate](ProgrammingCodeTemplate.md) |  |  no  |
+[AnalysisOutputProgrammingCode](AnalysisOutputProgrammingCode.md) | Programming statements and/or a reference to the program used to perform a sp... |  no  |
+[AnalysisProgrammingCodeTemplate](AnalysisProgrammingCodeTemplate.md) | Programming statements and/or a reference to a used as a template for creatio... |  no  |
 
 
 
@@ -72,7 +73,7 @@ from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 alias: context
 domain_of:
-- ProgrammingCodeTemplate
+- AnalysisOutputProgrammingCode
 range: string
 required: true
 

@@ -1,18 +1,17 @@
 id: https://www.cdisc.org/ars/1-0
 title: Analysis Results Standard (ARS)
 name: ars_ldm
+description: >
+  DRAFT Logical model to support both the prospective specification of analyses and the fully contextualized
+  representation of the results of the analyses.
 
 imports:
   - linkml:types
 
 prefixes:
   linkml: https://w3id.org/linkml/
-  ars: https://www.cdisc.org/ars/1-0
-  bioregistry: https://bioregistry.io/registry/
+  ars: https://www.cdisc.org/ars/1-0/
   NCIT: http://purl.obolibrary.org/obo/NCIT_
-#  def: http://www.cdisc.org/ns/def/v2.1
-  NCIThesaurus: http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#
-  defCT: https://api.library.cdisc.org/api/mdr/root/ct/define/codelists/
 
 default_prefix: ars
 
@@ -81,20 +80,20 @@ classes:
   Analysis:
     description: |
       An analysis that is designed to meet a requirement of the reporting event. Each analysis is defined as a set of specifications, including:
-      - The analysis variable that is the subject of the analysis.
-      - The analysis method (set of statistical operations) that is performed for the analysis variable.
-      - The analysis set (subject population) for which the analysis is performed.
-      - The subset of data records on which the analysis is performed (optional).
-      - One or more factors by which either subjects or data records are grouped for analysis (optional).
+      * The analysis variable that is the subject of the analysis.
+      * The analysis method (set of statistical operations) that is performed for the analysis variable.
+      * The analysis set (subject population) for which the analysis is performed.
+      * The subset of data records on which the analysis is performed (optional).
+      * One or more factors by which either subjects or data records are grouped for analysis (optional).
     is_a: NamedObject
     slots:
       - id
       - version
       - categoryIds
       - description
-      - documentRefs
       - reason
       - purpose
+      - documentRefs
       - analysisSetId
       - orderedGroupings
       - dataSubsetId
@@ -102,7 +101,11 @@ classes:
       - variable
       - methodId
       - referencedAnalysisOperations
+      - programmingCode
       - results
+    slot_usage:
+      programmingCode:      
+        description: Programming statements and/or a reference to the program used to perform the specific analysis.
 
   OrderedGroupingFactor:
     description: A reference to a defined factor by which subjects or data records are grouped for the analysis, ordered with respect to other grouping factors.      
@@ -146,6 +149,7 @@ classes:
       - label
       - description
       - operations
+      - documentRefs
       - codeTemplate
 
   Operation:
@@ -166,33 +170,66 @@ classes:
       - analysisId
       - description
 
-  ProgrammingCodeTemplate:
-    description: 
+  AnalysisOutputProgrammingCode:
+    description: Programming statements and/or a reference to the program used to perform a specific analysis or create a specific output.
     slots:
       - context
+      - code
+      - documentRefs
       - parameters
-      - templateCode
+    slot_usage:
+      parameters:
+        description: Parameter values used to generate or execute the programming code.
+        range: CodeParameter
+
+  AnalysisProgrammingCodeTemplate:
+    description:  Programming statements and/or a reference to a used as a template for creation of a program to perform method operations for a specific analysis.
+    is_a: AnalysisOutputProgrammingCode
+    slot_usage:
+      parameters:
+        description: Parameters whose values will be used to generate or execute the programming code for a specific analysis.
+        range: TemplateCodeParameter
 
   CodeParameter:
+    description: A replacement parameter whose value is substituted in template programming code to create statements required for a specific analysis.
     is_a: NamedObject
-    description:
     slots:
       - description
+      - value
+    slot_usage:
+      value:
+        description: The value of the parameter.
+        required: true
+
+  TemplateCodeParameter:
+    description: A replacement parameter whose value is substituted in template programming code to create statements required for a specific analysis.
+    is_a: CodeParameter
+    slots: 
       - valueSource
+    slot_usage:
+      value:
+        required: false
 
   Output:
+    description: A report of results and their evaluation based on planned analyses performed during the course of a trial.
+    is_a: NamedObject
     slots:
       - id
       - version
       - fileSpecifications
       - displays
       - categoryIds
+      - documentRefs
+      - programmingCode
     slot_usage:
       categoryIds:
         required: false
         inlined: false
+      programmingCode:      
+        description: Programming statements and/or a reference to the program used to perform the specific output.
 
-  File:
+  OutputFile:
+    description: A file containing analysis output displays.
     is_a: NamedObject
     slots:
       - fileType
@@ -200,6 +237,7 @@ classes:
       - style
 
   OrderedDisplay:
+    description: A display ordered with respect to other displays in an analysis output.
     slots:
       - order
       - display
@@ -208,6 +246,7 @@ classes:
         required: true
 
   OutputDisplay:
+    description: A tabular representation of the results of one or more analyses.
     is_a: NamedObject
     slots:
       - id
@@ -216,11 +255,18 @@ classes:
       - displaySections
 
   DisplaySection:
+    description: A part of a tabular display containing one or more pieces of informational text.
     slots:
       - sectionType
       - subSections
+    examples:
+      - value: Title
+      - value: Footnote
+      - value: Legend
+      - value: Abbreviation
 
   DisplaySubSection:
+    description: An occurrence of a display section containing text that is ordered with respect to other occurrences of the same type of display section.
     slots:
       - id
       - order
@@ -242,6 +288,33 @@ classes:
       - variable
       - comparator
       - value
+    rules:
+      - preconditions:
+          slot_conditions:
+            comparator:
+              any_of:
+                - equals_string: EQ
+                - equals_string: NE
+                - equals_string: LT
+                - equals_string: LE
+                - equals_string: GT
+                - equals_string: GE
+        postconditions:
+          slot_conditions:
+            value:
+              multivalued: false
+        description: Only a single value is allowed when comparator is EQ, NE, LT, LE, GT, or GE.
+      - preconditions:
+          slot_conditions:
+            comparator:
+              any_of:
+                - equals_string: IN
+                - equals_string: NOTIN
+        postconditions:
+          slot_conditions:
+            value:
+              multivalued: true
+        description: Multile values are allowed when comparator is IN or NOTIN.
 
   WhereClauseCompoundExpression:
     slots:
@@ -351,6 +424,9 @@ classes:
       - refType
       - label
       - pages
+    slot_usage:
+      label:
+        description: Alternative label to provide a more specific and description to a page link.
 
   PageNumberListRef:
     description: One or more individual pages in the reference document, referenced by page number.
@@ -590,7 +666,8 @@ slots:
     inlined: false
     range: DataSubset
 
-  methodId:  
+  methodId:
+    description: A reference to the set of one or more statistical operations performed for the analysis.
     range: AnalysisMethod
     required: true
     inlined: false
@@ -645,9 +722,13 @@ slots:
     required: true
     inlined: false
 
+  programmingCode:
+    description: Programming statements and/or a reference to the program used to perform the specific analysis or create the specific output.
+    range: AnalysisOutputProgrammingCode
+
   codeTemplate:
     description: Template programming statements and/or a reference to the template program used to perform the specific analysis.
-    range: ProgrammingCodeTemplate
+    range: AnalysisProgrammingCodeTemplate
 
   context:
     description: The name and version of the computer language used for the actual programming statements provided.
@@ -657,17 +738,17 @@ slots:
     required: true
 
   parameters:
-    description: Replacement parameters referenced in the programming code template.
+    description: >
+      Replacement parameters that are referenced in the programming code or programming code template and 
+      are used to generate or execute the programming code.
     range: CodeParameter
     multivalued: true
     inlined: true
     inlined_as_list: true
 
-  templateCode:
-    description: Template programming statements and/or a reference to the template program used to perform the specific analysis.
-    any_of:
-      - range: string
-      - range: DocumentRef
+  code:
+    description: Programming statements used to perform the specific analysis.
+    range: string
 
   valueSource:
     # TODO: restrict to formal references to attributes of instances of the parent Analysis class.
@@ -693,7 +774,7 @@ slots:
     multivalued: true
     inlined: true
     inlined_as_list: true
-    range: File
+    range: OutputFile
 
   fileType:
     any_of:
@@ -765,7 +846,6 @@ slots:
     range: ConditionComparator
 
   value:
-    multivalued: true
 
   label:
 
@@ -778,6 +858,7 @@ slots:
     multivalued: true
     range: DocumentRef
     inlined: true
+    inlined_as_list: true
 
   referenceDocumentId:
     range: ReferenceDocument

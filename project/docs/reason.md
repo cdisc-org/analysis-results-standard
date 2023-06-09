@@ -5,7 +5,7 @@ _The rationale for performing this analysis. It indicates when the analysis was 
 
 
 
-URI: [ars:reason](https://www.cdisc.org/ars/1-0reason)
+URI: [ars:reason](https://www.cdisc.org/ars/1-0/reason)
 
 
 

@@ -7,7 +7,7 @@ _For the specified grouping factor, an indication of the specific group of subje
 
 
 
-URI: [ars:ResultGroup](https://www.cdisc.org/ars/1-0ResultGroup)
+URI: [ars:ResultGroup](https://www.cdisc.org/ars/1-0/ResultGroup)
 
 
 

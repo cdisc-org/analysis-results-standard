@@ -1,6 +1,6 @@
 # Slot: refType
 
-URI: [ars:refType](https://www.cdisc.org/ars/1-0refType)
+URI: [ars:refType](https://www.cdisc.org/ars/1-0/refType)
 
 
 

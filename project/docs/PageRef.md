@@ -2,7 +2,7 @@
 
 
 
-URI: [ars:PageRef](https://www.cdisc.org/ars/1-0PageRef)
+URI: [ars:PageRef](https://www.cdisc.org/ars/1-0/PageRef)
 
 
 
@@ -41,7 +41,7 @@ URI: [ars:PageRef](https://www.cdisc.org/ars/1-0PageRef)
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [refType](refType.md) | 1..1 <br/> [PageRefType](PageRefType.md) |  | direct |
-| [label](label.md) | 0..1 <br/> [String](String.md) |  | direct |
+| [label](label.md) | 0..1 <br/> [String](String.md) | Alternative label to provide a more specific and description to a page link | direct |
 | [pages](pages.md) | 0..1 <br/> [String](String.md) |  | direct |
 
 
@@ -102,6 +102,21 @@ slots:
 - refType
 - label
 - pages
+slot_usage:
+  label:
+    name: label
+    description: Alternative label to provide a more specific and description to a
+      page link.
+    domain_of:
+    - AnalysisCategorization
+    - AnalysisCategory
+    - AnalysisMethod
+    - Operation
+    - AnalysisSet
+    - GroupingFactor
+    - Group
+    - DataSubset
+    - PageRef
 
 ```
 </details>
@@ -113,6 +128,21 @@ slots:
 name: PageRef
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
+slot_usage:
+  label:
+    name: label
+    description: Alternative label to provide a more specific and description to a
+      page link.
+    domain_of:
+    - AnalysisCategorization
+    - AnalysisCategory
+    - AnalysisMethod
+    - Operation
+    - AnalysisSet
+    - GroupingFactor
+    - Group
+    - DataSubset
+    - PageRef
 attributes:
   refType:
     name: refType
@@ -126,6 +156,8 @@ attributes:
     required: true
   label:
     name: label
+    description: Alternative label to provide a more specific and description to a
+      page link.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: label

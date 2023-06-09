@@ -7,7 +7,7 @@ _A set of analyses and outputs created to meet a specific reporting requirement,
 
 
 
-URI: [ars:ReportingEvent](https://www.cdisc.org/ars/1-0ReportingEvent)
+URI: [ars:ReportingEvent](https://www.cdisc.org/ars/1-0/ReportingEvent)
 
 
 

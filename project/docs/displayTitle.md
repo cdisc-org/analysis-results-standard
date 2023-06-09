@@ -1,6 +1,6 @@
 # Slot: displayTitle
 
-URI: [ars:displayTitle](https://www.cdisc.org/ars/1-0displayTitle)
+URI: [ars:displayTitle](https://www.cdisc.org/ars/1-0/displayTitle)
 
 
 
@@ -13,7 +13,7 @@ URI: [ars:displayTitle](https://www.cdisc.org/ars/1-0displayTitle)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-[OutputDisplay](OutputDisplay.md) |  |  no  |
+[OutputDisplay](OutputDisplay.md) | A tabular representation of the results of one or more analyses |  no  |
 
 
 

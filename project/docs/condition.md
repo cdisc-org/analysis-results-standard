@@ -1,6 +1,6 @@
 # Slot: condition
 
-URI: [ars:condition](https://www.cdisc.org/ars/1-0condition)
+URI: [ars:condition](https://www.cdisc.org/ars/1-0/condition)
 
 
 

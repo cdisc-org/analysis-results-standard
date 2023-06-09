@@ -1,6 +1,6 @@
 # Slot: groups
 
-URI: [ars:groups](https://www.cdisc.org/ars/1-0groups)
+URI: [ars:groups](https://www.cdisc.org/ars/1-0/groups)
 
 
 

@@ -7,7 +7,7 @@ _A set of pages in a document that includes the specified first and last page, a
 
 
 
-URI: [ars:PageRange](https://www.cdisc.org/ars/1-0PageRange)
+URI: [ars:PageRange](https://www.cdisc.org/ars/1-0/PageRange)
 
 
 

@@ -7,7 +7,7 @@ _A reference to a defined factor by which subjects or data records are grouped f
 
 
 
-URI: [ars:OrderedGroupingFactor](https://www.cdisc.org/ars/1-0OrderedGroupingFactor)
+URI: [ars:OrderedGroupingFactor](https://www.cdisc.org/ars/1-0/OrderedGroupingFactor)
 
 
 

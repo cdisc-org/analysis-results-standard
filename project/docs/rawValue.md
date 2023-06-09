@@ -1,6 +1,6 @@
 # Slot: rawValue
 
-URI: [ars:rawValue](https://www.cdisc.org/ars/1-0rawValue)
+URI: [ars:rawValue](https://www.cdisc.org/ars/1-0/rawValue)
 
 
 

@@ -1,6 +1,6 @@
 # Slot: text
 
-URI: [ars:text](https://www.cdisc.org/ars/1-0text)
+URI: [ars:text](https://www.cdisc.org/ars/1-0/text)
 
 
 
@@ -13,7 +13,7 @@ URI: [ars:text](https://www.cdisc.org/ars/1-0text)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-[DisplaySubSection](DisplaySubSection.md) |  |  no  |
+[DisplaySubSection](DisplaySubSection.md) | An occurrence of a display section containing text that is ordered with respe... |  no  |
 
 
 

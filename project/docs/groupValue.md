@@ -1,6 +1,6 @@
 # Slot: groupValue
 
-URI: [ars:groupValue](https://www.cdisc.org/ars/1-0groupValue)
+URI: [ars:groupValue](https://www.cdisc.org/ars/1-0/groupValue)
 
 
 

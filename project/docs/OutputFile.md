@@ -1,23 +1,28 @@
-# Class: File
+# Class: OutputFile
+
+
+_A file containing analysis output displays._
 
 
 
-URI: [ars:File](https://www.cdisc.org/ars/1-0File)
+
+
+URI: [ars:OutputFile](https://www.cdisc.org/ars/1-0/OutputFile)
 
 
 
 ```mermaid
  classDiagram
-    class File
-      NamedObject <|-- File
+    class OutputFile
+      NamedObject <|-- OutputFile
       
-      File : fileType
+      OutputFile : fileType
         
-      File : location
+      OutputFile : location
         
-      File : name
+      OutputFile : name
         
-      File : style
+      OutputFile : style
         
       
 ```
@@ -28,7 +33,7 @@ URI: [ars:File](https://www.cdisc.org/ars/1-0File)
 
 ## Inheritance
 * [NamedObject](NamedObject.md)
-    * **File**
+    * **OutputFile**
 
 
 
@@ -49,7 +54,7 @@ URI: [ars:File](https://www.cdisc.org/ars/1-0File)
 
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
-| [Output](Output.md) | [fileSpecifications](fileSpecifications.md) | range | [File](File.md) |
+| [Output](Output.md) | [fileSpecifications](fileSpecifications.md) | range | [OutputFile](OutputFile.md) |
 
 
 
@@ -77,8 +82,8 @@ URI: [ars:File](https://www.cdisc.org/ars/1-0File)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ars:File |
-| native | ars:File |
+| self | ars:OutputFile |
+| native | ars:OutputFile |
 
 
 
@@ -92,7 +97,8 @@ URI: [ars:File](https://www.cdisc.org/ars/1-0File)
 
 <details>
 ```yaml
-name: File
+name: OutputFile
+description: A file containing analysis output displays.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 is_a: NamedObject
@@ -108,7 +114,8 @@ slots:
 
 <details>
 ```yaml
-name: File
+name: OutputFile
+description: A file containing analysis output displays.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 is_a: NamedObject
@@ -118,9 +125,9 @@ attributes:
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: fileType
-    owner: File
+    owner: OutputFile
     domain_of:
-    - File
+    - OutputFile
     range: string
     inlined: false
     any_of:
@@ -131,9 +138,9 @@ attributes:
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: location
-    owner: File
+    owner: OutputFile
     domain_of:
-    - File
+    - OutputFile
     - ReferenceDocument
     range: uri
   style:
@@ -141,16 +148,16 @@ attributes:
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: style
-    owner: File
+    owner: OutputFile
     domain_of:
-    - File
+    - OutputFile
     range: string
   name:
     name: name
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: name
-    owner: File
+    owner: OutputFile
     domain_of:
     - NamedObject
     range: string

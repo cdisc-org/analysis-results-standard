@@ -1,6 +1,6 @@
 # Slot: formattedValue
 
-URI: [ars:formattedValue](https://www.cdisc.org/ars/1-0formattedValue)
+URI: [ars:formattedValue](https://www.cdisc.org/ars/1-0/formattedValue)
 
 
 

@@ -7,7 +7,7 @@ _An indication of the analysis that contains results of a referenced operation._
 
 
 
-URI: [ars:ReferencedAnalysisOperation](https://www.cdisc.org/ars/1-0ReferencedAnalysisOperation)
+URI: [ars:ReferencedAnalysisOperation](https://www.cdisc.org/ars/1-0/ReferencedAnalysisOperation)
 
 
 

@@ -1,8 +1,13 @@
 # Class: OutputDisplay
 
 
+_A tabular representation of the results of one or more analyses._
 
-URI: [ars:OutputDisplay](https://www.cdisc.org/ars/1-0OutputDisplay)
+
+
+
+
+URI: [ars:OutputDisplay](https://www.cdisc.org/ars/1-0/OutputDisplay)
 
 
 
@@ -98,6 +103,7 @@ URI: [ars:OutputDisplay](https://www.cdisc.org/ars/1-0OutputDisplay)
 <details>
 ```yaml
 name: OutputDisplay
+description: A tabular representation of the results of one or more analyses.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 is_a: NamedObject
@@ -115,6 +121,7 @@ slots:
 <details>
 ```yaml
 name: OutputDisplay
+description: A tabular representation of the results of one or more analyses.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 is_a: NamedObject

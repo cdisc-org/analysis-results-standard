@@ -1,6 +1,6 @@
 # Slot: referencedAnalysisOperations
 
-URI: [ars:referencedAnalysisOperations](https://www.cdisc.org/ars/1-0referencedAnalysisOperations)
+URI: [ars:referencedAnalysisOperations](https://www.cdisc.org/ars/1-0/referencedAnalysisOperations)
 
 
 

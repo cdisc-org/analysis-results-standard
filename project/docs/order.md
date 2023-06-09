@@ -1,6 +1,6 @@
 # Slot: order
 
-URI: [ars:order](https://www.cdisc.org/ars/1-0order)
+URI: [ars:order](https://www.cdisc.org/ars/1-0/order)
 
 
 
@@ -15,8 +15,8 @@ URI: [ars:order](https://www.cdisc.org/ars/1-0order)
 | --- | --- | --- |
 [OrderedListItem](OrderedListItem.md) | An item (analysis, output or sub-list) ordered relative to other items within... |  yes  |
 [OrderedGroupingFactor](OrderedGroupingFactor.md) | A reference to a defined factor by which subjects or data records are grouped... |  yes  |
-[OrderedDisplay](OrderedDisplay.md) |  |  yes  |
-[DisplaySubSection](DisplaySubSection.md) |  |  yes  |
+[OrderedDisplay](OrderedDisplay.md) | A display ordered with respect to other displays in an analysis output |  yes  |
+[DisplaySubSection](DisplaySubSection.md) | An occurrence of a display section containing text that is ordered with respe... |  yes  |
 [WhereClause](WhereClause.md) |  |  no  |
 [AnalysisSet](AnalysisSet.md) | A set of subjects whose data are to be included in the main analyses |  no  |
 [Group](Group.md) | A subdivision of the subject population or analysis dataset record set based ... |  no  |

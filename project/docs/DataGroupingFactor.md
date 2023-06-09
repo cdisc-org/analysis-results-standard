@@ -7,7 +7,7 @@ _A factor used to subdivide data records in an analysis dataset for analysis._
 
 
 
-URI: [ars:DataGroupingFactor](https://www.cdisc.org/ars/1-0DataGroupingFactor)
+URI: [ars:DataGroupingFactor](https://www.cdisc.org/ars/1-0/DataGroupingFactor)
 
 
 

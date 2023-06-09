@@ -5,7 +5,7 @@ _Indicates whether a result is expected for each group in the grouping._
 
 
 
-URI: [ars:resultsByGroup](https://www.cdisc.org/ars/1-0resultsByGroup)
+URI: [ars:resultsByGroup](https://www.cdisc.org/ars/1-0/resultsByGroup)
 
 
 

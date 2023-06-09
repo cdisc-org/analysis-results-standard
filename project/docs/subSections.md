@@ -1,6 +1,6 @@
 # Slot: subSections
 
-URI: [ars:subSections](https://www.cdisc.org/ars/1-0subSections)
+URI: [ars:subSections](https://www.cdisc.org/ars/1-0/subSections)
 
 
 
@@ -13,7 +13,7 @@ URI: [ars:subSections](https://www.cdisc.org/ars/1-0subSections)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-[DisplaySection](DisplaySection.md) |  |  no  |
+[DisplaySection](DisplaySection.md) | A part of a tabular display containing one or more pieces of informational te... |  no  |
 
 
 

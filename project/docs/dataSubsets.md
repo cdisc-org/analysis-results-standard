@@ -1,6 +1,6 @@
 # Slot: dataSubsets
 
-URI: [ars:dataSubsets](https://www.cdisc.org/ars/1-0dataSubsets)
+URI: [ars:dataSubsets](https://www.cdisc.org/ars/1-0/dataSubsets)
 
 
 

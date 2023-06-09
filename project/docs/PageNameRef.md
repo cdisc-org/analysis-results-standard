@@ -7,7 +7,7 @@ _One or more pages in the reference document, referenced by named destination._
 
 
 
-URI: [ars:PageNameRef](https://www.cdisc.org/ars/1-0PageNameRef)
+URI: [ars:PageNameRef](https://www.cdisc.org/ars/1-0/PageNameRef)
 
 
 
@@ -44,7 +44,7 @@ URI: [ars:PageNameRef](https://www.cdisc.org/ars/1-0PageNameRef)
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [refType](refType.md) | 1..1 <br/> [PageRefType](PageRefType.md) |  | [PageRef](PageRef.md) |
-| [label](label.md) | 0..1 <br/> [String](String.md) |  | [PageRef](PageRef.md) |
+| [label](label.md) | 0..1 <br/> [String](String.md) | Alternative label to provide a more specific and description to a page link | [PageRef](PageRef.md) |
 | [pages](pages.md) | 0..1 <br/> [PageNameList](PageNameList.md) |  | [PageRef](PageRef.md) |
 
 
@@ -145,6 +145,8 @@ attributes:
     equals_string: NamedDestination
   label:
     name: label
+    description: Alternative label to provide a more specific and description to a
+      page link.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: label

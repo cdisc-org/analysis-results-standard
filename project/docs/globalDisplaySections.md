@@ -1,6 +1,6 @@
 # Slot: globalDisplaySections
 
-URI: [ars:globalDisplaySections](https://www.cdisc.org/ars/1-0globalDisplaySections)
+URI: [ars:globalDisplaySections](https://www.cdisc.org/ars/1-0/globalDisplaySections)
 
 
 

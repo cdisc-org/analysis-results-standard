@@ -5,7 +5,7 @@ _Indicates whether the groups defined by the grouping are prespecified (false) o
 
 
 
-URI: [ars:dataDriven](https://www.cdisc.org/ars/1-0dataDriven)
+URI: [ars:dataDriven](https://www.cdisc.org/ars/1-0/dataDriven)
 
 
 

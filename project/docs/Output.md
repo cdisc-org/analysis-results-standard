@@ -1,14 +1,21 @@
 # Class: Output
 
 
+_A report of results and their evaluation based on planned analyses performed during the course of a trial._
 
-URI: [ars:Output](https://www.cdisc.org/ars/1-0Output)
+
+
+
+
+URI: [ars:Output](https://www.cdisc.org/ars/1-0/Output)
 
 
 
 ```mermaid
  classDiagram
     class Output
+      NamedObject <|-- Output
+      
       Output : categoryIds
         
           Output --|> AnalysisCategory : categoryIds
@@ -17,11 +24,21 @@ URI: [ars:Output](https://www.cdisc.org/ars/1-0Output)
         
           Output --|> OrderedDisplay : displays
         
+      Output : documentRefs
+        
+          Output --|> DocumentRef : documentRefs
+        
       Output : fileSpecifications
         
-          Output --|> File : fileSpecifications
+          Output --|> OutputFile : fileSpecifications
         
       Output : id
+        
+      Output : name
+        
+      Output : programmingCode
+        
+          Output --|> AnalysisOutputProgrammingCode : programmingCode
         
       Output : version
         
@@ -31,7 +48,11 @@ URI: [ars:Output](https://www.cdisc.org/ars/1-0Output)
 
 
 
-<!-- no inheritance hierarchy -->
+
+## Inheritance
+* [NamedObject](NamedObject.md)
+    * **Output**
+
 
 
 ## Slots
@@ -40,9 +61,12 @@ URI: [ars:Output](https://www.cdisc.org/ars/1-0Output)
 | ---  | --- | --- | --- |
 | [id](id.md) | 1..1 <br/> [String](String.md) |  | direct |
 | [version](version.md) | 0..1 <br/> [Integer](Integer.md) |  | direct |
-| [fileSpecifications](fileSpecifications.md) | 0..* <br/> [File](File.md) |  | direct |
+| [fileSpecifications](fileSpecifications.md) | 0..* <br/> [OutputFile](OutputFile.md) |  | direct |
 | [displays](displays.md) | 0..* <br/> [OrderedDisplay](OrderedDisplay.md) |  | direct |
 | [categoryIds](categoryIds.md) | 0..* <br/> [AnalysisCategory](AnalysisCategory.md) |  | direct |
+| [documentRefs](documentRefs.md) | 0..* <br/> [DocumentRef](DocumentRef.md) |  | direct |
+| [programmingCode](programmingCode.md) | 0..1 <br/> [AnalysisOutputProgrammingCode](AnalysisOutputProgrammingCode.md) | Programming statements and/or a reference to the program used to perform the ... | direct |
+| [name](name.md) | 1..1 <br/> [String](String.md) |  | [NamedObject](NamedObject.md) |
 
 
 
@@ -97,14 +121,19 @@ URI: [ars:Output](https://www.cdisc.org/ars/1-0Output)
 <details>
 ```yaml
 name: Output
+description: A report of results and their evaluation based on planned analyses performed
+  during the course of a trial.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
+is_a: NamedObject
 slots:
 - id
 - version
 - fileSpecifications
 - displays
 - categoryIds
+- documentRefs
+- programmingCode
 slot_usage:
   categoryIds:
     name: categoryIds
@@ -113,6 +142,13 @@ slot_usage:
     - Output
     required: false
     inlined: false
+  programmingCode:
+    name: programmingCode
+    description: Programming statements and/or a reference to the program used to
+      perform the specific output.
+    domain_of:
+    - Analysis
+    - Output
 
 ```
 </details>
@@ -122,8 +158,11 @@ slot_usage:
 <details>
 ```yaml
 name: Output
+description: A report of results and their evaluation based on planned analyses performed
+  during the course of a trial.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
+is_a: NamedObject
 slot_usage:
   categoryIds:
     name: categoryIds
@@ -132,6 +171,13 @@ slot_usage:
     - Output
     required: false
     inlined: false
+  programmingCode:
+    name: programmingCode
+    description: Programming statements and/or a reference to the program used to
+      perform the specific output.
+    domain_of:
+    - Analysis
+    - Output
 attributes:
   id:
     name: id
@@ -178,7 +224,7 @@ attributes:
     owner: Output
     domain_of:
     - Output
-    range: File
+    range: OutputFile
     inlined: true
     inlined_as_list: true
   displays:
@@ -207,6 +253,43 @@ attributes:
     range: AnalysisCategory
     required: false
     inlined: false
+  documentRefs:
+    name: documentRefs
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    multivalued: true
+    alias: documentRefs
+    owner: Output
+    domain_of:
+    - Analysis
+    - AnalysisMethod
+    - AnalysisOutputProgrammingCode
+    - Output
+    range: DocumentRef
+    inlined: true
+    inlined_as_list: true
+  programmingCode:
+    name: programmingCode
+    description: Programming statements and/or a reference to the program used to
+      perform the specific output.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: programmingCode
+    owner: Output
+    domain_of:
+    - Analysis
+    - Output
+    range: AnalysisOutputProgrammingCode
+  name:
+    name: name
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: name
+    owner: Output
+    domain_of:
+    - NamedObject
+    range: string
+    required: true
 
 ```
 </details>

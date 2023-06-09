@@ -5,7 +5,7 @@ _The specific value expected for submissions._
 
 
 
-URI: [ars:submissionValue](https://www.cdisc.org/ars/1-0submissionValue)
+URI: [ars:submissionValue](https://www.cdisc.org/ars/1-0/submissionValue)
 
 
 

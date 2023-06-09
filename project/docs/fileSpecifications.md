@@ -1,6 +1,6 @@
 # Slot: fileSpecifications
 
-URI: [ars:fileSpecifications](https://www.cdisc.org/ars/1-0fileSpecifications)
+URI: [ars:fileSpecifications](https://www.cdisc.org/ars/1-0/fileSpecifications)
 
 
 
@@ -13,7 +13,7 @@ URI: [ars:fileSpecifications](https://www.cdisc.org/ars/1-0fileSpecifications)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-[Output](Output.md) |  |  no  |
+[Output](Output.md) | A report of results and their evaluation based on planned analyses performed ... |  no  |
 
 
 
@@ -23,7 +23,7 @@ URI: [ars:fileSpecifications](https://www.cdisc.org/ars/1-0fileSpecifications)
 
 ## Properties
 
-* Range: [File](File.md)
+* Range: [OutputFile](OutputFile.md)
 
 * Multivalued: True
 
@@ -58,7 +58,7 @@ multivalued: true
 alias: fileSpecifications
 domain_of:
 - Output
-range: File
+range: OutputFile
 inlined: true
 inlined_as_list: true
 

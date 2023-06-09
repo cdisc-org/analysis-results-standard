@@ -19,6 +19,24 @@ ReferenceDocument {
 Output {
     string id  
     integer version  
+    string name  
+}
+AnalysisOutputProgrammingCode {
+    string context  
+    string code  
+}
+CodeParameter {
+    string description  
+    string value  
+    string name  
+}
+DocumentRef {
+
+}
+PageRef {
+    PageRefType refType  
+    string label  
+    string pages  
 }
 AnalysisCategory {
     string id  
@@ -45,7 +63,7 @@ DisplaySubSection {
     integer order  
     string text  
 }
-File {
+OutputFile {
     string fileType  
     uri location  
     string style  
@@ -57,13 +75,14 @@ AnalysisMethod {
     string description  
     string name  
 }
-ProgrammingCodeTemplate {
+AnalysisProgrammingCodeTemplate {
     string context  
-    string templateCode  
+    string code  
 }
-CodeParameter {
-    string description  
+TemplateCodeParameter {
     string valueSource  
+    string description  
+    string value  
     string name  
 }
 Operation {
@@ -107,7 +126,7 @@ WhereClauseCondition {
     string dataset  
     string variable  
     ConditionComparator comparator  
-    stringList value  
+    string value  
 }
 GroupingFactor {
     string id  
@@ -146,14 +165,6 @@ AnalysisSet {
 }
 CompoundSetExpression {
     ExpressionLogicalOperator logicalOperator  
-}
-DocumentRef {
-
-}
-PageRef {
-    PageRefType refType  
-    string label  
-    string pages  
 }
 DataGroupingFactor {
     string id  
@@ -202,17 +213,25 @@ ReportingEvent ||--}o Output : "outputs"
 ReportingEvent ||--}o ReferenceDocument : "referenceDocuments"
 ReportingEvent ||--}o TerminologyExtension : "terminologyExtentions"
 TerminologyExtension ||--}| SponsorTerm : "sponsorTerms"
-Output ||--}o File : "fileSpecifications"
+Output ||--}o OutputFile : "fileSpecifications"
 Output ||--}o OrderedDisplay : "displays"
 Output ||--}o AnalysisCategory : "categoryIds"
+Output ||--}o DocumentRef : "documentRefs"
+Output ||--|o AnalysisOutputProgrammingCode : "programmingCode"
+AnalysisOutputProgrammingCode ||--}o DocumentRef : "documentRefs"
+AnalysisOutputProgrammingCode ||--}o CodeParameter : "parameters"
+DocumentRef ||--|| ReferenceDocument : "referenceDocumentId"
+DocumentRef ||--}o PageRef : "pageRefs"
 AnalysisCategory ||--}o AnalysisCategorization : "subCategorizations"
 AnalysisCategorization ||--}| AnalysisCategory : "categories"
 OrderedDisplay ||--|o OutputDisplay : "display"
 OutputDisplay ||--}o DisplaySection : "displaySections"
 DisplaySection ||--}o DisplaySubSection : "subSections"
 AnalysisMethod ||--}| Operation : "operations"
-AnalysisMethod ||--|o ProgrammingCodeTemplate : "codeTemplate"
-ProgrammingCodeTemplate ||--}o CodeParameter : "parameters"
+AnalysisMethod ||--}o DocumentRef : "documentRefs"
+AnalysisMethod ||--|o AnalysisProgrammingCodeTemplate : "codeTemplate"
+AnalysisProgrammingCodeTemplate ||--}o DocumentRef : "documentRefs"
+AnalysisProgrammingCodeTemplate ||--}o TemplateCodeParameter : "parameters"
 Operation ||--}o ReferencedOperationRelationship : "referencedOperationRelationships"
 ReferencedOperationRelationship ||--|| Operation : "operationId"
 ReferencedOperationRelationship ||--|o Analysis : "analysisId"
@@ -223,6 +242,7 @@ Analysis ||--}o OrderedGroupingFactor : "orderedGroupings"
 Analysis ||--|o DataSubset : "dataSubsetId"
 Analysis ||--|| AnalysisMethod : "methodId"
 Analysis ||--}o ReferencedAnalysisOperation : "referencedAnalysisOperations"
+Analysis ||--|o AnalysisOutputProgrammingCode : "programmingCode"
 Analysis ||--}o OperationResult : "results"
 OperationResult ||--|| Operation : "operationId"
 OperationResult ||--}o ResultGroup : "resultGroups"
@@ -244,8 +264,6 @@ OrderedGroupingFactor ||--|o GroupingFactor : "groupingId"
 AnalysisSet ||--|o WhereClauseCondition : "condition"
 AnalysisSet ||--|o CompoundSetExpression : "compoundExpression"
 CompoundSetExpression ||--}o AnalysisSet : "whereClauses"
-DocumentRef ||--|| ReferenceDocument : "referenceDocumentId"
-DocumentRef ||--}o PageRef : "pageRefs"
 DataGroupingFactor ||--}o DataGroup : "groups"
 DataGroup ||--|o WhereClauseCondition : "condition"
 DataGroup ||--|o CompoundGroupExpression : "compoundExpression"

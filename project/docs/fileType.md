@@ -1,6 +1,6 @@
 # Slot: fileType
 
-URI: [ars:fileType](https://www.cdisc.org/ars/1-0fileType)
+URI: [ars:fileType](https://www.cdisc.org/ars/1-0/fileType)
 
 
 
@@ -13,7 +13,7 @@ URI: [ars:fileType](https://www.cdisc.org/ars/1-0fileType)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-[File](File.md) |  |  no  |
+[OutputFile](OutputFile.md) | A file containing analysis output displays |  no  |
 
 
 
@@ -54,7 +54,7 @@ from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 alias: fileType
 domain_of:
-- File
+- OutputFile
 range: string
 inlined: false
 any_of:

@@ -5,7 +5,7 @@ _The analysis sets (subject populations) defined for the reporting event._
 
 
 
-URI: [ars:analysisSets](https://www.cdisc.org/ars/1-0analysisSets)
+URI: [ars:analysisSets](https://www.cdisc.org/ars/1-0/analysisSets)
 
 
 

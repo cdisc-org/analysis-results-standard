@@ -7,7 +7,7 @@ _A sponsor-defined term that is included in an extensible set of controlled term
 
 
 
-URI: [ars:TerminologyExtension](https://www.cdisc.org/ars/1-0TerminologyExtension)
+URI: [ars:TerminologyExtension](https://www.cdisc.org/ars/1-0/TerminologyExtension)
 
 
 

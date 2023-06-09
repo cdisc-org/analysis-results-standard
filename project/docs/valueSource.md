@@ -5,7 +5,7 @@ _A reference to the prespecified source of the value for the parameter._
 
 
 
-URI: [ars:valueSource](https://www.cdisc.org/ars/1-0valueSource)
+URI: [ars:valueSource](https://www.cdisc.org/ars/1-0/valueSource)
 
 
 
@@ -18,7 +18,7 @@ URI: [ars:valueSource](https://www.cdisc.org/ars/1-0valueSource)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-[CodeParameter](CodeParameter.md) |  |  no  |
+[TemplateCodeParameter](TemplateCodeParameter.md) | A replacement parameter whose value is substituted in template programming co... |  no  |
 
 
 
@@ -60,7 +60,7 @@ from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 alias: valueSource
 domain_of:
-- CodeParameter
+- TemplateCodeParameter
 range: string
 
 ```

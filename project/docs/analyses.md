@@ -5,7 +5,7 @@ _The analyses defined for the reporting event._
 
 
 
-URI: [ars:analyses](https://www.cdisc.org/ars/1-0analyses)
+URI: [ars:analyses](https://www.cdisc.org/ars/1-0/analyses)
 
 
 

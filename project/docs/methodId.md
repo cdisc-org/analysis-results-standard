@@ -1,6 +1,11 @@
 # Slot: methodId
 
-URI: [ars:methodId](https://www.cdisc.org/ars/1-0methodId)
+
+_A reference to the set of one or more statistical operations performed for the analysis._
+
+
+
+URI: [ars:methodId](https://www.cdisc.org/ars/1-0/methodId)
 
 
 
@@ -52,6 +57,8 @@ URI: [ars:methodId](https://www.cdisc.org/ars/1-0methodId)
 <details>
 ```yaml
 name: methodId
+description: A reference to the set of one or more statistical operations performed
+  for the analysis.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 alias: methodId

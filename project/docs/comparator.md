@@ -1,6 +1,6 @@
 # Slot: comparator
 
-URI: [ars:comparator](https://www.cdisc.org/ars/1-0comparator)
+URI: [ars:comparator](https://www.cdisc.org/ars/1-0/comparator)
 
 
 

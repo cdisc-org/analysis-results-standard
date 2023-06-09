@@ -7,7 +7,7 @@ _An item (analysis, output or sub-list) ordered relative to other items within a
 
 
 
-URI: [ars:OrderedListItem](https://www.cdisc.org/ars/1-0OrderedListItem)
+URI: [ars:OrderedListItem](https://www.cdisc.org/ars/1-0/OrderedListItem)
 
 
 

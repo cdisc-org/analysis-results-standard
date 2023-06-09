@@ -7,7 +7,7 @@ _An implementer-defined category of analyses/outputs, which may include one or m
 
 
 
-URI: [ars:AnalysisCategory](https://www.cdisc.org/ars/1-0AnalysisCategory)
+URI: [ars:AnalysisCategory](https://www.cdisc.org/ars/1-0/AnalysisCategory)
 
 
 

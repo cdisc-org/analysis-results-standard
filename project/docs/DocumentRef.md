@@ -2,7 +2,7 @@
 
 
 
-URI: [ars:DocumentRef](https://www.cdisc.org/ars/1-0DocumentRef)
+URI: [ars:DocumentRef](https://www.cdisc.org/ars/1-0/DocumentRef)
 
 
 
@@ -42,6 +42,10 @@ URI: [ars:DocumentRef](https://www.cdisc.org/ars/1-0DocumentRef)
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
 | [Analysis](Analysis.md) | [documentRefs](documentRefs.md) | range | [DocumentRef](DocumentRef.md) |
+| [AnalysisMethod](AnalysisMethod.md) | [documentRefs](documentRefs.md) | range | [DocumentRef](DocumentRef.md) |
+| [AnalysisOutputProgrammingCode](AnalysisOutputProgrammingCode.md) | [documentRefs](documentRefs.md) | range | [DocumentRef](DocumentRef.md) |
+| [AnalysisProgrammingCodeTemplate](AnalysisProgrammingCodeTemplate.md) | [documentRefs](documentRefs.md) | range | [DocumentRef](DocumentRef.md) |
+| [Output](Output.md) | [documentRefs](documentRefs.md) | range | [DocumentRef](DocumentRef.md) |
 
 
 

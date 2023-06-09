@@ -5,7 +5,7 @@ _The page number of the first page in a range of pages._
 
 
 
-URI: [ars:firstPage](https://www.cdisc.org/ars/1-0firstPage)
+URI: [ars:firstPage](https://www.cdisc.org/ars/1-0/firstPage)
 
 
 

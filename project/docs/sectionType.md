@@ -1,6 +1,6 @@
 # Slot: sectionType
 
-URI: [ars:sectionType](https://www.cdisc.org/ars/1-0sectionType)
+URI: [ars:sectionType](https://www.cdisc.org/ars/1-0/sectionType)
 
 
 
@@ -13,7 +13,7 @@ URI: [ars:sectionType](https://www.cdisc.org/ars/1-0sectionType)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-[DisplaySection](DisplaySection.md) |  |  no  |
+[DisplaySection](DisplaySection.md) | A part of a tabular display containing one or more pieces of informational te... |  no  |
 
 
 

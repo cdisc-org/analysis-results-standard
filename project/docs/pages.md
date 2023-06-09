@@ -1,6 +1,6 @@
 # Slot: pages
 
-URI: [ars:pages](https://www.cdisc.org/ars/1-0pages)
+URI: [ars:pages](https://www.cdisc.org/ars/1-0/pages)
 
 
 

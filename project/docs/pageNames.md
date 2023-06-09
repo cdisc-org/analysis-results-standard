@@ -5,7 +5,7 @@ _One or more named document references which each correspond with a page._
 
 
 
-URI: [ars:pageNames](https://www.cdisc.org/ars/1-0pageNames)
+URI: [ars:pageNames](https://www.cdisc.org/ars/1-0/pageNames)
 
 
 

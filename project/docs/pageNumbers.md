@@ -5,7 +5,7 @@ _One or more page numbers._
 
 
 
-URI: [ars:pageNumbers](https://www.cdisc.org/ars/1-0pageNumbers)
+URI: [ars:pageNumbers](https://www.cdisc.org/ars/1-0/pageNumbers)
 
 
 

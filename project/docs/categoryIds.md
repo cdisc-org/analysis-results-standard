@@ -1,6 +1,6 @@
 # Slot: categoryIds
 
-URI: [ars:categoryIds](https://www.cdisc.org/ars/1-0categoryIds)
+URI: [ars:categoryIds](https://www.cdisc.org/ars/1-0/categoryIds)
 
 
 
@@ -14,7 +14,7 @@ URI: [ars:categoryIds](https://www.cdisc.org/ars/1-0categoryIds)
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 [Analysis](Analysis.md) | An analysis that is designed to meet a requirement of the reporting event |  no  |
-[Output](Output.md) |  |  yes  |
+[Output](Output.md) | A report of results and their evaluation based on planned analyses performed ... |  yes  |
 
 
 

@@ -1,6 +1,6 @@
 # Slot: displays
 
-URI: [ars:displays](https://www.cdisc.org/ars/1-0displays)
+URI: [ars:displays](https://www.cdisc.org/ars/1-0/displays)
 
 
 
@@ -13,7 +13,7 @@ URI: [ars:displays](https://www.cdisc.org/ars/1-0displays)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-[Output](Output.md) |  |  no  |
+[Output](Output.md) | A report of results and their evaluation based on planned analyses performed ... |  no  |
 
 
 

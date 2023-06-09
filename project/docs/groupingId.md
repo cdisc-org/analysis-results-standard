@@ -1,6 +1,6 @@
 # Slot: groupingId
 
-URI: [ars:groupingId](https://www.cdisc.org/ars/1-0groupingId)
+URI: [ars:groupingId](https://www.cdisc.org/ars/1-0/groupingId)
 
 
 

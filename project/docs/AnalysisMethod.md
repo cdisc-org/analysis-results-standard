@@ -7,7 +7,7 @@ _A set of one or more statistical operations._
 
 
 
-URI: [ars:AnalysisMethod](https://www.cdisc.org/ars/1-0AnalysisMethod)
+URI: [ars:AnalysisMethod](https://www.cdisc.org/ars/1-0/AnalysisMethod)
 
 
 
@@ -18,9 +18,13 @@ URI: [ars:AnalysisMethod](https://www.cdisc.org/ars/1-0AnalysisMethod)
       
       AnalysisMethod : codeTemplate
         
-          AnalysisMethod --|> ProgrammingCodeTemplate : codeTemplate
+          AnalysisMethod --|> AnalysisProgrammingCodeTemplate : codeTemplate
         
       AnalysisMethod : description
+        
+      AnalysisMethod : documentRefs
+        
+          AnalysisMethod --|> DocumentRef : documentRefs
         
       AnalysisMethod : id
         
@@ -53,7 +57,8 @@ URI: [ars:AnalysisMethod](https://www.cdisc.org/ars/1-0AnalysisMethod)
 | [label](label.md) | 0..1 <br/> [String](String.md) |  | direct |
 | [description](description.md) | 0..1 <br/> [String](String.md) |  | direct |
 | [operations](operations.md) | 1..* <br/> [Operation](Operation.md) |  | direct |
-| [codeTemplate](codeTemplate.md) | 0..1 <br/> [ProgrammingCodeTemplate](ProgrammingCodeTemplate.md) | Template programming statements and/or a reference to the template program us... | direct |
+| [documentRefs](documentRefs.md) | 0..* <br/> [DocumentRef](DocumentRef.md) |  | direct |
+| [codeTemplate](codeTemplate.md) | 0..1 <br/> [AnalysisProgrammingCodeTemplate](AnalysisProgrammingCodeTemplate.md) | Template programming statements and/or a reference to the template program us... | direct |
 | [name](name.md) | 1..1 <br/> [String](String.md) |  | [NamedObject](NamedObject.md) |
 
 
@@ -118,6 +123,7 @@ slots:
 - label
 - description
 - operations
+- documentRefs
 - codeTemplate
 
 ```
@@ -201,6 +207,21 @@ attributes:
     required: true
     inlined: true
     inlined_as_list: true
+  documentRefs:
+    name: documentRefs
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    multivalued: true
+    alias: documentRefs
+    owner: AnalysisMethod
+    domain_of:
+    - Analysis
+    - AnalysisMethod
+    - AnalysisOutputProgrammingCode
+    - Output
+    range: DocumentRef
+    inlined: true
+    inlined_as_list: true
   codeTemplate:
     name: codeTemplate
     description: Template programming statements and/or a reference to the template
@@ -211,7 +232,7 @@ attributes:
     owner: AnalysisMethod
     domain_of:
     - AnalysisMethod
-    range: ProgrammingCodeTemplate
+    range: AnalysisProgrammingCodeTemplate
   name:
     name: name
     from_schema: https://www.cdisc.org/ars/1-0

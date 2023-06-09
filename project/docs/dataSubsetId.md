@@ -1,6 +1,6 @@
 # Slot: dataSubsetId
 
-URI: [ars:dataSubsetId](https://www.cdisc.org/ars/1-0dataSubsetId)
+URI: [ars:dataSubsetId](https://www.cdisc.org/ars/1-0/dataSubsetId)
 
 
 

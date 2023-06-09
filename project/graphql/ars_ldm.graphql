@@ -5,9 +5,9 @@ type Analysis
     version: Integer
     categoryIds: [AnalysisCategory]
     description: String
-    documentRefs: [DocumentRef]
     reason: String!
     purpose: String!
+    documentRefs: [DocumentRef]
     analysisSetId: AnalysisSet
     orderedGroupings: [OrderedGroupingFactor]
     dataSubsetId: DataSubset
@@ -15,6 +15,7 @@ type Analysis
     variable: String
     methodId: AnalysisMethod!
     referencedAnalysisOperations: [ReferencedAnalysisOperation]
+    programmingCode: AnalysisOutputProgrammingCode
     results: [OperationResult]
   }
 
@@ -49,7 +50,24 @@ type AnalysisMethod
     label: String
     description: String
     operations: [Operation]!
-    codeTemplate: ProgrammingCodeTemplate
+    documentRefs: [DocumentRef]
+    codeTemplate: AnalysisProgrammingCodeTemplate
+  }
+
+type AnalysisOutputProgrammingCode
+  {
+    context: String!
+    code: String
+    documentRefs: [DocumentRef]
+    parameters: [CodeParameter]
+  }
+
+type AnalysisProgrammingCodeTemplate
+  {
+    context: String!
+    code: String
+    documentRefs: [DocumentRef]
+    parameters: [TemplateCodeParameter]
   }
 
 type AnalysisSet
@@ -66,7 +84,7 @@ type CodeParameter
   {
     name: String!
     description: String
-    valueSource: String
+    value: String!
   }
 
 type CompoundGroupExpression
@@ -133,14 +151,6 @@ type DocumentRef
   {
     referenceDocumentId: ReferenceDocument!
     pageRefs: [PageRef]
-  }
-
-type File
-  {
-    name: String!
-    fileType: String
-    location: Uri
-    style: String
   }
 
 type Group
@@ -214,11 +224,14 @@ type OrderedListItem
 
 type Output
   {
+    name: String!
     id: String!
     version: Integer
-    fileSpecifications: [File]
+    fileSpecifications: [OutputFile]
     displays: [OrderedDisplay]
     categoryIds: [AnalysisCategory]
+    documentRefs: [DocumentRef]
+    programmingCode: AnalysisOutputProgrammingCode
   }
 
 type OutputDisplay
@@ -228,6 +241,14 @@ type OutputDisplay
     version: Integer
     displayTitle: String
     displaySections: [DisplaySection]
+  }
+
+type OutputFile
+  {
+    name: String!
+    fileType: String
+    location: Uri
+    style: String
   }
 
 type PageNameList
@@ -272,13 +293,6 @@ type PageRef
     refType: PageRefType!
     label: String
     pages: String
-  }
-
-type ProgrammingCodeTemplate
-  {
-    context: String!
-    parameters: [CodeParameter]
-    templateCode: String
   }
 
 type ReferencedAnalysisOperation
@@ -344,6 +358,14 @@ type SubjectGroupingFactor
     groups: [AnalysisGroup]
   }
 
+type TemplateCodeParameter
+  {
+    name: String!
+    description: String
+    valueSource: String
+    value: String
+  }
+
 type TerminologyExtension
   {
     enumeration: ExtensibleTerminology
@@ -369,6 +391,6 @@ type WhereClauseCondition
     dataset: String
     variable: String
     comparator: ConditionComparator
-    value: [String]
+    value: String
   }
 

@@ -1,6 +1,6 @@
 # Slot: sublist
 
-URI: [ars:sublist](https://www.cdisc.org/ars/1-0sublist)
+URI: [ars:sublist](https://www.cdisc.org/ars/1-0/sublist)
 
 
 

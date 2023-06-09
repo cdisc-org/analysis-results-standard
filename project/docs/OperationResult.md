@@ -7,7 +7,7 @@ _The result of an analysis method operation performed on a subdivision of subjec
 
 
 
-URI: [ars:OperationResult](https://www.cdisc.org/ars/1-0OperationResult)
+URI: [ars:OperationResult](https://www.cdisc.org/ars/1-0/OperationResult)
 
 
 

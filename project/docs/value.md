@@ -1,6 +1,6 @@
 # Slot: value
 
-URI: [ars:value](https://www.cdisc.org/ars/1-0value)
+URI: [ars:value](https://www.cdisc.org/ars/1-0/value)
 
 
 
@@ -13,7 +13,9 @@ URI: [ars:value](https://www.cdisc.org/ars/1-0value)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+[CodeParameter](CodeParameter.md) | A replacement parameter whose value is substituted in template programming co... |  yes  |
 [WhereClauseCondition](WhereClauseCondition.md) |  |  no  |
+[TemplateCodeParameter](TemplateCodeParameter.md) | A replacement parameter whose value is substituted in template programming co... |  yes  |
 
 
 
@@ -24,8 +26,6 @@ URI: [ars:value](https://www.cdisc.org/ars/1-0value)
 ## Properties
 
 * Range: [String](String.md)
-
-* Multivalued: True
 
 
 
@@ -54,9 +54,9 @@ URI: [ars:value](https://www.cdisc.org/ars/1-0value)
 name: value
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
-multivalued: true
 alias: value
 domain_of:
+- CodeParameter
 - WhereClauseCondition
 range: string
 

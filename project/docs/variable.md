@@ -1,6 +1,6 @@
 # Slot: variable
 
-URI: [ars:variable](https://www.cdisc.org/ars/1-0variable)
+URI: [ars:variable](https://www.cdisc.org/ars/1-0/variable)
 
 
 

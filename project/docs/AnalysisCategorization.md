@@ -7,7 +7,7 @@ _A set of related implementer-defined categories that can be used to categorize 
 
 
 
-URI: [ars:AnalysisCategorization](https://www.cdisc.org/ars/1-0AnalysisCategorization)
+URI: [ars:AnalysisCategorization](https://www.cdisc.org/ars/1-0/AnalysisCategorization)
 
 
 

@@ -1,6 +1,6 @@
 # Slot: operations
 
-URI: [ars:operations](https://www.cdisc.org/ars/1-0operations)
+URI: [ars:operations](https://www.cdisc.org/ars/1-0/operations)
 
 
 

@@ -1,9 +1,9 @@
 // An analysis that is designed to meet a requirement of the reporting event. Each analysis is defined as a set of specifications, including:
-// - The analysis variable that is the subject of the analysis.
-// - The analysis method (set of statistical operations) that is performed for the analysis variable.
-// - The analysis set (subject population) for which the analysis is performed.
-// - The subset of data records on which the analysis is performed (optional).
-// - One or more factors by which either subjects or data records are grouped for analysis (optional).
+// * The analysis variable that is the subject of the analysis.
+// * The analysis method (set of statistical operations) that is performed for the analysis variable.
+// * The analysis set (subject population) for which the analysis is performed.
+// * The subset of data records on which the analysis is performed (optional).
+// * One or more factors by which either subjects or data records are grouped for analysis (optional).
 // 
 message Analysis
  {
@@ -12,9 +12,9 @@ message Analysis
   integer version = 0
  repeated  analysisCategory categoryIds = 0
   string description = 0
- repeated  documentRef documentRefs = 0
   string reason = 0
   string purpose = 0
+ repeated  documentRef documentRefs = 0
   analysisSet analysisSetId = 0
  repeated  orderedGroupingFactor orderedGroupings = 0
   dataSubset dataSubsetId = 0
@@ -22,6 +22,7 @@ message Analysis
   string variable = 0
   analysisMethod methodId = 0
  repeated  referencedAnalysisOperation referencedAnalysisOperations = 0
+  analysisOutputProgrammingCode programmingCode = 0
  repeated  operationResult results = 0
  }
 // A set of related implementer-defined categories that can be used to categorize analyses or outputs.
@@ -56,7 +57,24 @@ message AnalysisMethod
   string label = 0
   string description = 0
  repeated  operation operations = 0
-  programmingCodeTemplate codeTemplate = 0
+ repeated  documentRef documentRefs = 0
+  analysisProgrammingCodeTemplate codeTemplate = 0
+ }
+// Programming statements and/or a reference to the program used to perform a specific analysis or create a specific output.
+message AnalysisOutputProgrammingCode
+ {
+  string context = 0
+  string code = 0
+ repeated  documentRef documentRefs = 0
+ repeated  codeParameter parameters = 0
+ }
+// Programming statements and/or a reference to a used as a template for creation of a program to perform method operations for a specific analysis.
+message AnalysisProgrammingCodeTemplate
+ {
+  string context = 0
+  string code = 0
+ repeated  documentRef documentRefs = 0
+ repeated  templateCodeParameter parameters = 0
  }
 // A set of subjects whose data are to be included in the main analyses. This should be defined in the statistical section of the protocol. NOTE: There are a number of potential analysis sets, including, for example, the set based upon the intent-to-treat principle. [ICH E9]
 message AnalysisSet
@@ -68,11 +86,12 @@ message AnalysisSet
   string label = 0
   compoundSetExpression compoundExpression = 0
  }
+// A replacement parameter whose value is substituted in template programming code to create statements required for a specific analysis.
 message CodeParameter
  {
   string name = 0
   string description = 0
-  string valueSource = 0
+  string value = 0
  }
 message CompoundGroupExpression
  {
@@ -118,11 +137,13 @@ message DataSubset
   string label = 0
   compoundSubsetExpression compoundExpression = 0
  }
+// A part of a tabular display containing one or more pieces of informational text.
 message DisplaySection
  {
   displaySectionType sectionType = 0
  repeated  displaySubSection subSections = 0
  }
+// An occurrence of a display section containing text that is ordered with respect to other occurrences of the same type of display section.
 message DisplaySubSection
  {
   string id = 0
@@ -133,13 +154,6 @@ message DocumentRef
  {
   referenceDocument referenceDocumentId = 0
  repeated  pageRef pageRefs = 0
- }
-message File
- {
-  string name = 0
-  string fileType = 0
-  uri location = 0
-  string style = 0
  }
 // A subdivision of the subject population or analysis dataset record set based on a defined factor.
 message Group
@@ -173,6 +187,7 @@ message OperationResult
   string rawValue = 0
   string formattedValue = 0
  }
+// A display ordered with respect to other displays in an analysis output.
 message OrderedDisplay
  {
   integer order = 0
@@ -195,14 +210,19 @@ message OrderedListItem
   analysis analysisId = 0
   output outputId = 0
  }
+// A report of results and their evaluation based on planned analyses performed during the course of a trial.
 message Output
  {
+  string name = 0
   string id = 0
   integer version = 0
- repeated  file fileSpecifications = 0
+ repeated  outputFile fileSpecifications = 0
  repeated  orderedDisplay displays = 0
  repeated  analysisCategory categoryIds = 0
+ repeated  documentRef documentRefs = 0
+  analysisOutputProgrammingCode programmingCode = 0
  }
+// A tabular representation of the results of one or more analyses.
 message OutputDisplay
  {
   string name = 0
@@ -210,6 +230,14 @@ message OutputDisplay
   integer version = 0
   string displayTitle = 0
  repeated  displaySection displaySections = 0
+ }
+// A file containing analysis output displays.
+message OutputFile
+ {
+  string name = 0
+  string fileType = 0
+  uri location = 0
+  string style = 0
  }
 // A list of one or more named document references, each of which corresponds with a page.
 message PageNameList
@@ -253,12 +281,6 @@ message PageRef
   pageRefType refType = 0
   string label = 0
   string pages = 0
- }
-message ProgrammingCodeTemplate
- {
-  string context = 0
- repeated  codeParameter parameters = 0
-  string templateCode = 0
  }
 // An indication of the analysis that contains results of a referenced operation.
 message ReferencedAnalysisOperation
@@ -322,6 +344,14 @@ message SubjectGroupingFactor
   boolean dataDriven = 0
  repeated  analysisGroup groups = 0
  }
+// A replacement parameter whose value is substituted in template programming code to create statements required for a specific analysis.
+message TemplateCodeParameter
+ {
+  string name = 0
+  string description = 0
+  string valueSource = 0
+  string value = 0
+ }
 // A sponsor-defined term that is included in an extensible set of controlled terminology.
 message TerminologyExtension
  {
@@ -345,5 +375,5 @@ message WhereClauseCondition
   string dataset = 0
   string variable = 0
   conditionComparator comparator = 0
- repeated  string value = 0
+  string value = 0
  }

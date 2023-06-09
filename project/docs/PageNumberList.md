@@ -7,7 +7,7 @@ _A list of one or more page numbers._
 
 
 
-URI: [ars:PageNumberList](https://www.cdisc.org/ars/1-0PageNumberList)
+URI: [ars:PageNumberList](https://www.cdisc.org/ars/1-0/PageNumberList)
 
 
 

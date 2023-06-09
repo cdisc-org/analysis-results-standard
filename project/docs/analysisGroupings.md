@@ -5,7 +5,7 @@ _Characteristics used to subdivide the subject population (e.g., treatment, sex,
 
 
 
-URI: [ars:analysisGroupings](https://www.cdisc.org/ars/1-0analysisGroupings)
+URI: [ars:analysisGroupings](https://www.cdisc.org/ars/1-0/analysisGroupings)
 
 
 

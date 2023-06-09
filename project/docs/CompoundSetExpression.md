@@ -2,7 +2,7 @@
 
 
 
-URI: [ars:CompoundSetExpression](https://www.cdisc.org/ars/1-0CompoundSetExpression)
+URI: [ars:CompoundSetExpression](https://www.cdisc.org/ars/1-0/CompoundSetExpression)
 
 
 

@@ -1,6 +1,6 @@
 # Slot: style
 
-URI: [ars:style](https://www.cdisc.org/ars/1-0style)
+URI: [ars:style](https://www.cdisc.org/ars/1-0/style)
 
 
 
@@ -13,7 +13,7 @@ URI: [ars:style](https://www.cdisc.org/ars/1-0style)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-[File](File.md) |  |  no  |
+[OutputFile](OutputFile.md) | A file containing analysis output displays |  no  |
 
 
 
@@ -54,7 +54,7 @@ from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 alias: style
 domain_of:
-- File
+- OutputFile
 range: string
 
 ```

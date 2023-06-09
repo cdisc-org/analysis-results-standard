@@ -1,6 +1,6 @@
 # Slot: resultPattern
 
-URI: [ars:resultPattern](https://www.cdisc.org/ars/1-0resultPattern)
+URI: [ars:resultPattern](https://www.cdisc.org/ars/1-0/resultPattern)
 
 
 

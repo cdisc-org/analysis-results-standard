@@ -7,7 +7,7 @@ _A factor used to subdivide the subject population for comparative analysis (e.g
 
 
 
-URI: [ars:SubjectGroupingFactor](https://www.cdisc.org/ars/1-0SubjectGroupingFactor)
+URI: [ars:SubjectGroupingFactor](https://www.cdisc.org/ars/1-0/SubjectGroupingFactor)
 
 
 

@@ -7,7 +7,7 @@ _A statistical operation that produces a single analysis result value as part of
 
 
 
-URI: [ars:Operation](https://www.cdisc.org/ars/1-0Operation)
+URI: [ars:Operation](https://www.cdisc.org/ars/1-0/Operation)
 
 
 

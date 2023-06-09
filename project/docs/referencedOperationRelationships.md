@@ -1,6 +1,6 @@
 # Slot: referencedOperationRelationships
 
-URI: [ars:referencedOperationRelationships](https://www.cdisc.org/ars/1-0referencedOperationRelationships)
+URI: [ars:referencedOperationRelationships](https://www.cdisc.org/ars/1-0/referencedOperationRelationships)
 
 
 

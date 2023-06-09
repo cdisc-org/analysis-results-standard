@@ -2,7 +2,7 @@
 
 
 
-URI: [ars:ReferenceDocument](https://www.cdisc.org/ars/1-0ReferenceDocument)
+URI: [ars:ReferenceDocument](https://www.cdisc.org/ars/1-0/ReferenceDocument)
 
 
 
@@ -142,7 +142,7 @@ attributes:
     alias: location
     owner: ReferenceDocument
     domain_of:
-    - File
+    - OutputFile
     - ReferenceDocument
     range: uri
   name:

@@ -2,7 +2,7 @@
 
 
 
-URI: [ars:WhereClauseCondition](https://www.cdisc.org/ars/1-0WhereClauseCondition)
+URI: [ars:WhereClauseCondition](https://www.cdisc.org/ars/1-0/WhereClauseCondition)
 
 
 
@@ -35,7 +35,7 @@ URI: [ars:WhereClauseCondition](https://www.cdisc.org/ars/1-0WhereClauseConditio
 | [dataset](dataset.md) | 0..1 <br/> [String](String.md) |  | direct |
 | [variable](variable.md) | 0..1 <br/> [String](String.md) |  | direct |
 | [comparator](comparator.md) | 0..1 <br/> [ConditionComparator](ConditionComparator.md) |  | direct |
-| [value](value.md) | 0..* <br/> [String](String.md) |  | direct |
+| [value](value.md) | 0..1 <br/> [String](String.md) |  | direct |
 
 
 
@@ -101,6 +101,38 @@ slots:
 - variable
 - comparator
 - value
+rules:
+- preconditions:
+    slot_conditions:
+      comparator:
+        name: comparator
+        any_of:
+        - equals_string: EQ
+        - equals_string: NE
+        - equals_string: LT
+        - equals_string: LE
+        - equals_string: GT
+        - equals_string: GE
+  postconditions:
+    slot_conditions:
+      value:
+        name: value
+        multivalued: false
+  description: Only a single value is allowed when comparator is EQ, NE, LT, LE, GT,
+    or GE.
+- preconditions:
+    slot_conditions:
+      comparator:
+        name: comparator
+        any_of:
+        - equals_string: IN
+        - equals_string: NOTIN
+  postconditions:
+    slot_conditions:
+      value:
+        name: value
+        multivalued: true
+  description: Multile values are allowed when comparator is IN or NOTIN.
 
 ```
 </details>
@@ -146,12 +178,44 @@ attributes:
     name: value
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
-    multivalued: true
     alias: value
     owner: WhereClauseCondition
     domain_of:
+    - CodeParameter
     - WhereClauseCondition
     range: string
+rules:
+- preconditions:
+    slot_conditions:
+      comparator:
+        name: comparator
+        any_of:
+        - equals_string: EQ
+        - equals_string: NE
+        - equals_string: LT
+        - equals_string: LE
+        - equals_string: GT
+        - equals_string: GE
+  postconditions:
+    slot_conditions:
+      value:
+        name: value
+        multivalued: false
+  description: Only a single value is allowed when comparator is EQ, NE, LT, LE, GT,
+    or GE.
+- preconditions:
+    slot_conditions:
+      comparator:
+        name: comparator
+        any_of:
+        - equals_string: IN
+        - equals_string: NOTIN
+  postconditions:
+    slot_conditions:
+      value:
+        name: value
+        multivalued: true
+  description: Multile values are allowed when comparator is IN or NOTIN.
 
 ```
 </details>

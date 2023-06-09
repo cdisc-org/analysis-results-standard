@@ -5,7 +5,7 @@ _Template programming statements and/or a reference to the template program used
 
 
 
-URI: [ars:codeTemplate](https://www.cdisc.org/ars/1-0codeTemplate)
+URI: [ars:codeTemplate](https://www.cdisc.org/ars/1-0/codeTemplate)
 
 
 
@@ -28,7 +28,7 @@ URI: [ars:codeTemplate](https://www.cdisc.org/ars/1-0codeTemplate)
 
 ## Properties
 
-* Range: [ProgrammingCodeTemplate](ProgrammingCodeTemplate.md)
+* Range: [AnalysisProgrammingCodeTemplate](AnalysisProgrammingCodeTemplate.md)
 
 
 
@@ -62,7 +62,7 @@ rank: 1000
 alias: codeTemplate
 domain_of:
 - AnalysisMethod
-range: ProgrammingCodeTemplate
+range: AnalysisProgrammingCodeTemplate
 
 ```
 </details>

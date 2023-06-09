@@ -313,9 +313,9 @@ class ArsLdmAPI:
              version: Union[str, MatchExpression] = None,
              categoryIds: Union[str, MatchExpression] = None,
              description: Union[str, MatchExpression] = None,
-             documentRefs: Union[str, MatchExpression] = None,
              reason: Union[str, MatchExpression] = None,
              purpose: Union[str, MatchExpression] = None,
+             documentRefs: Union[str, MatchExpression] = None,
              analysisSetId: Union[str, MatchExpression] = None,
              orderedGroupings: Union[str, MatchExpression] = None,
              dataSubsetId: Union[str, MatchExpression] = None,
@@ -323,6 +323,7 @@ class ArsLdmAPI:
              variable: Union[str, MatchExpression] = None,
              methodId: Union[str, MatchExpression] = None,
              referencedAnalysisOperations: Union[str, MatchExpression] = None,
+             programmingCode: Union[str, MatchExpression] = None,
              results: Union[str, MatchExpression] = None,
              name: Union[str, MatchExpression] = None,
              
@@ -334,16 +335,17 @@ class ArsLdmAPI:
         :param version: None
         :param categoryIds: None
         :param description: None
-        :param documentRefs: None
         :param reason: The rationale for performing this analysis. It indicates when the analysis was planned.
         :param purpose: The purpose of the analysis within the body of evidence (e.g., section in the clinical study report).
+        :param documentRefs: None
         :param analysisSetId: None
         :param orderedGroupings: None
         :param dataSubsetId: None
         :param dataset: None
         :param variable: None
-        :param methodId: None
+        :param methodId: A reference to the set of one or more statistical operations performed for the analysis.
         :param referencedAnalysisOperations: None
+        :param programmingCode: Programming statements and/or a reference to the program used to perform the specific analysis.
         :param results: None
         :param name: None
         
@@ -359,11 +361,11 @@ class ArsLdmAPI:
                                                  
                                                  description=description,
                                                  
-                                                 documentRefs=documentRefs,
-                                                 
                                                  reason=reason,
                                                  
                                                  purpose=purpose,
+                                                 
+                                                 documentRefs=documentRefs,
                                                  
                                                  analysisSetId=analysisSetId,
                                                  
@@ -378,6 +380,8 @@ class ArsLdmAPI:
                                                  methodId=methodId,
                                                  
                                                  referencedAnalysisOperations=referencedAnalysisOperations,
+                                                 
+                                                 programmingCode=programmingCode,
                                                  
                                                  results=results,
                                                  
@@ -565,6 +569,7 @@ class ArsLdmAPI:
              label: Union[str, MatchExpression] = None,
              description: Union[str, MatchExpression] = None,
              operations: Union[str, MatchExpression] = None,
+             documentRefs: Union[str, MatchExpression] = None,
              codeTemplate: Union[str, MatchExpression] = None,
              name: Union[str, MatchExpression] = None,
              
@@ -576,6 +581,7 @@ class ArsLdmAPI:
         :param label: None
         :param description: None
         :param operations: None
+        :param documentRefs: None
         :param codeTemplate: Template programming statements and/or a reference to the template program used to perform the specific analysis.
         :param name: None
         
@@ -590,6 +596,8 @@ class ArsLdmAPI:
                                                  description=description,
                                                  
                                                  operations=operations,
+                                                 
+                                                 documentRefs=documentRefs,
                                                  
                                                  codeTemplate=codeTemplate,
                                                  
@@ -695,41 +703,89 @@ class ArsLdmAPI:
         return results
     
     # --
-    # ProgrammingCodeTemplate methods
+    # AnalysisOutputProgrammingCode methods
     # --
-    def fetch_ProgrammingCodeTemplate(self, id_value: str) -> ProgrammingCodeTemplate:
+    def fetch_AnalysisOutputProgrammingCode(self, id_value: str) -> AnalysisOutputProgrammingCode:
         """
-        Retrieves an instance of `ProgrammingCodeTemplate` via a primary key
+        Retrieves an instance of `AnalysisOutputProgrammingCode` via a primary key
 
         :param id_value:
-        :return: ProgrammingCodeTemplate with matching ID
+        :return: AnalysisOutputProgrammingCode with matching ID
         """
-        q = FetchById(id=id_value, target_class=ProgrammingCodeTemplate.class_name)
+        q = FetchById(id=id_value, target_class=AnalysisOutputProgrammingCode.class_name)
         results = self.query_engine.fetch_by_id(q)
         return results[0] if results else None
 
-    def query_ProgrammingCodeTemplate(self,
+    def query_AnalysisOutputProgrammingCode(self,
              context: Union[str, MatchExpression] = None,
+             code: Union[str, MatchExpression] = None,
+             documentRefs: Union[str, MatchExpression] = None,
              parameters: Union[str, MatchExpression] = None,
-             templateCode: Union[str, MatchExpression] = None,
              
-             _extra: Any = None) -> List[ProgrammingCodeTemplate]:
+             _extra: Any = None) -> List[AnalysisOutputProgrammingCode]:
         """
-        Queries for instances of `ProgrammingCodeTemplate`
+        Queries for instances of `AnalysisOutputProgrammingCode`
 
         :param context: The name and version of the computer language used for the actual programming statements provided.
-        :param parameters: Replacement parameters referenced in the programming code template.
-        :param templateCode: Template programming statements and/or a reference to the template program used to perform the specific analysis.
+        :param code: Programming statements used to perform the specific analysis.
+        :param documentRefs: None
+        :param parameters: Parameter values used to generate or execute the programming code.
         
         :return: Person list matching constraints
         """
-        results = self.query_engine.simple_query(ProgrammingCodeTemplate.class_name,
+        results = self.query_engine.simple_query(AnalysisOutputProgrammingCode.class_name,
                                                  
                                                  context=context,
                                                  
+                                                 code=code,
+                                                 
+                                                 documentRefs=documentRefs,
+                                                 
                                                  parameters=parameters,
                                                  
-                                                 templateCode=templateCode,
+                                                 _extra=_extra)
+        return results
+    
+    # --
+    # AnalysisProgrammingCodeTemplate methods
+    # --
+    def fetch_AnalysisProgrammingCodeTemplate(self, id_value: str) -> AnalysisProgrammingCodeTemplate:
+        """
+        Retrieves an instance of `AnalysisProgrammingCodeTemplate` via a primary key
+
+        :param id_value:
+        :return: AnalysisProgrammingCodeTemplate with matching ID
+        """
+        q = FetchById(id=id_value, target_class=AnalysisProgrammingCodeTemplate.class_name)
+        results = self.query_engine.fetch_by_id(q)
+        return results[0] if results else None
+
+    def query_AnalysisProgrammingCodeTemplate(self,
+             context: Union[str, MatchExpression] = None,
+             code: Union[str, MatchExpression] = None,
+             documentRefs: Union[str, MatchExpression] = None,
+             parameters: Union[str, MatchExpression] = None,
+             
+             _extra: Any = None) -> List[AnalysisProgrammingCodeTemplate]:
+        """
+        Queries for instances of `AnalysisProgrammingCodeTemplate`
+
+        :param context: The name and version of the computer language used for the actual programming statements provided.
+        :param code: Programming statements used to perform the specific analysis.
+        :param documentRefs: None
+        :param parameters: Parameters whose values will be used to generate or execute the programming code for a specific analysis.
+        
+        :return: Person list matching constraints
+        """
+        results = self.query_engine.simple_query(AnalysisProgrammingCodeTemplate.class_name,
+                                                 
+                                                 context=context,
+                                                 
+                                                 code=code,
+                                                 
+                                                 documentRefs=documentRefs,
+                                                 
+                                                 parameters=parameters,
                                                  
                                                  _extra=_extra)
         return results
@@ -750,7 +806,7 @@ class ArsLdmAPI:
 
     def query_CodeParameter(self,
              description: Union[str, MatchExpression] = None,
-             valueSource: Union[str, MatchExpression] = None,
+             value: Union[str, MatchExpression] = None,
              name: Union[str, MatchExpression] = None,
              
              _extra: Any = None) -> List[CodeParameter]:
@@ -758,7 +814,7 @@ class ArsLdmAPI:
         Queries for instances of `CodeParameter`
 
         :param description: None
-        :param valueSource: A reference to the prespecified source of the value for the parameter.
+        :param value: The value of the parameter.
         :param name: None
         
         :return: Person list matching constraints
@@ -767,7 +823,51 @@ class ArsLdmAPI:
                                                  
                                                  description=description,
                                                  
+                                                 value=value,
+                                                 
+                                                 name=name,
+                                                 
+                                                 _extra=_extra)
+        return results
+    
+    # --
+    # TemplateCodeParameter methods
+    # --
+    def fetch_TemplateCodeParameter(self, id_value: str) -> TemplateCodeParameter:
+        """
+        Retrieves an instance of `TemplateCodeParameter` via a primary key
+
+        :param id_value:
+        :return: TemplateCodeParameter with matching ID
+        """
+        q = FetchById(id=id_value, target_class=TemplateCodeParameter.class_name)
+        results = self.query_engine.fetch_by_id(q)
+        return results[0] if results else None
+
+    def query_TemplateCodeParameter(self,
+             valueSource: Union[str, MatchExpression] = None,
+             description: Union[str, MatchExpression] = None,
+             value: Union[str, MatchExpression] = None,
+             name: Union[str, MatchExpression] = None,
+             
+             _extra: Any = None) -> List[TemplateCodeParameter]:
+        """
+        Queries for instances of `TemplateCodeParameter`
+
+        :param valueSource: A reference to the prespecified source of the value for the parameter.
+        :param description: None
+        :param value: The value of the parameter.
+        :param name: None
+        
+        :return: Person list matching constraints
+        """
+        results = self.query_engine.simple_query(TemplateCodeParameter.class_name,
+                                                 
                                                  valueSource=valueSource,
+                                                 
+                                                 description=description,
+                                                 
+                                                 value=value,
                                                  
                                                  name=name,
                                                  
@@ -794,6 +894,9 @@ class ArsLdmAPI:
              fileSpecifications: Union[str, MatchExpression] = None,
              displays: Union[str, MatchExpression] = None,
              categoryIds: Union[str, MatchExpression] = None,
+             documentRefs: Union[str, MatchExpression] = None,
+             programmingCode: Union[str, MatchExpression] = None,
+             name: Union[str, MatchExpression] = None,
              
              _extra: Any = None) -> List[Output]:
         """
@@ -804,6 +907,9 @@ class ArsLdmAPI:
         :param fileSpecifications: None
         :param displays: None
         :param categoryIds: None
+        :param documentRefs: None
+        :param programmingCode: Programming statements and/or a reference to the program used to perform the specific output.
+        :param name: None
         
         :return: Person list matching constraints
         """
@@ -819,32 +925,38 @@ class ArsLdmAPI:
                                                  
                                                  categoryIds=categoryIds,
                                                  
+                                                 documentRefs=documentRefs,
+                                                 
+                                                 programmingCode=programmingCode,
+                                                 
+                                                 name=name,
+                                                 
                                                  _extra=_extra)
         return results
     
     # --
-    # File methods
+    # OutputFile methods
     # --
-    def fetch_File(self, id_value: str) -> File:
+    def fetch_OutputFile(self, id_value: str) -> OutputFile:
         """
-        Retrieves an instance of `File` via a primary key
+        Retrieves an instance of `OutputFile` via a primary key
 
         :param id_value:
-        :return: File with matching ID
+        :return: OutputFile with matching ID
         """
-        q = FetchById(id=id_value, target_class=File.class_name)
+        q = FetchById(id=id_value, target_class=OutputFile.class_name)
         results = self.query_engine.fetch_by_id(q)
         return results[0] if results else None
 
-    def query_File(self,
+    def query_OutputFile(self,
              fileType: Union[str, MatchExpression] = None,
              location: Union[str, MatchExpression] = None,
              style: Union[str, MatchExpression] = None,
              name: Union[str, MatchExpression] = None,
              
-             _extra: Any = None) -> List[File]:
+             _extra: Any = None) -> List[OutputFile]:
         """
-        Queries for instances of `File`
+        Queries for instances of `OutputFile`
 
         :param fileType: None
         :param location: None
@@ -853,7 +965,7 @@ class ArsLdmAPI:
         
         :return: Person list matching constraints
         """
-        results = self.query_engine.simple_query(File.class_name,
+        results = self.query_engine.simple_query(OutputFile.class_name,
                                                  
                                                  fileType=fileType,
                                                  
@@ -1762,7 +1874,7 @@ class ArsLdmAPI:
         Queries for instances of `PageRef`
 
         :param refType: None
-        :param label: None
+        :param label: Alternative label to provide a more specific and description to a page link.
         :param pages: None
         
         :return: Person list matching constraints
@@ -1802,7 +1914,7 @@ class ArsLdmAPI:
         Queries for instances of `PageNumberListRef`
 
         :param refType: None
-        :param label: None
+        :param label: Alternative label to provide a more specific and description to a page link.
         :param pages: None
         
         :return: Person list matching constraints
@@ -1842,7 +1954,7 @@ class ArsLdmAPI:
         Queries for instances of `PageNumberRangeRef`
 
         :param refType: None
-        :param label: None
+        :param label: Alternative label to provide a more specific and description to a page link.
         :param pages: None
         
         :return: Person list matching constraints
@@ -1882,7 +1994,7 @@ class ArsLdmAPI:
         Queries for instances of `PageNameRef`
 
         :param refType: None
-        :param label: None
+        :param label: Alternative label to provide a more specific and description to a page link.
         :param pages: None
         
         :return: Person list matching constraints

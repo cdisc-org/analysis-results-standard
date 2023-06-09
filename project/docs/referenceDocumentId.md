@@ -1,6 +1,6 @@
 # Slot: referenceDocumentId
 
-URI: [ars:referenceDocumentId](https://www.cdisc.org/ars/1-0referenceDocumentId)
+URI: [ars:referenceDocumentId](https://www.cdisc.org/ars/1-0/referenceDocumentId)
 
 
 

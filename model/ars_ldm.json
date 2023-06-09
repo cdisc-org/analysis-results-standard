@@ -2,7 +2,7 @@
     "$defs": {
         "Analysis": {
             "additionalProperties": false,
-            "description": "An analysis that is designed to meet a requirement of the reporting event. Each analysis is defined as a set of specifications, including:\n- The analysis variable that is the subject of the analysis.\n- The analysis method (set of statistical operations) that is performed for the analysis variable.\n- The analysis set (subject population) for which the analysis is performed.\n- The subset of data records on which the analysis is performed (optional).\n- One or more factors by which either subjects or data records are grouped for analysis (optional).",
+            "description": "An analysis that is designed to meet a requirement of the reporting event. Each analysis is defined as a set of specifications, including:\n* The analysis variable that is the subject of the analysis.\n* The analysis method (set of statistical operations) that is performed for the analysis variable.\n* The analysis set (subject population) for which the analysis is performed.\n* The subset of data records on which the analysis is performed (optional).\n* One or more factors by which either subjects or data records are grouped for analysis (optional).",
             "properties": {
                 "analysisSetId": {
                     "type": "string"
@@ -32,6 +32,7 @@
                     "type": "string"
                 },
                 "methodId": {
+                    "description": "A reference to the set of one or more statistical operations performed for the analysis.",
                     "type": "string"
                 },
                 "name": {
@@ -42,6 +43,10 @@
                         "$ref": "#/$defs/OrderedGroupingFactor"
                     },
                     "type": "array"
+                },
+                "programmingCode": {
+                    "$ref": "#/$defs/AnalysisOutputProgrammingCode",
+                    "description": "Programming statements and/or a reference to the program used to perform the specific analysis."
                 },
                 "purpose": {
                     "anyOf": [
@@ -175,11 +180,17 @@
             "description": "A set of one or more statistical operations.",
             "properties": {
                 "codeTemplate": {
-                    "$ref": "#/$defs/ProgrammingCodeTemplate",
+                    "$ref": "#/$defs/AnalysisProgrammingCodeTemplate",
                     "description": "Template programming statements and/or a reference to the template program used to perform the specific analysis."
                 },
                 "description": {
                     "type": "string"
+                },
+                "documentRefs": {
+                    "items": {
+                        "$ref": "#/$defs/DocumentRef"
+                    },
+                    "type": "array"
                 },
                 "id": {
                     "type": "string"
@@ -203,6 +214,70 @@
                 "name"
             ],
             "title": "AnalysisMethod",
+            "type": "object"
+        },
+        "AnalysisOutputProgrammingCode": {
+            "additionalProperties": false,
+            "description": "Programming statements and/or a reference to the program used to perform a specific analysis or create a specific output.",
+            "properties": {
+                "code": {
+                    "description": "Programming statements used to perform the specific analysis.",
+                    "type": "string"
+                },
+                "context": {
+                    "description": "The name and version of the computer language used for the actual programming statements provided.",
+                    "type": "string"
+                },
+                "documentRefs": {
+                    "items": {
+                        "$ref": "#/$defs/DocumentRef"
+                    },
+                    "type": "array"
+                },
+                "parameters": {
+                    "description": "Parameter values used to generate or execute the programming code.",
+                    "items": {
+                        "$ref": "#/$defs/CodeParameter"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "context"
+            ],
+            "title": "AnalysisOutputProgrammingCode",
+            "type": "object"
+        },
+        "AnalysisProgrammingCodeTemplate": {
+            "additionalProperties": false,
+            "description": "Programming statements and/or a reference to a used as a template for creation of a program to perform method operations for a specific analysis.",
+            "properties": {
+                "code": {
+                    "description": "Programming statements used to perform the specific analysis.",
+                    "type": "string"
+                },
+                "context": {
+                    "description": "The name and version of the computer language used for the actual programming statements provided.",
+                    "type": "string"
+                },
+                "documentRefs": {
+                    "items": {
+                        "$ref": "#/$defs/DocumentRef"
+                    },
+                    "type": "array"
+                },
+                "parameters": {
+                    "description": "Parameters whose values will be used to generate or execute the programming code for a specific analysis.",
+                    "items": {
+                        "$ref": "#/$defs/TemplateCodeParameter"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "context"
+            ],
+            "title": "AnalysisProgrammingCodeTemplate",
             "type": "object"
         },
         "AnalysisPurpose": {
@@ -257,7 +332,7 @@
         },
         "CodeParameter": {
             "additionalProperties": false,
-            "description": "",
+            "description": "A replacement parameter whose value is substituted in template programming code to create statements required for a specific analysis.",
             "properties": {
                 "description": {
                     "type": "string"
@@ -265,12 +340,13 @@
                 "name": {
                     "type": "string"
                 },
-                "valueSource": {
-                    "description": "A reference to the prespecified source of the value for the parameter.",
+                "value": {
+                    "description": "The value of the parameter.",
                     "type": "string"
                 }
             },
             "required": [
+                "value",
                 "name"
             ],
             "title": "CodeParameter",
@@ -443,7 +519,7 @@
         },
         "DisplaySection": {
             "additionalProperties": false,
-            "description": "",
+            "description": "A part of a tabular display containing one or more pieces of informational text.",
             "properties": {
                 "sectionType": {
                     "$ref": "#/$defs/DisplaySectionType"
@@ -472,7 +548,7 @@
         },
         "DisplaySubSection": {
             "additionalProperties": false,
-            "description": "",
+            "description": "An occurrence of a display section containing text that is ordered with respect to other occurrences of the same type of display section.",
             "properties": {
                 "id": {
                     "type": "string"
@@ -531,36 +607,6 @@
             ],
             "title": "ExtensibleTerminology",
             "type": "string"
-        },
-        "File": {
-            "additionalProperties": false,
-            "description": "",
-            "properties": {
-                "fileType": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/OutputFileType"
-                        },
-                        {
-                            "type": "string"
-                        }
-                    ]
-                },
-                "location": {
-                    "type": "string"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "style": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "name"
-            ],
-            "title": "File",
-            "type": "object"
         },
         "Group": {
             "additionalProperties": false,
@@ -672,7 +718,7 @@
         },
         "OrderedDisplay": {
             "additionalProperties": false,
-            "description": "",
+            "description": "A display ordered with respect to other displays in an analysis output.",
             "properties": {
                 "display": {
                     "$ref": "#/$defs/OutputDisplay"
@@ -742,7 +788,7 @@
         },
         "Output": {
             "additionalProperties": false,
-            "description": "",
+            "description": "A report of results and their evaluation based on planned analyses performed during the course of a trial.",
             "properties": {
                 "categoryIds": {
                     "items": {
@@ -756,28 +802,42 @@
                     },
                     "type": "array"
                 },
+                "documentRefs": {
+                    "items": {
+                        "$ref": "#/$defs/DocumentRef"
+                    },
+                    "type": "array"
+                },
                 "fileSpecifications": {
                     "items": {
-                        "$ref": "#/$defs/File"
+                        "$ref": "#/$defs/OutputFile"
                     },
                     "type": "array"
                 },
                 "id": {
                     "type": "string"
                 },
+                "name": {
+                    "type": "string"
+                },
+                "programmingCode": {
+                    "$ref": "#/$defs/AnalysisOutputProgrammingCode",
+                    "description": "Programming statements and/or a reference to the program used to perform the specific output."
+                },
                 "version": {
                     "type": "integer"
                 }
             },
             "required": [
-                "id"
+                "id",
+                "name"
             ],
             "title": "Output",
             "type": "object"
         },
         "OutputDisplay": {
             "additionalProperties": false,
-            "description": "",
+            "description": "A tabular representation of the results of one or more analyses.",
             "properties": {
                 "displaySections": {
                     "items": {
@@ -803,6 +863,36 @@
                 "name"
             ],
             "title": "OutputDisplay",
+            "type": "object"
+        },
+        "OutputFile": {
+            "additionalProperties": false,
+            "description": "A file containing analysis output displays.",
+            "properties": {
+                "fileType": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/OutputFileType"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "location": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "style": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "title": "OutputFile",
             "type": "object"
         },
         "OutputFileType": {
@@ -838,6 +928,7 @@
             "description": "One or more pages in the reference document, referenced by named destination.",
             "properties": {
                 "label": {
+                    "description": "Alternative label to provide a more specific and description to a page link.",
                     "type": "string"
                 },
                 "pages": {
@@ -877,6 +968,7 @@
             "description": "One or more individual pages in the reference document, referenced by page number.",
             "properties": {
                 "label": {
+                    "description": "Alternative label to provide a more specific and description to a page link.",
                     "type": "string"
                 },
                 "pages": {
@@ -898,6 +990,7 @@
             "description": "A range of pages in the reference document, indicated by the first and last page number in the range.",
             "properties": {
                 "label": {
+                    "description": "Alternative label to provide a more specific and description to a page link.",
                     "type": "string"
                 },
                 "pages": {
@@ -939,6 +1032,7 @@
             "description": "",
             "properties": {
                 "label": {
+                    "description": "Alternative label to provide a more specific and description to a page link.",
                     "type": "string"
                 },
                 "pages": {
@@ -972,39 +1066,6 @@
             ],
             "title": "PageRefType",
             "type": "string"
-        },
-        "ProgrammingCodeTemplate": {
-            "additionalProperties": false,
-            "description": "",
-            "properties": {
-                "context": {
-                    "description": "The name and version of the computer language used for the actual programming statements provided.",
-                    "type": "string"
-                },
-                "parameters": {
-                    "description": "Replacement parameters referenced in the programming code template.",
-                    "items": {
-                        "$ref": "#/$defs/CodeParameter"
-                    },
-                    "type": "array"
-                },
-                "templateCode": {
-                    "anyOf": [
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "$ref": "#/$defs/DocumentRef"
-                        }
-                    ],
-                    "description": "Template programming statements and/or a reference to the template program used to perform the specific analysis."
-                }
-            },
-            "required": [
-                "context"
-            ],
-            "title": "ProgrammingCodeTemplate",
-            "type": "object"
         },
         "ReferenceDocument": {
             "additionalProperties": false,
@@ -1265,6 +1326,31 @@
             "title": "SubjectGroupingFactor",
             "type": "object"
         },
+        "TemplateCodeParameter": {
+            "additionalProperties": false,
+            "description": "A replacement parameter whose value is substituted in template programming code to create statements required for a specific analysis.",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "value": {
+                    "description": "The value of the parameter.",
+                    "type": "string"
+                },
+                "valueSource": {
+                    "description": "A reference to the prespecified source of the value for the parameter.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "title": "TemplateCodeParameter",
+            "type": "object"
+        },
         "TerminologyExtension": {
             "additionalProperties": false,
             "description": "A sponsor-defined term that is included in an extensible set of controlled terminology.",
@@ -1329,6 +1415,74 @@
         },
         "WhereClauseCondition": {
             "additionalProperties": false,
+            "allOf": [
+                {
+                    "if": {
+                        "properties": {
+                            "comparator": {
+                                "anyOf": [
+                                    {
+                                        "const": "EQ"
+                                    },
+                                    {
+                                        "const": "NE"
+                                    },
+                                    {
+                                        "const": "LT"
+                                    },
+                                    {
+                                        "const": "LE"
+                                    },
+                                    {
+                                        "const": "GT"
+                                    },
+                                    {
+                                        "const": "GE"
+                                    }
+                                ]
+                            }
+                        },
+                        "required": [
+                            "comparator"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "value": {}
+                        },
+                        "required": [
+                            "value"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "comparator": {
+                                "anyOf": [
+                                    {
+                                        "const": "IN"
+                                    },
+                                    {
+                                        "const": "NOTIN"
+                                    }
+                                ]
+                            }
+                        },
+                        "required": [
+                            "comparator"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "value": {}
+                        },
+                        "required": [
+                            "value"
+                        ]
+                    }
+                }
+            ],
             "description": "",
             "properties": {
                 "comparator": {
@@ -1338,10 +1492,7 @@
                     "type": "string"
                 },
                 "value": {
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
+                    "type": "string"
                 },
                 "variable": {
                     "type": "string"

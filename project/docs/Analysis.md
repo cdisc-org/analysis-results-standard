@@ -3,15 +3,15 @@
 
 _An analysis that is designed to meet a requirement of the reporting event. Each analysis is defined as a set of specifications, including:_
 
-_- The analysis variable that is the subject of the analysis._
+_* The analysis variable that is the subject of the analysis._
 
-_- The analysis method (set of statistical operations) that is performed for the analysis variable._
+_* The analysis method (set of statistical operations) that is performed for the analysis variable._
 
-_- The analysis set (subject population) for which the analysis is performed._
+_* The analysis set (subject population) for which the analysis is performed._
 
-_- The subset of data records on which the analysis is performed (optional)._
+_* The subset of data records on which the analysis is performed (optional)._
 
-_- One or more factors by which either subjects or data records are grouped for analysis (optional)._
+_* One or more factors by which either subjects or data records are grouped for analysis (optional)._
 
 __
 
@@ -19,7 +19,7 @@ __
 
 
 
-URI: [ars:Analysis](https://www.cdisc.org/ars/1-0Analysis)
+URI: [ars:Analysis](https://www.cdisc.org/ars/1-0/Analysis)
 
 
 
@@ -60,6 +60,10 @@ URI: [ars:Analysis](https://www.cdisc.org/ars/1-0Analysis)
         
           Analysis --|> OrderedGroupingFactor : orderedGroupings
         
+      Analysis : programmingCode
+        
+          Analysis --|> AnalysisOutputProgrammingCode : programmingCode
+        
       Analysis : purpose
         
       Analysis : reason
@@ -97,16 +101,17 @@ URI: [ars:Analysis](https://www.cdisc.org/ars/1-0Analysis)
 | [version](version.md) | 0..1 <br/> [Integer](Integer.md) |  | direct |
 | [categoryIds](categoryIds.md) | 0..* <br/> [AnalysisCategory](AnalysisCategory.md) |  | direct |
 | [description](description.md) | 0..1 <br/> [String](String.md) |  | direct |
-| [documentRefs](documentRefs.md) | 0..* <br/> [DocumentRef](DocumentRef.md) |  | direct |
 | [reason](reason.md) | 1..1 <br/> [String](String.md) | The rationale for performing this analysis | direct |
 | [purpose](purpose.md) | 1..1 <br/> [String](String.md) | The purpose of the analysis within the body of evidence (e | direct |
+| [documentRefs](documentRefs.md) | 0..* <br/> [DocumentRef](DocumentRef.md) |  | direct |
 | [analysisSetId](analysisSetId.md) | 0..1 <br/> [AnalysisSet](AnalysisSet.md) |  | direct |
 | [orderedGroupings](orderedGroupings.md) | 0..* <br/> [OrderedGroupingFactor](OrderedGroupingFactor.md) |  | direct |
 | [dataSubsetId](dataSubsetId.md) | 0..1 <br/> [DataSubset](DataSubset.md) |  | direct |
 | [dataset](dataset.md) | 0..1 <br/> [String](String.md) |  | direct |
 | [variable](variable.md) | 0..1 <br/> [String](String.md) |  | direct |
-| [methodId](methodId.md) | 1..1 <br/> [AnalysisMethod](AnalysisMethod.md) |  | direct |
+| [methodId](methodId.md) | 1..1 <br/> [AnalysisMethod](AnalysisMethod.md) | A reference to the set of one or more statistical operations performed for th... | direct |
 | [referencedAnalysisOperations](referencedAnalysisOperations.md) | 0..* <br/> [ReferencedAnalysisOperation](ReferencedAnalysisOperation.md) |  | direct |
+| [programmingCode](programmingCode.md) | 0..1 <br/> [AnalysisOutputProgrammingCode](AnalysisOutputProgrammingCode.md) | Programming statements and/or a reference to the program used to perform the ... | direct |
 | [results](results.md) | 0..* <br/> [OperationResult](OperationResult.md) |  | direct |
 | [name](name.md) | 1..1 <br/> [String](String.md) |  | [NamedObject](NamedObject.md) |
 
@@ -168,16 +173,16 @@ name: Analysis
 description: 'An analysis that is designed to meet a requirement of the reporting
   event. Each analysis is defined as a set of specifications, including:
 
-  - The analysis variable that is the subject of the analysis.
+  * The analysis variable that is the subject of the analysis.
 
-  - The analysis method (set of statistical operations) that is performed for the
+  * The analysis method (set of statistical operations) that is performed for the
   analysis variable.
 
-  - The analysis set (subject population) for which the analysis is performed.
+  * The analysis set (subject population) for which the analysis is performed.
 
-  - The subset of data records on which the analysis is performed (optional).
+  * The subset of data records on which the analysis is performed (optional).
 
-  - One or more factors by which either subjects or data records are grouped for analysis
+  * One or more factors by which either subjects or data records are grouped for analysis
   (optional).
 
   '
@@ -189,9 +194,9 @@ slots:
 - version
 - categoryIds
 - description
-- documentRefs
 - reason
 - purpose
+- documentRefs
 - analysisSetId
 - orderedGroupings
 - dataSubsetId
@@ -199,7 +204,16 @@ slots:
 - variable
 - methodId
 - referencedAnalysisOperations
+- programmingCode
 - results
+slot_usage:
+  programmingCode:
+    name: programmingCode
+    description: Programming statements and/or a reference to the program used to
+      perform the specific analysis.
+    domain_of:
+    - Analysis
+    - Output
 
 ```
 </details>
@@ -212,22 +226,30 @@ name: Analysis
 description: 'An analysis that is designed to meet a requirement of the reporting
   event. Each analysis is defined as a set of specifications, including:
 
-  - The analysis variable that is the subject of the analysis.
+  * The analysis variable that is the subject of the analysis.
 
-  - The analysis method (set of statistical operations) that is performed for the
+  * The analysis method (set of statistical operations) that is performed for the
   analysis variable.
 
-  - The analysis set (subject population) for which the analysis is performed.
+  * The analysis set (subject population) for which the analysis is performed.
 
-  - The subset of data records on which the analysis is performed (optional).
+  * The subset of data records on which the analysis is performed (optional).
 
-  - One or more factors by which either subjects or data records are grouped for analysis
+  * One or more factors by which either subjects or data records are grouped for analysis
   (optional).
 
   '
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 is_a: NamedObject
+slot_usage:
+  programmingCode:
+    name: programmingCode
+    description: Programming statements and/or a reference to the program used to
+      perform the specific analysis.
+    domain_of:
+    - Analysis
+    - Output
 attributes:
   id:
     name: id
@@ -291,17 +313,6 @@ attributes:
     - CodeParameter
     - SponsorTerm
     range: string
-  documentRefs:
-    name: documentRefs
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    multivalued: true
-    alias: documentRefs
-    owner: Analysis
-    domain_of:
-    - Analysis
-    range: DocumentRef
-    inlined: true
   reason:
     name: reason
     description: The rationale for performing this analysis. It indicates when the
@@ -334,6 +345,21 @@ attributes:
     any_of:
     - range: AnalysisPurpose
     - range: SponsorTerm
+  documentRefs:
+    name: documentRefs
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    multivalued: true
+    alias: documentRefs
+    owner: Analysis
+    domain_of:
+    - Analysis
+    - AnalysisMethod
+    - AnalysisOutputProgrammingCode
+    - Output
+    range: DocumentRef
+    inlined: true
+    inlined_as_list: true
   analysisSetId:
     name: analysisSetId
     from_schema: https://www.cdisc.org/ars/1-0
@@ -390,6 +416,8 @@ attributes:
     range: string
   methodId:
     name: methodId
+    description: A reference to the set of one or more statistical operations performed
+      for the analysis.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: methodId
@@ -411,6 +439,18 @@ attributes:
     range: ReferencedAnalysisOperation
     inlined: true
     inlined_as_list: true
+  programmingCode:
+    name: programmingCode
+    description: Programming statements and/or a reference to the program used to
+      perform the specific analysis.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: programmingCode
+    owner: Analysis
+    domain_of:
+    - Analysis
+    - Output
+    range: AnalysisOutputProgrammingCode
   results:
     name: results
     from_schema: https://www.cdisc.org/ars/1-0

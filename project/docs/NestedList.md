@@ -7,7 +7,7 @@ _A list of items (analyses or outputs) that may be organized within sub-lists._
 
 
 
-URI: [ars:NestedList](https://www.cdisc.org/ars/1-0NestedList)
+URI: [ars:NestedList](https://www.cdisc.org/ars/1-0/NestedList)
 
 
 

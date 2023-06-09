@@ -1,6 +1,7 @@
 # Analysis Results Standard (ARS)
 
-None
+DRAFT Logical model to support both the prospective specification of analyses and the fully contextualized representation of the results of the analyses.
+
 
 URI: https://www.cdisc.org/ars/1-0
 Name: ars_ldm
@@ -16,29 +17,31 @@ Name: ars_ldm
 | [AnalysisCategory](AnalysisCategory.md) | An implementer-defined category of analyses/outputs, which may include one or... |
 | [AnalysisGroup](AnalysisGroup.md) | A subdivision of the subject population based on a defined factor (e |
 | [AnalysisMethod](AnalysisMethod.md) | A set of one or more statistical operations |
+| [AnalysisOutputProgrammingCode](AnalysisOutputProgrammingCode.md) | Programming statements and/or a reference to the program used to perform a sp... |
+| [AnalysisProgrammingCodeTemplate](AnalysisProgrammingCodeTemplate.md) | Programming statements and/or a reference to a used as a template for creatio... |
 | [AnalysisSet](AnalysisSet.md) | A set of subjects whose data are to be included in the main analyses |
-| [CodeParameter](CodeParameter.md) |  |
+| [CodeParameter](CodeParameter.md) | A replacement parameter whose value is substituted in template programming co... |
 | [CompoundGroupExpression](CompoundGroupExpression.md) |  |
 | [CompoundSetExpression](CompoundSetExpression.md) |  |
 | [CompoundSubsetExpression](CompoundSubsetExpression.md) |  |
 | [DataGroup](DataGroup.md) | A subdivision of the analysis dataset records based on a defined factor |
 | [DataGroupingFactor](DataGroupingFactor.md) | A factor used to subdivide data records in an analysis dataset for analysis |
 | [DataSubset](DataSubset.md) | A subset of data identified by selection criteria for inclusion in the analys... |
-| [DisplaySection](DisplaySection.md) |  |
-| [DisplaySubSection](DisplaySubSection.md) |  |
+| [DisplaySection](DisplaySection.md) | A part of a tabular display containing one or more pieces of informational te... |
+| [DisplaySubSection](DisplaySubSection.md) | An occurrence of a display section containing text that is ordered with respe... |
 | [DocumentRef](DocumentRef.md) |  |
-| [File](File.md) |  |
 | [Group](Group.md) | A subdivision of the subject population or analysis dataset record set based ... |
 | [GroupingFactor](GroupingFactor.md) | A factor used to subdivide either the subject population or data records in a... |
 | [NamedObject](NamedObject.md) |  |
 | [NestedList](NestedList.md) | A list of items (analyses or outputs) that may be organized within sub-lists |
 | [Operation](Operation.md) | A statistical operation that produces a single analysis result value as part ... |
 | [OperationResult](OperationResult.md) | The result of an analysis method operation performed on a subdivision of subj... |
-| [OrderedDisplay](OrderedDisplay.md) |  |
+| [OrderedDisplay](OrderedDisplay.md) | A display ordered with respect to other displays in an analysis output |
 | [OrderedGroupingFactor](OrderedGroupingFactor.md) | A reference to a defined factor by which subjects or data records are grouped... |
 | [OrderedListItem](OrderedListItem.md) | An item (analysis, output or sub-list) ordered relative to other items within... |
-| [Output](Output.md) |  |
-| [OutputDisplay](OutputDisplay.md) |  |
+| [Output](Output.md) | A report of results and their evaluation based on planned analyses performed ... |
+| [OutputDisplay](OutputDisplay.md) | A tabular representation of the results of one or more analyses |
+| [OutputFile](OutputFile.md) | A file containing analysis output displays |
 | [PageNameList](PageNameList.md) | A list of one or more named document references, each of which corresponds wi... |
 | [PageNameRef](PageNameRef.md) | One or more pages in the reference document, referenced by named destination |
 | [PageNumberList](PageNumberList.md) | A list of one or more page numbers |
@@ -46,7 +49,6 @@ Name: ars_ldm
 | [PageNumberRangeRef](PageNumberRangeRef.md) | A range of pages in the reference document, indicated by the first and last p... |
 | [PageRange](PageRange.md) | A set of pages in a document that includes the specified first and last page,... |
 | [PageRef](PageRef.md) |  |
-| [ProgrammingCodeTemplate](ProgrammingCodeTemplate.md) |  |
 | [ReferencedAnalysisOperation](ReferencedAnalysisOperation.md) | An indication of the analysis that contains results of a referenced operation |
 | [ReferenceDocument](ReferenceDocument.md) |  |
 | [ReferencedOperationRelationship](ReferencedOperationRelationship.md) | A reference to an statistical operation whose results is used in the calculat... |
@@ -54,6 +56,7 @@ Name: ars_ldm
 | [ResultGroup](ResultGroup.md) | For the specified grouping factor, an indication of the specific group of sub... |
 | [SponsorTerm](SponsorTerm.md) | A sponsor-defined term that is included in an extensible set of controlled te... |
 | [SubjectGroupingFactor](SubjectGroupingFactor.md) | A factor used to subdivide the subject population for comparative analysis (e |
+| [TemplateCodeParameter](TemplateCodeParameter.md) | A replacement parameter whose value is substituted in template programming co... |
 | [TerminologyExtension](TerminologyExtension.md) | A sponsor-defined term that is included in an extensible set of controlled te... |
 | [WhereClause](WhereClause.md) |  |
 | [WhereClauseCompoundExpression](WhereClauseCompoundExpression.md) |  |
@@ -72,6 +75,7 @@ Name: ars_ldm
 | [analysisSets](analysisSets.md) | The analysis sets (subject populations) defined for the reporting event |
 | [categories](categories.md) |  |
 | [categoryIds](categoryIds.md) |  |
+| [code](code.md) | Programming statements used to perform the specific analysis |
 | [codeTemplate](codeTemplate.md) | Template programming statements and/or a reference to the template program us... |
 | [comparator](comparator.md) |  |
 | [compoundExpression](compoundExpression.md) |  |
@@ -108,7 +112,7 @@ Name: ars_ldm
 | [listOfPlannedOutputs](listOfPlannedOutputs.md) | An optional structured list of the outputs defined for the reporting event |
 | [location](location.md) |  |
 | [logicalOperator](logicalOperator.md) |  |
-| [methodId](methodId.md) |  |
+| [methodId](methodId.md) | A reference to the set of one or more statistical operations performed for th... |
 | [methods](methods.md) | The defined methods used to analyze any analysis variable |
 | [name](name.md) |  |
 | [operationId](operationId.md) |  |
@@ -121,7 +125,8 @@ Name: ars_ldm
 | [pageNumbers](pageNumbers.md) | One or more page numbers |
 | [pageRefs](pageRefs.md) |  |
 | [pages](pages.md) |  |
-| [parameters](parameters.md) | Replacement parameters referenced in the programming code template |
+| [parameters](parameters.md) | Replacement parameters that are referenced in the programming code or program... |
+| [programmingCode](programmingCode.md) | Programming statements and/or a reference to the program used to perform the ... |
 | [purpose](purpose.md) | The purpose of the analysis within the body of evidence (e |
 | [rawValue](rawValue.md) |  |
 | [reason](reason.md) | The rationale for performing this analysis |
@@ -143,7 +148,6 @@ Name: ars_ldm
 | [sublist](sublist.md) |  |
 | [submissionValue](submissionValue.md) | The specific value expected for submissions |
 | [subSections](subSections.md) |  |
-| [templateCode](templateCode.md) | Template programming statements and/or a reference to the template program us... |
 | [terminologyExtentions](terminologyExtentions.md) | Any sponsor-defined extensions to extensible terminology |
 | [text](text.md) |  |
 | [value](value.md) |  |

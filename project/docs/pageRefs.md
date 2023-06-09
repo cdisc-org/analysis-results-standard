@@ -1,6 +1,6 @@
 # Slot: pageRefs
 
-URI: [ars:pageRefs](https://www.cdisc.org/ars/1-0pageRefs)
+URI: [ars:pageRefs](https://www.cdisc.org/ars/1-0/pageRefs)
 
 
 

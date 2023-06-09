@@ -1,6 +1,6 @@
 # Slot: listItems
 
-URI: [ars:listItems](https://www.cdisc.org/ars/1-0listItems)
+URI: [ars:listItems](https://www.cdisc.org/ars/1-0/listItems)
 
 
 

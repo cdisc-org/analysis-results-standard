@@ -7,7 +7,7 @@ _A list of one or more named document references, each of which corresponds with
 
 
 
-URI: [ars:PageNameList](https://www.cdisc.org/ars/1-0PageNameList)
+URI: [ars:PageNameList](https://www.cdisc.org/ars/1-0/PageNameList)
 
 
 

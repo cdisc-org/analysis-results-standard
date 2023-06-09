@@ -1,6 +1,6 @@
 # Slot: referenceDocuments
 
-URI: [ars:referenceDocuments](https://www.cdisc.org/ars/1-0referenceDocuments)
+URI: [ars:referenceDocuments](https://www.cdisc.org/ars/1-0/referenceDocuments)
 
 
 

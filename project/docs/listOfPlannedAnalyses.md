@@ -5,7 +5,7 @@ _A structured list of the analyses defined for the reporting event._
 
 
 
-URI: [ars:listOfPlannedAnalyses](https://www.cdisc.org/ars/1-0listOfPlannedAnalyses)
+URI: [ars:listOfPlannedAnalyses](https://www.cdisc.org/ars/1-0/listOfPlannedAnalyses)
 
 
 

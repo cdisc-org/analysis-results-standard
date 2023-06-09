@@ -1,8 +1,5 @@
 {
    "NCIT": "http://purl.obolibrary.org/obo/NCIT_",
-   "NCIThesaurus": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#",
-   "ars": "https://www.cdisc.org/ars/1-0",
-   "bioregistry": "https://bioregistry.io/registry/",
-   "defCT": "https://api.library.cdisc.org/api/mdr/root/ct/define/codelists/",
+   "ars": "https://www.cdisc.org/ars/1-0/",
    "linkml": "https://w3id.org/linkml/"
 }

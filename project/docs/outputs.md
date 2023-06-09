@@ -1,6 +1,6 @@
 # Slot: outputs
 
-URI: [ars:outputs](https://www.cdisc.org/ars/1-0outputs)
+URI: [ars:outputs](https://www.cdisc.org/ars/1-0/outputs)
 
 
 

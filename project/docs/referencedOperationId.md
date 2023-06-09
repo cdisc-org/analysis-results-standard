@@ -1,6 +1,6 @@
 # Slot: referencedOperationId
 
-URI: [ars:referencedOperationId](https://www.cdisc.org/ars/1-0referencedOperationId)
+URI: [ars:referencedOperationId](https://www.cdisc.org/ars/1-0/referencedOperationId)
 
 
 

@@ -1,6 +1,6 @@
 # Slot: resultGroups
 
-URI: [ars:resultGroups](https://www.cdisc.org/ars/1-0resultGroups)
+URI: [ars:resultGroups](https://www.cdisc.org/ars/1-0/resultGroups)
 
 
 

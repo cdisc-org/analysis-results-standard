@@ -1,6 +1,6 @@
 # Slot: analysisCategorizations
 
-URI: [ars:analysisCategorizations](https://www.cdisc.org/ars/1-0analysisCategorizations)
+URI: [ars:analysisCategorizations](https://www.cdisc.org/ars/1-0/analysisCategorizations)
 
 
 

@@ -5,7 +5,7 @@ _For groupings based on a single variable, a reference to the dataset variable u
 
 
 
-URI: [ars:groupingVariable](https://www.cdisc.org/ars/1-0groupingVariable)
+URI: [ars:groupingVariable](https://www.cdisc.org/ars/1-0/groupingVariable)
 
 
 

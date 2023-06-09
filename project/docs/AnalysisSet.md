@@ -7,7 +7,7 @@ _A set of subjects whose data are to be included in the main analyses. This shou
 
 
 
-URI: [ars:AnalysisSet](https://www.cdisc.org/ars/1-0AnalysisSet)
+URI: [ars:AnalysisSet](https://www.cdisc.org/ars/1-0/AnalysisSet)
 
 
 

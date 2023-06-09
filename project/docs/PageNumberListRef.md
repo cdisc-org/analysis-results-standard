@@ -7,7 +7,7 @@ _One or more individual pages in the reference document, referenced by page numb
 
 
 
-URI: [ars:PageNumberListRef](https://www.cdisc.org/ars/1-0PageNumberListRef)
+URI: [ars:PageNumberListRef](https://www.cdisc.org/ars/1-0/PageNumberListRef)
 
 
 
@@ -44,7 +44,7 @@ URI: [ars:PageNumberListRef](https://www.cdisc.org/ars/1-0PageNumberListRef)
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [refType](refType.md) | 1..1 <br/> [PageRefType](PageRefType.md) |  | [PageRef](PageRef.md) |
-| [label](label.md) | 0..1 <br/> [String](String.md) |  | [PageRef](PageRef.md) |
+| [label](label.md) | 0..1 <br/> [String](String.md) | Alternative label to provide a more specific and description to a page link | [PageRef](PageRef.md) |
 | [pages](pages.md) | 0..1 <br/> [PageNumberList](PageNumberList.md) |  | [PageRef](PageRef.md) |
 
 
@@ -147,6 +147,8 @@ attributes:
     equals_string: PhysicalRef
   label:
     name: label
+    description: Alternative label to provide a more specific and description to a
+      page link.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: label

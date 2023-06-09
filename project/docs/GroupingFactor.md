@@ -9,7 +9,7 @@ _A factor used to subdivide either the subject population or data records in an 
 * __NOTE__: this is an abstract class and should not be instantiated directly
 
 
-URI: [ars:GroupingFactor](https://www.cdisc.org/ars/1-0GroupingFactor)
+URI: [ars:GroupingFactor](https://www.cdisc.org/ars/1-0/GroupingFactor)
 
 
 

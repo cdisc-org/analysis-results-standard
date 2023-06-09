@@ -1,6 +1,6 @@
 # Slot: label
 
-URI: [ars:label](https://www.cdisc.org/ars/1-0label)
+URI: [ars:label](https://www.cdisc.org/ars/1-0/label)
 
 
 
@@ -21,7 +21,7 @@ URI: [ars:label](https://www.cdisc.org/ars/1-0label)
 [GroupingFactor](GroupingFactor.md) | A factor used to subdivide either the subject population or data records in a... |  no  |
 [Group](Group.md) | A subdivision of the subject population or analysis dataset record set based ... |  no  |
 [DataSubset](DataSubset.md) | A subset of data identified by selection criteria for inclusion in the analys... |  no  |
-[PageRef](PageRef.md) |  |  no  |
+[PageRef](PageRef.md) |  |  yes  |
 [SubjectGroupingFactor](SubjectGroupingFactor.md) | A factor used to subdivide the subject population for comparative analysis (e |  no  |
 [DataGroupingFactor](DataGroupingFactor.md) | A factor used to subdivide data records in an analysis dataset for analysis |  no  |
 [AnalysisGroup](AnalysisGroup.md) | A subdivision of the subject population based on a defined factor (e |  no  |

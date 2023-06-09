@@ -7,7 +7,7 @@ _A reference to an statistical operation whose results is used in the calculatio
 
 
 
-URI: [ars:ReferencedOperationRelationship](https://www.cdisc.org/ars/1-0ReferencedOperationRelationship)
+URI: [ars:ReferencedOperationRelationship](https://www.cdisc.org/ars/1-0/ReferencedOperationRelationship)
 
 
 

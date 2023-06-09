@@ -1,6 +1,6 @@
 # Slot: analysisSetId
 
-URI: [ars:analysisSetId](https://www.cdisc.org/ars/1-0analysisSetId)
+URI: [ars:analysisSetId](https://www.cdisc.org/ars/1-0/analysisSetId)
 
 
 

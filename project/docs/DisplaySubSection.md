@@ -1,8 +1,13 @@
 # Class: DisplaySubSection
 
 
+_An occurrence of a display section containing text that is ordered with respect to other occurrences of the same type of display section._
 
-URI: [ars:DisplaySubSection](https://www.cdisc.org/ars/1-0DisplaySubSection)
+
+
+
+
+URI: [ars:DisplaySubSection](https://www.cdisc.org/ars/1-0/DisplaySubSection)
 
 
 
@@ -84,6 +89,8 @@ URI: [ars:DisplaySubSection](https://www.cdisc.org/ars/1-0DisplaySubSection)
 <details>
 ```yaml
 name: DisplaySubSection
+description: An occurrence of a display section containing text that is ordered with
+  respect to other occurrences of the same type of display section.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 slots:
@@ -109,6 +116,8 @@ slot_usage:
 <details>
 ```yaml
 name: DisplaySubSection
+description: An occurrence of a display section containing text that is ordered with
+  respect to other occurrences of the same type of display section.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 slot_usage:

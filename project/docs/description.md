@@ -1,6 +1,6 @@
 # Slot: description
 
-URI: [ars:description](https://www.cdisc.org/ars/1-0description)
+URI: [ars:description](https://www.cdisc.org/ars/1-0/description)
 
 
 
@@ -16,8 +16,9 @@ URI: [ars:description](https://www.cdisc.org/ars/1-0description)
 [Analysis](Analysis.md) | An analysis that is designed to meet a requirement of the reporting event |  no  |
 [AnalysisMethod](AnalysisMethod.md) | A set of one or more statistical operations |  no  |
 [ReferencedOperationRelationship](ReferencedOperationRelationship.md) | A reference to an statistical operation whose results is used in the calculat... |  no  |
-[CodeParameter](CodeParameter.md) |  |  no  |
+[CodeParameter](CodeParameter.md) | A replacement parameter whose value is substituted in template programming co... |  no  |
 [SponsorTerm](SponsorTerm.md) | A sponsor-defined term that is included in an extensible set of controlled te... |  no  |
+[TemplateCodeParameter](TemplateCodeParameter.md) | A replacement parameter whose value is substituted in template programming co... |  no  |
 
 
 
