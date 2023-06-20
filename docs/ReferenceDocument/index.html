@@ -145,7 +145,7 @@
 <td><a href="./">ReferenceDocument</a></td>
 </tr>
 <tr>
-<td><a href="../DocumentRef/">DocumentRef</a></td>
+<td><a href="../DocumentReference/">DocumentReference</a></td>
 <td><a href="../referenceDocumentId/">referenceDocumentId</a></td>
 <td>range</td>
 <td><a href="./">ReferenceDocument</a></td>
@@ -205,6 +205,7 @@ attributes:
     alias: id
     owner: ReferenceDocument
     domain_of:
+    - ReportingEvent
     - AnalysisCategorization
     - AnalysisCategory
     - Analysis
@@ -219,6 +220,7 @@ attributes:
     - Group
     - DataSubset
     - ReferenceDocument
+    - TerminologyExtension
     - SponsorTerm
     range: string
     required: true

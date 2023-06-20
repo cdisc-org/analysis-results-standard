@@ -11,7 +11,7 @@ URI: [ars:WhereClauseCondition](https://www.cdisc.org/ars/1-0/WhereClauseConditi
     class WhereClauseCondition
       WhereClauseCondition : comparator
         
-          WhereClauseCondition --|> ConditionComparator : comparator
+          WhereClauseCondition --|> ConditionComparatorEnum : comparator
         
       WhereClauseCondition : dataset
         
@@ -34,8 +34,8 @@ URI: [ars:WhereClauseCondition](https://www.cdisc.org/ars/1-0/WhereClauseConditi
 | ---  | --- | --- | --- |
 | [dataset](dataset.md) | 0..1 <br/> [String](String.md) |  | direct |
 | [variable](variable.md) | 0..1 <br/> [String](String.md) |  | direct |
-| [comparator](comparator.md) | 0..1 <br/> [ConditionComparator](ConditionComparator.md) |  | direct |
-| [value](value.md) | 0..1 <br/> [String](String.md) |  | direct |
+| [comparator](comparator.md) | 0..1 <br/> [ConditionComparatorEnum](ConditionComparatorEnum.md) |  | direct |
+| [value](value.md) | 0..* <br/> [String](String.md) |  | direct |
 
 
 
@@ -117,7 +117,7 @@ rules:
     slot_conditions:
       value:
         name: value
-        multivalued: false
+        maximum_cardinality: 1
   description: Only a single value is allowed when comparator is EQ, NE, LT, LE, GT,
     or GE.
 - preconditions:
@@ -131,8 +131,8 @@ rules:
     slot_conditions:
       value:
         name: value
-        multivalued: true
-  description: Multile values are allowed when comparator is IN or NOTIN.
+        minimum_cardinality: 2
+  description: At least 2 values are required when comparator is IN or NOTIN.
 
 ```
 </details>
@@ -173,15 +173,17 @@ attributes:
     owner: WhereClauseCondition
     domain_of:
     - WhereClauseCondition
-    range: ConditionComparator
+    range: ConditionComparatorEnum
   value:
     name: value
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
+    multivalued: true
     alias: value
     owner: WhereClauseCondition
     domain_of:
-    - CodeParameter
+    - AnalysisOutputCodeParameter
+    - TemplateCodeParameter
     - WhereClauseCondition
     range: string
 rules:
@@ -200,7 +202,7 @@ rules:
     slot_conditions:
       value:
         name: value
-        multivalued: false
+        maximum_cardinality: 1
   description: Only a single value is allowed when comparator is EQ, NE, LT, LE, GT,
     or GE.
 - preconditions:
@@ -214,8 +216,8 @@ rules:
     slot_conditions:
       value:
         name: value
-        multivalued: true
-  description: Multile values are allowed when comparator is IN or NOTIN.
+        minimum_cardinality: 2
+  description: At least 2 values are required when comparator is IN or NOTIN.
 
 ```
 </details>

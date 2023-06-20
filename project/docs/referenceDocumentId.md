@@ -13,7 +13,7 @@ URI: [ars:referenceDocumentId](https://www.cdisc.org/ars/1-0/referenceDocumentId
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-[DocumentRef](DocumentRef.md) |  |  no  |
+[DocumentReference](DocumentReference.md) |  |  no  |
 
 
 
@@ -56,7 +56,7 @@ from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 alias: referenceDocumentId
 domain_of:
-- DocumentRef
+- DocumentReference
 range: ReferenceDocument
 required: true
 inlined: false

@@ -85,7 +85,7 @@
 
       WhereClauseCompoundExpression : logicalOperator
 
-          WhereClauseCompoundExpression --|&gt; ExpressionLogicalOperator : logicalOperator
+          WhereClauseCompoundExpression --|&gt; ExpressionLogicalOperatorEnum : logicalOperator
 
       WhereClauseCompoundExpression : whereClauses
 
@@ -115,7 +115,7 @@
 <tbody>
 <tr>
 <td><a href="../logicalOperator/">logicalOperator</a></td>
-<td>1..1 <br/> <a href="../ExpressionLogicalOperator/">ExpressionLogicalOperator</a></td>
+<td>1..1 <br/> <a href="../ExpressionLogicalOperatorEnum/">ExpressionLogicalOperatorEnum</a></td>
 <td></td>
 <td>direct</td>
 </tr>
@@ -197,7 +197,7 @@ attributes:
     owner: WhereClauseCompoundExpression
     domain_of:
     - WhereClauseCompoundExpression
-    range: ExpressionLogicalOperator
+    range: ExpressionLogicalOperatorEnum
     required: true
   whereClauses:
     name: whereClauses

@@ -92,7 +92,7 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../DocumentRef/">DocumentRef</a></td>
+<td><a href="../DocumentReference/">DocumentReference</a></td>
 <td></td>
 <td>no</td>
 </tr>
@@ -121,8 +121,14 @@ rank: 1000
 multivalued: true
 alias: pageRefs
 domain_of:
-- DocumentRef
+- DocumentReference
 range: PageRef
+inlined: true
+inlined_as_list: true
+any_of:
+- range: PageNumberListRef
+- range: PageNumberRangeRef
+- range: PageNameRef
 
 </code></pre>
 

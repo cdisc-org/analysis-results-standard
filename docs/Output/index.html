@@ -92,7 +92,7 @@
 
       Output : documentRefs
 
-          Output --|&gt; DocumentRef : documentRefs
+          Output --|&gt; DocumentReference : documentRefs
 
       Output : fileSpecifications
 
@@ -160,7 +160,7 @@
 </tr>
 <tr>
 <td><a href="../documentRefs/">documentRefs</a></td>
-<td>0..* <br/> <a href="../DocumentRef/">DocumentRef</a></td>
+<td>0..* <br/> <a href="../DocumentReference/">DocumentReference</a></td>
 <td></td>
 <td>direct</td>
 </tr>
@@ -295,6 +295,7 @@ attributes:
     alias: id
     owner: Output
     domain_of:
+    - ReportingEvent
     - AnalysisCategorization
     - AnalysisCategory
     - Analysis
@@ -309,6 +310,7 @@ attributes:
     - Group
     - DataSubset
     - ReferenceDocument
+    - TerminologyExtension
     - SponsorTerm
     range: string
     required: true
@@ -319,6 +321,7 @@ attributes:
     alias: version
     owner: Output
     domain_of:
+    - ReportingEvent
     - Analysis
     - Output
     - OutputDisplay
@@ -371,9 +374,8 @@ attributes:
     domain_of:
     - Analysis
     - AnalysisMethod
-    - AnalysisOutputProgrammingCode
     - Output
-    range: DocumentRef
+    range: DocumentReference
     inlined: true
     inlined_as_list: true
   programmingCode:

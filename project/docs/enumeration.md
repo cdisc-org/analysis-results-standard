@@ -28,7 +28,7 @@ URI: [ars:enumeration](https://www.cdisc.org/ars/1-0/enumeration)
 
 ## Properties
 
-* Range: [ExtensibleTerminology](ExtensibleTerminology.md)
+* Range: [ExtensibleTerminologyEnum](ExtensibleTerminologyEnum.md)
 
 
 
@@ -61,7 +61,7 @@ rank: 1000
 alias: enumeration
 domain_of:
 - TerminologyExtension
-range: ExtensibleTerminology
+range: ExtensibleTerminologyEnum
 
 ```
 </details>

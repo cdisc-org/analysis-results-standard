@@ -90,6 +90,8 @@
 
       ReferencedOperationRelationship : referencedOperationRole
 
+          ReferencedOperationRelationship --|&gt; ExtensibleTerminologyTerm : referencedOperationRole
+
 
 </div>
 <!-- no inheritance hierarchy -->
@@ -112,7 +114,7 @@
 </tr>
 <tr>
 <td><a href="../referencedOperationRole/">referencedOperationRole</a></td>
-<td>1..1 <br/> <a href="../String/">String</a></td>
+<td>1..1 <br/> <a href="../ExtensibleTerminologyTerm/">ExtensibleTerminologyTerm</a></td>
 <td></td>
 <td>direct</td>
 </tr>
@@ -219,6 +221,7 @@ attributes:
     alias: id
     owner: ReferencedOperationRelationship
     domain_of:
+    - ReportingEvent
     - AnalysisCategorization
     - AnalysisCategory
     - Analysis
@@ -233,6 +236,7 @@ attributes:
     - Group
     - DataSubset
     - ReferenceDocument
+    - TerminologyExtension
     - SponsorTerm
     range: string
     required: true
@@ -244,12 +248,11 @@ attributes:
     owner: ReferencedOperationRelationship
     domain_of:
     - ReferencedOperationRelationship
-    range: string
+    range: ExtensibleTerminologyTerm
     required: true
-    inlined: false
     any_of:
     - range: OperationRole
-    - range: SponsorTerm
+    - range: SponsorOperationRole
   operationId:
     name: operationId
     from_schema: https://www.cdisc.org/ars/1-0

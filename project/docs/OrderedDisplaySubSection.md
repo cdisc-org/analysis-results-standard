@@ -1,0 +1,177 @@
+# Class: OrderedDisplaySubSection
+
+
+* __NOTE__: this is an abstract class and should not be instantiated directly
+
+
+URI: [ars:OrderedDisplaySubSection](https://www.cdisc.org/ars/1-0/OrderedDisplaySubSection)
+
+
+
+```mermaid
+ classDiagram
+    class OrderedDisplaySubSection
+      OrderedDisplaySubSection <|-- OrderedSubSection
+      OrderedDisplaySubSection <|-- OrderedSubSectionRef
+      
+      OrderedDisplaySubSection : order
+        
+      OrderedDisplaySubSection : subSection
+        
+          OrderedDisplaySubSection --|> DisplaySubSection : subSection
+        
+      OrderedDisplaySubSection : subSectionId
+        
+          OrderedDisplaySubSection --|> DisplaySubSection : subSectionId
+        
+      
+```
+
+
+
+
+
+## Inheritance
+* **OrderedDisplaySubSection**
+    * [OrderedSubSection](OrderedSubSection.md)
+    * [OrderedSubSectionRef](OrderedSubSectionRef.md)
+
+
+
+## Slots
+
+| Name | Cardinality and Range | Description | Inheritance |
+| ---  | --- | --- | --- |
+| [order](order.md) | 1..1 <br/> [Integer](Integer.md) |  | direct |
+| [subSection](subSection.md) | 0..1 <br/> [DisplaySubSection](DisplaySubSection.md) |  | direct |
+| [subSectionId](subSectionId.md) | 0..1 <br/> [DisplaySubSection](DisplaySubSection.md) |  | direct |
+
+
+
+
+
+## Usages
+
+| used by | used in | type | used |
+| ---  | --- | --- | --- |
+| [DisplaySection](DisplaySection.md) | [orderedSubSections](orderedSubSections.md) | range | [OrderedDisplaySubSection](OrderedDisplaySubSection.md) |
+
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://www.cdisc.org/ars/1-0
+
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | ars:OrderedDisplaySubSection |
+| native | ars:OrderedDisplaySubSection |
+
+
+
+
+
+## LinkML Source
+
+<!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
+
+### Direct
+
+<details>
+```yaml
+name: OrderedDisplaySubSection
+from_schema: https://www.cdisc.org/ars/1-0
+rank: 1000
+abstract: true
+slots:
+- order
+- subSection
+- subSectionId
+slot_usage:
+  order:
+    name: order
+    domain_of:
+    - OrderedListItem
+    - OrderedGroupingFactor
+    - OrderedDisplay
+    - OrderedDisplaySubSection
+    - WhereClause
+    required: true
+
+```
+</details>
+
+### Induced
+
+<details>
+```yaml
+name: OrderedDisplaySubSection
+from_schema: https://www.cdisc.org/ars/1-0
+rank: 1000
+abstract: true
+slot_usage:
+  order:
+    name: order
+    domain_of:
+    - OrderedListItem
+    - OrderedGroupingFactor
+    - OrderedDisplay
+    - OrderedDisplaySubSection
+    - WhereClause
+    required: true
+attributes:
+  order:
+    name: order
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: order
+    owner: OrderedDisplaySubSection
+    domain_of:
+    - OrderedListItem
+    - OrderedGroupingFactor
+    - OrderedDisplay
+    - OrderedDisplaySubSection
+    - WhereClause
+    range: integer
+    required: true
+  subSection:
+    name: subSection
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: subSection
+    owner: OrderedDisplaySubSection
+    domain_of:
+    - OrderedDisplaySubSection
+    range: DisplaySubSection
+    inlined: true
+  subSectionId:
+    name: subSectionId
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: subSectionId
+    owner: OrderedDisplaySubSection
+    domain_of:
+    - OrderedDisplaySubSection
+    range: DisplaySubSection
+    inlined: false
+
+```
+</details>

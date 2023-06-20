@@ -70,6 +70,7 @@ multivalued: true
 alias: parameters
 domain_of:
 - AnalysisOutputProgrammingCode
+- AnalysisProgrammingCodeTemplate
 range: CodeParameter
 inlined: true
 inlined_as_list: true

@@ -93,20 +93,30 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../PageRange/">PageRange</a></td>
-<td>A set of pages in a document that includes the specified first and last page,...</td>
+<td><a href="../PageRef/">PageRef</a></td>
+<td></td>
 <td>no</td>
+</tr>
+<tr>
+<td><a href="../PageNumberListRef/">PageNumberListRef</a></td>
+<td>One or more individual pages in the reference document, referenced by page nu...</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../PageNumberRangeRef/">PageNumberRangeRef</a></td>
+<td>A range of pages in the reference document, indicated by the first and last p...</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../PageNameRef/">PageNameRef</a></td>
+<td>One or more pages in the reference document, referenced by named destination</td>
+<td>yes</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>
-<p>Range: <a href="../Integer/">Integer</a></p>
-</li>
-<li>
-<p>Required: True</p>
-</li>
+<li>Range: <a href="../Integer/">Integer</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -122,9 +132,8 @@ from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 alias: lastPage
 domain_of:
-- PageRange
+- PageRef
 range: integer
-required: true
 
 </code></pre>
 

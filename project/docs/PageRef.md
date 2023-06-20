@@ -1,6 +1,8 @@
 # Class: PageRef
 
 
+* __NOTE__: this is an abstract class and should not be instantiated directly
+
 
 URI: [ars:PageRef](https://www.cdisc.org/ars/1-0/PageRef)
 
@@ -13,13 +15,19 @@ URI: [ars:PageRef](https://www.cdisc.org/ars/1-0/PageRef)
       PageRef <|-- PageNumberRangeRef
       PageRef <|-- PageNameRef
       
+      PageRef : firstPage
+        
       PageRef : label
         
-      PageRef : pages
+      PageRef : lastPage
+        
+      PageRef : pageNames
+        
+      PageRef : pageNumbers
         
       PageRef : refType
         
-          PageRef --|> PageRefType : refType
+          PageRef --|> PageRefTypeEnum : refType
         
       
 ```
@@ -40,9 +48,12 @@ URI: [ars:PageRef](https://www.cdisc.org/ars/1-0/PageRef)
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [refType](refType.md) | 1..1 <br/> [PageRefType](PageRefType.md) |  | direct |
+| [refType](refType.md) | 1..1 <br/> [PageRefTypeEnum](PageRefTypeEnum.md) |  | direct |
 | [label](label.md) | 0..1 <br/> [String](String.md) | Alternative label to provide a more specific and description to a page link | direct |
-| [pages](pages.md) | 0..1 <br/> [String](String.md) |  | direct |
+| [pageNames](pageNames.md) | 0..* <br/> [String](String.md) | One or more named document references which each correspond with a page | direct |
+| [pageNumbers](pageNumbers.md) | 0..* <br/> [Integer](Integer.md) | One or more page numbers | direct |
+| [firstPage](firstPage.md) | 0..1 <br/> [Integer](Integer.md) | The page number of the first page in a range of pages | direct |
+| [lastPage](lastPage.md) | 0..1 <br/> [Integer](Integer.md) | The page number of the last page in a range of pages | direct |
 
 
 
@@ -52,7 +63,7 @@ URI: [ars:PageRef](https://www.cdisc.org/ars/1-0/PageRef)
 
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
-| [DocumentRef](DocumentRef.md) | [pageRefs](pageRefs.md) | range | [PageRef](PageRef.md) |
+| [DocumentReference](DocumentReference.md) | [pageRefs](pageRefs.md) | range | [PageRef](PageRef.md) |
 
 
 
@@ -98,10 +109,14 @@ URI: [ars:PageRef](https://www.cdisc.org/ars/1-0/PageRef)
 name: PageRef
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
+abstract: true
 slots:
 - refType
 - label
-- pages
+- pageNames
+- pageNumbers
+- firstPage
+- lastPage
 slot_usage:
   label:
     name: label
@@ -128,6 +143,7 @@ slot_usage:
 name: PageRef
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
+abstract: true
 slot_usage:
   label:
     name: label
@@ -152,7 +168,7 @@ attributes:
     owner: PageRef
     domain_of:
     - PageRef
-    range: PageRefType
+    range: PageRefTypeEnum
     required: true
   label:
     name: label
@@ -173,19 +189,49 @@ attributes:
     - DataSubset
     - PageRef
     range: string
-  pages:
-    name: pages
+  pageNames:
+    name: pageNames
+    description: One or more named document references which each correspond with
+      a page.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
-    alias: pages
+    multivalued: true
+    alias: pageNames
     owner: PageRef
     domain_of:
     - PageRef
     range: string
-    any_of:
-    - range: PageNumberList
-    - range: PageNameList
-    - range: PageRange
+  pageNumbers:
+    name: pageNumbers
+    description: One or more page numbers.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    multivalued: true
+    alias: pageNumbers
+    owner: PageRef
+    domain_of:
+    - PageRef
+    range: integer
+  firstPage:
+    name: firstPage
+    description: The page number of the first page in a range of pages.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: firstPage
+    owner: PageRef
+    domain_of:
+    - PageRef
+    range: integer
+  lastPage:
+    name: lastPage
+    description: The page number of the last page in a range of pages.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: lastPage
+    owner: PageRef
+    domain_of:
+    - PageRef
+    range: integer
 
 ```
 </details>

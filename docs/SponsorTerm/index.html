@@ -133,6 +133,60 @@
 <td>range</td>
 <td><a href="./">SponsorTerm</a></td>
 </tr>
+<tr>
+<td><a href="../ExtensibleTerminologyTerm/">ExtensibleTerminologyTerm</a></td>
+<td><a href="../sponsorTermId/">sponsorTermId</a></td>
+<td>range</td>
+<td><a href="./">SponsorTerm</a></td>
+</tr>
+<tr>
+<td><a href="../AnalysisReason/">AnalysisReason</a></td>
+<td><a href="../sponsorTermId/">sponsorTermId</a></td>
+<td>range</td>
+<td><a href="./">SponsorTerm</a></td>
+</tr>
+<tr>
+<td><a href="../SponsorAnalysisReason/">SponsorAnalysisReason</a></td>
+<td><a href="../sponsorTermId/">sponsorTermId</a></td>
+<td>range</td>
+<td><a href="./">SponsorTerm</a></td>
+</tr>
+<tr>
+<td><a href="../AnalysisPurpose/">AnalysisPurpose</a></td>
+<td><a href="../sponsorTermId/">sponsorTermId</a></td>
+<td>range</td>
+<td><a href="./">SponsorTerm</a></td>
+</tr>
+<tr>
+<td><a href="../SponsorAnalysisPurpose/">SponsorAnalysisPurpose</a></td>
+<td><a href="../sponsorTermId/">sponsorTermId</a></td>
+<td>range</td>
+<td><a href="./">SponsorTerm</a></td>
+</tr>
+<tr>
+<td><a href="../OperationRole/">OperationRole</a></td>
+<td><a href="../sponsorTermId/">sponsorTermId</a></td>
+<td>range</td>
+<td><a href="./">SponsorTerm</a></td>
+</tr>
+<tr>
+<td><a href="../SponsorOperationRole/">SponsorOperationRole</a></td>
+<td><a href="../sponsorTermId/">sponsorTermId</a></td>
+<td>range</td>
+<td><a href="./">SponsorTerm</a></td>
+</tr>
+<tr>
+<td><a href="../OutputFileType/">OutputFileType</a></td>
+<td><a href="../sponsorTermId/">sponsorTermId</a></td>
+<td>range</td>
+<td><a href="./">SponsorTerm</a></td>
+</tr>
+<tr>
+<td><a href="../SponsorOutputFileType/">SponsorOutputFileType</a></td>
+<td><a href="../sponsorTermId/">sponsorTermId</a></td>
+<td>range</td>
+<td><a href="./">SponsorTerm</a></td>
+</tr>
 </tbody>
 </table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
@@ -191,6 +245,7 @@ attributes:
     alias: id
     owner: SponsorTerm
     domain_of:
+    - ReportingEvent
     - AnalysisCategorization
     - AnalysisCategory
     - Analysis
@@ -205,6 +260,7 @@ attributes:
     - Group
     - DataSubset
     - ReferenceDocument
+    - TerminologyExtension
     - SponsorTerm
     range: string
     required: true

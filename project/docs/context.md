@@ -74,6 +74,7 @@ rank: 1000
 alias: context
 domain_of:
 - AnalysisOutputProgrammingCode
+- AnalysisProgrammingCodeTemplate
 range: string
 required: true
 

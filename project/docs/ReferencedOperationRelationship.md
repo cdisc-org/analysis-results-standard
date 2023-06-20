@@ -28,6 +28,8 @@ URI: [ars:ReferencedOperationRelationship](https://www.cdisc.org/ars/1-0/Referen
         
       ReferencedOperationRelationship : referencedOperationRole
         
+          ReferencedOperationRelationship --|> ExtensibleTerminologyTerm : referencedOperationRole
+        
       
 ```
 
@@ -42,7 +44,7 @@ URI: [ars:ReferencedOperationRelationship](https://www.cdisc.org/ars/1-0/Referen
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [id](id.md) | 1..1 <br/> [String](String.md) |  | direct |
-| [referencedOperationRole](referencedOperationRole.md) | 1..1 <br/> [String](String.md) |  | direct |
+| [referencedOperationRole](referencedOperationRole.md) | 1..1 <br/> [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) |  | direct |
 | [operationId](operationId.md) | 1..1 <br/> [Operation](Operation.md) |  | direct |
 | [analysisId](analysisId.md) | 0..1 <br/> [Analysis](Analysis.md) |  | direct |
 | [description](description.md) | 0..1 <br/> [String](String.md) |  | direct |
@@ -132,6 +134,7 @@ attributes:
     alias: id
     owner: ReferencedOperationRelationship
     domain_of:
+    - ReportingEvent
     - AnalysisCategorization
     - AnalysisCategory
     - Analysis
@@ -146,6 +149,7 @@ attributes:
     - Group
     - DataSubset
     - ReferenceDocument
+    - TerminologyExtension
     - SponsorTerm
     range: string
     required: true
@@ -157,12 +161,11 @@ attributes:
     owner: ReferencedOperationRelationship
     domain_of:
     - ReferencedOperationRelationship
-    range: string
+    range: ExtensibleTerminologyTerm
     required: true
-    inlined: false
     any_of:
     - range: OperationRole
-    - range: SponsorTerm
+    - range: SponsorOperationRole
   operationId:
     name: operationId
     from_schema: https://www.cdisc.org/ars/1-0

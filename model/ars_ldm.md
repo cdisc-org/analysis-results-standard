@@ -1,10 +1,13 @@
 ```mermaid
 erDiagram
 ReportingEvent {
+    string id  
+    integer version  
     string name  
 }
 TerminologyExtension {
-    ExtensibleTerminology enumeration  
+    string id  
+    ExtensibleTerminologyEnum enumeration  
 }
 SponsorTerm {
     string id  
@@ -25,18 +28,21 @@ AnalysisOutputProgrammingCode {
     string context  
     string code  
 }
-CodeParameter {
+AnalysisOutputCodeParameter {
+    stringList value  
     string description  
-    string value  
     string name  
 }
-DocumentRef {
+DocumentReference {
 
 }
 PageRef {
-    PageRefType refType  
+    PageRefTypeEnum refType  
     string label  
-    string pages  
+    stringList pageNames  
+    integerList pageNumbers  
+    integer firstPage  
+    integer lastPage  
 }
 AnalysisCategory {
     string id  
@@ -56,18 +62,22 @@ OutputDisplay {
     string name  
 }
 DisplaySection {
-    DisplaySectionType sectionType  
+    DisplaySectionTypeEnum sectionType  
+}
+OrderedDisplaySubSection {
+    integer order  
 }
 DisplaySubSection {
     string id  
-    integer order  
     string text  
 }
 OutputFile {
-    string fileType  
     uri location  
     string style  
     string name  
+}
+ExtensibleTerminologyTerm {
+    string controlledTerm  
 }
 AnalysisMethod {
     string id  
@@ -81,8 +91,8 @@ AnalysisProgrammingCodeTemplate {
 }
 TemplateCodeParameter {
     string valueSource  
+    stringList value  
     string description  
-    string value  
     string name  
 }
 Operation {
@@ -93,15 +103,12 @@ Operation {
 }
 ReferencedOperationRelationship {
     string id  
-    string referencedOperationRole  
     string description  
 }
 Analysis {
     string id  
     integer version  
     string description  
-    string reason  
-    string purpose  
     string dataset  
     string variable  
     string name  
@@ -120,13 +127,13 @@ Group {
     integer order  
 }
 CompoundGroupExpression {
-    ExpressionLogicalOperator logicalOperator  
+    ExpressionLogicalOperatorEnum logicalOperator  
 }
 WhereClauseCondition {
     string dataset  
     string variable  
-    ConditionComparator comparator  
-    string value  
+    ConditionComparatorEnum comparator  
+    stringList value  
 }
 GroupingFactor {
     string id  
@@ -144,14 +151,14 @@ DataSubset {
     integer order  
 }
 CompoundSubsetExpression {
-    ExpressionLogicalOperator logicalOperator  
+    ExpressionLogicalOperatorEnum logicalOperator  
 }
 WhereClause {
     integer level  
     integer order  
 }
 WhereClauseCompoundExpression {
-    ExpressionLogicalOperator logicalOperator  
+    ExpressionLogicalOperatorEnum logicalOperator  
 }
 OrderedGroupingFactor {
     integer order  
@@ -164,7 +171,10 @@ AnalysisSet {
     integer order  
 }
 CompoundSetExpression {
-    ExpressionLogicalOperator logicalOperator  
+    ExpressionLogicalOperatorEnum logicalOperator  
+}
+GlobalDisplaySection {
+    DisplaySectionTypeEnum sectionType  
 }
 DataGroupingFactor {
     string id  
@@ -205,38 +215,45 @@ ReportingEvent ||--}o AnalysisSet : "analysisSets"
 ReportingEvent ||--}o SubjectGroupingFactor : "analysisGroupings"
 ReportingEvent ||--}o DataSubset : "dataSubsets"
 ReportingEvent ||--}o DataGroupingFactor : "dataGroupings"
-ReportingEvent ||--}o DisplaySection : "globalDisplaySections"
+ReportingEvent ||--}o GlobalDisplaySection : "globalDisplaySections"
 ReportingEvent ||--}o AnalysisCategorization : "analysisCategorizations"
 ReportingEvent ||--}o Analysis : "analyses"
 ReportingEvent ||--}o AnalysisMethod : "methods"
 ReportingEvent ||--}o Output : "outputs"
 ReportingEvent ||--}o ReferenceDocument : "referenceDocuments"
-ReportingEvent ||--}o TerminologyExtension : "terminologyExtentions"
+ReportingEvent ||--}o TerminologyExtension : "terminologyExtensions"
 TerminologyExtension ||--}| SponsorTerm : "sponsorTerms"
 Output ||--}o OutputFile : "fileSpecifications"
 Output ||--}o OrderedDisplay : "displays"
 Output ||--}o AnalysisCategory : "categoryIds"
-Output ||--}o DocumentRef : "documentRefs"
+Output ||--}o DocumentReference : "documentRefs"
 Output ||--|o AnalysisOutputProgrammingCode : "programmingCode"
-AnalysisOutputProgrammingCode ||--}o DocumentRef : "documentRefs"
-AnalysisOutputProgrammingCode ||--}o CodeParameter : "parameters"
-DocumentRef ||--|| ReferenceDocument : "referenceDocumentId"
-DocumentRef ||--}o PageRef : "pageRefs"
+AnalysisOutputProgrammingCode ||--|o DocumentReference : "documentRef"
+AnalysisOutputProgrammingCode ||--}o AnalysisOutputCodeParameter : "parameters"
+DocumentReference ||--|| ReferenceDocument : "referenceDocumentId"
+DocumentReference ||--}o PageRef : "pageRefs"
 AnalysisCategory ||--}o AnalysisCategorization : "subCategorizations"
 AnalysisCategorization ||--}| AnalysisCategory : "categories"
 OrderedDisplay ||--|o OutputDisplay : "display"
 OutputDisplay ||--}o DisplaySection : "displaySections"
-DisplaySection ||--}o DisplaySubSection : "subSections"
+DisplaySection ||--}o OrderedDisplaySubSection : "orderedSubSections"
+OrderedDisplaySubSection ||--|o DisplaySubSection : "subSection"
+OrderedDisplaySubSection ||--|o DisplaySubSection : "subSectionId"
+OutputFile ||--|o ExtensibleTerminologyTerm : "fileType"
+ExtensibleTerminologyTerm ||--|o SponsorTerm : "sponsorTermId"
 AnalysisMethod ||--}| Operation : "operations"
-AnalysisMethod ||--}o DocumentRef : "documentRefs"
+AnalysisMethod ||--}o DocumentReference : "documentRefs"
 AnalysisMethod ||--|o AnalysisProgrammingCodeTemplate : "codeTemplate"
-AnalysisProgrammingCodeTemplate ||--}o DocumentRef : "documentRefs"
+AnalysisProgrammingCodeTemplate ||--|o DocumentReference : "documentRef"
 AnalysisProgrammingCodeTemplate ||--}o TemplateCodeParameter : "parameters"
 Operation ||--}o ReferencedOperationRelationship : "referencedOperationRelationships"
+ReferencedOperationRelationship ||--|| ExtensibleTerminologyTerm : "referencedOperationRole"
 ReferencedOperationRelationship ||--|| Operation : "operationId"
 ReferencedOperationRelationship ||--|o Analysis : "analysisId"
 Analysis ||--}o AnalysisCategory : "categoryIds"
-Analysis ||--}o DocumentRef : "documentRefs"
+Analysis ||--|| ExtensibleTerminologyTerm : "reason"
+Analysis ||--|| ExtensibleTerminologyTerm : "purpose"
+Analysis ||--}o DocumentReference : "documentRefs"
 Analysis ||--|o AnalysisSet : "analysisSetId"
 Analysis ||--}o OrderedGroupingFactor : "orderedGroupings"
 Analysis ||--|o DataSubset : "dataSubsetId"
@@ -264,6 +281,7 @@ OrderedGroupingFactor ||--|o GroupingFactor : "groupingId"
 AnalysisSet ||--|o WhereClauseCondition : "condition"
 AnalysisSet ||--|o CompoundSetExpression : "compoundExpression"
 CompoundSetExpression ||--}o AnalysisSet : "whereClauses"
+GlobalDisplaySection ||--}o DisplaySubSection : "subSections"
 DataGroupingFactor ||--}o DataGroup : "groups"
 DataGroup ||--|o WhereClauseCondition : "condition"
 DataGroup ||--|o CompoundGroupExpression : "compoundExpression"

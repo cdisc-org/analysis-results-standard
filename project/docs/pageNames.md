@@ -18,7 +18,10 @@ URI: [ars:pageNames](https://www.cdisc.org/ars/1-0/pageNames)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-[PageNameList](PageNameList.md) | A list of one or more named document references, each of which corresponds wi... |  no  |
+[PageRef](PageRef.md) |  |  no  |
+[PageNumberListRef](PageNumberListRef.md) | One or more individual pages in the reference document, referenced by page nu... |  yes  |
+[PageNumberRangeRef](PageNumberRangeRef.md) | A range of pages in the reference document, indicated by the first and last p... |  yes  |
+[PageNameRef](PageNameRef.md) | One or more pages in the reference document, referenced by named destination |  yes  |
 
 
 
@@ -28,11 +31,9 @@ URI: [ars:pageNames](https://www.cdisc.org/ars/1-0/pageNames)
 
 ## Properties
 
-* Range: [Integer](Integer.md)
+* Range: [String](String.md)
 
 * Multivalued: True
-
-* Required: True
 
 
 
@@ -65,9 +66,8 @@ rank: 1000
 multivalued: true
 alias: pageNames
 domain_of:
-- PageNameList
-range: integer
-required: true
+- PageRef
+range: string
 
 ```
 </details>

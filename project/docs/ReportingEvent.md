@@ -42,7 +42,9 @@ URI: [ars:ReportingEvent](https://www.cdisc.org/ars/1-0/ReportingEvent)
         
       ReportingEvent : globalDisplaySections
         
-          ReportingEvent --|> DisplaySection : globalDisplaySections
+          ReportingEvent --|> GlobalDisplaySection : globalDisplaySections
+        
+      ReportingEvent : id
         
       ReportingEvent : listOfPlannedAnalyses
         
@@ -66,9 +68,11 @@ URI: [ars:ReportingEvent](https://www.cdisc.org/ars/1-0/ReportingEvent)
         
           ReportingEvent --|> ReferenceDocument : referenceDocuments
         
-      ReportingEvent : terminologyExtentions
+      ReportingEvent : terminologyExtensions
         
-          ReportingEvent --|> TerminologyExtension : terminologyExtentions
+          ReportingEvent --|> TerminologyExtension : terminologyExtensions
+        
+      ReportingEvent : version
         
       
 ```
@@ -87,19 +91,21 @@ URI: [ars:ReportingEvent](https://www.cdisc.org/ars/1-0/ReportingEvent)
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
+| [id](id.md) | 1..1 <br/> [String](String.md) |  | direct |
+| [version](version.md) | 0..1 <br/> [Integer](Integer.md) |  | direct |
 | [listOfPlannedAnalyses](listOfPlannedAnalyses.md) | 1..1 <br/> [NestedList](NestedList.md) | A structured list of the analyses defined for the reporting event | direct |
 | [listOfPlannedOutputs](listOfPlannedOutputs.md) | 0..1 <br/> [NestedList](NestedList.md) | An optional structured list of the outputs defined for the reporting event | direct |
 | [analysisSets](analysisSets.md) | 0..* <br/> [AnalysisSet](AnalysisSet.md) | The analysis sets (subject populations) defined for the reporting event | direct |
 | [analysisGroupings](analysisGroupings.md) | 0..* <br/> [SubjectGroupingFactor](SubjectGroupingFactor.md) | Characteristics used to subdivide the subject population (e | direct |
 | [dataSubsets](dataSubsets.md) | 0..* <br/> [DataSubset](DataSubset.md) |  | direct |
 | [dataGroupings](dataGroupings.md) | 0..* <br/> [DataGroupingFactor](DataGroupingFactor.md) | Characteristics used to subdivide data records in the analysis dataset (e | direct |
-| [globalDisplaySections](globalDisplaySections.md) | 0..* <br/> [DisplaySection](DisplaySection.md) |  | direct |
+| [globalDisplaySections](globalDisplaySections.md) | 0..* <br/> [GlobalDisplaySection](GlobalDisplaySection.md) |  | direct |
 | [analysisCategorizations](analysisCategorizations.md) | 0..* <br/> [AnalysisCategorization](AnalysisCategorization.md) |  | direct |
 | [analyses](analyses.md) | 0..* <br/> [Analysis](Analysis.md) | The analyses defined for the reporting event | direct |
 | [methods](methods.md) | 0..* <br/> [AnalysisMethod](AnalysisMethod.md) | The defined methods used to analyze any analysis variable | direct |
 | [outputs](outputs.md) | 0..* <br/> [Output](Output.md) |  | direct |
 | [referenceDocuments](referenceDocuments.md) | 0..* <br/> [ReferenceDocument](ReferenceDocument.md) |  | direct |
-| [terminologyExtentions](terminologyExtentions.md) | 0..* <br/> [TerminologyExtension](TerminologyExtension.md) | Any sponsor-defined extensions to extensible terminology | direct |
+| [terminologyExtensions](terminologyExtensions.md) | 0..* <br/> [TerminologyExtension](TerminologyExtension.md) | Any sponsor-defined extensions to extensible terminology | direct |
 | [name](name.md) | 1..1 <br/> [String](String.md) |  | [NamedObject](NamedObject.md) |
 
 
@@ -153,6 +159,8 @@ from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 is_a: NamedObject
 slots:
+- id
+- version
 - listOfPlannedAnalyses
 - listOfPlannedOutputs
 - analysisSets
@@ -165,7 +173,7 @@ slots:
 - methods
 - outputs
 - referenceDocuments
-- terminologyExtentions
+- terminologyExtensions
 tree_root: true
 
 ```
@@ -182,6 +190,45 @@ from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 is_a: NamedObject
 attributes:
+  id:
+    name: id
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    identifier: true
+    alias: id
+    owner: ReportingEvent
+    domain_of:
+    - ReportingEvent
+    - AnalysisCategorization
+    - AnalysisCategory
+    - Analysis
+    - AnalysisMethod
+    - Operation
+    - ReferencedOperationRelationship
+    - Output
+    - OutputDisplay
+    - DisplaySubSection
+    - AnalysisSet
+    - GroupingFactor
+    - Group
+    - DataSubset
+    - ReferenceDocument
+    - TerminologyExtension
+    - SponsorTerm
+    range: string
+    required: true
+  version:
+    name: version
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: version
+    owner: ReportingEvent
+    domain_of:
+    - ReportingEvent
+    - Analysis
+    - Output
+    - OutputDisplay
+    range: integer
   listOfPlannedAnalyses:
     name: listOfPlannedAnalyses
     description: A structured list of the analyses defined for the reporting event.
@@ -268,7 +315,7 @@ attributes:
     owner: ReportingEvent
     domain_of:
     - ReportingEvent
-    range: DisplaySection
+    range: GlobalDisplaySection
     inlined: true
     inlined_as_list: true
   analysisCategorizations:
@@ -332,13 +379,14 @@ attributes:
     - ReportingEvent
     range: ReferenceDocument
     inlined: true
-  terminologyExtentions:
-    name: terminologyExtentions
+    inlined_as_list: true
+  terminologyExtensions:
+    name: terminologyExtensions
     description: Any sponsor-defined extensions to extensible terminology.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     multivalued: true
-    alias: terminologyExtentions
+    alias: terminologyExtensions
     owner: ReportingEvent
     domain_of:
     - ReportingEvent

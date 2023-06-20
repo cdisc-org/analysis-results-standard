@@ -6,6 +6,8 @@ _A replacement parameter whose value is substituted in template programming code
 
 
 
+* __NOTE__: this is an abstract class and should not be instantiated directly
+
 
 URI: [ars:CodeParameter](https://www.cdisc.org/ars/1-0/CodeParameter)
 
@@ -17,14 +19,13 @@ URI: [ars:CodeParameter](https://www.cdisc.org/ars/1-0/CodeParameter)
       NamedObject <|-- CodeParameter
       
 
+      CodeParameter <|-- AnalysisOutputCodeParameter
       CodeParameter <|-- TemplateCodeParameter
       
       
       CodeParameter : description
         
       CodeParameter : name
-        
-      CodeParameter : value
         
       
 ```
@@ -36,6 +37,7 @@ URI: [ars:CodeParameter](https://www.cdisc.org/ars/1-0/CodeParameter)
 ## Inheritance
 * [NamedObject](NamedObject.md)
     * **CodeParameter**
+        * [AnalysisOutputCodeParameter](AnalysisOutputCodeParameter.md)
         * [TemplateCodeParameter](TemplateCodeParameter.md)
 
 
@@ -45,18 +47,10 @@ URI: [ars:CodeParameter](https://www.cdisc.org/ars/1-0/CodeParameter)
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [description](description.md) | 0..1 <br/> [String](String.md) |  | direct |
-| [value](value.md) | 1..1 <br/> [String](String.md) | The value of the parameter | direct |
 | [name](name.md) | 1..1 <br/> [String](String.md) |  | [NamedObject](NamedObject.md) |
 
 
 
-
-
-## Usages
-
-| used by | used in | type | used |
-| ---  | --- | --- | --- |
-| [AnalysisOutputProgrammingCode](AnalysisOutputProgrammingCode.md) | [parameters](parameters.md) | range | [CodeParameter](CodeParameter.md) |
 
 
 
@@ -105,17 +99,9 @@ description: A replacement parameter whose value is substituted in template prog
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 is_a: NamedObject
+abstract: true
 slots:
 - description
-- value
-slot_usage:
-  value:
-    name: value
-    description: The value of the parameter.
-    domain_of:
-    - CodeParameter
-    - WhereClauseCondition
-    required: true
 
 ```
 </details>
@@ -130,14 +116,7 @@ description: A replacement parameter whose value is substituted in template prog
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 is_a: NamedObject
-slot_usage:
-  value:
-    name: value
-    description: The value of the parameter.
-    domain_of:
-    - CodeParameter
-    - WhereClauseCondition
-    required: true
+abstract: true
 attributes:
   description:
     name: description
@@ -152,18 +131,6 @@ attributes:
     - CodeParameter
     - SponsorTerm
     range: string
-  value:
-    name: value
-    description: The value of the parameter.
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    alias: value
-    owner: CodeParameter
-    domain_of:
-    - CodeParameter
-    - WhereClauseCondition
-    range: string
-    required: true
   name:
     name: name
     from_schema: https://www.cdisc.org/ars/1-0

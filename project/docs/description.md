@@ -18,6 +18,7 @@ URI: [ars:description](https://www.cdisc.org/ars/1-0/description)
 [ReferencedOperationRelationship](ReferencedOperationRelationship.md) | A reference to an statistical operation whose results is used in the calculat... |  no  |
 [CodeParameter](CodeParameter.md) | A replacement parameter whose value is substituted in template programming co... |  no  |
 [SponsorTerm](SponsorTerm.md) | A sponsor-defined term that is included in an extensible set of controlled te... |  no  |
+[AnalysisOutputCodeParameter](AnalysisOutputCodeParameter.md) | A parameter whose value is used in programming code for a specific analysis o... |  no  |
 [TemplateCodeParameter](TemplateCodeParameter.md) | A replacement parameter whose value is substituted in template programming co... |  no  |
 
 

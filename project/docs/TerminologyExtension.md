@@ -16,7 +16,9 @@ URI: [ars:TerminologyExtension](https://www.cdisc.org/ars/1-0/TerminologyExtensi
     class TerminologyExtension
       TerminologyExtension : enumeration
         
-          TerminologyExtension --|> ExtensibleTerminology : enumeration
+          TerminologyExtension --|> ExtensibleTerminologyEnum : enumeration
+        
+      TerminologyExtension : id
         
       TerminologyExtension : sponsorTerms
         
@@ -35,7 +37,8 @@ URI: [ars:TerminologyExtension](https://www.cdisc.org/ars/1-0/TerminologyExtensi
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [enumeration](enumeration.md) | 0..1 <br/> [ExtensibleTerminology](ExtensibleTerminology.md) | The name of the extensible enumeration | direct |
+| [id](id.md) | 1..1 <br/> [String](String.md) |  | direct |
+| [enumeration](enumeration.md) | 0..1 <br/> [ExtensibleTerminologyEnum](ExtensibleTerminologyEnum.md) | The name of the extensible enumeration | direct |
 | [sponsorTerms](sponsorTerms.md) | 1..* <br/> [SponsorTerm](SponsorTerm.md) | The sponsor-defined terms added to the extensible terminology | direct |
 
 
@@ -46,7 +49,7 @@ URI: [ars:TerminologyExtension](https://www.cdisc.org/ars/1-0/TerminologyExtensi
 
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
-| [ReportingEvent](ReportingEvent.md) | [terminologyExtentions](terminologyExtentions.md) | range | [TerminologyExtension](TerminologyExtension.md) |
+| [ReportingEvent](ReportingEvent.md) | [terminologyExtensions](terminologyExtensions.md) | range | [TerminologyExtension](TerminologyExtension.md) |
 
 
 
@@ -95,15 +98,9 @@ description: A sponsor-defined term that is included in an extensible set of con
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 slots:
+- id
 - enumeration
 - sponsorTerms
-unique_keys:
-  enumeration:
-    unique_key_name: enumeration
-    unique_key_slots:
-    - enumeration
-    description: There should only be one terminology extension for any enumeration,
-      which of which may contain multiple sponsor terms.
 
 ```
 </details>
@@ -118,6 +115,33 @@ description: A sponsor-defined term that is included in an extensible set of con
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 attributes:
+  id:
+    name: id
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    identifier: true
+    alias: id
+    owner: TerminologyExtension
+    domain_of:
+    - ReportingEvent
+    - AnalysisCategorization
+    - AnalysisCategory
+    - Analysis
+    - AnalysisMethod
+    - Operation
+    - ReferencedOperationRelationship
+    - Output
+    - OutputDisplay
+    - DisplaySubSection
+    - AnalysisSet
+    - GroupingFactor
+    - Group
+    - DataSubset
+    - ReferenceDocument
+    - TerminologyExtension
+    - SponsorTerm
+    range: string
+    required: true
   enumeration:
     name: enumeration
     description: The name of the extensible enumeration.
@@ -127,7 +151,7 @@ attributes:
     owner: TerminologyExtension
     domain_of:
     - TerminologyExtension
-    range: ExtensibleTerminology
+    range: ExtensibleTerminologyEnum
   sponsorTerms:
     name: sponsorTerms
     description: The sponsor-defined terms added to the extensible terminology.
@@ -142,13 +166,6 @@ attributes:
     required: true
     inlined: true
     inlined_as_list: true
-unique_keys:
-  enumeration:
-    unique_key_name: enumeration
-    unique_key_slots:
-    - enumeration
-    description: There should only be one terminology extension for any enumeration,
-      which of which may contain multiple sponsor terms.
 
 ```
 </details>

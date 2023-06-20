@@ -24,7 +24,7 @@ URI: [ars:AnalysisMethod](https://www.cdisc.org/ars/1-0/AnalysisMethod)
         
       AnalysisMethod : documentRefs
         
-          AnalysisMethod --|> DocumentRef : documentRefs
+          AnalysisMethod --|> DocumentReference : documentRefs
         
       AnalysisMethod : id
         
@@ -57,7 +57,7 @@ URI: [ars:AnalysisMethod](https://www.cdisc.org/ars/1-0/AnalysisMethod)
 | [label](label.md) | 0..1 <br/> [String](String.md) |  | direct |
 | [description](description.md) | 0..1 <br/> [String](String.md) |  | direct |
 | [operations](operations.md) | 1..* <br/> [Operation](Operation.md) |  | direct |
-| [documentRefs](documentRefs.md) | 0..* <br/> [DocumentRef](DocumentRef.md) |  | direct |
+| [documentRefs](documentRefs.md) | 0..* <br/> [DocumentReference](DocumentReference.md) |  | direct |
 | [codeTemplate](codeTemplate.md) | 0..1 <br/> [AnalysisProgrammingCodeTemplate](AnalysisProgrammingCodeTemplate.md) | Template programming statements and/or a reference to the template program us... | direct |
 | [name](name.md) | 1..1 <br/> [String](String.md) |  | [NamedObject](NamedObject.md) |
 
@@ -147,6 +147,7 @@ attributes:
     alias: id
     owner: AnalysisMethod
     domain_of:
+    - ReportingEvent
     - AnalysisCategorization
     - AnalysisCategory
     - Analysis
@@ -161,6 +162,7 @@ attributes:
     - Group
     - DataSubset
     - ReferenceDocument
+    - TerminologyExtension
     - SponsorTerm
     range: string
     required: true
@@ -217,9 +219,8 @@ attributes:
     domain_of:
     - Analysis
     - AnalysisMethod
-    - AnalysisOutputProgrammingCode
     - Output
-    range: DocumentRef
+    range: DocumentReference
     inlined: true
     inlined_as_list: true
   codeTemplate:

@@ -23,7 +23,7 @@ URI: [ars:fileType](https://www.cdisc.org/ars/1-0/fileType)
 
 ## Properties
 
-* Range: [String](String.md)
+* Range: [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md)
 
 
 
@@ -55,11 +55,10 @@ rank: 1000
 alias: fileType
 domain_of:
 - OutputFile
-range: string
-inlined: false
+range: ExtensibleTerminologyTerm
 any_of:
 - range: OutputFileType
-- range: SponsorTerm
+- range: SponsorOutputFileType
 
 ```
 </details>

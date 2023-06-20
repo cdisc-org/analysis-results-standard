@@ -29,6 +29,8 @@ classes:
     tree_root: true
     is_a: NamedObject
     slots:
+      - id
+      - version
       - listOfPlannedAnalyses
       - listOfPlannedOutputs
       - analysisSets
@@ -41,7 +43,7 @@ classes:
       - methods
       - outputs
       - referenceDocuments
-      - terminologyExtentions
+      - terminologyExtensions
 
   NestedList:
     description: A list of items (analyses or outputs) that may be organized within sub-lists.
@@ -175,16 +177,20 @@ classes:
     slots:
       - context
       - code
-      - documentRefs
+      - documentRef
       - parameters
     slot_usage:
       parameters:
         description: Parameter values used to generate or execute the programming code.
-        range: CodeParameter
+        range: AnalysisOutputCodeParameter
 
   AnalysisProgrammingCodeTemplate:
     description:  Programming statements and/or a reference to a used as a template for creation of a program to perform method operations for a specific analysis.
-    is_a: AnalysisOutputProgrammingCode
+    slots:
+      - context
+      - code
+      - documentRef
+      - parameters
     slot_usage:
       parameters:
         description: Parameters whose values will be used to generate or execute the programming code for a specific analysis.
@@ -192,22 +198,31 @@ classes:
 
   CodeParameter:
     description: A replacement parameter whose value is substituted in template programming code to create statements required for a specific analysis.
+    abstract: true
     is_a: NamedObject
     slots:
       - description
+
+  AnalysisOutputCodeParameter:
+    description: A parameter whose value is used in programming code for a specific analysis or output.
+    is_a: CodeParameter
+    slots:
       - value
     slot_usage:
       value:
         description: The value of the parameter.
+        maximum_cardinality: 1
         required: true
 
   TemplateCodeParameter:
     description: A replacement parameter whose value is substituted in template programming code to create statements required for a specific analysis.
     is_a: CodeParameter
-    slots: 
+    slots:
       - valueSource
+      - value
     slot_usage:
       value:
+        description: The value to be used for the parameter when the method is used in an analysis. Multiple values may be specified to indicate a choice.
         required: false
 
   Output:
@@ -258,22 +273,62 @@ classes:
     description: A part of a tabular display containing one or more pieces of informational text.
     slots:
       - sectionType
-      - subSections
+      - orderedSubSections
     examples:
       - value: Title
       - value: Footnote
       - value: Legend
       - value: Abbreviation
 
+  OrderedDisplaySubSection:
+    description:
+    abstract: true
+    slots:
+      - order
+      - subSection
+      - subSectionId
+    slot_usage:
+      order:
+        required: true
+
+  OrderedSubSection:
+    description: A subsection ordered with respect to other subsections of the same type.
+    is_a: OrderedDisplaySubSection
+    slot_usage:
+      subSection:
+        required: true
+        value_presence: PRESENT
+      subSectionId:
+        value_presence: ABSENT
+    defining_slots:
+      - subSection
+
+  OrderedSubSectionRef:
+    description: A reference to a subsection defined either globally or in another display section, ordered with respect to other subsections of the same type.
+    is_a: OrderedDisplaySubSection
+    slot_usage:
+      subSection:
+        value_presence: ABSENT
+      subSectionId:
+        required: true
+        value_presence: PRESENT
+    defining_slots:
+      - subSectionId
+
   DisplaySubSection:
     description: An occurrence of a display section containing text that is ordered with respect to other occurrences of the same type of display section.
     slots:
       - id
-      - order
-      - text    
+      - text
     slot_usage:
-      order:
+      text:
         required: true
+
+  GlobalDisplaySection:
+    description: A part of a tabular display containing one or more pieces of informational text.
+    slots:
+      - sectionType
+      - subSections
 
   WhereClause:
     slots:
@@ -302,7 +357,7 @@ classes:
         postconditions:
           slot_conditions:
             value:
-              multivalued: false
+              maximum_cardinality: 1
         description: Only a single value is allowed when comparator is EQ, NE, LT, LE, GT, or GE.
       - preconditions:
           slot_conditions:
@@ -313,8 +368,8 @@ classes:
         postconditions:
           slot_conditions:
             value:
-              multivalued: true
-        description: Multile values are allowed when comparator is IN or NOTIN.
+              minimum_cardinality: 2
+        description: At least 2 values are required when comparator is IN or NOTIN.
 
   WhereClauseCompoundExpression:
     slots:
@@ -414,16 +469,20 @@ classes:
       - id
       - location
 
-  DocumentRef:
+  DocumentReference:
     slots:
       - referenceDocumentId
       - pageRefs
 
   PageRef:
+    abstract: true
     slots:
       - refType
       - label
-      - pages
+      - pageNames
+      - pageNumbers
+      - firstPage
+      - lastPage
     slot_usage:
       label:
         description: Alternative label to provide a more specific and description to a page link.
@@ -434,8 +493,17 @@ classes:
     slot_usage:
       refType:
         equals_string: PhysicalRef
-      pages:
-        range: PageNumberList
+      pageNumbers:
+        required: true
+        value_presence: PRESENT
+      pageNames:
+        value_presence: ABSENT
+      firstPage:
+        value_presence: ABSENT
+      lastPage:
+        value_presence: ABSENT
+    defining_slots:
+      - pageNumbers
 
   PageNumberRangeRef:
     description: A range of pages in the reference document, indicated by the first and last page number in the range.
@@ -443,8 +511,19 @@ classes:
     slot_usage:
       refType:
         equals_string: PhysicalRef
-      pages:
-        range: PageRange
+      pageNumbers:
+        value_presence: ABSENT
+      pageNames:
+        value_presence: ABSENT
+      firstPage:
+        required: true
+        value_presence: PRESENT
+      lastPage:
+        required: true
+        value_presence: PRESENT
+    defining_slots:
+      - firstPage
+      - lastPage
 
   PageNameRef:
     description: One or more pages in the reference document, referenced by named destination.
@@ -452,35 +531,24 @@ classes:
     slot_usage:
       refType:
         equals_string: NamedDestination
-      pages:
-        range: PageNameList
-
-  PageNumberList:
-    description: A list of one or more page numbers.
-    slots:
-      - pageNumbers
-
-  PageNameList:
-    description: A list of one or more named document references, each of which corresponds with a page.
-    slots:
+      pageNumbers:
+        value_presence: ABSENT
+      pageNames:
+        required: true
+        value_presence: PRESENT
+      firstPage:
+        value_presence: ABSENT
+      lastPage:
+        value_presence: ABSENT
+    defining_slots:
       - pageNames
-
-  PageRange:
-    description: A set of pages in a document that includes the specified first and last page, and all pages in between.
-    slots:
-      - firstPage
-      - lastPage
 
   TerminologyExtension:
     description: A sponsor-defined term that is included in an extensible set of controlled terminology.
     slots:
+      - id
       - enumeration
       - sponsorTerms
-    unique_keys:
-      enumeration:
-        description: There should only be one terminology extension for any enumeration, which of which may contain multiple sponsor terms.
-        unique_key_slots:
-          - enumeration
 
   SponsorTerm:
     description: A sponsor-defined term that is included in an extensible set of controlled terminology.
@@ -489,6 +557,97 @@ classes:
       - submissionValue
       - description
 
+  ExtensibleTerminologyTerm:
+    description:
+    abstract: true
+    slots:
+      - controlledTerm
+      - sponsorTermId
+
+  AnalysisReason:
+    description:
+    is_a: ExtensibleTerminologyTerm
+    slot_usage:
+      controlledTerm:
+        required: true
+        range: AnalysisReasonEnum
+        value_presence: PRESENT
+      sponsorTermId:
+        value_presence: ABSENT
+
+  SponsorAnalysisReason:
+    description:
+    is_a: ExtensibleTerminologyTerm
+    slot_usage:
+      controlledTerm:
+        value_presence: ABSENT
+      sponsorTermId:
+        required: true
+        value_presence: PRESENT
+
+  AnalysisPurpose:
+    description:
+    is_a: ExtensibleTerminologyTerm
+    slot_usage:
+      controlledTerm:
+        required: true
+        range: AnalysisPurposeEnum
+        value_presence: PRESENT
+      sponsorTermId:
+        value_presence: ABSENT
+
+  SponsorAnalysisPurpose:
+    description:
+    is_a: ExtensibleTerminologyTerm
+    slot_usage:
+      controlledTerm:
+        value_presence: ABSENT
+      sponsorTermId:
+        required: true
+        value_presence: PRESENT
+
+  OperationRole:
+    description:
+    is_a: ExtensibleTerminologyTerm
+    slot_usage:
+      controlledTerm:
+        required: true
+        range: OperationRoleEnum
+        value_presence: PRESENT
+      sponsorTermId:
+        value_presence: ABSENT
+
+  SponsorOperationRole:
+    description:
+    is_a: ExtensibleTerminologyTerm
+    slot_usage:
+      controlledTerm:
+        value_presence: ABSENT
+      sponsorTermId:
+        required: true
+        value_presence: PRESENT
+        
+  OutputFileType:
+    description:
+    is_a: ExtensibleTerminologyTerm
+    slot_usage:
+      controlledTerm:
+        required: true
+        range: OutputFileTypeEnum
+        value_presence: PRESENT
+      sponsorTermId:
+        value_presence: ABSENT
+
+  SponsorOutputFileType:
+    description:
+    is_a: ExtensibleTerminologyTerm
+    slot_usage:
+      controlledTerm:
+        value_presence: ABSENT
+      sponsorTermId:
+        required: true
+        value_presence: PRESENT
+        
 slots:
 
   name:
@@ -556,18 +715,18 @@ slots:
   reason:
     description: The rationale for performing this analysis. It indicates when the analysis was planned.
     required: true
+    range: ExtensibleTerminologyTerm
     any_of:
       - range: AnalysisReason
-      - range: SponsorTerm
-    inlined: false
+      - range: SponsorAnalysisReason
 
   purpose:
     description: The purpose of the analysis within the body of evidence (e.g., section in the clinical study report).
     required: true
+    range: ExtensibleTerminologyTerm
     any_of:
       - range: AnalysisPurpose
-      - range: SponsorTerm
-    inlined: false
+      - range: SponsorAnalysisPurpose
 
   methods:
     description: The defined methods used to analyze any analysis variable.
@@ -711,11 +870,11 @@ slots:
     inlined_as_list: true
   
   referencedOperationRole:
+    range: ExtensibleTerminologyTerm
     required: true
     any_of:
       - range: OperationRole
-      - range: SponsorTerm
-    inlined: false
+      - range: SponsorOperationRole
 
   operationId:  
     range: Operation
@@ -777,10 +936,10 @@ slots:
     range: OutputFile
 
   fileType:
+    range: ExtensibleTerminologyTerm
     any_of:
       - range: OutputFileType
-      - range: SponsorTerm
-    inlined: false
+      - range: SponsorOutputFileType
 
   location:
     range: uri
@@ -802,7 +961,7 @@ slots:
     multivalued: true
     inlined: true
     inlined_as_list: true
-    range: DisplaySection
+    range: GlobalDisplaySection
 
   displaySections:
     multivalued: true
@@ -811,11 +970,28 @@ slots:
     range: DisplaySection
 
   sectionType:
-    range: DisplaySectionType
+    range: DisplaySectionTypeEnum
+
+  orderedSubSections:
+    multivalued: true
+    list_elements_ordered: true
+    inlined: true
+    inlined_as_list: true
+    range: OrderedDisplaySubSection
+    any_of:
+      - range: OrderedSubSection
+      - range: OrderedSubSectionRef
+
+  subSection:
+    range: DisplaySubSection
+    inlined: true
+
+  subSectionId:
+    range: DisplaySubSection
+    inlined: false
 
   subSections:
     multivalued: true
-    list_elements_ordered: true
     inlined: true
     inlined_as_list: true
     range: DisplaySubSection
@@ -824,7 +1000,7 @@ slots:
 
   logicalOperator:
     required: true
-    range: ExpressionLogicalOperator
+    range: ExpressionLogicalOperatorEnum
 
   condition:
     range: WhereClauseCondition
@@ -843,9 +1019,10 @@ slots:
   variable:
 
   comparator:
-    range: ConditionComparator
+    range: ConditionComparatorEnum
 
   value:
+    multivalued: true
 
   label:
 
@@ -853,10 +1030,17 @@ slots:
     multivalued: true
     range: ReferenceDocument
     inlined: true
+    inlined_as_list: true
 
   documentRefs:
     multivalued: true
-    range: DocumentRef
+    range: DocumentReference
+    inlined: true
+    inlined_as_list: true
+
+  documentRef:
+    multivalued: false
+    range: DocumentReference
     inlined: true
     inlined_as_list: true
 
@@ -868,40 +1052,36 @@ slots:
   pageRefs:
     multivalued: true
     range: PageRef
+    inlined: true
+    inlined_as_list: true
+    any_of:
+      - range: PageNumberListRef
+      - range: PageNumberRangeRef
+      - range: PageNameRef
 
   refType:
     required: true
-    range: PageRefType
-
-  pages:
-    any_of:
-      - range: PageNumberList
-      - range: PageNameList
-      - range: PageRange
+    range: PageRefTypeEnum
 
   pageNumbers:
     description: One or more page numbers.
     range: integer
     multivalued: true
-    required: true
 
   pageNames:
     description: One or more named document references which each correspond with a page.
-    range: integer
+    range: string
     multivalued: true
-    required: true 
 
   firstPage:
     description: The page number of the first page in a range of pages.
     range: integer
-    required: true
 
   lastPage:
     description: The page number of the last page in a range of pages.
     range: integer
-    required: true
 
-  terminologyExtentions:
+  terminologyExtensions:
     description: Any sponsor-defined extensions to extensible terminology.
     range: TerminologyExtension
     multivalued: true
@@ -910,7 +1090,7 @@ slots:
 
   enumeration:
     description: The name of the extensible enumeration.
-    range: ExtensibleTerminology
+    range: ExtensibleTerminologyEnum
 
   sponsorTerms:
     description: The sponsor-defined terms added to the extensible terminology.
@@ -925,21 +1105,34 @@ slots:
     range: string
     required: true
 
+  controlledTerm:
+    range: string
+    any_of:
+      - range: AnalysisReasonEnum
+      - range: AnalysisPurposeEnum
+      - range: OperationRoleEnum
+      - range: OutputFileTypeEnum  
+
+  sponsorTermId:
+    description:
+    range: SponsorTerm
+    inlined: false
+
 enums:
 
-  OutputFileType:
+  OutputFileTypeEnum:
     permissible_values:
       pdf:
       rtf:
       txt:
 
-  ExpressionLogicalOperator:
+  ExpressionLogicalOperatorEnum:
     permissible_values:
       AND:
       OR:
       NOT:
 
-  ConditionComparator:
+  ConditionComparatorEnum:
     permissible_values:
       EQ:
       NE:
@@ -950,7 +1143,7 @@ enums:
       IN:
       NOTIN:
 
-  DisplaySectionType:
+  DisplaySectionTypeEnum:
     permissible_values:
       Title:
       Footnote:
@@ -958,12 +1151,12 @@ enums:
       Legend:
       Rowlabel Header:
 
-  OperationRole:
+  OperationRoleEnum:
     permissible_values:
       NUMERATOR:
       DENOMINATOR:
 
-  AnalysisReason:
+  AnalysisReasonEnum:
   # TODO: change to a dynamic enum based on the NCI or CDISC terminology with extending terms.
     description: The rationale for performing this analysis. It indicates when the analysis was planned.
     code_set: NCIT:C117744
@@ -981,7 +1174,7 @@ enums:
         description: The analysis has been requested by a regulatory agency.
         meaning: NCIT:C117751
 
-  AnalysisPurpose:
+  AnalysisPurposeEnum:
   # TODO: change to a dynamic enum based on the NCI or CDISC terminology with extending terms.
     description: The purpose of the analysis within the body of evidence (e.g., section in the clinical study report).
     code_set: NCIT:C117745
@@ -1005,19 +1198,19 @@ enums:
           focus of the study. (After clinicaltrials.gov)
         meaning: NCIT:C98724
 
-  ExtensibleTerminology:
+  ExtensibleTerminologyEnum:
     description: Extensible ARS enumerations.
     permissible_values:
-      AnalysisReason:
+      AnalysisReasonEnum:
         description: The rationale for performing this analysis. It indicates when the analysis was planned.
         meaning: NCIT:C117744
-      AnalysisPurpose:
+      AnalysisPurposeEnum:
         description: The purpose of the analysis within the body of evidence (e.g., section in the clinical study report).
         meaning: NCIT:C117745
-      OperationRole:
-      OutputFileType:
+      OperationRoleEnum:
+      OutputFileTypeEnum:
 
-  PageRefType:
+  PageRefTypeEnum:
     description: Type of page for page references.
     permissible_values:
       PhysicalRef:

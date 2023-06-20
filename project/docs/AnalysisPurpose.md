@@ -1,21 +1,43 @@
-# Enum: AnalysisPurpose
+# Class: AnalysisPurpose
+
+
+
+URI: [ars:AnalysisPurpose](https://www.cdisc.org/ars/1-0/AnalysisPurpose)
+
+
+
+```mermaid
+ classDiagram
+    class AnalysisPurpose
+      ExtensibleTerminologyTerm <|-- AnalysisPurpose
+      
+      AnalysisPurpose : controlledTerm
+        
+          AnalysisPurpose --|> AnalysisPurposeEnum : controlledTerm
+        
+      AnalysisPurpose : sponsorTermId
+        
+          AnalysisPurpose --|> SponsorTerm : sponsorTermId
+        
+      
+```
 
 
 
 
-_The purpose of the analysis within the body of evidence (e.g., section in the clinical study report)._
+
+## Inheritance
+* [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md)
+    * **AnalysisPurpose**
 
 
 
-URI: [AnalysisPurpose](AnalysisPurpose)
+## Slots
 
-## Permissible Values
-
-| Value | Meaning | Description |
-| --- | --- | --- |
-| PRIMARY OUTCOME MEASURE | NCIT:C98772 | The outcome measure(s) of greatest importance specified in the protocol, usua... |
-| SECONDARY OUTCOME MEASURE | NCIT:C98781 | The outcome measure(s) that is part of a pre-specified analysis plan used to ... |
-| EXPLORATORY OUTCOME MEASURE | NCIT:C98724 | The outcome measure(s) that is part of a pre-specified analysis plan used to ... |
+| Name | Cardinality and Range | Description | Inheritance |
+| ---  | --- | --- | --- |
+| [controlledTerm](controlledTerm.md) | 1..1 <br/> [AnalysisPurposeEnum](AnalysisPurposeEnum.md) |  | [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) |
+| [sponsorTermId](sponsorTermId.md) | 0..1 <br/> [SponsorTerm](SponsorTerm.md) |  | [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) |
 
 
 
@@ -41,37 +63,91 @@ URI: [AnalysisPurpose](AnalysisPurpose)
 
 
 
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | ars:AnalysisPurpose |
+| native | ars:AnalysisPurpose |
+
+
+
+
+
 ## LinkML Source
+
+<!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
+
+### Direct
 
 <details>
 ```yaml
 name: AnalysisPurpose
-description: The purpose of the analysis within the body of evidence (e.g., section
-  in the clinical study report).
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
-code_set: NCIT:C117745
-permissible_values:
-  PRIMARY OUTCOME MEASURE:
-    text: PRIMARY OUTCOME MEASURE
-    description: The outcome measure(s) of greatest importance specified in the protocol,
-      usually the one(s) used in the power calculation, to evaluate the primary endpoint(s)
-      associated with the primary study objective(s). (After Clinicaltrials.gov)
-    meaning: NCIT:C98772
-  SECONDARY OUTCOME MEASURE:
-    text: SECONDARY OUTCOME MEASURE
-    description: The outcome measure(s) that is part of a pre-specified analysis plan
-      used to evaluate the secondary endpoint(s) associated with secondary study objective(s)
-      and/or used to evaluate any measure(s) ancillary to the primary or secondary
-      endpoint(s). (After Clinicaltrials.gov).
-    meaning: NCIT:C98781
-  EXPLORATORY OUTCOME MEASURE:
-    text: EXPLORATORY OUTCOME MEASURE
-    description: The outcome measure(s) that is part of a pre-specified analysis plan
-      used to evaluate the exploratory endpoint(s) associated with exploratory study
-      objective(s) and/or any other measures, excluding post-hoc measures, that are
-      a focus of the study. (After clinicaltrials.gov)
-    meaning: NCIT:C98724
+is_a: ExtensibleTerminologyTerm
+slot_usage:
+  controlledTerm:
+    name: controlledTerm
+    domain_of:
+    - ExtensibleTerminologyTerm
+    range: AnalysisPurposeEnum
+    required: true
+    value_presence: PRESENT
+  sponsorTermId:
+    name: sponsorTermId
+    domain_of:
+    - ExtensibleTerminologyTerm
+    value_presence: ABSENT
+
+```
+</details>
+
+### Induced
+
+<details>
+```yaml
+name: AnalysisPurpose
+from_schema: https://www.cdisc.org/ars/1-0
+rank: 1000
+is_a: ExtensibleTerminologyTerm
+slot_usage:
+  controlledTerm:
+    name: controlledTerm
+    domain_of:
+    - ExtensibleTerminologyTerm
+    range: AnalysisPurposeEnum
+    required: true
+    value_presence: PRESENT
+  sponsorTermId:
+    name: sponsorTermId
+    domain_of:
+    - ExtensibleTerminologyTerm
+    value_presence: ABSENT
+attributes:
+  controlledTerm:
+    name: controlledTerm
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: controlledTerm
+    owner: AnalysisPurpose
+    domain_of:
+    - ExtensibleTerminologyTerm
+    range: AnalysisPurposeEnum
+    required: true
+    value_presence: PRESENT
+  sponsorTermId:
+    name: sponsorTermId
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: sponsorTermId
+    owner: AnalysisPurpose
+    domain_of:
+    - ExtensibleTerminologyTerm
+    range: SponsorTerm
+    inlined: false
+    value_presence: ABSENT
 
 ```
 </details>

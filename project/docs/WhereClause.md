@@ -141,7 +141,7 @@ attributes:
     - OrderedListItem
     - OrderedGroupingFactor
     - OrderedDisplay
-    - DisplaySubSection
+    - OrderedDisplaySubSection
     - WhereClause
     range: integer
   condition:

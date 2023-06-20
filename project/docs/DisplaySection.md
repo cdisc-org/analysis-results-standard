@@ -14,13 +14,13 @@ URI: [ars:DisplaySection](https://www.cdisc.org/ars/1-0/DisplaySection)
 ```mermaid
  classDiagram
     class DisplaySection
+      DisplaySection : orderedSubSections
+        
+          DisplaySection --|> OrderedDisplaySubSection : orderedSubSections
+        
       DisplaySection : sectionType
         
-          DisplaySection --|> DisplaySectionType : sectionType
-        
-      DisplaySection : subSections
-        
-          DisplaySection --|> DisplaySubSection : subSections
+          DisplaySection --|> DisplaySectionTypeEnum : sectionType
         
       
 ```
@@ -35,8 +35,8 @@ URI: [ars:DisplaySection](https://www.cdisc.org/ars/1-0/DisplaySection)
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [sectionType](sectionType.md) | 0..1 <br/> [DisplaySectionType](DisplaySectionType.md) |  | direct |
-| [subSections](subSections.md) | 0..* <br/> [DisplaySubSection](DisplaySubSection.md) |  | direct |
+| [sectionType](sectionType.md) | 0..1 <br/> [DisplaySectionTypeEnum](DisplaySectionTypeEnum.md) |  | direct |
+| [orderedSubSections](orderedSubSections.md) | 0..* <br/> [OrderedDisplaySubSection](OrderedDisplaySubSection.md) |  | direct |
 
 
 
@@ -46,7 +46,6 @@ URI: [ars:DisplaySection](https://www.cdisc.org/ars/1-0/DisplaySection)
 
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
-| [ReportingEvent](ReportingEvent.md) | [globalDisplaySections](globalDisplaySections.md) | range | [DisplaySection](DisplaySection.md) |
 | [OutputDisplay](OutputDisplay.md) | [displaySections](displaySections.md) | range | [DisplaySection](DisplaySection.md) |
 
 
@@ -112,7 +111,7 @@ from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 slots:
 - sectionType
-- subSections
+- orderedSubSections
 
 ```
 </details>
@@ -140,20 +139,24 @@ attributes:
     owner: DisplaySection
     domain_of:
     - DisplaySection
-    range: DisplaySectionType
-  subSections:
-    name: subSections
+    - GlobalDisplaySection
+    range: DisplaySectionTypeEnum
+  orderedSubSections:
+    name: orderedSubSections
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     multivalued: true
     list_elements_ordered: true
-    alias: subSections
+    alias: orderedSubSections
     owner: DisplaySection
     domain_of:
     - DisplaySection
-    range: DisplaySubSection
+    range: OrderedDisplaySubSection
     inlined: true
     inlined_as_list: true
+    any_of:
+    - range: OrderedSubSection
+    - range: OrderedSubSectionRef
 
 ```
 </details>

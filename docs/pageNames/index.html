@@ -93,22 +93,34 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../PageNameList/">PageNameList</a></td>
-<td>A list of one or more named document references, each of which corresponds wi...</td>
+<td><a href="../PageRef/">PageRef</a></td>
+<td></td>
 <td>no</td>
+</tr>
+<tr>
+<td><a href="../PageNumberListRef/">PageNumberListRef</a></td>
+<td>One or more individual pages in the reference document, referenced by page nu...</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../PageNumberRangeRef/">PageNumberRangeRef</a></td>
+<td>A range of pages in the reference document, indicated by the first and last p...</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../PageNameRef/">PageNameRef</a></td>
+<td>One or more pages in the reference document, referenced by named destination</td>
+<td>yes</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../Integer/">Integer</a></p>
+<p>Range: <a href="../String/">String</a></p>
 </li>
 <li>
 <p>Multivalued: True</p>
-</li>
-<li>
-<p>Required: True</p>
 </li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
@@ -126,9 +138,8 @@ rank: 1000
 multivalued: true
 alias: pageNames
 domain_of:
-- PageNameList
-range: integer
-required: true
+- PageRef
+range: string
 
 </code></pre>
 

@@ -13,6 +13,7 @@ URI: [ars:version](https://www.cdisc.org/ars/1-0/version)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+[ReportingEvent](ReportingEvent.md) | A set of analyses and outputs created to meet a specific reporting requiremen... |  no  |
 [Analysis](Analysis.md) | An analysis that is designed to meet a requirement of the reporting event |  no  |
 [Output](Output.md) | A report of results and their evaluation based on planned analyses performed ... |  no  |
 [OutputDisplay](OutputDisplay.md) | A tabular representation of the results of one or more analyses |  no  |
@@ -56,6 +57,7 @@ from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 alias: version
 domain_of:
+- ReportingEvent
 - Analysis
 - Output
 - OutputDisplay

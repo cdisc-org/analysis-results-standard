@@ -23,7 +23,7 @@ URI: [ars:globalDisplaySections](https://www.cdisc.org/ars/1-0/globalDisplaySect
 
 ## Properties
 
-* Range: [DisplaySection](DisplaySection.md)
+* Range: [GlobalDisplaySection](GlobalDisplaySection.md)
 
 * Multivalued: True
 
@@ -58,7 +58,7 @@ multivalued: true
 alias: globalDisplaySections
 domain_of:
 - ReportingEvent
-range: DisplaySection
+range: GlobalDisplaySection
 inlined: true
 inlined_as_list: true
 

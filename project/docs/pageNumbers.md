@@ -18,7 +18,10 @@ URI: [ars:pageNumbers](https://www.cdisc.org/ars/1-0/pageNumbers)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-[PageNumberList](PageNumberList.md) | A list of one or more page numbers |  no  |
+[PageRef](PageRef.md) |  |  no  |
+[PageNumberListRef](PageNumberListRef.md) | One or more individual pages in the reference document, referenced by page nu... |  yes  |
+[PageNumberRangeRef](PageNumberRangeRef.md) | A range of pages in the reference document, indicated by the first and last p... |  yes  |
+[PageNameRef](PageNameRef.md) | One or more pages in the reference document, referenced by named destination |  yes  |
 
 
 
@@ -31,8 +34,6 @@ URI: [ars:pageNumbers](https://www.cdisc.org/ars/1-0/pageNumbers)
 * Range: [Integer](Integer.md)
 
 * Multivalued: True
-
-* Required: True
 
 
 
@@ -65,9 +66,8 @@ rank: 1000
 multivalued: true
 alias: pageNumbers
 domain_of:
-- PageNumberList
+- PageRef
 range: integer
-required: true
 
 ```
 </details>

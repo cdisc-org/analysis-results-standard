@@ -5,9 +5,9 @@ type Analysis
     version: Integer
     categoryIds: [AnalysisCategory]
     description: String
-    reason: String!
-    purpose: String!
-    documentRefs: [DocumentRef]
+    reason: ExtensibleTerminologyTerm!
+    purpose: ExtensibleTerminologyTerm!
+    documentRefs: [DocumentReference]
     analysisSetId: AnalysisSet
     orderedGroupings: [OrderedGroupingFactor]
     dataSubsetId: DataSubset
@@ -50,24 +50,43 @@ type AnalysisMethod
     label: String
     description: String
     operations: [Operation]!
-    documentRefs: [DocumentRef]
+    documentRefs: [DocumentReference]
     codeTemplate: AnalysisProgrammingCodeTemplate
+  }
+
+type AnalysisOutputCodeParameter
+  {
+    name: String!
+    description: String
+    value: [String]!
   }
 
 type AnalysisOutputProgrammingCode
   {
     context: String!
     code: String
-    documentRefs: [DocumentRef]
-    parameters: [CodeParameter]
+    documentRef: DocumentReference
+    parameters: [AnalysisOutputCodeParameter]
   }
 
 type AnalysisProgrammingCodeTemplate
   {
     context: String!
     code: String
-    documentRefs: [DocumentRef]
+    documentRef: DocumentReference
     parameters: [TemplateCodeParameter]
+  }
+
+type AnalysisPurpose
+  {
+    controlledTerm: AnalysisPurposeEnum!
+    sponsorTermId: SponsorTerm
+  }
+
+type AnalysisReason
+  {
+    controlledTerm: AnalysisReasonEnum!
+    sponsorTermId: SponsorTerm
   }
 
 type AnalysisSet
@@ -80,28 +99,27 @@ type AnalysisSet
     compoundExpression: CompoundSetExpression
   }
 
-type CodeParameter
+interface CodeParameter
   {
     name: String!
     description: String
-    value: String!
   }
 
 type CompoundGroupExpression
   {
-    logicalOperator: ExpressionLogicalOperator!
+    logicalOperator: ExpressionLogicalOperatorEnum!
     whereClauses: [Group]
   }
 
 type CompoundSetExpression
   {
-    logicalOperator: ExpressionLogicalOperator!
+    logicalOperator: ExpressionLogicalOperatorEnum!
     whereClauses: [AnalysisSet]
   }
 
 type CompoundSubsetExpression
   {
-    logicalOperator: ExpressionLogicalOperator!
+    logicalOperator: ExpressionLogicalOperatorEnum!
     whereClauses: [WhereClause]
   }
 
@@ -136,21 +154,32 @@ type DataSubset
 
 type DisplaySection
   {
-    sectionType: DisplaySectionType
-    subSections: [DisplaySubSection]
+    sectionType: DisplaySectionTypeEnum
+    orderedSubSections: [OrderedDisplaySubSection]
   }
 
 type DisplaySubSection
   {
     id: String!
-    order: Integer!
-    text: String
+    text: String!
   }
 
-type DocumentRef
+type DocumentReference
   {
     referenceDocumentId: ReferenceDocument!
     pageRefs: [PageRef]
+  }
+
+interface ExtensibleTerminologyTerm
+  {
+    controlledTerm: String
+    sponsorTermId: SponsorTerm
+  }
+
+type GlobalDisplaySection
+  {
+    sectionType: DisplaySectionTypeEnum
+    subSections: [DisplaySubSection]
   }
 
 type Group
@@ -199,10 +228,23 @@ type OperationResult
     formattedValue: String
   }
 
+type OperationRole
+  {
+    controlledTerm: OperationRoleEnum!
+    sponsorTermId: SponsorTerm
+  }
+
 type OrderedDisplay
   {
     order: Integer!
     display: OutputDisplay
+  }
+
+interface OrderedDisplaySubSection
+  {
+    order: Integer!
+    subSection: DisplaySubSection
+    subSectionId: DisplaySubSection
   }
 
 type OrderedGroupingFactor
@@ -222,6 +264,20 @@ type OrderedListItem
     outputId: Output
   }
 
+type OrderedSubSection
+  {
+    order: Integer!
+    subSection: DisplaySubSection!
+    subSectionId: DisplaySubSection
+  }
+
+type OrderedSubSectionRef
+  {
+    order: Integer!
+    subSection: DisplaySubSection
+    subSectionId: DisplaySubSection!
+  }
+
 type Output
   {
     name: String!
@@ -230,7 +286,7 @@ type Output
     fileSpecifications: [OutputFile]
     displays: [OrderedDisplay]
     categoryIds: [AnalysisCategory]
-    documentRefs: [DocumentRef]
+    documentRefs: [DocumentReference]
     programmingCode: AnalysisOutputProgrammingCode
   }
 
@@ -246,53 +302,55 @@ type OutputDisplay
 type OutputFile
   {
     name: String!
-    fileType: String
+    fileType: ExtensibleTerminologyTerm
     location: Uri
     style: String
   }
 
-type PageNameList
+type OutputFileType
   {
-    pageNames: [Integer]!
+    controlledTerm: OutputFileTypeEnum!
+    sponsorTermId: SponsorTerm
   }
 
 type PageNameRef
   {
     label: String
-    refType: PageRefType!
-    pages: PageNameList
-  }
-
-type PageNumberList
-  {
-    pageNumbers: [Integer]!
+    refType: PageRefTypeEnum!
+    pageNumbers: [Integer]
+    pageNames: [String]!
+    firstPage: Integer
+    lastPage: Integer
   }
 
 type PageNumberListRef
   {
     label: String
-    refType: PageRefType!
-    pages: PageNumberList
+    refType: PageRefTypeEnum!
+    pageNumbers: [Integer]!
+    pageNames: [String]
+    firstPage: Integer
+    lastPage: Integer
   }
 
 type PageNumberRangeRef
   {
     label: String
-    refType: PageRefType!
-    pages: PageRange
-  }
-
-type PageRange
-  {
+    refType: PageRefTypeEnum!
+    pageNumbers: [Integer]
+    pageNames: [String]
     firstPage: Integer!
     lastPage: Integer!
   }
 
-type PageRef
+interface PageRef
   {
-    refType: PageRefType!
+    refType: PageRefTypeEnum!
     label: String
-    pages: String
+    pageNames: [String]
+    pageNumbers: [Integer]
+    firstPage: Integer
+    lastPage: Integer
   }
 
 type ReferencedAnalysisOperation
@@ -311,7 +369,7 @@ type ReferenceDocument
 type ReferencedOperationRelationship
   {
     id: String!
-    referencedOperationRole: String!
+    referencedOperationRole: ExtensibleTerminologyTerm!
     operationId: Operation!
     analysisId: Analysis
     description: String
@@ -320,19 +378,21 @@ type ReferencedOperationRelationship
 type ReportingEvent
   {
     name: String!
+    id: String!
+    version: Integer
     listOfPlannedAnalyses: NestedList!
     listOfPlannedOutputs: NestedList
     analysisSets: [AnalysisSet]
     analysisGroupings: [SubjectGroupingFactor]
     dataSubsets: [DataSubset]
     dataGroupings: [DataGroupingFactor]
-    globalDisplaySections: [DisplaySection]
+    globalDisplaySections: [GlobalDisplaySection]
     analysisCategorizations: [AnalysisCategorization]
     analyses: [Analysis]
     methods: [AnalysisMethod]
     outputs: [Output]
     referenceDocuments: [ReferenceDocument]
-    terminologyExtentions: [TerminologyExtension]
+    terminologyExtensions: [TerminologyExtension]
   }
 
 type ResultGroup
@@ -340,6 +400,30 @@ type ResultGroup
     groupingId: GroupingFactor
     groupId: Group
     groupValue: String
+  }
+
+type SponsorAnalysisPurpose
+  {
+    controlledTerm: String
+    sponsorTermId: SponsorTerm!
+  }
+
+type SponsorAnalysisReason
+  {
+    controlledTerm: String
+    sponsorTermId: SponsorTerm!
+  }
+
+type SponsorOperationRole
+  {
+    controlledTerm: String
+    sponsorTermId: SponsorTerm!
+  }
+
+type SponsorOutputFileType
+  {
+    controlledTerm: String
+    sponsorTermId: SponsorTerm!
   }
 
 type SponsorTerm
@@ -363,12 +447,13 @@ type TemplateCodeParameter
     name: String!
     description: String
     valueSource: String
-    value: String
+    value: [String]
   }
 
 type TerminologyExtension
   {
-    enumeration: ExtensibleTerminology
+    id: String!
+    enumeration: ExtensibleTerminologyEnum
     sponsorTerms: [SponsorTerm]!
   }
 
@@ -382,7 +467,7 @@ type WhereClause
 
 type WhereClauseCompoundExpression
   {
-    logicalOperator: ExpressionLogicalOperator!
+    logicalOperator: ExpressionLogicalOperatorEnum!
     whereClauses: [WhereClause]
   }
 
@@ -390,7 +475,7 @@ type WhereClauseCondition
   {
     dataset: String
     variable: String
-    comparator: ConditionComparator
-    value: String
+    comparator: ConditionComparatorEnum
+    value: [String]
   }
 

@@ -157,6 +157,7 @@ attributes:
     alias: id
     owner: AnalysisSet
     domain_of:
+    - ReportingEvent
     - AnalysisCategorization
     - AnalysisCategory
     - Analysis
@@ -171,6 +172,7 @@ attributes:
     - Group
     - DataSubset
     - ReferenceDocument
+    - TerminologyExtension
     - SponsorTerm
     range: string
     required: true
@@ -211,7 +213,7 @@ attributes:
     - OrderedListItem
     - OrderedGroupingFactor
     - OrderedDisplay
-    - DisplaySubSection
+    - OrderedDisplaySubSection
     - WhereClause
     range: integer
   condition:

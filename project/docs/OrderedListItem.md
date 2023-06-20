@@ -134,7 +134,7 @@ slot_usage:
     - OrderedListItem
     - OrderedGroupingFactor
     - OrderedDisplay
-    - DisplaySubSection
+    - OrderedDisplaySubSection
     - WhereClause
     required: true
 
@@ -164,7 +164,7 @@ slot_usage:
     - OrderedListItem
     - OrderedGroupingFactor
     - OrderedDisplay
-    - DisplaySubSection
+    - OrderedDisplaySubSection
     - WhereClause
     required: true
 attributes:
@@ -189,7 +189,7 @@ attributes:
     - OrderedListItem
     - OrderedGroupingFactor
     - OrderedDisplay
-    - DisplaySubSection
+    - OrderedDisplaySubSection
     - WhereClause
     range: integer
     required: true

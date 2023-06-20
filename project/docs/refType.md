@@ -26,7 +26,7 @@ URI: [ars:refType](https://www.cdisc.org/ars/1-0/refType)
 
 ## Properties
 
-* Range: [PageRefType](PageRefType.md)
+* Range: [PageRefTypeEnum](PageRefTypeEnum.md)
 
 * Required: True
 
@@ -60,7 +60,7 @@ rank: 1000
 alias: refType
 domain_of:
 - PageRef
-range: PageRefType
+range: PageRefTypeEnum
 required: true
 
 ```

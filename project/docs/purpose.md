@@ -28,7 +28,7 @@ URI: [ars:purpose](https://www.cdisc.org/ars/1-0/purpose)
 
 ## Properties
 
-* Range: [String](String.md)
+* Range: [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md)
 
 * Required: True
 
@@ -64,12 +64,11 @@ rank: 1000
 alias: purpose
 domain_of:
 - Analysis
-range: string
+range: ExtensibleTerminologyTerm
 required: true
-inlined: false
 any_of:
 - range: AnalysisPurpose
-- range: SponsorTerm
+- range: SponsorAnalysisPurpose
 
 ```
 </details>

@@ -20,6 +20,7 @@ URI: [ars:name](https://www.cdisc.org/ars/1-0/name)
 [AnalysisMethod](AnalysisMethod.md) | A set of one or more statistical operations |  no  |
 [Operation](Operation.md) | A statistical operation that produces a single analysis result value as part ... |  no  |
 [CodeParameter](CodeParameter.md) | A replacement parameter whose value is substituted in template programming co... |  no  |
+[AnalysisOutputCodeParameter](AnalysisOutputCodeParameter.md) | A parameter whose value is used in programming code for a specific analysis o... |  no  |
 [TemplateCodeParameter](TemplateCodeParameter.md) | A replacement parameter whose value is substituted in template programming co... |  no  |
 [Output](Output.md) | A report of results and their evaluation based on planned analyses performed ... |  no  |
 [OutputFile](OutputFile.md) | A file containing analysis output displays |  no  |

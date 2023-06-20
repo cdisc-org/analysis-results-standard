@@ -24,7 +24,7 @@
                 },
                 "documentRefs": {
                     "items": {
-                        "$ref": "#/$defs/DocumentRef"
+                        "$ref": "#/$defs/DocumentReference"
                     },
                     "type": "array"
                 },
@@ -54,7 +54,7 @@
                             "$ref": "#/$defs/AnalysisPurpose"
                         },
                         {
-                            "type": "string"
+                            "$ref": "#/$defs/SponsorAnalysisPurpose"
                         }
                     ],
                     "description": "The purpose of the analysis within the body of evidence (e.g., section in the clinical study report)."
@@ -65,7 +65,7 @@
                             "$ref": "#/$defs/AnalysisReason"
                         },
                         {
-                            "type": "string"
+                            "$ref": "#/$defs/SponsorAnalysisReason"
                         }
                     ],
                     "description": "The rationale for performing this analysis. It indicates when the analysis was planned."
@@ -188,7 +188,7 @@
                 },
                 "documentRefs": {
                     "items": {
-                        "$ref": "#/$defs/DocumentRef"
+                        "$ref": "#/$defs/DocumentReference"
                     },
                     "type": "array"
                 },
@@ -216,6 +216,32 @@
             "title": "AnalysisMethod",
             "type": "object"
         },
+        "AnalysisOutputCodeParameter": {
+            "additionalProperties": false,
+            "description": "A parameter whose value is used in programming code for a specific analysis or output.",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "value": {
+                    "description": "The value of the parameter.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "maxItems": 1,
+                    "type": "array"
+                }
+            },
+            "required": [
+                "value",
+                "name"
+            ],
+            "title": "AnalysisOutputCodeParameter",
+            "type": "object"
+        },
         "AnalysisOutputProgrammingCode": {
             "additionalProperties": false,
             "description": "Programming statements and/or a reference to the program used to perform a specific analysis or create a specific output.",
@@ -228,16 +254,13 @@
                     "description": "The name and version of the computer language used for the actual programming statements provided.",
                     "type": "string"
                 },
-                "documentRefs": {
-                    "items": {
-                        "$ref": "#/$defs/DocumentRef"
-                    },
-                    "type": "array"
+                "documentRef": {
+                    "$ref": "#/$defs/DocumentReference"
                 },
                 "parameters": {
                     "description": "Parameter values used to generate or execute the programming code.",
                     "items": {
-                        "$ref": "#/$defs/CodeParameter"
+                        "$ref": "#/$defs/AnalysisOutputCodeParameter"
                     },
                     "type": "array"
                 }
@@ -260,11 +283,8 @@
                     "description": "The name and version of the computer language used for the actual programming statements provided.",
                     "type": "string"
                 },
-                "documentRefs": {
-                    "items": {
-                        "$ref": "#/$defs/DocumentRef"
-                    },
-                    "type": "array"
+                "documentRef": {
+                    "$ref": "#/$defs/DocumentReference"
                 },
                 "parameters": {
                     "description": "Parameters whose values will be used to generate or execute the programming code for a specific analysis.",
@@ -281,16 +301,50 @@
             "type": "object"
         },
         "AnalysisPurpose": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "controlledTerm": {
+                    "$ref": "#/$defs/AnalysisPurposeEnum"
+                },
+                "sponsorTermId": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "controlledTerm"
+            ],
+            "title": "AnalysisPurpose",
+            "type": "object"
+        },
+        "AnalysisPurposeEnum": {
             "description": "The purpose of the analysis within the body of evidence (e.g., section in the clinical study report).",
             "enum": [
                 "PRIMARY OUTCOME MEASURE",
                 "SECONDARY OUTCOME MEASURE",
                 "EXPLORATORY OUTCOME MEASURE"
             ],
-            "title": "AnalysisPurpose",
+            "title": "AnalysisPurposeEnum",
             "type": "string"
         },
         "AnalysisReason": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "controlledTerm": {
+                    "$ref": "#/$defs/AnalysisReasonEnum"
+                },
+                "sponsorTermId": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "controlledTerm"
+            ],
+            "title": "AnalysisReason",
+            "type": "object"
+        },
+        "AnalysisReasonEnum": {
             "description": "The rationale for performing this analysis. It indicates when the analysis was planned.",
             "enum": [
                 "SPECIFIED IN PROTOCOL",
@@ -298,7 +352,7 @@
                 "DATA DRIVEN",
                 "REQUESTED BY REGULATORY AGENCY"
             ],
-            "title": "AnalysisReason",
+            "title": "AnalysisReasonEnum",
             "type": "string"
         },
         "AnalysisSet": {
@@ -330,34 +384,12 @@
             "title": "AnalysisSet",
             "type": "object"
         },
-        "CodeParameter": {
-            "additionalProperties": false,
-            "description": "A replacement parameter whose value is substituted in template programming code to create statements required for a specific analysis.",
-            "properties": {
-                "description": {
-                    "type": "string"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "value": {
-                    "description": "The value of the parameter.",
-                    "type": "string"
-                }
-            },
-            "required": [
-                "value",
-                "name"
-            ],
-            "title": "CodeParameter",
-            "type": "object"
-        },
         "CompoundGroupExpression": {
             "additionalProperties": false,
             "description": "",
             "properties": {
                 "logicalOperator": {
-                    "$ref": "#/$defs/ExpressionLogicalOperator"
+                    "$ref": "#/$defs/ExpressionLogicalOperatorEnum"
                 },
                 "whereClauses": {
                     "items": {
@@ -377,7 +409,7 @@
             "description": "",
             "properties": {
                 "logicalOperator": {
-                    "$ref": "#/$defs/ExpressionLogicalOperator"
+                    "$ref": "#/$defs/ExpressionLogicalOperatorEnum"
                 },
                 "whereClauses": {
                     "items": {
@@ -397,7 +429,7 @@
             "description": "",
             "properties": {
                 "logicalOperator": {
-                    "$ref": "#/$defs/ExpressionLogicalOperator"
+                    "$ref": "#/$defs/ExpressionLogicalOperatorEnum"
                 },
                 "whereClauses": {
                     "items": {
@@ -412,7 +444,7 @@
             "title": "CompoundSubsetExpression",
             "type": "object"
         },
-        "ConditionComparator": {
+        "ConditionComparatorEnum": {
             "description": "",
             "enum": [
                 "EQ",
@@ -424,7 +456,7 @@
                 "IN",
                 "NOTIN"
             ],
-            "title": "ConditionComparator",
+            "title": "ConditionComparatorEnum",
             "type": "string"
         },
         "DataGroup": {
@@ -521,20 +553,27 @@
             "additionalProperties": false,
             "description": "A part of a tabular display containing one or more pieces of informational text.",
             "properties": {
-                "sectionType": {
-                    "$ref": "#/$defs/DisplaySectionType"
-                },
-                "subSections": {
+                "orderedSubSections": {
                     "items": {
-                        "$ref": "#/$defs/DisplaySubSection"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/OrderedSubSection"
+                            },
+                            {
+                                "$ref": "#/$defs/OrderedSubSectionRef"
+                            }
+                        ]
                     },
                     "type": "array"
+                },
+                "sectionType": {
+                    "$ref": "#/$defs/DisplaySectionTypeEnum"
                 }
             },
             "title": "DisplaySection",
             "type": "object"
         },
-        "DisplaySectionType": {
+        "DisplaySectionTypeEnum": {
             "description": "",
             "enum": [
                 "Title",
@@ -543,7 +582,7 @@
                 "Legend",
                 "Rowlabel Header"
             ],
-            "title": "DisplaySectionType",
+            "title": "DisplaySectionTypeEnum",
             "type": "string"
         },
         "DisplaySubSection": {
@@ -553,27 +592,34 @@
                 "id": {
                     "type": "string"
                 },
-                "order": {
-                    "type": "integer"
-                },
                 "text": {
                     "type": "string"
                 }
             },
             "required": [
                 "id",
-                "order"
+                "text"
             ],
             "title": "DisplaySubSection",
             "type": "object"
         },
-        "DocumentRef": {
+        "DocumentReference": {
             "additionalProperties": false,
             "description": "",
             "properties": {
                 "pageRefs": {
                     "items": {
-                        "$ref": "#/$defs/PageRef"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/PageNumberListRef"
+                            },
+                            {
+                                "$ref": "#/$defs/PageNumberRangeRef"
+                            },
+                            {
+                                "$ref": "#/$defs/PageNameRef"
+                            }
+                        ]
                     },
                     "type": "array"
                 },
@@ -584,29 +630,46 @@
             "required": [
                 "referenceDocumentId"
             ],
-            "title": "DocumentRef",
+            "title": "DocumentReference",
             "type": "object"
         },
-        "ExpressionLogicalOperator": {
+        "ExpressionLogicalOperatorEnum": {
             "description": "",
             "enum": [
                 "AND",
                 "OR",
                 "NOT"
             ],
-            "title": "ExpressionLogicalOperator",
+            "title": "ExpressionLogicalOperatorEnum",
             "type": "string"
         },
-        "ExtensibleTerminology": {
+        "ExtensibleTerminologyEnum": {
             "description": "Extensible ARS enumerations.",
             "enum": [
-                "AnalysisReason",
-                "AnalysisPurpose",
-                "OperationRole",
-                "OutputFileType"
+                "AnalysisReasonEnum",
+                "AnalysisPurposeEnum",
+                "OperationRoleEnum",
+                "OutputFileTypeEnum"
             ],
-            "title": "ExtensibleTerminology",
+            "title": "ExtensibleTerminologyEnum",
             "type": "string"
+        },
+        "GlobalDisplaySection": {
+            "additionalProperties": false,
+            "description": "A part of a tabular display containing one or more pieces of informational text.",
+            "properties": {
+                "sectionType": {
+                    "$ref": "#/$defs/DisplaySectionTypeEnum"
+                },
+                "subSections": {
+                    "items": {
+                        "$ref": "#/$defs/DisplaySubSection"
+                    },
+                    "type": "array"
+                }
+            },
+            "title": "GlobalDisplaySection",
+            "type": "object"
         },
         "Group": {
             "additionalProperties": false,
@@ -708,12 +771,29 @@
             "type": "object"
         },
         "OperationRole": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "controlledTerm": {
+                    "$ref": "#/$defs/OperationRoleEnum"
+                },
+                "sponsorTermId": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "controlledTerm"
+            ],
+            "title": "OperationRole",
+            "type": "object"
+        },
+        "OperationRoleEnum": {
             "description": "",
             "enum": [
                 "NUMERATOR",
                 "DENOMINATOR"
             ],
-            "title": "OperationRole",
+            "title": "OperationRoleEnum",
             "type": "string"
         },
         "OrderedDisplay": {
@@ -786,6 +866,48 @@
             "title": "OrderedListItem",
             "type": "object"
         },
+        "OrderedSubSection": {
+            "additionalProperties": false,
+            "description": "A subsection ordered with respect to other subsections of the same type.",
+            "properties": {
+                "order": {
+                    "type": "integer"
+                },
+                "subSection": {
+                    "$ref": "#/$defs/DisplaySubSection"
+                },
+                "subSectionId": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "order",
+                "subSection"
+            ],
+            "title": "OrderedSubSection",
+            "type": "object"
+        },
+        "OrderedSubSectionRef": {
+            "additionalProperties": false,
+            "description": "A reference to a subsection defined either globally or in another display section, ordered with respect to other subsections of the same type.",
+            "properties": {
+                "order": {
+                    "type": "integer"
+                },
+                "subSection": {
+                    "$ref": "#/$defs/DisplaySubSection"
+                },
+                "subSectionId": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "order",
+                "subSectionId"
+            ],
+            "title": "OrderedSubSectionRef",
+            "type": "object"
+        },
         "Output": {
             "additionalProperties": false,
             "description": "A report of results and their evaluation based on planned analyses performed during the course of a trial.",
@@ -804,7 +926,7 @@
                 },
                 "documentRefs": {
                     "items": {
-                        "$ref": "#/$defs/DocumentRef"
+                        "$ref": "#/$defs/DocumentReference"
                     },
                     "type": "array"
                 },
@@ -875,7 +997,7 @@
                             "$ref": "#/$defs/OutputFileType"
                         },
                         {
-                            "type": "string"
+                            "$ref": "#/$defs/SponsorOutputFileType"
                         }
                     ]
                 },
@@ -896,91 +1018,112 @@
             "type": "object"
         },
         "OutputFileType": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "controlledTerm": {
+                    "$ref": "#/$defs/OutputFileTypeEnum"
+                },
+                "sponsorTermId": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "controlledTerm"
+            ],
+            "title": "OutputFileType",
+            "type": "object"
+        },
+        "OutputFileTypeEnum": {
             "description": "",
             "enum": [
                 "pdf",
                 "rtf",
                 "txt"
             ],
-            "title": "OutputFileType",
+            "title": "OutputFileTypeEnum",
             "type": "string"
-        },
-        "PageNameList": {
-            "additionalProperties": false,
-            "description": "A list of one or more named document references, each of which corresponds with a page.",
-            "properties": {
-                "pageNames": {
-                    "description": "One or more named document references which each correspond with a page.",
-                    "items": {
-                        "type": "integer"
-                    },
-                    "type": "array"
-                }
-            },
-            "required": [
-                "pageNames"
-            ],
-            "title": "PageNameList",
-            "type": "object"
         },
         "PageNameRef": {
             "additionalProperties": false,
             "description": "One or more pages in the reference document, referenced by named destination.",
             "properties": {
+                "firstPage": {
+                    "description": "The page number of the first page in a range of pages.",
+                    "type": "integer"
+                },
                 "label": {
                     "description": "Alternative label to provide a more specific and description to a page link.",
                     "type": "string"
                 },
-                "pages": {
-                    "$ref": "#/$defs/PageNameList"
+                "lastPage": {
+                    "description": "The page number of the last page in a range of pages.",
+                    "type": "integer"
                 },
-                "refType": {
-                    "$ref": "#/$defs/PageRefType",
-                    "const": "NamedDestination"
-                }
-            },
-            "required": [
-                "refType"
-            ],
-            "title": "PageNameRef",
-            "type": "object"
-        },
-        "PageNumberList": {
-            "additionalProperties": false,
-            "description": "A list of one or more page numbers.",
-            "properties": {
+                "pageNames": {
+                    "description": "One or more named document references which each correspond with a page.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "pageNumbers": {
                     "description": "One or more page numbers.",
                     "items": {
                         "type": "integer"
                     },
                     "type": "array"
+                },
+                "refType": {
+                    "$ref": "#/$defs/PageRefTypeEnum",
+                    "const": "NamedDestination"
                 }
             },
             "required": [
-                "pageNumbers"
+                "refType",
+                "pageNames"
             ],
-            "title": "PageNumberList",
+            "title": "PageNameRef",
             "type": "object"
         },
         "PageNumberListRef": {
             "additionalProperties": false,
             "description": "One or more individual pages in the reference document, referenced by page number.",
             "properties": {
+                "firstPage": {
+                    "description": "The page number of the first page in a range of pages.",
+                    "type": "integer"
+                },
                 "label": {
                     "description": "Alternative label to provide a more specific and description to a page link.",
                     "type": "string"
                 },
-                "pages": {
-                    "$ref": "#/$defs/PageNumberList"
+                "lastPage": {
+                    "description": "The page number of the last page in a range of pages.",
+                    "type": "integer"
+                },
+                "pageNames": {
+                    "description": "One or more named document references which each correspond with a page.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "pageNumbers": {
+                    "description": "One or more page numbers.",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "type": "array"
                 },
                 "refType": {
-                    "$ref": "#/$defs/PageRefType",
+                    "$ref": "#/$defs/PageRefTypeEnum",
                     "const": "PhysicalRef"
                 }
             },
             "required": [
-                "refType"
+                "refType",
+                "pageNumbers"
             ],
             "title": "PageNumberListRef",
             "type": "object"
@@ -989,82 +1132,52 @@
             "additionalProperties": false,
             "description": "A range of pages in the reference document, indicated by the first and last page number in the range.",
             "properties": {
-                "label": {
-                    "description": "Alternative label to provide a more specific and description to a page link.",
-                    "type": "string"
-                },
-                "pages": {
-                    "$ref": "#/$defs/PageRange"
-                },
-                "refType": {
-                    "$ref": "#/$defs/PageRefType",
-                    "const": "PhysicalRef"
-                }
-            },
-            "required": [
-                "refType"
-            ],
-            "title": "PageNumberRangeRef",
-            "type": "object"
-        },
-        "PageRange": {
-            "additionalProperties": false,
-            "description": "A set of pages in a document that includes the specified first and last page, and all pages in between.",
-            "properties": {
                 "firstPage": {
                     "description": "The page number of the first page in a range of pages.",
                     "type": "integer"
                 },
-                "lastPage": {
-                    "description": "The page number of the last page in a range of pages.",
-                    "type": "integer"
-                }
-            },
-            "required": [
-                "firstPage",
-                "lastPage"
-            ],
-            "title": "PageRange",
-            "type": "object"
-        },
-        "PageRef": {
-            "additionalProperties": false,
-            "description": "",
-            "properties": {
                 "label": {
                     "description": "Alternative label to provide a more specific and description to a page link.",
                     "type": "string"
                 },
-                "pages": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/PageNumberList"
-                        },
-                        {
-                            "$ref": "#/$defs/PageNameList"
-                        },
-                        {
-                            "$ref": "#/$defs/PageRange"
-                        }
-                    ]
+                "lastPage": {
+                    "description": "The page number of the last page in a range of pages.",
+                    "type": "integer"
+                },
+                "pageNames": {
+                    "description": "One or more named document references which each correspond with a page.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "pageNumbers": {
+                    "description": "One or more page numbers.",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "type": "array"
                 },
                 "refType": {
-                    "$ref": "#/$defs/PageRefType"
+                    "$ref": "#/$defs/PageRefTypeEnum",
+                    "const": "PhysicalRef"
                 }
             },
             "required": [
-                "refType"
+                "refType",
+                "firstPage",
+                "lastPage"
             ],
-            "title": "PageRef",
+            "title": "PageNumberRangeRef",
             "type": "object"
         },
-        "PageRefType": {
+        "PageRefTypeEnum": {
             "description": "Type of page for page references.",
             "enum": [
                 "PhysicalRef",
                 "NamedDestination"
             ],
-            "title": "PageRefType",
+            "title": "PageRefTypeEnum",
             "type": "string"
         },
         "ReferenceDocument": {
@@ -1083,26 +1196,6 @@
             },
             "required": [
                 "id",
-                "name"
-            ],
-            "title": "ReferenceDocument",
-            "type": "object"
-        },
-        "ReferenceDocument__identifier_optional": {
-            "additionalProperties": false,
-            "description": "",
-            "properties": {
-                "id": {
-                    "type": "string"
-                },
-                "location": {
-                    "type": "string"
-                },
-                "name": {
-                    "type": "string"
-                }
-            },
-            "required": [
                 "name"
             ],
             "title": "ReferenceDocument",
@@ -1147,7 +1240,7 @@
                             "$ref": "#/$defs/OperationRole"
                         },
                         {
-                            "type": "string"
+                            "$ref": "#/$defs/SponsorOperationRole"
                         }
                     ]
                 }
@@ -1206,9 +1299,12 @@
                 },
                 "globalDisplaySections": {
                     "items": {
-                        "$ref": "#/$defs/DisplaySection"
+                        "$ref": "#/$defs/GlobalDisplaySection"
                     },
                     "type": "array"
+                },
+                "id": {
+                    "type": "string"
                 },
                 "listOfPlannedAnalyses": {
                     "$ref": "#/$defs/NestedList",
@@ -1235,20 +1331,24 @@
                     "type": "array"
                 },
                 "referenceDocuments": {
-                    "additionalProperties": {
-                        "$ref": "#/$defs/ReferenceDocument__identifier_optional"
+                    "items": {
+                        "$ref": "#/$defs/ReferenceDocument"
                     },
-                    "type": "object"
+                    "type": "array"
                 },
-                "terminologyExtentions": {
+                "terminologyExtensions": {
                     "description": "Any sponsor-defined extensions to extensible terminology.",
                     "items": {
                         "$ref": "#/$defs/TerminologyExtension"
                     },
                     "type": "array"
+                },
+                "version": {
+                    "type": "integer"
                 }
             },
             "required": [
+                "id",
                 "listOfPlannedAnalyses",
                 "name"
             ],
@@ -1270,6 +1370,74 @@
                 }
             },
             "title": "ResultGroup",
+            "type": "object"
+        },
+        "SponsorAnalysisPurpose": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "controlledTerm": {
+                    "type": "string"
+                },
+                "sponsorTermId": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "sponsorTermId"
+            ],
+            "title": "SponsorAnalysisPurpose",
+            "type": "object"
+        },
+        "SponsorAnalysisReason": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "controlledTerm": {
+                    "type": "string"
+                },
+                "sponsorTermId": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "sponsorTermId"
+            ],
+            "title": "SponsorAnalysisReason",
+            "type": "object"
+        },
+        "SponsorOperationRole": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "controlledTerm": {
+                    "type": "string"
+                },
+                "sponsorTermId": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "sponsorTermId"
+            ],
+            "title": "SponsorOperationRole",
+            "type": "object"
+        },
+        "SponsorOutputFileType": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "controlledTerm": {
+                    "type": "string"
+                },
+                "sponsorTermId": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "sponsorTermId"
+            ],
+            "title": "SponsorOutputFileType",
             "type": "object"
         },
         "SponsorTerm": {
@@ -1337,8 +1505,11 @@
                     "type": "string"
                 },
                 "value": {
-                    "description": "The value of the parameter.",
-                    "type": "string"
+                    "description": "The value to be used for the parameter when the method is used in an analysis. Multiple values may be specified to indicate a choice.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "valueSource": {
                     "description": "A reference to the prespecified source of the value for the parameter.",
@@ -1356,8 +1527,11 @@
             "description": "A sponsor-defined term that is included in an extensible set of controlled terminology.",
             "properties": {
                 "enumeration": {
-                    "$ref": "#/$defs/ExtensibleTerminology",
+                    "$ref": "#/$defs/ExtensibleTerminologyEnum",
                     "description": "The name of the extensible enumeration."
+                },
+                "id": {
+                    "type": "string"
                 },
                 "sponsorTerms": {
                     "description": "The sponsor-defined terms added to the extensible terminology.",
@@ -1368,6 +1542,7 @@
                 }
             },
             "required": [
+                "id",
                 "sponsorTerms"
             ],
             "title": "TerminologyExtension",
@@ -1398,7 +1573,7 @@
             "description": "",
             "properties": {
                 "logicalOperator": {
-                    "$ref": "#/$defs/ExpressionLogicalOperator"
+                    "$ref": "#/$defs/ExpressionLogicalOperatorEnum"
                 },
                 "whereClauses": {
                     "items": {
@@ -1486,13 +1661,16 @@
             "description": "",
             "properties": {
                 "comparator": {
-                    "$ref": "#/$defs/ConditionComparator"
+                    "$ref": "#/$defs/ConditionComparatorEnum"
                 },
                 "dataset": {
                     "type": "string"
                 },
                 "value": {
-                    "type": "string"
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "variable": {
                     "type": "string"
@@ -1550,9 +1728,12 @@
         },
         "globalDisplaySections": {
             "items": {
-                "$ref": "#/$defs/DisplaySection"
+                "$ref": "#/$defs/GlobalDisplaySection"
             },
             "type": "array"
+        },
+        "id": {
+            "type": "string"
         },
         "listOfPlannedAnalyses": {
             "$ref": "#/$defs/NestedList",
@@ -1579,20 +1760,24 @@
             "type": "array"
         },
         "referenceDocuments": {
-            "additionalProperties": {
-                "$ref": "#/$defs/ReferenceDocument__identifier_optional"
+            "items": {
+                "$ref": "#/$defs/ReferenceDocument"
             },
-            "type": "object"
+            "type": "array"
         },
-        "terminologyExtentions": {
+        "terminologyExtensions": {
             "description": "Any sponsor-defined extensions to extensible terminology.",
             "items": {
                 "$ref": "#/$defs/TerminologyExtension"
             },
             "type": "array"
+        },
+        "version": {
+            "type": "integer"
         }
     },
     "required": [
+        "id",
         "listOfPlannedAnalyses",
         "name"
     ],

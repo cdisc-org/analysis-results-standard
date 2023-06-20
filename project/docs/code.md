@@ -62,6 +62,7 @@ rank: 1000
 alias: code
 domain_of:
 - AnalysisOutputProgrammingCode
+- AnalysisProgrammingCodeTemplate
 range: string
 
 ```

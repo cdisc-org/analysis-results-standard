@@ -104,7 +104,9 @@
 
       ReportingEvent : globalDisplaySections
 
-          ReportingEvent --|&gt; DisplaySection : globalDisplaySections
+          ReportingEvent --|&gt; GlobalDisplaySection : globalDisplaySections
+
+      ReportingEvent : id
 
       ReportingEvent : listOfPlannedAnalyses
 
@@ -128,9 +130,11 @@
 
           ReportingEvent --|&gt; ReferenceDocument : referenceDocuments
 
-      ReportingEvent : terminologyExtentions
+      ReportingEvent : terminologyExtensions
 
-          ReportingEvent --|&gt; TerminologyExtension : terminologyExtentions
+          ReportingEvent --|&gt; TerminologyExtension : terminologyExtensions
+
+      ReportingEvent : version
 
 
 </div>
@@ -152,6 +156,18 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><a href="../id/">id</a></td>
+<td>1..1 <br/> <a href="../String/">String</a></td>
+<td></td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../version/">version</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td></td>
+<td>direct</td>
+</tr>
 <tr>
 <td><a href="../listOfPlannedAnalyses/">listOfPlannedAnalyses</a></td>
 <td>1..1 <br/> <a href="../NestedList/">NestedList</a></td>
@@ -190,7 +206,7 @@
 </tr>
 <tr>
 <td><a href="../globalDisplaySections/">globalDisplaySections</a></td>
-<td>0..* <br/> <a href="../DisplaySection/">DisplaySection</a></td>
+<td>0..* <br/> <a href="../GlobalDisplaySection/">GlobalDisplaySection</a></td>
 <td></td>
 <td>direct</td>
 </tr>
@@ -225,7 +241,7 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../terminologyExtentions/">terminologyExtentions</a></td>
+<td><a href="../terminologyExtensions/">terminologyExtensions</a></td>
 <td>0..* <br/> <a href="../TerminologyExtension/">TerminologyExtension</a></td>
 <td>Any sponsor-defined extensions to extensible terminology</td>
 <td>direct</td>
@@ -273,6 +289,8 @@ from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 is_a: NamedObject
 slots:
+- id
+- version
 - listOfPlannedAnalyses
 - listOfPlannedOutputs
 - analysisSets
@@ -285,7 +303,7 @@ slots:
 - methods
 - outputs
 - referenceDocuments
-- terminologyExtentions
+- terminologyExtensions
 tree_root: true
 
 </code></pre>
@@ -299,6 +317,45 @@ from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 is_a: NamedObject
 attributes:
+  id:
+    name: id
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    identifier: true
+    alias: id
+    owner: ReportingEvent
+    domain_of:
+    - ReportingEvent
+    - AnalysisCategorization
+    - AnalysisCategory
+    - Analysis
+    - AnalysisMethod
+    - Operation
+    - ReferencedOperationRelationship
+    - Output
+    - OutputDisplay
+    - DisplaySubSection
+    - AnalysisSet
+    - GroupingFactor
+    - Group
+    - DataSubset
+    - ReferenceDocument
+    - TerminologyExtension
+    - SponsorTerm
+    range: string
+    required: true
+  version:
+    name: version
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: version
+    owner: ReportingEvent
+    domain_of:
+    - ReportingEvent
+    - Analysis
+    - Output
+    - OutputDisplay
+    range: integer
   listOfPlannedAnalyses:
     name: listOfPlannedAnalyses
     description: A structured list of the analyses defined for the reporting event.
@@ -385,7 +442,7 @@ attributes:
     owner: ReportingEvent
     domain_of:
     - ReportingEvent
-    range: DisplaySection
+    range: GlobalDisplaySection
     inlined: true
     inlined_as_list: true
   analysisCategorizations:
@@ -449,13 +506,14 @@ attributes:
     - ReportingEvent
     range: ReferenceDocument
     inlined: true
-  terminologyExtentions:
-    name: terminologyExtentions
+    inlined_as_list: true
+  terminologyExtensions:
+    name: terminologyExtensions
     description: Any sponsor-defined extensions to extensible terminology.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     multivalued: true
-    alias: terminologyExtentions
+    alias: terminologyExtensions
     owner: ReportingEvent
     domain_of:
     - ReportingEvent

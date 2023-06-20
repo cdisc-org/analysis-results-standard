@@ -61,6 +61,8 @@ class ArsLdmAPI:
         return results[0] if results else None
 
     def query_ReportingEvent(self,
+             id: Union[str, MatchExpression] = None,
+             version: Union[str, MatchExpression] = None,
              listOfPlannedAnalyses: Union[str, MatchExpression] = None,
              listOfPlannedOutputs: Union[str, MatchExpression] = None,
              analysisSets: Union[str, MatchExpression] = None,
@@ -73,13 +75,15 @@ class ArsLdmAPI:
              methods: Union[str, MatchExpression] = None,
              outputs: Union[str, MatchExpression] = None,
              referenceDocuments: Union[str, MatchExpression] = None,
-             terminologyExtentions: Union[str, MatchExpression] = None,
+             terminologyExtensions: Union[str, MatchExpression] = None,
              name: Union[str, MatchExpression] = None,
              
              _extra: Any = None) -> List[ReportingEvent]:
         """
         Queries for instances of `ReportingEvent`
 
+        :param id: None
+        :param version: None
         :param listOfPlannedAnalyses: A structured list of the analyses defined for the reporting event.
         :param listOfPlannedOutputs: An optional structured list of the outputs defined for the reporting event.
         :param analysisSets: The analysis sets (subject populations) defined for the reporting event.
@@ -92,12 +96,16 @@ class ArsLdmAPI:
         :param methods: The defined methods used to analyze any analysis variable.
         :param outputs: None
         :param referenceDocuments: None
-        :param terminologyExtentions: Any sponsor-defined extensions to extensible terminology.
+        :param terminologyExtensions: Any sponsor-defined extensions to extensible terminology.
         :param name: None
         
         :return: Person list matching constraints
         """
         results = self.query_engine.simple_query(ReportingEvent.class_name,
+                                                 
+                                                 id=id,
+                                                 
+                                                 version=version,
                                                  
                                                  listOfPlannedAnalyses=listOfPlannedAnalyses,
                                                  
@@ -123,7 +131,7 @@ class ArsLdmAPI:
                                                  
                                                  referenceDocuments=referenceDocuments,
                                                  
-                                                 terminologyExtentions=terminologyExtentions,
+                                                 terminologyExtensions=terminologyExtensions,
                                                  
                                                  name=name,
                                                  
@@ -719,7 +727,7 @@ class ArsLdmAPI:
     def query_AnalysisOutputProgrammingCode(self,
              context: Union[str, MatchExpression] = None,
              code: Union[str, MatchExpression] = None,
-             documentRefs: Union[str, MatchExpression] = None,
+             documentRef: Union[str, MatchExpression] = None,
              parameters: Union[str, MatchExpression] = None,
              
              _extra: Any = None) -> List[AnalysisOutputProgrammingCode]:
@@ -728,7 +736,7 @@ class ArsLdmAPI:
 
         :param context: The name and version of the computer language used for the actual programming statements provided.
         :param code: Programming statements used to perform the specific analysis.
-        :param documentRefs: None
+        :param documentRef: None
         :param parameters: Parameter values used to generate or execute the programming code.
         
         :return: Person list matching constraints
@@ -739,7 +747,7 @@ class ArsLdmAPI:
                                                  
                                                  code=code,
                                                  
-                                                 documentRefs=documentRefs,
+                                                 documentRef=documentRef,
                                                  
                                                  parameters=parameters,
                                                  
@@ -763,7 +771,7 @@ class ArsLdmAPI:
     def query_AnalysisProgrammingCodeTemplate(self,
              context: Union[str, MatchExpression] = None,
              code: Union[str, MatchExpression] = None,
-             documentRefs: Union[str, MatchExpression] = None,
+             documentRef: Union[str, MatchExpression] = None,
              parameters: Union[str, MatchExpression] = None,
              
              _extra: Any = None) -> List[AnalysisProgrammingCodeTemplate]:
@@ -772,7 +780,7 @@ class ArsLdmAPI:
 
         :param context: The name and version of the computer language used for the actual programming statements provided.
         :param code: Programming statements used to perform the specific analysis.
-        :param documentRefs: None
+        :param documentRef: None
         :param parameters: Parameters whose values will be used to generate or execute the programming code for a specific analysis.
         
         :return: Person list matching constraints
@@ -783,7 +791,7 @@ class ArsLdmAPI:
                                                  
                                                  code=code,
                                                  
-                                                 documentRefs=documentRefs,
+                                                 documentRef=documentRef,
                                                  
                                                  parameters=parameters,
                                                  
@@ -806,7 +814,6 @@ class ArsLdmAPI:
 
     def query_CodeParameter(self,
              description: Union[str, MatchExpression] = None,
-             value: Union[str, MatchExpression] = None,
              name: Union[str, MatchExpression] = None,
              
              _extra: Any = None) -> List[CodeParameter]:
@@ -814,7 +821,6 @@ class ArsLdmAPI:
         Queries for instances of `CodeParameter`
 
         :param description: None
-        :param value: The value of the parameter.
         :param name: None
         
         :return: Person list matching constraints
@@ -823,7 +829,45 @@ class ArsLdmAPI:
                                                  
                                                  description=description,
                                                  
+                                                 name=name,
+                                                 
+                                                 _extra=_extra)
+        return results
+    
+    # --
+    # AnalysisOutputCodeParameter methods
+    # --
+    def fetch_AnalysisOutputCodeParameter(self, id_value: str) -> AnalysisOutputCodeParameter:
+        """
+        Retrieves an instance of `AnalysisOutputCodeParameter` via a primary key
+
+        :param id_value:
+        :return: AnalysisOutputCodeParameter with matching ID
+        """
+        q = FetchById(id=id_value, target_class=AnalysisOutputCodeParameter.class_name)
+        results = self.query_engine.fetch_by_id(q)
+        return results[0] if results else None
+
+    def query_AnalysisOutputCodeParameter(self,
+             value: Union[str, MatchExpression] = None,
+             description: Union[str, MatchExpression] = None,
+             name: Union[str, MatchExpression] = None,
+             
+             _extra: Any = None) -> List[AnalysisOutputCodeParameter]:
+        """
+        Queries for instances of `AnalysisOutputCodeParameter`
+
+        :param value: The value of the parameter.
+        :param description: None
+        :param name: None
+        
+        :return: Person list matching constraints
+        """
+        results = self.query_engine.simple_query(AnalysisOutputCodeParameter.class_name,
+                                                 
                                                  value=value,
+                                                 
+                                                 description=description,
                                                  
                                                  name=name,
                                                  
@@ -846,8 +890,8 @@ class ArsLdmAPI:
 
     def query_TemplateCodeParameter(self,
              valueSource: Union[str, MatchExpression] = None,
-             description: Union[str, MatchExpression] = None,
              value: Union[str, MatchExpression] = None,
+             description: Union[str, MatchExpression] = None,
              name: Union[str, MatchExpression] = None,
              
              _extra: Any = None) -> List[TemplateCodeParameter]:
@@ -855,8 +899,8 @@ class ArsLdmAPI:
         Queries for instances of `TemplateCodeParameter`
 
         :param valueSource: A reference to the prespecified source of the value for the parameter.
+        :param value: The value to be used for the parameter when the method is used in an analysis. Multiple values may be specified to indicate a choice.
         :param description: None
-        :param value: The value of the parameter.
         :param name: None
         
         :return: Person list matching constraints
@@ -865,9 +909,9 @@ class ArsLdmAPI:
                                                  
                                                  valueSource=valueSource,
                                                  
-                                                 description=description,
-                                                 
                                                  value=value,
+                                                 
+                                                 description=description,
                                                  
                                                  name=name,
                                                  
@@ -1078,14 +1122,14 @@ class ArsLdmAPI:
 
     def query_DisplaySection(self,
              sectionType: Union[str, MatchExpression] = None,
-             subSections: Union[str, MatchExpression] = None,
+             orderedSubSections: Union[str, MatchExpression] = None,
              
              _extra: Any = None) -> List[DisplaySection]:
         """
         Queries for instances of `DisplaySection`
 
         :param sectionType: None
-        :param subSections: None
+        :param orderedSubSections: None
         
         :return: Person list matching constraints
         """
@@ -1093,7 +1137,127 @@ class ArsLdmAPI:
                                                  
                                                  sectionType=sectionType,
                                                  
-                                                 subSections=subSections,
+                                                 orderedSubSections=orderedSubSections,
+                                                 
+                                                 _extra=_extra)
+        return results
+    
+    # --
+    # OrderedDisplaySubSection methods
+    # --
+    def fetch_OrderedDisplaySubSection(self, id_value: str) -> OrderedDisplaySubSection:
+        """
+        Retrieves an instance of `OrderedDisplaySubSection` via a primary key
+
+        :param id_value:
+        :return: OrderedDisplaySubSection with matching ID
+        """
+        q = FetchById(id=id_value, target_class=OrderedDisplaySubSection.class_name)
+        results = self.query_engine.fetch_by_id(q)
+        return results[0] if results else None
+
+    def query_OrderedDisplaySubSection(self,
+             order: Union[str, MatchExpression] = None,
+             subSection: Union[str, MatchExpression] = None,
+             subSectionId: Union[str, MatchExpression] = None,
+             
+             _extra: Any = None) -> List[OrderedDisplaySubSection]:
+        """
+        Queries for instances of `OrderedDisplaySubSection`
+
+        :param order: None
+        :param subSection: None
+        :param subSectionId: None
+        
+        :return: Person list matching constraints
+        """
+        results = self.query_engine.simple_query(OrderedDisplaySubSection.class_name,
+                                                 
+                                                 order=order,
+                                                 
+                                                 subSection=subSection,
+                                                 
+                                                 subSectionId=subSectionId,
+                                                 
+                                                 _extra=_extra)
+        return results
+    
+    # --
+    # OrderedSubSection methods
+    # --
+    def fetch_OrderedSubSection(self, id_value: str) -> OrderedSubSection:
+        """
+        Retrieves an instance of `OrderedSubSection` via a primary key
+
+        :param id_value:
+        :return: OrderedSubSection with matching ID
+        """
+        q = FetchById(id=id_value, target_class=OrderedSubSection.class_name)
+        results = self.query_engine.fetch_by_id(q)
+        return results[0] if results else None
+
+    def query_OrderedSubSection(self,
+             order: Union[str, MatchExpression] = None,
+             subSection: Union[str, MatchExpression] = None,
+             subSectionId: Union[str, MatchExpression] = None,
+             
+             _extra: Any = None) -> List[OrderedSubSection]:
+        """
+        Queries for instances of `OrderedSubSection`
+
+        :param order: None
+        :param subSection: None
+        :param subSectionId: None
+        
+        :return: Person list matching constraints
+        """
+        results = self.query_engine.simple_query(OrderedSubSection.class_name,
+                                                 
+                                                 order=order,
+                                                 
+                                                 subSection=subSection,
+                                                 
+                                                 subSectionId=subSectionId,
+                                                 
+                                                 _extra=_extra)
+        return results
+    
+    # --
+    # OrderedSubSectionRef methods
+    # --
+    def fetch_OrderedSubSectionRef(self, id_value: str) -> OrderedSubSectionRef:
+        """
+        Retrieves an instance of `OrderedSubSectionRef` via a primary key
+
+        :param id_value:
+        :return: OrderedSubSectionRef with matching ID
+        """
+        q = FetchById(id=id_value, target_class=OrderedSubSectionRef.class_name)
+        results = self.query_engine.fetch_by_id(q)
+        return results[0] if results else None
+
+    def query_OrderedSubSectionRef(self,
+             order: Union[str, MatchExpression] = None,
+             subSection: Union[str, MatchExpression] = None,
+             subSectionId: Union[str, MatchExpression] = None,
+             
+             _extra: Any = None) -> List[OrderedSubSectionRef]:
+        """
+        Queries for instances of `OrderedSubSectionRef`
+
+        :param order: None
+        :param subSection: None
+        :param subSectionId: None
+        
+        :return: Person list matching constraints
+        """
+        results = self.query_engine.simple_query(OrderedSubSectionRef.class_name,
+                                                 
+                                                 order=order,
+                                                 
+                                                 subSection=subSection,
+                                                 
+                                                 subSectionId=subSectionId,
                                                  
                                                  _extra=_extra)
         return results
@@ -1114,7 +1278,6 @@ class ArsLdmAPI:
 
     def query_DisplaySubSection(self,
              id: Union[str, MatchExpression] = None,
-             order: Union[str, MatchExpression] = None,
              text: Union[str, MatchExpression] = None,
              
              _extra: Any = None) -> List[DisplaySubSection]:
@@ -1122,7 +1285,6 @@ class ArsLdmAPI:
         Queries for instances of `DisplaySubSection`
 
         :param id: None
-        :param order: None
         :param text: None
         
         :return: Person list matching constraints
@@ -1131,9 +1293,43 @@ class ArsLdmAPI:
                                                  
                                                  id=id,
                                                  
-                                                 order=order,
-                                                 
                                                  text=text,
+                                                 
+                                                 _extra=_extra)
+        return results
+    
+    # --
+    # GlobalDisplaySection methods
+    # --
+    def fetch_GlobalDisplaySection(self, id_value: str) -> GlobalDisplaySection:
+        """
+        Retrieves an instance of `GlobalDisplaySection` via a primary key
+
+        :param id_value:
+        :return: GlobalDisplaySection with matching ID
+        """
+        q = FetchById(id=id_value, target_class=GlobalDisplaySection.class_name)
+        results = self.query_engine.fetch_by_id(q)
+        return results[0] if results else None
+
+    def query_GlobalDisplaySection(self,
+             sectionType: Union[str, MatchExpression] = None,
+             subSections: Union[str, MatchExpression] = None,
+             
+             _extra: Any = None) -> List[GlobalDisplaySection]:
+        """
+        Queries for instances of `GlobalDisplaySection`
+
+        :param sectionType: None
+        :param subSections: None
+        
+        :return: Person list matching constraints
+        """
+        results = self.query_engine.simple_query(GlobalDisplaySection.class_name,
+                                                 
+                                                 sectionType=sectionType,
+                                                 
+                                                 subSections=subSections,
                                                  
                                                  _extra=_extra)
         return results
@@ -1815,33 +2011,33 @@ class ArsLdmAPI:
         return results
     
     # --
-    # DocumentRef methods
+    # DocumentReference methods
     # --
-    def fetch_DocumentRef(self, id_value: str) -> DocumentRef:
+    def fetch_DocumentReference(self, id_value: str) -> DocumentReference:
         """
-        Retrieves an instance of `DocumentRef` via a primary key
+        Retrieves an instance of `DocumentReference` via a primary key
 
         :param id_value:
-        :return: DocumentRef with matching ID
+        :return: DocumentReference with matching ID
         """
-        q = FetchById(id=id_value, target_class=DocumentRef.class_name)
+        q = FetchById(id=id_value, target_class=DocumentReference.class_name)
         results = self.query_engine.fetch_by_id(q)
         return results[0] if results else None
 
-    def query_DocumentRef(self,
+    def query_DocumentReference(self,
              referenceDocumentId: Union[str, MatchExpression] = None,
              pageRefs: Union[str, MatchExpression] = None,
              
-             _extra: Any = None) -> List[DocumentRef]:
+             _extra: Any = None) -> List[DocumentReference]:
         """
-        Queries for instances of `DocumentRef`
+        Queries for instances of `DocumentReference`
 
         :param referenceDocumentId: None
         :param pageRefs: None
         
         :return: Person list matching constraints
         """
-        results = self.query_engine.simple_query(DocumentRef.class_name,
+        results = self.query_engine.simple_query(DocumentReference.class_name,
                                                  
                                                  referenceDocumentId=referenceDocumentId,
                                                  
@@ -1867,7 +2063,10 @@ class ArsLdmAPI:
     def query_PageRef(self,
              refType: Union[str, MatchExpression] = None,
              label: Union[str, MatchExpression] = None,
-             pages: Union[str, MatchExpression] = None,
+             pageNames: Union[str, MatchExpression] = None,
+             pageNumbers: Union[str, MatchExpression] = None,
+             firstPage: Union[str, MatchExpression] = None,
+             lastPage: Union[str, MatchExpression] = None,
              
              _extra: Any = None) -> List[PageRef]:
         """
@@ -1875,7 +2074,10 @@ class ArsLdmAPI:
 
         :param refType: None
         :param label: Alternative label to provide a more specific and description to a page link.
-        :param pages: None
+        :param pageNames: One or more named document references which each correspond with a page.
+        :param pageNumbers: One or more page numbers.
+        :param firstPage: The page number of the first page in a range of pages.
+        :param lastPage: The page number of the last page in a range of pages.
         
         :return: Person list matching constraints
         """
@@ -1885,7 +2087,13 @@ class ArsLdmAPI:
                                                  
                                                  label=label,
                                                  
-                                                 pages=pages,
+                                                 pageNames=pageNames,
+                                                 
+                                                 pageNumbers=pageNumbers,
+                                                 
+                                                 firstPage=firstPage,
+                                                 
+                                                 lastPage=lastPage,
                                                  
                                                  _extra=_extra)
         return results
@@ -1907,7 +2115,10 @@ class ArsLdmAPI:
     def query_PageNumberListRef(self,
              refType: Union[str, MatchExpression] = None,
              label: Union[str, MatchExpression] = None,
-             pages: Union[str, MatchExpression] = None,
+             pageNames: Union[str, MatchExpression] = None,
+             pageNumbers: Union[str, MatchExpression] = None,
+             firstPage: Union[str, MatchExpression] = None,
+             lastPage: Union[str, MatchExpression] = None,
              
              _extra: Any = None) -> List[PageNumberListRef]:
         """
@@ -1915,7 +2126,10 @@ class ArsLdmAPI:
 
         :param refType: None
         :param label: Alternative label to provide a more specific and description to a page link.
-        :param pages: None
+        :param pageNames: One or more named document references which each correspond with a page.
+        :param pageNumbers: One or more page numbers.
+        :param firstPage: The page number of the first page in a range of pages.
+        :param lastPage: The page number of the last page in a range of pages.
         
         :return: Person list matching constraints
         """
@@ -1925,7 +2139,13 @@ class ArsLdmAPI:
                                                  
                                                  label=label,
                                                  
-                                                 pages=pages,
+                                                 pageNames=pageNames,
+                                                 
+                                                 pageNumbers=pageNumbers,
+                                                 
+                                                 firstPage=firstPage,
+                                                 
+                                                 lastPage=lastPage,
                                                  
                                                  _extra=_extra)
         return results
@@ -1947,7 +2167,10 @@ class ArsLdmAPI:
     def query_PageNumberRangeRef(self,
              refType: Union[str, MatchExpression] = None,
              label: Union[str, MatchExpression] = None,
-             pages: Union[str, MatchExpression] = None,
+             pageNames: Union[str, MatchExpression] = None,
+             pageNumbers: Union[str, MatchExpression] = None,
+             firstPage: Union[str, MatchExpression] = None,
+             lastPage: Union[str, MatchExpression] = None,
              
              _extra: Any = None) -> List[PageNumberRangeRef]:
         """
@@ -1955,7 +2178,10 @@ class ArsLdmAPI:
 
         :param refType: None
         :param label: Alternative label to provide a more specific and description to a page link.
-        :param pages: None
+        :param pageNames: One or more named document references which each correspond with a page.
+        :param pageNumbers: One or more page numbers.
+        :param firstPage: The page number of the first page in a range of pages.
+        :param lastPage: The page number of the last page in a range of pages.
         
         :return: Person list matching constraints
         """
@@ -1965,7 +2191,13 @@ class ArsLdmAPI:
                                                  
                                                  label=label,
                                                  
-                                                 pages=pages,
+                                                 pageNames=pageNames,
+                                                 
+                                                 pageNumbers=pageNumbers,
+                                                 
+                                                 firstPage=firstPage,
+                                                 
+                                                 lastPage=lastPage,
                                                  
                                                  _extra=_extra)
         return results
@@ -1987,7 +2219,10 @@ class ArsLdmAPI:
     def query_PageNameRef(self,
              refType: Union[str, MatchExpression] = None,
              label: Union[str, MatchExpression] = None,
-             pages: Union[str, MatchExpression] = None,
+             pageNames: Union[str, MatchExpression] = None,
+             pageNumbers: Union[str, MatchExpression] = None,
+             firstPage: Union[str, MatchExpression] = None,
+             lastPage: Union[str, MatchExpression] = None,
              
              _extra: Any = None) -> List[PageNameRef]:
         """
@@ -1995,7 +2230,10 @@ class ArsLdmAPI:
 
         :param refType: None
         :param label: Alternative label to provide a more specific and description to a page link.
-        :param pages: None
+        :param pageNames: One or more named document references which each correspond with a page.
+        :param pageNumbers: One or more page numbers.
+        :param firstPage: The page number of the first page in a range of pages.
+        :param lastPage: The page number of the last page in a range of pages.
         
         :return: Person list matching constraints
         """
@@ -2005,103 +2243,9 @@ class ArsLdmAPI:
                                                  
                                                  label=label,
                                                  
-                                                 pages=pages,
-                                                 
-                                                 _extra=_extra)
-        return results
-    
-    # --
-    # PageNumberList methods
-    # --
-    def fetch_PageNumberList(self, id_value: str) -> PageNumberList:
-        """
-        Retrieves an instance of `PageNumberList` via a primary key
-
-        :param id_value:
-        :return: PageNumberList with matching ID
-        """
-        q = FetchById(id=id_value, target_class=PageNumberList.class_name)
-        results = self.query_engine.fetch_by_id(q)
-        return results[0] if results else None
-
-    def query_PageNumberList(self,
-             pageNumbers: Union[str, MatchExpression] = None,
-             
-             _extra: Any = None) -> List[PageNumberList]:
-        """
-        Queries for instances of `PageNumberList`
-
-        :param pageNumbers: One or more page numbers.
-        
-        :return: Person list matching constraints
-        """
-        results = self.query_engine.simple_query(PageNumberList.class_name,
-                                                 
-                                                 pageNumbers=pageNumbers,
-                                                 
-                                                 _extra=_extra)
-        return results
-    
-    # --
-    # PageNameList methods
-    # --
-    def fetch_PageNameList(self, id_value: str) -> PageNameList:
-        """
-        Retrieves an instance of `PageNameList` via a primary key
-
-        :param id_value:
-        :return: PageNameList with matching ID
-        """
-        q = FetchById(id=id_value, target_class=PageNameList.class_name)
-        results = self.query_engine.fetch_by_id(q)
-        return results[0] if results else None
-
-    def query_PageNameList(self,
-             pageNames: Union[str, MatchExpression] = None,
-             
-             _extra: Any = None) -> List[PageNameList]:
-        """
-        Queries for instances of `PageNameList`
-
-        :param pageNames: One or more named document references which each correspond with a page.
-        
-        :return: Person list matching constraints
-        """
-        results = self.query_engine.simple_query(PageNameList.class_name,
-                                                 
                                                  pageNames=pageNames,
                                                  
-                                                 _extra=_extra)
-        return results
-    
-    # --
-    # PageRange methods
-    # --
-    def fetch_PageRange(self, id_value: str) -> PageRange:
-        """
-        Retrieves an instance of `PageRange` via a primary key
-
-        :param id_value:
-        :return: PageRange with matching ID
-        """
-        q = FetchById(id=id_value, target_class=PageRange.class_name)
-        results = self.query_engine.fetch_by_id(q)
-        return results[0] if results else None
-
-    def query_PageRange(self,
-             firstPage: Union[str, MatchExpression] = None,
-             lastPage: Union[str, MatchExpression] = None,
-             
-             _extra: Any = None) -> List[PageRange]:
-        """
-        Queries for instances of `PageRange`
-
-        :param firstPage: The page number of the first page in a range of pages.
-        :param lastPage: The page number of the last page in a range of pages.
-        
-        :return: Person list matching constraints
-        """
-        results = self.query_engine.simple_query(PageRange.class_name,
+                                                 pageNumbers=pageNumbers,
                                                  
                                                  firstPage=firstPage,
                                                  
@@ -2125,6 +2269,7 @@ class ArsLdmAPI:
         return results[0] if results else None
 
     def query_TerminologyExtension(self,
+             id: Union[str, MatchExpression] = None,
              enumeration: Union[str, MatchExpression] = None,
              sponsorTerms: Union[str, MatchExpression] = None,
              
@@ -2132,12 +2277,15 @@ class ArsLdmAPI:
         """
         Queries for instances of `TerminologyExtension`
 
+        :param id: None
         :param enumeration: The name of the extensible enumeration.
         :param sponsorTerms: The sponsor-defined terms added to the extensible terminology.
         
         :return: Person list matching constraints
         """
         results = self.query_engine.simple_query(TerminologyExtension.class_name,
+                                                 
+                                                 id=id,
                                                  
                                                  enumeration=enumeration,
                                                  
@@ -2182,6 +2330,330 @@ class ArsLdmAPI:
                                                  submissionValue=submissionValue,
                                                  
                                                  description=description,
+                                                 
+                                                 _extra=_extra)
+        return results
+    
+    # --
+    # ExtensibleTerminologyTerm methods
+    # --
+    def fetch_ExtensibleTerminologyTerm(self, id_value: str) -> ExtensibleTerminologyTerm:
+        """
+        Retrieves an instance of `ExtensibleTerminologyTerm` via a primary key
+
+        :param id_value:
+        :return: ExtensibleTerminologyTerm with matching ID
+        """
+        q = FetchById(id=id_value, target_class=ExtensibleTerminologyTerm.class_name)
+        results = self.query_engine.fetch_by_id(q)
+        return results[0] if results else None
+
+    def query_ExtensibleTerminologyTerm(self,
+             controlledTerm: Union[str, MatchExpression] = None,
+             sponsorTermId: Union[str, MatchExpression] = None,
+             
+             _extra: Any = None) -> List[ExtensibleTerminologyTerm]:
+        """
+        Queries for instances of `ExtensibleTerminologyTerm`
+
+        :param controlledTerm: None
+        :param sponsorTermId: None
+        
+        :return: Person list matching constraints
+        """
+        results = self.query_engine.simple_query(ExtensibleTerminologyTerm.class_name,
+                                                 
+                                                 controlledTerm=controlledTerm,
+                                                 
+                                                 sponsorTermId=sponsorTermId,
+                                                 
+                                                 _extra=_extra)
+        return results
+    
+    # --
+    # AnalysisReason methods
+    # --
+    def fetch_AnalysisReason(self, id_value: str) -> AnalysisReason:
+        """
+        Retrieves an instance of `AnalysisReason` via a primary key
+
+        :param id_value:
+        :return: AnalysisReason with matching ID
+        """
+        q = FetchById(id=id_value, target_class=AnalysisReason.class_name)
+        results = self.query_engine.fetch_by_id(q)
+        return results[0] if results else None
+
+    def query_AnalysisReason(self,
+             controlledTerm: Union[str, MatchExpression] = None,
+             sponsorTermId: Union[str, MatchExpression] = None,
+             
+             _extra: Any = None) -> List[AnalysisReason]:
+        """
+        Queries for instances of `AnalysisReason`
+
+        :param controlledTerm: None
+        :param sponsorTermId: None
+        
+        :return: Person list matching constraints
+        """
+        results = self.query_engine.simple_query(AnalysisReason.class_name,
+                                                 
+                                                 controlledTerm=controlledTerm,
+                                                 
+                                                 sponsorTermId=sponsorTermId,
+                                                 
+                                                 _extra=_extra)
+        return results
+    
+    # --
+    # SponsorAnalysisReason methods
+    # --
+    def fetch_SponsorAnalysisReason(self, id_value: str) -> SponsorAnalysisReason:
+        """
+        Retrieves an instance of `SponsorAnalysisReason` via a primary key
+
+        :param id_value:
+        :return: SponsorAnalysisReason with matching ID
+        """
+        q = FetchById(id=id_value, target_class=SponsorAnalysisReason.class_name)
+        results = self.query_engine.fetch_by_id(q)
+        return results[0] if results else None
+
+    def query_SponsorAnalysisReason(self,
+             controlledTerm: Union[str, MatchExpression] = None,
+             sponsorTermId: Union[str, MatchExpression] = None,
+             
+             _extra: Any = None) -> List[SponsorAnalysisReason]:
+        """
+        Queries for instances of `SponsorAnalysisReason`
+
+        :param controlledTerm: None
+        :param sponsorTermId: None
+        
+        :return: Person list matching constraints
+        """
+        results = self.query_engine.simple_query(SponsorAnalysisReason.class_name,
+                                                 
+                                                 controlledTerm=controlledTerm,
+                                                 
+                                                 sponsorTermId=sponsorTermId,
+                                                 
+                                                 _extra=_extra)
+        return results
+    
+    # --
+    # AnalysisPurpose methods
+    # --
+    def fetch_AnalysisPurpose(self, id_value: str) -> AnalysisPurpose:
+        """
+        Retrieves an instance of `AnalysisPurpose` via a primary key
+
+        :param id_value:
+        :return: AnalysisPurpose with matching ID
+        """
+        q = FetchById(id=id_value, target_class=AnalysisPurpose.class_name)
+        results = self.query_engine.fetch_by_id(q)
+        return results[0] if results else None
+
+    def query_AnalysisPurpose(self,
+             controlledTerm: Union[str, MatchExpression] = None,
+             sponsorTermId: Union[str, MatchExpression] = None,
+             
+             _extra: Any = None) -> List[AnalysisPurpose]:
+        """
+        Queries for instances of `AnalysisPurpose`
+
+        :param controlledTerm: None
+        :param sponsorTermId: None
+        
+        :return: Person list matching constraints
+        """
+        results = self.query_engine.simple_query(AnalysisPurpose.class_name,
+                                                 
+                                                 controlledTerm=controlledTerm,
+                                                 
+                                                 sponsorTermId=sponsorTermId,
+                                                 
+                                                 _extra=_extra)
+        return results
+    
+    # --
+    # SponsorAnalysisPurpose methods
+    # --
+    def fetch_SponsorAnalysisPurpose(self, id_value: str) -> SponsorAnalysisPurpose:
+        """
+        Retrieves an instance of `SponsorAnalysisPurpose` via a primary key
+
+        :param id_value:
+        :return: SponsorAnalysisPurpose with matching ID
+        """
+        q = FetchById(id=id_value, target_class=SponsorAnalysisPurpose.class_name)
+        results = self.query_engine.fetch_by_id(q)
+        return results[0] if results else None
+
+    def query_SponsorAnalysisPurpose(self,
+             controlledTerm: Union[str, MatchExpression] = None,
+             sponsorTermId: Union[str, MatchExpression] = None,
+             
+             _extra: Any = None) -> List[SponsorAnalysisPurpose]:
+        """
+        Queries for instances of `SponsorAnalysisPurpose`
+
+        :param controlledTerm: None
+        :param sponsorTermId: None
+        
+        :return: Person list matching constraints
+        """
+        results = self.query_engine.simple_query(SponsorAnalysisPurpose.class_name,
+                                                 
+                                                 controlledTerm=controlledTerm,
+                                                 
+                                                 sponsorTermId=sponsorTermId,
+                                                 
+                                                 _extra=_extra)
+        return results
+    
+    # --
+    # OperationRole methods
+    # --
+    def fetch_OperationRole(self, id_value: str) -> OperationRole:
+        """
+        Retrieves an instance of `OperationRole` via a primary key
+
+        :param id_value:
+        :return: OperationRole with matching ID
+        """
+        q = FetchById(id=id_value, target_class=OperationRole.class_name)
+        results = self.query_engine.fetch_by_id(q)
+        return results[0] if results else None
+
+    def query_OperationRole(self,
+             controlledTerm: Union[str, MatchExpression] = None,
+             sponsorTermId: Union[str, MatchExpression] = None,
+             
+             _extra: Any = None) -> List[OperationRole]:
+        """
+        Queries for instances of `OperationRole`
+
+        :param controlledTerm: None
+        :param sponsorTermId: None
+        
+        :return: Person list matching constraints
+        """
+        results = self.query_engine.simple_query(OperationRole.class_name,
+                                                 
+                                                 controlledTerm=controlledTerm,
+                                                 
+                                                 sponsorTermId=sponsorTermId,
+                                                 
+                                                 _extra=_extra)
+        return results
+    
+    # --
+    # SponsorOperationRole methods
+    # --
+    def fetch_SponsorOperationRole(self, id_value: str) -> SponsorOperationRole:
+        """
+        Retrieves an instance of `SponsorOperationRole` via a primary key
+
+        :param id_value:
+        :return: SponsorOperationRole with matching ID
+        """
+        q = FetchById(id=id_value, target_class=SponsorOperationRole.class_name)
+        results = self.query_engine.fetch_by_id(q)
+        return results[0] if results else None
+
+    def query_SponsorOperationRole(self,
+             controlledTerm: Union[str, MatchExpression] = None,
+             sponsorTermId: Union[str, MatchExpression] = None,
+             
+             _extra: Any = None) -> List[SponsorOperationRole]:
+        """
+        Queries for instances of `SponsorOperationRole`
+
+        :param controlledTerm: None
+        :param sponsorTermId: None
+        
+        :return: Person list matching constraints
+        """
+        results = self.query_engine.simple_query(SponsorOperationRole.class_name,
+                                                 
+                                                 controlledTerm=controlledTerm,
+                                                 
+                                                 sponsorTermId=sponsorTermId,
+                                                 
+                                                 _extra=_extra)
+        return results
+    
+    # --
+    # OutputFileType methods
+    # --
+    def fetch_OutputFileType(self, id_value: str) -> OutputFileType:
+        """
+        Retrieves an instance of `OutputFileType` via a primary key
+
+        :param id_value:
+        :return: OutputFileType with matching ID
+        """
+        q = FetchById(id=id_value, target_class=OutputFileType.class_name)
+        results = self.query_engine.fetch_by_id(q)
+        return results[0] if results else None
+
+    def query_OutputFileType(self,
+             controlledTerm: Union[str, MatchExpression] = None,
+             sponsorTermId: Union[str, MatchExpression] = None,
+             
+             _extra: Any = None) -> List[OutputFileType]:
+        """
+        Queries for instances of `OutputFileType`
+
+        :param controlledTerm: None
+        :param sponsorTermId: None
+        
+        :return: Person list matching constraints
+        """
+        results = self.query_engine.simple_query(OutputFileType.class_name,
+                                                 
+                                                 controlledTerm=controlledTerm,
+                                                 
+                                                 sponsorTermId=sponsorTermId,
+                                                 
+                                                 _extra=_extra)
+        return results
+    
+    # --
+    # SponsorOutputFileType methods
+    # --
+    def fetch_SponsorOutputFileType(self, id_value: str) -> SponsorOutputFileType:
+        """
+        Retrieves an instance of `SponsorOutputFileType` via a primary key
+
+        :param id_value:
+        :return: SponsorOutputFileType with matching ID
+        """
+        q = FetchById(id=id_value, target_class=SponsorOutputFileType.class_name)
+        results = self.query_engine.fetch_by_id(q)
+        return results[0] if results else None
+
+    def query_SponsorOutputFileType(self,
+             controlledTerm: Union[str, MatchExpression] = None,
+             sponsorTermId: Union[str, MatchExpression] = None,
+             
+             _extra: Any = None) -> List[SponsorOutputFileType]:
+        """
+        Queries for instances of `SponsorOutputFileType`
+
+        :param controlledTerm: None
+        :param sponsorTermId: None
+        
+        :return: Person list matching constraints
+        """
+        results = self.query_engine.simple_query(SponsorOutputFileType.class_name,
+                                                 
+                                                 controlledTerm=controlledTerm,
+                                                 
+                                                 sponsorTermId=sponsorTermId,
                                                  
                                                  _extra=_extra)
         return results

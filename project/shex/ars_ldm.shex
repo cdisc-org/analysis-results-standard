@@ -36,15 +36,21 @@ linkml:Objectidentifier IRI
 
 linkml:Nodeidentifier NONLITERAL
 
+linkml:Jsonpointer xsd:string
+
+linkml:Jsonpath xsd:string
+
+linkml:Sparqlpath xsd:string
+
 <Analysis> CLOSED {
     (  $<Analysis_tes> (  &<NamedObject_tes> ;
           rdf:type [ <NamedObject> ] ? ;
           <version> @linkml:Integer ? ;
           <categoryIds> @<AnalysisCategory> * ;
           <description> @linkml:String ? ;
-          <reason> @linkml:String ;
-          <purpose> @linkml:String ;
-          <documentRefs> @<DocumentRef> * ;
+          <reason> @<ExtensibleTerminologyTerm> ;
+          <purpose> @<ExtensibleTerminologyTerm> ;
+          <documentRefs> @<DocumentReference> * ;
           <analysisSetId> @<AnalysisSet> ? ;
           <orderedGroupings> @<OrderedGroupingFactor> * ;
           <dataSubsetId> @<DataSubset> ? ;
@@ -89,31 +95,59 @@ linkml:Nodeidentifier NONLITERAL
           <label> @linkml:String ? ;
           <description> @linkml:String ? ;
           <operations> @<Operation> + ;
-          <documentRefs> @<DocumentRef> * ;
+          <documentRefs> @<DocumentReference> * ;
           <codeTemplate> @<AnalysisProgrammingCodeTemplate> ?
        ) ;
        rdf:type [ <AnalysisMethod> ]
     )
 }
 
-<AnalysisOutputProgrammingCode>  (
-    CLOSED {
-       (  $<AnalysisOutputProgrammingCode_tes> (  <context> @linkml:String ;
-             <code> @linkml:String ? ;
-             <documentRefs> @<DocumentRef> * ;
-             <parameters> @<CodeParameter> *
-          ) ;
-          rdf:type [ <AnalysisOutputProgrammingCode> ] ?
-       )
-    } OR @<AnalysisProgrammingCodeTemplate>
-)
+<AnalysisOutputCodeParameter> CLOSED {
+    (  $<AnalysisOutputCodeParameter_tes> (  &<CodeParameter_tes> ;
+          rdf:type [ <CodeParameter> ] ? ;
+          <value> @linkml:String +
+       ) ;
+       rdf:type [ <AnalysisOutputCodeParameter> ] ?
+    )
+}
+
+<AnalysisOutputProgrammingCode> CLOSED {
+    (  $<AnalysisOutputProgrammingCode_tes> (  <context> @linkml:String ;
+          <code> @linkml:String ? ;
+          <documentRef> @<DocumentReference> ? ;
+          <parameters> @<AnalysisOutputCodeParameter> *
+       ) ;
+       rdf:type [ <AnalysisOutputProgrammingCode> ] ?
+    )
+}
 
 <AnalysisProgrammingCodeTemplate> CLOSED {
-    (  $<AnalysisProgrammingCodeTemplate_tes> (  &<AnalysisOutputProgrammingCode_tes> ;
-          rdf:type [ <AnalysisOutputProgrammingCode> ] ? ;
+    (  $<AnalysisProgrammingCodeTemplate_tes> (  <context> @linkml:String ;
+          <code> @linkml:String ? ;
+          <documentRef> @<DocumentReference> ? ;
           <parameters> @<TemplateCodeParameter> *
        ) ;
        rdf:type [ <AnalysisProgrammingCodeTemplate> ] ?
+    )
+}
+
+<AnalysisPurpose> CLOSED {
+    (  $<AnalysisPurpose_tes> (  &<ExtensibleTerminologyTerm_tes> ;
+          rdf:type [ <ExtensibleTerminologyTerm> ] ? ;
+          <controlledTerm> @<AnalysisPurposeEnum> ;
+          <sponsorTermId> @<SponsorTerm> ?
+       ) ;
+       rdf:type [ <AnalysisPurpose> ] ?
+    )
+}
+
+<AnalysisReason> CLOSED {
+    (  $<AnalysisReason_tes> (  &<ExtensibleTerminologyTerm_tes> ;
+          rdf:type [ <ExtensibleTerminologyTerm> ] ? ;
+          <controlledTerm> @<AnalysisReasonEnum> ;
+          <sponsorTermId> @<SponsorTerm> ?
+       ) ;
+       rdf:type [ <AnalysisReason> ] ?
     )
 }
 
@@ -128,16 +162,17 @@ linkml:Nodeidentifier NONLITERAL
 }
 
 <CodeParameter>  (
-    CLOSED {
-       (  $<CodeParameter_tes> (  &<NamedObject_tes> ;
-             rdf:type [ <NamedObject> ] ? ;
-             <description> @linkml:String ? ;
-             <value> @linkml:String
-          ) ;
-          rdf:type [ <CodeParameter> ] ?
-       )
-    } OR @<TemplateCodeParameter>
+    @<AnalysisOutputCodeParameter> OR @<TemplateCodeParameter>
 )
+
+<CodeParameter_struct> {
+    (  $<CodeParameter_tes> (  &<NamedObject_tes> ;
+          rdf:type [ <NamedObject> ] ? ;
+          <description> @linkml:String ?
+       ) ;
+       rdf:type [ <CodeParameter> ] ?
+    )
+}
 
 <CompoundGroupExpression> CLOSED {
     (  $<CompoundGroupExpression_tes> (  &<WhereClauseCompoundExpression_tes> ;
@@ -194,26 +229,45 @@ linkml:Nodeidentifier NONLITERAL
 }
 
 <DisplaySection> CLOSED {
-    (  $<DisplaySection_tes> (  <sectionType> @<DisplaySectionType> ? ;
-          <subSections> @<DisplaySubSection> *
+    (  $<DisplaySection_tes> (  <sectionType> @<DisplaySectionTypeEnum> ? ;
+          <orderedSubSections> @<OrderedDisplaySubSection> *
        ) ;
        rdf:type [ <DisplaySection> ] ?
     )
 }
 
 <DisplaySubSection> CLOSED {
-    (  $<DisplaySubSection_tes> (  <order> @linkml:Integer ;
-          <text> @linkml:String ?
-       ) ;
+    (  $<DisplaySubSection_tes> <text> @linkml:String ;
        rdf:type [ <DisplaySubSection> ]
     )
 }
 
-<DocumentRef> CLOSED {
-    (  $<DocumentRef_tes> (  <referenceDocumentId> @<ReferenceDocument> ;
+<DocumentReference> CLOSED {
+    (  $<DocumentReference_tes> (  <referenceDocumentId> @<ReferenceDocument> ;
           <pageRefs> @<PageRef> *
        ) ;
-       rdf:type [ <DocumentRef> ] ?
+       rdf:type [ <DocumentReference> ] ?
+    )
+}
+
+<ExtensibleTerminologyTerm>  (
+    @<AnalysisPurpose> OR @<AnalysisReason> OR @<OperationRole> OR @<OutputFileType> OR @<SponsorAnalysisPurpose> OR
+    @<SponsorAnalysisReason> OR @<SponsorOperationRole> OR @<SponsorOutputFileType>
+)
+
+<ExtensibleTerminologyTerm_struct> {
+    (  $<ExtensibleTerminologyTerm_tes> (  <controlledTerm> @linkml:String ? ;
+          <sponsorTermId> @<SponsorTerm> ?
+       ) ;
+       rdf:type [ <ExtensibleTerminologyTerm> ] ?
+    )
+}
+
+<GlobalDisplaySection> CLOSED {
+    (  $<GlobalDisplaySection_tes> (  <sectionType> @<DisplaySectionTypeEnum> ? ;
+          <subSections> @<DisplaySubSection> *
+       ) ;
+       rdf:type [ <GlobalDisplaySection> ] ?
     )
 }
 
@@ -281,11 +335,34 @@ linkml:Nodeidentifier NONLITERAL
     )
 }
 
+<OperationRole> CLOSED {
+    (  $<OperationRole_tes> (  &<ExtensibleTerminologyTerm_tes> ;
+          rdf:type [ <ExtensibleTerminologyTerm> ] ? ;
+          <controlledTerm> @<OperationRoleEnum> ;
+          <sponsorTermId> @<SponsorTerm> ?
+       ) ;
+       rdf:type [ <OperationRole> ] ?
+    )
+}
+
 <OrderedDisplay> CLOSED {
     (  $<OrderedDisplay_tes> (  <order> @linkml:Integer ;
           <display> @<OutputDisplay> ?
        ) ;
        rdf:type [ <OrderedDisplay> ] ?
+    )
+}
+
+<OrderedDisplaySubSection>  (
+    @<OrderedSubSection> OR @<OrderedSubSectionRef>
+)
+
+<OrderedDisplaySubSection_struct> {
+    (  $<OrderedDisplaySubSection_tes> (  <order> @linkml:Integer ;
+          <subSection> @<DisplaySubSection> ? ;
+          <subSectionId> @<DisplaySubSection> ?
+       ) ;
+       rdf:type [ <OrderedDisplaySubSection> ] ?
     )
 }
 
@@ -311,6 +388,26 @@ linkml:Nodeidentifier NONLITERAL
     )
 }
 
+<OrderedSubSection> CLOSED {
+    (  $<OrderedSubSection_tes> (  &<OrderedDisplaySubSection_tes> ;
+          rdf:type [ <OrderedDisplaySubSection> ] ? ;
+          <subSection> @<DisplaySubSection> ;
+          <subSectionId> @<DisplaySubSection> ?
+       ) ;
+       rdf:type [ <OrderedSubSection> ] ?
+    )
+}
+
+<OrderedSubSectionRef> CLOSED {
+    (  $<OrderedSubSectionRef_tes> (  &<OrderedDisplaySubSection_tes> ;
+          rdf:type [ <OrderedDisplaySubSection> ] ? ;
+          <subSection> @<DisplaySubSection> ? ;
+          <subSectionId> @<DisplaySubSection>
+       ) ;
+       rdf:type [ <OrderedSubSectionRef> ] ?
+    )
+}
+
 <Output> CLOSED {
     (  $<Output_tes> (  &<NamedObject_tes> ;
           rdf:type [ <NamedObject> ] ? ;
@@ -318,7 +415,7 @@ linkml:Nodeidentifier NONLITERAL
           <fileSpecifications> @<OutputFile> * ;
           <displays> @<OrderedDisplay> * ;
           <categoryIds> @<AnalysisCategory> * ;
-          <documentRefs> @<DocumentRef> * ;
+          <documentRefs> @<DocumentReference> * ;
           <programmingCode> @<AnalysisOutputProgrammingCode> ?
        ) ;
        rdf:type [ <Output> ]
@@ -339,7 +436,7 @@ linkml:Nodeidentifier NONLITERAL
 <OutputFile> CLOSED {
     (  $<OutputFile_tes> (  &<NamedObject_tes> ;
           rdf:type [ <NamedObject> ] ? ;
-          <fileType> @linkml:String ? ;
+          <fileType> @<ExtensibleTerminologyTerm> ? ;
           <location> @linkml:Uri ? ;
           <style> @linkml:String ?
        ) ;
@@ -347,33 +444,37 @@ linkml:Nodeidentifier NONLITERAL
     )
 }
 
-<PageNameList> CLOSED {
-    (  $<PageNameList_tes> <pageNames> @linkml:Integer + ;
-       rdf:type [ <PageNameList> ] ?
+<OutputFileType> CLOSED {
+    (  $<OutputFileType_tes> (  &<ExtensibleTerminologyTerm_tes> ;
+          rdf:type [ <ExtensibleTerminologyTerm> ] ? ;
+          <controlledTerm> @<OutputFileTypeEnum> ;
+          <sponsorTermId> @<SponsorTerm> ?
+       ) ;
+       rdf:type [ <OutputFileType> ] ?
     )
 }
 
 <PageNameRef> CLOSED {
     (  $<PageNameRef_tes> (  &<PageRef_tes> ;
           rdf:type [ <PageRef> ] ? ;
-          <refType> @<PageRefType> ;
-          <pages> @<PageNameList> ?
+          <refType> @<PageRefTypeEnum> ;
+          <pageNumbers> @linkml:Integer * ;
+          <pageNames> @linkml:String + ;
+          <firstPage> @linkml:Integer ? ;
+          <lastPage> @linkml:Integer ?
        ) ;
        rdf:type [ <PageNameRef> ] ?
-    )
-}
-
-<PageNumberList> CLOSED {
-    (  $<PageNumberList_tes> <pageNumbers> @linkml:Integer + ;
-       rdf:type [ <PageNumberList> ] ?
     )
 }
 
 <PageNumberListRef> CLOSED {
     (  $<PageNumberListRef_tes> (  &<PageRef_tes> ;
           rdf:type [ <PageRef> ] ? ;
-          <refType> @<PageRefType> ;
-          <pages> @<PageNumberList> ?
+          <refType> @<PageRefTypeEnum> ;
+          <pageNumbers> @linkml:Integer + ;
+          <pageNames> @linkml:String * ;
+          <firstPage> @linkml:Integer ? ;
+          <lastPage> @linkml:Integer ?
        ) ;
        rdf:type [ <PageNumberListRef> ] ?
     )
@@ -382,31 +483,31 @@ linkml:Nodeidentifier NONLITERAL
 <PageNumberRangeRef> CLOSED {
     (  $<PageNumberRangeRef_tes> (  &<PageRef_tes> ;
           rdf:type [ <PageRef> ] ? ;
-          <refType> @<PageRefType> ;
-          <pages> @<PageRange> ?
+          <refType> @<PageRefTypeEnum> ;
+          <pageNumbers> @linkml:Integer * ;
+          <pageNames> @linkml:String * ;
+          <firstPage> @linkml:Integer ;
+          <lastPage> @linkml:Integer
        ) ;
        rdf:type [ <PageNumberRangeRef> ] ?
     )
 }
 
-<PageRange> CLOSED {
-    (  $<PageRange_tes> (  <firstPage> @linkml:Integer ;
-          <lastPage> @linkml:Integer
+<PageRef>  (
+    @<PageNameRef> OR @<PageNumberListRef> OR @<PageNumberRangeRef>
+)
+
+<PageRef_struct> {
+    (  $<PageRef_tes> (  <refType> @<PageRefTypeEnum> ;
+          <label> @linkml:String ? ;
+          <pageNames> @linkml:String * ;
+          <pageNumbers> @linkml:Integer * ;
+          <firstPage> @linkml:Integer ? ;
+          <lastPage> @linkml:Integer ?
        ) ;
-       rdf:type [ <PageRange> ] ?
+       rdf:type [ <PageRef> ] ?
     )
 }
-
-<PageRef>  (
-    CLOSED {
-       (  $<PageRef_tes> (  <refType> @<PageRefType> ;
-             <label> @linkml:String ? ;
-             <pages> @linkml:String ?
-          ) ;
-          rdf:type [ <PageRef> ] ?
-       )
-    } OR @<PageNameRef> OR @<PageNumberListRef> OR @<PageNumberRangeRef>
-)
 
 <ReferencedAnalysisOperation> CLOSED {
     (  $<ReferencedAnalysisOperation_tes> (  <referencedOperationId> @<ReferencedOperationRelationship> ? ;
@@ -426,7 +527,7 @@ linkml:Nodeidentifier NONLITERAL
 }
 
 <ReferencedOperationRelationship> CLOSED {
-    (  $<ReferencedOperationRelationship_tes> (  <referencedOperationRole> @linkml:String ;
+    (  $<ReferencedOperationRelationship_tes> (  <referencedOperationRole> @<ExtensibleTerminologyTerm> ;
           <operationId> @<Operation> ;
           <analysisId> @<Analysis> ? ;
           <description> @linkml:String ?
@@ -438,21 +539,22 @@ linkml:Nodeidentifier NONLITERAL
 <ReportingEvent> CLOSED {
     (  $<ReportingEvent_tes> (  &<NamedObject_tes> ;
           rdf:type [ <NamedObject> ] ? ;
+          <version> @linkml:Integer ? ;
           <listOfPlannedAnalyses> @<NestedList> ;
           <listOfPlannedOutputs> @<NestedList> ? ;
           <analysisSets> @<AnalysisSet> * ;
           <analysisGroupings> @<SubjectGroupingFactor> * ;
           <dataSubsets> @<DataSubset> * ;
           <dataGroupings> @<DataGroupingFactor> * ;
-          <globalDisplaySections> @<DisplaySection> * ;
+          <globalDisplaySections> @<GlobalDisplaySection> * ;
           <analysisCategorizations> @<AnalysisCategorization> * ;
           <analyses> @<Analysis> * ;
           <methods> @<AnalysisMethod> * ;
           <outputs> @<Output> * ;
           <referenceDocuments> @<ReferenceDocument> * ;
-          <terminologyExtentions> @<TerminologyExtension> *
+          <terminologyExtensions> @<TerminologyExtension> *
        ) ;
-       rdf:type [ <ReportingEvent> ] ?
+       rdf:type [ <ReportingEvent> ]
     )
 }
 
@@ -462,6 +564,46 @@ linkml:Nodeidentifier NONLITERAL
           <groupValue> @linkml:String ?
        ) ;
        rdf:type [ <ResultGroup> ] ?
+    )
+}
+
+<SponsorAnalysisPurpose> CLOSED {
+    (  $<SponsorAnalysisPurpose_tes> (  &<ExtensibleTerminologyTerm_tes> ;
+          rdf:type [ <ExtensibleTerminologyTerm> ] ? ;
+          <controlledTerm> @linkml:String ? ;
+          <sponsorTermId> @<SponsorTerm>
+       ) ;
+       rdf:type [ <SponsorAnalysisPurpose> ] ?
+    )
+}
+
+<SponsorAnalysisReason> CLOSED {
+    (  $<SponsorAnalysisReason_tes> (  &<ExtensibleTerminologyTerm_tes> ;
+          rdf:type [ <ExtensibleTerminologyTerm> ] ? ;
+          <controlledTerm> @linkml:String ? ;
+          <sponsorTermId> @<SponsorTerm>
+       ) ;
+       rdf:type [ <SponsorAnalysisReason> ] ?
+    )
+}
+
+<SponsorOperationRole> CLOSED {
+    (  $<SponsorOperationRole_tes> (  &<ExtensibleTerminologyTerm_tes> ;
+          rdf:type [ <ExtensibleTerminologyTerm> ] ? ;
+          <controlledTerm> @linkml:String ? ;
+          <sponsorTermId> @<SponsorTerm>
+       ) ;
+       rdf:type [ <SponsorOperationRole> ] ?
+    )
+}
+
+<SponsorOutputFileType> CLOSED {
+    (  $<SponsorOutputFileType_tes> (  &<ExtensibleTerminologyTerm_tes> ;
+          rdf:type [ <ExtensibleTerminologyTerm> ] ? ;
+          <controlledTerm> @linkml:String ? ;
+          <sponsorTermId> @<SponsorTerm>
+       ) ;
+       rdf:type [ <SponsorOutputFileType> ] ?
     )
 }
 
@@ -486,17 +628,17 @@ linkml:Nodeidentifier NONLITERAL
     (  $<TemplateCodeParameter_tes> (  &<CodeParameter_tes> ;
           rdf:type [ <CodeParameter> ] ? ;
           <valueSource> @linkml:String ? ;
-          <value> @linkml:String ?
+          <value> @linkml:String *
        ) ;
        rdf:type [ <TemplateCodeParameter> ] ?
     )
 }
 
 <TerminologyExtension> CLOSED {
-    (  $<TerminologyExtension_tes> (  <enumeration> @<ExtensibleTerminology> ? ;
+    (  $<TerminologyExtension_tes> (  <enumeration> @<ExtensibleTerminologyEnum> ? ;
           <sponsorTerms> @<SponsorTerm> +
        ) ;
-       rdf:type [ <TerminologyExtension> ] ?
+       rdf:type [ <TerminologyExtension> ]
     )
 }
 
@@ -514,7 +656,7 @@ linkml:Nodeidentifier NONLITERAL
 
 <WhereClauseCompoundExpression>  (
     CLOSED {
-       (  $<WhereClauseCompoundExpression_tes> (  <logicalOperator> @<ExpressionLogicalOperator> ;
+       (  $<WhereClauseCompoundExpression_tes> (  <logicalOperator> @<ExpressionLogicalOperatorEnum> ;
              <whereClauses> @<WhereClause> *
           ) ;
           rdf:type [ <WhereClauseCompoundExpression> ] ?
@@ -525,8 +667,8 @@ linkml:Nodeidentifier NONLITERAL
 <WhereClauseCondition> CLOSED {
     (  $<WhereClauseCondition_tes> (  <dataset> @linkml:String ? ;
           <variable> @linkml:String ? ;
-          <comparator> @<ConditionComparator> ? ;
-          <value> @linkml:String ?
+          <comparator> @<ConditionComparatorEnum> ? ;
+          <value> @linkml:String *
        ) ;
        rdf:type [ <WhereClauseCondition> ] ?
     )

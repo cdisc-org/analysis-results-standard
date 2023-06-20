@@ -23,7 +23,7 @@ URI: [ars:referencedOperationRole](https://www.cdisc.org/ars/1-0/referencedOpera
 
 ## Properties
 
-* Range: [String](String.md)
+* Range: [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md)
 
 * Required: True
 
@@ -57,12 +57,11 @@ rank: 1000
 alias: referencedOperationRole
 domain_of:
 - ReferencedOperationRelationship
-range: string
+range: ExtensibleTerminologyTerm
 required: true
-inlined: false
 any_of:
 - range: OperationRole
-- range: SponsorTerm
+- range: SponsorOperationRole
 
 ```
 </details>

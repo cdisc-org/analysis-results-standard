@@ -13,7 +13,7 @@ URI: [ars:CompoundSubsetExpression](https://www.cdisc.org/ars/1-0/CompoundSubset
       
       CompoundSubsetExpression : logicalOperator
         
-          CompoundSubsetExpression --|> ExpressionLogicalOperator : logicalOperator
+          CompoundSubsetExpression --|> ExpressionLogicalOperatorEnum : logicalOperator
         
       CompoundSubsetExpression : whereClauses
         
@@ -36,7 +36,7 @@ URI: [ars:CompoundSubsetExpression](https://www.cdisc.org/ars/1-0/CompoundSubset
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [logicalOperator](logicalOperator.md) | 1..1 <br/> [ExpressionLogicalOperator](ExpressionLogicalOperator.md) |  | [WhereClauseCompoundExpression](WhereClauseCompoundExpression.md) |
+| [logicalOperator](logicalOperator.md) | 1..1 <br/> [ExpressionLogicalOperatorEnum](ExpressionLogicalOperatorEnum.md) |  | [WhereClauseCompoundExpression](WhereClauseCompoundExpression.md) |
 | [whereClauses](whereClauses.md) | 0..* <br/> [WhereClause](WhereClause.md) |  | [WhereClauseCompoundExpression](WhereClauseCompoundExpression.md) |
 
 
@@ -129,7 +129,7 @@ attributes:
     owner: CompoundSubsetExpression
     domain_of:
     - WhereClauseCompoundExpression
-    range: ExpressionLogicalOperator
+    range: ExpressionLogicalOperatorEnum
     required: true
   whereClauses:
     name: whereClauses

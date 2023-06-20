@@ -13,7 +13,7 @@ URI: [ars:pageRefs](https://www.cdisc.org/ars/1-0/pageRefs)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-[DocumentRef](DocumentRef.md) |  |  no  |
+[DocumentReference](DocumentReference.md) |  |  no  |
 
 
 
@@ -57,8 +57,14 @@ rank: 1000
 multivalued: true
 alias: pageRefs
 domain_of:
-- DocumentRef
+- DocumentReference
 range: PageRef
+inlined: true
+inlined_as_list: true
+any_of:
+- range: PageNumberListRef
+- range: PageNumberRangeRef
+- range: PageNameRef
 
 ```
 </details>

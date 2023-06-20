@@ -14,6 +14,7 @@ URI: [ars:sectionType](https://www.cdisc.org/ars/1-0/sectionType)
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 [DisplaySection](DisplaySection.md) | A part of a tabular display containing one or more pieces of informational te... |  no  |
+[GlobalDisplaySection](GlobalDisplaySection.md) | A part of a tabular display containing one or more pieces of informational te... |  no  |
 
 
 
@@ -23,7 +24,7 @@ URI: [ars:sectionType](https://www.cdisc.org/ars/1-0/sectionType)
 
 ## Properties
 
-* Range: [DisplaySectionType](DisplaySectionType.md)
+* Range: [DisplaySectionTypeEnum](DisplaySectionTypeEnum.md)
 
 
 
@@ -55,7 +56,8 @@ rank: 1000
 alias: sectionType
 domain_of:
 - DisplaySection
-range: DisplaySectionType
+- GlobalDisplaySection
+range: DisplaySectionTypeEnum
 
 ```
 </details>

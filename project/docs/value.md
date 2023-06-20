@@ -13,9 +13,9 @@ URI: [ars:value](https://www.cdisc.org/ars/1-0/value)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-[CodeParameter](CodeParameter.md) | A replacement parameter whose value is substituted in template programming co... |  yes  |
-[WhereClauseCondition](WhereClauseCondition.md) |  |  no  |
+[AnalysisOutputCodeParameter](AnalysisOutputCodeParameter.md) | A parameter whose value is used in programming code for a specific analysis o... |  yes  |
 [TemplateCodeParameter](TemplateCodeParameter.md) | A replacement parameter whose value is substituted in template programming co... |  yes  |
+[WhereClauseCondition](WhereClauseCondition.md) |  |  no  |
 
 
 
@@ -26,6 +26,8 @@ URI: [ars:value](https://www.cdisc.org/ars/1-0/value)
 ## Properties
 
 * Range: [String](String.md)
+
+* Multivalued: True
 
 
 
@@ -54,9 +56,11 @@ URI: [ars:value](https://www.cdisc.org/ars/1-0/value)
 name: value
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
+multivalued: true
 alias: value
 domain_of:
-- CodeParameter
+- AnalysisOutputCodeParameter
+- TemplateCodeParameter
 - WhereClauseCondition
 range: string
 

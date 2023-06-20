@@ -1,5 +1,5 @@
 # Auto generated from ars_ldm.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-06-09T13:51:39
+# Generation date: 2023-06-20T13:51:51
 # Schema: ars_ldm
 #
 # id: https://www.cdisc.org/ars/1-0
@@ -41,6 +41,10 @@ DEFAULT_ = ARS
 # Types
 
 # Class references
+class ReportingEventId(extended_str):
+    pass
+
+
 class AnalysisCategorizationId(extended_str):
     pass
 
@@ -113,6 +117,10 @@ class ReferenceDocumentId(extended_str):
     pass
 
 
+class TerminologyExtensionId(extended_str):
+    pass
+
+
 class SponsorTermId(extended_str):
     pass
 
@@ -149,26 +157,36 @@ class ReportingEvent(NamedObject):
     class_name: ClassVar[str] = "ReportingEvent"
     class_model_uri: ClassVar[URIRef] = ARS.ReportingEvent
 
+    id: Union[str, ReportingEventId] = None
     name: str = None
     listOfPlannedAnalyses: Union[dict, "NestedList"] = None
+    version: Optional[int] = None
     listOfPlannedOutputs: Optional[Union[dict, "NestedList"]] = None
     analysisSets: Optional[Union[Dict[Union[str, AnalysisSetId], Union[dict, "AnalysisSet"]], List[Union[dict, "AnalysisSet"]]]] = empty_dict()
     analysisGroupings: Optional[Union[Dict[Union[str, SubjectGroupingFactorId], Union[dict, "SubjectGroupingFactor"]], List[Union[dict, "SubjectGroupingFactor"]]]] = empty_dict()
     dataSubsets: Optional[Union[Dict[Union[str, DataSubsetId], Union[dict, "DataSubset"]], List[Union[dict, "DataSubset"]]]] = empty_dict()
     dataGroupings: Optional[Union[Dict[Union[str, DataGroupingFactorId], Union[dict, "DataGroupingFactor"]], List[Union[dict, "DataGroupingFactor"]]]] = empty_dict()
-    globalDisplaySections: Optional[Union[Union[dict, "DisplaySection"], List[Union[dict, "DisplaySection"]]]] = empty_list()
+    globalDisplaySections: Optional[Union[Union[dict, "GlobalDisplaySection"], List[Union[dict, "GlobalDisplaySection"]]]] = empty_list()
     analysisCategorizations: Optional[Union[Dict[Union[str, AnalysisCategorizationId], Union[dict, "AnalysisCategorization"]], List[Union[dict, "AnalysisCategorization"]]]] = empty_dict()
     analyses: Optional[Union[Dict[Union[str, AnalysisId], Union[dict, "Analysis"]], List[Union[dict, "Analysis"]]]] = empty_dict()
     methods: Optional[Union[Dict[Union[str, AnalysisMethodId], Union[dict, "AnalysisMethod"]], List[Union[dict, "AnalysisMethod"]]]] = empty_dict()
     outputs: Optional[Union[Dict[Union[str, OutputId], Union[dict, "Output"]], List[Union[dict, "Output"]]]] = empty_dict()
     referenceDocuments: Optional[Union[Dict[Union[str, ReferenceDocumentId], Union[dict, "ReferenceDocument"]], List[Union[dict, "ReferenceDocument"]]]] = empty_dict()
-    terminologyExtentions: Optional[Union[Union[dict, "TerminologyExtension"], List[Union[dict, "TerminologyExtension"]]]] = empty_list()
+    terminologyExtensions: Optional[Union[Dict[Union[str, TerminologyExtensionId], Union[dict, "TerminologyExtension"]], List[Union[dict, "TerminologyExtension"]]]] = empty_dict()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, ReportingEventId):
+            self.id = ReportingEventId(self.id)
+
         if self._is_empty(self.listOfPlannedAnalyses):
             self.MissingRequiredField("listOfPlannedAnalyses")
         if not isinstance(self.listOfPlannedAnalyses, NestedList):
             self.listOfPlannedAnalyses = NestedList(**as_dict(self.listOfPlannedAnalyses))
+
+        if self.version is not None and not isinstance(self.version, int):
+            self.version = int(self.version)
 
         if self.listOfPlannedOutputs is not None and not isinstance(self.listOfPlannedOutputs, NestedList):
             self.listOfPlannedOutputs = NestedList(**as_dict(self.listOfPlannedOutputs))
@@ -183,7 +201,7 @@ class ReportingEvent(NamedObject):
 
         if not isinstance(self.globalDisplaySections, list):
             self.globalDisplaySections = [self.globalDisplaySections] if self.globalDisplaySections is not None else []
-        self.globalDisplaySections = [v if isinstance(v, DisplaySection) else DisplaySection(**as_dict(v)) for v in self.globalDisplaySections]
+        self.globalDisplaySections = [v if isinstance(v, GlobalDisplaySection) else GlobalDisplaySection(**as_dict(v)) for v in self.globalDisplaySections]
 
         self._normalize_inlined_as_list(slot_name="analysisCategorizations", slot_type=AnalysisCategorization, key_name="id", keyed=True)
 
@@ -193,11 +211,9 @@ class ReportingEvent(NamedObject):
 
         self._normalize_inlined_as_list(slot_name="outputs", slot_type=Output, key_name="id", keyed=True)
 
-        self._normalize_inlined_as_dict(slot_name="referenceDocuments", slot_type=ReferenceDocument, key_name="id", keyed=True)
+        self._normalize_inlined_as_list(slot_name="referenceDocuments", slot_type=ReferenceDocument, key_name="id", keyed=True)
 
-        if not isinstance(self.terminologyExtentions, list):
-            self.terminologyExtentions = [self.terminologyExtentions] if self.terminologyExtentions is not None else []
-        self.terminologyExtentions = [v if isinstance(v, TerminologyExtension) else TerminologyExtension(**as_dict(v)) for v in self.terminologyExtentions]
+        self._normalize_inlined_as_list(slot_name="terminologyExtensions", slot_type=TerminologyExtension, key_name="id", keyed=True)
 
         super().__post_init__(**kwargs)
 
@@ -348,13 +364,13 @@ class Analysis(NamedObject):
 
     id: Union[str, AnalysisId] = None
     name: str = None
-    reason: str = None
-    purpose: str = None
+    reason: Union[dict, "ExtensibleTerminologyTerm"] = None
+    purpose: Union[dict, "ExtensibleTerminologyTerm"] = None
     methodId: Union[str, AnalysisMethodId] = None
     version: Optional[int] = None
     categoryIds: Optional[Union[Union[str, AnalysisCategoryId], List[Union[str, AnalysisCategoryId]]]] = empty_list()
     description: Optional[str] = None
-    documentRefs: Optional[Union[Union[dict, "DocumentRef"], List[Union[dict, "DocumentRef"]]]] = empty_list()
+    documentRefs: Optional[Union[Union[dict, "DocumentReference"], List[Union[dict, "DocumentReference"]]]] = empty_list()
     analysisSetId: Optional[Union[str, AnalysisSetId]] = None
     orderedGroupings: Optional[Union[Union[dict, "OrderedGroupingFactor"], List[Union[dict, "OrderedGroupingFactor"]]]] = empty_list()
     dataSubsetId: Optional[Union[str, DataSubsetId]] = None
@@ -372,13 +388,13 @@ class Analysis(NamedObject):
 
         if self._is_empty(self.reason):
             self.MissingRequiredField("reason")
-        if not isinstance(self.reason, str):
-            self.reason = str(self.reason)
+        if not isinstance(self.reason, ExtensibleTerminologyTerm):
+            self.reason = ExtensibleTerminologyTerm(**as_dict(self.reason))
 
         if self._is_empty(self.purpose):
             self.MissingRequiredField("purpose")
-        if not isinstance(self.purpose, str):
-            self.purpose = str(self.purpose)
+        if not isinstance(self.purpose, ExtensibleTerminologyTerm):
+            self.purpose = ExtensibleTerminologyTerm(**as_dict(self.purpose))
 
         if self._is_empty(self.methodId):
             self.MissingRequiredField("methodId")
@@ -397,7 +413,7 @@ class Analysis(NamedObject):
 
         if not isinstance(self.documentRefs, list):
             self.documentRefs = [self.documentRefs] if self.documentRefs is not None else []
-        self.documentRefs = [v if isinstance(v, DocumentRef) else DocumentRef(**as_dict(v)) for v in self.documentRefs]
+        self.documentRefs = [v if isinstance(v, DocumentReference) else DocumentReference(**as_dict(v)) for v in self.documentRefs]
 
         if self.analysisSetId is not None and not isinstance(self.analysisSetId, AnalysisSetId):
             self.analysisSetId = AnalysisSetId(self.analysisSetId)
@@ -573,7 +589,7 @@ class AnalysisMethod(NamedObject):
     operations: Union[Dict[Union[str, OperationId], Union[dict, "Operation"]], List[Union[dict, "Operation"]]] = empty_dict()
     label: Optional[str] = None
     description: Optional[str] = None
-    documentRefs: Optional[Union[Union[dict, "DocumentRef"], List[Union[dict, "DocumentRef"]]]] = empty_list()
+    documentRefs: Optional[Union[Union[dict, "DocumentReference"], List[Union[dict, "DocumentReference"]]]] = empty_list()
     codeTemplate: Optional[Union[dict, "AnalysisProgrammingCodeTemplate"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -594,7 +610,7 @@ class AnalysisMethod(NamedObject):
 
         if not isinstance(self.documentRefs, list):
             self.documentRefs = [self.documentRefs] if self.documentRefs is not None else []
-        self.documentRefs = [v if isinstance(v, DocumentRef) else DocumentRef(**as_dict(v)) for v in self.documentRefs]
+        self.documentRefs = [v if isinstance(v, DocumentReference) else DocumentReference(**as_dict(v)) for v in self.documentRefs]
 
         if self.codeTemplate is not None and not isinstance(self.codeTemplate, AnalysisProgrammingCodeTemplate):
             self.codeTemplate = AnalysisProgrammingCodeTemplate(**as_dict(self.codeTemplate))
@@ -650,7 +666,7 @@ class ReferencedOperationRelationship(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = ARS.ReferencedOperationRelationship
 
     id: Union[str, ReferencedOperationRelationshipId] = None
-    referencedOperationRole: str = None
+    referencedOperationRole: Union[dict, "ExtensibleTerminologyTerm"] = None
     operationId: Union[str, OperationId] = None
     analysisId: Optional[Union[str, AnalysisId]] = None
     description: Optional[str] = None
@@ -663,8 +679,8 @@ class ReferencedOperationRelationship(YAMLRoot):
 
         if self._is_empty(self.referencedOperationRole):
             self.MissingRequiredField("referencedOperationRole")
-        if not isinstance(self.referencedOperationRole, str):
-            self.referencedOperationRole = str(self.referencedOperationRole)
+        if not isinstance(self.referencedOperationRole, ExtensibleTerminologyTerm):
+            self.referencedOperationRole = ExtensibleTerminologyTerm(**as_dict(self.referencedOperationRole))
 
         if self._is_empty(self.operationId):
             self.MissingRequiredField("operationId")
@@ -695,8 +711,8 @@ class AnalysisOutputProgrammingCode(YAMLRoot):
 
     context: str = None
     code: Optional[str] = None
-    documentRefs: Optional[Union[Union[dict, "DocumentRef"], List[Union[dict, "DocumentRef"]]]] = empty_list()
-    parameters: Optional[Union[Union[dict, "CodeParameter"], List[Union[dict, "CodeParameter"]]]] = empty_list()
+    documentRef: Optional[Union[dict, "DocumentReference"]] = None
+    parameters: Optional[Union[Union[dict, "AnalysisOutputCodeParameter"], List[Union[dict, "AnalysisOutputCodeParameter"]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.context):
@@ -707,19 +723,18 @@ class AnalysisOutputProgrammingCode(YAMLRoot):
         if self.code is not None and not isinstance(self.code, str):
             self.code = str(self.code)
 
-        if not isinstance(self.documentRefs, list):
-            self.documentRefs = [self.documentRefs] if self.documentRefs is not None else []
-        self.documentRefs = [v if isinstance(v, DocumentRef) else DocumentRef(**as_dict(v)) for v in self.documentRefs]
+        if self.documentRef is not None and not isinstance(self.documentRef, DocumentReference):
+            self.documentRef = DocumentReference(**as_dict(self.documentRef))
 
         if not isinstance(self.parameters, list):
             self.parameters = [self.parameters] if self.parameters is not None else []
-        self.parameters = [v if isinstance(v, CodeParameter) else CodeParameter(**as_dict(v)) for v in self.parameters]
+        self.parameters = [v if isinstance(v, AnalysisOutputCodeParameter) else AnalysisOutputCodeParameter(**as_dict(v)) for v in self.parameters]
 
         super().__post_init__(**kwargs)
 
 
 @dataclass
-class AnalysisProgrammingCodeTemplate(AnalysisOutputProgrammingCode):
+class AnalysisProgrammingCodeTemplate(YAMLRoot):
     """
     Programming statements and/or a reference to a used as a template for creation of a program to perform method
     operations for a specific analysis.
@@ -732,9 +747,22 @@ class AnalysisProgrammingCodeTemplate(AnalysisOutputProgrammingCode):
     class_model_uri: ClassVar[URIRef] = ARS.AnalysisProgrammingCodeTemplate
 
     context: str = None
+    code: Optional[str] = None
+    documentRef: Optional[Union[dict, "DocumentReference"]] = None
     parameters: Optional[Union[Union[dict, "TemplateCodeParameter"], List[Union[dict, "TemplateCodeParameter"]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.context):
+            self.MissingRequiredField("context")
+        if not isinstance(self.context, str):
+            self.context = str(self.context)
+
+        if self.code is not None and not isinstance(self.code, str):
+            self.code = str(self.code)
+
+        if self.documentRef is not None and not isinstance(self.documentRef, DocumentReference):
+            self.documentRef = DocumentReference(**as_dict(self.documentRef))
+
         if not isinstance(self.parameters, list):
             self.parameters = [self.parameters] if self.parameters is not None else []
         self.parameters = [v if isinstance(v, TemplateCodeParameter) else TemplateCodeParameter(**as_dict(v)) for v in self.parameters]
@@ -756,17 +784,36 @@ class CodeParameter(NamedObject):
     class_model_uri: ClassVar[URIRef] = ARS.CodeParameter
 
     name: str = None
-    value: str = None
     description: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class AnalysisOutputCodeParameter(CodeParameter):
+    """
+    A parameter whose value is used in programming code for a specific analysis or output.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ARS.AnalysisOutputCodeParameter
+    class_class_curie: ClassVar[str] = "ars:AnalysisOutputCodeParameter"
+    class_name: ClassVar[str] = "AnalysisOutputCodeParameter"
+    class_model_uri: ClassVar[URIRef] = ARS.AnalysisOutputCodeParameter
+
+    name: str = None
+    value: Union[str, List[str]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.value):
             self.MissingRequiredField("value")
-        if not isinstance(self.value, str):
-            self.value = str(self.value)
-
-        if self.description is not None and not isinstance(self.description, str):
-            self.description = str(self.description)
+        if not isinstance(self.value, list):
+            self.value = [self.value] if self.value is not None else []
+        self.value = [v if isinstance(v, str) else str(v) for v in self.value]
 
         super().__post_init__(**kwargs)
 
@@ -786,14 +833,15 @@ class TemplateCodeParameter(CodeParameter):
 
     name: str = None
     valueSource: Optional[str] = None
-    value: Optional[str] = None
+    value: Optional[Union[str, List[str]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self.valueSource is not None and not isinstance(self.valueSource, str):
             self.valueSource = str(self.valueSource)
 
-        if self.value is not None and not isinstance(self.value, str):
-            self.value = str(self.value)
+        if not isinstance(self.value, list):
+            self.value = [self.value] if self.value is not None else []
+        self.value = [v if isinstance(v, str) else str(v) for v in self.value]
 
         super().__post_init__(**kwargs)
 
@@ -816,7 +864,7 @@ class Output(NamedObject):
     fileSpecifications: Optional[Union[Union[dict, "OutputFile"], List[Union[dict, "OutputFile"]]]] = empty_list()
     displays: Optional[Union[Union[dict, "OrderedDisplay"], List[Union[dict, "OrderedDisplay"]]]] = empty_list()
     categoryIds: Optional[Union[Union[str, AnalysisCategoryId], List[Union[str, AnalysisCategoryId]]]] = empty_list()
-    documentRefs: Optional[Union[Union[dict, "DocumentRef"], List[Union[dict, "DocumentRef"]]]] = empty_list()
+    documentRefs: Optional[Union[Union[dict, "DocumentReference"], List[Union[dict, "DocumentReference"]]]] = empty_list()
     programmingCode: Optional[Union[dict, AnalysisOutputProgrammingCode]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -842,7 +890,7 @@ class Output(NamedObject):
 
         if not isinstance(self.documentRefs, list):
             self.documentRefs = [self.documentRefs] if self.documentRefs is not None else []
-        self.documentRefs = [v if isinstance(v, DocumentRef) else DocumentRef(**as_dict(v)) for v in self.documentRefs]
+        self.documentRefs = [v if isinstance(v, DocumentReference) else DocumentReference(**as_dict(v)) for v in self.documentRefs]
 
         if self.programmingCode is not None and not isinstance(self.programmingCode, AnalysisOutputProgrammingCode):
             self.programmingCode = AnalysisOutputProgrammingCode(**as_dict(self.programmingCode))
@@ -863,13 +911,13 @@ class OutputFile(NamedObject):
     class_model_uri: ClassVar[URIRef] = ARS.OutputFile
 
     name: str = None
-    fileType: Optional[str] = None
+    fileType: Optional[Union[dict, "ExtensibleTerminologyTerm"]] = None
     location: Optional[Union[str, URI]] = None
     style: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.fileType is not None and not isinstance(self.fileType, str):
-            self.fileType = str(self.fileType)
+        if self.fileType is not None and not isinstance(self.fileType, ExtensibleTerminologyTerm):
+            self.fileType = ExtensibleTerminologyTerm(**as_dict(self.fileType))
 
         if self.location is not None and not isinstance(self.location, URI):
             self.location = URI(self.location)
@@ -956,14 +1004,101 @@ class DisplaySection(YAMLRoot):
     class_name: ClassVar[str] = "DisplaySection"
     class_model_uri: ClassVar[URIRef] = ARS.DisplaySection
 
-    sectionType: Optional[Union[str, "DisplaySectionType"]] = None
-    subSections: Optional[Union[Dict[Union[str, DisplaySubSectionId], Union[dict, "DisplaySubSection"]], List[Union[dict, "DisplaySubSection"]]]] = empty_dict()
+    sectionType: Optional[Union[str, "DisplaySectionTypeEnum"]] = None
+    orderedSubSections: Optional[Union[Union[dict, "OrderedDisplaySubSection"], List[Union[dict, "OrderedDisplaySubSection"]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.sectionType is not None and not isinstance(self.sectionType, DisplaySectionType):
-            self.sectionType = DisplaySectionType(self.sectionType)
+        if self.sectionType is not None and not isinstance(self.sectionType, DisplaySectionTypeEnum):
+            self.sectionType = DisplaySectionTypeEnum(self.sectionType)
 
-        self._normalize_inlined_as_list(slot_name="subSections", slot_type=DisplaySubSection, key_name="id", keyed=True)
+        if not isinstance(self.orderedSubSections, list):
+            self.orderedSubSections = [self.orderedSubSections] if self.orderedSubSections is not None else []
+        self.orderedSubSections = [v if isinstance(v, OrderedDisplaySubSection) else OrderedDisplaySubSection(**as_dict(v)) for v in self.orderedSubSections]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class OrderedDisplaySubSection(YAMLRoot):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ARS.OrderedDisplaySubSection
+    class_class_curie: ClassVar[str] = "ars:OrderedDisplaySubSection"
+    class_name: ClassVar[str] = "OrderedDisplaySubSection"
+    class_model_uri: ClassVar[URIRef] = ARS.OrderedDisplaySubSection
+
+    order: int = None
+    subSection: Optional[Union[dict, "DisplaySubSection"]] = None
+    subSectionId: Optional[Union[str, DisplaySubSectionId]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.order):
+            self.MissingRequiredField("order")
+        if not isinstance(self.order, int):
+            self.order = int(self.order)
+
+        if self.subSection is not None and not isinstance(self.subSection, DisplaySubSection):
+            self.subSection = DisplaySubSection(**as_dict(self.subSection))
+
+        if self.subSectionId is not None and not isinstance(self.subSectionId, DisplaySubSectionId):
+            self.subSectionId = DisplaySubSectionId(self.subSectionId)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class OrderedSubSection(OrderedDisplaySubSection):
+    """
+    A subsection ordered with respect to other subsections of the same type.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ARS.OrderedSubSection
+    class_class_curie: ClassVar[str] = "ars:OrderedSubSection"
+    class_name: ClassVar[str] = "OrderedSubSection"
+    class_model_uri: ClassVar[URIRef] = ARS.OrderedSubSection
+
+    order: int = None
+    subSection: Union[dict, "DisplaySubSection"] = None
+    subSectionId: Optional[Union[str, DisplaySubSectionId]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.subSection):
+            self.MissingRequiredField("subSection")
+        if not isinstance(self.subSection, DisplaySubSection):
+            self.subSection = DisplaySubSection(**as_dict(self.subSection))
+
+        if self.subSectionId is not None and not isinstance(self.subSectionId, DisplaySubSectionId):
+            self.subSectionId = DisplaySubSectionId(self.subSectionId)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class OrderedSubSectionRef(OrderedDisplaySubSection):
+    """
+    A reference to a subsection defined either globally or in another display section, ordered with respect to other
+    subsections of the same type.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ARS.OrderedSubSectionRef
+    class_class_curie: ClassVar[str] = "ars:OrderedSubSectionRef"
+    class_name: ClassVar[str] = "OrderedSubSectionRef"
+    class_model_uri: ClassVar[URIRef] = ARS.OrderedSubSectionRef
+
+    order: int = None
+    subSectionId: Union[str, DisplaySubSectionId] = None
+    subSection: Optional[Union[dict, "DisplaySubSection"]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.subSectionId):
+            self.MissingRequiredField("subSectionId")
+        if not isinstance(self.subSectionId, DisplaySubSectionId):
+            self.subSectionId = DisplaySubSectionId(self.subSectionId)
+
+        if self.subSection is not None and not isinstance(self.subSection, DisplaySubSection):
+            self.subSection = DisplaySubSection(**as_dict(self.subSection))
 
         super().__post_init__(**kwargs)
 
@@ -982,8 +1117,7 @@ class DisplaySubSection(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = ARS.DisplaySubSection
 
     id: Union[str, DisplaySubSectionId] = None
-    order: int = None
-    text: Optional[str] = None
+    text: str = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -991,13 +1125,34 @@ class DisplaySubSection(YAMLRoot):
         if not isinstance(self.id, DisplaySubSectionId):
             self.id = DisplaySubSectionId(self.id)
 
-        if self._is_empty(self.order):
-            self.MissingRequiredField("order")
-        if not isinstance(self.order, int):
-            self.order = int(self.order)
-
-        if self.text is not None and not isinstance(self.text, str):
+        if self._is_empty(self.text):
+            self.MissingRequiredField("text")
+        if not isinstance(self.text, str):
             self.text = str(self.text)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class GlobalDisplaySection(YAMLRoot):
+    """
+    A part of a tabular display containing one or more pieces of informational text.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ARS.GlobalDisplaySection
+    class_class_curie: ClassVar[str] = "ars:GlobalDisplaySection"
+    class_name: ClassVar[str] = "GlobalDisplaySection"
+    class_model_uri: ClassVar[URIRef] = ARS.GlobalDisplaySection
+
+    sectionType: Optional[Union[str, "DisplaySectionTypeEnum"]] = None
+    subSections: Optional[Union[Dict[Union[str, DisplaySubSectionId], Union[dict, DisplaySubSection]], List[Union[dict, DisplaySubSection]]]] = empty_dict()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.sectionType is not None and not isinstance(self.sectionType, DisplaySectionTypeEnum):
+            self.sectionType = DisplaySectionTypeEnum(self.sectionType)
+
+        self._normalize_inlined_as_list(slot_name="subSections", slot_type=DisplaySubSection, key_name="id", keyed=True)
 
         super().__post_init__(**kwargs)
 
@@ -1043,8 +1198,8 @@ class WhereClauseCondition(YAMLRoot):
 
     dataset: Optional[str] = None
     variable: Optional[str] = None
-    comparator: Optional[Union[str, "ConditionComparator"]] = None
-    value: Optional[str] = None
+    comparator: Optional[Union[str, "ConditionComparatorEnum"]] = None
+    value: Optional[Union[str, List[str]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self.dataset is not None and not isinstance(self.dataset, str):
@@ -1053,11 +1208,12 @@ class WhereClauseCondition(YAMLRoot):
         if self.variable is not None and not isinstance(self.variable, str):
             self.variable = str(self.variable)
 
-        if self.comparator is not None and not isinstance(self.comparator, ConditionComparator):
-            self.comparator = ConditionComparator(self.comparator)
+        if self.comparator is not None and not isinstance(self.comparator, ConditionComparatorEnum):
+            self.comparator = ConditionComparatorEnum(self.comparator)
 
-        if self.value is not None and not isinstance(self.value, str):
-            self.value = str(self.value)
+        if not isinstance(self.value, list):
+            self.value = [self.value] if self.value is not None else []
+        self.value = [v if isinstance(v, str) else str(v) for v in self.value]
 
         super().__post_init__(**kwargs)
 
@@ -1071,14 +1227,14 @@ class WhereClauseCompoundExpression(YAMLRoot):
     class_name: ClassVar[str] = "WhereClauseCompoundExpression"
     class_model_uri: ClassVar[URIRef] = ARS.WhereClauseCompoundExpression
 
-    logicalOperator: Union[str, "ExpressionLogicalOperator"] = None
+    logicalOperator: Union[str, "ExpressionLogicalOperatorEnum"] = None
     whereClauses: Optional[Union[Union[dict, WhereClause], List[Union[dict, WhereClause]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.logicalOperator):
             self.MissingRequiredField("logicalOperator")
-        if not isinstance(self.logicalOperator, ExpressionLogicalOperator):
-            self.logicalOperator = ExpressionLogicalOperator(self.logicalOperator)
+        if not isinstance(self.logicalOperator, ExpressionLogicalOperatorEnum):
+            self.logicalOperator = ExpressionLogicalOperatorEnum(self.logicalOperator)
 
         if not isinstance(self.whereClauses, list):
             self.whereClauses = [self.whereClauses] if self.whereClauses is not None else []
@@ -1096,7 +1252,7 @@ class CompoundSetExpression(WhereClauseCompoundExpression):
     class_name: ClassVar[str] = "CompoundSetExpression"
     class_model_uri: ClassVar[URIRef] = ARS.CompoundSetExpression
 
-    logicalOperator: Union[str, "ExpressionLogicalOperator"] = None
+    logicalOperator: Union[str, "ExpressionLogicalOperatorEnum"] = None
     whereClauses: Optional[Union[Union[str, AnalysisSetId], List[Union[str, AnalysisSetId]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -1116,7 +1272,7 @@ class CompoundGroupExpression(WhereClauseCompoundExpression):
     class_name: ClassVar[str] = "CompoundGroupExpression"
     class_model_uri: ClassVar[URIRef] = ARS.CompoundGroupExpression
 
-    logicalOperator: Union[str, "ExpressionLogicalOperator"] = None
+    logicalOperator: Union[str, "ExpressionLogicalOperatorEnum"] = None
     whereClauses: Optional[Union[Union[str, GroupId], List[Union[str, GroupId]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -1136,7 +1292,7 @@ class CompoundSubsetExpression(WhereClauseCompoundExpression):
     class_name: ClassVar[str] = "CompoundSubsetExpression"
     class_model_uri: ClassVar[URIRef] = ARS.CompoundSubsetExpression
 
-    logicalOperator: Union[str, "ExpressionLogicalOperator"] = None
+    logicalOperator: Union[str, "ExpressionLogicalOperatorEnum"] = None
     whereClauses: Optional[Union[Union[dict, WhereClause], List[Union[dict, WhereClause]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -1409,13 +1565,13 @@ class ReferenceDocument(NamedObject):
 
 
 @dataclass
-class DocumentRef(YAMLRoot):
+class DocumentReference(YAMLRoot):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ARS.DocumentRef
-    class_class_curie: ClassVar[str] = "ars:DocumentRef"
-    class_name: ClassVar[str] = "DocumentRef"
-    class_model_uri: ClassVar[URIRef] = ARS.DocumentRef
+    class_class_uri: ClassVar[URIRef] = ARS.DocumentReference
+    class_class_curie: ClassVar[str] = "ars:DocumentReference"
+    class_name: ClassVar[str] = "DocumentReference"
+    class_model_uri: ClassVar[URIRef] = ARS.DocumentReference
 
     referenceDocumentId: Union[str, ReferenceDocumentId] = None
     pageRefs: Optional[Union[Union[dict, "PageRef"], List[Union[dict, "PageRef"]]]] = empty_list()
@@ -1426,7 +1582,9 @@ class DocumentRef(YAMLRoot):
         if not isinstance(self.referenceDocumentId, ReferenceDocumentId):
             self.referenceDocumentId = ReferenceDocumentId(self.referenceDocumentId)
 
-        self._normalize_inlined_as_dict(slot_name="pageRefs", slot_type=PageRef, key_name="refType", keyed=False)
+        if not isinstance(self.pageRefs, list):
+            self.pageRefs = [self.pageRefs] if self.pageRefs is not None else []
+        self.pageRefs = [v if isinstance(v, PageRef) else PageRef(**as_dict(v)) for v in self.pageRefs]
 
         super().__post_init__(**kwargs)
 
@@ -1440,21 +1598,35 @@ class PageRef(YAMLRoot):
     class_name: ClassVar[str] = "PageRef"
     class_model_uri: ClassVar[URIRef] = ARS.PageRef
 
-    refType: Union[str, "PageRefType"] = None
+    refType: Union[str, "PageRefTypeEnum"] = None
     label: Optional[str] = None
-    pages: Optional[str] = None
+    pageNames: Optional[Union[str, List[str]]] = empty_list()
+    pageNumbers: Optional[Union[int, List[int]]] = empty_list()
+    firstPage: Optional[int] = None
+    lastPage: Optional[int] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.refType):
             self.MissingRequiredField("refType")
-        if not isinstance(self.refType, PageRefType):
-            self.refType = PageRefType(self.refType)
+        if not isinstance(self.refType, PageRefTypeEnum):
+            self.refType = PageRefTypeEnum(self.refType)
 
         if self.label is not None and not isinstance(self.label, str):
             self.label = str(self.label)
 
-        if self.pages is not None and not isinstance(self.pages, str):
-            self.pages = str(self.pages)
+        if not isinstance(self.pageNames, list):
+            self.pageNames = [self.pageNames] if self.pageNames is not None else []
+        self.pageNames = [v if isinstance(v, str) else str(v) for v in self.pageNames]
+
+        if not isinstance(self.pageNumbers, list):
+            self.pageNumbers = [self.pageNumbers] if self.pageNumbers is not None else []
+        self.pageNumbers = [v if isinstance(v, int) else int(v) for v in self.pageNumbers]
+
+        if self.firstPage is not None and not isinstance(self.firstPage, int):
+            self.firstPage = int(self.firstPage)
+
+        if self.lastPage is not None and not isinstance(self.lastPage, int):
+            self.lastPage = int(self.lastPage)
 
         super().__post_init__(**kwargs)
 
@@ -1471,17 +1643,33 @@ class PageNumberListRef(PageRef):
     class_name: ClassVar[str] = "PageNumberListRef"
     class_model_uri: ClassVar[URIRef] = ARS.PageNumberListRef
 
-    refType: Union[str, "PageRefType"] = None
-    pages: Optional[Union[dict, "PageNumberList"]] = None
+    refType: Union[str, "PageRefTypeEnum"] = None
+    pageNumbers: Union[int, List[int]] = None
+    pageNames: Optional[Union[str, List[str]]] = empty_list()
+    firstPage: Optional[int] = None
+    lastPage: Optional[int] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.refType):
             self.MissingRequiredField("refType")
-        if not isinstance(self.refType, PageRefType):
-            self.refType = PageRefType(self.refType)
+        if not isinstance(self.refType, PageRefTypeEnum):
+            self.refType = PageRefTypeEnum(self.refType)
 
-        if self.pages is not None and not isinstance(self.pages, PageNumberList):
-            self.pages = PageNumberList(**as_dict(self.pages))
+        if self._is_empty(self.pageNumbers):
+            self.MissingRequiredField("pageNumbers")
+        if not isinstance(self.pageNumbers, list):
+            self.pageNumbers = [self.pageNumbers] if self.pageNumbers is not None else []
+        self.pageNumbers = [v if isinstance(v, int) else int(v) for v in self.pageNumbers]
+
+        if not isinstance(self.pageNames, list):
+            self.pageNames = [self.pageNames] if self.pageNames is not None else []
+        self.pageNames = [v if isinstance(v, str) else str(v) for v in self.pageNames]
+
+        if self.firstPage is not None and not isinstance(self.firstPage, int):
+            self.firstPage = int(self.firstPage)
+
+        if self.lastPage is not None and not isinstance(self.lastPage, int):
+            self.lastPage = int(self.lastPage)
 
         super().__post_init__(**kwargs)
 
@@ -1498,17 +1686,35 @@ class PageNumberRangeRef(PageRef):
     class_name: ClassVar[str] = "PageNumberRangeRef"
     class_model_uri: ClassVar[URIRef] = ARS.PageNumberRangeRef
 
-    refType: Union[str, "PageRefType"] = None
-    pages: Optional[Union[dict, "PageRange"]] = None
+    refType: Union[str, "PageRefTypeEnum"] = None
+    firstPage: int = None
+    lastPage: int = None
+    pageNumbers: Optional[Union[int, List[int]]] = empty_list()
+    pageNames: Optional[Union[str, List[str]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.refType):
             self.MissingRequiredField("refType")
-        if not isinstance(self.refType, PageRefType):
-            self.refType = PageRefType(self.refType)
+        if not isinstance(self.refType, PageRefTypeEnum):
+            self.refType = PageRefTypeEnum(self.refType)
 
-        if self.pages is not None and not isinstance(self.pages, PageRange):
-            self.pages = PageRange(**as_dict(self.pages))
+        if self._is_empty(self.firstPage):
+            self.MissingRequiredField("firstPage")
+        if not isinstance(self.firstPage, int):
+            self.firstPage = int(self.firstPage)
+
+        if self._is_empty(self.lastPage):
+            self.MissingRequiredField("lastPage")
+        if not isinstance(self.lastPage, int):
+            self.lastPage = int(self.lastPage)
+
+        if not isinstance(self.pageNumbers, list):
+            self.pageNumbers = [self.pageNumbers] if self.pageNumbers is not None else []
+        self.pageNumbers = [v if isinstance(v, int) else int(v) for v in self.pageNumbers]
+
+        if not isinstance(self.pageNames, list):
+            self.pageNames = [self.pageNames] if self.pageNames is not None else []
+        self.pageNames = [v if isinstance(v, str) else str(v) for v in self.pageNames]
 
         super().__post_init__(**kwargs)
 
@@ -1525,93 +1731,32 @@ class PageNameRef(PageRef):
     class_name: ClassVar[str] = "PageNameRef"
     class_model_uri: ClassVar[URIRef] = ARS.PageNameRef
 
-    refType: Union[str, "PageRefType"] = None
-    pages: Optional[Union[dict, "PageNameList"]] = None
+    refType: Union[str, "PageRefTypeEnum"] = None
+    pageNames: Union[str, List[str]] = None
+    pageNumbers: Optional[Union[int, List[int]]] = empty_list()
+    firstPage: Optional[int] = None
+    lastPage: Optional[int] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.refType):
             self.MissingRequiredField("refType")
-        if not isinstance(self.refType, PageRefType):
-            self.refType = PageRefType(self.refType)
+        if not isinstance(self.refType, PageRefTypeEnum):
+            self.refType = PageRefTypeEnum(self.refType)
 
-        if self.pages is not None and not isinstance(self.pages, PageNameList):
-            self.pages = PageNameList(**as_dict(self.pages))
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass
-class PageNumberList(YAMLRoot):
-    """
-    A list of one or more page numbers.
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = ARS.PageNumberList
-    class_class_curie: ClassVar[str] = "ars:PageNumberList"
-    class_name: ClassVar[str] = "PageNumberList"
-    class_model_uri: ClassVar[URIRef] = ARS.PageNumberList
-
-    pageNumbers: Union[int, List[int]] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.pageNumbers):
-            self.MissingRequiredField("pageNumbers")
-        if not isinstance(self.pageNumbers, list):
-            self.pageNumbers = [self.pageNumbers] if self.pageNumbers is not None else []
-        self.pageNumbers = [v if isinstance(v, int) else int(v) for v in self.pageNumbers]
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass
-class PageNameList(YAMLRoot):
-    """
-    A list of one or more named document references, each of which corresponds with a page.
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = ARS.PageNameList
-    class_class_curie: ClassVar[str] = "ars:PageNameList"
-    class_name: ClassVar[str] = "PageNameList"
-    class_model_uri: ClassVar[URIRef] = ARS.PageNameList
-
-    pageNames: Union[int, List[int]] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.pageNames):
             self.MissingRequiredField("pageNames")
         if not isinstance(self.pageNames, list):
             self.pageNames = [self.pageNames] if self.pageNames is not None else []
-        self.pageNames = [v if isinstance(v, int) else int(v) for v in self.pageNames]
+        self.pageNames = [v if isinstance(v, str) else str(v) for v in self.pageNames]
 
-        super().__post_init__(**kwargs)
+        if not isinstance(self.pageNumbers, list):
+            self.pageNumbers = [self.pageNumbers] if self.pageNumbers is not None else []
+        self.pageNumbers = [v if isinstance(v, int) else int(v) for v in self.pageNumbers]
 
-
-@dataclass
-class PageRange(YAMLRoot):
-    """
-    A set of pages in a document that includes the specified first and last page, and all pages in between.
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = ARS.PageRange
-    class_class_curie: ClassVar[str] = "ars:PageRange"
-    class_name: ClassVar[str] = "PageRange"
-    class_model_uri: ClassVar[URIRef] = ARS.PageRange
-
-    firstPage: int = None
-    lastPage: int = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.firstPage):
-            self.MissingRequiredField("firstPage")
-        if not isinstance(self.firstPage, int):
+        if self.firstPage is not None and not isinstance(self.firstPage, int):
             self.firstPage = int(self.firstPage)
 
-        if self._is_empty(self.lastPage):
-            self.MissingRequiredField("lastPage")
-        if not isinstance(self.lastPage, int):
+        if self.lastPage is not None and not isinstance(self.lastPage, int):
             self.lastPage = int(self.lastPage)
 
         super().__post_init__(**kwargs)
@@ -1629,16 +1774,22 @@ class TerminologyExtension(YAMLRoot):
     class_name: ClassVar[str] = "TerminologyExtension"
     class_model_uri: ClassVar[URIRef] = ARS.TerminologyExtension
 
+    id: Union[str, TerminologyExtensionId] = None
     sponsorTerms: Union[Dict[Union[str, SponsorTermId], Union[dict, "SponsorTerm"]], List[Union[dict, "SponsorTerm"]]] = empty_dict()
-    enumeration: Optional[Union[str, "ExtensibleTerminology"]] = None
+    enumeration: Optional[Union[str, "ExtensibleTerminologyEnum"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, TerminologyExtensionId):
+            self.id = TerminologyExtensionId(self.id)
+
         if self._is_empty(self.sponsorTerms):
             self.MissingRequiredField("sponsorTerms")
         self._normalize_inlined_as_list(slot_name="sponsorTerms", slot_type=SponsorTerm, key_name="id", keyed=True)
 
-        if self.enumeration is not None and not isinstance(self.enumeration, ExtensibleTerminology):
-            self.enumeration = ExtensibleTerminology(self.enumeration)
+        if self.enumeration is not None and not isinstance(self.enumeration, ExtensibleTerminologyEnum):
+            self.enumeration = ExtensibleTerminologyEnum(self.enumeration)
 
         super().__post_init__(**kwargs)
 
@@ -1676,28 +1827,242 @@ class SponsorTerm(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
+@dataclass
+class ExtensibleTerminologyTerm(YAMLRoot):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ARS.ExtensibleTerminologyTerm
+    class_class_curie: ClassVar[str] = "ars:ExtensibleTerminologyTerm"
+    class_name: ClassVar[str] = "ExtensibleTerminologyTerm"
+    class_model_uri: ClassVar[URIRef] = ARS.ExtensibleTerminologyTerm
+
+    controlledTerm: Optional[str] = None
+    sponsorTermId: Optional[Union[str, SponsorTermId]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.controlledTerm is not None and not isinstance(self.controlledTerm, str):
+            self.controlledTerm = str(self.controlledTerm)
+
+        if self.sponsorTermId is not None and not isinstance(self.sponsorTermId, SponsorTermId):
+            self.sponsorTermId = SponsorTermId(self.sponsorTermId)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class AnalysisReason(ExtensibleTerminologyTerm):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ARS.AnalysisReason
+    class_class_curie: ClassVar[str] = "ars:AnalysisReason"
+    class_name: ClassVar[str] = "AnalysisReason"
+    class_model_uri: ClassVar[URIRef] = ARS.AnalysisReason
+
+    controlledTerm: Union[str, "AnalysisReasonEnum"] = None
+    sponsorTermId: Optional[Union[str, SponsorTermId]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.controlledTerm):
+            self.MissingRequiredField("controlledTerm")
+        if not isinstance(self.controlledTerm, AnalysisReasonEnum):
+            self.controlledTerm = AnalysisReasonEnum(self.controlledTerm)
+
+        if self.sponsorTermId is not None and not isinstance(self.sponsorTermId, SponsorTermId):
+            self.sponsorTermId = SponsorTermId(self.sponsorTermId)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class SponsorAnalysisReason(ExtensibleTerminologyTerm):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ARS.SponsorAnalysisReason
+    class_class_curie: ClassVar[str] = "ars:SponsorAnalysisReason"
+    class_name: ClassVar[str] = "SponsorAnalysisReason"
+    class_model_uri: ClassVar[URIRef] = ARS.SponsorAnalysisReason
+
+    sponsorTermId: Union[str, SponsorTermId] = None
+    controlledTerm: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.sponsorTermId):
+            self.MissingRequiredField("sponsorTermId")
+        if not isinstance(self.sponsorTermId, SponsorTermId):
+            self.sponsorTermId = SponsorTermId(self.sponsorTermId)
+
+        if self.controlledTerm is not None and not isinstance(self.controlledTerm, str):
+            self.controlledTerm = str(self.controlledTerm)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class AnalysisPurpose(ExtensibleTerminologyTerm):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ARS.AnalysisPurpose
+    class_class_curie: ClassVar[str] = "ars:AnalysisPurpose"
+    class_name: ClassVar[str] = "AnalysisPurpose"
+    class_model_uri: ClassVar[URIRef] = ARS.AnalysisPurpose
+
+    controlledTerm: Union[str, "AnalysisPurposeEnum"] = None
+    sponsorTermId: Optional[Union[str, SponsorTermId]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.controlledTerm):
+            self.MissingRequiredField("controlledTerm")
+        if not isinstance(self.controlledTerm, AnalysisPurposeEnum):
+            self.controlledTerm = AnalysisPurposeEnum(self.controlledTerm)
+
+        if self.sponsorTermId is not None and not isinstance(self.sponsorTermId, SponsorTermId):
+            self.sponsorTermId = SponsorTermId(self.sponsorTermId)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class SponsorAnalysisPurpose(ExtensibleTerminologyTerm):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ARS.SponsorAnalysisPurpose
+    class_class_curie: ClassVar[str] = "ars:SponsorAnalysisPurpose"
+    class_name: ClassVar[str] = "SponsorAnalysisPurpose"
+    class_model_uri: ClassVar[URIRef] = ARS.SponsorAnalysisPurpose
+
+    sponsorTermId: Union[str, SponsorTermId] = None
+    controlledTerm: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.sponsorTermId):
+            self.MissingRequiredField("sponsorTermId")
+        if not isinstance(self.sponsorTermId, SponsorTermId):
+            self.sponsorTermId = SponsorTermId(self.sponsorTermId)
+
+        if self.controlledTerm is not None and not isinstance(self.controlledTerm, str):
+            self.controlledTerm = str(self.controlledTerm)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class OperationRole(ExtensibleTerminologyTerm):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ARS.OperationRole
+    class_class_curie: ClassVar[str] = "ars:OperationRole"
+    class_name: ClassVar[str] = "OperationRole"
+    class_model_uri: ClassVar[URIRef] = ARS.OperationRole
+
+    controlledTerm: Union[str, "OperationRoleEnum"] = None
+    sponsorTermId: Optional[Union[str, SponsorTermId]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.controlledTerm):
+            self.MissingRequiredField("controlledTerm")
+        if not isinstance(self.controlledTerm, OperationRoleEnum):
+            self.controlledTerm = OperationRoleEnum(self.controlledTerm)
+
+        if self.sponsorTermId is not None and not isinstance(self.sponsorTermId, SponsorTermId):
+            self.sponsorTermId = SponsorTermId(self.sponsorTermId)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class SponsorOperationRole(ExtensibleTerminologyTerm):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ARS.SponsorOperationRole
+    class_class_curie: ClassVar[str] = "ars:SponsorOperationRole"
+    class_name: ClassVar[str] = "SponsorOperationRole"
+    class_model_uri: ClassVar[URIRef] = ARS.SponsorOperationRole
+
+    sponsorTermId: Union[str, SponsorTermId] = None
+    controlledTerm: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.sponsorTermId):
+            self.MissingRequiredField("sponsorTermId")
+        if not isinstance(self.sponsorTermId, SponsorTermId):
+            self.sponsorTermId = SponsorTermId(self.sponsorTermId)
+
+        if self.controlledTerm is not None and not isinstance(self.controlledTerm, str):
+            self.controlledTerm = str(self.controlledTerm)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class OutputFileType(ExtensibleTerminologyTerm):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ARS.OutputFileType
+    class_class_curie: ClassVar[str] = "ars:OutputFileType"
+    class_name: ClassVar[str] = "OutputFileType"
+    class_model_uri: ClassVar[URIRef] = ARS.OutputFileType
+
+    controlledTerm: Union[str, "OutputFileTypeEnum"] = None
+    sponsorTermId: Optional[Union[str, SponsorTermId]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.controlledTerm):
+            self.MissingRequiredField("controlledTerm")
+        if not isinstance(self.controlledTerm, OutputFileTypeEnum):
+            self.controlledTerm = OutputFileTypeEnum(self.controlledTerm)
+
+        if self.sponsorTermId is not None and not isinstance(self.sponsorTermId, SponsorTermId):
+            self.sponsorTermId = SponsorTermId(self.sponsorTermId)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class SponsorOutputFileType(ExtensibleTerminologyTerm):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ARS.SponsorOutputFileType
+    class_class_curie: ClassVar[str] = "ars:SponsorOutputFileType"
+    class_name: ClassVar[str] = "SponsorOutputFileType"
+    class_model_uri: ClassVar[URIRef] = ARS.SponsorOutputFileType
+
+    sponsorTermId: Union[str, SponsorTermId] = None
+    controlledTerm: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.sponsorTermId):
+            self.MissingRequiredField("sponsorTermId")
+        if not isinstance(self.sponsorTermId, SponsorTermId):
+            self.sponsorTermId = SponsorTermId(self.sponsorTermId)
+
+        if self.controlledTerm is not None and not isinstance(self.controlledTerm, str):
+            self.controlledTerm = str(self.controlledTerm)
+
+        super().__post_init__(**kwargs)
+
+
 # Enumerations
-class OutputFileType(EnumDefinitionImpl):
+class OutputFileTypeEnum(EnumDefinitionImpl):
 
     pdf = PermissibleValue(text="pdf")
     rtf = PermissibleValue(text="rtf")
     txt = PermissibleValue(text="txt")
 
     _defn = EnumDefinition(
-        name="OutputFileType",
+        name="OutputFileTypeEnum",
     )
 
-class ExpressionLogicalOperator(EnumDefinitionImpl):
+class ExpressionLogicalOperatorEnum(EnumDefinitionImpl):
 
     AND = PermissibleValue(text="AND")
     OR = PermissibleValue(text="OR")
     NOT = PermissibleValue(text="NOT")
 
     _defn = EnumDefinition(
-        name="ExpressionLogicalOperator",
+        name="ExpressionLogicalOperatorEnum",
     )
 
-class ConditionComparator(EnumDefinitionImpl):
+class ConditionComparatorEnum(EnumDefinitionImpl):
 
     EQ = PermissibleValue(text="EQ")
     NE = PermissibleValue(text="NE")
@@ -1709,10 +2074,10 @@ class ConditionComparator(EnumDefinitionImpl):
     NOTIN = PermissibleValue(text="NOTIN")
 
     _defn = EnumDefinition(
-        name="ConditionComparator",
+        name="ConditionComparatorEnum",
     )
 
-class DisplaySectionType(EnumDefinitionImpl):
+class DisplaySectionTypeEnum(EnumDefinitionImpl):
 
     Title = PermissibleValue(text="Title")
     Footnote = PermissibleValue(text="Footnote")
@@ -1720,7 +2085,7 @@ class DisplaySectionType(EnumDefinitionImpl):
     Legend = PermissibleValue(text="Legend")
 
     _defn = EnumDefinition(
-        name="DisplaySectionType",
+        name="DisplaySectionTypeEnum",
     )
 
     @classmethod
@@ -1728,21 +2093,21 @@ class DisplaySectionType(EnumDefinitionImpl):
         setattr(cls, "Rowlabel Header",
             PermissibleValue(text="Rowlabel Header"))
 
-class OperationRole(EnumDefinitionImpl):
+class OperationRoleEnum(EnumDefinitionImpl):
 
     NUMERATOR = PermissibleValue(text="NUMERATOR")
     DENOMINATOR = PermissibleValue(text="DENOMINATOR")
 
     _defn = EnumDefinition(
-        name="OperationRole",
+        name="OperationRoleEnum",
     )
 
-class AnalysisReason(EnumDefinitionImpl):
+class AnalysisReasonEnum(EnumDefinitionImpl):
     """
     The rationale for performing this analysis. It indicates when the analysis was planned.
     """
     _defn = EnumDefinition(
-        name="AnalysisReason",
+        name="AnalysisReasonEnum",
         description="The rationale for performing this analysis. It indicates when the analysis was planned.",
         code_set=NCIT.C117744,
     )
@@ -1770,12 +2135,12 @@ class AnalysisReason(EnumDefinitionImpl):
                 description="The analysis has been requested by a regulatory agency.",
                 meaning=NCIT.C117751))
 
-class AnalysisPurpose(EnumDefinitionImpl):
+class AnalysisPurposeEnum(EnumDefinitionImpl):
     """
     The purpose of the analysis within the body of evidence (e.g., section in the clinical study report).
     """
     _defn = EnumDefinition(
-        name="AnalysisPurpose",
+        name="AnalysisPurposeEnum",
         description="""The purpose of the analysis within the body of evidence (e.g., section in the clinical study report).""",
         code_set=NCIT.C117745,
     )
@@ -1798,27 +2163,27 @@ class AnalysisPurpose(EnumDefinitionImpl):
                 description="""The outcome measure(s) that is part of a pre-specified analysis plan used to evaluate the exploratory endpoint(s) associated with exploratory study objective(s) and/or any other measures, excluding post-hoc measures, that are a focus of the study. (After clinicaltrials.gov)""",
                 meaning=NCIT.C98724))
 
-class ExtensibleTerminology(EnumDefinitionImpl):
+class ExtensibleTerminologyEnum(EnumDefinitionImpl):
     """
     Extensible ARS enumerations.
     """
-    AnalysisReason = PermissibleValue(
-        text="AnalysisReason",
+    AnalysisReasonEnum = PermissibleValue(
+        text="AnalysisReasonEnum",
         description="The rationale for performing this analysis. It indicates when the analysis was planned.",
         meaning=NCIT.C117744)
-    AnalysisPurpose = PermissibleValue(
-        text="AnalysisPurpose",
+    AnalysisPurposeEnum = PermissibleValue(
+        text="AnalysisPurposeEnum",
         description="""The purpose of the analysis within the body of evidence (e.g., section in the clinical study report).""",
         meaning=NCIT.C117745)
-    OperationRole = PermissibleValue(text="OperationRole")
-    OutputFileType = PermissibleValue(text="OutputFileType")
+    OperationRoleEnum = PermissibleValue(text="OperationRoleEnum")
+    OutputFileTypeEnum = PermissibleValue(text="OutputFileTypeEnum")
 
     _defn = EnumDefinition(
-        name="ExtensibleTerminology",
+        name="ExtensibleTerminologyEnum",
         description="Extensible ARS enumerations.",
     )
 
-class PageRefType(EnumDefinitionImpl):
+class PageRefTypeEnum(EnumDefinitionImpl):
     """
     Type of page for page references.
     """
@@ -1830,7 +2195,7 @@ class PageRefType(EnumDefinitionImpl):
         description="References are to named destinations in the referenced document.")
 
     _defn = EnumDefinition(
-        name="PageRefType",
+        name="PageRefTypeEnum",
         description="Type of page for page references.",
     )
 
@@ -1872,10 +2237,10 @@ slots.analyses = Slot(uri=ARS.analyses, name="analyses", curie=ARS.curie('analys
                    model_uri=ARS.analyses, domain=None, range=Optional[Union[Dict[Union[str, AnalysisId], Union[dict, Analysis]], List[Union[dict, Analysis]]]])
 
 slots.reason = Slot(uri=ARS.reason, name="reason", curie=ARS.curie('reason'),
-                   model_uri=ARS.reason, domain=None, range=str)
+                   model_uri=ARS.reason, domain=None, range=Union[dict, ExtensibleTerminologyTerm])
 
 slots.purpose = Slot(uri=ARS.purpose, name="purpose", curie=ARS.curie('purpose'),
-                   model_uri=ARS.purpose, domain=None, range=str)
+                   model_uri=ARS.purpose, domain=None, range=Union[dict, ExtensibleTerminologyTerm])
 
 slots.methods = Slot(uri=ARS.methods, name="methods", curie=ARS.curie('methods'),
                    model_uri=ARS.methods, domain=None, range=Optional[Union[Dict[Union[str, AnalysisMethodId], Union[dict, AnalysisMethod]], List[Union[dict, AnalysisMethod]]]])
@@ -1965,7 +2330,7 @@ slots.referencedOperationRelationships = Slot(uri=ARS.referencedOperationRelatio
                    model_uri=ARS.referencedOperationRelationships, domain=None, range=Optional[Union[Dict[Union[str, ReferencedOperationRelationshipId], Union[dict, ReferencedOperationRelationship]], List[Union[dict, ReferencedOperationRelationship]]]])
 
 slots.referencedOperationRole = Slot(uri=ARS.referencedOperationRole, name="referencedOperationRole", curie=ARS.curie('referencedOperationRole'),
-                   model_uri=ARS.referencedOperationRole, domain=None, range=str)
+                   model_uri=ARS.referencedOperationRole, domain=None, range=Union[dict, ExtensibleTerminologyTerm])
 
 slots.operationId = Slot(uri=ARS.operationId, name="operationId", curie=ARS.curie('operationId'),
                    model_uri=ARS.operationId, domain=None, range=Union[str, OperationId])
@@ -2004,7 +2369,7 @@ slots.fileSpecifications = Slot(uri=ARS.fileSpecifications, name="fileSpecificat
                    model_uri=ARS.fileSpecifications, domain=None, range=Optional[Union[Union[dict, OutputFile], List[Union[dict, OutputFile]]]])
 
 slots.fileType = Slot(uri=ARS.fileType, name="fileType", curie=ARS.curie('fileType'),
-                   model_uri=ARS.fileType, domain=None, range=Optional[str])
+                   model_uri=ARS.fileType, domain=None, range=Optional[Union[dict, ExtensibleTerminologyTerm]])
 
 slots.location = Slot(uri=ARS.location, name="location", curie=ARS.curie('location'),
                    model_uri=ARS.location, domain=None, range=Optional[Union[str, URI]])
@@ -2019,13 +2384,22 @@ slots.display = Slot(uri=ARS.display, name="display", curie=ARS.curie('display')
                    model_uri=ARS.display, domain=None, range=Optional[Union[dict, OutputDisplay]])
 
 slots.globalDisplaySections = Slot(uri=ARS.globalDisplaySections, name="globalDisplaySections", curie=ARS.curie('globalDisplaySections'),
-                   model_uri=ARS.globalDisplaySections, domain=None, range=Optional[Union[Union[dict, DisplaySection], List[Union[dict, DisplaySection]]]])
+                   model_uri=ARS.globalDisplaySections, domain=None, range=Optional[Union[Union[dict, GlobalDisplaySection], List[Union[dict, GlobalDisplaySection]]]])
 
 slots.displaySections = Slot(uri=ARS.displaySections, name="displaySections", curie=ARS.curie('displaySections'),
                    model_uri=ARS.displaySections, domain=None, range=Optional[Union[Union[dict, DisplaySection], List[Union[dict, DisplaySection]]]])
 
 slots.sectionType = Slot(uri=ARS.sectionType, name="sectionType", curie=ARS.curie('sectionType'),
-                   model_uri=ARS.sectionType, domain=None, range=Optional[Union[str, "DisplaySectionType"]])
+                   model_uri=ARS.sectionType, domain=None, range=Optional[Union[str, "DisplaySectionTypeEnum"]])
+
+slots.orderedSubSections = Slot(uri=ARS.orderedSubSections, name="orderedSubSections", curie=ARS.curie('orderedSubSections'),
+                   model_uri=ARS.orderedSubSections, domain=None, range=Optional[Union[Union[dict, OrderedDisplaySubSection], List[Union[dict, OrderedDisplaySubSection]]]])
+
+slots.subSection = Slot(uri=ARS.subSection, name="subSection", curie=ARS.curie('subSection'),
+                   model_uri=ARS.subSection, domain=None, range=Optional[Union[dict, DisplaySubSection]])
+
+slots.subSectionId = Slot(uri=ARS.subSectionId, name="subSectionId", curie=ARS.curie('subSectionId'),
+                   model_uri=ARS.subSectionId, domain=None, range=Optional[Union[str, DisplaySubSectionId]])
 
 slots.subSections = Slot(uri=ARS.subSections, name="subSections", curie=ARS.curie('subSections'),
                    model_uri=ARS.subSections, domain=None, range=Optional[Union[Dict[Union[str, DisplaySubSectionId], Union[dict, DisplaySubSection]], List[Union[dict, DisplaySubSection]]]])
@@ -2034,7 +2408,7 @@ slots.text = Slot(uri=ARS.text, name="text", curie=ARS.curie('text'),
                    model_uri=ARS.text, domain=None, range=Optional[str])
 
 slots.logicalOperator = Slot(uri=ARS.logicalOperator, name="logicalOperator", curie=ARS.curie('logicalOperator'),
-                   model_uri=ARS.logicalOperator, domain=None, range=Union[str, "ExpressionLogicalOperator"])
+                   model_uri=ARS.logicalOperator, domain=None, range=Union[str, "ExpressionLogicalOperatorEnum"])
 
 slots.condition = Slot(uri=ARS.condition, name="condition", curie=ARS.curie('condition'),
                    model_uri=ARS.condition, domain=None, range=Optional[Union[dict, WhereClauseCondition]])
@@ -2052,10 +2426,10 @@ slots.variable = Slot(uri=ARS.variable, name="variable", curie=ARS.curie('variab
                    model_uri=ARS.variable, domain=None, range=Optional[str])
 
 slots.comparator = Slot(uri=ARS.comparator, name="comparator", curie=ARS.curie('comparator'),
-                   model_uri=ARS.comparator, domain=None, range=Optional[Union[str, "ConditionComparator"]])
+                   model_uri=ARS.comparator, domain=None, range=Optional[Union[str, "ConditionComparatorEnum"]])
 
 slots.value = Slot(uri=ARS.value, name="value", curie=ARS.curie('value'),
-                   model_uri=ARS.value, domain=None, range=Optional[str])
+                   model_uri=ARS.value, domain=None, range=Optional[Union[str, List[str]]])
 
 slots.label = Slot(uri=ARS.label, name="label", curie=ARS.curie('label'),
                    model_uri=ARS.label, domain=None, range=Optional[str])
@@ -2064,7 +2438,10 @@ slots.referenceDocuments = Slot(uri=ARS.referenceDocuments, name="referenceDocum
                    model_uri=ARS.referenceDocuments, domain=None, range=Optional[Union[Dict[Union[str, ReferenceDocumentId], Union[dict, ReferenceDocument]], List[Union[dict, ReferenceDocument]]]])
 
 slots.documentRefs = Slot(uri=ARS.documentRefs, name="documentRefs", curie=ARS.curie('documentRefs'),
-                   model_uri=ARS.documentRefs, domain=None, range=Optional[Union[Union[dict, DocumentRef], List[Union[dict, DocumentRef]]]])
+                   model_uri=ARS.documentRefs, domain=None, range=Optional[Union[Union[dict, DocumentReference], List[Union[dict, DocumentReference]]]])
+
+slots.documentRef = Slot(uri=ARS.documentRef, name="documentRef", curie=ARS.curie('documentRef'),
+                   model_uri=ARS.documentRef, domain=None, range=Optional[Union[dict, DocumentReference]])
 
 slots.referenceDocumentId = Slot(uri=ARS.referenceDocumentId, name="referenceDocumentId", curie=ARS.curie('referenceDocumentId'),
                    model_uri=ARS.referenceDocumentId, domain=None, range=Union[str, ReferenceDocumentId])
@@ -2073,34 +2450,37 @@ slots.pageRefs = Slot(uri=ARS.pageRefs, name="pageRefs", curie=ARS.curie('pageRe
                    model_uri=ARS.pageRefs, domain=None, range=Optional[Union[Union[dict, PageRef], List[Union[dict, PageRef]]]])
 
 slots.refType = Slot(uri=ARS.refType, name="refType", curie=ARS.curie('refType'),
-                   model_uri=ARS.refType, domain=None, range=Union[str, "PageRefType"])
-
-slots.pages = Slot(uri=ARS.pages, name="pages", curie=ARS.curie('pages'),
-                   model_uri=ARS.pages, domain=None, range=Optional[str])
+                   model_uri=ARS.refType, domain=None, range=Union[str, "PageRefTypeEnum"])
 
 slots.pageNumbers = Slot(uri=ARS.pageNumbers, name="pageNumbers", curie=ARS.curie('pageNumbers'),
-                   model_uri=ARS.pageNumbers, domain=None, range=Union[int, List[int]])
+                   model_uri=ARS.pageNumbers, domain=None, range=Optional[Union[int, List[int]]])
 
 slots.pageNames = Slot(uri=ARS.pageNames, name="pageNames", curie=ARS.curie('pageNames'),
-                   model_uri=ARS.pageNames, domain=None, range=Union[int, List[int]])
+                   model_uri=ARS.pageNames, domain=None, range=Optional[Union[str, List[str]]])
 
 slots.firstPage = Slot(uri=ARS.firstPage, name="firstPage", curie=ARS.curie('firstPage'),
-                   model_uri=ARS.firstPage, domain=None, range=int)
+                   model_uri=ARS.firstPage, domain=None, range=Optional[int])
 
 slots.lastPage = Slot(uri=ARS.lastPage, name="lastPage", curie=ARS.curie('lastPage'),
-                   model_uri=ARS.lastPage, domain=None, range=int)
+                   model_uri=ARS.lastPage, domain=None, range=Optional[int])
 
-slots.terminologyExtentions = Slot(uri=ARS.terminologyExtentions, name="terminologyExtentions", curie=ARS.curie('terminologyExtentions'),
-                   model_uri=ARS.terminologyExtentions, domain=None, range=Optional[Union[Union[dict, TerminologyExtension], List[Union[dict, TerminologyExtension]]]])
+slots.terminologyExtensions = Slot(uri=ARS.terminologyExtensions, name="terminologyExtensions", curie=ARS.curie('terminologyExtensions'),
+                   model_uri=ARS.terminologyExtensions, domain=None, range=Optional[Union[Dict[Union[str, TerminologyExtensionId], Union[dict, TerminologyExtension]], List[Union[dict, TerminologyExtension]]]])
 
 slots.enumeration = Slot(uri=ARS.enumeration, name="enumeration", curie=ARS.curie('enumeration'),
-                   model_uri=ARS.enumeration, domain=None, range=Optional[Union[str, "ExtensibleTerminology"]])
+                   model_uri=ARS.enumeration, domain=None, range=Optional[Union[str, "ExtensibleTerminologyEnum"]])
 
 slots.sponsorTerms = Slot(uri=ARS.sponsorTerms, name="sponsorTerms", curie=ARS.curie('sponsorTerms'),
                    model_uri=ARS.sponsorTerms, domain=None, range=Union[Dict[Union[str, SponsorTermId], Union[dict, SponsorTerm]], List[Union[dict, SponsorTerm]]])
 
 slots.submissionValue = Slot(uri=ARS.submissionValue, name="submissionValue", curie=ARS.curie('submissionValue'),
                    model_uri=ARS.submissionValue, domain=None, range=str)
+
+slots.controlledTerm = Slot(uri=ARS.controlledTerm, name="controlledTerm", curie=ARS.curie('controlledTerm'),
+                   model_uri=ARS.controlledTerm, domain=None, range=Optional[str])
+
+slots.sponsorTermId = Slot(uri=ARS.sponsorTermId, name="sponsorTermId", curie=ARS.curie('sponsorTermId'),
+                   model_uri=ARS.sponsorTermId, domain=None, range=Optional[Union[str, SponsorTermId]])
 
 slots.OrderedListItem_level = Slot(uri=ARS.level, name="OrderedListItem_level", curie=ARS.curie('level'),
                    model_uri=ARS.OrderedListItem_level, domain=OrderedListItem, range=int)
@@ -2118,16 +2498,16 @@ slots.ReferencedAnalysisOperation_analysisId = Slot(uri=ARS.analysisId, name="Re
                    model_uri=ARS.ReferencedAnalysisOperation_analysisId, domain=ReferencedAnalysisOperation, range=Union[str, AnalysisId])
 
 slots.AnalysisOutputProgrammingCode_parameters = Slot(uri=ARS.parameters, name="AnalysisOutputProgrammingCode_parameters", curie=ARS.curie('parameters'),
-                   model_uri=ARS.AnalysisOutputProgrammingCode_parameters, domain=AnalysisOutputProgrammingCode, range=Optional[Union[Union[dict, "CodeParameter"], List[Union[dict, "CodeParameter"]]]])
+                   model_uri=ARS.AnalysisOutputProgrammingCode_parameters, domain=AnalysisOutputProgrammingCode, range=Optional[Union[Union[dict, "AnalysisOutputCodeParameter"], List[Union[dict, "AnalysisOutputCodeParameter"]]]])
 
 slots.AnalysisProgrammingCodeTemplate_parameters = Slot(uri=ARS.parameters, name="AnalysisProgrammingCodeTemplate_parameters", curie=ARS.curie('parameters'),
                    model_uri=ARS.AnalysisProgrammingCodeTemplate_parameters, domain=AnalysisProgrammingCodeTemplate, range=Optional[Union[Union[dict, "TemplateCodeParameter"], List[Union[dict, "TemplateCodeParameter"]]]])
 
-slots.CodeParameter_value = Slot(uri=ARS.value, name="CodeParameter_value", curie=ARS.curie('value'),
-                   model_uri=ARS.CodeParameter_value, domain=CodeParameter, range=str)
+slots.AnalysisOutputCodeParameter_value = Slot(uri=ARS.value, name="AnalysisOutputCodeParameter_value", curie=ARS.curie('value'),
+                   model_uri=ARS.AnalysisOutputCodeParameter_value, domain=AnalysisOutputCodeParameter, range=Union[str, List[str]])
 
 slots.TemplateCodeParameter_value = Slot(uri=ARS.value, name="TemplateCodeParameter_value", curie=ARS.curie('value'),
-                   model_uri=ARS.TemplateCodeParameter_value, domain=TemplateCodeParameter, range=Optional[str])
+                   model_uri=ARS.TemplateCodeParameter_value, domain=TemplateCodeParameter, range=Optional[Union[str, List[str]]])
 
 slots.Output_categoryIds = Slot(uri=ARS.categoryIds, name="Output_categoryIds", curie=ARS.curie('categoryIds'),
                    model_uri=ARS.Output_categoryIds, domain=Output, range=Optional[Union[Union[str, AnalysisCategoryId], List[Union[str, AnalysisCategoryId]]]])
@@ -2138,8 +2518,23 @@ slots.Output_programmingCode = Slot(uri=ARS.programmingCode, name="Output_progra
 slots.OrderedDisplay_order = Slot(uri=ARS.order, name="OrderedDisplay_order", curie=ARS.curie('order'),
                    model_uri=ARS.OrderedDisplay_order, domain=OrderedDisplay, range=int)
 
-slots.DisplaySubSection_order = Slot(uri=ARS.order, name="DisplaySubSection_order", curie=ARS.curie('order'),
-                   model_uri=ARS.DisplaySubSection_order, domain=DisplaySubSection, range=int)
+slots.OrderedDisplaySubSection_order = Slot(uri=ARS.order, name="OrderedDisplaySubSection_order", curie=ARS.curie('order'),
+                   model_uri=ARS.OrderedDisplaySubSection_order, domain=OrderedDisplaySubSection, range=int)
+
+slots.OrderedSubSection_subSection = Slot(uri=ARS.subSection, name="OrderedSubSection_subSection", curie=ARS.curie('subSection'),
+                   model_uri=ARS.OrderedSubSection_subSection, domain=OrderedSubSection, range=Union[dict, "DisplaySubSection"])
+
+slots.OrderedSubSection_subSectionId = Slot(uri=ARS.subSectionId, name="OrderedSubSection_subSectionId", curie=ARS.curie('subSectionId'),
+                   model_uri=ARS.OrderedSubSection_subSectionId, domain=OrderedSubSection, range=Optional[Union[str, DisplaySubSectionId]])
+
+slots.OrderedSubSectionRef_subSection = Slot(uri=ARS.subSection, name="OrderedSubSectionRef_subSection", curie=ARS.curie('subSection'),
+                   model_uri=ARS.OrderedSubSectionRef_subSection, domain=OrderedSubSectionRef, range=Optional[Union[dict, "DisplaySubSection"]])
+
+slots.OrderedSubSectionRef_subSectionId = Slot(uri=ARS.subSectionId, name="OrderedSubSectionRef_subSectionId", curie=ARS.curie('subSectionId'),
+                   model_uri=ARS.OrderedSubSectionRef_subSectionId, domain=OrderedSubSectionRef, range=Union[str, DisplaySubSectionId])
+
+slots.DisplaySubSection_text = Slot(uri=ARS.text, name="DisplaySubSection_text", curie=ARS.curie('text'),
+                   model_uri=ARS.DisplaySubSection_text, domain=DisplaySubSection, range=str)
 
 slots.CompoundSetExpression_whereClauses = Slot(uri=ARS.whereClauses, name="CompoundSetExpression_whereClauses", curie=ARS.curie('whereClauses'),
                    model_uri=ARS.CompoundSetExpression_whereClauses, domain=CompoundSetExpression, range=Optional[Union[Union[str, AnalysisSetId], List[Union[str, AnalysisSetId]]]])
@@ -2169,19 +2564,94 @@ slots.PageRef_label = Slot(uri=ARS.label, name="PageRef_label", curie=ARS.curie(
                    model_uri=ARS.PageRef_label, domain=PageRef, range=Optional[str])
 
 slots.PageNumberListRef_refType = Slot(uri=ARS.refType, name="PageNumberListRef_refType", curie=ARS.curie('refType'),
-                   model_uri=ARS.PageNumberListRef_refType, domain=PageNumberListRef, range=Union[str, "PageRefType"])
+                   model_uri=ARS.PageNumberListRef_refType, domain=PageNumberListRef, range=Union[str, "PageRefTypeEnum"])
 
-slots.PageNumberListRef_pages = Slot(uri=ARS.pages, name="PageNumberListRef_pages", curie=ARS.curie('pages'),
-                   model_uri=ARS.PageNumberListRef_pages, domain=PageNumberListRef, range=Optional[Union[dict, "PageNumberList"]])
+slots.PageNumberListRef_pageNumbers = Slot(uri=ARS.pageNumbers, name="PageNumberListRef_pageNumbers", curie=ARS.curie('pageNumbers'),
+                   model_uri=ARS.PageNumberListRef_pageNumbers, domain=PageNumberListRef, range=Union[int, List[int]])
+
+slots.PageNumberListRef_pageNames = Slot(uri=ARS.pageNames, name="PageNumberListRef_pageNames", curie=ARS.curie('pageNames'),
+                   model_uri=ARS.PageNumberListRef_pageNames, domain=PageNumberListRef, range=Optional[Union[str, List[str]]])
+
+slots.PageNumberListRef_firstPage = Slot(uri=ARS.firstPage, name="PageNumberListRef_firstPage", curie=ARS.curie('firstPage'),
+                   model_uri=ARS.PageNumberListRef_firstPage, domain=PageNumberListRef, range=Optional[int])
+
+slots.PageNumberListRef_lastPage = Slot(uri=ARS.lastPage, name="PageNumberListRef_lastPage", curie=ARS.curie('lastPage'),
+                   model_uri=ARS.PageNumberListRef_lastPage, domain=PageNumberListRef, range=Optional[int])
 
 slots.PageNumberRangeRef_refType = Slot(uri=ARS.refType, name="PageNumberRangeRef_refType", curie=ARS.curie('refType'),
-                   model_uri=ARS.PageNumberRangeRef_refType, domain=PageNumberRangeRef, range=Union[str, "PageRefType"])
+                   model_uri=ARS.PageNumberRangeRef_refType, domain=PageNumberRangeRef, range=Union[str, "PageRefTypeEnum"])
 
-slots.PageNumberRangeRef_pages = Slot(uri=ARS.pages, name="PageNumberRangeRef_pages", curie=ARS.curie('pages'),
-                   model_uri=ARS.PageNumberRangeRef_pages, domain=PageNumberRangeRef, range=Optional[Union[dict, "PageRange"]])
+slots.PageNumberRangeRef_pageNumbers = Slot(uri=ARS.pageNumbers, name="PageNumberRangeRef_pageNumbers", curie=ARS.curie('pageNumbers'),
+                   model_uri=ARS.PageNumberRangeRef_pageNumbers, domain=PageNumberRangeRef, range=Optional[Union[int, List[int]]])
+
+slots.PageNumberRangeRef_pageNames = Slot(uri=ARS.pageNames, name="PageNumberRangeRef_pageNames", curie=ARS.curie('pageNames'),
+                   model_uri=ARS.PageNumberRangeRef_pageNames, domain=PageNumberRangeRef, range=Optional[Union[str, List[str]]])
+
+slots.PageNumberRangeRef_firstPage = Slot(uri=ARS.firstPage, name="PageNumberRangeRef_firstPage", curie=ARS.curie('firstPage'),
+                   model_uri=ARS.PageNumberRangeRef_firstPage, domain=PageNumberRangeRef, range=int)
+
+slots.PageNumberRangeRef_lastPage = Slot(uri=ARS.lastPage, name="PageNumberRangeRef_lastPage", curie=ARS.curie('lastPage'),
+                   model_uri=ARS.PageNumberRangeRef_lastPage, domain=PageNumberRangeRef, range=int)
 
 slots.PageNameRef_refType = Slot(uri=ARS.refType, name="PageNameRef_refType", curie=ARS.curie('refType'),
-                   model_uri=ARS.PageNameRef_refType, domain=PageNameRef, range=Union[str, "PageRefType"])
+                   model_uri=ARS.PageNameRef_refType, domain=PageNameRef, range=Union[str, "PageRefTypeEnum"])
 
-slots.PageNameRef_pages = Slot(uri=ARS.pages, name="PageNameRef_pages", curie=ARS.curie('pages'),
-                   model_uri=ARS.PageNameRef_pages, domain=PageNameRef, range=Optional[Union[dict, "PageNameList"]])
+slots.PageNameRef_pageNumbers = Slot(uri=ARS.pageNumbers, name="PageNameRef_pageNumbers", curie=ARS.curie('pageNumbers'),
+                   model_uri=ARS.PageNameRef_pageNumbers, domain=PageNameRef, range=Optional[Union[int, List[int]]])
+
+slots.PageNameRef_pageNames = Slot(uri=ARS.pageNames, name="PageNameRef_pageNames", curie=ARS.curie('pageNames'),
+                   model_uri=ARS.PageNameRef_pageNames, domain=PageNameRef, range=Union[str, List[str]])
+
+slots.PageNameRef_firstPage = Slot(uri=ARS.firstPage, name="PageNameRef_firstPage", curie=ARS.curie('firstPage'),
+                   model_uri=ARS.PageNameRef_firstPage, domain=PageNameRef, range=Optional[int])
+
+slots.PageNameRef_lastPage = Slot(uri=ARS.lastPage, name="PageNameRef_lastPage", curie=ARS.curie('lastPage'),
+                   model_uri=ARS.PageNameRef_lastPage, domain=PageNameRef, range=Optional[int])
+
+slots.AnalysisReason_controlledTerm = Slot(uri=ARS.controlledTerm, name="AnalysisReason_controlledTerm", curie=ARS.curie('controlledTerm'),
+                   model_uri=ARS.AnalysisReason_controlledTerm, domain=AnalysisReason, range=Union[str, "AnalysisReasonEnum"])
+
+slots.AnalysisReason_sponsorTermId = Slot(uri=ARS.sponsorTermId, name="AnalysisReason_sponsorTermId", curie=ARS.curie('sponsorTermId'),
+                   model_uri=ARS.AnalysisReason_sponsorTermId, domain=AnalysisReason, range=Optional[Union[str, SponsorTermId]])
+
+slots.SponsorAnalysisReason_controlledTerm = Slot(uri=ARS.controlledTerm, name="SponsorAnalysisReason_controlledTerm", curie=ARS.curie('controlledTerm'),
+                   model_uri=ARS.SponsorAnalysisReason_controlledTerm, domain=SponsorAnalysisReason, range=Optional[str])
+
+slots.SponsorAnalysisReason_sponsorTermId = Slot(uri=ARS.sponsorTermId, name="SponsorAnalysisReason_sponsorTermId", curie=ARS.curie('sponsorTermId'),
+                   model_uri=ARS.SponsorAnalysisReason_sponsorTermId, domain=SponsorAnalysisReason, range=Union[str, SponsorTermId])
+
+slots.AnalysisPurpose_controlledTerm = Slot(uri=ARS.controlledTerm, name="AnalysisPurpose_controlledTerm", curie=ARS.curie('controlledTerm'),
+                   model_uri=ARS.AnalysisPurpose_controlledTerm, domain=AnalysisPurpose, range=Union[str, "AnalysisPurposeEnum"])
+
+slots.AnalysisPurpose_sponsorTermId = Slot(uri=ARS.sponsorTermId, name="AnalysisPurpose_sponsorTermId", curie=ARS.curie('sponsorTermId'),
+                   model_uri=ARS.AnalysisPurpose_sponsorTermId, domain=AnalysisPurpose, range=Optional[Union[str, SponsorTermId]])
+
+slots.SponsorAnalysisPurpose_controlledTerm = Slot(uri=ARS.controlledTerm, name="SponsorAnalysisPurpose_controlledTerm", curie=ARS.curie('controlledTerm'),
+                   model_uri=ARS.SponsorAnalysisPurpose_controlledTerm, domain=SponsorAnalysisPurpose, range=Optional[str])
+
+slots.SponsorAnalysisPurpose_sponsorTermId = Slot(uri=ARS.sponsorTermId, name="SponsorAnalysisPurpose_sponsorTermId", curie=ARS.curie('sponsorTermId'),
+                   model_uri=ARS.SponsorAnalysisPurpose_sponsorTermId, domain=SponsorAnalysisPurpose, range=Union[str, SponsorTermId])
+
+slots.OperationRole_controlledTerm = Slot(uri=ARS.controlledTerm, name="OperationRole_controlledTerm", curie=ARS.curie('controlledTerm'),
+                   model_uri=ARS.OperationRole_controlledTerm, domain=OperationRole, range=Union[str, "OperationRoleEnum"])
+
+slots.OperationRole_sponsorTermId = Slot(uri=ARS.sponsorTermId, name="OperationRole_sponsorTermId", curie=ARS.curie('sponsorTermId'),
+                   model_uri=ARS.OperationRole_sponsorTermId, domain=OperationRole, range=Optional[Union[str, SponsorTermId]])
+
+slots.SponsorOperationRole_controlledTerm = Slot(uri=ARS.controlledTerm, name="SponsorOperationRole_controlledTerm", curie=ARS.curie('controlledTerm'),
+                   model_uri=ARS.SponsorOperationRole_controlledTerm, domain=SponsorOperationRole, range=Optional[str])
+
+slots.SponsorOperationRole_sponsorTermId = Slot(uri=ARS.sponsorTermId, name="SponsorOperationRole_sponsorTermId", curie=ARS.curie('sponsorTermId'),
+                   model_uri=ARS.SponsorOperationRole_sponsorTermId, domain=SponsorOperationRole, range=Union[str, SponsorTermId])
+
+slots.OutputFileType_controlledTerm = Slot(uri=ARS.controlledTerm, name="OutputFileType_controlledTerm", curie=ARS.curie('controlledTerm'),
+                   model_uri=ARS.OutputFileType_controlledTerm, domain=OutputFileType, range=Union[str, "OutputFileTypeEnum"])
+
+slots.OutputFileType_sponsorTermId = Slot(uri=ARS.sponsorTermId, name="OutputFileType_sponsorTermId", curie=ARS.curie('sponsorTermId'),
+                   model_uri=ARS.OutputFileType_sponsorTermId, domain=OutputFileType, range=Optional[Union[str, SponsorTermId]])
+
+slots.SponsorOutputFileType_controlledTerm = Slot(uri=ARS.controlledTerm, name="SponsorOutputFileType_controlledTerm", curie=ARS.curie('controlledTerm'),
+                   model_uri=ARS.SponsorOutputFileType_controlledTerm, domain=SponsorOutputFileType, range=Optional[str])
+
+slots.SponsorOutputFileType_sponsorTermId = Slot(uri=ARS.sponsorTermId, name="SponsorOutputFileType_sponsorTermId", curie=ARS.curie('sponsorTermId'),
+                   model_uri=ARS.SponsorOutputFileType_sponsorTermId, domain=SponsorOutputFileType, range=Union[str, SponsorTermId])

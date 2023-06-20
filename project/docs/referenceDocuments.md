@@ -60,6 +60,7 @@ domain_of:
 - ReportingEvent
 range: ReferenceDocument
 inlined: true
+inlined_as_list: true
 
 ```
 </details>

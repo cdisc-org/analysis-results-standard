@@ -16,15 +16,19 @@ URI: [ars:PageNameRef](https://www.cdisc.org/ars/1-0/PageNameRef)
     class PageNameRef
       PageRef <|-- PageNameRef
       
+      PageNameRef : firstPage
+        
       PageNameRef : label
         
-      PageNameRef : pages
+      PageNameRef : lastPage
         
-          PageNameRef --|> PageNameList : pages
+      PageNameRef : pageNames
+        
+      PageNameRef : pageNumbers
         
       PageNameRef : refType
         
-          PageNameRef --|> PageRefType : refType
+          PageNameRef --|> PageRefTypeEnum : refType
         
       
 ```
@@ -43,9 +47,12 @@ URI: [ars:PageNameRef](https://www.cdisc.org/ars/1-0/PageNameRef)
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [refType](refType.md) | 1..1 <br/> [PageRefType](PageRefType.md) |  | [PageRef](PageRef.md) |
+| [refType](refType.md) | 1..1 <br/> [PageRefTypeEnum](PageRefTypeEnum.md) |  | [PageRef](PageRef.md) |
 | [label](label.md) | 0..1 <br/> [String](String.md) | Alternative label to provide a more specific and description to a page link | [PageRef](PageRef.md) |
-| [pages](pages.md) | 0..1 <br/> [PageNameList](PageNameList.md) |  | [PageRef](PageRef.md) |
+| [pageNames](pageNames.md) | 1..* <br/> [String](String.md) | One or more named document references which each correspond with a page | [PageRef](PageRef.md) |
+| [pageNumbers](pageNumbers.md) | 0..* <br/> [Integer](Integer.md) | One or more page numbers | [PageRef](PageRef.md) |
+| [firstPage](firstPage.md) | 0..1 <br/> [Integer](Integer.md) | The page number of the first page in a range of pages | [PageRef](PageRef.md) |
+| [lastPage](lastPage.md) | 0..1 <br/> [Integer](Integer.md) | The page number of the last page in a range of pages | [PageRef](PageRef.md) |
 
 
 
@@ -102,11 +109,29 @@ slot_usage:
     domain_of:
     - PageRef
     equals_string: NamedDestination
-  pages:
-    name: pages
+  pageNumbers:
+    name: pageNumbers
     domain_of:
     - PageRef
-    range: PageNameList
+    value_presence: ABSENT
+  pageNames:
+    name: pageNames
+    domain_of:
+    - PageRef
+    required: true
+    value_presence: PRESENT
+  firstPage:
+    name: firstPage
+    domain_of:
+    - PageRef
+    value_presence: ABSENT
+  lastPage:
+    name: lastPage
+    domain_of:
+    - PageRef
+    value_presence: ABSENT
+defining_slots:
+- pageNames
 
 ```
 </details>
@@ -126,11 +151,27 @@ slot_usage:
     domain_of:
     - PageRef
     equals_string: NamedDestination
-  pages:
-    name: pages
+  pageNumbers:
+    name: pageNumbers
     domain_of:
     - PageRef
-    range: PageNameList
+    value_presence: ABSENT
+  pageNames:
+    name: pageNames
+    domain_of:
+    - PageRef
+    required: true
+    value_presence: PRESENT
+  firstPage:
+    name: firstPage
+    domain_of:
+    - PageRef
+    value_presence: ABSENT
+  lastPage:
+    name: lastPage
+    domain_of:
+    - PageRef
+    value_presence: ABSENT
 attributes:
   refType:
     name: refType
@@ -140,7 +181,7 @@ attributes:
     owner: PageNameRef
     domain_of:
     - PageRef
-    range: PageRefType
+    range: PageRefTypeEnum
     required: true
     equals_string: NamedDestination
   label:
@@ -162,15 +203,56 @@ attributes:
     - DataSubset
     - PageRef
     range: string
-  pages:
-    name: pages
+  pageNames:
+    name: pageNames
+    description: One or more named document references which each correspond with
+      a page.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
-    alias: pages
+    multivalued: true
+    alias: pageNames
     owner: PageNameRef
     domain_of:
     - PageRef
-    range: PageNameList
+    range: string
+    required: true
+    value_presence: PRESENT
+  pageNumbers:
+    name: pageNumbers
+    description: One or more page numbers.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    multivalued: true
+    alias: pageNumbers
+    owner: PageNameRef
+    domain_of:
+    - PageRef
+    range: integer
+    value_presence: ABSENT
+  firstPage:
+    name: firstPage
+    description: The page number of the first page in a range of pages.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: firstPage
+    owner: PageNameRef
+    domain_of:
+    - PageRef
+    range: integer
+    value_presence: ABSENT
+  lastPage:
+    name: lastPage
+    description: The page number of the last page in a range of pages.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: lastPage
+    owner: PageNameRef
+    domain_of:
+    - PageRef
+    range: integer
+    value_presence: ABSENT
+defining_slots:
+- pageNames
 
 ```
 </details>

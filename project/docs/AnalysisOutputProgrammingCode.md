@@ -14,19 +14,17 @@ URI: [ars:AnalysisOutputProgrammingCode](https://www.cdisc.org/ars/1-0/AnalysisO
 ```mermaid
  classDiagram
     class AnalysisOutputProgrammingCode
-      AnalysisOutputProgrammingCode <|-- AnalysisProgrammingCodeTemplate
-      
       AnalysisOutputProgrammingCode : code
         
       AnalysisOutputProgrammingCode : context
         
-      AnalysisOutputProgrammingCode : documentRefs
+      AnalysisOutputProgrammingCode : documentRef
         
-          AnalysisOutputProgrammingCode --|> DocumentRef : documentRefs
+          AnalysisOutputProgrammingCode --|> DocumentReference : documentRef
         
       AnalysisOutputProgrammingCode : parameters
         
-          AnalysisOutputProgrammingCode --|> CodeParameter : parameters
+          AnalysisOutputProgrammingCode --|> AnalysisOutputCodeParameter : parameters
         
       
 ```
@@ -34,11 +32,7 @@ URI: [ars:AnalysisOutputProgrammingCode](https://www.cdisc.org/ars/1-0/AnalysisO
 
 
 
-
-## Inheritance
-* **AnalysisOutputProgrammingCode**
-    * [AnalysisProgrammingCodeTemplate](AnalysisProgrammingCodeTemplate.md)
-
+<!-- no inheritance hierarchy -->
 
 
 ## Slots
@@ -47,8 +41,8 @@ URI: [ars:AnalysisOutputProgrammingCode](https://www.cdisc.org/ars/1-0/AnalysisO
 | ---  | --- | --- | --- |
 | [context](context.md) | 1..1 <br/> [String](String.md) | The name and version of the computer language used for the actual programming... | direct |
 | [code](code.md) | 0..1 <br/> [String](String.md) | Programming statements used to perform the specific analysis | direct |
-| [documentRefs](documentRefs.md) | 0..* <br/> [DocumentRef](DocumentRef.md) |  | direct |
-| [parameters](parameters.md) | 0..* <br/> [CodeParameter](CodeParameter.md) | Parameter values used to generate or execute the programming code | direct |
+| [documentRef](documentRef.md) | 0..1 <br/> [DocumentReference](DocumentReference.md) |  | direct |
+| [parameters](parameters.md) | 0..* <br/> [AnalysisOutputCodeParameter](AnalysisOutputCodeParameter.md) | Parameter values used to generate or execute the programming code | direct |
 
 
 
@@ -110,7 +104,7 @@ rank: 1000
 slots:
 - context
 - code
-- documentRefs
+- documentRef
 - parameters
 slot_usage:
   parameters:
@@ -118,7 +112,8 @@ slot_usage:
     description: Parameter values used to generate or execute the programming code.
     domain_of:
     - AnalysisOutputProgrammingCode
-    range: CodeParameter
+    - AnalysisProgrammingCodeTemplate
+    range: AnalysisOutputCodeParameter
 
 ```
 </details>
@@ -138,7 +133,8 @@ slot_usage:
     description: Parameter values used to generate or execute the programming code.
     domain_of:
     - AnalysisOutputProgrammingCode
-    range: CodeParameter
+    - AnalysisProgrammingCodeTemplate
+    range: AnalysisOutputCodeParameter
 attributes:
   context:
     name: context
@@ -152,6 +148,7 @@ attributes:
     owner: AnalysisOutputProgrammingCode
     domain_of:
     - AnalysisOutputProgrammingCode
+    - AnalysisProgrammingCodeTemplate
     range: string
     required: true
   code:
@@ -163,20 +160,19 @@ attributes:
     owner: AnalysisOutputProgrammingCode
     domain_of:
     - AnalysisOutputProgrammingCode
+    - AnalysisProgrammingCodeTemplate
     range: string
-  documentRefs:
-    name: documentRefs
+  documentRef:
+    name: documentRef
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
-    multivalued: true
-    alias: documentRefs
+    multivalued: false
+    alias: documentRef
     owner: AnalysisOutputProgrammingCode
     domain_of:
-    - Analysis
-    - AnalysisMethod
     - AnalysisOutputProgrammingCode
-    - Output
-    range: DocumentRef
+    - AnalysisProgrammingCodeTemplate
+    range: DocumentReference
     inlined: true
     inlined_as_list: true
   parameters:
@@ -189,7 +185,8 @@ attributes:
     owner: AnalysisOutputProgrammingCode
     domain_of:
     - AnalysisOutputProgrammingCode
-    range: CodeParameter
+    - AnalysisProgrammingCodeTemplate
+    range: AnalysisOutputCodeParameter
     inlined: true
     inlined_as_list: true
 

@@ -92,7 +92,12 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../CodeParameter/">CodeParameter</a></td>
+<td><a href="../AnalysisOutputCodeParameter/">AnalysisOutputCodeParameter</a></td>
+<td>A parameter whose value is used in programming code for a specific analysis o...</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../TemplateCodeParameter/">TemplateCodeParameter</a></td>
 <td>A replacement parameter whose value is substituted in template programming co...</td>
 <td>yes</td>
 </tr>
@@ -101,16 +106,16 @@
 <td></td>
 <td>no</td>
 </tr>
-<tr>
-<td><a href="../TemplateCodeParameter/">TemplateCodeParameter</a></td>
-<td>A replacement parameter whose value is substituted in template programming co...</td>
-<td>yes</td>
-</tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../String/">String</a></li>
+<li>
+<p>Range: <a href="../String/">String</a></p>
+</li>
+<li>
+<p>Multivalued: True</p>
+</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -123,9 +128,11 @@
 <pre><code class="language-yaml">name: value
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
+multivalued: true
 alias: value
 domain_of:
-- CodeParameter
+- AnalysisOutputCodeParameter
+- TemplateCodeParameter
 - WhereClauseCondition
 range: string
 

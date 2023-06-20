@@ -23,7 +23,7 @@ URI: [ars:comparator](https://www.cdisc.org/ars/1-0/comparator)
 
 ## Properties
 
-* Range: [ConditionComparator](ConditionComparator.md)
+* Range: [ConditionComparatorEnum](ConditionComparatorEnum.md)
 
 
 
@@ -55,7 +55,7 @@ rank: 1000
 alias: comparator
 domain_of:
 - WhereClauseCondition
-range: ConditionComparator
+range: ConditionComparatorEnum
 
 ```
 </details>

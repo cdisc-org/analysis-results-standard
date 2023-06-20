@@ -83,7 +83,7 @@
 
       CompoundSubsetExpression : logicalOperator
 
-          CompoundSubsetExpression --|&gt; ExpressionLogicalOperator : logicalOperator
+          CompoundSubsetExpression --|&gt; ExpressionLogicalOperatorEnum : logicalOperator
 
       CompoundSubsetExpression : whereClauses
 
@@ -111,7 +111,7 @@
 <tbody>
 <tr>
 <td><a href="../logicalOperator/">logicalOperator</a></td>
-<td>1..1 <br/> <a href="../ExpressionLogicalOperator/">ExpressionLogicalOperator</a></td>
+<td>1..1 <br/> <a href="../ExpressionLogicalOperatorEnum/">ExpressionLogicalOperatorEnum</a></td>
 <td></td>
 <td><a href="../WhereClauseCompoundExpression/">WhereClauseCompoundExpression</a></td>
 </tr>
@@ -206,7 +206,7 @@ attributes:
     owner: CompoundSubsetExpression
     domain_of:
     - WhereClauseCompoundExpression
-    range: ExpressionLogicalOperator
+    range: ExpressionLogicalOperatorEnum
     required: true
   whereClauses:
     name: whereClauses

@@ -13,7 +13,7 @@ URI: [ars:subSections](https://www.cdisc.org/ars/1-0/subSections)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-[DisplaySection](DisplaySection.md) | A part of a tabular display containing one or more pieces of informational te... |  no  |
+[GlobalDisplaySection](GlobalDisplaySection.md) | A part of a tabular display containing one or more pieces of informational te... |  no  |
 
 
 
@@ -55,10 +55,9 @@ name: subSections
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 multivalued: true
-list_elements_ordered: true
 alias: subSections
 domain_of:
-- DisplaySection
+- GlobalDisplaySection
 range: DisplaySubSection
 inlined: true
 inlined_as_list: true

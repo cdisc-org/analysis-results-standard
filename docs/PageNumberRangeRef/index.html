@@ -78,15 +78,19 @@
     class PageNumberRangeRef
       PageRef &lt;|-- PageNumberRangeRef
 
+      PageNumberRangeRef : firstPage
+
       PageNumberRangeRef : label
 
-      PageNumberRangeRef : pages
+      PageNumberRangeRef : lastPage
 
-          PageNumberRangeRef --|&gt; PageRange : pages
+      PageNumberRangeRef : pageNames
+
+      PageNumberRangeRef : pageNumbers
 
       PageNumberRangeRef : refType
 
-          PageNumberRangeRef --|&gt; PageRefType : refType
+          PageNumberRangeRef --|&gt; PageRefTypeEnum : refType
 
 
 </div>
@@ -110,7 +114,7 @@
 <tbody>
 <tr>
 <td><a href="../refType/">refType</a></td>
-<td>1..1 <br/> <a href="../PageRefType/">PageRefType</a></td>
+<td>1..1 <br/> <a href="../PageRefTypeEnum/">PageRefTypeEnum</a></td>
 <td></td>
 <td><a href="../PageRef/">PageRef</a></td>
 </tr>
@@ -121,9 +125,27 @@
 <td><a href="../PageRef/">PageRef</a></td>
 </tr>
 <tr>
-<td><a href="../pages/">pages</a></td>
-<td>0..1 <br/> <a href="../PageRange/">PageRange</a></td>
-<td></td>
+<td><a href="../pageNames/">pageNames</a></td>
+<td>0..* <br/> <a href="../String/">String</a></td>
+<td>One or more named document references which each correspond with a page</td>
+<td><a href="../PageRef/">PageRef</a></td>
+</tr>
+<tr>
+<td><a href="../pageNumbers/">pageNumbers</a></td>
+<td>0..* <br/> <a href="../Integer/">Integer</a></td>
+<td>One or more page numbers</td>
+<td><a href="../PageRef/">PageRef</a></td>
+</tr>
+<tr>
+<td><a href="../firstPage/">firstPage</a></td>
+<td>1..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>The page number of the first page in a range of pages</td>
+<td><a href="../PageRef/">PageRef</a></td>
+</tr>
+<tr>
+<td><a href="../lastPage/">lastPage</a></td>
+<td>1..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>The page number of the last page in a range of pages</td>
 <td><a href="../PageRef/">PageRef</a></td>
 </tr>
 </tbody>
@@ -168,11 +190,31 @@ slot_usage:
     domain_of:
     - PageRef
     equals_string: PhysicalRef
-  pages:
-    name: pages
+  pageNumbers:
+    name: pageNumbers
     domain_of:
     - PageRef
-    range: PageRange
+    value_presence: ABSENT
+  pageNames:
+    name: pageNames
+    domain_of:
+    - PageRef
+    value_presence: ABSENT
+  firstPage:
+    name: firstPage
+    domain_of:
+    - PageRef
+    required: true
+    value_presence: PRESENT
+  lastPage:
+    name: lastPage
+    domain_of:
+    - PageRef
+    required: true
+    value_presence: PRESENT
+defining_slots:
+- firstPage
+- lastPage
 
 </code></pre>
 </details>
@@ -190,11 +232,28 @@ slot_usage:
     domain_of:
     - PageRef
     equals_string: PhysicalRef
-  pages:
-    name: pages
+  pageNumbers:
+    name: pageNumbers
     domain_of:
     - PageRef
-    range: PageRange
+    value_presence: ABSENT
+  pageNames:
+    name: pageNames
+    domain_of:
+    - PageRef
+    value_presence: ABSENT
+  firstPage:
+    name: firstPage
+    domain_of:
+    - PageRef
+    required: true
+    value_presence: PRESENT
+  lastPage:
+    name: lastPage
+    domain_of:
+    - PageRef
+    required: true
+    value_presence: PRESENT
 attributes:
   refType:
     name: refType
@@ -204,7 +263,7 @@ attributes:
     owner: PageNumberRangeRef
     domain_of:
     - PageRef
-    range: PageRefType
+    range: PageRefTypeEnum
     required: true
     equals_string: PhysicalRef
   label:
@@ -226,15 +285,58 @@ attributes:
     - DataSubset
     - PageRef
     range: string
-  pages:
-    name: pages
+  pageNames:
+    name: pageNames
+    description: One or more named document references which each correspond with
+      a page.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
-    alias: pages
+    multivalued: true
+    alias: pageNames
     owner: PageNumberRangeRef
     domain_of:
     - PageRef
-    range: PageRange
+    range: string
+    value_presence: ABSENT
+  pageNumbers:
+    name: pageNumbers
+    description: One or more page numbers.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    multivalued: true
+    alias: pageNumbers
+    owner: PageNumberRangeRef
+    domain_of:
+    - PageRef
+    range: integer
+    value_presence: ABSENT
+  firstPage:
+    name: firstPage
+    description: The page number of the first page in a range of pages.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: firstPage
+    owner: PageNumberRangeRef
+    domain_of:
+    - PageRef
+    range: integer
+    required: true
+    value_presence: PRESENT
+  lastPage:
+    name: lastPage
+    description: The page number of the last page in a range of pages.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: lastPage
+    owner: PageNumberRangeRef
+    domain_of:
+    - PageRef
+    range: integer
+    required: true
+    value_presence: PRESENT
+defining_slots:
+- firstPage
+- lastPage
 
 </code></pre>
 </details></div>

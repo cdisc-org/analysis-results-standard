@@ -16,8 +16,10 @@ URI: [ars:order](https://www.cdisc.org/ars/1-0/order)
 [OrderedListItem](OrderedListItem.md) | An item (analysis, output or sub-list) ordered relative to other items within... |  yes  |
 [OrderedGroupingFactor](OrderedGroupingFactor.md) | A reference to a defined factor by which subjects or data records are grouped... |  yes  |
 [OrderedDisplay](OrderedDisplay.md) | A display ordered with respect to other displays in an analysis output |  yes  |
-[DisplaySubSection](DisplaySubSection.md) | An occurrence of a display section containing text that is ordered with respe... |  yes  |
+[OrderedDisplaySubSection](OrderedDisplaySubSection.md) |  |  yes  |
 [WhereClause](WhereClause.md) |  |  no  |
+[OrderedSubSection](OrderedSubSection.md) | A subsection ordered with respect to other subsections of the same type |  no  |
+[OrderedSubSectionRef](OrderedSubSectionRef.md) | A reference to a subsection defined either globally or in another display sec... |  no  |
 [AnalysisSet](AnalysisSet.md) | A set of subjects whose data are to be included in the main analyses |  no  |
 [Group](Group.md) | A subdivision of the subject population or analysis dataset record set based ... |  no  |
 [AnalysisGroup](AnalysisGroup.md) | A subdivision of the subject population based on a defined factor (e |  no  |
@@ -66,7 +68,7 @@ domain_of:
 - OrderedListItem
 - OrderedGroupingFactor
 - OrderedDisplay
-- DisplaySubSection
+- OrderedDisplaySubSection
 - WhereClause
 range: integer
 

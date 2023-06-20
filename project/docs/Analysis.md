@@ -46,7 +46,7 @@ URI: [ars:Analysis](https://www.cdisc.org/ars/1-0/Analysis)
         
       Analysis : documentRefs
         
-          Analysis --|> DocumentRef : documentRefs
+          Analysis --|> DocumentReference : documentRefs
         
       Analysis : id
         
@@ -66,7 +66,11 @@ URI: [ars:Analysis](https://www.cdisc.org/ars/1-0/Analysis)
         
       Analysis : purpose
         
+          Analysis --|> ExtensibleTerminologyTerm : purpose
+        
       Analysis : reason
+        
+          Analysis --|> ExtensibleTerminologyTerm : reason
         
       Analysis : referencedAnalysisOperations
         
@@ -101,9 +105,9 @@ URI: [ars:Analysis](https://www.cdisc.org/ars/1-0/Analysis)
 | [version](version.md) | 0..1 <br/> [Integer](Integer.md) |  | direct |
 | [categoryIds](categoryIds.md) | 0..* <br/> [AnalysisCategory](AnalysisCategory.md) |  | direct |
 | [description](description.md) | 0..1 <br/> [String](String.md) |  | direct |
-| [reason](reason.md) | 1..1 <br/> [String](String.md) | The rationale for performing this analysis | direct |
-| [purpose](purpose.md) | 1..1 <br/> [String](String.md) | The purpose of the analysis within the body of evidence (e | direct |
-| [documentRefs](documentRefs.md) | 0..* <br/> [DocumentRef](DocumentRef.md) |  | direct |
+| [reason](reason.md) | 1..1 <br/> [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) | The rationale for performing this analysis | direct |
+| [purpose](purpose.md) | 1..1 <br/> [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) | The purpose of the analysis within the body of evidence (e | direct |
+| [documentRefs](documentRefs.md) | 0..* <br/> [DocumentReference](DocumentReference.md) |  | direct |
 | [analysisSetId](analysisSetId.md) | 0..1 <br/> [AnalysisSet](AnalysisSet.md) |  | direct |
 | [orderedGroupings](orderedGroupings.md) | 0..* <br/> [OrderedGroupingFactor](OrderedGroupingFactor.md) |  | direct |
 | [dataSubsetId](dataSubsetId.md) | 0..1 <br/> [DataSubset](DataSubset.md) |  | direct |
@@ -259,6 +263,7 @@ attributes:
     alias: id
     owner: Analysis
     domain_of:
+    - ReportingEvent
     - AnalysisCategorization
     - AnalysisCategory
     - Analysis
@@ -273,6 +278,7 @@ attributes:
     - Group
     - DataSubset
     - ReferenceDocument
+    - TerminologyExtension
     - SponsorTerm
     range: string
     required: true
@@ -283,6 +289,7 @@ attributes:
     alias: version
     owner: Analysis
     domain_of:
+    - ReportingEvent
     - Analysis
     - Output
     - OutputDisplay
@@ -323,12 +330,11 @@ attributes:
     owner: Analysis
     domain_of:
     - Analysis
-    range: string
+    range: ExtensibleTerminologyTerm
     required: true
-    inlined: false
     any_of:
     - range: AnalysisReason
-    - range: SponsorTerm
+    - range: SponsorAnalysisReason
   purpose:
     name: purpose
     description: The purpose of the analysis within the body of evidence (e.g., section
@@ -339,12 +345,11 @@ attributes:
     owner: Analysis
     domain_of:
     - Analysis
-    range: string
+    range: ExtensibleTerminologyTerm
     required: true
-    inlined: false
     any_of:
     - range: AnalysisPurpose
-    - range: SponsorTerm
+    - range: SponsorAnalysisPurpose
   documentRefs:
     name: documentRefs
     from_schema: https://www.cdisc.org/ars/1-0
@@ -355,9 +360,8 @@ attributes:
     domain_of:
     - Analysis
     - AnalysisMethod
-    - AnalysisOutputProgrammingCode
     - Output
-    range: DocumentRef
+    range: DocumentReference
     inlined: true
     inlined_as_list: true
   analysisSetId:

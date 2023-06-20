@@ -26,7 +26,7 @@ URI: [ars:logicalOperator](https://www.cdisc.org/ars/1-0/logicalOperator)
 
 ## Properties
 
-* Range: [ExpressionLogicalOperator](ExpressionLogicalOperator.md)
+* Range: [ExpressionLogicalOperatorEnum](ExpressionLogicalOperatorEnum.md)
 
 * Required: True
 
@@ -60,7 +60,7 @@ rank: 1000
 alias: logicalOperator
 domain_of:
 - WhereClauseCompoundExpression
-range: ExpressionLogicalOperator
+range: ExpressionLogicalOperatorEnum
 required: true
 
 ```

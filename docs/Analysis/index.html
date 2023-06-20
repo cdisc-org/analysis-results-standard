@@ -106,7 +106,7 @@
 
       Analysis : documentRefs
 
-          Analysis --|&gt; DocumentRef : documentRefs
+          Analysis --|&gt; DocumentReference : documentRefs
 
       Analysis : id
 
@@ -126,7 +126,11 @@
 
       Analysis : purpose
 
+          Analysis --|&gt; ExtensibleTerminologyTerm : purpose
+
       Analysis : reason
+
+          Analysis --|&gt; ExtensibleTerminologyTerm : reason
 
       Analysis : referencedAnalysisOperations
 
@@ -186,19 +190,19 @@
 </tr>
 <tr>
 <td><a href="../reason/">reason</a></td>
-<td>1..1 <br/> <a href="../String/">String</a></td>
+<td>1..1 <br/> <a href="../ExtensibleTerminologyTerm/">ExtensibleTerminologyTerm</a></td>
 <td>The rationale for performing this analysis</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../purpose/">purpose</a></td>
-<td>1..1 <br/> <a href="../String/">String</a></td>
+<td>1..1 <br/> <a href="../ExtensibleTerminologyTerm/">ExtensibleTerminologyTerm</a></td>
 <td>The purpose of the analysis within the body of evidence (e</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../documentRefs/">documentRefs</a></td>
-<td>0..* <br/> <a href="../DocumentRef/">DocumentRef</a></td>
+<td>0..* <br/> <a href="../DocumentReference/">DocumentReference</a></td>
 <td></td>
 <td>direct</td>
 </tr>
@@ -416,6 +420,7 @@ attributes:
     alias: id
     owner: Analysis
     domain_of:
+    - ReportingEvent
     - AnalysisCategorization
     - AnalysisCategory
     - Analysis
@@ -430,6 +435,7 @@ attributes:
     - Group
     - DataSubset
     - ReferenceDocument
+    - TerminologyExtension
     - SponsorTerm
     range: string
     required: true
@@ -440,6 +446,7 @@ attributes:
     alias: version
     owner: Analysis
     domain_of:
+    - ReportingEvent
     - Analysis
     - Output
     - OutputDisplay
@@ -480,12 +487,11 @@ attributes:
     owner: Analysis
     domain_of:
     - Analysis
-    range: string
+    range: ExtensibleTerminologyTerm
     required: true
-    inlined: false
     any_of:
     - range: AnalysisReason
-    - range: SponsorTerm
+    - range: SponsorAnalysisReason
   purpose:
     name: purpose
     description: The purpose of the analysis within the body of evidence (e.g., section
@@ -496,12 +502,11 @@ attributes:
     owner: Analysis
     domain_of:
     - Analysis
-    range: string
+    range: ExtensibleTerminologyTerm
     required: true
-    inlined: false
     any_of:
     - range: AnalysisPurpose
-    - range: SponsorTerm
+    - range: SponsorAnalysisPurpose
   documentRefs:
     name: documentRefs
     from_schema: https://www.cdisc.org/ars/1-0
@@ -512,9 +517,8 @@ attributes:
     domain_of:
     - Analysis
     - AnalysisMethod
-    - AnalysisOutputProgrammingCode
     - Output
-    range: DocumentRef
+    range: DocumentReference
     inlined: true
     inlined_as_list: true
   analysisSetId:

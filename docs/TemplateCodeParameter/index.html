@@ -120,15 +120,15 @@
 <td>direct</td>
 </tr>
 <tr>
+<td><a href="../value/">value</a></td>
+<td>0..* <br/> <a href="../String/">String</a></td>
+<td>The value to be used for the parameter when the method is used in an analysis</td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../description/">description</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td></td>
-<td><a href="../CodeParameter/">CodeParameter</a></td>
-</tr>
-<tr>
-<td><a href="../value/">value</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>The value of the parameter</td>
 <td><a href="../CodeParameter/">CodeParameter</a></td>
 </tr>
 <tr>
@@ -194,11 +194,15 @@ rank: 1000
 is_a: CodeParameter
 slots:
 - valueSource
+- value
 slot_usage:
   value:
     name: value
+    description: The value to be used for the parameter when the method is used in
+      an analysis. Multiple values may be specified to indicate a choice.
     domain_of:
-    - CodeParameter
+    - AnalysisOutputCodeParameter
+    - TemplateCodeParameter
     - WhereClauseCondition
     required: false
 
@@ -215,8 +219,11 @@ is_a: CodeParameter
 slot_usage:
   value:
     name: value
+    description: The value to be used for the parameter when the method is used in
+      an analysis. Multiple values may be specified to indicate a choice.
     domain_of:
-    - CodeParameter
+    - AnalysisOutputCodeParameter
+    - TemplateCodeParameter
     - WhereClauseCondition
     required: false
 attributes:
@@ -230,6 +237,21 @@ attributes:
     domain_of:
     - TemplateCodeParameter
     range: string
+  value:
+    name: value
+    description: The value to be used for the parameter when the method is used in
+      an analysis. Multiple values may be specified to indicate a choice.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    multivalued: true
+    alias: value
+    owner: TemplateCodeParameter
+    domain_of:
+    - AnalysisOutputCodeParameter
+    - TemplateCodeParameter
+    - WhereClauseCondition
+    range: string
+    required: false
   description:
     name: description
     from_schema: https://www.cdisc.org/ars/1-0
@@ -243,18 +265,6 @@ attributes:
     - CodeParameter
     - SponsorTerm
     range: string
-  value:
-    name: value
-    description: The value of the parameter.
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    alias: value
-    owner: TemplateCodeParameter
-    domain_of:
-    - CodeParameter
-    - WhereClauseCondition
-    range: string
-    required: false
   name:
     name: name
     from_schema: https://www.cdisc.org/ars/1-0

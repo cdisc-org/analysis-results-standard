@@ -47,7 +47,7 @@ URI: [ars:ReferenceDocument](https://www.cdisc.org/ars/1-0/ReferenceDocument)
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
 | [ReportingEvent](ReportingEvent.md) | [referenceDocuments](referenceDocuments.md) | range | [ReferenceDocument](ReferenceDocument.md) |
-| [DocumentRef](DocumentRef.md) | [referenceDocumentId](referenceDocumentId.md) | range | [ReferenceDocument](ReferenceDocument.md) |
+| [DocumentReference](DocumentReference.md) | [referenceDocumentId](referenceDocumentId.md) | range | [ReferenceDocument](ReferenceDocument.md) |
 
 
 
@@ -118,6 +118,7 @@ attributes:
     alias: id
     owner: ReferenceDocument
     domain_of:
+    - ReportingEvent
     - AnalysisCategorization
     - AnalysisCategory
     - Analysis
@@ -132,6 +133,7 @@ attributes:
     - Group
     - DataSubset
     - ReferenceDocument
+    - TerminologyExtension
     - SponsorTerm
     range: string
     required: true

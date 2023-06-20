@@ -13,6 +13,7 @@ URI: [ars:id](https://www.cdisc.org/ars/1-0/id)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+[ReportingEvent](ReportingEvent.md) | A set of analyses and outputs created to meet a specific reporting requiremen... |  no  |
 [AnalysisCategorization](AnalysisCategorization.md) | A set of related implementer-defined categories that can be used to categoriz... |  no  |
 [AnalysisCategory](AnalysisCategory.md) | An implementer-defined category of analyses/outputs, which may include one or... |  no  |
 [Analysis](Analysis.md) | An analysis that is designed to meet a requirement of the reporting event |  no  |
@@ -27,6 +28,7 @@ URI: [ars:id](https://www.cdisc.org/ars/1-0/id)
 [Group](Group.md) | A subdivision of the subject population or analysis dataset record set based ... |  no  |
 [DataSubset](DataSubset.md) | A subset of data identified by selection criteria for inclusion in the analys... |  no  |
 [ReferenceDocument](ReferenceDocument.md) |  |  no  |
+[TerminologyExtension](TerminologyExtension.md) | A sponsor-defined term that is included in an extensible set of controlled te... |  no  |
 [SponsorTerm](SponsorTerm.md) | A sponsor-defined term that is included in an extensible set of controlled te... |  no  |
 [SubjectGroupingFactor](SubjectGroupingFactor.md) | A factor used to subdivide the subject population for comparative analysis (e |  no  |
 [DataGroupingFactor](DataGroupingFactor.md) | A factor used to subdivide data records in an analysis dataset for analysis |  no  |
@@ -75,6 +77,7 @@ rank: 1000
 identifier: true
 alias: id
 domain_of:
+- ReportingEvent
 - AnalysisCategorization
 - AnalysisCategory
 - Analysis
@@ -89,6 +92,7 @@ domain_of:
 - Group
 - DataSubset
 - ReferenceDocument
+- TerminologyExtension
 - SponsorTerm
 range: string
 required: true

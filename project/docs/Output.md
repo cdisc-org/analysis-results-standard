@@ -26,7 +26,7 @@ URI: [ars:Output](https://www.cdisc.org/ars/1-0/Output)
         
       Output : documentRefs
         
-          Output --|> DocumentRef : documentRefs
+          Output --|> DocumentReference : documentRefs
         
       Output : fileSpecifications
         
@@ -64,7 +64,7 @@ URI: [ars:Output](https://www.cdisc.org/ars/1-0/Output)
 | [fileSpecifications](fileSpecifications.md) | 0..* <br/> [OutputFile](OutputFile.md) |  | direct |
 | [displays](displays.md) | 0..* <br/> [OrderedDisplay](OrderedDisplay.md) |  | direct |
 | [categoryIds](categoryIds.md) | 0..* <br/> [AnalysisCategory](AnalysisCategory.md) |  | direct |
-| [documentRefs](documentRefs.md) | 0..* <br/> [DocumentRef](DocumentRef.md) |  | direct |
+| [documentRefs](documentRefs.md) | 0..* <br/> [DocumentReference](DocumentReference.md) |  | direct |
 | [programmingCode](programmingCode.md) | 0..1 <br/> [AnalysisOutputProgrammingCode](AnalysisOutputProgrammingCode.md) | Programming statements and/or a reference to the program used to perform the ... | direct |
 | [name](name.md) | 1..1 <br/> [String](String.md) |  | [NamedObject](NamedObject.md) |
 
@@ -187,6 +187,7 @@ attributes:
     alias: id
     owner: Output
     domain_of:
+    - ReportingEvent
     - AnalysisCategorization
     - AnalysisCategory
     - Analysis
@@ -201,6 +202,7 @@ attributes:
     - Group
     - DataSubset
     - ReferenceDocument
+    - TerminologyExtension
     - SponsorTerm
     range: string
     required: true
@@ -211,6 +213,7 @@ attributes:
     alias: version
     owner: Output
     domain_of:
+    - ReportingEvent
     - Analysis
     - Output
     - OutputDisplay
@@ -263,9 +266,8 @@ attributes:
     domain_of:
     - Analysis
     - AnalysisMethod
-    - AnalysisOutputProgrammingCode
     - Output
-    range: DocumentRef
+    range: DocumentReference
     inlined: true
     inlined_as_list: true
   programmingCode:

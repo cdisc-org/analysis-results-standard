@@ -12,9 +12,9 @@ message Analysis
   integer version = 0
  repeated  analysisCategory categoryIds = 0
   string description = 0
-  string reason = 0
-  string purpose = 0
- repeated  documentRef documentRefs = 0
+  extensibleTerminologyTerm reason = 0
+  extensibleTerminologyTerm purpose = 0
+ repeated  documentReference documentRefs = 0
   analysisSet analysisSetId = 0
  repeated  orderedGroupingFactor orderedGroupings = 0
   dataSubset dataSubsetId = 0
@@ -57,24 +57,41 @@ message AnalysisMethod
   string label = 0
   string description = 0
  repeated  operation operations = 0
- repeated  documentRef documentRefs = 0
+ repeated  documentReference documentRefs = 0
   analysisProgrammingCodeTemplate codeTemplate = 0
+ }
+// A parameter whose value is used in programming code for a specific analysis or output.
+message AnalysisOutputCodeParameter
+ {
+  string name = 0
+  string description = 0
+ repeated  string value = 0
  }
 // Programming statements and/or a reference to the program used to perform a specific analysis or create a specific output.
 message AnalysisOutputProgrammingCode
  {
   string context = 0
   string code = 0
- repeated  documentRef documentRefs = 0
- repeated  codeParameter parameters = 0
+  documentReference documentRef = 0
+ repeated  analysisOutputCodeParameter parameters = 0
  }
 // Programming statements and/or a reference to a used as a template for creation of a program to perform method operations for a specific analysis.
 message AnalysisProgrammingCodeTemplate
  {
   string context = 0
   string code = 0
- repeated  documentRef documentRefs = 0
+  documentReference documentRef = 0
  repeated  templateCodeParameter parameters = 0
+ }
+message AnalysisPurpose
+ {
+  analysisPurposeEnum controlledTerm = 0
+  sponsorTerm sponsorTermId = 0
+ }
+message AnalysisReason
+ {
+  analysisReasonEnum controlledTerm = 0
+  sponsorTerm sponsorTermId = 0
  }
 // A set of subjects whose data are to be included in the main analyses. This should be defined in the statistical section of the protocol. NOTE: There are a number of potential analysis sets, including, for example, the set based upon the intent-to-treat principle. [ICH E9]
 message AnalysisSet
@@ -86,26 +103,19 @@ message AnalysisSet
   string label = 0
   compoundSetExpression compoundExpression = 0
  }
-// A replacement parameter whose value is substituted in template programming code to create statements required for a specific analysis.
-message CodeParameter
- {
-  string name = 0
-  string description = 0
-  string value = 0
- }
 message CompoundGroupExpression
  {
-  expressionLogicalOperator logicalOperator = 0
+  expressionLogicalOperatorEnum logicalOperator = 0
  repeated  group whereClauses = 0
  }
 message CompoundSetExpression
  {
-  expressionLogicalOperator logicalOperator = 0
+  expressionLogicalOperatorEnum logicalOperator = 0
  repeated  analysisSet whereClauses = 0
  }
 message CompoundSubsetExpression
  {
-  expressionLogicalOperator logicalOperator = 0
+  expressionLogicalOperatorEnum logicalOperator = 0
  repeated  whereClause whereClauses = 0
  }
 // A subdivision of the analysis dataset records based on a defined factor.
@@ -140,20 +150,25 @@ message DataSubset
 // A part of a tabular display containing one or more pieces of informational text.
 message DisplaySection
  {
-  displaySectionType sectionType = 0
- repeated  displaySubSection subSections = 0
+  displaySectionTypeEnum sectionType = 0
+ repeated  orderedDisplaySubSection orderedSubSections = 0
  }
 // An occurrence of a display section containing text that is ordered with respect to other occurrences of the same type of display section.
 message DisplaySubSection
  {
   string id = 0
-  integer order = 0
   string text = 0
  }
-message DocumentRef
+message DocumentReference
  {
   referenceDocument referenceDocumentId = 0
  repeated  pageRef pageRefs = 0
+ }
+// A part of a tabular display containing one or more pieces of informational text.
+message GlobalDisplaySection
+ {
+  displaySectionTypeEnum sectionType = 0
+ repeated  displaySubSection subSections = 0
  }
 // A subdivision of the subject population or analysis dataset record set based on a defined factor.
 message Group
@@ -187,6 +202,11 @@ message OperationResult
   string rawValue = 0
   string formattedValue = 0
  }
+message OperationRole
+ {
+  operationRoleEnum controlledTerm = 0
+  sponsorTerm sponsorTermId = 0
+ }
 // A display ordered with respect to other displays in an analysis output.
 message OrderedDisplay
  {
@@ -210,6 +230,20 @@ message OrderedListItem
   analysis analysisId = 0
   output outputId = 0
  }
+// A subsection ordered with respect to other subsections of the same type.
+message OrderedSubSection
+ {
+  integer order = 0
+  displaySubSection subSection = 0
+  displaySubSection subSectionId = 0
+ }
+// A reference to a subsection defined either globally or in another display section, ordered with respect to other subsections of the same type.
+message OrderedSubSectionRef
+ {
+  integer order = 0
+  displaySubSection subSection = 0
+  displaySubSection subSectionId = 0
+ }
 // A report of results and their evaluation based on planned analyses performed during the course of a trial.
 message Output
  {
@@ -219,7 +253,7 @@ message Output
  repeated  outputFile fileSpecifications = 0
  repeated  orderedDisplay displays = 0
  repeated  analysisCategory categoryIds = 0
- repeated  documentRef documentRefs = 0
+ repeated  documentReference documentRefs = 0
   analysisOutputProgrammingCode programmingCode = 0
  }
 // A tabular representation of the results of one or more analyses.
@@ -235,52 +269,44 @@ message OutputDisplay
 message OutputFile
  {
   string name = 0
-  string fileType = 0
+  extensibleTerminologyTerm fileType = 0
   uri location = 0
   string style = 0
  }
-// A list of one or more named document references, each of which corresponds with a page.
-message PageNameList
+message OutputFileType
  {
- repeated  integer pageNames = 0
+  outputFileTypeEnum controlledTerm = 0
+  sponsorTerm sponsorTermId = 0
  }
 // One or more pages in the reference document, referenced by named destination.
 message PageNameRef
  {
   string label = 0
-  pageRefType refType = 0
-  pageNameList pages = 0
- }
-// A list of one or more page numbers.
-message PageNumberList
- {
+  pageRefTypeEnum refType = 0
  repeated  integer pageNumbers = 0
+ repeated  string pageNames = 0
+  integer firstPage = 0
+  integer lastPage = 0
  }
 // One or more individual pages in the reference document, referenced by page number.
 message PageNumberListRef
  {
   string label = 0
-  pageRefType refType = 0
-  pageNumberList pages = 0
+  pageRefTypeEnum refType = 0
+ repeated  integer pageNumbers = 0
+ repeated  string pageNames = 0
+  integer firstPage = 0
+  integer lastPage = 0
  }
 // A range of pages in the reference document, indicated by the first and last page number in the range.
 message PageNumberRangeRef
  {
   string label = 0
-  pageRefType refType = 0
-  pageRange pages = 0
- }
-// A set of pages in a document that includes the specified first and last page, and all pages in between.
-message PageRange
- {
+  pageRefTypeEnum refType = 0
+ repeated  integer pageNumbers = 0
+ repeated  string pageNames = 0
   integer firstPage = 0
   integer lastPage = 0
- }
-message PageRef
- {
-  pageRefType refType = 0
-  string label = 0
-  string pages = 0
  }
 // An indication of the analysis that contains results of a referenced operation.
 message ReferencedAnalysisOperation
@@ -298,7 +324,7 @@ message ReferenceDocument
 message ReferencedOperationRelationship
  {
   string id = 0
-  string referencedOperationRole = 0
+  extensibleTerminologyTerm referencedOperationRole = 0
   operation operationId = 0
   analysis analysisId = 0
   string description = 0
@@ -307,19 +333,21 @@ message ReferencedOperationRelationship
 message ReportingEvent
  {
   string name = 0
+  string id = 0
+  integer version = 0
   nestedList listOfPlannedAnalyses = 0
   nestedList listOfPlannedOutputs = 0
  repeated  analysisSet analysisSets = 0
  repeated  subjectGroupingFactor analysisGroupings = 0
  repeated  dataSubset dataSubsets = 0
  repeated  dataGroupingFactor dataGroupings = 0
- repeated  displaySection globalDisplaySections = 0
+ repeated  globalDisplaySection globalDisplaySections = 0
  repeated  analysisCategorization analysisCategorizations = 0
  repeated  analysis analyses = 0
  repeated  analysisMethod methods = 0
  repeated  output outputs = 0
  repeated  referenceDocument referenceDocuments = 0
- repeated  terminologyExtension terminologyExtentions = 0
+ repeated  terminologyExtension terminologyExtensions = 0
  }
 // For the specified grouping factor, an indication of the specific group of subjects or data records associated with the analysis result.
 message ResultGroup
@@ -327,6 +355,26 @@ message ResultGroup
   groupingFactor groupingId = 0
   group groupId = 0
   string groupValue = 0
+ }
+message SponsorAnalysisPurpose
+ {
+  string controlledTerm = 0
+  sponsorTerm sponsorTermId = 0
+ }
+message SponsorAnalysisReason
+ {
+  string controlledTerm = 0
+  sponsorTerm sponsorTermId = 0
+ }
+message SponsorOperationRole
+ {
+  string controlledTerm = 0
+  sponsorTerm sponsorTermId = 0
+ }
+message SponsorOutputFileType
+ {
+  string controlledTerm = 0
+  sponsorTerm sponsorTermId = 0
  }
 // A sponsor-defined term that is included in an extensible set of controlled terminology.
 message SponsorTerm
@@ -350,12 +398,13 @@ message TemplateCodeParameter
   string name = 0
   string description = 0
   string valueSource = 0
-  string value = 0
+ repeated  string value = 0
  }
 // A sponsor-defined term that is included in an extensible set of controlled terminology.
 message TerminologyExtension
  {
-  extensibleTerminology enumeration = 0
+  string id = 0
+  extensibleTerminologyEnum enumeration = 0
  repeated  sponsorTerm sponsorTerms = 0
  }
 message WhereClause
@@ -367,13 +416,13 @@ message WhereClause
  }
 message WhereClauseCompoundExpression
  {
-  expressionLogicalOperator logicalOperator = 0
+  expressionLogicalOperatorEnum logicalOperator = 0
  repeated  whereClause whereClauses = 0
  }
 message WhereClauseCondition
  {
   string dataset = 0
   string variable = 0
-  conditionComparator comparator = 0
-  string value = 0
+  conditionComparatorEnum comparator = 0
+ repeated  string value = 0
  }

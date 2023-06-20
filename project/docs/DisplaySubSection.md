@@ -16,8 +16,6 @@ URI: [ars:DisplaySubSection](https://www.cdisc.org/ars/1-0/DisplaySubSection)
     class DisplaySubSection
       DisplaySubSection : id
         
-      DisplaySubSection : order
-        
       DisplaySubSection : text
         
       
@@ -34,8 +32,7 @@ URI: [ars:DisplaySubSection](https://www.cdisc.org/ars/1-0/DisplaySubSection)
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [id](id.md) | 1..1 <br/> [String](String.md) |  | direct |
-| [order](order.md) | 1..1 <br/> [Integer](Integer.md) |  | direct |
-| [text](text.md) | 0..1 <br/> [String](String.md) |  | direct |
+| [text](text.md) | 1..1 <br/> [String](String.md) |  | direct |
 
 
 
@@ -45,7 +42,13 @@ URI: [ars:DisplaySubSection](https://www.cdisc.org/ars/1-0/DisplaySubSection)
 
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
-| [DisplaySection](DisplaySection.md) | [subSections](subSections.md) | range | [DisplaySubSection](DisplaySubSection.md) |
+| [OrderedDisplaySubSection](OrderedDisplaySubSection.md) | [subSection](subSection.md) | range | [DisplaySubSection](DisplaySubSection.md) |
+| [OrderedDisplaySubSection](OrderedDisplaySubSection.md) | [subSectionId](subSectionId.md) | range | [DisplaySubSection](DisplaySubSection.md) |
+| [OrderedSubSection](OrderedSubSection.md) | [subSection](subSection.md) | range | [DisplaySubSection](DisplaySubSection.md) |
+| [OrderedSubSection](OrderedSubSection.md) | [subSectionId](subSectionId.md) | range | [DisplaySubSection](DisplaySubSection.md) |
+| [OrderedSubSectionRef](OrderedSubSectionRef.md) | [subSection](subSection.md) | range | [DisplaySubSection](DisplaySubSection.md) |
+| [OrderedSubSectionRef](OrderedSubSectionRef.md) | [subSectionId](subSectionId.md) | range | [DisplaySubSection](DisplaySubSection.md) |
+| [GlobalDisplaySection](GlobalDisplaySection.md) | [subSections](subSections.md) | range | [DisplaySubSection](DisplaySubSection.md) |
 
 
 
@@ -95,17 +98,12 @@ from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 slots:
 - id
-- order
 - text
 slot_usage:
-  order:
-    name: order
+  text:
+    name: text
     domain_of:
-    - OrderedListItem
-    - OrderedGroupingFactor
-    - OrderedDisplay
     - DisplaySubSection
-    - WhereClause
     required: true
 
 ```
@@ -121,14 +119,10 @@ description: An occurrence of a display section containing text that is ordered 
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 slot_usage:
-  order:
-    name: order
+  text:
+    name: text
     domain_of:
-    - OrderedListItem
-    - OrderedGroupingFactor
-    - OrderedDisplay
     - DisplaySubSection
-    - WhereClause
     required: true
 attributes:
   id:
@@ -139,6 +133,7 @@ attributes:
     alias: id
     owner: DisplaySubSection
     domain_of:
+    - ReportingEvent
     - AnalysisCategorization
     - AnalysisCategory
     - Analysis
@@ -153,22 +148,9 @@ attributes:
     - Group
     - DataSubset
     - ReferenceDocument
+    - TerminologyExtension
     - SponsorTerm
     range: string
-    required: true
-  order:
-    name: order
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    alias: order
-    owner: DisplaySubSection
-    domain_of:
-    - OrderedListItem
-    - OrderedGroupingFactor
-    - OrderedDisplay
-    - DisplaySubSection
-    - WhereClause
-    range: integer
     required: true
   text:
     name: text
@@ -179,6 +161,7 @@ attributes:
     domain_of:
     - DisplaySubSection
     range: string
+    required: true
 
 ```
 </details>

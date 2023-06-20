@@ -4,6 +4,49 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+ars:AnalysisPurpose a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class ars:SponsorTerm ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 1 ;
+            sh:path ars:sponsorTermId ],
+        [ sh:in ( NCIT:C98772 NCIT:C98781 NCIT:C98724 ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path ars:controlledTerm ] ;
+    sh:targetClass ars:AnalysisPurpose .
+
+ars:AnalysisReason a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:in ( NCIT:C117752 NCIT:C117753 NCIT:C117750 NCIT:C117751 ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path ars:controlledTerm ],
+        [ sh:class ars:SponsorTerm ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 1 ;
+            sh:path ars:sponsorTermId ] ;
+    sh:targetClass ars:AnalysisReason .
+
+ars:CodeParameter a sh:NodeShape ;
+    sh:closed false ;
+    sh:description "A replacement parameter whose value is substituted in template programming code to create statements required for a specific analysis." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path ars:description ],
+        [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 1 ;
+            sh:path ars:name ] ;
+    sh:targetClass ars:CodeParameter .
+
 ars:NamedObject a sh:NodeShape ;
     sh:closed false ;
     sh:ignoredProperties ( rdf:type ) ;
@@ -13,15 +56,158 @@ ars:NamedObject a sh:NodeShape ;
             sh:path ars:name ] ;
     sh:targetClass ars:NamedObject .
 
+ars:OperationRole a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:in ( "NUMERATOR" "DENOMINATOR" ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path ars:controlledTerm ],
+        [ sh:class ars:SponsorTerm ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 1 ;
+            sh:path ars:sponsorTermId ] ;
+    sh:targetClass ars:OperationRole .
+
+ars:OrderedSubSection a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A subsection ordered with respect to other subsections of the same type." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class ars:DisplaySubSection ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 2 ;
+            sh:path ars:subSectionId ],
+        [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path ars:order ],
+        [ sh:class ars:DisplaySubSection ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 1 ;
+            sh:path ars:subSection ] ;
+    sh:targetClass ars:OrderedSubSection .
+
+ars:OrderedSubSectionRef a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A reference to a subsection defined either globally or in another display section, ordered with respect to other subsections of the same type." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path ars:order ],
+        [ sh:class ars:DisplaySubSection ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 1 ;
+            sh:path ars:subSection ],
+        [ sh:class ars:DisplaySubSection ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 2 ;
+            sh:path ars:subSectionId ] ;
+    sh:targetClass ars:OrderedSubSectionRef .
+
+ars:OutputFileType a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:in ( "pdf" "rtf" "txt" ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path ars:controlledTerm ],
+        [ sh:class ars:SponsorTerm ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 1 ;
+            sh:path ars:sponsorTermId ] ;
+    sh:targetClass ars:OutputFileType .
+
 ars:PageNameRef a sh:NodeShape ;
     sh:closed true ;
     sh:description "One or more pages in the reference document, referenced by named destination." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class ars:PageNameList ;
+    sh:property [ sh:description "The page number of the last page in a range of pages." ;
             sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
+            sh:order 5 ;
+            sh:path ars:lastPage ],
+        [ sh:description "One or more named document references which each correspond with a page." ;
+            sh:minCount 1 ;
             sh:order 2 ;
-            sh:path ars:pages ],
+            sh:path ars:pageNames ],
+        [ sh:in ( "PhysicalRef" "NamedDestination" ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path ars:refType ],
+        [ sh:description "One or more page numbers." ;
+            sh:order 3 ;
+            sh:path ars:pageNumbers ],
+        [ sh:description "The page number of the first page in a range of pages." ;
+            sh:maxCount 1 ;
+            sh:order 4 ;
+            sh:path ars:firstPage ],
+        [ sh:description "Alternative label to provide a more specific and description to a page link." ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path ars:label ] ;
+    sh:targetClass ars:PageNameRef .
+
+ars:PageNumberListRef a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "One or more individual pages in the reference document, referenced by page number." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:description "The page number of the first page in a range of pages." ;
+            sh:maxCount 1 ;
+            sh:order 4 ;
+            sh:path ars:firstPage ],
+        [ sh:description "One or more page numbers." ;
+            sh:minCount 1 ;
+            sh:order 3 ;
+            sh:path ars:pageNumbers ],
+        [ sh:description "Alternative label to provide a more specific and description to a page link." ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path ars:label ],
+        [ sh:in ( "PhysicalRef" "NamedDestination" ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path ars:refType ],
+        [ sh:description "The page number of the last page in a range of pages." ;
+            sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path ars:lastPage ],
+        [ sh:description "One or more named document references which each correspond with a page." ;
+            sh:order 2 ;
+            sh:path ars:pageNames ] ;
+    sh:targetClass ars:PageNumberListRef .
+
+ars:PageNumberRangeRef a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A range of pages in the reference document, indicated by the first and last page number in the range." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:description "One or more named document references which each correspond with a page." ;
+            sh:order 2 ;
+            sh:path ars:pageNames ],
+        [ sh:description "The page number of the last page in a range of pages." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 5 ;
+            sh:path ars:lastPage ],
+        [ sh:description "The page number of the first page in a range of pages." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 4 ;
+            sh:path ars:firstPage ],
+        [ sh:description "One or more page numbers." ;
+            sh:order 3 ;
+            sh:path ars:pageNumbers ],
         [ sh:description "Alternative label to provide a more specific and description to a page link." ;
             sh:maxCount 1 ;
             sh:order 1 ;
@@ -31,143 +217,166 @@ ars:PageNameRef a sh:NodeShape ;
             sh:minCount 1 ;
             sh:order 0 ;
             sh:path ars:refType ] ;
-    sh:targetClass ars:PageNameRef .
-
-ars:PageNumberListRef a sh:NodeShape ;
-    sh:closed true ;
-    sh:description "One or more individual pages in the reference document, referenced by page number." ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:in ( "PhysicalRef" "NamedDestination" ) ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 0 ;
-            sh:path ars:refType ],
-        [ sh:description "Alternative label to provide a more specific and description to a page link." ;
-            sh:maxCount 1 ;
-            sh:order 1 ;
-            sh:path ars:label ],
-        [ sh:class ars:PageNumberList ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 2 ;
-            sh:path ars:pages ] ;
-    sh:targetClass ars:PageNumberListRef .
-
-ars:PageNumberRangeRef a sh:NodeShape ;
-    sh:closed true ;
-    sh:description "A range of pages in the reference document, indicated by the first and last page number in the range." ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:in ( "PhysicalRef" "NamedDestination" ) ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 0 ;
-            sh:path ars:refType ],
-        [ sh:class ars:PageRange ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 2 ;
-            sh:path ars:pages ],
-        [ sh:description "Alternative label to provide a more specific and description to a page link." ;
-            sh:maxCount 1 ;
-            sh:order 1 ;
-            sh:path ars:label ] ;
     sh:targetClass ars:PageNumberRangeRef .
 
 ars:ReportingEvent a sh:NodeShape ;
     sh:closed true ;
     sh:description "A set of analyses and outputs created to meet a specific reporting requirement, such as a CSR or interim analysis." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 13 ;
-            sh:path ars:name ],
-        [ sh:class ars:DisplaySection ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 6 ;
-            sh:path ars:globalDisplaySections ],
-        [ sh:class ars:AnalysisSet ;
-            sh:description "The analysis sets (subject populations) defined for the reporting event." ;
-            sh:nodeKind sh:IRI ;
-            sh:order 2 ;
-            sh:path ars:analysisSets ],
-        [ sh:class ars:AnalysisCategorization ;
-            sh:nodeKind sh:IRI ;
-            sh:order 7 ;
-            sh:path ars:analysisCategorizations ],
-        [ sh:class ars:Output ;
-            sh:nodeKind sh:IRI ;
-            sh:order 10 ;
-            sh:path ars:outputs ],
-        [ sh:class ars:AnalysisMethod ;
-            sh:description "The defined methods used to analyze any analysis variable." ;
-            sh:nodeKind sh:IRI ;
-            sh:order 9 ;
-            sh:path ars:methods ],
-        [ sh:class ars:SubjectGroupingFactor ;
-            sh:description "Characteristics used to subdivide the subject population (e.g., treatment, sex, age group)." ;
-            sh:nodeKind sh:IRI ;
-            sh:order 3 ;
-            sh:path ars:analysisGroupings ],
-        [ sh:class ars:NestedList ;
-            sh:description "An optional structured list of the outputs defined for the reporting event." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 1 ;
-            sh:path ars:listOfPlannedOutputs ],
-        [ sh:class ars:ReferenceDocument ;
-            sh:nodeKind sh:IRI ;
-            sh:order 11 ;
-            sh:path ars:referenceDocuments ],
-        [ sh:class ars:TerminologyExtension ;
-            sh:description "Any sponsor-defined extensions to extensible terminology." ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 12 ;
-            sh:path ars:terminologyExtentions ],
-        [ sh:class ars:DataSubset ;
-            sh:nodeKind sh:IRI ;
-            sh:order 4 ;
-            sh:path ars:dataSubsets ],
-        [ sh:class ars:Analysis ;
-            sh:description "The analyses defined for the reporting event." ;
-            sh:nodeKind sh:IRI ;
-            sh:order 8 ;
-            sh:path ars:analyses ],
-        [ sh:class ars:DataGroupingFactor ;
-            sh:description "Characteristics used to subdivide data records in the analysis dataset (e.g., visit, system organ class)." ;
-            sh:nodeKind sh:IRI ;
-            sh:order 5 ;
-            sh:path ars:dataGroupings ],
-        [ sh:class ars:NestedList ;
+    sh:property [ sh:class ars:NestedList ;
             sh:description "A structured list of the analyses defined for the reporting event." ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:BlankNode ;
+            sh:order 2 ;
+            sh:path ars:listOfPlannedAnalyses ],
+        [ sh:class ars:Output ;
+            sh:nodeKind sh:IRI ;
+            sh:order 12 ;
+            sh:path ars:outputs ],
+        [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 15 ;
+            sh:path ars:name ],
+        [ sh:class ars:Analysis ;
+            sh:description "The analyses defined for the reporting event." ;
+            sh:nodeKind sh:IRI ;
+            sh:order 10 ;
+            sh:path ars:analyses ],
+        [ sh:class ars:DataGroupingFactor ;
+            sh:description "Characteristics used to subdivide data records in the analysis dataset (e.g., visit, system organ class)." ;
+            sh:nodeKind sh:IRI ;
+            sh:order 7 ;
+            sh:path ars:dataGroupings ],
+        [ sh:class ars:AnalysisMethod ;
+            sh:description "The defined methods used to analyze any analysis variable." ;
+            sh:nodeKind sh:IRI ;
+            sh:order 11 ;
+            sh:path ars:methods ],
+        [ sh:class ars:SubjectGroupingFactor ;
+            sh:description "Characteristics used to subdivide the subject population (e.g., treatment, sex, age group)." ;
+            sh:nodeKind sh:IRI ;
+            sh:order 5 ;
+            sh:path ars:analysisGroupings ],
+        [ sh:class ars:TerminologyExtension ;
+            sh:description "Any sponsor-defined extensions to extensible terminology." ;
+            sh:nodeKind sh:IRI ;
+            sh:order 14 ;
+            sh:path ars:terminologyExtensions ],
+        [ sh:class ars:ReferenceDocument ;
+            sh:nodeKind sh:IRI ;
+            sh:order 13 ;
+            sh:path ars:referenceDocuments ],
+        [ sh:class ars:NestedList ;
+            sh:description "An optional structured list of the outputs defined for the reporting event." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 3 ;
+            sh:path ars:listOfPlannedOutputs ],
+        [ sh:class ars:AnalysisCategorization ;
+            sh:nodeKind sh:IRI ;
+            sh:order 9 ;
+            sh:path ars:analysisCategorizations ],
+        [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path ars:version ],
+        [ sh:class ars:DataSubset ;
+            sh:nodeKind sh:IRI ;
+            sh:order 6 ;
+            sh:path ars:dataSubsets ],
+        [ sh:class ars:AnalysisSet ;
+            sh:description "The analysis sets (subject populations) defined for the reporting event." ;
+            sh:nodeKind sh:IRI ;
+            sh:order 4 ;
+            sh:path ars:analysisSets ],
+        [ sh:maxCount 1 ;
+            sh:minCount 1 ;
             sh:order 0 ;
-            sh:path ars:listOfPlannedAnalyses ] ;
+            sh:path ars:id ],
+        [ sh:class ars:GlobalDisplaySection ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 8 ;
+            sh:path ars:globalDisplaySections ] ;
     sh:targetClass ars:ReportingEvent .
+
+ars:SponsorAnalysisPurpose a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class ars:SponsorTerm ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 1 ;
+            sh:path ars:sponsorTermId ],
+        [ sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path ars:controlledTerm ] ;
+    sh:targetClass ars:SponsorAnalysisPurpose .
+
+ars:SponsorAnalysisReason a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path ars:controlledTerm ],
+        [ sh:class ars:SponsorTerm ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 1 ;
+            sh:path ars:sponsorTermId ] ;
+    sh:targetClass ars:SponsorAnalysisReason .
+
+ars:SponsorOperationRole a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class ars:SponsorTerm ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 1 ;
+            sh:path ars:sponsorTermId ],
+        [ sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path ars:controlledTerm ] ;
+    sh:targetClass ars:SponsorOperationRole .
+
+ars:SponsorOutputFileType a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path ars:controlledTerm ],
+        [ sh:class ars:SponsorTerm ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 1 ;
+            sh:path ars:sponsorTermId ] ;
+    sh:targetClass ars:SponsorOutputFileType .
 
 ars:AnalysisGroup a sh:NodeShape ;
     sh:closed true ;
     sh:description "A subdivision of the subject population based on a defined factor (e.g., subjects whose treatment is Drug A, subjects whose gender is male)." ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path ars:level ],
+        [ sh:maxCount 1 ;
             sh:order 3 ;
             sh:path ars:order ],
         [ sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 0 ;
             sh:path ars:id ],
+        [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path ars:label ],
         [ sh:class ars:WhereClauseCondition ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNode ;
             sh:order 4 ;
             sh:path ars:condition ],
-        [ sh:maxCount 1 ;
-            sh:order 2 ;
-            sh:path ars:level ],
-        [ sh:maxCount 1 ;
-            sh:order 1 ;
-            sh:path ars:label ],
         [ sh:class ars:CompoundGroupExpression ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNode ;
@@ -175,16 +384,28 @@ ars:AnalysisGroup a sh:NodeShape ;
             sh:path ars:compoundExpression ] ;
     sh:targetClass ars:AnalysisGroup .
 
+ars:AnalysisOutputCodeParameter a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A parameter whose value is used in programming code for a specific analysis or output." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:description "The value of the parameter." ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path ars:value ],
+        [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 2 ;
+            sh:path ars:name ],
+        [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path ars:description ] ;
+    sh:targetClass ars:AnalysisOutputCodeParameter .
+
 ars:AnalysisProgrammingCodeTemplate a sh:NodeShape ;
     sh:closed true ;
     sh:description "Programming statements and/or a reference to a used as a template for creation of a program to perform method operations for a specific analysis." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:description "The name and version of the computer language used for the actual programming statements provided." ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 0 ;
-            sh:path ars:context ],
-        [ sh:description "Programming statements used to perform the specific analysis." ;
+    sh:property [ sh:description "Programming statements used to perform the specific analysis." ;
             sh:maxCount 1 ;
             sh:order 1 ;
             sh:path ars:code ],
@@ -193,103 +414,91 @@ ars:AnalysisProgrammingCodeTemplate a sh:NodeShape ;
             sh:nodeKind sh:BlankNode ;
             sh:order 3 ;
             sh:path ars:parameters ],
-        [ sh:class ars:DocumentRef ;
+        [ sh:class ars:DocumentReference ;
+            sh:maxCount 1 ;
             sh:nodeKind sh:BlankNode ;
             sh:order 2 ;
-            sh:path ars:documentRefs ] ;
-    sh:targetClass ars:AnalysisProgrammingCodeTemplate .
-
-ars:CodeParameter a sh:NodeShape ;
-    sh:closed true ;
-    sh:description "A replacement parameter whose value is substituted in template programming code to create statements required for a specific analysis." ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 2 ;
-            sh:path ars:name ],
-        [ sh:maxCount 1 ;
-            sh:order 0 ;
-            sh:path ars:description ],
-        [ sh:description "The value of the parameter." ;
+            sh:path ars:documentRef ],
+        [ sh:description "The name and version of the computer language used for the actual programming statements provided." ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
-            sh:order 1 ;
-            sh:path ars:value ] ;
-    sh:targetClass ars:CodeParameter .
+            sh:order 0 ;
+            sh:path ars:context ] ;
+    sh:targetClass ars:AnalysisProgrammingCodeTemplate .
 
 ars:CompoundSetExpression a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:in ( "AND" "OR" "NOT" ) ;
+    sh:property [ sh:class ars:AnalysisSet ;
+            sh:nodeKind sh:IRI ;
+            sh:order 1 ;
+            sh:path ars:whereClauses ],
+        [ sh:in ( "AND" "OR" "NOT" ) ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 0 ;
-            sh:path ars:logicalOperator ],
-        [ sh:class ars:AnalysisSet ;
-            sh:nodeKind sh:IRI ;
-            sh:order 1 ;
-            sh:path ars:whereClauses ] ;
+            sh:path ars:logicalOperator ] ;
     sh:targetClass ars:CompoundSetExpression .
 
 ars:CompoundSubsetExpression a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:in ( "AND" "OR" "NOT" ) ;
+    sh:property [ sh:class ars:WhereClause ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 1 ;
+            sh:path ars:whereClauses ],
+        [ sh:in ( "AND" "OR" "NOT" ) ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 0 ;
-            sh:path ars:logicalOperator ],
-        [ sh:class ars:WhereClause ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 1 ;
-            sh:path ars:whereClauses ] ;
+            sh:path ars:logicalOperator ] ;
     sh:targetClass ars:CompoundSubsetExpression .
 
 ars:DataGroup a sh:NodeShape ;
     sh:closed true ;
     sh:description "A subdivision of the analysis dataset records based on a defined factor." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class ars:CompoundGroupExpression ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 5 ;
-            sh:path ars:compoundExpression ],
-        [ sh:class ars:WhereClauseCondition ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 4 ;
-            sh:path ars:condition ],
-        [ sh:maxCount 1 ;
+    sh:property [ sh:maxCount 1 ;
             sh:order 1 ;
             sh:path ars:label ],
-        [ sh:maxCount 1 ;
-            sh:order 3 ;
-            sh:path ars:order ],
         [ sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 0 ;
             sh:path ars:id ],
         [ sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path ars:order ],
+        [ sh:class ars:CompoundGroupExpression ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 5 ;
+            sh:path ars:compoundExpression ],
+        [ sh:maxCount 1 ;
             sh:order 2 ;
-            sh:path ars:level ] ;
+            sh:path ars:level ],
+        [ sh:class ars:WhereClauseCondition ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 4 ;
+            sh:path ars:condition ] ;
     sh:targetClass ars:DataGroup .
 
 ars:DataGroupingFactor a sh:NodeShape ;
     sh:closed true ;
     sh:description "A factor used to subdivide data records in an analysis dataset for analysis." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:description "Indicates whether the groups defined by the grouping are prespecified (false) or obtained from distinct data values of the groupingVariable (true)." ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 3 ;
-            sh:path ars:dataDriven ],
-        [ sh:description "For groupings based on a single variable, a reference to the dataset variable upon which grouping is based." ;
+    sh:property [ sh:description "For groupings based on a single variable, a reference to the dataset variable upon which grouping is based." ;
             sh:maxCount 1 ;
             sh:order 2 ;
             sh:path ars:groupingVariable ],
         [ sh:maxCount 1 ;
             sh:order 1 ;
             sh:path ars:label ],
+        [ sh:description "Indicates whether the groups defined by the grouping are prespecified (false) or obtained from distinct data values of the groupingVariable (true)." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 3 ;
+            sh:path ars:dataDriven ],
         [ sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 0 ;
@@ -300,31 +509,39 @@ ars:DataGroupingFactor a sh:NodeShape ;
             sh:path ars:groups ] ;
     sh:targetClass ars:DataGroupingFactor .
 
-ars:DisplaySubSection a sh:NodeShape ;
+ars:DisplaySection a sh:NodeShape ;
     sh:closed true ;
-    sh:description "An occurrence of a display section containing text that is ordered with respect to other occurrences of the same type of display section." ;
+    sh:description "A part of a tabular display containing one or more pieces of informational text." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 1 ;
-            sh:path ars:order ],
-        [ sh:maxCount 1 ;
-            sh:minCount 1 ;
+    sh:property [ sh:in ( "Title" "Footnote" "Abbreviation" "Legend" "Rowlabel Header" ) ;
+            sh:maxCount 1 ;
             sh:order 0 ;
-            sh:path ars:id ],
-        [ sh:maxCount 1 ;
-            sh:order 2 ;
-            sh:path ars:text ] ;
-    sh:targetClass ars:DisplaySubSection .
+            sh:path ars:sectionType ],
+        [ sh:class ars:OrderedDisplaySubSection ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 1 ;
+            sh:path ars:orderedSubSections ] ;
+    sh:targetClass ars:DisplaySection .
+
+ars:GlobalDisplaySection a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A part of a tabular display containing one or more pieces of informational text." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class ars:DisplaySubSection ;
+            sh:nodeKind sh:IRI ;
+            sh:order 1 ;
+            sh:path ars:subSections ],
+        [ sh:in ( "Title" "Footnote" "Abbreviation" "Legend" "Rowlabel Header" ) ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path ars:sectionType ] ;
+    sh:targetClass ars:GlobalDisplaySection .
 
 ars:OperationResult a sh:NodeShape ;
     sh:closed true ;
     sh:description "The result of an analysis method operation performed on a subdivision of subjects or data records." ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:maxCount 1 ;
-            sh:order 2 ;
-            sh:path ars:rawValue ],
-        [ sh:maxCount 1 ;
             sh:order 3 ;
             sh:path ars:formattedValue ],
         [ sh:class ars:ResultGroup ;
@@ -336,23 +553,45 @@ ars:OperationResult a sh:NodeShape ;
             sh:minCount 1 ;
             sh:nodeKind sh:IRI ;
             sh:order 0 ;
-            sh:path ars:operationId ] ;
+            sh:path ars:operationId ],
+        [ sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path ars:rawValue ] ;
     sh:targetClass ars:OperationResult .
 
 ars:OrderedDisplay a sh:NodeShape ;
     sh:closed true ;
     sh:description "A display ordered with respect to other displays in an analysis output." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 0 ;
-            sh:path ars:order ],
-        [ sh:class ars:OutputDisplay ;
+    sh:property [ sh:class ars:OutputDisplay ;
             sh:maxCount 1 ;
             sh:nodeKind sh:IRI ;
             sh:order 1 ;
-            sh:path ars:display ] ;
+            sh:path ars:display ],
+        [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path ars:order ] ;
     sh:targetClass ars:OrderedDisplay .
+
+ars:OrderedDisplaySubSection a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class ars:DisplaySubSection ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 2 ;
+            sh:path ars:subSectionId ],
+        [ sh:class ars:DisplaySubSection ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 1 ;
+            sh:path ars:subSection ],
+        [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path ars:order ] ;
+    sh:targetClass ars:OrderedDisplaySubSection .
 
 ars:OrderedGroupingFactor a sh:NodeShape ;
     sh:closed true ;
@@ -363,15 +602,15 @@ ars:OrderedGroupingFactor a sh:NodeShape ;
             sh:nodeKind sh:IRI ;
             sh:order 1 ;
             sh:path ars:groupingId ],
-        [ sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 0 ;
-            sh:path ars:order ],
         [ sh:description "Indicates whether a result is expected for each group in the grouping." ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 2 ;
-            sh:path ars:resultsByGroup ] ;
+            sh:path ars:resultsByGroup ],
+        [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path ars:order ] ;
     sh:targetClass ars:OrderedGroupingFactor .
 
 ars:OrderedListItem a sh:NodeShape ;
@@ -384,6 +623,10 @@ ars:OrderedListItem a sh:NodeShape ;
             sh:path ars:order ],
         [ sh:maxCount 1 ;
             sh:minCount 1 ;
+            sh:order 5 ;
+            sh:path ars:name ],
+        [ sh:maxCount 1 ;
+            sh:minCount 1 ;
             sh:order 0 ;
             sh:path ars:level ],
         [ sh:class ars:Output ;
@@ -391,20 +634,16 @@ ars:OrderedListItem a sh:NodeShape ;
             sh:nodeKind sh:IRI ;
             sh:order 4 ;
             sh:path ars:outputId ],
-        [ sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 5 ;
-            sh:path ars:name ],
-        [ sh:class ars:NestedList ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 2 ;
-            sh:path ars:sublist ],
         [ sh:class ars:Analysis ;
             sh:maxCount 1 ;
             sh:nodeKind sh:IRI ;
             sh:order 3 ;
-            sh:path ars:analysisId ] ;
+            sh:path ars:analysisId ],
+        [ sh:class ars:NestedList ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 2 ;
+            sh:path ars:sublist ] ;
     sh:targetClass ars:OrderedListItem .
 
 ars:OutputDisplay a sh:NodeShape ;
@@ -413,15 +652,15 @@ ars:OutputDisplay a sh:NodeShape ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:maxCount 1 ;
             sh:minCount 1 ;
-            sh:order 4 ;
-            sh:path ars:name ],
-        [ sh:maxCount 1 ;
-            sh:minCount 1 ;
             sh:order 0 ;
             sh:path ars:id ],
         [ sh:maxCount 1 ;
             sh:order 1 ;
             sh:path ars:version ],
+        [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 4 ;
+            sh:path ars:name ],
         [ sh:class ars:DisplaySection ;
             sh:nodeKind sh:BlankNode ;
             sh:order 3 ;
@@ -436,66 +675,43 @@ ars:OutputFile a sh:NodeShape ;
     sh:description "A file containing analysis output displays." ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 3 ;
+            sh:path ars:name ],
+        [ sh:maxCount 1 ;
             sh:order 2 ;
             sh:path ars:style ],
-        [ sh:maxCount 1 ;
-            sh:order 1 ;
-            sh:path ars:location ],
-        [ sh:maxCount 1 ;
+        [ sh:class ars:ExtensibleTerminologyTerm ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
             sh:order 0 ;
             sh:path ars:fileType ],
         [ sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 3 ;
-            sh:path ars:name ] ;
+            sh:order 1 ;
+            sh:path ars:location ] ;
     sh:targetClass ars:OutputFile .
 
-ars:PageNameList a sh:NodeShape ;
-    sh:closed true ;
-    sh:description "A list of one or more named document references, each of which corresponds with a page." ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:description "One or more named document references which each correspond with a page." ;
-            sh:minCount 1 ;
-            sh:order 0 ;
-            sh:path ars:pageNames ] ;
-    sh:targetClass ars:PageNameList .
-
-ars:PageNumberList a sh:NodeShape ;
-    sh:closed true ;
-    sh:description "A list of one or more page numbers." ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:description "One or more page numbers." ;
-            sh:minCount 1 ;
-            sh:order 0 ;
-            sh:path ars:pageNumbers ] ;
-    sh:targetClass ars:PageNumberList .
-
-ars:PageRange a sh:NodeShape ;
-    sh:closed true ;
-    sh:description "A set of pages in a document that includes the specified first and last page, and all pages in between." ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:description "The page number of the last page in a range of pages." ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 1 ;
-            sh:path ars:lastPage ],
-        [ sh:description "The page number of the first page in a range of pages." ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 0 ;
-            sh:path ars:firstPage ] ;
-    sh:targetClass ars:PageRange .
-
 ars:PageRef a sh:NodeShape ;
-    sh:closed true ;
+    sh:closed false ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:maxCount 1 ;
-            sh:order 2 ;
-            sh:path ars:pages ],
-        [ sh:description "Alternative label to provide a more specific and description to a page link." ;
+    sh:property [ sh:description "Alternative label to provide a more specific and description to a page link." ;
             sh:maxCount 1 ;
             sh:order 1 ;
             sh:path ars:label ],
+        [ sh:description "The page number of the first page in a range of pages." ;
+            sh:maxCount 1 ;
+            sh:order 4 ;
+            sh:path ars:firstPage ],
+        [ sh:description "One or more page numbers." ;
+            sh:order 3 ;
+            sh:path ars:pageNumbers ],
+        [ sh:description "The page number of the last page in a range of pages." ;
+            sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path ars:lastPage ],
+        [ sh:description "One or more named document references which each correspond with a page." ;
+            sh:order 2 ;
+            sh:path ars:pageNames ],
         [ sh:in ( "PhysicalRef" "NamedDestination" ) ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
@@ -539,48 +755,30 @@ ars:ResultGroup a sh:NodeShape ;
             sh:path ars:groupValue ] ;
     sh:targetClass ars:ResultGroup .
 
-ars:SponsorTerm a sh:NodeShape ;
-    sh:closed true ;
-    sh:description "A sponsor-defined term that is included in an extensible set of controlled terminology." ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:maxCount 1 ;
-            sh:order 2 ;
-            sh:path ars:description ],
-        [ sh:description "The specific value expected for submissions." ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 1 ;
-            sh:path ars:submissionValue ],
-        [ sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 0 ;
-            sh:path ars:id ] ;
-    sh:targetClass ars:SponsorTerm .
-
 ars:SubjectGroupingFactor a sh:NodeShape ;
     sh:closed true ;
     sh:description "A factor used to subdivide the subject population for comparative analysis (e.g., treatment, sex, race, age)." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class ars:AnalysisGroup ;
-            sh:nodeKind sh:IRI ;
-            sh:order 4 ;
-            sh:path ars:groups ],
-        [ sh:maxCount 1 ;
+    sh:property [ sh:description "Indicates whether the groups defined by the grouping are prespecified (false) or obtained from distinct data values of the groupingVariable (true)." ;
+            sh:maxCount 1 ;
             sh:minCount 1 ;
-            sh:order 0 ;
-            sh:path ars:id ],
-        [ sh:maxCount 1 ;
-            sh:order 1 ;
-            sh:path ars:label ],
+            sh:order 3 ;
+            sh:path ars:dataDriven ],
         [ sh:description "For groupings based on a single variable, a reference to the dataset variable upon which grouping is based." ;
             sh:maxCount 1 ;
             sh:order 2 ;
             sh:path ars:groupingVariable ],
-        [ sh:description "Indicates whether the groups defined by the grouping are prespecified (false) or obtained from distinct data values of the groupingVariable (true)." ;
-            sh:maxCount 1 ;
+        [ sh:class ars:AnalysisGroup ;
+            sh:nodeKind sh:IRI ;
+            sh:order 4 ;
+            sh:path ars:groups ],
+        [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path ars:label ],
+        [ sh:maxCount 1 ;
             sh:minCount 1 ;
-            sh:order 3 ;
-            sh:path ars:dataDriven ] ;
+            sh:order 0 ;
+            sh:path ars:id ] ;
     sh:targetClass ars:SubjectGroupingFactor .
 
 ars:TemplateCodeParameter a sh:NodeShape ;
@@ -588,15 +786,14 @@ ars:TemplateCodeParameter a sh:NodeShape ;
     sh:description "A replacement parameter whose value is substituted in template programming code to create statements required for a specific analysis." ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path ars:description ],
+        [ sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 3 ;
             sh:path ars:name ],
-        [ sh:maxCount 1 ;
+        [ sh:description "The value to be used for the parameter when the method is used in an analysis. Multiple values may be specified to indicate a choice." ;
             sh:order 1 ;
-            sh:path ars:description ],
-        [ sh:description "The value of the parameter." ;
-            sh:maxCount 1 ;
-            sh:order 2 ;
             sh:path ars:value ],
         [ sh:description "A reference to the prespecified source of the value for the parameter." ;
             sh:maxCount 1 ;
@@ -612,27 +809,31 @@ ars:TerminologyExtension a sh:NodeShape ;
             sh:description "The sponsor-defined terms added to the extensible terminology." ;
             sh:minCount 1 ;
             sh:nodeKind sh:IRI ;
-            sh:order 1 ;
+            sh:order 2 ;
             sh:path ars:sponsorTerms ],
         [ sh:description "The name of the extensible enumeration." ;
-            sh:in ( NCIT:C117744 NCIT:C117745 "OperationRole" "OutputFileType" ) ;
+            sh:in ( NCIT:C117744 NCIT:C117745 "OperationRoleEnum" "OutputFileTypeEnum" ) ;
             sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path ars:enumeration ],
+        [ sh:maxCount 1 ;
+            sh:minCount 1 ;
             sh:order 0 ;
-            sh:path ars:enumeration ] ;
+            sh:path ars:id ] ;
     sh:targetClass ars:TerminologyExtension .
 
 ars:WhereClauseCompoundExpression a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:in ( "AND" "OR" "NOT" ) ;
+    sh:property [ sh:class ars:WhereClause ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 1 ;
+            sh:path ars:whereClauses ],
+        [ sh:in ( "AND" "OR" "NOT" ) ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 0 ;
-            sh:path ars:logicalOperator ],
-        [ sh:class ars:WhereClause ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 1 ;
-            sh:path ars:whereClauses ] ;
+            sh:path ars:logicalOperator ] ;
     sh:targetClass ars:WhereClauseCompoundExpression .
 
 ars:AnalysisCategorization a sh:NodeShape ;
@@ -640,12 +841,12 @@ ars:AnalysisCategorization a sh:NodeShape ;
     sh:description "A set of related implementer-defined categories that can be used to categorize analyses or outputs." ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path ars:label ],
+        [ sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 0 ;
             sh:path ars:id ],
-        [ sh:maxCount 1 ;
-            sh:order 1 ;
-            sh:path ars:label ],
         [ sh:class ars:AnalysisCategory ;
             sh:minCount 1 ;
             sh:nodeKind sh:IRI ;
@@ -657,7 +858,13 @@ ars:AnalysisMethod a sh:NodeShape ;
     sh:closed true ;
     sh:description "A set of one or more statistical operations." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:maxCount 1 ;
+    sh:property [ sh:class ars:AnalysisProgrammingCodeTemplate ;
+            sh:description "Template programming statements and/or a reference to the template program used to perform the specific analysis." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 5 ;
+            sh:path ars:codeTemplate ],
+        [ sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 0 ;
             sh:path ars:id ],
@@ -668,6 +875,10 @@ ars:AnalysisMethod a sh:NodeShape ;
             sh:minCount 1 ;
             sh:order 6 ;
             sh:path ars:name ],
+        [ sh:class ars:DocumentReference ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 4 ;
+            sh:path ars:documentRefs ],
         [ sh:maxCount 1 ;
             sh:order 1 ;
             sh:path ars:label ],
@@ -675,17 +886,7 @@ ars:AnalysisMethod a sh:NodeShape ;
             sh:minCount 1 ;
             sh:nodeKind sh:IRI ;
             sh:order 3 ;
-            sh:path ars:operations ],
-        [ sh:class ars:DocumentRef ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 4 ;
-            sh:path ars:documentRefs ],
-        [ sh:class ars:AnalysisProgrammingCodeTemplate ;
-            sh:description "Template programming statements and/or a reference to the template program used to perform the specific analysis." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 5 ;
-            sh:path ars:codeTemplate ] ;
+            sh:path ars:operations ] ;
     sh:targetClass ars:AnalysisMethod .
 
 ars:AnalysisOutputProgrammingCode a sh:NodeShape ;
@@ -696,20 +897,21 @@ ars:AnalysisOutputProgrammingCode a sh:NodeShape ;
             sh:maxCount 1 ;
             sh:order 1 ;
             sh:path ars:code ],
-        [ sh:class ars:DocumentRef ;
+        [ sh:class ars:AnalysisOutputCodeParameter ;
+            sh:description "Parameter values used to generate or execute the programming code." ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 3 ;
+            sh:path ars:parameters ],
+        [ sh:class ars:DocumentReference ;
+            sh:maxCount 1 ;
             sh:nodeKind sh:BlankNode ;
             sh:order 2 ;
-            sh:path ars:documentRefs ],
+            sh:path ars:documentRef ],
         [ sh:description "The name and version of the computer language used for the actual programming statements provided." ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 0 ;
-            sh:path ars:context ],
-        [ sh:class ars:CodeParameter ;
-            sh:description "Parameter values used to generate or execute the programming code." ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 3 ;
-            sh:path ars:parameters ] ;
+            sh:path ars:context ] ;
     sh:targetClass ars:AnalysisOutputProgrammingCode .
 
 ars:DataSubset a sh:NodeShape ;
@@ -717,17 +919,6 @@ ars:DataSubset a sh:NodeShape ;
     sh:description "A subset of data identified by selection criteria for inclusion in the analysis." ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:maxCount 1 ;
-            sh:order 2 ;
-            sh:path ars:level ],
-        [ sh:maxCount 1 ;
-            sh:order 3 ;
-            sh:path ars:order ],
-        [ sh:class ars:WhereClauseCondition ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 4 ;
-            sh:path ars:condition ],
-        [ sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 0 ;
             sh:path ars:id ],
@@ -736,49 +927,46 @@ ars:DataSubset a sh:NodeShape ;
             sh:nodeKind sh:BlankNode ;
             sh:order 5 ;
             sh:path ars:compoundExpression ],
+        [ sh:class ars:WhereClauseCondition ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 4 ;
+            sh:path ars:condition ],
         [ sh:maxCount 1 ;
             sh:order 1 ;
-            sh:path ars:label ] ;
+            sh:path ars:label ],
+        [ sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path ars:order ],
+        [ sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path ars:level ] ;
     sh:targetClass ars:DataSubset .
-
-ars:DisplaySection a sh:NodeShape ;
-    sh:closed true ;
-    sh:description "A part of a tabular display containing one or more pieces of informational text." ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:in ( "Title" "Footnote" "Abbreviation" "Legend" "Rowlabel Header" ) ;
-            sh:maxCount 1 ;
-            sh:order 0 ;
-            sh:path ars:sectionType ],
-        [ sh:class ars:DisplaySubSection ;
-            sh:nodeKind sh:IRI ;
-            sh:order 1 ;
-            sh:path ars:subSections ] ;
-    sh:targetClass ars:DisplaySection .
 
 ars:GroupingFactor a sh:NodeShape ;
     sh:closed false ;
     sh:description "A factor used to subdivide either the subject population or data records in an analysis dataset for analysis." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:description "For groupings based on a single variable, a reference to the dataset variable upon which grouping is based." ;
-            sh:maxCount 1 ;
-            sh:order 2 ;
-            sh:path ars:groupingVariable ],
-        [ sh:description "Indicates whether the groups defined by the grouping are prespecified (false) or obtained from distinct data values of the groupingVariable (true)." ;
+    sh:property [ sh:description "Indicates whether the groups defined by the grouping are prespecified (false) or obtained from distinct data values of the groupingVariable (true)." ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 3 ;
             sh:path ars:dataDriven ],
+        [ sh:description "For groupings based on a single variable, a reference to the dataset variable upon which grouping is based." ;
+            sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path ars:groupingVariable ],
+        [ sh:class ars:Group ;
+            sh:nodeKind sh:IRI ;
+            sh:order 4 ;
+            sh:path ars:groups ],
         [ sh:maxCount 1 ;
             sh:order 1 ;
             sh:path ars:label ],
         [ sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 0 ;
-            sh:path ars:id ],
-        [ sh:class ars:Group ;
-            sh:nodeKind sh:IRI ;
-            sh:order 4 ;
-            sh:path ars:groups ] ;
+            sh:path ars:id ] ;
     sh:targetClass ars:GroupingFactor .
 
 ars:Output a sh:NodeShape ;
@@ -787,87 +975,95 @@ ars:Output a sh:NodeShape ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:maxCount 1 ;
             sh:minCount 1 ;
+            sh:order 7 ;
+            sh:path ars:name ],
+        [ sh:maxCount 1 ;
+            sh:minCount 1 ;
             sh:order 0 ;
             sh:path ars:id ],
-        [ sh:maxCount 1 ;
-            sh:order 1 ;
-            sh:path ars:version ],
         [ sh:class ars:AnalysisCategory ;
             sh:nodeKind sh:IRI ;
             sh:order 4 ;
             sh:path ars:categoryIds ],
-        [ sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 7 ;
-            sh:path ars:name ],
         [ sh:class ars:OutputFile ;
             sh:nodeKind sh:BlankNode ;
             sh:order 2 ;
             sh:path ars:fileSpecifications ],
-        [ sh:class ars:OrderedDisplay ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 3 ;
-            sh:path ars:displays ],
-        [ sh:class ars:DocumentRef ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 5 ;
-            sh:path ars:documentRefs ],
+        [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path ars:version ],
         [ sh:class ars:AnalysisOutputProgrammingCode ;
             sh:description "Programming statements and/or a reference to the program used to perform the specific output." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNode ;
             sh:order 6 ;
-            sh:path ars:programmingCode ] ;
+            sh:path ars:programmingCode ],
+        [ sh:class ars:DocumentReference ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 5 ;
+            sh:path ars:documentRefs ],
+        [ sh:class ars:OrderedDisplay ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 3 ;
+            sh:path ars:displays ] ;
     sh:targetClass ars:Output .
 
 ars:ReferenceDocument a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 2 ;
-            sh:path ars:name ],
-        [ sh:maxCount 1 ;
             sh:order 1 ;
             sh:path ars:location ],
         [ sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 0 ;
-            sh:path ars:id ] ;
+            sh:path ars:id ],
+        [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 2 ;
+            sh:path ars:name ] ;
     sh:targetClass ars:ReferenceDocument .
 
 ars:ReferencedOperationRelationship a sh:NodeShape ;
     sh:closed true ;
     sh:description "A reference to an statistical operation whose results is used in the calculation of the result for this operation." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class ars:Analysis ;
+    sh:property [ sh:maxCount 1 ;
+            sh:order 4 ;
+            sh:path ars:description ],
+        [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path ars:id ],
+        [ sh:class ars:Analysis ;
             sh:maxCount 1 ;
             sh:nodeKind sh:IRI ;
             sh:order 3 ;
             sh:path ars:analysisId ],
-        [ sh:maxCount 1 ;
-            sh:order 4 ;
-            sh:path ars:description ],
         [ sh:class ars:Operation ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:IRI ;
             sh:order 2 ;
             sh:path ars:operationId ],
-        [ sh:maxCount 1 ;
+        [ sh:class ars:ExtensibleTerminologyTerm ;
+            sh:maxCount 1 ;
             sh:minCount 1 ;
+            sh:nodeKind sh:BlankNode ;
             sh:order 1 ;
-            sh:path ars:referencedOperationRole ],
-        [ sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 0 ;
-            sh:path ars:id ] ;
+            sh:path ars:referencedOperationRole ] ;
     sh:targetClass ars:ReferencedOperationRelationship .
 
 ars:WhereClause a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class ars:WhereClauseCompoundExpression ;
+    sh:property [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path ars:order ],
+        [ sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path ars:level ],
+        [ sh:class ars:WhereClauseCompoundExpression ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNode ;
             sh:order 3 ;
@@ -876,13 +1072,7 @@ ars:WhereClause a sh:NodeShape ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNode ;
             sh:order 2 ;
-            sh:path ars:condition ],
-        [ sh:maxCount 1 ;
-            sh:order 0 ;
-            sh:path ars:level ],
-        [ sh:maxCount 1 ;
-            sh:order 1 ;
-            sh:path ars:order ] ;
+            sh:path ars:condition ] ;
     sh:targetClass ars:WhereClause .
 
 ars:AnalysisCategory a sh:NodeShape ;
@@ -906,24 +1096,24 @@ ars:AnalysisSet a sh:NodeShape ;
     sh:closed true ;
     sh:description "A set of subjects whose data are to be included in the main analyses. This should be defined in the statistical section of the protocol. NOTE: There are a number of potential analysis sets, including, for example, the set based upon the intent-to-treat principle. [ICH E9]" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class ars:CompoundSetExpression ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 5 ;
-            sh:path ars:compoundExpression ],
-        [ sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 0 ;
-            sh:path ars:id ],
+    sh:property [ sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path ars:level ],
         [ sh:maxCount 1 ;
             sh:order 3 ;
             sh:path ars:order ],
         [ sh:maxCount 1 ;
-            sh:order 2 ;
-            sh:path ars:level ],
-        [ sh:maxCount 1 ;
             sh:order 1 ;
             sh:path ars:label ],
+        [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path ars:id ],
+        [ sh:class ars:CompoundSetExpression ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 5 ;
+            sh:path ars:compoundExpression ],
         [ sh:class ars:WhereClauseCondition ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNode ;
@@ -934,15 +1124,15 @@ ars:AnalysisSet a sh:NodeShape ;
 ars:CompoundGroupExpression a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class ars:Group ;
-            sh:nodeKind sh:IRI ;
-            sh:order 1 ;
-            sh:path ars:whereClauses ],
-        [ sh:in ( "AND" "OR" "NOT" ) ;
+    sh:property [ sh:in ( "AND" "OR" "NOT" ) ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 0 ;
-            sh:path ars:logicalOperator ] ;
+            sh:path ars:logicalOperator ],
+        [ sh:class ars:Group ;
+            sh:nodeKind sh:IRI ;
+            sh:order 1 ;
+            sh:path ars:whereClauses ] ;
     sh:targetClass ars:CompoundGroupExpression .
 
 ars:Group a sh:NodeShape ;
@@ -950,12 +1140,14 @@ ars:Group a sh:NodeShape ;
     sh:description "A subdivision of the subject population or analysis dataset record set based on a defined factor." ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:maxCount 1 ;
-            sh:order 1 ;
-            sh:path ars:label ],
-        [ sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 0 ;
             sh:path ars:id ],
+        [ sh:class ars:WhereClauseCondition ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 4 ;
+            sh:path ars:condition ],
         [ sh:maxCount 1 ;
             sh:order 2 ;
             sh:path ars:level ],
@@ -964,14 +1156,12 @@ ars:Group a sh:NodeShape ;
             sh:nodeKind sh:BlankNode ;
             sh:order 5 ;
             sh:path ars:compoundExpression ],
-        [ sh:class ars:WhereClauseCondition ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 4 ;
-            sh:path ars:condition ],
         [ sh:maxCount 1 ;
             sh:order 3 ;
-            sh:path ars:order ] ;
+            sh:path ars:order ],
+        [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path ars:label ] ;
     sh:targetClass ars:Group .
 
 ars:NestedList a sh:NodeShape ;
@@ -989,23 +1179,23 @@ ars:Operation a sh:NodeShape ;
     sh:description "A statistical operation that produces a single analysis result value as part of an analysis method." ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 0 ;
-            sh:path ars:id ],
-        [ sh:maxCount 1 ;
-            sh:order 3 ;
-            sh:path ars:resultPattern ],
-        [ sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 4 ;
-            sh:path ars:name ],
-        [ sh:maxCount 1 ;
             sh:order 1 ;
             sh:path ars:label ],
         [ sh:class ars:ReferencedOperationRelationship ;
             sh:nodeKind sh:IRI ;
             sh:order 2 ;
-            sh:path ars:referencedOperationRelationships ] ;
+            sh:path ars:referencedOperationRelationships ],
+        [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 4 ;
+            sh:path ars:name ],
+        [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path ars:id ],
+        [ sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path ars:resultPattern ] ;
     sh:targetClass ars:Operation .
 
 ars:Analysis a sh:NodeShape ;
@@ -1018,53 +1208,18 @@ ars:Analysis a sh:NodeShape ;
 * One or more factors by which either subjects or data records are grouped for analysis (optional).
 """ ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class ars:ReferencedAnalysisOperation ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 13 ;
-            sh:path ars:referencedAnalysisOperations ],
-        [ sh:class ars:AnalysisOutputProgrammingCode ;
-            sh:description "Programming statements and/or a reference to the program used to perform the specific analysis." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 14 ;
-            sh:path ars:programmingCode ],
-        [ sh:class ars:DataSubset ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 9 ;
-            sh:path ars:dataSubsetId ],
-        [ sh:maxCount 1 ;
-            sh:order 10 ;
-            sh:path ars:dataset ],
-        [ sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 0 ;
-            sh:path ars:id ],
-        [ sh:class ars:DocumentRef ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 6 ;
-            sh:path ars:documentRefs ],
-        [ sh:class ars:AnalysisCategory ;
-            sh:nodeKind sh:IRI ;
-            sh:order 2 ;
-            sh:path ars:categoryIds ],
-        [ sh:class ars:OrderedGroupingFactor ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 8 ;
-            sh:path ars:orderedGroupings ],
-        [ sh:maxCount 1 ;
-            sh:order 1 ;
-            sh:path ars:version ],
-        [ sh:description "The purpose of the analysis within the body of evidence (e.g., section in the clinical study report)." ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 5 ;
-            sh:path ars:purpose ],
-        [ sh:class ars:AnalysisSet ;
+    sh:property [ sh:class ars:AnalysisSet ;
             sh:maxCount 1 ;
             sh:nodeKind sh:IRI ;
             sh:order 7 ;
             sh:path ars:analysisSetId ],
+        [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 16 ;
+            sh:path ars:name ],
+        [ sh:maxCount 1 ;
+            sh:order 10 ;
+            sh:path ars:dataset ],
         [ sh:class ars:AnalysisMethod ;
             sh:description "A reference to the set of one or more statistical operations performed for the analysis." ;
             sh:maxCount 1 ;
@@ -1072,16 +1227,44 @@ ars:Analysis a sh:NodeShape ;
             sh:nodeKind sh:IRI ;
             sh:order 12 ;
             sh:path ars:methodId ],
-        [ sh:maxCount 1 ;
+        [ sh:class ars:DataSubset ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 9 ;
+            sh:path ars:dataSubsetId ],
+        [ sh:class ars:ExtensibleTerminologyTerm ;
+            sh:description "The purpose of the analysis within the body of evidence (e.g., section in the clinical study report)." ;
+            sh:maxCount 1 ;
             sh:minCount 1 ;
-            sh:order 16 ;
-            sh:path ars:name ],
+            sh:nodeKind sh:BlankNode ;
+            sh:order 5 ;
+            sh:path ars:purpose ],
+        [ sh:class ars:AnalysisOutputProgrammingCode ;
+            sh:description "Programming statements and/or a reference to the program used to perform the specific analysis." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 14 ;
+            sh:path ars:programmingCode ],
+        [ sh:class ars:OrderedGroupingFactor ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 8 ;
+            sh:path ars:orderedGroupings ],
         [ sh:maxCount 1 ;
             sh:order 3 ;
             sh:path ars:description ],
-        [ sh:description "The rationale for performing this analysis. It indicates when the analysis was planned." ;
+        [ sh:class ars:DocumentReference ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 6 ;
+            sh:path ars:documentRefs ],
+        [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path ars:id ],
+        [ sh:class ars:ExtensibleTerminologyTerm ;
+            sh:description "The rationale for performing this analysis. It indicates when the analysis was planned." ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
+            sh:nodeKind sh:BlankNode ;
             sh:order 4 ;
             sh:path ars:reason ],
         [ sh:class ars:OperationResult ;
@@ -1089,11 +1272,35 @@ ars:Analysis a sh:NodeShape ;
             sh:order 15 ;
             sh:path ars:results ],
         [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path ars:version ],
+        [ sh:class ars:AnalysisCategory ;
+            sh:nodeKind sh:IRI ;
+            sh:order 2 ;
+            sh:path ars:categoryIds ],
+        [ sh:class ars:ReferencedAnalysisOperation ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 13 ;
+            sh:path ars:referencedAnalysisOperations ],
+        [ sh:maxCount 1 ;
             sh:order 11 ;
             sh:path ars:variable ] ;
     sh:targetClass ars:Analysis .
 
-ars:DocumentRef a sh:NodeShape ;
+ars:ExtensibleTerminologyTerm a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class ars:SponsorTerm ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 1 ;
+            sh:path ars:sponsorTermId ],
+        [ sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path ars:controlledTerm ] ;
+    sh:targetClass ars:ExtensibleTerminologyTerm .
+
+ars:DocumentReference a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:class ars:ReferenceDocument ;
@@ -1106,23 +1313,54 @@ ars:DocumentRef a sh:NodeShape ;
             sh:nodeKind sh:BlankNode ;
             sh:order 1 ;
             sh:path ars:pageRefs ] ;
-    sh:targetClass ars:DocumentRef .
+    sh:targetClass ars:DocumentReference .
 
 ars:WhereClauseCondition a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:maxCount 1 ;
-            sh:order 3 ;
-            sh:path ars:value ],
-        [ sh:maxCount 1 ;
-            sh:order 1 ;
-            sh:path ars:variable ],
-        [ sh:in ( "EQ" "NE" "GT" "GE" "LT" "LE" "IN" "NOTIN" ) ;
+    sh:property [ sh:in ( "EQ" "NE" "GT" "GE" "LT" "LE" "IN" "NOTIN" ) ;
             sh:maxCount 1 ;
             sh:order 2 ;
             sh:path ars:comparator ],
         [ sh:maxCount 1 ;
             sh:order 0 ;
-            sh:path ars:dataset ] ;
+            sh:path ars:dataset ],
+        [ sh:order 3 ;
+            sh:path ars:value ],
+        [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path ars:variable ] ;
     sh:targetClass ars:WhereClauseCondition .
+
+ars:DisplaySubSection a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "An occurrence of a display section containing text that is ordered with respect to other occurrences of the same type of display section." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path ars:id ],
+        [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 1 ;
+            sh:path ars:text ] ;
+    sh:targetClass ars:DisplaySubSection .
+
+ars:SponsorTerm a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A sponsor-defined term that is included in an extensible set of controlled terminology." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:description "The specific value expected for submissions." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 1 ;
+            sh:path ars:submissionValue ],
+        [ sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path ars:description ],
+        [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path ars:id ] ;
+    sh:targetClass ars:SponsorTerm .
 

@@ -14,15 +14,13 @@ URI: [ars:AnalysisProgrammingCodeTemplate](https://www.cdisc.org/ars/1-0/Analysi
 ```mermaid
  classDiagram
     class AnalysisProgrammingCodeTemplate
-      AnalysisOutputProgrammingCode <|-- AnalysisProgrammingCodeTemplate
-      
       AnalysisProgrammingCodeTemplate : code
         
       AnalysisProgrammingCodeTemplate : context
         
-      AnalysisProgrammingCodeTemplate : documentRefs
+      AnalysisProgrammingCodeTemplate : documentRef
         
-          AnalysisProgrammingCodeTemplate --|> DocumentRef : documentRefs
+          AnalysisProgrammingCodeTemplate --|> DocumentReference : documentRef
         
       AnalysisProgrammingCodeTemplate : parameters
         
@@ -34,21 +32,17 @@ URI: [ars:AnalysisProgrammingCodeTemplate](https://www.cdisc.org/ars/1-0/Analysi
 
 
 
-
-## Inheritance
-* [AnalysisOutputProgrammingCode](AnalysisOutputProgrammingCode.md)
-    * **AnalysisProgrammingCodeTemplate**
-
+<!-- no inheritance hierarchy -->
 
 
 ## Slots
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [context](context.md) | 1..1 <br/> [String](String.md) | The name and version of the computer language used for the actual programming... | [AnalysisOutputProgrammingCode](AnalysisOutputProgrammingCode.md) |
-| [code](code.md) | 0..1 <br/> [String](String.md) | Programming statements used to perform the specific analysis | [AnalysisOutputProgrammingCode](AnalysisOutputProgrammingCode.md) |
-| [documentRefs](documentRefs.md) | 0..* <br/> [DocumentRef](DocumentRef.md) |  | [AnalysisOutputProgrammingCode](AnalysisOutputProgrammingCode.md) |
-| [parameters](parameters.md) | 0..* <br/> [TemplateCodeParameter](TemplateCodeParameter.md) | Parameters whose values will be used to generate or execute the programming c... | [AnalysisOutputProgrammingCode](AnalysisOutputProgrammingCode.md) |
+| [context](context.md) | 1..1 <br/> [String](String.md) | The name and version of the computer language used for the actual programming... | direct |
+| [code](code.md) | 0..1 <br/> [String](String.md) | Programming statements used to perform the specific analysis | direct |
+| [documentRef](documentRef.md) | 0..1 <br/> [DocumentReference](DocumentReference.md) |  | direct |
+| [parameters](parameters.md) | 0..* <br/> [TemplateCodeParameter](TemplateCodeParameter.md) | Parameters whose values will be used to generate or execute the programming c... | direct |
 
 
 
@@ -106,7 +100,11 @@ description: Programming statements and/or a reference to a used as a template f
   creation of a program to perform method operations for a specific analysis.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
-is_a: AnalysisOutputProgrammingCode
+slots:
+- context
+- code
+- documentRef
+- parameters
 slot_usage:
   parameters:
     name: parameters
@@ -114,6 +112,7 @@ slot_usage:
       code for a specific analysis.
     domain_of:
     - AnalysisOutputProgrammingCode
+    - AnalysisProgrammingCodeTemplate
     range: TemplateCodeParameter
 
 ```
@@ -128,7 +127,6 @@ description: Programming statements and/or a reference to a used as a template f
   creation of a program to perform method operations for a specific analysis.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
-is_a: AnalysisOutputProgrammingCode
 slot_usage:
   parameters:
     name: parameters
@@ -136,6 +134,7 @@ slot_usage:
       code for a specific analysis.
     domain_of:
     - AnalysisOutputProgrammingCode
+    - AnalysisProgrammingCodeTemplate
     range: TemplateCodeParameter
 attributes:
   context:
@@ -150,6 +149,7 @@ attributes:
     owner: AnalysisProgrammingCodeTemplate
     domain_of:
     - AnalysisOutputProgrammingCode
+    - AnalysisProgrammingCodeTemplate
     range: string
     required: true
   code:
@@ -161,20 +161,19 @@ attributes:
     owner: AnalysisProgrammingCodeTemplate
     domain_of:
     - AnalysisOutputProgrammingCode
+    - AnalysisProgrammingCodeTemplate
     range: string
-  documentRefs:
-    name: documentRefs
+  documentRef:
+    name: documentRef
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
-    multivalued: true
-    alias: documentRefs
+    multivalued: false
+    alias: documentRef
     owner: AnalysisProgrammingCodeTemplate
     domain_of:
-    - Analysis
-    - AnalysisMethod
     - AnalysisOutputProgrammingCode
-    - Output
-    range: DocumentRef
+    - AnalysisProgrammingCodeTemplate
+    range: DocumentReference
     inlined: true
     inlined_as_list: true
   parameters:
@@ -188,6 +187,7 @@ attributes:
     owner: AnalysisProgrammingCodeTemplate
     domain_of:
     - AnalysisOutputProgrammingCode
+    - AnalysisProgrammingCodeTemplate
     range: TemplateCodeParameter
     inlined: true
     inlined_as_list: true

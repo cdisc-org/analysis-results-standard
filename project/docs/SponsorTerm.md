@@ -46,6 +46,15 @@ URI: [ars:SponsorTerm](https://www.cdisc.org/ars/1-0/SponsorTerm)
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
 | [TerminologyExtension](TerminologyExtension.md) | [sponsorTerms](sponsorTerms.md) | range | [SponsorTerm](SponsorTerm.md) |
+| [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) | [sponsorTermId](sponsorTermId.md) | range | [SponsorTerm](SponsorTerm.md) |
+| [AnalysisReason](AnalysisReason.md) | [sponsorTermId](sponsorTermId.md) | range | [SponsorTerm](SponsorTerm.md) |
+| [SponsorAnalysisReason](SponsorAnalysisReason.md) | [sponsorTermId](sponsorTermId.md) | range | [SponsorTerm](SponsorTerm.md) |
+| [AnalysisPurpose](AnalysisPurpose.md) | [sponsorTermId](sponsorTermId.md) | range | [SponsorTerm](SponsorTerm.md) |
+| [SponsorAnalysisPurpose](SponsorAnalysisPurpose.md) | [sponsorTermId](sponsorTermId.md) | range | [SponsorTerm](SponsorTerm.md) |
+| [OperationRole](OperationRole.md) | [sponsorTermId](sponsorTermId.md) | range | [SponsorTerm](SponsorTerm.md) |
+| [SponsorOperationRole](SponsorOperationRole.md) | [sponsorTermId](sponsorTermId.md) | range | [SponsorTerm](SponsorTerm.md) |
+| [OutputFileType](OutputFileType.md) | [sponsorTermId](sponsorTermId.md) | range | [SponsorTerm](SponsorTerm.md) |
+| [SponsorOutputFileType](SponsorOutputFileType.md) | [sponsorTermId](sponsorTermId.md) | range | [SponsorTerm](SponsorTerm.md) |
 
 
 
@@ -119,6 +128,7 @@ attributes:
     alias: id
     owner: SponsorTerm
     domain_of:
+    - ReportingEvent
     - AnalysisCategorization
     - AnalysisCategory
     - Analysis
@@ -133,6 +143,7 @@ attributes:
     - Group
     - DataSubset
     - ReferenceDocument
+    - TerminologyExtension
     - SponsorTerm
     range: string
     required: true
