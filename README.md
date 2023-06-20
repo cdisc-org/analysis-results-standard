@@ -42,6 +42,10 @@ The goals of CDISC Analysis Results Standards team is to develop:
  
 ![Analysis Results Future State](images/AR-future-state.png)
 
+## Documentation
+
+The documentation of the model is made available at: https://cdisc-org.github.io/analysis-results-standard/
+
 ## Contribution
 
 Project Contact: 
