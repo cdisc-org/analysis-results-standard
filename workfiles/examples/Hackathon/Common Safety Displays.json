@@ -53951,10 +53951,27 @@
           "pageRefs": [
             {
               "refType": "PhysicalRef",
-              "label": "Sections 7 (General Considerations) and 11.6 (Other Safety Measures)",
+              "label": "Sections 7 (General Considerations)",
               "pageNumbers": [
-                9,
+                9
+              ]
+            },
+            {
+              "refType": "PhysicalRef",
+              "label": "11.6 (Other Safety Measures)",
+              "pageNumbers": [
                 17
+              ]
+            }
+          ]
+        },
+        {
+          "referenceDocumentId": "CDISCPILOT01_CSR",
+          "pageRefs": [
+            {
+              "refType": "NamedDestination",
+              "pageNames": [
+                "Table 14-7.02"
               ]
             }
           ]

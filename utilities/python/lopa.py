@@ -122,22 +122,22 @@ def get_category(id: AnalysisCategoryId, element: YAMLRoot = rptevt,attribute: s
             print(f"A category with id '{id}' was not found in any categorization or subcategorization")
         return None
     
-def get_pagerefs(docref: DocumentReference) -> str:
+def get_pagerefs(docref: DocumentReference,level: int) -> str:
 
     preftxt = ''
     for pref in docref.pageRefs:
-        preftxt += ', '
+        preftxt += f"\n{'  '*(level+4)}- "
         if pref.pageNumbers:
-            preftxt += 'page' if len(pref.pageNumbers) == 1 else 'pages'
+            preftxt += 'Page' if len(pref.pageNumbers) == 1 else 'Pages'
             preftxt += ' {}'.format(str(pref.pageNumbers[0])) 
             for pn in pref.pageNumbers[1:-2]:
                 preftxt += ', {}'.format(str(pn))
             if len(pref.pageNumbers) > 1:
                 preftxt += ' and {}'.format(str(pref.pageNumbers[-1]))
         elif pref.firstPage:
-            preftxt += 'pages ' + str(pref.firstPage) + '-' + str(pref.lastPage)
+            preftxt += 'Pages ' + str(pref.firstPage) + '-' + str(pref.lastPage)
         elif pref.pageNames:
-            preftxt += 'section' if len(pref.pageNames) == 1 else 'sections'
+            preftxt += 'Section' if len(pref.pageNames) == 1 else 'Sections'
             preftxt += ' "{}"'.format(str(pref.pageNames[0])) 
             for pnm in pref.pageNames[1:-2]:
                 preftxt += ', "{}"'.format(pnm)     
@@ -164,7 +164,7 @@ def print_list(nlist: NestedList, fileref: TextIOWrapper,level: int = 1, pfx:str
                     fileref.write(f"{'  '*(level+2)}See:\n")
                     for docref in analysis.documentRefs:
                         refdoc = ars_api.fetch_ReferenceDocument(docref.referenceDocumentId)                        
-                        fileref.write(f"{'  '*(level+3)}> {refdoc.name} ({refdoc.location}){get_pagerefs(docref)}\n")
+                        fileref.write(f"{'  '*(level+3)}> {refdoc.name} ({refdoc.location}){get_pagerefs(docref,level)}\n")
                 if analysis.categoryIds:
                     fileref.write(f"{'  '*(level+1)}Categories:\n")
                     for acatid in analysis.categoryIds:
