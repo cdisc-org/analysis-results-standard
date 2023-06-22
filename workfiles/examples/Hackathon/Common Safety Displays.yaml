@@ -1304,10 +1304,10 @@ analyses:
   dataset: ADSL
   variable: USUBJID
   referencedAnalysisOperations:
-  - analysisId: An03_02_AgeGrp_Summ_ByTrt
-    referencedOperationId: Mth01_CatVar_Summ_ByGrp_2_pct_NUM
-  - analysisId: An01_05_SAF_Summ_ByTrt
-    referencedOperationId: Mth01_CatVar_Summ_ByGrp_2_pct_DEN
+  - referencedOperationRelationshipId: Mth01_CatVar_Summ_ByGrp_2_pct_NUM
+    analysisId: An03_02_AgeGrp_Summ_ByTrt
+  - referencedOperationRelationshipId: Mth01_CatVar_Summ_ByGrp_2_pct_DEN
+    analysisId: An01_05_SAF_Summ_ByTrt
   results:
   - operationId: Mth01_CatVar_Summ_ByGrp_1_n
     resultGroups:
@@ -1475,10 +1475,10 @@ analyses:
   dataset: ADSL
   variable: USUBJID
   referencedAnalysisOperations:
-  - analysisId: An03_03_Sex_Summ_ByTrt
-    referencedOperationId: Mth01_CatVar_Summ_ByGrp_2_pct_NUM
-  - analysisId: An01_05_SAF_Summ_ByTrt
-    referencedOperationId: Mth01_CatVar_Summ_ByGrp_2_pct_DEN
+  - referencedOperationRelationshipId: Mth01_CatVar_Summ_ByGrp_2_pct_NUM
+    analysisId: An03_03_Sex_Summ_ByTrt
+  - referencedOperationRelationshipId: Mth01_CatVar_Summ_ByGrp_2_pct_DEN
+    analysisId: An01_05_SAF_Summ_ByTrt
   results:
   - operationId: Mth01_CatVar_Summ_ByGrp_1_n
     resultGroups:
@@ -1646,10 +1646,10 @@ analyses:
   dataset: ADSL
   variable: USUBJID
   referencedAnalysisOperations:
-  - analysisId: An03_04_Ethnic_Summ_ByTrt
-    referencedOperationId: Mth01_CatVar_Summ_ByGrp_2_pct_NUM
-  - analysisId: An01_05_SAF_Summ_ByTrt
-    referencedOperationId: Mth01_CatVar_Summ_ByGrp_2_pct_DEN
+  - referencedOperationRelationshipId: Mth01_CatVar_Summ_ByGrp_2_pct_NUM
+    analysisId: An03_04_Ethnic_Summ_ByTrt
+  - referencedOperationRelationshipId: Mth01_CatVar_Summ_ByGrp_2_pct_DEN
+    analysisId: An01_05_SAF_Summ_ByTrt
   results:
   - operationId: Mth01_CatVar_Summ_ByGrp_1_n
     resultGroups:
@@ -1817,10 +1817,10 @@ analyses:
   dataset: ADSL
   variable: USUBJID
   referencedAnalysisOperations:
-  - analysisId: An03_05_Race_Summ_ByTrt
-    referencedOperationId: Mth01_CatVar_Summ_ByGrp_2_pct_NUM
-  - analysisId: An01_05_SAF_Summ_ByTrt
-    referencedOperationId: Mth01_CatVar_Summ_ByGrp_2_pct_DEN
+  - referencedOperationRelationshipId: Mth01_CatVar_Summ_ByGrp_2_pct_NUM
+    analysisId: An03_05_Race_Summ_ByTrt
+  - referencedOperationRelationshipId: Mth01_CatVar_Summ_ByGrp_2_pct_DEN
+    analysisId: An01_05_SAF_Summ_ByTrt
   results:
   - operationId: Mth01_CatVar_Summ_ByGrp_1_n
     resultGroups:
@@ -2537,10 +2537,10 @@ analyses:
   dataset: ADAE
   variable: USUBJID
   referencedAnalysisOperations:
-  - analysisId: An07_01_TEAE_Summ_ByTrt
-    referencedOperationId: Mth01_CatVar_Summ_ByGrp_2_pct_NUM
-  - analysisId: An01_05_SAF_Summ_ByTrt
-    referencedOperationId: Mth01_CatVar_Summ_ByGrp_2_pct_DEN
+  - referencedOperationRelationshipId: Mth01_CatVar_Summ_ByGrp_2_pct_NUM
+    analysisId: An07_01_TEAE_Summ_ByTrt
+  - referencedOperationRelationshipId: Mth01_CatVar_Summ_ByGrp_2_pct_DEN
+    analysisId: An01_05_SAF_Summ_ByTrt
   results:
   - operationId: Mth01_CatVar_Summ_ByGrp_1_n
     resultGroups:
@@ -2668,10 +2668,10 @@ analyses:
   dataset: ADAE
   variable: USUBJID
   referencedAnalysisOperations:
-  - analysisId: An07_02_RelTEAE_Summ_ByTrt
-    referencedOperationId: Mth01_CatVar_Summ_ByGrp_2_pct_NUM
-  - analysisId: An01_05_SAF_Summ_ByTrt
-    referencedOperationId: Mth01_CatVar_Summ_ByGrp_2_pct_DEN
+  - referencedOperationRelationshipId: Mth01_CatVar_Summ_ByGrp_2_pct_NUM
+    analysisId: An07_02_RelTEAE_Summ_ByTrt
+  - referencedOperationRelationshipId: Mth01_CatVar_Summ_ByGrp_2_pct_DEN
+    analysisId: An01_05_SAF_Summ_ByTrt
   results:
   - operationId: Mth01_CatVar_Summ_ByGrp_1_n
     resultGroups:
@@ -2731,10 +2731,10 @@ analyses:
   dataset: ADAE
   variable: USUBJID
   referencedAnalysisOperations:
-  - analysisId: An07_03_SerTEAE_Summ_ByTrt
-    referencedOperationId: Mth01_CatVar_Summ_ByGrp_2_pct_NUM
-  - analysisId: An01_05_SAF_Summ_ByTrt
-    referencedOperationId: Mth01_CatVar_Summ_ByGrp_2_pct_DEN
+  - referencedOperationRelationshipId: Mth01_CatVar_Summ_ByGrp_2_pct_NUM
+    analysisId: An07_03_SerTEAE_Summ_ByTrt
+  - referencedOperationRelationshipId: Mth01_CatVar_Summ_ByGrp_2_pct_DEN
+    analysisId: An01_05_SAF_Summ_ByTrt
   results:
   - operationId: Mth01_CatVar_Summ_ByGrp_1_n
     resultGroups:
@@ -2794,10 +2794,10 @@ analyses:
   dataset: ADAE
   variable: USUBJID
   referencedAnalysisOperations:
-  - analysisId: An07_04_RelSerTEAE_Summ_ByTrt
-    referencedOperationId: Mth01_CatVar_Summ_ByGrp_2_pct_NUM
-  - analysisId: An01_05_SAF_Summ_ByTrt
-    referencedOperationId: Mth01_CatVar_Summ_ByGrp_2_pct_DEN
+  - referencedOperationRelationshipId: Mth01_CatVar_Summ_ByGrp_2_pct_NUM
+    analysisId: An07_04_RelSerTEAE_Summ_ByTrt
+  - referencedOperationRelationshipId: Mth01_CatVar_Summ_ByGrp_2_pct_DEN
+    analysisId: An01_05_SAF_Summ_ByTrt
   results:
   - operationId: Mth01_CatVar_Summ_ByGrp_1_n
     resultGroups:
@@ -2857,10 +2857,10 @@ analyses:
   dataset: ADAE
   variable: USUBJID
   referencedAnalysisOperations:
-  - analysisId: An07_05_TEAELd2Dth_Summ_ByTrt
-    referencedOperationId: Mth01_CatVar_Summ_ByGrp_2_pct_NUM
-  - analysisId: An01_05_SAF_Summ_ByTrt
-    referencedOperationId: Mth01_CatVar_Summ_ByGrp_2_pct_DEN
+  - referencedOperationRelationshipId: Mth01_CatVar_Summ_ByGrp_2_pct_NUM
+    analysisId: An07_05_TEAELd2Dth_Summ_ByTrt
+  - referencedOperationRelationshipId: Mth01_CatVar_Summ_ByGrp_2_pct_DEN
+    analysisId: An01_05_SAF_Summ_ByTrt
   results:
   - operationId: Mth01_CatVar_Summ_ByGrp_1_n
     resultGroups:
@@ -2920,10 +2920,10 @@ analyses:
   dataset: ADAE
   variable: USUBJID
   referencedAnalysisOperations:
-  - analysisId: An07_06_RelTEAELd2Dth_Summ_ByTrt
-    referencedOperationId: Mth01_CatVar_Summ_ByGrp_2_pct_NUM
-  - analysisId: An01_05_SAF_Summ_ByTrt
-    referencedOperationId: Mth01_CatVar_Summ_ByGrp_2_pct_DEN
+  - referencedOperationRelationshipId: Mth01_CatVar_Summ_ByGrp_2_pct_NUM
+    analysisId: An07_06_RelTEAELd2Dth_Summ_ByTrt
+  - referencedOperationRelationshipId: Mth01_CatVar_Summ_ByGrp_2_pct_DEN
+    analysisId: An01_05_SAF_Summ_ByTrt
   results:
   - operationId: Mth01_CatVar_Summ_ByGrp_1_n
     resultGroups:
@@ -2984,10 +2984,10 @@ analyses:
   dataset: ADAE
   variable: USUBJID
   referencedAnalysisOperations:
-  - analysisId: An07_07_TEAELd2DoseMod_Summ_ByTrt
-    referencedOperationId: Mth01_CatVar_Summ_ByGrp_2_pct_NUM
-  - analysisId: An01_05_SAF_Summ_ByTrt
-    referencedOperationId: Mth01_CatVar_Summ_ByGrp_2_pct_DEN
+  - referencedOperationRelationshipId: Mth01_CatVar_Summ_ByGrp_2_pct_NUM
+    analysisId: An07_07_TEAELd2DoseMod_Summ_ByTrt
+  - referencedOperationRelationshipId: Mth01_CatVar_Summ_ByGrp_2_pct_DEN
+    analysisId: An01_05_SAF_Summ_ByTrt
   results:
   - operationId: Mth01_CatVar_Summ_ByGrp_1_n
     resultGroups:
@@ -3048,10 +3048,10 @@ analyses:
   dataset: ADAE
   variable: USUBJID
   referencedAnalysisOperations:
-  - analysisId: An07_08_TEAELd2TrtDsc_Summ_ByTrt
-    referencedOperationId: Mth01_CatVar_Summ_ByGrp_2_pct_NUM
-  - analysisId: An01_05_SAF_Summ_ByTrt
-    referencedOperationId: Mth01_CatVar_Summ_ByGrp_2_pct_DEN
+  - referencedOperationRelationshipId: Mth01_CatVar_Summ_ByGrp_2_pct_NUM
+    analysisId: An07_08_TEAELd2TrtDsc_Summ_ByTrt
+  - referencedOperationRelationshipId: Mth01_CatVar_Summ_ByGrp_2_pct_DEN
+    analysisId: An01_05_SAF_Summ_ByTrt
   results:
   - operationId: Mth01_CatVar_Summ_ByGrp_1_n
     resultGroups:
@@ -3121,10 +3121,10 @@ analyses:
   dataset: ADAE
   variable: USUBJID
   referencedAnalysisOperations:
-  - analysisId: An07_09_Soc_Summ_ByTrt
-    referencedOperationId: Mth01_CatVar_Summ_ByGrp_2_pct_NUM
-  - analysisId: An01_05_SAF_Summ_ByTrt
-    referencedOperationId: Mth01_CatVar_Summ_ByGrp_2_pct_DEN
+  - referencedOperationRelationshipId: Mth01_CatVar_Summ_ByGrp_2_pct_NUM
+    analysisId: An07_09_Soc_Summ_ByTrt
+  - referencedOperationRelationshipId: Mth01_CatVar_Summ_ByGrp_2_pct_DEN
+    analysisId: An01_05_SAF_Summ_ByTrt
   results:
   - operationId: Mth01_CatVar_Summ_ByGrp_1_n
     resultGroups:
@@ -4346,10 +4346,10 @@ analyses:
   dataset: ADAE
   variable: USUBJID
   referencedAnalysisOperations:
-  - analysisId: An07_10_SocPt_Summ_ByTrt
-    referencedOperationId: Mth01_CatVar_Summ_ByGrp_2_pct_NUM
-  - analysisId: An01_05_SAF_Summ_ByTrt
-    referencedOperationId: Mth01_CatVar_Summ_ByGrp_2_pct_DEN
+  - referencedOperationRelationshipId: Mth01_CatVar_Summ_ByGrp_2_pct_NUM
+    analysisId: An07_10_SocPt_Summ_ByTrt
+  - referencedOperationRelationshipId: Mth01_CatVar_Summ_ByGrp_2_pct_DEN
+    analysisId: An01_05_SAF_Summ_ByTrt
   results:
   - operationId: Mth01_CatVar_Summ_ByGrp_1_n
     resultGroups:
