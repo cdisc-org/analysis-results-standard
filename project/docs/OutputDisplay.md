@@ -45,11 +45,11 @@ URI: [ars:OutputDisplay](https://www.cdisc.org/ars/1-0/OutputDisplay)
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [id](id.md) | 1..1 <br/> [String](String.md) |  | direct |
+| [id](id.md) | 1..1 <br/> [String](String.md) | The assigned identifying value for the instance of the class | direct |
 | [version](version.md) | 0..1 <br/> [Integer](Integer.md) |  | direct |
 | [displayTitle](displayTitle.md) | 0..1 <br/> [String](String.md) |  | direct |
 | [displaySections](displaySections.md) | 0..* <br/> [DisplaySection](DisplaySection.md) |  | direct |
-| [name](name.md) | 1..1 <br/> [String](String.md) |  | [NamedObject](NamedObject.md) |
+| [name](name.md) | 1..1 <br/> [String](String.md) | The name for the instance of the class | [NamedObject](NamedObject.md) |
 
 
 
@@ -128,6 +128,7 @@ is_a: NamedObject
 attributes:
   id:
     name: id
+    description: The assigned identifying value for the instance of the class.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     identifier: true
@@ -188,6 +189,7 @@ attributes:
     inlined_as_list: true
   name:
     name: name
+    description: The name for the instance of the class.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: name

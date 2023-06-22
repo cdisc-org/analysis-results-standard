@@ -20,6 +20,7 @@ default_range: string
 classes:
 
   NamedObject:
+    description: An object with a name.
     abstract: true
     slots:
       - name
@@ -106,11 +107,13 @@ classes:
       - programmingCode
       - results
     slot_usage:
-      programmingCode:      
+      categoryIds:
+        description: References to any implementer-defined categories that apply to the analysis.
+      programmingCode:
         description: Programming statements and/or a reference to the program used to perform the specific analysis.
 
   OrderedGroupingFactor:
-    description: A reference to a defined factor by which subjects or data records are grouped for the analysis, ordered with respect to other grouping factors.      
+    description: A reference to a defined factor by which subjects or data records are grouped for the analysis, ordered with respect to other grouping factors.
     slots:
       - order
       - groupingId
@@ -122,7 +125,7 @@ classes:
   ReferencedAnalysisOperation:
     description: An indication of the analysis that contains results of a referenced operation.
     slots:
-      - referencedOperationId
+      - referencedOperationRelationshipId
       - analysisId
     slot_usage:
       analysisId:
@@ -142,7 +145,7 @@ classes:
       - groupingId
       - groupId
       - groupValue
-  
+
   AnalysisMethod:
     description: A set of one or more statistical operations.
     is_a: NamedObject
@@ -164,7 +167,7 @@ classes:
       - resultPattern
 
   ReferencedOperationRelationship:
-    description: A reference to an statistical operation whose results is used in the calculation of the result for this operation.
+    description: A reference to a statistical operation whose results are used in the calculation of the result for this operation.
     slots:
       - id
       - referencedOperationRole
@@ -185,7 +188,7 @@ classes:
         range: AnalysisOutputCodeParameter
 
   AnalysisProgrammingCodeTemplate:
-    description:  Programming statements and/or a reference to a used as a template for creation of a program to perform method operations for a specific analysis.
+    description: Programming statements and/or a reference to a used as a template for creation of a program to perform method operations for a specific analysis.
     slots:
       - context
       - code
@@ -238,9 +241,8 @@ classes:
       - programmingCode
     slot_usage:
       categoryIds:
-        required: false
-        inlined: false
-      programmingCode:      
+        description: References to any implementer-defined categories that apply to the output.
+      programmingCode:
         description: Programming statements and/or a reference to the program used to perform the specific output.
 
   OutputFile:
@@ -281,7 +283,9 @@ classes:
       - value: Abbreviation
 
   OrderedDisplaySubSection:
-    description:
+    description: A single subsection ordered with respect to other subsections in the same section of a display.
+    comments:
+      - A single subsection should be either defined using subSection or referenced using subSectionId (not both).
     abstract: true
     slots:
       - order
@@ -299,6 +303,7 @@ classes:
         required: true
         value_presence: PRESENT
       subSectionId:
+        description: NOT USED
         value_presence: ABSENT
     defining_slots:
       - subSection
@@ -308,6 +313,7 @@ classes:
     is_a: OrderedDisplaySubSection
     slot_usage:
       subSection:
+        description: NOT USED
         value_presence: ABSENT
       subSectionId:
         required: true
@@ -316,7 +322,7 @@ classes:
       - subSectionId
 
   DisplaySubSection:
-    description: An occurrence of a display section containing text that is ordered with respect to other occurrences of the same type of display section.
+    description: An occurrence of a display section containing text.
     slots:
       - id
       - text
@@ -325,12 +331,17 @@ classes:
         required: true
 
   GlobalDisplaySection:
-    description: A part of a tabular display containing one or more pieces of informational text.
+    description: A global definition for part of a tabular display containing one or more pieces of informational text that may be used in multiple displays.
     slots:
       - sectionType
       - subSections
 
   WhereClause:
+    description: >-
+      Selection criteria defined as either a simple condition ([variable] [comparator] [value(s)]) or a compound expression that may combine
+      simple conditions or compound expressions.
+    comments:
+      - Each instance of this class should have either a condition or a compoundExpression, not both.
     slots:
       - level
       - order
@@ -338,6 +349,9 @@ classes:
       - compoundExpression
 
   WhereClauseCondition:
+    description: A simple selection criterion exressed as [dataset].[variable] [comparator] [value(s)]
+    examples:
+      - value: ADSL.SAFFL EQ 'Y'
     slots:
       - dataset
       - variable
@@ -372,11 +386,17 @@ classes:
         description: At least 2 values are required when comparator is IN or NOTIN.
 
   WhereClauseCompoundExpression:
+    description: >-
+      A compound expression consisting of either two or more where clauses combined with the `AND` or `OR` logical operator, or a single where clause
+      negated with the `NOT` logical operator.
     slots:
       - logicalOperator
       - whereClauses
 
   CompoundSetExpression:
+    description: >-
+      A compound expression consisting of either two or more identified analysis sets combined with the `AND` or `OR` logical operator, or a single
+      identified analysis set negated with the `NOT` logical operator.
     is_a: WhereClauseCompoundExpression
     slot_usage:
       whereClauses:
@@ -384,6 +404,9 @@ classes:
         inlined: false
 
   CompoundGroupExpression:
+    description: >-
+      A compound expression consisting of either two or more identified group combined with the `AND` or `OR` logical operator, or a single
+      identified group negated with the `NOT` logical operator.
     is_a: WhereClauseCompoundExpression
     slot_usage:
       whereClauses:
@@ -391,6 +414,9 @@ classes:
         inlined: false
 
   CompoundSubsetExpression:
+    description: >-
+      A compound expression consisting of either two or more where clauses combined with the `AND` or `OR` logical operator, or a single where clause
+      negated with the `NOT` logical operator.
     is_a: WhereClauseCompoundExpression
     slot_usage:
       whereClauses:
@@ -412,8 +438,8 @@ classes:
       - label
 
   GroupingFactor:
-    abstract: true
     description: A factor used to subdivide either the subject population or data records in an analysis dataset for analysis.
+    abstract: true
     slots:
       - id
       - label
@@ -464,18 +490,31 @@ classes:
       - label
 
   ReferenceDocument:
+    description: An external document containing supporting documentation or programming code.
     is_a: NamedObject
     slots:
       - id
       - location
 
   DocumentReference:
+    description: A reference to an external document.
+    comments:
+      - One or more pageRefs may be specified to refer to specific part(s) of the document. Omit pageRefs to refer to the document as a whole.
     slots:
       - referenceDocumentId
       - pageRefs
 
   PageRef:
+    description: >-
+      A reference to a specific part of a document as indicated by a list of one or more page numbers, a range of page numbers,
+      or a list of named destinations in the document (e.g. bookmarks).
     abstract: true
+    comments:
+      - |
+        Each instance of this class should contain only one of the following page specifications:
+            * pageNumbers
+            * pageNames
+            * firstPage AND lastPage
     slots:
       - refType
       - label
@@ -497,10 +536,13 @@ classes:
         required: true
         value_presence: PRESENT
       pageNames:
+        description: NOT USED
         value_presence: ABSENT
       firstPage:
+        description: NOT USED
         value_presence: ABSENT
       lastPage:
+        description: NOT USED
         value_presence: ABSENT
     defining_slots:
       - pageNumbers
@@ -512,8 +554,10 @@ classes:
       refType:
         equals_string: PhysicalRef
       pageNumbers:
+        description: NOT USED
         value_presence: ABSENT
       pageNames:
+        description: NOT USED
         value_presence: ABSENT
       firstPage:
         required: true
@@ -532,19 +576,22 @@ classes:
       refType:
         equals_string: NamedDestination
       pageNumbers:
+        description: NOT USED
         value_presence: ABSENT
       pageNames:
         required: true
         value_presence: PRESENT
       firstPage:
+        description: NOT USED
         value_presence: ABSENT
       lastPage:
+        description: NOT USED
         value_presence: ABSENT
     defining_slots:
       - pageNames
 
   TerminologyExtension:
-    description: A sponsor-defined term that is included in an extensible set of controlled terminology.
+    description: An extensible set of controlled terminology that has been extended with at least one sponsor-defined term.
     slots:
       - id
       - enumeration
@@ -558,14 +605,16 @@ classes:
       - description
 
   ExtensibleTerminologyTerm:
-    description:
+    description: The term used for an attribute whose terminology is extensible.
     abstract: true
+    comments:
+      - Each instance of this class should contain either a controlled term or a sponsor term id, not both.
     slots:
       - controlledTerm
       - sponsorTermId
 
   AnalysisReason:
-    description:
+    description: The rationale for performing this analysis.
     is_a: ExtensibleTerminologyTerm
     slot_usage:
       controlledTerm:
@@ -573,20 +622,23 @@ classes:
         range: AnalysisReasonEnum
         value_presence: PRESENT
       sponsorTermId:
+        description: NOT USED
         value_presence: ABSENT
 
   SponsorAnalysisReason:
-    description:
+    description:  The sponsor-defined rationale for performing this analysis.
     is_a: ExtensibleTerminologyTerm
     slot_usage:
       controlledTerm:
+        description: NOT USED
         value_presence: ABSENT
       sponsorTermId:
+        description: A reference to a sponsor term in the TerminologyExtension with enumeration=AnalysisReasonEnum
         required: true
         value_presence: PRESENT
 
   AnalysisPurpose:
-    description:
+    description: The purpose of the analysis within the body of evidence (e.g., section in the clinical study report).
     is_a: ExtensibleTerminologyTerm
     slot_usage:
       controlledTerm:
@@ -594,20 +646,23 @@ classes:
         range: AnalysisPurposeEnum
         value_presence: PRESENT
       sponsorTermId:
+        description: NOT USED
         value_presence: ABSENT
 
   SponsorAnalysisPurpose:
-    description:
+    description: The sponsor-defined purpose of the analysis within the body of evidence (e.g., section in the clinical study report).
     is_a: ExtensibleTerminologyTerm
     slot_usage:
       controlledTerm:
+        description: NOT USED
         value_presence: ABSENT
       sponsorTermId:
+        description: A reference to a sponsor term in the TerminologyExtension with enumeration=AnalysisPurposeEnum
         required: true
         value_presence: PRESENT
 
   OperationRole:
-    description:
+    description: The role that the referenced operation's result plays in the calculation of the result of this operation.
     is_a: ExtensibleTerminologyTerm
     slot_usage:
       controlledTerm:
@@ -615,20 +670,23 @@ classes:
         range: OperationRoleEnum
         value_presence: PRESENT
       sponsorTermId:
+        description: NOT USED
         value_presence: ABSENT
 
   SponsorOperationRole:
-    description:
+    description: The sponsor-defined role that the referenced operation's result plays in the calculation of the result of this operation.
     is_a: ExtensibleTerminologyTerm
     slot_usage:
       controlledTerm:
+        description: NOT USED
         value_presence: ABSENT
       sponsorTermId:
+        description: A reference to a sponsor term in the TerminologyExtension with enumeration=OperationRoleEnum
         required: true
         value_presence: PRESENT
-        
+
   OutputFileType:
-    description:
+    description: The file format of the file containing output from analyses.
     is_a: ExtensibleTerminologyTerm
     slot_usage:
       controlledTerm:
@@ -636,21 +694,25 @@ classes:
         range: OutputFileTypeEnum
         value_presence: PRESENT
       sponsorTermId:
+        description: NOT USED
         value_presence: ABSENT
 
   SponsorOutputFileType:
-    description:
+    description: The sponsor-defined file format of the file containing output from analyses.
     is_a: ExtensibleTerminologyTerm
     slot_usage:
       controlledTerm:
+        description: NOT USED
         value_presence: ABSENT
       sponsorTermId:
+        description: A reference to a sponsor term in the TerminologyExtension with enumeration=OutputFileTypeEnum
         required: true
         value_presence: PRESENT
-        
+
 slots:
 
   name:
+    description: The name for the instance of the class.
     required: true
 
   listOfPlannedAnalyses:
@@ -686,6 +748,10 @@ slots:
     required: true
 
   groups:
+    description: The pre-specified groups within the grouping.
+    examples:
+      - value: "'Male' and 'Female' might be groups within a sex grouping."
+      - value: "'Treatment A', 'Treatment B', 'Placebo' might be groups within a treatment grouping."
     multivalued: true
     list_elements_ordered: true
     inlined: true
@@ -693,13 +759,14 @@ slots:
     range: Group
 
   dataSubsets:
+    description: Subsets of data identified by selection criteria for inclusion in analysis definitions.
     multivalued: true
     inlined: true
     inlined_as_list: true
     range: DataSubset
 
   dataGroupings:
-    description: Characteristics used to subdivide data records in the analysis dataset (e.g., visit, system organ class).
+    description: Characteristics used to subdivide data records in analysis datasets (e.g., visit, system organ class).
     multivalued: true
     inlined: true
     inlined_as_list: true
@@ -736,23 +803,28 @@ slots:
     range: AnalysisMethod
 
   operations:
+    description: The calculations performed for the method. Each operation generates a statistical result.
     required: true
     multivalued: true
     range: Operation
     inlined: true
     inlined_as_list: true
 
-  referencedOperationId:
+  referencedOperationRelationshipId:
+    description: The identifier of the defined referenced operation relationship.
     range: ReferencedOperationRelationship
+    required: true
     inlined: false
 
   analysisCategorizations:
+    description: Sets of related implementer-defined categories that can be used to categorize analyses or outputs.
     multivalued: true
     range: AnalysisCategorization
     inlined: true
     inlined_as_list: true
 
   categories:
+    description: Implementer-defined categories of analyses/outputs, each of which may include one or more sub-categorization.
     multivalued: true
     range: AnalysisCategory
     inlined: true
@@ -760,18 +832,21 @@ slots:
     required: true
 
   categoryIds:
+    description: References to any implementer-defined categories that apply to the analysis or output.
     multivalued: true
     range: AnalysisCategory
     inlined: false
     required: false
 
   subCategorizations:
+    description: Sets of related implementer-defined sub-categories that can be used to categorize analyses or outputs.
     multivalued: true
     range: AnalysisCategorization
     inlined: true
     inlined_as_list: true
 
   outputs:
+    description: The outputs defined for the reporting event.
     multivalued: true
     inlined: true
     inlined_as_list: true
@@ -785,34 +860,43 @@ slots:
     range: OrderedListItem
 
   level:
+    description: The level of the entry within a hierarchical structure.
+    comments:
+      - 1 is the top level.
     range: integer
 
   order:
+    description: The ordinal of the instance with respect to other instances.
     range: integer
 
-  sublist: 
+  sublist:
+    description: A sub-list of items (analyses or outputs) that may be further organized within sub-lists.
     range: NestedList
     multivalued: false
     inlined: true
 
-  analysisId: 
+  analysisId:
+    description: The identifier of the referenced analysis.
     range: Analysis
     multivalued: false
     inlined: false
 
-  analysisSetId: 
+  analysisSetId:
+    description: The identifier of the referenced analysis set.
     range: AnalysisSet
     multivalued: false
     inlined: false
 
-  orderedGroupings: 
+  orderedGroupings:
+    description: An ordered list of grouping factors used in the analysis.
     range: OrderedGroupingFactor
     multivalued: true
     list_elements_ordered: true
     inlined: true
     inlined_as_list: true
 
-  groupingId: 
+  groupingId:
+    description: The identifier of the referenced subject or data grouping factor.
     range: GroupingFactor
     inlined: false
 
@@ -822,6 +906,7 @@ slots:
     required: true
 
   dataSubsetId:
+    description: The identifier of the referenced data subset.
     inlined: false
     range: DataSubset
 
@@ -832,15 +917,17 @@ slots:
     inlined: false
 
   description:
+    description: A textual description of the instance of the class.
 
   referencedAnalysisOperations:
+    description: Indications of which analysis contains the results for each referenced operation.
     multivalued: true
     range: ReferencedAnalysisOperation
     inlined: true
-    inlined_as_list: true    
+    inlined_as_list: true
 
   resultPattern:
-  
+
   results:
     multivalued: true
     range: OperationResult
@@ -854,10 +941,12 @@ slots:
     inlined_as_list: true
 
   groupId:
+    description: The identifier of a referenced predefined group within a grouping.
     range: Group
     inlined: false
 
   groupValue:
+    description: The data value used as a group within a data-driven grouping.
 
   rawValue:
 
@@ -868,7 +957,7 @@ slots:
     range: ReferencedOperationRelationship
     inlined: true
     inlined_as_list: true
-  
+
   referencedOperationRole:
     range: ExtensibleTerminologyTerm
     required: true
@@ -876,7 +965,8 @@ slots:
       - range: OperationRole
       - range: SponsorOperationRole
 
-  operationId:  
+  operationId:
+    description: The identifier of the referenced operation.
     range: Operation
     required: true
     inlined: false
@@ -898,7 +988,7 @@ slots:
 
   parameters:
     description: >
-      Replacement parameters that are referenced in the programming code or programming code template and 
+      Replacement parameters that are referenced in the programming code or programming code template and
       are used to generate or execute the programming code.
     range: CodeParameter
     multivalued: true
@@ -914,12 +1004,14 @@ slots:
     description: A reference to the prespecified source of the value for the parameter.
     range: string
 
-  outputId: 
+  outputId:
+    description: The identifier of the referenced output.
     range: Output
     multivalued: false
     inlined: false
 
   id:
+    description: The assigned identifying value for the instance of the class.
     required: true
     identifier: true
     range: string
@@ -1050,6 +1142,9 @@ slots:
     inlined: false
 
   pageRefs:
+    description: >-
+      A list of references to specific parts of a document, which may be referenced as a list of one or more page numbers, a range of page numbers,
+      or a list of named destinations in the document (e.g. bookmarks).
     multivalued: true
     range: PageRef
     inlined: true
@@ -1060,6 +1155,7 @@ slots:
       - range: PageNameRef
 
   refType:
+    description: The type of reference for page references.
     required: true
     range: PageRefTypeEnum
 
@@ -1106,27 +1202,33 @@ slots:
     required: true
 
   controlledTerm:
+    description: One of the permissible values from the referenced enumeration.
     range: string
     any_of:
       - range: AnalysisReasonEnum
       - range: AnalysisPurposeEnum
       - range: OperationRoleEnum
-      - range: OutputFileTypeEnum  
+      - range: OutputFileTypeEnum
 
   sponsorTermId:
-    description:
+    description: The identifier of the referenced sponsor term.
     range: SponsorTerm
     inlined: false
 
 enums:
 
   OutputFileTypeEnum:
+    description: The file format of the file containing output from analyses.
     permissible_values:
       pdf:
+        description: Portable Document Format (PDF)
       rtf:
+        description: Rich Text Format (RTF)
       txt:
+        description: Plain text
 
   ExpressionLogicalOperatorEnum:
+    description: A Boolean operator, a symbol or a function that denotes a logical operation (e.g., and, or, not).
     permissible_values:
       AND:
       OR:
@@ -1135,13 +1237,21 @@ enums:
   ConditionComparatorEnum:
     permissible_values:
       EQ:
+        description: Is equal to
       NE:
+        description: Is not equal to
       GT:
+        description: Is greater than
       GE:
+        description: Is greater than or equal to
       LT:
+        description: Is less than
       LE:
+        description: Is less than or equal to
       IN:
+        description: Is in
       NOTIN:
+        description: Is not in
 
   DisplaySectionTypeEnum:
     permissible_values:
@@ -1152,9 +1262,12 @@ enums:
       Rowlabel Header:
 
   OperationRoleEnum:
+    description: The role that the referenced operation's result plays in the calculation of the result of this operation.
     permissible_values:
       NUMERATOR:
+        description: The dividend of a fraction.
       DENOMINATOR:
+        description: The divisor of a fraction.
 
   AnalysisReasonEnum:
   # TODO: change to a dynamic enum based on the NCI or CDISC terminology with extending terms.
@@ -1211,7 +1324,7 @@ enums:
       OutputFileTypeEnum:
 
   PageRefTypeEnum:
-    description: Type of page for page references.
+    description: Type of reference for page references.
     permissible_values:
       PhysicalRef:
         description: References are to page numbers.

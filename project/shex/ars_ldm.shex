@@ -510,7 +510,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <ReferencedAnalysisOperation> CLOSED {
-    (  $<ReferencedAnalysisOperation_tes> (  <referencedOperationId> @<ReferencedOperationRelationship> ? ;
+    (  $<ReferencedAnalysisOperation_tes> (  <referencedOperationRelationshipId> @<ReferencedOperationRelationship> ;
           <analysisId> @<Analysis>
        ) ;
        rdf:type [ <ReferencedAnalysisOperation> ] ?

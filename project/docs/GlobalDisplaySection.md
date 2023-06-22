@@ -1,7 +1,7 @@
 # Class: GlobalDisplaySection
 
 
-_A part of a tabular display containing one or more pieces of informational text._
+_A global definition for part of a tabular display containing one or more pieces of informational text that may be used in multiple displays._
 
 
 
@@ -90,8 +90,8 @@ URI: [ars:GlobalDisplaySection](https://www.cdisc.org/ars/1-0/GlobalDisplaySecti
 <details>
 ```yaml
 name: GlobalDisplaySection
-description: A part of a tabular display containing one or more pieces of informational
-  text.
+description: A global definition for part of a tabular display containing one or more
+  pieces of informational text that may be used in multiple displays.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 slots:
@@ -106,8 +106,8 @@ slots:
 <details>
 ```yaml
 name: GlobalDisplaySection
-description: A part of a tabular display containing one or more pieces of informational
-  text.
+description: A global definition for part of a tabular display containing one or more
+  pieces of informational text that may be used in multiple displays.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 attributes:

@@ -1,0 +1,46 @@
+# Compound expression: (    ADAE.TRTEMFL EQ 'Y'
+#                       AND ADAE.AESDTH EQ 'Y'
+#                       AND (   ADAE.AEREL EQ 'POSSIBLE'
+#                            OR ADAE.AEREL EQ 'PROBABLE'))
+level: 1
+order: 1
+compoundExpression:
+  logicalOperator: AND
+  whereClauses:
+  - level: 2
+    order: 1
+    condition:
+      dataset: ADAE
+      variable: TRTEMFL
+      comparator: EQ
+      value:
+      - Y
+  - level: 2
+    order: 2
+    condition:
+      dataset: ADAE
+      variable: AESDTH
+      comparator: EQ
+      value:
+      - Y
+  - level: 2
+    order: 3
+    compoundExpression:
+      logicalOperator: OR
+      whereClauses:
+      - level: 3
+        order: 1
+        condition:
+          dataset: ADAE
+          variable: AEREL
+          comparator: EQ
+          value:
+          - POSSIBLE
+      - level: 3
+        order: 2
+        condition:
+          dataset: ADAE
+          variable: AEREL
+          comparator: EQ
+          value:
+          - PROBABLE

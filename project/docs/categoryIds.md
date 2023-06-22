@@ -1,5 +1,10 @@
 # Slot: categoryIds
 
+
+_References to any implementer-defined categories that apply to the analysis or output._
+
+
+
 URI: [ars:categoryIds](https://www.cdisc.org/ars/1-0/categoryIds)
 
 
@@ -13,7 +18,7 @@ URI: [ars:categoryIds](https://www.cdisc.org/ars/1-0/categoryIds)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-[Analysis](Analysis.md) | An analysis that is designed to meet a requirement of the reporting event |  no  |
+[Analysis](Analysis.md) | An analysis that is designed to meet a requirement of the reporting event |  yes  |
 [Output](Output.md) | A report of results and their evaluation based on planned analyses performed ... |  yes  |
 
 
@@ -53,6 +58,8 @@ URI: [ars:categoryIds](https://www.cdisc.org/ars/1-0/categoryIds)
 <details>
 ```yaml
 name: categoryIds
+description: References to any implementer-defined categories that apply to the analysis
+  or output.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 multivalued: true

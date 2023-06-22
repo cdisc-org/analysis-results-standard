@@ -1,5 +1,10 @@
 # Slot: subCategorizations
 
+
+_Sets of related implementer-defined sub-categories that can be used to categorize analyses or outputs._
+
+
+
 URI: [ars:subCategorizations](https://www.cdisc.org/ars/1-0/subCategorizations)
 
 
@@ -52,6 +57,8 @@ URI: [ars:subCategorizations](https://www.cdisc.org/ars/1-0/subCategorizations)
 <details>
 ```yaml
 name: subCategorizations
+description: Sets of related implementer-defined sub-categories that can be used to
+  categorize analyses or outputs.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 multivalued: true

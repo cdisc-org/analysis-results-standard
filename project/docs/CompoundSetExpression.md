@@ -1,6 +1,11 @@
 # Class: CompoundSetExpression
 
 
+_A compound expression consisting of either two or more identified analysis sets combined with the `AND` or `OR` logical operator, or a single identified analysis set negated with the `NOT` logical operator._
+
+
+
+
 
 URI: [ars:CompoundSetExpression](https://www.cdisc.org/ars/1-0/CompoundSetExpression)
 
@@ -91,6 +96,9 @@ URI: [ars:CompoundSetExpression](https://www.cdisc.org/ars/1-0/CompoundSetExpres
 <details>
 ```yaml
 name: CompoundSetExpression
+description: A compound expression consisting of either two or more identified analysis
+  sets combined with the `AND` or `OR` logical operator, or a single identified analysis
+  set negated with the `NOT` logical operator.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 is_a: WhereClauseCompoundExpression
@@ -110,6 +118,9 @@ slot_usage:
 <details>
 ```yaml
 name: CompoundSetExpression
+description: A compound expression consisting of either two or more identified analysis
+  sets combined with the `AND` or `OR` logical operator, or a single identified analysis
+  set negated with the `NOT` logical operator.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 is_a: WhereClauseCompoundExpression

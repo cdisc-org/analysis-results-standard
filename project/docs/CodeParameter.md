@@ -46,8 +46,8 @@ URI: [ars:CodeParameter](https://www.cdisc.org/ars/1-0/CodeParameter)
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [description](description.md) | 0..1 <br/> [String](String.md) |  | direct |
-| [name](name.md) | 1..1 <br/> [String](String.md) |  | [NamedObject](NamedObject.md) |
+| [description](description.md) | 0..1 <br/> [String](String.md) | A textual description of the instance of the class | direct |
+| [name](name.md) | 1..1 <br/> [String](String.md) | The name for the instance of the class | [NamedObject](NamedObject.md) |
 
 
 
@@ -120,6 +120,7 @@ abstract: true
 attributes:
   description:
     name: description
+    description: A textual description of the instance of the class.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: description
@@ -133,6 +134,7 @@ attributes:
     range: string
   name:
     name: name
+    description: The name for the instance of the class.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: name

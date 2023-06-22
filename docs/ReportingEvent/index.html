@@ -159,7 +159,7 @@
 <tr>
 <td><a href="../id/">id</a></td>
 <td>1..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>The assigned identifying value for the instance of the class</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -195,13 +195,13 @@
 <tr>
 <td><a href="../dataSubsets/">dataSubsets</a></td>
 <td>0..* <br/> <a href="../DataSubset/">DataSubset</a></td>
-<td></td>
+<td>Subsets of data identified by selection criteria for inclusion in analysis de...</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../dataGroupings/">dataGroupings</a></td>
 <td>0..* <br/> <a href="../DataGroupingFactor/">DataGroupingFactor</a></td>
-<td>Characteristics used to subdivide data records in the analysis dataset (e</td>
+<td>Characteristics used to subdivide data records in analysis datasets (e</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -213,7 +213,7 @@
 <tr>
 <td><a href="../analysisCategorizations/">analysisCategorizations</a></td>
 <td>0..* <br/> <a href="../AnalysisCategorization/">AnalysisCategorization</a></td>
-<td></td>
+<td>Sets of related implementer-defined categories that can be used to categorize...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -231,7 +231,7 @@
 <tr>
 <td><a href="../outputs/">outputs</a></td>
 <td>0..* <br/> <a href="../Output/">Output</a></td>
-<td></td>
+<td>The outputs defined for the reporting event</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -249,7 +249,7 @@
 <tr>
 <td><a href="../name/">name</a></td>
 <td>1..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>The name for the instance of the class</td>
 <td><a href="../NamedObject/">NamedObject</a></td>
 </tr>
 </tbody>
@@ -319,6 +319,7 @@ is_a: NamedObject
 attributes:
   id:
     name: id
+    description: The assigned identifying value for the instance of the class.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     identifier: true
@@ -409,6 +410,8 @@ attributes:
     inlined_as_list: true
   dataSubsets:
     name: dataSubsets
+    description: Subsets of data identified by selection criteria for inclusion in
+      analysis definitions.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     multivalued: true
@@ -421,7 +424,7 @@ attributes:
     inlined_as_list: true
   dataGroupings:
     name: dataGroupings
-    description: Characteristics used to subdivide data records in the analysis dataset
+    description: Characteristics used to subdivide data records in analysis datasets
       (e.g., visit, system organ class).
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
@@ -447,6 +450,8 @@ attributes:
     inlined_as_list: true
   analysisCategorizations:
     name: analysisCategorizations
+    description: Sets of related implementer-defined categories that can be used to
+      categorize analyses or outputs.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     multivalued: true
@@ -485,6 +490,7 @@ attributes:
     inlined_as_list: true
   outputs:
     name: outputs
+    description: The outputs defined for the reporting event.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     multivalued: true
@@ -522,6 +528,7 @@ attributes:
     inlined_as_list: true
   name:
     name: name
+    description: The name for the instance of the class.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: name

@@ -131,7 +131,7 @@
 <tr>
 <td><a href="../id/">id</a></td>
 <td>1..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>The assigned identifying value for the instance of the class</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -155,7 +155,7 @@
 <tr>
 <td><a href="../categoryIds/">categoryIds</a></td>
 <td>0..* <br/> <a href="../AnalysisCategory/">AnalysisCategory</a></td>
-<td></td>
+<td>References to any implementer-defined categories that apply to the output</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -173,7 +173,7 @@
 <tr>
 <td><a href="../name/">name</a></td>
 <td>1..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>The name for the instance of the class</td>
 <td><a href="../NamedObject/">NamedObject</a></td>
 </tr>
 </tbody>
@@ -248,11 +248,11 @@ slots:
 slot_usage:
   categoryIds:
     name: categoryIds
+    description: References to any implementer-defined categories that apply to the
+      output.
     domain_of:
     - Analysis
     - Output
-    required: false
-    inlined: false
   programmingCode:
     name: programmingCode
     description: Programming statements and/or a reference to the program used to
@@ -274,11 +274,11 @@ is_a: NamedObject
 slot_usage:
   categoryIds:
     name: categoryIds
+    description: References to any implementer-defined categories that apply to the
+      output.
     domain_of:
     - Analysis
     - Output
-    required: false
-    inlined: false
   programmingCode:
     name: programmingCode
     description: Programming statements and/or a reference to the program used to
@@ -289,6 +289,7 @@ slot_usage:
 attributes:
   id:
     name: id
+    description: The assigned identifying value for the instance of the class.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     identifier: true
@@ -353,6 +354,8 @@ attributes:
     inlined_as_list: true
   categoryIds:
     name: categoryIds
+    description: References to any implementer-defined categories that apply to the
+      output.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     multivalued: true
@@ -392,6 +395,7 @@ attributes:
     range: AnalysisOutputProgrammingCode
   name:
     name: name
+    description: The name for the instance of the class.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: name

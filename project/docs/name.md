@@ -1,5 +1,10 @@
 # Slot: name
 
+
+_The name for the instance of the class._
+
+
+
 URI: [ars:name](https://www.cdisc.org/ars/1-0/name)
 
 
@@ -13,7 +18,7 @@ URI: [ars:name](https://www.cdisc.org/ars/1-0/name)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-[NamedObject](NamedObject.md) |  |  no  |
+[NamedObject](NamedObject.md) | An object with a name |  no  |
 [ReportingEvent](ReportingEvent.md) | A set of analyses and outputs created to meet a specific reporting requiremen... |  no  |
 [OrderedListItem](OrderedListItem.md) | An item (analysis, output or sub-list) ordered relative to other items within... |  no  |
 [Analysis](Analysis.md) | An analysis that is designed to meet a requirement of the reporting event |  no  |
@@ -25,7 +30,7 @@ URI: [ars:name](https://www.cdisc.org/ars/1-0/name)
 [Output](Output.md) | A report of results and their evaluation based on planned analyses performed ... |  no  |
 [OutputFile](OutputFile.md) | A file containing analysis output displays |  no  |
 [OutputDisplay](OutputDisplay.md) | A tabular representation of the results of one or more analyses |  no  |
-[ReferenceDocument](ReferenceDocument.md) |  |  no  |
+[ReferenceDocument](ReferenceDocument.md) | An external document containing supporting documentation or programming code |  no  |
 
 
 
@@ -64,6 +69,7 @@ URI: [ars:name](https://www.cdisc.org/ars/1-0/name)
 <details>
 ```yaml
 name: name
+description: The name for the instance of the class.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 alias: name

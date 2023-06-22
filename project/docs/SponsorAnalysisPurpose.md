@@ -1,6 +1,11 @@
 # Class: SponsorAnalysisPurpose
 
 
+_The sponsor-defined purpose of the analysis within the body of evidence (e.g., section in the clinical study report)._
+
+
+
+
 
 URI: [ars:SponsorAnalysisPurpose](https://www.cdisc.org/ars/1-0/SponsorAnalysisPurpose)
 
@@ -34,8 +39,8 @@ URI: [ars:SponsorAnalysisPurpose](https://www.cdisc.org/ars/1-0/SponsorAnalysisP
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [controlledTerm](controlledTerm.md) | 0..1 <br/> [String](String.md) |  | [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) |
-| [sponsorTermId](sponsorTermId.md) | 1..1 <br/> [SponsorTerm](SponsorTerm.md) |  | [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) |
+| [controlledTerm](controlledTerm.md) | 0..1 <br/> [String](String.md) | NOT USED | [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) |
+| [sponsorTermId](sponsorTermId.md) | 1..1 <br/> [SponsorTerm](SponsorTerm.md) | A reference to a sponsor term in the TerminologyExtension with enumeration=An... | [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) |
 
 
 
@@ -82,17 +87,21 @@ URI: [ars:SponsorAnalysisPurpose](https://www.cdisc.org/ars/1-0/SponsorAnalysisP
 <details>
 ```yaml
 name: SponsorAnalysisPurpose
+description: The sponsor-defined purpose of the analysis within the body of evidence
+  (e.g., section in the clinical study report).
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 is_a: ExtensibleTerminologyTerm
 slot_usage:
   controlledTerm:
     name: controlledTerm
+    description: NOT USED
     domain_of:
     - ExtensibleTerminologyTerm
     value_presence: ABSENT
   sponsorTermId:
     name: sponsorTermId
+    description: A reference to a sponsor term in the TerminologyExtension with enumeration=AnalysisPurposeEnum
     domain_of:
     - ExtensibleTerminologyTerm
     required: true
@@ -106,17 +115,21 @@ slot_usage:
 <details>
 ```yaml
 name: SponsorAnalysisPurpose
+description: The sponsor-defined purpose of the analysis within the body of evidence
+  (e.g., section in the clinical study report).
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 is_a: ExtensibleTerminologyTerm
 slot_usage:
   controlledTerm:
     name: controlledTerm
+    description: NOT USED
     domain_of:
     - ExtensibleTerminologyTerm
     value_presence: ABSENT
   sponsorTermId:
     name: sponsorTermId
+    description: A reference to a sponsor term in the TerminologyExtension with enumeration=AnalysisPurposeEnum
     domain_of:
     - ExtensibleTerminologyTerm
     required: true
@@ -124,6 +137,7 @@ slot_usage:
 attributes:
   controlledTerm:
     name: controlledTerm
+    description: NOT USED
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: controlledTerm
@@ -134,6 +148,7 @@ attributes:
     value_presence: ABSENT
   sponsorTermId:
     name: sponsorTermId
+    description: A reference to a sponsor term in the TerminologyExtension with enumeration=AnalysisPurposeEnum
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: sponsorTermId

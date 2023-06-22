@@ -1,5 +1,10 @@
 # Slot: orderedGroupings
 
+
+_An ordered list of grouping factors used in the analysis._
+
+
+
 URI: [ars:orderedGroupings](https://www.cdisc.org/ars/1-0/orderedGroupings)
 
 
@@ -52,6 +57,7 @@ URI: [ars:orderedGroupings](https://www.cdisc.org/ars/1-0/orderedGroupings)
 <details>
 ```yaml
 name: orderedGroupings
+description: An ordered list of grouping factors used in the analysis.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 multivalued: true

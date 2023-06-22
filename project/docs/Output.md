@@ -59,14 +59,14 @@ URI: [ars:Output](https://www.cdisc.org/ars/1-0/Output)
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [id](id.md) | 1..1 <br/> [String](String.md) |  | direct |
+| [id](id.md) | 1..1 <br/> [String](String.md) | The assigned identifying value for the instance of the class | direct |
 | [version](version.md) | 0..1 <br/> [Integer](Integer.md) |  | direct |
 | [fileSpecifications](fileSpecifications.md) | 0..* <br/> [OutputFile](OutputFile.md) |  | direct |
 | [displays](displays.md) | 0..* <br/> [OrderedDisplay](OrderedDisplay.md) |  | direct |
-| [categoryIds](categoryIds.md) | 0..* <br/> [AnalysisCategory](AnalysisCategory.md) |  | direct |
+| [categoryIds](categoryIds.md) | 0..* <br/> [AnalysisCategory](AnalysisCategory.md) | References to any implementer-defined categories that apply to the output | direct |
 | [documentRefs](documentRefs.md) | 0..* <br/> [DocumentReference](DocumentReference.md) |  | direct |
 | [programmingCode](programmingCode.md) | 0..1 <br/> [AnalysisOutputProgrammingCode](AnalysisOutputProgrammingCode.md) | Programming statements and/or a reference to the program used to perform the ... | direct |
-| [name](name.md) | 1..1 <br/> [String](String.md) |  | [NamedObject](NamedObject.md) |
+| [name](name.md) | 1..1 <br/> [String](String.md) | The name for the instance of the class | [NamedObject](NamedObject.md) |
 
 
 
@@ -137,11 +137,11 @@ slots:
 slot_usage:
   categoryIds:
     name: categoryIds
+    description: References to any implementer-defined categories that apply to the
+      output.
     domain_of:
     - Analysis
     - Output
-    required: false
-    inlined: false
   programmingCode:
     name: programmingCode
     description: Programming statements and/or a reference to the program used to
@@ -166,11 +166,11 @@ is_a: NamedObject
 slot_usage:
   categoryIds:
     name: categoryIds
+    description: References to any implementer-defined categories that apply to the
+      output.
     domain_of:
     - Analysis
     - Output
-    required: false
-    inlined: false
   programmingCode:
     name: programmingCode
     description: Programming statements and/or a reference to the program used to
@@ -181,6 +181,7 @@ slot_usage:
 attributes:
   id:
     name: id
+    description: The assigned identifying value for the instance of the class.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     identifier: true
@@ -245,6 +246,8 @@ attributes:
     inlined_as_list: true
   categoryIds:
     name: categoryIds
+    description: References to any implementer-defined categories that apply to the
+      output.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     multivalued: true
@@ -284,6 +287,7 @@ attributes:
     range: AnalysisOutputProgrammingCode
   name:
     name: name
+    description: The name for the instance of the class.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: name

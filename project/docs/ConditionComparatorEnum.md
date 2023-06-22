@@ -8,14 +8,14 @@ URI: [ConditionComparatorEnum](ConditionComparatorEnum)
 
 | Value | Meaning | Description |
 | --- | --- | --- |
-| EQ | None |  |
-| NE | None |  |
-| GT | None |  |
-| GE | None |  |
-| LT | None |  |
-| LE | None |  |
-| IN | None |  |
-| NOTIN | None |  |
+| EQ | None | Is equal to |
+| NE | None | Is not equal to |
+| GT | None | Is greater than |
+| GE | None | Is greater than or equal to |
+| LT | None | Is less than |
+| LE | None | Is less than or equal to |
+| IN | None | Is in |
+| NOTIN | None | Is not in |
 
 
 
@@ -57,20 +57,28 @@ rank: 1000
 permissible_values:
   EQ:
     text: EQ
+    description: Is equal to
   NE:
     text: NE
+    description: Is not equal to
   GT:
     text: GT
+    description: Is greater than
   GE:
     text: GE
+    description: Is greater than or equal to
   LT:
     text: LT
+    description: Is less than
   LE:
     text: LE
+    description: Is less than or equal to
   IN:
     text: IN
+    description: Is in
   NOTIN:
     text: NOTIN
+    description: Is not in
 
 ```
 </details>

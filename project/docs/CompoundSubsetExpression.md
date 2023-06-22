@@ -1,6 +1,11 @@
 # Class: CompoundSubsetExpression
 
 
+_A compound expression consisting of either two or more where clauses combined with the `AND` or `OR` logical operator, or a single where clause negated with the `NOT` logical operator._
+
+
+
+
 
 URI: [ars:CompoundSubsetExpression](https://www.cdisc.org/ars/1-0/CompoundSubsetExpression)
 
@@ -91,6 +96,9 @@ URI: [ars:CompoundSubsetExpression](https://www.cdisc.org/ars/1-0/CompoundSubset
 <details>
 ```yaml
 name: CompoundSubsetExpression
+description: A compound expression consisting of either two or more where clauses
+  combined with the `AND` or `OR` logical operator, or a single where clause negated
+  with the `NOT` logical operator.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 is_a: WhereClauseCompoundExpression
@@ -110,6 +118,9 @@ slot_usage:
 <details>
 ```yaml
 name: CompoundSubsetExpression
+description: A compound expression consisting of either two or more where clauses
+  combined with the `AND` or `OR` logical operator, or a single where clause negated
+  with the `NOT` logical operator.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 is_a: WhereClauseCompoundExpression

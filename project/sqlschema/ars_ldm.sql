@@ -466,11 +466,11 @@ CREATE TABLE "ReferencedOperationRelationship" (
 );
 
 CREATE TABLE "ReferencedAnalysisOperation" (
-	"referencedOperationId" TEXT, 
+	"referencedOperationRelationshipId" TEXT NOT NULL, 
 	"analysisId" TEXT NOT NULL, 
 	"Analysis_id" TEXT, 
-	PRIMARY KEY ("referencedOperationId", "analysisId", "Analysis_id"), 
-	FOREIGN KEY("referencedOperationId") REFERENCES "ReferencedOperationRelationship" (id), 
+	PRIMARY KEY ("referencedOperationRelationshipId", "analysisId", "Analysis_id"), 
+	FOREIGN KEY("referencedOperationRelationshipId") REFERENCES "ReferencedOperationRelationship" (id), 
 	FOREIGN KEY("analysisId") REFERENCES "Analysis" (id), 
 	FOREIGN KEY("Analysis_id") REFERENCES "Analysis" (id)
 );

@@ -47,12 +47,12 @@ URI: [ars:PageNameRef](https://www.cdisc.org/ars/1-0/PageNameRef)
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [refType](refType.md) | 1..1 <br/> [PageRefTypeEnum](PageRefTypeEnum.md) |  | [PageRef](PageRef.md) |
+| [refType](refType.md) | 1..1 <br/> [PageRefTypeEnum](PageRefTypeEnum.md) | The type of reference for page references | [PageRef](PageRef.md) |
 | [label](label.md) | 0..1 <br/> [String](String.md) | Alternative label to provide a more specific and description to a page link | [PageRef](PageRef.md) |
 | [pageNames](pageNames.md) | 1..* <br/> [String](String.md) | One or more named document references which each correspond with a page | [PageRef](PageRef.md) |
-| [pageNumbers](pageNumbers.md) | 0..* <br/> [Integer](Integer.md) | One or more page numbers | [PageRef](PageRef.md) |
-| [firstPage](firstPage.md) | 0..1 <br/> [Integer](Integer.md) | The page number of the first page in a range of pages | [PageRef](PageRef.md) |
-| [lastPage](lastPage.md) | 0..1 <br/> [Integer](Integer.md) | The page number of the last page in a range of pages | [PageRef](PageRef.md) |
+| [pageNumbers](pageNumbers.md) | 0..* <br/> [Integer](Integer.md) | NOT USED | [PageRef](PageRef.md) |
+| [firstPage](firstPage.md) | 0..1 <br/> [Integer](Integer.md) | NOT USED | [PageRef](PageRef.md) |
+| [lastPage](lastPage.md) | 0..1 <br/> [Integer](Integer.md) | NOT USED | [PageRef](PageRef.md) |
 
 
 
@@ -111,6 +111,7 @@ slot_usage:
     equals_string: NamedDestination
   pageNumbers:
     name: pageNumbers
+    description: NOT USED
     domain_of:
     - PageRef
     value_presence: ABSENT
@@ -122,11 +123,13 @@ slot_usage:
     value_presence: PRESENT
   firstPage:
     name: firstPage
+    description: NOT USED
     domain_of:
     - PageRef
     value_presence: ABSENT
   lastPage:
     name: lastPage
+    description: NOT USED
     domain_of:
     - PageRef
     value_presence: ABSENT
@@ -153,6 +156,7 @@ slot_usage:
     equals_string: NamedDestination
   pageNumbers:
     name: pageNumbers
+    description: NOT USED
     domain_of:
     - PageRef
     value_presence: ABSENT
@@ -164,17 +168,20 @@ slot_usage:
     value_presence: PRESENT
   firstPage:
     name: firstPage
+    description: NOT USED
     domain_of:
     - PageRef
     value_presence: ABSENT
   lastPage:
     name: lastPage
+    description: NOT USED
     domain_of:
     - PageRef
     value_presence: ABSENT
 attributes:
   refType:
     name: refType
+    description: The type of reference for page references.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: refType
@@ -219,7 +226,7 @@ attributes:
     value_presence: PRESENT
   pageNumbers:
     name: pageNumbers
-    description: One or more page numbers.
+    description: NOT USED
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     multivalued: true
@@ -231,7 +238,7 @@ attributes:
     value_presence: ABSENT
   firstPage:
     name: firstPage
-    description: The page number of the first page in a range of pages.
+    description: NOT USED
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: firstPage
@@ -242,7 +249,7 @@ attributes:
     value_presence: ABSENT
   lastPage:
     name: lastPage
-    description: The page number of the last page in a range of pages.
+    description: NOT USED
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: lastPage

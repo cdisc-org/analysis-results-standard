@@ -53,13 +53,13 @@ URI: [ars:AnalysisMethod](https://www.cdisc.org/ars/1-0/AnalysisMethod)
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [id](id.md) | 1..1 <br/> [String](String.md) |  | direct |
+| [id](id.md) | 1..1 <br/> [String](String.md) | The assigned identifying value for the instance of the class | direct |
 | [label](label.md) | 0..1 <br/> [String](String.md) |  | direct |
-| [description](description.md) | 0..1 <br/> [String](String.md) |  | direct |
-| [operations](operations.md) | 1..* <br/> [Operation](Operation.md) |  | direct |
+| [description](description.md) | 0..1 <br/> [String](String.md) | A textual description of the instance of the class | direct |
+| [operations](operations.md) | 1..* <br/> [Operation](Operation.md) | The calculations performed for the method | direct |
 | [documentRefs](documentRefs.md) | 0..* <br/> [DocumentReference](DocumentReference.md) |  | direct |
 | [codeTemplate](codeTemplate.md) | 0..1 <br/> [AnalysisProgrammingCodeTemplate](AnalysisProgrammingCodeTemplate.md) | Template programming statements and/or a reference to the template program us... | direct |
-| [name](name.md) | 1..1 <br/> [String](String.md) |  | [NamedObject](NamedObject.md) |
+| [name](name.md) | 1..1 <br/> [String](String.md) | The name for the instance of the class | [NamedObject](NamedObject.md) |
 
 
 
@@ -141,6 +141,7 @@ is_a: NamedObject
 attributes:
   id:
     name: id
+    description: The assigned identifying value for the instance of the class.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     identifier: true
@@ -185,6 +186,7 @@ attributes:
     range: string
   description:
     name: description
+    description: A textual description of the instance of the class.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: description
@@ -198,6 +200,8 @@ attributes:
     range: string
   operations:
     name: operations
+    description: The calculations performed for the method. Each operation generates
+      a statistical result.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     multivalued: true
@@ -236,6 +240,7 @@ attributes:
     range: AnalysisProgrammingCodeTemplate
   name:
     name: name
+    description: The name for the instance of the class.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: name

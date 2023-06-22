@@ -410,6 +410,7 @@
   },
   "analysisSets": [
     {
+      "level": 1,
       "order": 1,
       "condition": {
         "dataset": "ADSL",
@@ -423,6 +424,7 @@
       "label": "Intent-to-Treat Population"
     },
     {
+      "level": 1,
       "order": 1,
       "condition": {
         "dataset": "ADSL",
@@ -444,6 +446,7 @@
       "groupingVariable": "TRT01A",
       "groups": [
         {
+          "level": 1,
           "order": 1,
           "condition": {
             "dataset": "ADSL",
@@ -457,6 +460,7 @@
           "label": "Placebo"
         },
         {
+          "level": 1,
           "order": 2,
           "condition": {
             "dataset": "ADSL",
@@ -470,6 +474,7 @@
           "label": "Xanomeline Low Dose"
         },
         {
+          "level": 1,
           "order": 3,
           "condition": {
             "dataset": "ADSL",
@@ -491,6 +496,7 @@
       "groupingVariable": "SEX",
       "groups": [
         {
+          "level": 1,
           "order": 1,
           "condition": {
             "dataset": "ADSL",
@@ -504,6 +510,7 @@
           "label": "Male"
         },
         {
+          "level": 1,
           "order": 2,
           "condition": {
             "dataset": "ADSL",
@@ -525,6 +532,7 @@
       "groupingVariable": "AGEGR1",
       "groups": [
         {
+          "level": 1,
           "order": 1,
           "condition": {
             "dataset": "ADSL",
@@ -538,6 +546,7 @@
           "label": "< 65 years"
         },
         {
+          "level": 1,
           "order": 2,
           "condition": {
             "dataset": "ADSL",
@@ -560,6 +569,7 @@
       "groupingVariable": "RACE",
       "groups": [
         {
+          "level": 1,
           "order": 1,
           "condition": {
             "dataset": "ADSL",
@@ -573,6 +583,7 @@
           "label": "American Indian or Alaska Native"
         },
         {
+          "level": 1,
           "order": 2,
           "condition": {
             "dataset": "ADSL",
@@ -586,6 +597,7 @@
           "label": "Asian"
         },
         {
+          "level": 1,
           "order": 3,
           "condition": {
             "dataset": "ADSL",
@@ -599,6 +611,7 @@
           "label": "Black or African American"
         },
         {
+          "level": 1,
           "order": 4,
           "condition": {
             "dataset": "ADSL",
@@ -612,6 +625,7 @@
           "label": "Native Hawaiian or Other Pacific Islander"
         },
         {
+          "level": 1,
           "order": 5,
           "condition": {
             "dataset": "ADSL",
@@ -625,6 +639,7 @@
           "label": "White"
         },
         {
+          "level": 1,
           "order": 6,
           "condition": {
             "dataset": "ADSL",
@@ -638,6 +653,7 @@
           "label": "Multiple"
         },
         {
+          "level": 1,
           "order": 7,
           "condition": {
             "dataset": "ADSL",
@@ -651,6 +667,7 @@
           "label": "Not Reported"
         },
         {
+          "level": 1,
           "order": 8,
           "condition": {
             "dataset": "ADSL",
@@ -664,6 +681,7 @@
           "label": "Unknown"
         },
         {
+          "level": 1,
           "order": 9,
           "condition": {
             "dataset": "ADSL",
@@ -685,6 +703,7 @@
       "groupingVariable": "ETHNIC",
       "groups": [
         {
+          "level": 1,
           "order": 1,
           "condition": {
             "dataset": "ADSL",
@@ -698,6 +717,7 @@
           "label": "Hispanic or Latino"
         },
         {
+          "level": 1,
           "order": 2,
           "condition": {
             "dataset": "ADSL",
@@ -1163,6 +1183,7 @@
       "groupingVariable": "PARAMCD",
       "groups": [
         {
+          "level": 1,
           "order": 1,
           "condition": {
             "dataset": "ADVS",
@@ -1176,6 +1197,7 @@
           "label": "Systolic Blood Pressure (mmHg)"
         },
         {
+          "level": 1,
           "order": 2,
           "condition": {
             "dataset": "ADVS",
@@ -1189,6 +1211,7 @@
           "label": "Diastolic Blood Pressure (mmHg)"
         },
         {
+          "level": 1,
           "order": 3,
           "condition": {
             "dataset": "ADVS",
@@ -1202,6 +1225,7 @@
           "label": "Pulse Rate (beats/min)"
         },
         {
+          "level": 1,
           "order": 4,
           "condition": {
             "dataset": "ADVS",
@@ -1223,6 +1247,7 @@
       "groupingVariable": "AVISIT",
       "groups": [
         {
+          "level": 1,
           "order": 1,
           "condition": {
             "dataset": "ADVS",
@@ -1236,6 +1261,7 @@
           "label": "Baseline"
         },
         {
+          "level": 1,
           "order": 2,
           "condition": {
             "dataset": "ADVS",
@@ -1249,6 +1275,7 @@
           "label": "Week 2"
         },
         {
+          "level": 1,
           "order": 3,
           "condition": {
             "dataset": "ADVS",
@@ -1262,6 +1289,7 @@
           "label": "Week 4"
         },
         {
+          "level": 1,
           "order": 4,
           "condition": {
             "dataset": "ADVS",
@@ -1275,6 +1303,7 @@
           "label": "Week 6"
         },
         {
+          "level": 1,
           "order": 5,
           "condition": {
             "dataset": "ADVS",
@@ -1288,6 +1317,7 @@
           "label": "Week 8"
         },
         {
+          "level": 1,
           "order": 6,
           "condition": {
             "dataset": "ADVS",
@@ -1301,6 +1331,7 @@
           "label": "Week 12"
         },
         {
+          "level": 1,
           "order": 7,
           "condition": {
             "dataset": "ADVS",
@@ -1314,6 +1345,7 @@
           "label": "Week 16"
         },
         {
+          "level": 1,
           "order": 8,
           "condition": {
             "dataset": "ADVS",
@@ -1327,6 +1359,7 @@
           "label": "Week 20"
         },
         {
+          "level": 1,
           "order": 9,
           "condition": {
             "dataset": "ADVS",
@@ -1340,6 +1373,7 @@
           "label": "Week 24"
         },
         {
+          "level": 1,
           "order": 10,
           "condition": {
             "dataset": "ADVS",
@@ -1353,6 +1387,7 @@
           "label": "Week 26"
         },
         {
+          "level": 1,
           "order": 11,
           "condition": {
             "dataset": "ADVS",

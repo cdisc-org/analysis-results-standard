@@ -44,8 +44,8 @@ URI: [ars:TemplateCodeParameter](https://www.cdisc.org/ars/1-0/TemplateCodeParam
 | ---  | --- | --- | --- |
 | [valueSource](valueSource.md) | 0..1 <br/> [String](String.md) | A reference to the prespecified source of the value for the parameter | direct |
 | [value](value.md) | 0..* <br/> [String](String.md) | The value to be used for the parameter when the method is used in an analysis | direct |
-| [description](description.md) | 0..1 <br/> [String](String.md) |  | [CodeParameter](CodeParameter.md) |
-| [name](name.md) | 1..1 <br/> [String](String.md) |  | [NamedObject](NamedObject.md) |
+| [description](description.md) | 0..1 <br/> [String](String.md) | A textual description of the instance of the class | [CodeParameter](CodeParameter.md) |
+| [name](name.md) | 1..1 <br/> [String](String.md) | The name for the instance of the class | [NamedObject](NamedObject.md) |
 
 
 
@@ -169,6 +169,7 @@ attributes:
     required: false
   description:
     name: description
+    description: A textual description of the instance of the class.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: description
@@ -182,6 +183,7 @@ attributes:
     range: string
   name:
     name: name
+    description: The name for the instance of the class.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: name

@@ -1,5 +1,10 @@
 # Slot: outputs
 
+
+_The outputs defined for the reporting event._
+
+
+
 URI: [ars:outputs](https://www.cdisc.org/ars/1-0/outputs)
 
 
@@ -52,6 +57,7 @@ URI: [ars:outputs](https://www.cdisc.org/ars/1-0/outputs)
 <details>
 ```yaml
 name: outputs
+description: The outputs defined for the reporting event.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 multivalued: true

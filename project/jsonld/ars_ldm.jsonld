@@ -284,22 +284,27 @@
     {
       "name": "OutputFileTypeEnum",
       "definition_uri": "https://www.cdisc.org/ars/1-0/OutputFileTypeEnum",
+      "description": "The file format of the file containing output from analyses.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "permissible_values": [
         {
-          "text": "pdf"
+          "text": "pdf",
+          "description": "Portable Document Format (PDF)"
         },
         {
-          "text": "rtf"
+          "text": "rtf",
+          "description": "Rich Text Format (RTF)"
         },
         {
-          "text": "txt"
+          "text": "txt",
+          "description": "Plain text"
         }
       ]
     },
     {
       "name": "ExpressionLogicalOperatorEnum",
       "definition_uri": "https://www.cdisc.org/ars/1-0/ExpressionLogicalOperatorEnum",
+      "description": "A Boolean operator, a symbol or a function that denotes a logical operation (e.g., and, or, not).",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "permissible_values": [
         {
@@ -319,28 +324,36 @@
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "permissible_values": [
         {
-          "text": "EQ"
+          "text": "EQ",
+          "description": "Is equal to"
         },
         {
-          "text": "NE"
+          "text": "NE",
+          "description": "Is not equal to"
         },
         {
-          "text": "GT"
+          "text": "GT",
+          "description": "Is greater than"
         },
         {
-          "text": "GE"
+          "text": "GE",
+          "description": "Is greater than or equal to"
         },
         {
-          "text": "LT"
+          "text": "LT",
+          "description": "Is less than"
         },
         {
-          "text": "LE"
+          "text": "LE",
+          "description": "Is less than or equal to"
         },
         {
-          "text": "IN"
+          "text": "IN",
+          "description": "Is in"
         },
         {
-          "text": "NOTIN"
+          "text": "NOTIN",
+          "description": "Is not in"
         }
       ]
     },
@@ -369,13 +382,16 @@
     {
       "name": "OperationRoleEnum",
       "definition_uri": "https://www.cdisc.org/ars/1-0/OperationRoleEnum",
+      "description": "The role that the referenced operation's result plays in the calculation of the result of this operation.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "permissible_values": [
         {
-          "text": "NUMERATOR"
+          "text": "NUMERATOR",
+          "description": "The dividend of a fraction."
         },
         {
-          "text": "DENOMINATOR"
+          "text": "DENOMINATOR",
+          "description": "The divisor of a fraction."
         }
       ]
     },
@@ -459,7 +475,7 @@
     {
       "name": "PageRefTypeEnum",
       "definition_uri": "https://www.cdisc.org/ars/1-0/PageRefTypeEnum",
-      "description": "Type of page for page references.",
+      "description": "Type of reference for page references.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "permissible_values": [
         {
@@ -477,6 +493,7 @@
     {
       "name": "name",
       "definition_uri": "https://www.cdisc.org/ars/1-0/name",
+      "description": "The name for the instance of the class.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "slot_uri": "https://www.cdisc.org/ars/1-0/name",
       "owner": "NamedObject",
@@ -578,6 +595,17 @@
     {
       "name": "groups",
       "definition_uri": "https://www.cdisc.org/ars/1-0/groups",
+      "description": "The pre-specified groups within the grouping.",
+      "examples": [
+        {
+          "value": "'Male' and 'Female' might be groups within a sex grouping.",
+          "@type": "Example"
+        },
+        {
+          "value": "'Treatment A', 'Treatment B', 'Placebo' might be groups within a treatment grouping.",
+          "@type": "Example"
+        }
+      ],
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "slot_uri": "https://www.cdisc.org/ars/1-0/groups",
       "multivalued": true,
@@ -594,6 +622,7 @@
     {
       "name": "dataSubsets",
       "definition_uri": "https://www.cdisc.org/ars/1-0/dataSubsets",
+      "description": "Subsets of data identified by selection criteria for inclusion in analysis definitions.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "slot_uri": "https://www.cdisc.org/ars/1-0/dataSubsets",
       "multivalued": true,
@@ -609,7 +638,7 @@
     {
       "name": "dataGroupings",
       "definition_uri": "https://www.cdisc.org/ars/1-0/dataGroupings",
-      "description": "Characteristics used to subdivide data records in the analysis dataset (e.g., visit, system organ class).",
+      "description": "Characteristics used to subdivide data records in analysis datasets (e.g., visit, system organ class).",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "slot_uri": "https://www.cdisc.org/ars/1-0/dataGroupings",
       "multivalued": true,
@@ -707,6 +736,7 @@
     {
       "name": "operations",
       "definition_uri": "https://www.cdisc.org/ars/1-0/operations",
+      "description": "The calculations performed for the method. Each operation generates a statistical result.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "slot_uri": "https://www.cdisc.org/ars/1-0/operations",
       "multivalued": true,
@@ -721,20 +751,23 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "referencedOperationId",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/referencedOperationId",
+      "name": "referencedOperationRelationshipId",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/referencedOperationRelationshipId",
+      "description": "The identifier of the defined referenced operation relationship.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/referencedOperationId",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/referencedOperationRelationshipId",
       "owner": "ReferencedAnalysisOperation",
       "domain_of": [
         "ReferencedAnalysisOperation"
       ],
       "range": "ReferencedOperationRelationship",
+      "required": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "analysisCategorizations",
       "definition_uri": "https://www.cdisc.org/ars/1-0/analysisCategorizations",
+      "description": "Sets of related implementer-defined categories that can be used to categorize analyses or outputs.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "slot_uri": "https://www.cdisc.org/ars/1-0/analysisCategorizations",
       "multivalued": true,
@@ -750,6 +783,7 @@
     {
       "name": "categories",
       "definition_uri": "https://www.cdisc.org/ars/1-0/categories",
+      "description": "Implementer-defined categories of analyses/outputs, each of which may include one or more sub-categorization.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "slot_uri": "https://www.cdisc.org/ars/1-0/categories",
       "multivalued": true,
@@ -766,6 +800,7 @@
     {
       "name": "categoryIds",
       "definition_uri": "https://www.cdisc.org/ars/1-0/categoryIds",
+      "description": "References to any implementer-defined categories that apply to the analysis or output.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "slot_uri": "https://www.cdisc.org/ars/1-0/categoryIds",
       "multivalued": true,
@@ -780,6 +815,7 @@
     {
       "name": "subCategorizations",
       "definition_uri": "https://www.cdisc.org/ars/1-0/subCategorizations",
+      "description": "Sets of related implementer-defined sub-categories that can be used to categorize analyses or outputs.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "slot_uri": "https://www.cdisc.org/ars/1-0/subCategorizations",
       "multivalued": true,
@@ -795,6 +831,7 @@
     {
       "name": "outputs",
       "definition_uri": "https://www.cdisc.org/ars/1-0/outputs",
+      "description": "The outputs defined for the reporting event.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "slot_uri": "https://www.cdisc.org/ars/1-0/outputs",
       "multivalued": true,
@@ -826,6 +863,10 @@
     {
       "name": "level",
       "definition_uri": "https://www.cdisc.org/ars/1-0/level",
+      "description": "The level of the entry within a hierarchical structure.",
+      "comments": [
+        "1 is the top level."
+      ],
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "slot_uri": "https://www.cdisc.org/ars/1-0/level",
       "owner": "WhereClause",
@@ -839,6 +880,7 @@
     {
       "name": "order",
       "definition_uri": "https://www.cdisc.org/ars/1-0/order",
+      "description": "The ordinal of the instance with respect to other instances.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "slot_uri": "https://www.cdisc.org/ars/1-0/order",
       "owner": "WhereClause",
@@ -855,6 +897,7 @@
     {
       "name": "sublist",
       "definition_uri": "https://www.cdisc.org/ars/1-0/sublist",
+      "description": "A sub-list of items (analyses or outputs) that may be further organized within sub-lists.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "slot_uri": "https://www.cdisc.org/ars/1-0/sublist",
       "owner": "OrderedListItem",
@@ -868,6 +911,7 @@
     {
       "name": "analysisId",
       "definition_uri": "https://www.cdisc.org/ars/1-0/analysisId",
+      "description": "The identifier of the referenced analysis.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "slot_uri": "https://www.cdisc.org/ars/1-0/analysisId",
       "owner": "ReferencedOperationRelationship",
@@ -882,6 +926,7 @@
     {
       "name": "analysisSetId",
       "definition_uri": "https://www.cdisc.org/ars/1-0/analysisSetId",
+      "description": "The identifier of the referenced analysis set.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "slot_uri": "https://www.cdisc.org/ars/1-0/analysisSetId",
       "owner": "Analysis",
@@ -894,6 +939,7 @@
     {
       "name": "orderedGroupings",
       "definition_uri": "https://www.cdisc.org/ars/1-0/orderedGroupings",
+      "description": "An ordered list of grouping factors used in the analysis.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "slot_uri": "https://www.cdisc.org/ars/1-0/orderedGroupings",
       "multivalued": true,
@@ -910,6 +956,7 @@
     {
       "name": "groupingId",
       "definition_uri": "https://www.cdisc.org/ars/1-0/groupingId",
+      "description": "The identifier of the referenced subject or data grouping factor.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "slot_uri": "https://www.cdisc.org/ars/1-0/groupingId",
       "owner": "ResultGroup",
@@ -937,6 +984,7 @@
     {
       "name": "dataSubsetId",
       "definition_uri": "https://www.cdisc.org/ars/1-0/dataSubsetId",
+      "description": "The identifier of the referenced data subset.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "slot_uri": "https://www.cdisc.org/ars/1-0/dataSubsetId",
       "owner": "Analysis",
@@ -963,6 +1011,7 @@
     {
       "name": "description",
       "definition_uri": "https://www.cdisc.org/ars/1-0/description",
+      "description": "A textual description of the instance of the class.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "slot_uri": "https://www.cdisc.org/ars/1-0/description",
       "owner": "SponsorTerm",
@@ -979,6 +1028,7 @@
     {
       "name": "referencedAnalysisOperations",
       "definition_uri": "https://www.cdisc.org/ars/1-0/referencedAnalysisOperations",
+      "description": "Indications of which analysis contains the results for each referenced operation.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "slot_uri": "https://www.cdisc.org/ars/1-0/referencedAnalysisOperations",
       "multivalued": true,
@@ -1036,6 +1086,7 @@
     {
       "name": "groupId",
       "definition_uri": "https://www.cdisc.org/ars/1-0/groupId",
+      "description": "The identifier of a referenced predefined group within a grouping.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "slot_uri": "https://www.cdisc.org/ars/1-0/groupId",
       "owner": "ResultGroup",
@@ -1048,6 +1099,7 @@
     {
       "name": "groupValue",
       "definition_uri": "https://www.cdisc.org/ars/1-0/groupValue",
+      "description": "The data value used as a group within a data-driven grouping.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "slot_uri": "https://www.cdisc.org/ars/1-0/groupValue",
       "owner": "ResultGroup",
@@ -1123,6 +1175,7 @@
     {
       "name": "operationId",
       "definition_uri": "https://www.cdisc.org/ars/1-0/operationId",
+      "description": "The identifier of the referenced operation.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "slot_uri": "https://www.cdisc.org/ars/1-0/operationId",
       "owner": "ReferencedOperationRelationship",
@@ -1187,7 +1240,7 @@
     {
       "name": "parameters",
       "definition_uri": "https://www.cdisc.org/ars/1-0/parameters",
-      "description": "Replacement parameters that are referenced in the programming code or programming code template and  are used to generate or execute the programming code.\n",
+      "description": "Replacement parameters that are referenced in the programming code or programming code template and are used to generate or execute the programming code.\n",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "slot_uri": "https://www.cdisc.org/ars/1-0/parameters",
       "multivalued": true,
@@ -1231,6 +1284,7 @@
     {
       "name": "outputId",
       "definition_uri": "https://www.cdisc.org/ars/1-0/outputId",
+      "description": "The identifier of the referenced output.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "slot_uri": "https://www.cdisc.org/ars/1-0/outputId",
       "owner": "OrderedListItem",
@@ -1243,6 +1297,7 @@
     {
       "name": "id",
       "definition_uri": "https://www.cdisc.org/ars/1-0/id",
+      "description": "The assigned identifying value for the instance of the class.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "slot_uri": "https://www.cdisc.org/ars/1-0/id",
       "identifier": true,
@@ -1700,6 +1755,7 @@
     {
       "name": "pageRefs",
       "definition_uri": "https://www.cdisc.org/ars/1-0/pageRefs",
+      "description": "A list of references to specific parts of a document, which may be referenced as a list of one or more page numbers, a range of page numbers, or a list of named destinations in the document (e.g. bookmarks).",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "slot_uri": "https://www.cdisc.org/ars/1-0/pageRefs",
       "multivalued": true,
@@ -1729,6 +1785,7 @@
     {
       "name": "refType",
       "definition_uri": "https://www.cdisc.org/ars/1-0/refType",
+      "description": "The type of reference for page references.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "slot_uri": "https://www.cdisc.org/ars/1-0/refType",
       "owner": "PageRef",
@@ -1856,6 +1913,7 @@
     {
       "name": "controlledTerm",
       "definition_uri": "https://www.cdisc.org/ars/1-0/controlledTerm",
+      "description": "One of the permissible values from the referenced enumeration.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "slot_uri": "https://www.cdisc.org/ars/1-0/controlledTerm",
       "owner": "ExtensibleTerminologyTerm",
@@ -1886,6 +1944,7 @@
     {
       "name": "sponsorTermId",
       "definition_uri": "https://www.cdisc.org/ars/1-0/sponsorTermId",
+      "description": "The identifier of the referenced sponsor term.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "slot_uri": "https://www.cdisc.org/ars/1-0/sponsorTermId",
       "owner": "ExtensibleTerminologyTerm",
@@ -1898,6 +1957,10 @@
     {
       "name": "OrderedListItem_level",
       "definition_uri": "https://www.cdisc.org/ars/1-0/level",
+      "description": "The level of the entry within a hierarchical structure.",
+      "comments": [
+        "1 is the top level."
+      ],
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "level",
       "domain": "OrderedListItem",
@@ -1916,6 +1979,7 @@
     {
       "name": "OrderedListItem_order",
       "definition_uri": "https://www.cdisc.org/ars/1-0/order",
+      "description": "The ordinal of the instance with respect to other instances.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "order",
       "domain": "OrderedListItem",
@@ -1929,6 +1993,25 @@
       "usage_slot_name": "order",
       "range": "integer",
       "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Analysis_categoryIds",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/categoryIds",
+      "description": "References to any implementer-defined categories that apply to the analysis.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "is_a": "categoryIds",
+      "domain": "Analysis",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/categoryIds",
+      "multivalued": true,
+      "alias": "categoryIds",
+      "owner": "Analysis",
+      "domain_of": [
+        "Analysis"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "categoryIds",
+      "range": "AnalysisCategory",
       "@type": "SlotDefinition"
     },
     {
@@ -1953,6 +2036,7 @@
     {
       "name": "OrderedGroupingFactor_order",
       "definition_uri": "https://www.cdisc.org/ars/1-0/order",
+      "description": "The ordinal of the instance with respect to other instances.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "order",
       "domain": "OrderedGroupingFactor",
@@ -1971,6 +2055,7 @@
     {
       "name": "ReferencedAnalysisOperation_analysisId",
       "definition_uri": "https://www.cdisc.org/ars/1-0/analysisId",
+      "description": "The identifier of the referenced analysis.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "analysisId",
       "domain": "ReferencedAnalysisOperation",
@@ -2071,6 +2156,7 @@
     {
       "name": "Output_categoryIds",
       "definition_uri": "https://www.cdisc.org/ars/1-0/categoryIds",
+      "description": "References to any implementer-defined categories that apply to the output.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "categoryIds",
       "domain": "Output",
@@ -2108,6 +2194,7 @@
     {
       "name": "OrderedDisplay_order",
       "definition_uri": "https://www.cdisc.org/ars/1-0/order",
+      "description": "The ordinal of the instance with respect to other instances.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "order",
       "domain": "OrderedDisplay",
@@ -2126,6 +2213,7 @@
     {
       "name": "OrderedDisplaySubSection_order",
       "definition_uri": "https://www.cdisc.org/ars/1-0/order",
+      "description": "The ordinal of the instance with respect to other instances.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "order",
       "domain": "OrderedDisplaySubSection",
@@ -2167,6 +2255,7 @@
     {
       "name": "OrderedSubSection_subSectionId",
       "definition_uri": "https://www.cdisc.org/ars/1-0/subSectionId",
+      "description": "NOT USED",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "subSectionId",
       "domain": "OrderedSubSection",
@@ -2188,6 +2277,7 @@
     {
       "name": "OrderedSubSectionRef_subSection",
       "definition_uri": "https://www.cdisc.org/ars/1-0/subSection",
+      "description": "NOT USED",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "subSection",
       "domain": "OrderedSubSectionRef",
@@ -2327,6 +2417,17 @@
     {
       "name": "SubjectGroupingFactor_groups",
       "definition_uri": "https://www.cdisc.org/ars/1-0/groups",
+      "description": "The pre-specified groups within the grouping.",
+      "examples": [
+        {
+          "value": "'Male' and 'Female' might be groups within a sex grouping.",
+          "@type": "Example"
+        },
+        {
+          "value": "'Treatment A', 'Treatment B', 'Placebo' might be groups within a treatment grouping.",
+          "@type": "Example"
+        }
+      ],
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "groups",
       "domain": "SubjectGroupingFactor",
@@ -2348,6 +2449,17 @@
     {
       "name": "DataGroupingFactor_groups",
       "definition_uri": "https://www.cdisc.org/ars/1-0/groups",
+      "description": "The pre-specified groups within the grouping.",
+      "examples": [
+        {
+          "value": "'Male' and 'Female' might be groups within a sex grouping.",
+          "@type": "Example"
+        },
+        {
+          "value": "'Treatment A', 'Treatment B', 'Placebo' might be groups within a treatment grouping.",
+          "@type": "Example"
+        }
+      ],
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "groups",
       "domain": "DataGroupingFactor",
@@ -2423,6 +2535,7 @@
     {
       "name": "PageNumberListRef_refType",
       "definition_uri": "https://www.cdisc.org/ars/1-0/refType",
+      "description": "The type of reference for page references.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "refType",
       "domain": "PageNumberListRef",
@@ -2466,7 +2579,7 @@
     {
       "name": "PageNumberListRef_pageNames",
       "definition_uri": "https://www.cdisc.org/ars/1-0/pageNames",
-      "description": "One or more named document references which each correspond with a page.",
+      "description": "NOT USED",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "pageNames",
       "domain": "PageNumberListRef",
@@ -2489,7 +2602,7 @@
     {
       "name": "PageNumberListRef_firstPage",
       "definition_uri": "https://www.cdisc.org/ars/1-0/firstPage",
-      "description": "The page number of the first page in a range of pages.",
+      "description": "NOT USED",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "firstPage",
       "domain": "PageNumberListRef",
@@ -2511,7 +2624,7 @@
     {
       "name": "PageNumberListRef_lastPage",
       "definition_uri": "https://www.cdisc.org/ars/1-0/lastPage",
-      "description": "The page number of the last page in a range of pages.",
+      "description": "NOT USED",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "lastPage",
       "domain": "PageNumberListRef",
@@ -2533,6 +2646,7 @@
     {
       "name": "PageNumberRangeRef_refType",
       "definition_uri": "https://www.cdisc.org/ars/1-0/refType",
+      "description": "The type of reference for page references.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "refType",
       "domain": "PageNumberRangeRef",
@@ -2552,7 +2666,7 @@
     {
       "name": "PageNumberRangeRef_pageNumbers",
       "definition_uri": "https://www.cdisc.org/ars/1-0/pageNumbers",
-      "description": "One or more page numbers.",
+      "description": "NOT USED",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "pageNumbers",
       "domain": "PageNumberRangeRef",
@@ -2575,7 +2689,7 @@
     {
       "name": "PageNumberRangeRef_pageNames",
       "definition_uri": "https://www.cdisc.org/ars/1-0/pageNames",
-      "description": "One or more named document references which each correspond with a page.",
+      "description": "NOT USED",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "pageNames",
       "domain": "PageNumberRangeRef",
@@ -2644,6 +2758,7 @@
     {
       "name": "PageNameRef_refType",
       "definition_uri": "https://www.cdisc.org/ars/1-0/refType",
+      "description": "The type of reference for page references.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "refType",
       "domain": "PageNameRef",
@@ -2663,7 +2778,7 @@
     {
       "name": "PageNameRef_pageNumbers",
       "definition_uri": "https://www.cdisc.org/ars/1-0/pageNumbers",
-      "description": "One or more page numbers.",
+      "description": "NOT USED",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "pageNumbers",
       "domain": "PageNameRef",
@@ -2710,7 +2825,7 @@
     {
       "name": "PageNameRef_firstPage",
       "definition_uri": "https://www.cdisc.org/ars/1-0/firstPage",
-      "description": "The page number of the first page in a range of pages.",
+      "description": "NOT USED",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "firstPage",
       "domain": "PageNameRef",
@@ -2732,7 +2847,7 @@
     {
       "name": "PageNameRef_lastPage",
       "definition_uri": "https://www.cdisc.org/ars/1-0/lastPage",
-      "description": "The page number of the last page in a range of pages.",
+      "description": "NOT USED",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "lastPage",
       "domain": "PageNameRef",
@@ -2754,6 +2869,7 @@
     {
       "name": "AnalysisReason_controlledTerm",
       "definition_uri": "https://www.cdisc.org/ars/1-0/controlledTerm",
+      "description": "One of the permissible values from the referenced enumeration.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "controlledTerm",
       "domain": "AnalysisReason",
@@ -2794,6 +2910,7 @@
     {
       "name": "AnalysisReason_sponsorTermId",
       "definition_uri": "https://www.cdisc.org/ars/1-0/sponsorTermId",
+      "description": "NOT USED",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "sponsorTermId",
       "domain": "AnalysisReason",
@@ -2815,6 +2932,7 @@
     {
       "name": "SponsorAnalysisReason_controlledTerm",
       "definition_uri": "https://www.cdisc.org/ars/1-0/controlledTerm",
+      "description": "NOT USED",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "controlledTerm",
       "domain": "SponsorAnalysisReason",
@@ -2854,6 +2972,7 @@
     {
       "name": "SponsorAnalysisReason_sponsorTermId",
       "definition_uri": "https://www.cdisc.org/ars/1-0/sponsorTermId",
+      "description": "A reference to a sponsor term in the TerminologyExtension with enumeration=AnalysisReasonEnum",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "sponsorTermId",
       "domain": "SponsorAnalysisReason",
@@ -2876,6 +2995,7 @@
     {
       "name": "AnalysisPurpose_controlledTerm",
       "definition_uri": "https://www.cdisc.org/ars/1-0/controlledTerm",
+      "description": "One of the permissible values from the referenced enumeration.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "controlledTerm",
       "domain": "AnalysisPurpose",
@@ -2916,6 +3036,7 @@
     {
       "name": "AnalysisPurpose_sponsorTermId",
       "definition_uri": "https://www.cdisc.org/ars/1-0/sponsorTermId",
+      "description": "NOT USED",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "sponsorTermId",
       "domain": "AnalysisPurpose",
@@ -2937,6 +3058,7 @@
     {
       "name": "SponsorAnalysisPurpose_controlledTerm",
       "definition_uri": "https://www.cdisc.org/ars/1-0/controlledTerm",
+      "description": "NOT USED",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "controlledTerm",
       "domain": "SponsorAnalysisPurpose",
@@ -2976,6 +3098,7 @@
     {
       "name": "SponsorAnalysisPurpose_sponsorTermId",
       "definition_uri": "https://www.cdisc.org/ars/1-0/sponsorTermId",
+      "description": "A reference to a sponsor term in the TerminologyExtension with enumeration=AnalysisPurposeEnum",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "sponsorTermId",
       "domain": "SponsorAnalysisPurpose",
@@ -2998,6 +3121,7 @@
     {
       "name": "OperationRole_controlledTerm",
       "definition_uri": "https://www.cdisc.org/ars/1-0/controlledTerm",
+      "description": "One of the permissible values from the referenced enumeration.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "controlledTerm",
       "domain": "OperationRole",
@@ -3038,6 +3162,7 @@
     {
       "name": "OperationRole_sponsorTermId",
       "definition_uri": "https://www.cdisc.org/ars/1-0/sponsorTermId",
+      "description": "NOT USED",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "sponsorTermId",
       "domain": "OperationRole",
@@ -3059,6 +3184,7 @@
     {
       "name": "SponsorOperationRole_controlledTerm",
       "definition_uri": "https://www.cdisc.org/ars/1-0/controlledTerm",
+      "description": "NOT USED",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "controlledTerm",
       "domain": "SponsorOperationRole",
@@ -3098,6 +3224,7 @@
     {
       "name": "SponsorOperationRole_sponsorTermId",
       "definition_uri": "https://www.cdisc.org/ars/1-0/sponsorTermId",
+      "description": "A reference to a sponsor term in the TerminologyExtension with enumeration=OperationRoleEnum",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "sponsorTermId",
       "domain": "SponsorOperationRole",
@@ -3120,6 +3247,7 @@
     {
       "name": "OutputFileType_controlledTerm",
       "definition_uri": "https://www.cdisc.org/ars/1-0/controlledTerm",
+      "description": "One of the permissible values from the referenced enumeration.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "controlledTerm",
       "domain": "OutputFileType",
@@ -3160,6 +3288,7 @@
     {
       "name": "OutputFileType_sponsorTermId",
       "definition_uri": "https://www.cdisc.org/ars/1-0/sponsorTermId",
+      "description": "NOT USED",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "sponsorTermId",
       "domain": "OutputFileType",
@@ -3181,6 +3310,7 @@
     {
       "name": "SponsorOutputFileType_controlledTerm",
       "definition_uri": "https://www.cdisc.org/ars/1-0/controlledTerm",
+      "description": "NOT USED",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "controlledTerm",
       "domain": "SponsorOutputFileType",
@@ -3220,6 +3350,7 @@
     {
       "name": "SponsorOutputFileType_sponsorTermId",
       "definition_uri": "https://www.cdisc.org/ars/1-0/sponsorTermId",
+      "description": "A reference to a sponsor term in the TerminologyExtension with enumeration=OutputFileTypeEnum",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "sponsorTermId",
       "domain": "SponsorOutputFileType",
@@ -3244,6 +3375,7 @@
     {
       "name": "NamedObject",
       "definition_uri": "https://www.cdisc.org/ars/1-0/NamedObject",
+      "description": "An object with a name.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "abstract": true,
       "slots": [
@@ -3350,7 +3482,7 @@
         "name",
         "id",
         "version",
-        "categoryIds",
+        "Analysis_categoryIds",
         "description",
         "reason",
         "purpose",
@@ -3389,7 +3521,7 @@
       "description": "An indication of the analysis that contains results of a referenced operation.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "slots": [
-        "referencedOperationId",
+        "referencedOperationRelationshipId",
         "ReferencedAnalysisOperation_analysisId"
       ],
       "slot_usage": {},
@@ -3464,7 +3596,7 @@
     {
       "name": "ReferencedOperationRelationship",
       "definition_uri": "https://www.cdisc.org/ars/1-0/ReferencedOperationRelationship",
-      "description": "A reference to an statistical operation whose results is used in the calculation of the result for this operation.",
+      "description": "A reference to a statistical operation whose results are used in the calculation of the result for this operation.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "slots": [
         "id",
@@ -3653,6 +3785,10 @@
     {
       "name": "OrderedDisplaySubSection",
       "definition_uri": "https://www.cdisc.org/ars/1-0/OrderedDisplaySubSection",
+      "description": "A single subsection ordered with respect to other subsections in the same section of a display.",
+      "comments": [
+        "A single subsection should be either defined using subSection or referenced using subSectionId (not both)."
+      ],
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "abstract": true,
       "slots": [
@@ -3703,7 +3839,7 @@
     {
       "name": "DisplaySubSection",
       "definition_uri": "https://www.cdisc.org/ars/1-0/DisplaySubSection",
-      "description": "An occurrence of a display section containing text that is ordered with respect to other occurrences of the same type of display section.",
+      "description": "An occurrence of a display section containing text.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "slots": [
         "id",
@@ -3716,7 +3852,7 @@
     {
       "name": "GlobalDisplaySection",
       "definition_uri": "https://www.cdisc.org/ars/1-0/GlobalDisplaySection",
-      "description": "A part of a tabular display containing one or more pieces of informational text.",
+      "description": "A global definition for part of a tabular display containing one or more pieces of informational text that may be used in multiple displays.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "slots": [
         "sectionType",
@@ -3729,6 +3865,10 @@
     {
       "name": "WhereClause",
       "definition_uri": "https://www.cdisc.org/ars/1-0/WhereClause",
+      "description": "Selection criteria defined as either a simple condition ([variable] [comparator] [value(s)]) or a compound expression that may combine simple conditions or compound expressions.",
+      "comments": [
+        "Each instance of this class should have either a condition or a compoundExpression, not both."
+      ],
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "slots": [
         "level",
@@ -3743,6 +3883,13 @@
     {
       "name": "WhereClauseCondition",
       "definition_uri": "https://www.cdisc.org/ars/1-0/WhereClauseCondition",
+      "description": "A simple selection criterion exressed as [dataset].[variable] [comparator] [value(s)]",
+      "examples": [
+        {
+          "value": "ADSL.SAFFL EQ 'Y'",
+          "@type": "Example"
+        }
+      ],
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "slots": [
         "dataset",
@@ -3841,6 +3988,7 @@
     {
       "name": "WhereClauseCompoundExpression",
       "definition_uri": "https://www.cdisc.org/ars/1-0/WhereClauseCompoundExpression",
+      "description": "A compound expression consisting of either two or more where clauses combined with the `AND` or `OR` logical operator, or a single where clause negated with the `NOT` logical operator.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "slots": [
         "logicalOperator",
@@ -3853,6 +4001,7 @@
     {
       "name": "CompoundSetExpression",
       "definition_uri": "https://www.cdisc.org/ars/1-0/CompoundSetExpression",
+      "description": "A compound expression consisting of either two or more identified analysis sets combined with the `AND` or `OR` logical operator, or a single identified analysis set negated with the `NOT` logical operator.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "WhereClauseCompoundExpression",
       "slots": [
@@ -3866,6 +4015,7 @@
     {
       "name": "CompoundGroupExpression",
       "definition_uri": "https://www.cdisc.org/ars/1-0/CompoundGroupExpression",
+      "description": "A compound expression consisting of either two or more identified group combined with the `AND` or `OR` logical operator, or a single identified group negated with the `NOT` logical operator.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "WhereClauseCompoundExpression",
       "slots": [
@@ -3879,6 +4029,7 @@
     {
       "name": "CompoundSubsetExpression",
       "definition_uri": "https://www.cdisc.org/ars/1-0/CompoundSubsetExpression",
+      "description": "A compound expression consisting of either two or more where clauses combined with the `AND` or `OR` logical operator, or a single where clause negated with the `NOT` logical operator.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "WhereClauseCompoundExpression",
       "slots": [
@@ -4033,6 +4184,7 @@
     {
       "name": "ReferenceDocument",
       "definition_uri": "https://www.cdisc.org/ars/1-0/ReferenceDocument",
+      "description": "An external document containing supporting documentation or programming code.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "NamedObject",
       "slots": [
@@ -4047,6 +4199,10 @@
     {
       "name": "DocumentReference",
       "definition_uri": "https://www.cdisc.org/ars/1-0/DocumentReference",
+      "description": "A reference to an external document.",
+      "comments": [
+        "One or more pageRefs may be specified to refer to specific part(s) of the document. Omit pageRefs to refer to the document as a whole."
+      ],
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "slots": [
         "referenceDocumentId",
@@ -4059,6 +4215,10 @@
     {
       "name": "PageRef",
       "definition_uri": "https://www.cdisc.org/ars/1-0/PageRef",
+      "description": "A reference to a specific part of a document as indicated by a list of one or more page numbers, a range of page numbers, or a list of named destinations in the document (e.g. bookmarks).",
+      "comments": [
+        "Each instance of this class should contain only one of the following page specifications:\n    * pageNumbers\n    * pageNames\n    * firstPage AND lastPage\n"
+      ],
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "abstract": true,
       "slots": [
@@ -4140,7 +4300,7 @@
     {
       "name": "TerminologyExtension",
       "definition_uri": "https://www.cdisc.org/ars/1-0/TerminologyExtension",
-      "description": "A sponsor-defined term that is included in an extensible set of controlled terminology.",
+      "description": "An extensible set of controlled terminology that has been extended with at least one sponsor-defined term.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "slots": [
         "id",
@@ -4168,6 +4328,10 @@
     {
       "name": "ExtensibleTerminologyTerm",
       "definition_uri": "https://www.cdisc.org/ars/1-0/ExtensibleTerminologyTerm",
+      "description": "The term used for an attribute whose terminology is extensible.",
+      "comments": [
+        "Each instance of this class should contain either a controlled term or a sponsor term id, not both."
+      ],
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "abstract": true,
       "slots": [
@@ -4181,6 +4345,7 @@
     {
       "name": "AnalysisReason",
       "definition_uri": "https://www.cdisc.org/ars/1-0/AnalysisReason",
+      "description": "The rationale for performing this analysis.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "ExtensibleTerminologyTerm",
       "slots": [
@@ -4194,6 +4359,7 @@
     {
       "name": "SponsorAnalysisReason",
       "definition_uri": "https://www.cdisc.org/ars/1-0/SponsorAnalysisReason",
+      "description": "The sponsor-defined rationale for performing this analysis.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "ExtensibleTerminologyTerm",
       "slots": [
@@ -4207,6 +4373,7 @@
     {
       "name": "AnalysisPurpose",
       "definition_uri": "https://www.cdisc.org/ars/1-0/AnalysisPurpose",
+      "description": "The purpose of the analysis within the body of evidence (e.g., section in the clinical study report).",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "ExtensibleTerminologyTerm",
       "slots": [
@@ -4220,6 +4387,7 @@
     {
       "name": "SponsorAnalysisPurpose",
       "definition_uri": "https://www.cdisc.org/ars/1-0/SponsorAnalysisPurpose",
+      "description": "The sponsor-defined purpose of the analysis within the body of evidence (e.g., section in the clinical study report).",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "ExtensibleTerminologyTerm",
       "slots": [
@@ -4233,6 +4401,7 @@
     {
       "name": "OperationRole",
       "definition_uri": "https://www.cdisc.org/ars/1-0/OperationRole",
+      "description": "The role that the referenced operation's result plays in the calculation of the result of this operation.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "ExtensibleTerminologyTerm",
       "slots": [
@@ -4246,6 +4415,7 @@
     {
       "name": "SponsorOperationRole",
       "definition_uri": "https://www.cdisc.org/ars/1-0/SponsorOperationRole",
+      "description": "The sponsor-defined role that the referenced operation's result plays in the calculation of the result of this operation.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "ExtensibleTerminologyTerm",
       "slots": [
@@ -4259,6 +4429,7 @@
     {
       "name": "OutputFileType",
       "definition_uri": "https://www.cdisc.org/ars/1-0/OutputFileType",
+      "description": "The file format of the file containing output from analyses.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "ExtensibleTerminologyTerm",
       "slots": [
@@ -4272,6 +4443,7 @@
     {
       "name": "SponsorOutputFileType",
       "definition_uri": "https://www.cdisc.org/ars/1-0/SponsorOutputFileType",
+      "description": "The sponsor-defined file format of the file containing output from analyses.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "ExtensibleTerminologyTerm",
       "slots": [
@@ -4285,9 +4457,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "ars_ldm.yaml",
-  "source_file_date": "2023-06-20T13:51:37",
-  "source_file_size": 32426,
-  "generation_date": "2023-06-20T13:52:15",
+  "source_file_date": "2023-06-22T16:27:08",
+  "source_file_size": 40508,
+  "generation_date": "2023-06-22T16:38:28",
   "@type": "SchemaDefinition",
   "@context": [
     ".\\analysis-results-standard\\project\\/jsonld/ars_ldm.context.jsonld",

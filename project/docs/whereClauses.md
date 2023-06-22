@@ -13,10 +13,10 @@ URI: [ars:whereClauses](https://www.cdisc.org/ars/1-0/whereClauses)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-[WhereClauseCompoundExpression](WhereClauseCompoundExpression.md) |  |  no  |
-[CompoundSetExpression](CompoundSetExpression.md) |  |  yes  |
-[CompoundGroupExpression](CompoundGroupExpression.md) |  |  yes  |
-[CompoundSubsetExpression](CompoundSubsetExpression.md) |  |  yes  |
+[WhereClauseCompoundExpression](WhereClauseCompoundExpression.md) | A compound expression consisting of either two or more where clauses combined... |  no  |
+[CompoundSetExpression](CompoundSetExpression.md) | A compound expression consisting of either two or more identified analysis se... |  yes  |
+[CompoundGroupExpression](CompoundGroupExpression.md) | A compound expression consisting of either two or more identified group combi... |  yes  |
+[CompoundSubsetExpression](CompoundSubsetExpression.md) | A compound expression consisting of either two or more where clauses combined... |  yes  |
 
 
 

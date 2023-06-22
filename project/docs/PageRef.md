@@ -1,6 +1,11 @@
 # Class: PageRef
 
 
+_A reference to a specific part of a document as indicated by a list of one or more page numbers, a range of page numbers, or a list of named destinations in the document (e.g. bookmarks)._
+
+
+
+
 * __NOTE__: this is an abstract class and should not be instantiated directly
 
 
@@ -48,7 +53,7 @@ URI: [ars:PageRef](https://www.cdisc.org/ars/1-0/PageRef)
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [refType](refType.md) | 1..1 <br/> [PageRefTypeEnum](PageRefTypeEnum.md) |  | direct |
+| [refType](refType.md) | 1..1 <br/> [PageRefTypeEnum](PageRefTypeEnum.md) | The type of reference for page references | direct |
 | [label](label.md) | 0..1 <br/> [String](String.md) | Alternative label to provide a more specific and description to a page link | direct |
 | [pageNames](pageNames.md) | 0..* <br/> [String](String.md) | One or more named document references which each correspond with a page | direct |
 | [pageNumbers](pageNumbers.md) | 0..* <br/> [Integer](Integer.md) | One or more page numbers | direct |
@@ -68,6 +73,14 @@ URI: [ars:PageRef](https://www.cdisc.org/ars/1-0/PageRef)
 
 
 
+
+
+## Comments
+
+* Each instance of this class should contain only one of the following page specifications:
+    * pageNumbers
+    * pageNames
+    * firstPage AND lastPage
 
 
 ## Identifier and Mapping Information
@@ -107,6 +120,12 @@ URI: [ars:PageRef](https://www.cdisc.org/ars/1-0/PageRef)
 <details>
 ```yaml
 name: PageRef
+description: A reference to a specific part of a document as indicated by a list of
+  one or more page numbers, a range of page numbers, or a list of named destinations
+  in the document (e.g. bookmarks).
+comments:
+- "Each instance of this class should contain only one of the following page specifications:\n\
+  \    * pageNumbers\n    * pageNames\n    * firstPage AND lastPage\n"
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 abstract: true
@@ -141,6 +160,12 @@ slot_usage:
 <details>
 ```yaml
 name: PageRef
+description: A reference to a specific part of a document as indicated by a list of
+  one or more page numbers, a range of page numbers, or a list of named destinations
+  in the document (e.g. bookmarks).
+comments:
+- "Each instance of this class should contain only one of the following page specifications:\n\
+  \    * pageNumbers\n    * pageNames\n    * firstPage AND lastPage\n"
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 abstract: true
@@ -162,6 +187,7 @@ slot_usage:
 attributes:
   refType:
     name: refType
+    description: The type of reference for page references.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: refType

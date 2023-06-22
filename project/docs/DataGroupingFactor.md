@@ -45,11 +45,11 @@ URI: [ars:DataGroupingFactor](https://www.cdisc.org/ars/1-0/DataGroupingFactor)
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [id](id.md) | 1..1 <br/> [String](String.md) |  | [GroupingFactor](GroupingFactor.md) |
+| [id](id.md) | 1..1 <br/> [String](String.md) | The assigned identifying value for the instance of the class | [GroupingFactor](GroupingFactor.md) |
 | [label](label.md) | 0..1 <br/> [String](String.md) |  | [GroupingFactor](GroupingFactor.md) |
 | [groupingVariable](groupingVariable.md) | 0..1 <br/> [String](String.md) | For groupings based on a single variable, a reference to the dataset variable... | [GroupingFactor](GroupingFactor.md) |
 | [dataDriven](dataDriven.md) | 1..1 <br/> [Boolean](Boolean.md) | Indicates whether the groups defined by the grouping are prespecified (false)... | [GroupingFactor](GroupingFactor.md) |
-| [groups](groups.md) | 0..* <br/> [DataGroup](DataGroup.md) |  | [GroupingFactor](GroupingFactor.md) |
+| [groups](groups.md) | 0..* <br/> [DataGroup](DataGroup.md) | The pre-specified groups within the grouping | [GroupingFactor](GroupingFactor.md) |
 
 
 
@@ -135,6 +135,7 @@ slot_usage:
 attributes:
   id:
     name: id
+    description: The assigned identifying value for the instance of the class.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     identifier: true
@@ -202,6 +203,7 @@ attributes:
     required: true
   groups:
     name: groups
+    description: The pre-specified groups within the grouping.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     multivalued: true

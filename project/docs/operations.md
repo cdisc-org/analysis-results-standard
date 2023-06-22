@@ -1,5 +1,10 @@
 # Slot: operations
 
+
+_The calculations performed for the method. Each operation generates a statistical result._
+
+
+
 URI: [ars:operations](https://www.cdisc.org/ars/1-0/operations)
 
 
@@ -54,6 +59,8 @@ URI: [ars:operations](https://www.cdisc.org/ars/1-0/operations)
 <details>
 ```yaml
 name: operations
+description: The calculations performed for the method. Each operation generates a
+  statistical result.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 multivalued: true

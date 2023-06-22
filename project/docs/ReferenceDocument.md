@@ -1,6 +1,11 @@
 # Class: ReferenceDocument
 
 
+_An external document containing supporting documentation or programming code._
+
+
+
+
 
 URI: [ars:ReferenceDocument](https://www.cdisc.org/ars/1-0/ReferenceDocument)
 
@@ -34,9 +39,9 @@ URI: [ars:ReferenceDocument](https://www.cdisc.org/ars/1-0/ReferenceDocument)
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [id](id.md) | 1..1 <br/> [String](String.md) |  | direct |
+| [id](id.md) | 1..1 <br/> [String](String.md) | The assigned identifying value for the instance of the class | direct |
 | [location](location.md) | 0..1 <br/> [Uri](Uri.md) |  | direct |
-| [name](name.md) | 1..1 <br/> [String](String.md) |  | [NamedObject](NamedObject.md) |
+| [name](name.md) | 1..1 <br/> [String](String.md) | The name for the instance of the class | [NamedObject](NamedObject.md) |
 
 
 
@@ -91,6 +96,8 @@ URI: [ars:ReferenceDocument](https://www.cdisc.org/ars/1-0/ReferenceDocument)
 <details>
 ```yaml
 name: ReferenceDocument
+description: An external document containing supporting documentation or programming
+  code.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 is_a: NamedObject
@@ -106,12 +113,15 @@ slots:
 <details>
 ```yaml
 name: ReferenceDocument
+description: An external document containing supporting documentation or programming
+  code.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 is_a: NamedObject
 attributes:
   id:
     name: id
+    description: The assigned identifying value for the instance of the class.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     identifier: true
@@ -149,6 +159,7 @@ attributes:
     range: uri
   name:
     name: name
+    description: The name for the instance of the class.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: name

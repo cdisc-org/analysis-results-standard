@@ -43,8 +43,8 @@ URI: [ars:OrderedSubSectionRef](https://www.cdisc.org/ars/1-0/OrderedSubSectionR
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [order](order.md) | 1..1 <br/> [Integer](Integer.md) |  | [OrderedDisplaySubSection](OrderedDisplaySubSection.md) |
-| [subSection](subSection.md) | 0..1 <br/> [DisplaySubSection](DisplaySubSection.md) |  | [OrderedDisplaySubSection](OrderedDisplaySubSection.md) |
+| [order](order.md) | 1..1 <br/> [Integer](Integer.md) | The ordinal of the instance with respect to other instances | [OrderedDisplaySubSection](OrderedDisplaySubSection.md) |
+| [subSection](subSection.md) | 0..1 <br/> [DisplaySubSection](DisplaySubSection.md) | NOT USED | [OrderedDisplaySubSection](OrderedDisplaySubSection.md) |
 | [subSectionId](subSectionId.md) | 1..1 <br/> [DisplaySubSection](DisplaySubSection.md) |  | [OrderedDisplaySubSection](OrderedDisplaySubSection.md) |
 
 
@@ -100,6 +100,7 @@ is_a: OrderedDisplaySubSection
 slot_usage:
   subSection:
     name: subSection
+    description: NOT USED
     domain_of:
     - OrderedDisplaySubSection
     value_presence: ABSENT
@@ -128,6 +129,7 @@ is_a: OrderedDisplaySubSection
 slot_usage:
   subSection:
     name: subSection
+    description: NOT USED
     domain_of:
     - OrderedDisplaySubSection
     value_presence: ABSENT
@@ -140,6 +142,7 @@ slot_usage:
 attributes:
   order:
     name: order
+    description: The ordinal of the instance with respect to other instances.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: order
@@ -154,6 +157,7 @@ attributes:
     required: true
   subSection:
     name: subSection
+    description: NOT USED
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: subSection

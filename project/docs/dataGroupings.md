@@ -1,7 +1,7 @@
 # Slot: dataGroupings
 
 
-_Characteristics used to subdivide data records in the analysis dataset (e.g., visit, system organ class)._
+_Characteristics used to subdivide data records in analysis datasets (e.g., visit, system organ class)._
 
 
 
@@ -57,8 +57,8 @@ URI: [ars:dataGroupings](https://www.cdisc.org/ars/1-0/dataGroupings)
 <details>
 ```yaml
 name: dataGroupings
-description: Characteristics used to subdivide data records in the analysis dataset
-  (e.g., visit, system organ class).
+description: Characteristics used to subdivide data records in analysis datasets (e.g.,
+  visit, system organ class).
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 multivalued: true

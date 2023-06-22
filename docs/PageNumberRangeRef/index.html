@@ -115,7 +115,7 @@
 <tr>
 <td><a href="../refType/">refType</a></td>
 <td>1..1 <br/> <a href="../PageRefTypeEnum/">PageRefTypeEnum</a></td>
-<td></td>
+<td>The type of reference for page references</td>
 <td><a href="../PageRef/">PageRef</a></td>
 </tr>
 <tr>
@@ -127,13 +127,13 @@
 <tr>
 <td><a href="../pageNames/">pageNames</a></td>
 <td>0..* <br/> <a href="../String/">String</a></td>
-<td>One or more named document references which each correspond with a page</td>
+<td>NOT USED</td>
 <td><a href="../PageRef/">PageRef</a></td>
 </tr>
 <tr>
 <td><a href="../pageNumbers/">pageNumbers</a></td>
 <td>0..* <br/> <a href="../Integer/">Integer</a></td>
-<td>One or more page numbers</td>
+<td>NOT USED</td>
 <td><a href="../PageRef/">PageRef</a></td>
 </tr>
 <tr>
@@ -192,11 +192,13 @@ slot_usage:
     equals_string: PhysicalRef
   pageNumbers:
     name: pageNumbers
+    description: NOT USED
     domain_of:
     - PageRef
     value_presence: ABSENT
   pageNames:
     name: pageNames
+    description: NOT USED
     domain_of:
     - PageRef
     value_presence: ABSENT
@@ -234,11 +236,13 @@ slot_usage:
     equals_string: PhysicalRef
   pageNumbers:
     name: pageNumbers
+    description: NOT USED
     domain_of:
     - PageRef
     value_presence: ABSENT
   pageNames:
     name: pageNames
+    description: NOT USED
     domain_of:
     - PageRef
     value_presence: ABSENT
@@ -257,6 +261,7 @@ slot_usage:
 attributes:
   refType:
     name: refType
+    description: The type of reference for page references.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: refType
@@ -287,8 +292,7 @@ attributes:
     range: string
   pageNames:
     name: pageNames
-    description: One or more named document references which each correspond with
-      a page.
+    description: NOT USED
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     multivalued: true
@@ -300,7 +304,7 @@ attributes:
     value_presence: ABSENT
   pageNumbers:
     name: pageNumbers
-    description: One or more page numbers.
+    description: NOT USED
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     multivalued: true

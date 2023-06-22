@@ -1,7 +1,7 @@
 # Class: DisplaySubSection
 
 
-_An occurrence of a display section containing text that is ordered with respect to other occurrences of the same type of display section._
+_An occurrence of a display section containing text._
 
 
 
@@ -31,7 +31,7 @@ URI: [ars:DisplaySubSection](https://www.cdisc.org/ars/1-0/DisplaySubSection)
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [id](id.md) | 1..1 <br/> [String](String.md) |  | direct |
+| [id](id.md) | 1..1 <br/> [String](String.md) | The assigned identifying value for the instance of the class | direct |
 | [text](text.md) | 1..1 <br/> [String](String.md) |  | direct |
 
 
@@ -92,8 +92,7 @@ URI: [ars:DisplaySubSection](https://www.cdisc.org/ars/1-0/DisplaySubSection)
 <details>
 ```yaml
 name: DisplaySubSection
-description: An occurrence of a display section containing text that is ordered with
-  respect to other occurrences of the same type of display section.
+description: An occurrence of a display section containing text.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 slots:
@@ -114,8 +113,7 @@ slot_usage:
 <details>
 ```yaml
 name: DisplaySubSection
-description: An occurrence of a display section containing text that is ordered with
-  respect to other occurrences of the same type of display section.
+description: An occurrence of a display section containing text.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 slot_usage:
@@ -127,6 +125,7 @@ slot_usage:
 attributes:
   id:
     name: id
+    description: The assigned identifying value for the instance of the class.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     identifier: true

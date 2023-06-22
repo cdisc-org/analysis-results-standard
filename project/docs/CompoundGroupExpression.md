@@ -1,6 +1,11 @@
 # Class: CompoundGroupExpression
 
 
+_A compound expression consisting of either two or more identified group combined with the `AND` or `OR` logical operator, or a single identified group negated with the `NOT` logical operator._
+
+
+
+
 
 URI: [ars:CompoundGroupExpression](https://www.cdisc.org/ars/1-0/CompoundGroupExpression)
 
@@ -93,6 +98,9 @@ URI: [ars:CompoundGroupExpression](https://www.cdisc.org/ars/1-0/CompoundGroupEx
 <details>
 ```yaml
 name: CompoundGroupExpression
+description: A compound expression consisting of either two or more identified group
+  combined with the `AND` or `OR` logical operator, or a single identified group negated
+  with the `NOT` logical operator.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 is_a: WhereClauseCompoundExpression
@@ -112,6 +120,9 @@ slot_usage:
 <details>
 ```yaml
 name: CompoundGroupExpression
+description: A compound expression consisting of either two or more identified group
+  combined with the `AND` or `OR` logical operator, or a single identified group negated
+  with the `NOT` logical operator.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 is_a: WhereClauseCompoundExpression

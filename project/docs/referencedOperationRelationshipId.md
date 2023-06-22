@@ -1,6 +1,11 @@
-# Slot: referencedOperationId
+# Slot: referencedOperationRelationshipId
 
-URI: [ars:referencedOperationId](https://www.cdisc.org/ars/1-0/referencedOperationId)
+
+_The identifier of the defined referenced operation relationship._
+
+
+
+URI: [ars:referencedOperationRelationshipId](https://www.cdisc.org/ars/1-0/referencedOperationRelationshipId)
 
 
 
@@ -24,6 +29,8 @@ URI: [ars:referencedOperationId](https://www.cdisc.org/ars/1-0/referencedOperati
 ## Properties
 
 * Range: [ReferencedOperationRelationship](ReferencedOperationRelationship.md)
+
+* Required: True
 
 
 
@@ -49,13 +56,15 @@ URI: [ars:referencedOperationId](https://www.cdisc.org/ars/1-0/referencedOperati
 
 <details>
 ```yaml
-name: referencedOperationId
+name: referencedOperationRelationshipId
+description: The identifier of the defined referenced operation relationship.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
-alias: referencedOperationId
+alias: referencedOperationRelationshipId
 domain_of:
 - ReferencedAnalysisOperation
 range: ReferencedOperationRelationship
+required: true
 inlined: false
 
 ```

@@ -1,5 +1,10 @@
 # Slot: groupId
 
+
+_The identifier of a referenced predefined group within a grouping._
+
+
+
 URI: [ars:groupId](https://www.cdisc.org/ars/1-0/groupId)
 
 
@@ -50,6 +55,7 @@ URI: [ars:groupId](https://www.cdisc.org/ars/1-0/groupId)
 <details>
 ```yaml
 name: groupId
+description: The identifier of a referenced predefined group within a grouping.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 alias: groupId

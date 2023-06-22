@@ -1,6 +1,11 @@
 # Class: ExtensibleTerminologyTerm
 
 
+_The term used for an attribute whose terminology is extensible._
+
+
+
+
 * __NOTE__: this is an abstract class and should not be instantiated directly
 
 
@@ -50,8 +55,8 @@ URI: [ars:ExtensibleTerminologyTerm](https://www.cdisc.org/ars/1-0/ExtensibleTer
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [controlledTerm](controlledTerm.md) | 0..1 <br/> [String](String.md) |  | direct |
-| [sponsorTermId](sponsorTermId.md) | 0..1 <br/> [SponsorTerm](SponsorTerm.md) |  | direct |
+| [controlledTerm](controlledTerm.md) | 0..1 <br/> [String](String.md) | One of the permissible values from the referenced enumeration | direct |
+| [sponsorTermId](sponsorTermId.md) | 0..1 <br/> [SponsorTerm](SponsorTerm.md) | The identifier of the referenced sponsor term | direct |
 
 
 
@@ -70,6 +75,10 @@ URI: [ars:ExtensibleTerminologyTerm](https://www.cdisc.org/ars/1-0/ExtensibleTer
 
 
 
+
+## Comments
+
+* Each instance of this class should contain either a controlled term or a sponsor term id, not both.
 
 ## Identifier and Mapping Information
 
@@ -108,6 +117,10 @@ URI: [ars:ExtensibleTerminologyTerm](https://www.cdisc.org/ars/1-0/ExtensibleTer
 <details>
 ```yaml
 name: ExtensibleTerminologyTerm
+description: The term used for an attribute whose terminology is extensible.
+comments:
+- Each instance of this class should contain either a controlled term or a sponsor
+  term id, not both.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 abstract: true
@@ -123,12 +136,17 @@ slots:
 <details>
 ```yaml
 name: ExtensibleTerminologyTerm
+description: The term used for an attribute whose terminology is extensible.
+comments:
+- Each instance of this class should contain either a controlled term or a sponsor
+  term id, not both.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 abstract: true
 attributes:
   controlledTerm:
     name: controlledTerm
+    description: One of the permissible values from the referenced enumeration.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: controlledTerm
@@ -143,6 +161,7 @@ attributes:
     - range: OutputFileTypeEnum
   sponsorTermId:
     name: sponsorTermId
+    description: The identifier of the referenced sponsor term.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: sponsorTermId

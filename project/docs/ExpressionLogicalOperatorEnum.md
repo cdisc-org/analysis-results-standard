@@ -2,6 +2,11 @@
 
 
 
+
+_A Boolean operator, a symbol or a function that denotes a logical operation (e.g., and, or, not)._
+
+
+
 URI: [ExpressionLogicalOperatorEnum](ExpressionLogicalOperatorEnum)
 
 ## Permissible Values
@@ -47,6 +52,8 @@ URI: [ExpressionLogicalOperatorEnum](ExpressionLogicalOperatorEnum)
 <details>
 ```yaml
 name: ExpressionLogicalOperatorEnum
+description: A Boolean operator, a symbol or a function that denotes a logical operation
+  (e.g., and, or, not).
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 permissible_values:

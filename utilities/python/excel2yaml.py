@@ -2,12 +2,12 @@
 # Name: excel2yaml.py
 #
 # Description: Reads information in an Excel file (based on "ARS Template.xlsx")
-#              and creates a YAML file containing an ARS ReportingEvent. Both the
-#              YAML file and the ReportingEvent will be named according to the
-#              name of the input Excel file. For example, an Excel file called
-#              "Study 1 CSR.xlsx" will generate a YAML file called "Study 1 CSR.yaml"
-#              (in the same folder as the original Excel file) containing a
-#              ReportingEvent named "Study 1 CSR".
+#              and creates a YAML file containing an ARS ReportingEvent. The
+#              YAML file will be named according to the name of the input Excel file.
+#              For example, an Excel file called "Study 1 CSR.xlsx" will generate a
+#              YAML file called "Study 1 CSR.yaml" (in the same folder as the
+#              original Excel file). The id, version and name of the ReportingEvent
+#              will be as specified on the ReportEvent sheet of the Excel file.
 #
 # Usage: python excel2yaml.py -x <path to Excel file>
 #
@@ -160,7 +160,7 @@ wsAnSet = wb["AnalysisSets"]
 
 for value in wsAnSet.iter_rows(
     min_row=2, values_only=True):
-    anset = AnalysisSet(id=value[0],label=value[1],order=value[3],condition=WhereClauseCondition(dataset=value[5],variable=value[6],comparator=value[7],value=value[8]))
+    anset = AnalysisSet(id=value[0],label=value[1],level=value[2],order=value[3],condition=WhereClauseCondition(dataset=value[5],variable=value[6],comparator=value[7],value=value[8]))
     rptevt.analysisSets.append(anset)
 
 wsAnGrp = wb["AnalysisGroupings"]
@@ -178,11 +178,11 @@ for value in wsAnGrp.iter_rows(
         grpid = str(value[1])
         # Then process the new grouping
         if value[10] == "ADSL":
-            angrp = SubjectGroupingFactor(id=grpid,dataDriven=value[4],label=value[2],groupingVariable=value[3],groups=[AnalysisGroup(id=value[5],label=value[6],order=value[8],condition=WhereClauseCondition(dataset=value[10],variable=value[11],comparator=value[12],value=value[13].split(" | ") if value[13] != None and value[13].find(" | ") > -1 else value[13]))] if value[5] != None else [])
+            angrp = SubjectGroupingFactor(id=grpid,dataDriven=value[4],label=value[2],groupingVariable=value[3],groups=[AnalysisGroup(id=value[5],label=value[6],level=value[7],order=value[8],condition=WhereClauseCondition(dataset=value[10],variable=value[11],comparator=value[12],value=value[13].split(" | ") if value[13] != None and value[13].find(" | ") > -1 else value[13]))] if value[5] != None else [])
         else:
-            angrp = DataGroupingFactor(id=grpid,dataDriven=value[4],label=value[2],groupingVariable=value[3],groups=[DataGroup(id=value[5],label=value[6],order=value[8],condition=WhereClauseCondition(dataset=value[10],variable=value[11],comparator=value[12],value=value[13].split(" | ") if value[13] != None and value[13].find(" | ") > -1 else value[13]))] if value[5] != None else [])
+            angrp = DataGroupingFactor(id=grpid,dataDriven=value[4],label=value[2],groupingVariable=value[3],groups=[DataGroup(id=value[5],label=value[6],level=value[7],order=value[8],condition=WhereClauseCondition(dataset=value[10],variable=value[11],comparator=value[12],value=value[13].split(" | ") if value[13] != None and value[13].find(" | ") > -1 else value[13]))] if value[5] != None else [])
     else:
-        angrp.groups.append(DataGroup(id=value[5],label=value[6],order=value[8],condition=WhereClauseCondition(dataset=value[10],variable=value[11],comparator=value[12],value=value[13].split(" | ") if value[13] != None and value[13].find(" | ") > -1 else value[13])))
+        angrp.groups.append(DataGroup(id=value[5],label=value[6],level=value[7],order=value[8],condition=WhereClauseCondition(dataset=value[10],variable=value[11],comparator=value[12],value=value[13].split(" | ") if value[13] != None and value[13].find(" | ") > -1 else value[13])))
 else:
     if isinstance(angrp,SubjectGroupingFactor):
         rptevt.analysisGroupings.append(angrp)
@@ -398,7 +398,7 @@ for value in wsAn.iter_rows(
     analysis = Analysis(id=value[0],version=value[1],name=value[2],reason=anreas,purpose=anpurp,
                                 documentRefs=adocrefs["Documentation"][value[0]] if value[0] in adocrefs["Documentation"] else None,
                                 analysisSetId=value[6],dataSubsetId=value[13],dataset=value[14],variable=value[15],methodId=value[16],
-                                referencedAnalysisOperations=[ReferencedAnalysisOperation(referencedOperationId=value[x],analysisId=value[y]) for x, y in [[17,18],[19,20]] if value[x] != None],
+                                referencedAnalysisOperations=[ReferencedAnalysisOperation(referencedOperationRelationshipId=value[x],analysisId=value[y]) for x, y in [[17,18],[19,20]] if value[x] != None],
                                 programmingCode=aprogcode[value[0]] if value[0] in aprogcode else None,
                                 results=results[value[0]] if value[0] in results else None)
     if value[3] != None:

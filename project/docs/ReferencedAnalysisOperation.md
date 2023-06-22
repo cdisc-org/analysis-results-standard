@@ -18,9 +18,9 @@ URI: [ars:ReferencedAnalysisOperation](https://www.cdisc.org/ars/1-0/ReferencedA
         
           ReferencedAnalysisOperation --|> Analysis : analysisId
         
-      ReferencedAnalysisOperation : referencedOperationId
+      ReferencedAnalysisOperation : referencedOperationRelationshipId
         
-          ReferencedAnalysisOperation --|> ReferencedOperationRelationship : referencedOperationId
+          ReferencedAnalysisOperation --|> ReferencedOperationRelationship : referencedOperationRelationshipId
         
       
 ```
@@ -35,8 +35,8 @@ URI: [ars:ReferencedAnalysisOperation](https://www.cdisc.org/ars/1-0/ReferencedA
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [referencedOperationId](referencedOperationId.md) | 0..1 <br/> [ReferencedOperationRelationship](ReferencedOperationRelationship.md) |  | direct |
-| [analysisId](analysisId.md) | 1..1 <br/> [Analysis](Analysis.md) |  | direct |
+| [referencedOperationRelationshipId](referencedOperationRelationshipId.md) | 1..1 <br/> [ReferencedOperationRelationship](ReferencedOperationRelationship.md) | The identifier of the defined referenced operation relationship | direct |
+| [analysisId](analysisId.md) | 1..1 <br/> [Analysis](Analysis.md) | The identifier of the referenced analysis | direct |
 
 
 
@@ -94,7 +94,7 @@ description: An indication of the analysis that contains results of a referenced
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 slots:
-- referencedOperationId
+- referencedOperationRelationshipId
 - analysisId
 slot_usage:
   analysisId:
@@ -125,18 +125,21 @@ slot_usage:
     - ReferencedOperationRelationship
     required: true
 attributes:
-  referencedOperationId:
-    name: referencedOperationId
+  referencedOperationRelationshipId:
+    name: referencedOperationRelationshipId
+    description: The identifier of the defined referenced operation relationship.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
-    alias: referencedOperationId
+    alias: referencedOperationRelationshipId
     owner: ReferencedAnalysisOperation
     domain_of:
     - ReferencedAnalysisOperation
     range: ReferencedOperationRelationship
+    required: true
     inlined: false
   analysisId:
     name: analysisId
+    description: The identifier of the referenced analysis.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     multivalued: false

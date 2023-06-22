@@ -122,7 +122,7 @@
 <tr>
 <td><a href="../id/">id</a></td>
 <td>1..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>The assigned identifying value for the instance of the class</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -146,7 +146,7 @@
 <tr>
 <td><a href="../groups/">groups</a></td>
 <td>0..* <br/> <a href="../Group/">Group</a></td>
-<td></td>
+<td>The pre-specified groups within the grouping</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -230,6 +230,7 @@ abstract: true
 attributes:
   id:
     name: id
+    description: The assigned identifying value for the instance of the class.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     identifier: true
@@ -297,6 +298,11 @@ attributes:
     required: true
   groups:
     name: groups
+    description: The pre-specified groups within the grouping.
+    examples:
+    - value: '''Male'' and ''Female'' might be groups within a sex grouping.'
+    - value: '''Treatment A'', ''Treatment B'', ''Placebo'' might be groups within
+        a treatment grouping.'
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     multivalued: true

@@ -1,5 +1,10 @@
 # Slot: pageRefs
 
+
+_A list of references to specific parts of a document, which may be referenced as a list of one or more page numbers, a range of page numbers, or a list of named destinations in the document (e.g. bookmarks)._
+
+
+
 URI: [ars:pageRefs](https://www.cdisc.org/ars/1-0/pageRefs)
 
 
@@ -13,7 +18,7 @@ URI: [ars:pageRefs](https://www.cdisc.org/ars/1-0/pageRefs)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-[DocumentReference](DocumentReference.md) |  |  no  |
+[DocumentReference](DocumentReference.md) | A reference to an external document |  no  |
 
 
 
@@ -52,6 +57,9 @@ URI: [ars:pageRefs](https://www.cdisc.org/ars/1-0/pageRefs)
 <details>
 ```yaml
 name: pageRefs
+description: A list of references to specific parts of a document, which may be referenced
+  as a list of one or more page numbers, a range of page numbers, or a list of named
+  destinations in the document (e.g. bookmarks).
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 multivalued: true

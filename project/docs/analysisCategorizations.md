@@ -1,5 +1,10 @@
 # Slot: analysisCategorizations
 
+
+_Sets of related implementer-defined categories that can be used to categorize analyses or outputs._
+
+
+
 URI: [ars:analysisCategorizations](https://www.cdisc.org/ars/1-0/analysisCategorizations)
 
 
@@ -52,6 +57,8 @@ URI: [ars:analysisCategorizations](https://www.cdisc.org/ars/1-0/analysisCategor
 <details>
 ```yaml
 name: analysisCategorizations
+description: Sets of related implementer-defined categories that can be used to categorize
+  analyses or outputs.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 multivalued: true

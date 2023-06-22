@@ -1,5 +1,10 @@
 # Slot: operationId
 
+
+_The identifier of the referenced operation._
+
+
+
 URI: [ars:operationId](https://www.cdisc.org/ars/1-0/operationId)
 
 
@@ -14,7 +19,7 @@ URI: [ars:operationId](https://www.cdisc.org/ars/1-0/operationId)
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 [OperationResult](OperationResult.md) | The result of an analysis method operation performed on a subdivision of subj... |  no  |
-[ReferencedOperationRelationship](ReferencedOperationRelationship.md) | A reference to an statistical operation whose results is used in the calculat... |  no  |
+[ReferencedOperationRelationship](ReferencedOperationRelationship.md) | A reference to a statistical operation whose results are used in the calculat... |  no  |
 
 
 
@@ -53,6 +58,7 @@ URI: [ars:operationId](https://www.cdisc.org/ars/1-0/operationId)
 <details>
 ```yaml
 name: operationId
+description: The identifier of the referenced operation.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 alias: operationId

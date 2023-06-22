@@ -62,6 +62,10 @@
               <ul class="nav flex-column">
               </ul>
             </li>
+            <li class="nav-item" data-level="2"><a href="#comments" class="nav-link">Comments</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
             <li class="nav-item" data-level="2"><a href="#identifier-and-mapping-information" class="nav-link">Identifier and Mapping Information</a>
               <ul class="nav flex-column">
               </ul>
@@ -78,6 +82,7 @@
                     <div class="col-md-9" role="main">
 
 <h1 id="slot-level">Slot: level</h1>
+<p><em>The level of the entry within a hierarchical structure.</em></p>
 <p>URI: <a href="https://www.cdisc.org/ars/1-0/level">ars:level</a></p>
 <!-- no inheritance hierarchy -->
 
@@ -98,7 +103,7 @@
 </tr>
 <tr>
 <td><a href="../WhereClause/">WhereClause</a></td>
-<td></td>
+<td>Selection criteria defined as either a simple condition ([variable] [comparat...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -132,6 +137,10 @@
 <ul>
 <li>Range: <a href="../Integer/">Integer</a></li>
 </ul>
+<h2 id="comments">Comments</h2>
+<ul>
+<li>1 is the top level.</li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -141,6 +150,9 @@
 <details>
 
 <pre><code class="language-yaml">name: level
+description: The level of the entry within a hierarchical structure.
+comments:
+- 1 is the top level.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 alias: level

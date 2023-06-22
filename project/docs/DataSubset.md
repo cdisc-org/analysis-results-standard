@@ -49,10 +49,10 @@ URI: [ars:DataSubset](https://www.cdisc.org/ars/1-0/DataSubset)
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [id](id.md) | 1..1 <br/> [String](String.md) |  | direct |
+| [id](id.md) | 1..1 <br/> [String](String.md) | The assigned identifying value for the instance of the class | direct |
 | [label](label.md) | 0..1 <br/> [String](String.md) |  | direct |
-| [level](level.md) | 0..1 <br/> [Integer](Integer.md) |  | [WhereClause](WhereClause.md) |
-| [order](order.md) | 0..1 <br/> [Integer](Integer.md) |  | [WhereClause](WhereClause.md) |
+| [level](level.md) | 0..1 <br/> [Integer](Integer.md) | The level of the entry within a hierarchical structure | [WhereClause](WhereClause.md) |
+| [order](order.md) | 0..1 <br/> [Integer](Integer.md) | The ordinal of the instance with respect to other instances | [WhereClause](WhereClause.md) |
 | [condition](condition.md) | 0..1 <br/> [WhereClauseCondition](WhereClauseCondition.md) |  | [WhereClause](WhereClause.md) |
 | [compoundExpression](compoundExpression.md) | 0..1 <br/> [CompoundSubsetExpression](CompoundSubsetExpression.md) |  | [WhereClause](WhereClause.md) |
 
@@ -146,6 +146,7 @@ slot_usage:
 attributes:
   id:
     name: id
+    description: The assigned identifying value for the instance of the class.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     identifier: true
@@ -190,6 +191,9 @@ attributes:
     range: string
   level:
     name: level
+    description: The level of the entry within a hierarchical structure.
+    comments:
+    - 1 is the top level.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: level
@@ -200,6 +204,7 @@ attributes:
     range: integer
   order:
     name: order
+    description: The ordinal of the instance with respect to other instances.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: order

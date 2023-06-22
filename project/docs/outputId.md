@@ -1,5 +1,10 @@
 # Slot: outputId
 
+
+_The identifier of the referenced output._
+
+
+
 URI: [ars:outputId](https://www.cdisc.org/ars/1-0/outputId)
 
 
@@ -50,6 +55,7 @@ URI: [ars:outputId](https://www.cdisc.org/ars/1-0/outputId)
 <details>
 ```yaml
 name: outputId
+description: The identifier of the referenced output.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 multivalued: false

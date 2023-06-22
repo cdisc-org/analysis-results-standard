@@ -101,23 +101,23 @@ URI: [ars:Analysis](https://www.cdisc.org/ars/1-0/Analysis)
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [id](id.md) | 1..1 <br/> [String](String.md) |  | direct |
+| [id](id.md) | 1..1 <br/> [String](String.md) | The assigned identifying value for the instance of the class | direct |
 | [version](version.md) | 0..1 <br/> [Integer](Integer.md) |  | direct |
-| [categoryIds](categoryIds.md) | 0..* <br/> [AnalysisCategory](AnalysisCategory.md) |  | direct |
-| [description](description.md) | 0..1 <br/> [String](String.md) |  | direct |
+| [categoryIds](categoryIds.md) | 0..* <br/> [AnalysisCategory](AnalysisCategory.md) | References to any implementer-defined categories that apply to the analysis | direct |
+| [description](description.md) | 0..1 <br/> [String](String.md) | A textual description of the instance of the class | direct |
 | [reason](reason.md) | 1..1 <br/> [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) | The rationale for performing this analysis | direct |
 | [purpose](purpose.md) | 1..1 <br/> [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) | The purpose of the analysis within the body of evidence (e | direct |
 | [documentRefs](documentRefs.md) | 0..* <br/> [DocumentReference](DocumentReference.md) |  | direct |
-| [analysisSetId](analysisSetId.md) | 0..1 <br/> [AnalysisSet](AnalysisSet.md) |  | direct |
-| [orderedGroupings](orderedGroupings.md) | 0..* <br/> [OrderedGroupingFactor](OrderedGroupingFactor.md) |  | direct |
-| [dataSubsetId](dataSubsetId.md) | 0..1 <br/> [DataSubset](DataSubset.md) |  | direct |
+| [analysisSetId](analysisSetId.md) | 0..1 <br/> [AnalysisSet](AnalysisSet.md) | The identifier of the referenced analysis set | direct |
+| [orderedGroupings](orderedGroupings.md) | 0..* <br/> [OrderedGroupingFactor](OrderedGroupingFactor.md) | An ordered list of grouping factors used in the analysis | direct |
+| [dataSubsetId](dataSubsetId.md) | 0..1 <br/> [DataSubset](DataSubset.md) | The identifier of the referenced data subset | direct |
 | [dataset](dataset.md) | 0..1 <br/> [String](String.md) |  | direct |
 | [variable](variable.md) | 0..1 <br/> [String](String.md) |  | direct |
 | [methodId](methodId.md) | 1..1 <br/> [AnalysisMethod](AnalysisMethod.md) | A reference to the set of one or more statistical operations performed for th... | direct |
-| [referencedAnalysisOperations](referencedAnalysisOperations.md) | 0..* <br/> [ReferencedAnalysisOperation](ReferencedAnalysisOperation.md) |  | direct |
+| [referencedAnalysisOperations](referencedAnalysisOperations.md) | 0..* <br/> [ReferencedAnalysisOperation](ReferencedAnalysisOperation.md) | Indications of which analysis contains the results for each referenced operat... | direct |
 | [programmingCode](programmingCode.md) | 0..1 <br/> [AnalysisOutputProgrammingCode](AnalysisOutputProgrammingCode.md) | Programming statements and/or a reference to the program used to perform the ... | direct |
 | [results](results.md) | 0..* <br/> [OperationResult](OperationResult.md) |  | direct |
-| [name](name.md) | 1..1 <br/> [String](String.md) |  | [NamedObject](NamedObject.md) |
+| [name](name.md) | 1..1 <br/> [String](String.md) | The name for the instance of the class | [NamedObject](NamedObject.md) |
 
 
 
@@ -211,6 +211,13 @@ slots:
 - programmingCode
 - results
 slot_usage:
+  categoryIds:
+    name: categoryIds
+    description: References to any implementer-defined categories that apply to the
+      analysis.
+    domain_of:
+    - Analysis
+    - Output
   programmingCode:
     name: programmingCode
     description: Programming statements and/or a reference to the program used to
@@ -247,6 +254,13 @@ from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 is_a: NamedObject
 slot_usage:
+  categoryIds:
+    name: categoryIds
+    description: References to any implementer-defined categories that apply to the
+      analysis.
+    domain_of:
+    - Analysis
+    - Output
   programmingCode:
     name: programmingCode
     description: Programming statements and/or a reference to the program used to
@@ -257,6 +271,7 @@ slot_usage:
 attributes:
   id:
     name: id
+    description: The assigned identifying value for the instance of the class.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     identifier: true
@@ -296,6 +311,8 @@ attributes:
     range: integer
   categoryIds:
     name: categoryIds
+    description: References to any implementer-defined categories that apply to the
+      analysis.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     multivalued: true
@@ -309,6 +326,7 @@ attributes:
     inlined: false
   description:
     name: description
+    description: A textual description of the instance of the class.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: description
@@ -366,6 +384,7 @@ attributes:
     inlined_as_list: true
   analysisSetId:
     name: analysisSetId
+    description: The identifier of the referenced analysis set.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     multivalued: false
@@ -377,6 +396,7 @@ attributes:
     inlined: false
   orderedGroupings:
     name: orderedGroupings
+    description: An ordered list of grouping factors used in the analysis.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     multivalued: true
@@ -390,6 +410,7 @@ attributes:
     inlined_as_list: true
   dataSubsetId:
     name: dataSubsetId
+    description: The identifier of the referenced data subset.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: dataSubsetId
@@ -433,6 +454,8 @@ attributes:
     inlined: false
   referencedAnalysisOperations:
     name: referencedAnalysisOperations
+    description: Indications of which analysis contains the results for each referenced
+      operation.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     multivalued: true
@@ -469,6 +492,7 @@ attributes:
     inlined_as_list: true
   name:
     name: name
+    description: The name for the instance of the class.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: name

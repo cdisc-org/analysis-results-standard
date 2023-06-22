@@ -15,7 +15,7 @@ URI: [ars:value](https://www.cdisc.org/ars/1-0/value)
 | --- | --- | --- |
 [AnalysisOutputCodeParameter](AnalysisOutputCodeParameter.md) | A parameter whose value is used in programming code for a specific analysis o... |  yes  |
 [TemplateCodeParameter](TemplateCodeParameter.md) | A replacement parameter whose value is substituted in template programming co... |  yes  |
-[WhereClauseCondition](WhereClauseCondition.md) |  |  no  |
+[WhereClauseCondition](WhereClauseCondition.md) | A simple selection criterion exressed as [dataset] |  no  |
 
 
 

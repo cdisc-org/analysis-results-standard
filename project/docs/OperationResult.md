@@ -39,7 +39,7 @@ URI: [ars:OperationResult](https://www.cdisc.org/ars/1-0/OperationResult)
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [operationId](operationId.md) | 1..1 <br/> [Operation](Operation.md) |  | direct |
+| [operationId](operationId.md) | 1..1 <br/> [Operation](Operation.md) | The identifier of the referenced operation | direct |
 | [resultGroups](resultGroups.md) | 0..* <br/> [ResultGroup](ResultGroup.md) |  | direct |
 | [rawValue](rawValue.md) | 0..1 <br/> [String](String.md) |  | direct |
 | [formattedValue](formattedValue.md) | 0..1 <br/> [String](String.md) |  | direct |
@@ -121,6 +121,7 @@ rank: 1000
 attributes:
   operationId:
     name: operationId
+    description: The identifier of the referenced operation.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: operationId

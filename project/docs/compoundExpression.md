@@ -13,7 +13,7 @@ URI: [ars:compoundExpression](https://www.cdisc.org/ars/1-0/compoundExpression)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-[WhereClause](WhereClause.md) |  |  no  |
+[WhereClause](WhereClause.md) | Selection criteria defined as either a simple condition ([variable] [comparat... |  no  |
 [AnalysisSet](AnalysisSet.md) | A set of subjects whose data are to be included in the main analyses |  yes  |
 [Group](Group.md) | A subdivision of the subject population or analysis dataset record set based ... |  yes  |
 [AnalysisGroup](AnalysisGroup.md) | A subdivision of the subject population based on a defined factor (e |  no  |

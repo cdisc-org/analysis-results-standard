@@ -1,6 +1,11 @@
 # Class: WhereClauseCondition
 
 
+_A simple selection criterion exressed as [dataset].[variable] [comparator] [value(s)]_
+
+
+
+
 
 URI: [ars:WhereClauseCondition](https://www.cdisc.org/ars/1-0/WhereClauseCondition)
 
@@ -57,6 +62,13 @@ URI: [ars:WhereClauseCondition](https://www.cdisc.org/ars/1-0/WhereClauseConditi
 
 
 
+
+## Examples
+
+| Value |
+| --- |
+| ADSL.SAFFL EQ 'Y' |
+
 ## Identifier and Mapping Information
 
 
@@ -94,6 +106,10 @@ URI: [ars:WhereClauseCondition](https://www.cdisc.org/ars/1-0/WhereClauseConditi
 <details>
 ```yaml
 name: WhereClauseCondition
+description: A simple selection criterion exressed as [dataset].[variable] [comparator]
+  [value(s)]
+examples:
+- value: ADSL.SAFFL EQ 'Y'
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 slots:
@@ -142,6 +158,10 @@ rules:
 <details>
 ```yaml
 name: WhereClauseCondition
+description: A simple selection criterion exressed as [dataset].[variable] [comparator]
+  [value(s)]
+examples:
+- value: ADSL.SAFFL EQ 'Y'
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 attributes:

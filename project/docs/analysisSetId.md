@@ -1,5 +1,10 @@
 # Slot: analysisSetId
 
+
+_The identifier of the referenced analysis set._
+
+
+
 URI: [ars:analysisSetId](https://www.cdisc.org/ars/1-0/analysisSetId)
 
 
@@ -50,6 +55,7 @@ URI: [ars:analysisSetId](https://www.cdisc.org/ars/1-0/analysisSetId)
 <details>
 ```yaml
 name: analysisSetId
+description: The identifier of the referenced analysis set.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 multivalued: false

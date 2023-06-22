@@ -1,6 +1,11 @@
 # Class: AnalysisPurpose
 
 
+_The purpose of the analysis within the body of evidence (e.g., section in the clinical study report)._
+
+
+
+
 
 URI: [ars:AnalysisPurpose](https://www.cdisc.org/ars/1-0/AnalysisPurpose)
 
@@ -36,8 +41,8 @@ URI: [ars:AnalysisPurpose](https://www.cdisc.org/ars/1-0/AnalysisPurpose)
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [controlledTerm](controlledTerm.md) | 1..1 <br/> [AnalysisPurposeEnum](AnalysisPurposeEnum.md) |  | [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) |
-| [sponsorTermId](sponsorTermId.md) | 0..1 <br/> [SponsorTerm](SponsorTerm.md) |  | [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) |
+| [controlledTerm](controlledTerm.md) | 1..1 <br/> [AnalysisPurposeEnum](AnalysisPurposeEnum.md) | One of the permissible values from the referenced enumeration | [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) |
+| [sponsorTermId](sponsorTermId.md) | 0..1 <br/> [SponsorTerm](SponsorTerm.md) | NOT USED | [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) |
 
 
 
@@ -84,6 +89,8 @@ URI: [ars:AnalysisPurpose](https://www.cdisc.org/ars/1-0/AnalysisPurpose)
 <details>
 ```yaml
 name: AnalysisPurpose
+description: The purpose of the analysis within the body of evidence (e.g., section
+  in the clinical study report).
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 is_a: ExtensibleTerminologyTerm
@@ -97,6 +104,7 @@ slot_usage:
     value_presence: PRESENT
   sponsorTermId:
     name: sponsorTermId
+    description: NOT USED
     domain_of:
     - ExtensibleTerminologyTerm
     value_presence: ABSENT
@@ -109,6 +117,8 @@ slot_usage:
 <details>
 ```yaml
 name: AnalysisPurpose
+description: The purpose of the analysis within the body of evidence (e.g., section
+  in the clinical study report).
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 is_a: ExtensibleTerminologyTerm
@@ -122,12 +132,14 @@ slot_usage:
     value_presence: PRESENT
   sponsorTermId:
     name: sponsorTermId
+    description: NOT USED
     domain_of:
     - ExtensibleTerminologyTerm
     value_presence: ABSENT
 attributes:
   controlledTerm:
     name: controlledTerm
+    description: One of the permissible values from the referenced enumeration.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: controlledTerm
@@ -139,6 +151,7 @@ attributes:
     value_presence: PRESENT
   sponsorTermId:
     name: sponsorTermId
+    description: NOT USED
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: sponsorTermId

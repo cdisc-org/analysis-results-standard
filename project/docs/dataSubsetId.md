@@ -1,5 +1,10 @@
 # Slot: dataSubsetId
 
+
+_The identifier of the referenced data subset._
+
+
+
 URI: [ars:dataSubsetId](https://www.cdisc.org/ars/1-0/dataSubsetId)
 
 
@@ -50,6 +55,7 @@ URI: [ars:dataSubsetId](https://www.cdisc.org/ars/1-0/dataSubsetId)
 <details>
 ```yaml
 name: dataSubsetId
+description: The identifier of the referenced data subset.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 alias: dataSubsetId

@@ -13,7 +13,7 @@ URI: [ars:text](https://www.cdisc.org/ars/1-0/text)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-[DisplaySubSection](DisplaySubSection.md) | An occurrence of a display section containing text that is ordered with respe... |  yes  |
+[DisplaySubSection](DisplaySubSection.md) | An occurrence of a display section containing text |  yes  |
 
 
 

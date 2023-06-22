@@ -49,11 +49,11 @@ URI: [ars:GroupingFactor](https://www.cdisc.org/ars/1-0/GroupingFactor)
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [id](id.md) | 1..1 <br/> [String](String.md) |  | direct |
+| [id](id.md) | 1..1 <br/> [String](String.md) | The assigned identifying value for the instance of the class | direct |
 | [label](label.md) | 0..1 <br/> [String](String.md) |  | direct |
 | [groupingVariable](groupingVariable.md) | 0..1 <br/> [String](String.md) | For groupings based on a single variable, a reference to the dataset variable... | direct |
 | [dataDriven](dataDriven.md) | 1..1 <br/> [Boolean](Boolean.md) | Indicates whether the groups defined by the grouping are prespecified (false)... | direct |
-| [groups](groups.md) | 0..* <br/> [Group](Group.md) |  | direct |
+| [groups](groups.md) | 0..* <br/> [Group](Group.md) | The pre-specified groups within the grouping | direct |
 
 
 
@@ -136,6 +136,7 @@ abstract: true
 attributes:
   id:
     name: id
+    description: The assigned identifying value for the instance of the class.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     identifier: true
@@ -203,6 +204,11 @@ attributes:
     required: true
   groups:
     name: groups
+    description: The pre-specified groups within the grouping.
+    examples:
+    - value: '''Male'' and ''Female'' might be groups within a sex grouping.'
+    - value: '''Treatment A'', ''Treatment B'', ''Placebo'' might be groups within
+        a treatment grouping.'
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     multivalued: true

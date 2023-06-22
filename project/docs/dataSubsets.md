@@ -1,5 +1,10 @@
 # Slot: dataSubsets
 
+
+_Subsets of data identified by selection criteria for inclusion in analysis definitions._
+
+
+
 URI: [ars:dataSubsets](https://www.cdisc.org/ars/1-0/dataSubsets)
 
 
@@ -52,6 +57,8 @@ URI: [ars:dataSubsets](https://www.cdisc.org/ars/1-0/dataSubsets)
 <details>
 ```yaml
 name: dataSubsets
+description: Subsets of data identified by selection criteria for inclusion in analysis
+  definitions.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 multivalued: true

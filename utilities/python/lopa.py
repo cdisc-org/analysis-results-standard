@@ -7,7 +7,7 @@
 #              listOfPlannedAnalyses. The text file is created in the same folder
 #              as the YAML file and has the same name as the YAML file with a
 #              "-LOPA" suffix. For example, an YAML file called "Study 1 CSR.yaml"
-#              will generate a text file called "Study 1 CSR-LOPA.txt.yaml".
+#              will generate a text file called "Study 1 CSR-LOPA.txt".
 #
 # Usage: python lopa.py -s <path to ARS model schema file> -r <path to report event YAML file>
 #
@@ -197,7 +197,7 @@ def print_list(nlist: NestedList, fileref: TextIOWrapper,level: int = 1, pfx:str
                         fileref.write(f"{'  '*(level+3)}> {op.id}: {op.name} ({op.label})\n")
                         if op.referencedOperationRelationships:
                             for refop in op.referencedOperationRelationships:
-                                refanid = ''.join([refanop.analysisId for refanop in analysis.referencedAnalysisOperations if refanop.referencedOperationId == refop.id])
+                                refanid = ''.join([refanop.analysisId for refanop in analysis.referencedAnalysisOperations if refanop.referencedOperationRelationshipId == refop.id])
                                 fileref.write(f"{'  '*(level+4)}- {str(refop.referencedOperationRole.controlledTerm if refop.referencedOperationRole.controlledTerm else get_sponsorterm(enum='OperationRoleEnum',id=refop.referencedOperationRole.sponsorTermId).submissionValue).capitalize()}: result of operation {refop.operationId} for {'this analysis' if refanid == analysis.id else 'analysis '+refanid}\n")
         if litm.outputId:  fileref.write(f"{'  '*level}Output: {litm.outputId}\n")
         if litm.sublist: print_list(litm.sublist,fileref,level+1,inum)

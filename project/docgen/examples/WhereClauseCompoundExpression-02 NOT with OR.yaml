@@ -1,0 +1,25 @@
+# Compound expression: NOT (ADXX.VAR1 IN ('value 1','value 2') OR ADXX.VAR2 GT 37)
+logicalOperator: NOT
+whereClauses:
+- level: 2
+  order: 1
+  compoundExpression:
+    logicalOperator: OR
+    whereClauses:
+    - level: 3
+      order: 1
+      condition:
+        dataset: ADXX
+        variable: VAR1
+        comparator: IN
+        value:
+        - value 1
+        - value 2
+    - level: 3
+      order: 2
+      condition:
+        dataset: ADXX
+        variable: VAR2
+        comparator: GT
+        value:
+        - 37

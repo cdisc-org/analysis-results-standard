@@ -13,7 +13,7 @@ URI: [ars:referenceDocumentId](https://www.cdisc.org/ars/1-0/referenceDocumentId
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-[DocumentReference](DocumentReference.md) |  |  no  |
+[DocumentReference](DocumentReference.md) | A reference to an external document |  no  |
 
 
 

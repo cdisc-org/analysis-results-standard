@@ -1,6 +1,11 @@
 # Class: OrderedDisplaySubSection
 
 
+_A single subsection ordered with respect to other subsections in the same section of a display._
+
+
+
+
 * __NOTE__: this is an abstract class and should not be instantiated directly
 
 
@@ -42,7 +47,7 @@ URI: [ars:OrderedDisplaySubSection](https://www.cdisc.org/ars/1-0/OrderedDisplay
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [order](order.md) | 1..1 <br/> [Integer](Integer.md) |  | direct |
+| [order](order.md) | 1..1 <br/> [Integer](Integer.md) | The ordinal of the instance with respect to other instances | direct |
 | [subSection](subSection.md) | 0..1 <br/> [DisplaySubSection](DisplaySubSection.md) |  | direct |
 | [subSectionId](subSectionId.md) | 0..1 <br/> [DisplaySubSection](DisplaySubSection.md) |  | direct |
 
@@ -60,6 +65,10 @@ URI: [ars:OrderedDisplaySubSection](https://www.cdisc.org/ars/1-0/OrderedDisplay
 
 
 
+
+## Comments
+
+* A single subsection should be either defined using subSection or referenced using subSectionId (not both).
 
 ## Identifier and Mapping Information
 
@@ -98,6 +107,11 @@ URI: [ars:OrderedDisplaySubSection](https://www.cdisc.org/ars/1-0/OrderedDisplay
 <details>
 ```yaml
 name: OrderedDisplaySubSection
+description: A single subsection ordered with respect to other subsections in the
+  same section of a display.
+comments:
+- A single subsection should be either defined using subSection or referenced using
+  subSectionId (not both).
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 abstract: true
@@ -124,6 +138,11 @@ slot_usage:
 <details>
 ```yaml
 name: OrderedDisplaySubSection
+description: A single subsection ordered with respect to other subsections in the
+  same section of a display.
+comments:
+- A single subsection should be either defined using subSection or referenced using
+  subSectionId (not both).
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 abstract: true
@@ -140,6 +159,7 @@ slot_usage:
 attributes:
   order:
     name: order
+    description: The ordinal of the instance with respect to other instances.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: order

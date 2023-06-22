@@ -1,7 +1,7 @@
 # Class: ReferencedOperationRelationship
 
 
-_A reference to an statistical operation whose results is used in the calculation of the result for this operation._
+_A reference to a statistical operation whose results are used in the calculation of the result for this operation._
 
 
 
@@ -43,11 +43,11 @@ URI: [ars:ReferencedOperationRelationship](https://www.cdisc.org/ars/1-0/Referen
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [id](id.md) | 1..1 <br/> [String](String.md) |  | direct |
+| [id](id.md) | 1..1 <br/> [String](String.md) | The assigned identifying value for the instance of the class | direct |
 | [referencedOperationRole](referencedOperationRole.md) | 1..1 <br/> [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) |  | direct |
-| [operationId](operationId.md) | 1..1 <br/> [Operation](Operation.md) |  | direct |
-| [analysisId](analysisId.md) | 0..1 <br/> [Analysis](Analysis.md) |  | direct |
-| [description](description.md) | 0..1 <br/> [String](String.md) |  | direct |
+| [operationId](operationId.md) | 1..1 <br/> [Operation](Operation.md) | The identifier of the referenced operation | direct |
+| [analysisId](analysisId.md) | 0..1 <br/> [Analysis](Analysis.md) | The identifier of the referenced analysis | direct |
+| [description](description.md) | 0..1 <br/> [String](String.md) | A textual description of the instance of the class | direct |
 
 
 
@@ -57,7 +57,7 @@ URI: [ars:ReferencedOperationRelationship](https://www.cdisc.org/ars/1-0/Referen
 
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
-| [ReferencedAnalysisOperation](ReferencedAnalysisOperation.md) | [referencedOperationId](referencedOperationId.md) | range | [ReferencedOperationRelationship](ReferencedOperationRelationship.md) |
+| [ReferencedAnalysisOperation](ReferencedAnalysisOperation.md) | [referencedOperationRelationshipId](referencedOperationRelationshipId.md) | range | [ReferencedOperationRelationship](ReferencedOperationRelationship.md) |
 | [Operation](Operation.md) | [referencedOperationRelationships](referencedOperationRelationships.md) | range | [ReferencedOperationRelationship](ReferencedOperationRelationship.md) |
 
 
@@ -102,7 +102,7 @@ URI: [ars:ReferencedOperationRelationship](https://www.cdisc.org/ars/1-0/Referen
 <details>
 ```yaml
 name: ReferencedOperationRelationship
-description: A reference to an statistical operation whose results is used in the
+description: A reference to a statistical operation whose results are used in the
   calculation of the result for this operation.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
@@ -121,13 +121,14 @@ slots:
 <details>
 ```yaml
 name: ReferencedOperationRelationship
-description: A reference to an statistical operation whose results is used in the
+description: A reference to a statistical operation whose results are used in the
   calculation of the result for this operation.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 attributes:
   id:
     name: id
+    description: The assigned identifying value for the instance of the class.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     identifier: true
@@ -168,6 +169,7 @@ attributes:
     - range: SponsorOperationRole
   operationId:
     name: operationId
+    description: The identifier of the referenced operation.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: operationId
@@ -180,6 +182,7 @@ attributes:
     inlined: false
   analysisId:
     name: analysisId
+    description: The identifier of the referenced analysis.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     multivalued: false
@@ -193,6 +196,7 @@ attributes:
     inlined: false
   description:
     name: description
+    description: A textual description of the instance of the class.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: description

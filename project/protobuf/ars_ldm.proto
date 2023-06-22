@@ -83,11 +83,13 @@ message AnalysisProgrammingCodeTemplate
   documentReference documentRef = 0
  repeated  templateCodeParameter parameters = 0
  }
+// The purpose of the analysis within the body of evidence (e.g., section in the clinical study report).
 message AnalysisPurpose
  {
   analysisPurposeEnum controlledTerm = 0
   sponsorTerm sponsorTermId = 0
  }
+// The rationale for performing this analysis.
 message AnalysisReason
  {
   analysisReasonEnum controlledTerm = 0
@@ -103,16 +105,19 @@ message AnalysisSet
   string label = 0
   compoundSetExpression compoundExpression = 0
  }
+// A compound expression consisting of either two or more identified group combined with the `AND` or `OR` logical operator, or a single identified group negated with the `NOT` logical operator.
 message CompoundGroupExpression
  {
   expressionLogicalOperatorEnum logicalOperator = 0
  repeated  group whereClauses = 0
  }
+// A compound expression consisting of either two or more identified analysis sets combined with the `AND` or `OR` logical operator, or a single identified analysis set negated with the `NOT` logical operator.
 message CompoundSetExpression
  {
   expressionLogicalOperatorEnum logicalOperator = 0
  repeated  analysisSet whereClauses = 0
  }
+// A compound expression consisting of either two or more where clauses combined with the `AND` or `OR` logical operator, or a single where clause negated with the `NOT` logical operator.
 message CompoundSubsetExpression
  {
   expressionLogicalOperatorEnum logicalOperator = 0
@@ -153,18 +158,19 @@ message DisplaySection
   displaySectionTypeEnum sectionType = 0
  repeated  orderedDisplaySubSection orderedSubSections = 0
  }
-// An occurrence of a display section containing text that is ordered with respect to other occurrences of the same type of display section.
+// An occurrence of a display section containing text.
 message DisplaySubSection
  {
   string id = 0
   string text = 0
  }
+// A reference to an external document.
 message DocumentReference
  {
   referenceDocument referenceDocumentId = 0
  repeated  pageRef pageRefs = 0
  }
-// A part of a tabular display containing one or more pieces of informational text.
+// A global definition for part of a tabular display containing one or more pieces of informational text that may be used in multiple displays.
 message GlobalDisplaySection
  {
   displaySectionTypeEnum sectionType = 0
@@ -202,6 +208,7 @@ message OperationResult
   string rawValue = 0
   string formattedValue = 0
  }
+// The role that the referenced operation's result plays in the calculation of the result of this operation.
 message OperationRole
  {
   operationRoleEnum controlledTerm = 0
@@ -273,6 +280,7 @@ message OutputFile
   uri location = 0
   string style = 0
  }
+// The file format of the file containing output from analyses.
 message OutputFileType
  {
   outputFileTypeEnum controlledTerm = 0
@@ -311,16 +319,17 @@ message PageNumberRangeRef
 // An indication of the analysis that contains results of a referenced operation.
 message ReferencedAnalysisOperation
  {
-  referencedOperationRelationship referencedOperationId = 0
+  referencedOperationRelationship referencedOperationRelationshipId = 0
   analysis analysisId = 0
  }
+// An external document containing supporting documentation or programming code.
 message ReferenceDocument
  {
   string name = 0
   string id = 0
   uri location = 0
  }
-// A reference to an statistical operation whose results is used in the calculation of the result for this operation.
+// A reference to a statistical operation whose results are used in the calculation of the result for this operation.
 message ReferencedOperationRelationship
  {
   string id = 0
@@ -356,21 +365,25 @@ message ResultGroup
   group groupId = 0
   string groupValue = 0
  }
+// The sponsor-defined purpose of the analysis within the body of evidence (e.g., section in the clinical study report).
 message SponsorAnalysisPurpose
  {
   string controlledTerm = 0
   sponsorTerm sponsorTermId = 0
  }
+// The sponsor-defined rationale for performing this analysis.
 message SponsorAnalysisReason
  {
   string controlledTerm = 0
   sponsorTerm sponsorTermId = 0
  }
+// The sponsor-defined role that the referenced operation's result plays in the calculation of the result of this operation.
 message SponsorOperationRole
  {
   string controlledTerm = 0
   sponsorTerm sponsorTermId = 0
  }
+// The sponsor-defined file format of the file containing output from analyses.
 message SponsorOutputFileType
  {
   string controlledTerm = 0
@@ -400,13 +413,14 @@ message TemplateCodeParameter
   string valueSource = 0
  repeated  string value = 0
  }
-// A sponsor-defined term that is included in an extensible set of controlled terminology.
+// An extensible set of controlled terminology that has been extended with at least one sponsor-defined term.
 message TerminologyExtension
  {
   string id = 0
   extensibleTerminologyEnum enumeration = 0
  repeated  sponsorTerm sponsorTerms = 0
  }
+// Selection criteria defined as either a simple condition ([variable] [comparator] [value(s)]) or a compound expression that may combine simple conditions or compound expressions.
 message WhereClause
  {
   integer level = 0
@@ -414,11 +428,13 @@ message WhereClause
   whereClauseCondition condition = 0
   whereClauseCompoundExpression compoundExpression = 0
  }
+// A compound expression consisting of either two or more where clauses combined with the `AND` or `OR` logical operator, or a single where clause negated with the `NOT` logical operator.
 message WhereClauseCompoundExpression
  {
   expressionLogicalOperatorEnum logicalOperator = 0
  repeated  whereClause whereClauses = 0
  }
+// A simple selection criterion exressed as [dataset].[variable] [comparator] [value(s)]
 message WhereClauseCondition
  {
   string dataset = 0

@@ -13,7 +13,7 @@ URI: [ars:referencedOperationRole](https://www.cdisc.org/ars/1-0/referencedOpera
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-[ReferencedOperationRelationship](ReferencedOperationRelationship.md) | A reference to an statistical operation whose results is used in the calculat... |  no  |
+[ReferencedOperationRelationship](ReferencedOperationRelationship.md) | A reference to a statistical operation whose results are used in the calculat... |  no  |
 
 
 

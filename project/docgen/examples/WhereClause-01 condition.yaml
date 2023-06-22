@@ -1,0 +1,9 @@
+# Simple condition: (ADSL.SAFFL EQ 'Y')
+order: 1
+level: 1
+condition:
+  dataset: ADSL
+  variable: SAFFL
+  comparator: EQ
+  value:
+  - Y

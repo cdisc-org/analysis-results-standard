@@ -1,5 +1,10 @@
 # Slot: analysisId
 
+
+_The identifier of the referenced analysis._
+
+
+
 URI: [ars:analysisId](https://www.cdisc.org/ars/1-0/analysisId)
 
 
@@ -15,7 +20,7 @@ URI: [ars:analysisId](https://www.cdisc.org/ars/1-0/analysisId)
 | --- | --- | --- |
 [OrderedListItem](OrderedListItem.md) | An item (analysis, output or sub-list) ordered relative to other items within... |  no  |
 [ReferencedAnalysisOperation](ReferencedAnalysisOperation.md) | An indication of the analysis that contains results of a referenced operation |  yes  |
-[ReferencedOperationRelationship](ReferencedOperationRelationship.md) | A reference to an statistical operation whose results is used in the calculat... |  no  |
+[ReferencedOperationRelationship](ReferencedOperationRelationship.md) | A reference to a statistical operation whose results are used in the calculat... |  no  |
 
 
 
@@ -52,6 +57,7 @@ URI: [ars:analysisId](https://www.cdisc.org/ars/1-0/analysisId)
 <details>
 ```yaml
 name: analysisId
+description: The identifier of the referenced analysis.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 multivalued: false

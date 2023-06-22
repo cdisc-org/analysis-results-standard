@@ -1,6 +1,11 @@
 # Class: SponsorOperationRole
 
 
+_The sponsor-defined role that the referenced operation's result plays in the calculation of the result of this operation._
+
+
+
+
 
 URI: [ars:SponsorOperationRole](https://www.cdisc.org/ars/1-0/SponsorOperationRole)
 
@@ -34,8 +39,8 @@ URI: [ars:SponsorOperationRole](https://www.cdisc.org/ars/1-0/SponsorOperationRo
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [controlledTerm](controlledTerm.md) | 0..1 <br/> [String](String.md) |  | [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) |
-| [sponsorTermId](sponsorTermId.md) | 1..1 <br/> [SponsorTerm](SponsorTerm.md) |  | [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) |
+| [controlledTerm](controlledTerm.md) | 0..1 <br/> [String](String.md) | NOT USED | [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) |
+| [sponsorTermId](sponsorTermId.md) | 1..1 <br/> [SponsorTerm](SponsorTerm.md) | A reference to a sponsor term in the TerminologyExtension with enumeration=Op... | [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) |
 
 
 
@@ -82,17 +87,21 @@ URI: [ars:SponsorOperationRole](https://www.cdisc.org/ars/1-0/SponsorOperationRo
 <details>
 ```yaml
 name: SponsorOperationRole
+description: The sponsor-defined role that the referenced operation's result plays
+  in the calculation of the result of this operation.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 is_a: ExtensibleTerminologyTerm
 slot_usage:
   controlledTerm:
     name: controlledTerm
+    description: NOT USED
     domain_of:
     - ExtensibleTerminologyTerm
     value_presence: ABSENT
   sponsorTermId:
     name: sponsorTermId
+    description: A reference to a sponsor term in the TerminologyExtension with enumeration=OperationRoleEnum
     domain_of:
     - ExtensibleTerminologyTerm
     required: true
@@ -106,17 +115,21 @@ slot_usage:
 <details>
 ```yaml
 name: SponsorOperationRole
+description: The sponsor-defined role that the referenced operation's result plays
+  in the calculation of the result of this operation.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 is_a: ExtensibleTerminologyTerm
 slot_usage:
   controlledTerm:
     name: controlledTerm
+    description: NOT USED
     domain_of:
     - ExtensibleTerminologyTerm
     value_presence: ABSENT
   sponsorTermId:
     name: sponsorTermId
+    description: A reference to a sponsor term in the TerminologyExtension with enumeration=OperationRoleEnum
     domain_of:
     - ExtensibleTerminologyTerm
     required: true
@@ -124,6 +137,7 @@ slot_usage:
 attributes:
   controlledTerm:
     name: controlledTerm
+    description: NOT USED
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: controlledTerm
@@ -134,6 +148,7 @@ attributes:
     value_presence: ABSENT
   sponsorTermId:
     name: sponsorTermId
+    description: A reference to a sponsor term in the TerminologyExtension with enumeration=OperationRoleEnum
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: sponsorTermId

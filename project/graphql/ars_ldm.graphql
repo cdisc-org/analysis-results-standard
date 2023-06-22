@@ -355,7 +355,7 @@ interface PageRef
 
 type ReferencedAnalysisOperation
   {
-    referencedOperationId: ReferencedOperationRelationship
+    referencedOperationRelationshipId: ReferencedOperationRelationship!
     analysisId: Analysis!
   }
 

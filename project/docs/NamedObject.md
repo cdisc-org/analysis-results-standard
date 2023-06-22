@@ -1,6 +1,11 @@
 # Class: NamedObject
 
 
+_An object with a name._
+
+
+
+
 * __NOTE__: this is an abstract class and should not be instantiated directly
 
 
@@ -50,7 +55,7 @@ URI: [ars:NamedObject](https://www.cdisc.org/ars/1-0/NamedObject)
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [name](name.md) | 1..1 <br/> [String](String.md) |  | direct |
+| [name](name.md) | 1..1 <br/> [String](String.md) | The name for the instance of the class | direct |
 
 
 
@@ -97,6 +102,7 @@ URI: [ars:NamedObject](https://www.cdisc.org/ars/1-0/NamedObject)
 <details>
 ```yaml
 name: NamedObject
+description: An object with a name.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 abstract: true
@@ -111,12 +117,14 @@ slots:
 <details>
 ```yaml
 name: NamedObject
+description: An object with a name.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 abstract: true
 attributes:
   name:
     name: name
+    description: The name for the instance of the class.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: name

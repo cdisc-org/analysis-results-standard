@@ -13,10 +13,10 @@ URI: [ars:logicalOperator](https://www.cdisc.org/ars/1-0/logicalOperator)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-[WhereClauseCompoundExpression](WhereClauseCompoundExpression.md) |  |  no  |
-[CompoundSetExpression](CompoundSetExpression.md) |  |  no  |
-[CompoundGroupExpression](CompoundGroupExpression.md) |  |  no  |
-[CompoundSubsetExpression](CompoundSubsetExpression.md) |  |  no  |
+[WhereClauseCompoundExpression](WhereClauseCompoundExpression.md) | A compound expression consisting of either two or more where clauses combined... |  no  |
+[CompoundSetExpression](CompoundSetExpression.md) | A compound expression consisting of either two or more identified analysis se... |  no  |
+[CompoundGroupExpression](CompoundGroupExpression.md) | A compound expression consisting of either two or more identified group combi... |  no  |
+[CompoundSubsetExpression](CompoundSubsetExpression.md) | A compound expression consisting of either two or more where clauses combined... |  no  |
 
 
 

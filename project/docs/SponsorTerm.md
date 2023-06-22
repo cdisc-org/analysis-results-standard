@@ -33,9 +33,9 @@ URI: [ars:SponsorTerm](https://www.cdisc.org/ars/1-0/SponsorTerm)
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [id](id.md) | 1..1 <br/> [String](String.md) |  | direct |
+| [id](id.md) | 1..1 <br/> [String](String.md) | The assigned identifying value for the instance of the class | direct |
 | [submissionValue](submissionValue.md) | 1..1 <br/> [String](String.md) | The specific value expected for submissions | direct |
-| [description](description.md) | 0..1 <br/> [String](String.md) |  | direct |
+| [description](description.md) | 0..1 <br/> [String](String.md) | A textual description of the instance of the class | direct |
 
 
 
@@ -122,6 +122,7 @@ rank: 1000
 attributes:
   id:
     name: id
+    description: The assigned identifying value for the instance of the class.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     identifier: true
@@ -160,6 +161,7 @@ attributes:
     required: true
   description:
     name: description
+    description: A textual description of the instance of the class.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: description

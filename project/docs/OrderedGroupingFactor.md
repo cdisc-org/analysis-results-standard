@@ -35,8 +35,8 @@ URI: [ars:OrderedGroupingFactor](https://www.cdisc.org/ars/1-0/OrderedGroupingFa
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [order](order.md) | 1..1 <br/> [Integer](Integer.md) |  | direct |
-| [groupingId](groupingId.md) | 0..1 <br/> [GroupingFactor](GroupingFactor.md) |  | direct |
+| [order](order.md) | 1..1 <br/> [Integer](Integer.md) | The ordinal of the instance with respect to other instances | direct |
+| [groupingId](groupingId.md) | 0..1 <br/> [GroupingFactor](GroupingFactor.md) | The identifier of the referenced subject or data grouping factor | direct |
 | [resultsByGroup](resultsByGroup.md) | 1..1 <br/> [Boolean](Boolean.md) | Indicates whether a result is expected for each group in the grouping | direct |
 
 
@@ -135,6 +135,7 @@ slot_usage:
 attributes:
   order:
     name: order
+    description: The ordinal of the instance with respect to other instances.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: order
@@ -149,6 +150,7 @@ attributes:
     required: true
   groupingId:
     name: groupingId
+    description: The identifier of the referenced subject or data grouping factor.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: groupingId

@@ -1,5 +1,10 @@
 # Slot: referencedAnalysisOperations
 
+
+_Indications of which analysis contains the results for each referenced operation._
+
+
+
 URI: [ars:referencedAnalysisOperations](https://www.cdisc.org/ars/1-0/referencedAnalysisOperations)
 
 
@@ -52,6 +57,8 @@ URI: [ars:referencedAnalysisOperations](https://www.cdisc.org/ars/1-0/referenced
 <details>
 ```yaml
 name: referencedAnalysisOperations
+description: Indications of which analysis contains the results for each referenced
+  operation.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 multivalued: true

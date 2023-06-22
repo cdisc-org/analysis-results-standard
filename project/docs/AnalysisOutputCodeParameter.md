@@ -41,8 +41,8 @@ URI: [ars:AnalysisOutputCodeParameter](https://www.cdisc.org/ars/1-0/AnalysisOut
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [value](value.md) | 1..* <br/> [String](String.md) | The value of the parameter | direct |
-| [description](description.md) | 0..1 <br/> [String](String.md) |  | [CodeParameter](CodeParameter.md) |
-| [name](name.md) | 1..1 <br/> [String](String.md) |  | [NamedObject](NamedObject.md) |
+| [description](description.md) | 0..1 <br/> [String](String.md) | A textual description of the instance of the class | [CodeParameter](CodeParameter.md) |
+| [name](name.md) | 1..1 <br/> [String](String.md) | The name for the instance of the class | [NamedObject](NamedObject.md) |
 
 
 
@@ -155,6 +155,7 @@ attributes:
     maximum_cardinality: 1
   description:
     name: description
+    description: A textual description of the instance of the class.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: description
@@ -168,6 +169,7 @@ attributes:
     range: string
   name:
     name: name
+    description: The name for the instance of the class.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: name

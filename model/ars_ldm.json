@@ -5,21 +5,25 @@
             "description": "An analysis that is designed to meet a requirement of the reporting event. Each analysis is defined as a set of specifications, including:\n* The analysis variable that is the subject of the analysis.\n* The analysis method (set of statistical operations) that is performed for the analysis variable.\n* The analysis set (subject population) for which the analysis is performed.\n* The subset of data records on which the analysis is performed (optional).\n* One or more factors by which either subjects or data records are grouped for analysis (optional).",
             "properties": {
                 "analysisSetId": {
+                    "description": "The identifier of the referenced analysis set.",
                     "type": "string"
                 },
                 "categoryIds": {
+                    "description": "References to any implementer-defined categories that apply to the analysis.",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "dataSubsetId": {
+                    "description": "The identifier of the referenced data subset.",
                     "type": "string"
                 },
                 "dataset": {
                     "type": "string"
                 },
                 "description": {
+                    "description": "A textual description of the instance of the class.",
                     "type": "string"
                 },
                 "documentRefs": {
@@ -29,6 +33,7 @@
                     "type": "array"
                 },
                 "id": {
+                    "description": "The assigned identifying value for the instance of the class.",
                     "type": "string"
                 },
                 "methodId": {
@@ -36,9 +41,11 @@
                     "type": "string"
                 },
                 "name": {
+                    "description": "The name for the instance of the class.",
                     "type": "string"
                 },
                 "orderedGroupings": {
+                    "description": "An ordered list of grouping factors used in the analysis.",
                     "items": {
                         "$ref": "#/$defs/OrderedGroupingFactor"
                     },
@@ -71,6 +78,7 @@
                     "description": "The rationale for performing this analysis. It indicates when the analysis was planned."
                 },
                 "referencedAnalysisOperations": {
+                    "description": "Indications of which analysis contains the results for each referenced operation.",
                     "items": {
                         "$ref": "#/$defs/ReferencedAnalysisOperation"
                     },
@@ -104,12 +112,14 @@
             "description": "A set of related implementer-defined categories that can be used to categorize analyses or outputs.",
             "properties": {
                 "categories": {
+                    "description": "Implementer-defined categories of analyses/outputs, each of which may include one or more sub-categorization.",
                     "items": {
                         "$ref": "#/$defs/AnalysisCategory"
                     },
                     "type": "array"
                 },
                 "id": {
+                    "description": "The assigned identifying value for the instance of the class.",
                     "type": "string"
                 },
                 "label": {
@@ -128,12 +138,14 @@
             "description": "An implementer-defined category of analyses/outputs, which may include one or more sub-categorization.",
             "properties": {
                 "id": {
+                    "description": "The assigned identifying value for the instance of the class.",
                     "type": "string"
                 },
                 "label": {
                     "type": "string"
                 },
                 "subCategorizations": {
+                    "description": "Sets of related implementer-defined sub-categories that can be used to categorize analyses or outputs.",
                     "items": {
                         "$ref": "#/$defs/AnalysisCategorization"
                     },
@@ -157,15 +169,18 @@
                     "$ref": "#/$defs/WhereClauseCondition"
                 },
                 "id": {
+                    "description": "The assigned identifying value for the instance of the class.",
                     "type": "string"
                 },
                 "label": {
                     "type": "string"
                 },
                 "level": {
+                    "description": "The level of the entry within a hierarchical structure.",
                     "type": "integer"
                 },
                 "order": {
+                    "description": "The ordinal of the instance with respect to other instances.",
                     "type": "integer"
                 }
             },
@@ -184,6 +199,7 @@
                     "description": "Template programming statements and/or a reference to the template program used to perform the specific analysis."
                 },
                 "description": {
+                    "description": "A textual description of the instance of the class.",
                     "type": "string"
                 },
                 "documentRefs": {
@@ -193,15 +209,18 @@
                     "type": "array"
                 },
                 "id": {
+                    "description": "The assigned identifying value for the instance of the class.",
                     "type": "string"
                 },
                 "label": {
                     "type": "string"
                 },
                 "name": {
+                    "description": "The name for the instance of the class.",
                     "type": "string"
                 },
                 "operations": {
+                    "description": "The calculations performed for the method. Each operation generates a statistical result.",
                     "items": {
                         "$ref": "#/$defs/Operation"
                     },
@@ -221,9 +240,11 @@
             "description": "A parameter whose value is used in programming code for a specific analysis or output.",
             "properties": {
                 "description": {
+                    "description": "A textual description of the instance of the class.",
                     "type": "string"
                 },
                 "name": {
+                    "description": "The name for the instance of the class.",
                     "type": "string"
                 },
                 "value": {
@@ -302,12 +323,14 @@
         },
         "AnalysisPurpose": {
             "additionalProperties": false,
-            "description": "",
+            "description": "The purpose of the analysis within the body of evidence (e.g., section in the clinical study report).",
             "properties": {
                 "controlledTerm": {
-                    "$ref": "#/$defs/AnalysisPurposeEnum"
+                    "$ref": "#/$defs/AnalysisPurposeEnum",
+                    "description": "One of the permissible values from the referenced enumeration."
                 },
                 "sponsorTermId": {
+                    "description": "NOT USED",
                     "type": "string"
                 }
             },
@@ -329,12 +352,14 @@
         },
         "AnalysisReason": {
             "additionalProperties": false,
-            "description": "",
+            "description": "The rationale for performing this analysis.",
             "properties": {
                 "controlledTerm": {
-                    "$ref": "#/$defs/AnalysisReasonEnum"
+                    "$ref": "#/$defs/AnalysisReasonEnum",
+                    "description": "One of the permissible values from the referenced enumeration."
                 },
                 "sponsorTermId": {
+                    "description": "NOT USED",
                     "type": "string"
                 }
             },
@@ -366,15 +391,18 @@
                     "$ref": "#/$defs/WhereClauseCondition"
                 },
                 "id": {
+                    "description": "The assigned identifying value for the instance of the class.",
                     "type": "string"
                 },
                 "label": {
                     "type": "string"
                 },
                 "level": {
+                    "description": "The level of the entry within a hierarchical structure.",
                     "type": "integer"
                 },
                 "order": {
+                    "description": "The ordinal of the instance with respect to other instances.",
                     "type": "integer"
                 }
             },
@@ -386,7 +414,7 @@
         },
         "CompoundGroupExpression": {
             "additionalProperties": false,
-            "description": "",
+            "description": "A compound expression consisting of either two or more identified group combined with the `AND` or `OR` logical operator, or a single identified group negated with the `NOT` logical operator.",
             "properties": {
                 "logicalOperator": {
                     "$ref": "#/$defs/ExpressionLogicalOperatorEnum"
@@ -406,7 +434,7 @@
         },
         "CompoundSetExpression": {
             "additionalProperties": false,
-            "description": "",
+            "description": "A compound expression consisting of either two or more identified analysis sets combined with the `AND` or `OR` logical operator, or a single identified analysis set negated with the `NOT` logical operator.",
             "properties": {
                 "logicalOperator": {
                     "$ref": "#/$defs/ExpressionLogicalOperatorEnum"
@@ -426,7 +454,7 @@
         },
         "CompoundSubsetExpression": {
             "additionalProperties": false,
-            "description": "",
+            "description": "A compound expression consisting of either two or more where clauses combined with the `AND` or `OR` logical operator, or a single where clause negated with the `NOT` logical operator.",
             "properties": {
                 "logicalOperator": {
                     "$ref": "#/$defs/ExpressionLogicalOperatorEnum"
@@ -470,15 +498,18 @@
                     "$ref": "#/$defs/WhereClauseCondition"
                 },
                 "id": {
+                    "description": "The assigned identifying value for the instance of the class.",
                     "type": "string"
                 },
                 "label": {
                     "type": "string"
                 },
                 "level": {
+                    "description": "The level of the entry within a hierarchical structure.",
                     "type": "integer"
                 },
                 "order": {
+                    "description": "The ordinal of the instance with respect to other instances.",
                     "type": "integer"
                 }
             },
@@ -501,12 +532,14 @@
                     "type": "string"
                 },
                 "groups": {
+                    "description": "The pre-specified groups within the grouping.",
                     "items": {
                         "$ref": "#/$defs/DataGroup"
                     },
                     "type": "array"
                 },
                 "id": {
+                    "description": "The assigned identifying value for the instance of the class.",
                     "type": "string"
                 },
                 "label": {
@@ -531,15 +564,18 @@
                     "$ref": "#/$defs/WhereClauseCondition"
                 },
                 "id": {
+                    "description": "The assigned identifying value for the instance of the class.",
                     "type": "string"
                 },
                 "label": {
                     "type": "string"
                 },
                 "level": {
+                    "description": "The level of the entry within a hierarchical structure.",
                     "type": "integer"
                 },
                 "order": {
+                    "description": "The ordinal of the instance with respect to other instances.",
                     "type": "integer"
                 }
             },
@@ -587,9 +623,10 @@
         },
         "DisplaySubSection": {
             "additionalProperties": false,
-            "description": "An occurrence of a display section containing text that is ordered with respect to other occurrences of the same type of display section.",
+            "description": "An occurrence of a display section containing text.",
             "properties": {
                 "id": {
+                    "description": "The assigned identifying value for the instance of the class.",
                     "type": "string"
                 },
                 "text": {
@@ -605,9 +642,10 @@
         },
         "DocumentReference": {
             "additionalProperties": false,
-            "description": "",
+            "description": "A reference to an external document.",
             "properties": {
                 "pageRefs": {
+                    "description": "A list of references to specific parts of a document, which may be referenced as a list of one or more page numbers, a range of page numbers, or a list of named destinations in the document (e.g. bookmarks).",
                     "items": {
                         "anyOf": [
                             {
@@ -634,7 +672,7 @@
             "type": "object"
         },
         "ExpressionLogicalOperatorEnum": {
-            "description": "",
+            "description": "A Boolean operator, a symbol or a function that denotes a logical operation (e.g., and, or, not).",
             "enum": [
                 "AND",
                 "OR",
@@ -656,7 +694,7 @@
         },
         "GlobalDisplaySection": {
             "additionalProperties": false,
-            "description": "A part of a tabular display containing one or more pieces of informational text.",
+            "description": "A global definition for part of a tabular display containing one or more pieces of informational text that may be used in multiple displays.",
             "properties": {
                 "sectionType": {
                     "$ref": "#/$defs/DisplaySectionTypeEnum"
@@ -682,15 +720,18 @@
                     "$ref": "#/$defs/WhereClauseCondition"
                 },
                 "id": {
+                    "description": "The assigned identifying value for the instance of the class.",
                     "type": "string"
                 },
                 "label": {
                     "type": "string"
                 },
                 "level": {
+                    "description": "The level of the entry within a hierarchical structure.",
                     "type": "integer"
                 },
                 "order": {
+                    "description": "The ordinal of the instance with respect to other instances.",
                     "type": "integer"
                 }
             },
@@ -719,12 +760,14 @@
             "description": "A statistical operation that produces a single analysis result value as part of an analysis method.",
             "properties": {
                 "id": {
+                    "description": "The assigned identifying value for the instance of the class.",
                     "type": "string"
                 },
                 "label": {
                     "type": "string"
                 },
                 "name": {
+                    "description": "The name for the instance of the class.",
                     "type": "string"
                 },
                 "referencedOperationRelationships": {
@@ -752,6 +795,7 @@
                     "type": "string"
                 },
                 "operationId": {
+                    "description": "The identifier of the referenced operation.",
                     "type": "string"
                 },
                 "rawValue": {
@@ -772,12 +816,14 @@
         },
         "OperationRole": {
             "additionalProperties": false,
-            "description": "",
+            "description": "The role that the referenced operation's result plays in the calculation of the result of this operation.",
             "properties": {
                 "controlledTerm": {
-                    "$ref": "#/$defs/OperationRoleEnum"
+                    "$ref": "#/$defs/OperationRoleEnum",
+                    "description": "One of the permissible values from the referenced enumeration."
                 },
                 "sponsorTermId": {
+                    "description": "NOT USED",
                     "type": "string"
                 }
             },
@@ -788,7 +834,7 @@
             "type": "object"
         },
         "OperationRoleEnum": {
-            "description": "",
+            "description": "The role that the referenced operation's result plays in the calculation of the result of this operation.",
             "enum": [
                 "NUMERATOR",
                 "DENOMINATOR"
@@ -804,6 +850,7 @@
                     "$ref": "#/$defs/OutputDisplay"
                 },
                 "order": {
+                    "description": "The ordinal of the instance with respect to other instances.",
                     "type": "integer"
                 }
             },
@@ -818,9 +865,11 @@
             "description": "A reference to a defined factor by which subjects or data records are grouped for the analysis, ordered with respect to other grouping factors.",
             "properties": {
                 "groupingId": {
+                    "description": "The identifier of the referenced subject or data grouping factor.",
                     "type": "string"
                 },
                 "order": {
+                    "description": "The ordinal of the instance with respect to other instances.",
                     "type": "integer"
                 },
                 "resultsByGroup": {
@@ -840,22 +889,28 @@
             "description": "An item (analysis, output or sub-list) ordered relative to other items within a list or sub-list.",
             "properties": {
                 "analysisId": {
+                    "description": "The identifier of the referenced analysis.",
                     "type": "string"
                 },
                 "level": {
+                    "description": "The level of the entry within a hierarchical structure.",
                     "type": "integer"
                 },
                 "name": {
+                    "description": "The name for the instance of the class.",
                     "type": "string"
                 },
                 "order": {
+                    "description": "The ordinal of the instance with respect to other instances.",
                     "type": "integer"
                 },
                 "outputId": {
+                    "description": "The identifier of the referenced output.",
                     "type": "string"
                 },
                 "sublist": {
-                    "$ref": "#/$defs/NestedList"
+                    "$ref": "#/$defs/NestedList",
+                    "description": "A sub-list of items (analyses or outputs) that may be further organized within sub-lists."
                 }
             },
             "required": [
@@ -871,12 +926,14 @@
             "description": "A subsection ordered with respect to other subsections of the same type.",
             "properties": {
                 "order": {
+                    "description": "The ordinal of the instance with respect to other instances.",
                     "type": "integer"
                 },
                 "subSection": {
                     "$ref": "#/$defs/DisplaySubSection"
                 },
                 "subSectionId": {
+                    "description": "NOT USED",
                     "type": "string"
                 }
             },
@@ -892,10 +949,12 @@
             "description": "A reference to a subsection defined either globally or in another display section, ordered with respect to other subsections of the same type.",
             "properties": {
                 "order": {
+                    "description": "The ordinal of the instance with respect to other instances.",
                     "type": "integer"
                 },
                 "subSection": {
-                    "$ref": "#/$defs/DisplaySubSection"
+                    "$ref": "#/$defs/DisplaySubSection",
+                    "description": "NOT USED"
                 },
                 "subSectionId": {
                     "type": "string"
@@ -913,6 +972,7 @@
             "description": "A report of results and their evaluation based on planned analyses performed during the course of a trial.",
             "properties": {
                 "categoryIds": {
+                    "description": "References to any implementer-defined categories that apply to the output.",
                     "items": {
                         "type": "string"
                     },
@@ -937,9 +997,11 @@
                     "type": "array"
                 },
                 "id": {
+                    "description": "The assigned identifying value for the instance of the class.",
                     "type": "string"
                 },
                 "name": {
+                    "description": "The name for the instance of the class.",
                     "type": "string"
                 },
                 "programmingCode": {
@@ -971,9 +1033,11 @@
                     "type": "string"
                 },
                 "id": {
+                    "description": "The assigned identifying value for the instance of the class.",
                     "type": "string"
                 },
                 "name": {
+                    "description": "The name for the instance of the class.",
                     "type": "string"
                 },
                 "version": {
@@ -1005,6 +1069,7 @@
                     "type": "string"
                 },
                 "name": {
+                    "description": "The name for the instance of the class.",
                     "type": "string"
                 },
                 "style": {
@@ -1019,12 +1084,14 @@
         },
         "OutputFileType": {
             "additionalProperties": false,
-            "description": "",
+            "description": "The file format of the file containing output from analyses.",
             "properties": {
                 "controlledTerm": {
-                    "$ref": "#/$defs/OutputFileTypeEnum"
+                    "$ref": "#/$defs/OutputFileTypeEnum",
+                    "description": "One of the permissible values from the referenced enumeration."
                 },
                 "sponsorTermId": {
+                    "description": "NOT USED",
                     "type": "string"
                 }
             },
@@ -1035,7 +1102,7 @@
             "type": "object"
         },
         "OutputFileTypeEnum": {
-            "description": "",
+            "description": "The file format of the file containing output from analyses.",
             "enum": [
                 "pdf",
                 "rtf",
@@ -1049,7 +1116,7 @@
             "description": "One or more pages in the reference document, referenced by named destination.",
             "properties": {
                 "firstPage": {
-                    "description": "The page number of the first page in a range of pages.",
+                    "description": "NOT USED",
                     "type": "integer"
                 },
                 "label": {
@@ -1057,7 +1124,7 @@
                     "type": "string"
                 },
                 "lastPage": {
-                    "description": "The page number of the last page in a range of pages.",
+                    "description": "NOT USED",
                     "type": "integer"
                 },
                 "pageNames": {
@@ -1068,7 +1135,7 @@
                     "type": "array"
                 },
                 "pageNumbers": {
-                    "description": "One or more page numbers.",
+                    "description": "NOT USED",
                     "items": {
                         "type": "integer"
                     },
@@ -1076,7 +1143,8 @@
                 },
                 "refType": {
                     "$ref": "#/$defs/PageRefTypeEnum",
-                    "const": "NamedDestination"
+                    "const": "NamedDestination",
+                    "description": "The type of reference for page references."
                 }
             },
             "required": [
@@ -1091,7 +1159,7 @@
             "description": "One or more individual pages in the reference document, referenced by page number.",
             "properties": {
                 "firstPage": {
-                    "description": "The page number of the first page in a range of pages.",
+                    "description": "NOT USED",
                     "type": "integer"
                 },
                 "label": {
@@ -1099,11 +1167,11 @@
                     "type": "string"
                 },
                 "lastPage": {
-                    "description": "The page number of the last page in a range of pages.",
+                    "description": "NOT USED",
                     "type": "integer"
                 },
                 "pageNames": {
-                    "description": "One or more named document references which each correspond with a page.",
+                    "description": "NOT USED",
                     "items": {
                         "type": "string"
                     },
@@ -1118,7 +1186,8 @@
                 },
                 "refType": {
                     "$ref": "#/$defs/PageRefTypeEnum",
-                    "const": "PhysicalRef"
+                    "const": "PhysicalRef",
+                    "description": "The type of reference for page references."
                 }
             },
             "required": [
@@ -1145,14 +1214,14 @@
                     "type": "integer"
                 },
                 "pageNames": {
-                    "description": "One or more named document references which each correspond with a page.",
+                    "description": "NOT USED",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "pageNumbers": {
-                    "description": "One or more page numbers.",
+                    "description": "NOT USED",
                     "items": {
                         "type": "integer"
                     },
@@ -1160,7 +1229,8 @@
                 },
                 "refType": {
                     "$ref": "#/$defs/PageRefTypeEnum",
-                    "const": "PhysicalRef"
+                    "const": "PhysicalRef",
+                    "description": "The type of reference for page references."
                 }
             },
             "required": [
@@ -1172,7 +1242,7 @@
             "type": "object"
         },
         "PageRefTypeEnum": {
-            "description": "Type of page for page references.",
+            "description": "Type of reference for page references.",
             "enum": [
                 "PhysicalRef",
                 "NamedDestination"
@@ -1182,15 +1252,17 @@
         },
         "ReferenceDocument": {
             "additionalProperties": false,
-            "description": "",
+            "description": "An external document containing supporting documentation or programming code.",
             "properties": {
                 "id": {
+                    "description": "The assigned identifying value for the instance of the class.",
                     "type": "string"
                 },
                 "location": {
                     "type": "string"
                 },
                 "name": {
+                    "description": "The name for the instance of the class.",
                     "type": "string"
                 }
             },
@@ -1206,13 +1278,16 @@
             "description": "An indication of the analysis that contains results of a referenced operation.",
             "properties": {
                 "analysisId": {
+                    "description": "The identifier of the referenced analysis.",
                     "type": "string"
                 },
-                "referencedOperationId": {
+                "referencedOperationRelationshipId": {
+                    "description": "The identifier of the defined referenced operation relationship.",
                     "type": "string"
                 }
             },
             "required": [
+                "referencedOperationRelationshipId",
                 "analysisId"
             ],
             "title": "ReferencedAnalysisOperation",
@@ -1220,18 +1295,22 @@
         },
         "ReferencedOperationRelationship": {
             "additionalProperties": false,
-            "description": "A reference to an statistical operation whose results is used in the calculation of the result for this operation.",
+            "description": "A reference to a statistical operation whose results are used in the calculation of the result for this operation.",
             "properties": {
                 "analysisId": {
+                    "description": "The identifier of the referenced analysis.",
                     "type": "string"
                 },
                 "description": {
+                    "description": "A textual description of the instance of the class.",
                     "type": "string"
                 },
                 "id": {
+                    "description": "The assigned identifying value for the instance of the class.",
                     "type": "string"
                 },
                 "operationId": {
+                    "description": "The identifier of the referenced operation.",
                     "type": "string"
                 },
                 "referencedOperationRole": {
@@ -1265,6 +1344,7 @@
                     "type": "array"
                 },
                 "analysisCategorizations": {
+                    "description": "Sets of related implementer-defined categories that can be used to categorize analyses or outputs.",
                     "items": {
                         "$ref": "#/$defs/AnalysisCategorization"
                     },
@@ -1285,13 +1365,14 @@
                     "type": "array"
                 },
                 "dataGroupings": {
-                    "description": "Characteristics used to subdivide data records in the analysis dataset (e.g., visit, system organ class).",
+                    "description": "Characteristics used to subdivide data records in analysis datasets (e.g., visit, system organ class).",
                     "items": {
                         "$ref": "#/$defs/DataGroupingFactor"
                     },
                     "type": "array"
                 },
                 "dataSubsets": {
+                    "description": "Subsets of data identified by selection criteria for inclusion in analysis definitions.",
                     "items": {
                         "$ref": "#/$defs/DataSubset"
                     },
@@ -1304,6 +1385,7 @@
                     "type": "array"
                 },
                 "id": {
+                    "description": "The assigned identifying value for the instance of the class.",
                     "type": "string"
                 },
                 "listOfPlannedAnalyses": {
@@ -1322,9 +1404,11 @@
                     "type": "array"
                 },
                 "name": {
+                    "description": "The name for the instance of the class.",
                     "type": "string"
                 },
                 "outputs": {
+                    "description": "The outputs defined for the reporting event.",
                     "items": {
                         "$ref": "#/$defs/Output"
                     },
@@ -1360,12 +1444,15 @@
             "description": "For the specified grouping factor, an indication of the specific group of subjects or data records associated with the analysis result.",
             "properties": {
                 "groupId": {
+                    "description": "The identifier of a referenced predefined group within a grouping.",
                     "type": "string"
                 },
                 "groupValue": {
+                    "description": "The data value used as a group within a data-driven grouping.",
                     "type": "string"
                 },
                 "groupingId": {
+                    "description": "The identifier of the referenced subject or data grouping factor.",
                     "type": "string"
                 }
             },
@@ -1374,12 +1461,14 @@
         },
         "SponsorAnalysisPurpose": {
             "additionalProperties": false,
-            "description": "",
+            "description": "The sponsor-defined purpose of the analysis within the body of evidence (e.g., section in the clinical study report).",
             "properties": {
                 "controlledTerm": {
+                    "description": "NOT USED",
                     "type": "string"
                 },
                 "sponsorTermId": {
+                    "description": "A reference to a sponsor term in the TerminologyExtension with enumeration=AnalysisPurposeEnum",
                     "type": "string"
                 }
             },
@@ -1391,12 +1480,14 @@
         },
         "SponsorAnalysisReason": {
             "additionalProperties": false,
-            "description": "",
+            "description": "The sponsor-defined rationale for performing this analysis.",
             "properties": {
                 "controlledTerm": {
+                    "description": "NOT USED",
                     "type": "string"
                 },
                 "sponsorTermId": {
+                    "description": "A reference to a sponsor term in the TerminologyExtension with enumeration=AnalysisReasonEnum",
                     "type": "string"
                 }
             },
@@ -1408,12 +1499,14 @@
         },
         "SponsorOperationRole": {
             "additionalProperties": false,
-            "description": "",
+            "description": "The sponsor-defined role that the referenced operation's result plays in the calculation of the result of this operation.",
             "properties": {
                 "controlledTerm": {
+                    "description": "NOT USED",
                     "type": "string"
                 },
                 "sponsorTermId": {
+                    "description": "A reference to a sponsor term in the TerminologyExtension with enumeration=OperationRoleEnum",
                     "type": "string"
                 }
             },
@@ -1425,12 +1518,14 @@
         },
         "SponsorOutputFileType": {
             "additionalProperties": false,
-            "description": "",
+            "description": "The sponsor-defined file format of the file containing output from analyses.",
             "properties": {
                 "controlledTerm": {
+                    "description": "NOT USED",
                     "type": "string"
                 },
                 "sponsorTermId": {
+                    "description": "A reference to a sponsor term in the TerminologyExtension with enumeration=OutputFileTypeEnum",
                     "type": "string"
                 }
             },
@@ -1445,9 +1540,11 @@
             "description": "A sponsor-defined term that is included in an extensible set of controlled terminology.",
             "properties": {
                 "description": {
+                    "description": "A textual description of the instance of the class.",
                     "type": "string"
                 },
                 "id": {
+                    "description": "The assigned identifying value for the instance of the class.",
                     "type": "string"
                 },
                 "submissionValue": {
@@ -1475,12 +1572,14 @@
                     "type": "string"
                 },
                 "groups": {
+                    "description": "The pre-specified groups within the grouping.",
                     "items": {
                         "$ref": "#/$defs/AnalysisGroup"
                     },
                     "type": "array"
                 },
                 "id": {
+                    "description": "The assigned identifying value for the instance of the class.",
                     "type": "string"
                 },
                 "label": {
@@ -1499,9 +1598,11 @@
             "description": "A replacement parameter whose value is substituted in template programming code to create statements required for a specific analysis.",
             "properties": {
                 "description": {
+                    "description": "A textual description of the instance of the class.",
                     "type": "string"
                 },
                 "name": {
+                    "description": "The name for the instance of the class.",
                     "type": "string"
                 },
                 "value": {
@@ -1524,13 +1625,14 @@
         },
         "TerminologyExtension": {
             "additionalProperties": false,
-            "description": "A sponsor-defined term that is included in an extensible set of controlled terminology.",
+            "description": "An extensible set of controlled terminology that has been extended with at least one sponsor-defined term.",
             "properties": {
                 "enumeration": {
                     "$ref": "#/$defs/ExtensibleTerminologyEnum",
                     "description": "The name of the extensible enumeration."
                 },
                 "id": {
+                    "description": "The assigned identifying value for the instance of the class.",
                     "type": "string"
                 },
                 "sponsorTerms": {
@@ -1550,7 +1652,7 @@
         },
         "WhereClause": {
             "additionalProperties": false,
-            "description": "",
+            "description": "Selection criteria defined as either a simple condition ([variable] [comparator] [value(s)]) or a compound expression that may combine simple conditions or compound expressions.",
             "properties": {
                 "compoundExpression": {
                     "$ref": "#/$defs/WhereClauseCompoundExpression"
@@ -1559,9 +1661,11 @@
                     "$ref": "#/$defs/WhereClauseCondition"
                 },
                 "level": {
+                    "description": "The level of the entry within a hierarchical structure.",
                     "type": "integer"
                 },
                 "order": {
+                    "description": "The ordinal of the instance with respect to other instances.",
                     "type": "integer"
                 }
             },
@@ -1570,7 +1674,7 @@
         },
         "WhereClauseCompoundExpression": {
             "additionalProperties": false,
-            "description": "",
+            "description": "A compound expression consisting of either two or more where clauses combined with the `AND` or `OR` logical operator, or a single where clause negated with the `NOT` logical operator.",
             "properties": {
                 "logicalOperator": {
                     "$ref": "#/$defs/ExpressionLogicalOperatorEnum"
@@ -1658,7 +1762,7 @@
                     }
                 }
             ],
-            "description": "",
+            "description": "A simple selection criterion exressed as [dataset].[variable] [comparator] [value(s)]",
             "properties": {
                 "comparator": {
                     "$ref": "#/$defs/ConditionComparatorEnum"
@@ -1694,6 +1798,7 @@
             "type": "array"
         },
         "analysisCategorizations": {
+            "description": "Sets of related implementer-defined categories that can be used to categorize analyses or outputs.",
             "items": {
                 "$ref": "#/$defs/AnalysisCategorization"
             },
@@ -1714,13 +1819,14 @@
             "type": "array"
         },
         "dataGroupings": {
-            "description": "Characteristics used to subdivide data records in the analysis dataset (e.g., visit, system organ class).",
+            "description": "Characteristics used to subdivide data records in analysis datasets (e.g., visit, system organ class).",
             "items": {
                 "$ref": "#/$defs/DataGroupingFactor"
             },
             "type": "array"
         },
         "dataSubsets": {
+            "description": "Subsets of data identified by selection criteria for inclusion in analysis definitions.",
             "items": {
                 "$ref": "#/$defs/DataSubset"
             },
@@ -1733,6 +1839,7 @@
             "type": "array"
         },
         "id": {
+            "description": "The assigned identifying value for the instance of the class.",
             "type": "string"
         },
         "listOfPlannedAnalyses": {
@@ -1751,9 +1858,11 @@
             "type": "array"
         },
         "name": {
+            "description": "The name for the instance of the class.",
             "type": "string"
         },
         "outputs": {
+            "description": "The outputs defined for the reporting event.",
             "items": {
                 "$ref": "#/$defs/Output"
             },

@@ -13,7 +13,7 @@ URI: [ars:comparator](https://www.cdisc.org/ars/1-0/comparator)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-[WhereClauseCondition](WhereClauseCondition.md) |  |  no  |
+[WhereClauseCondition](WhereClauseCondition.md) | A simple selection criterion exressed as [dataset] |  no  |
 
 
 

@@ -2,14 +2,19 @@
 
 
 
+
+_The role that the referenced operation's result plays in the calculation of the result of this operation._
+
+
+
 URI: [OperationRoleEnum](OperationRoleEnum)
 
 ## Permissible Values
 
 | Value | Meaning | Description |
 | --- | --- | --- |
-| NUMERATOR | None |  |
-| DENOMINATOR | None |  |
+| NUMERATOR | None | The dividend of a fraction |
+| DENOMINATOR | None | The divisor of a fraction |
 
 
 
@@ -46,13 +51,17 @@ URI: [OperationRoleEnum](OperationRoleEnum)
 <details>
 ```yaml
 name: OperationRoleEnum
+description: The role that the referenced operation's result plays in the calculation
+  of the result of this operation.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 permissible_values:
   NUMERATOR:
     text: NUMERATOR
+    description: The dividend of a fraction.
   DENOMINATOR:
     text: DENOMINATOR
+    description: The divisor of a fraction.
 
 ```
 </details>

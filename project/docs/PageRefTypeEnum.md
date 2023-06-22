@@ -3,7 +3,7 @@
 
 
 
-_Type of page for page references._
+_Type of reference for page references._
 
 
 
@@ -23,7 +23,7 @@ URI: [PageRefTypeEnum](PageRefTypeEnum)
 
 | Name | Description |
 | ---  | --- |
-| [refType](refType.md) |  |
+| [refType](refType.md) | The type of reference for page references |
 
 
 
@@ -51,7 +51,7 @@ URI: [PageRefTypeEnum](PageRefTypeEnum)
 <details>
 ```yaml
 name: PageRefTypeEnum
-description: Type of page for page references.
+description: Type of reference for page references.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 permissible_values:

@@ -51,12 +51,12 @@ URI: [ars:OrderedListItem](https://www.cdisc.org/ars/1-0/OrderedListItem)
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [level](level.md) | 1..1 <br/> [Integer](Integer.md) |  | direct |
-| [order](order.md) | 1..1 <br/> [Integer](Integer.md) |  | direct |
-| [sublist](sublist.md) | 0..1 <br/> [NestedList](NestedList.md) |  | direct |
-| [analysisId](analysisId.md) | 0..1 <br/> [Analysis](Analysis.md) |  | direct |
-| [outputId](outputId.md) | 0..1 <br/> [Output](Output.md) |  | direct |
-| [name](name.md) | 1..1 <br/> [String](String.md) |  | [NamedObject](NamedObject.md) |
+| [level](level.md) | 1..1 <br/> [Integer](Integer.md) | The level of the entry within a hierarchical structure | direct |
+| [order](order.md) | 1..1 <br/> [Integer](Integer.md) | The ordinal of the instance with respect to other instances | direct |
+| [sublist](sublist.md) | 0..1 <br/> [NestedList](NestedList.md) | A sub-list of items (analyses or outputs) that may be further organized withi... | direct |
+| [analysisId](analysisId.md) | 0..1 <br/> [Analysis](Analysis.md) | The identifier of the referenced analysis | direct |
+| [outputId](outputId.md) | 0..1 <br/> [Output](Output.md) | The identifier of the referenced output | direct |
+| [name](name.md) | 1..1 <br/> [String](String.md) | The name for the instance of the class | [NamedObject](NamedObject.md) |
 
 
 
@@ -170,6 +170,7 @@ slot_usage:
 attributes:
   level:
     name: level
+    description: The level of the entry within a hierarchical structure.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: level
@@ -181,6 +182,7 @@ attributes:
     required: true
   order:
     name: order
+    description: The ordinal of the instance with respect to other instances.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: order
@@ -195,6 +197,8 @@ attributes:
     required: true
   sublist:
     name: sublist
+    description: A sub-list of items (analyses or outputs) that may be further organized
+      within sub-lists.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     multivalued: false
@@ -206,6 +210,7 @@ attributes:
     inlined: true
   analysisId:
     name: analysisId
+    description: The identifier of the referenced analysis.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     multivalued: false
@@ -219,6 +224,7 @@ attributes:
     inlined: false
   outputId:
     name: outputId
+    description: The identifier of the referenced output.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     multivalued: false
@@ -230,6 +236,7 @@ attributes:
     inlined: false
   name:
     name: name
+    description: The name for the instance of the class.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: name

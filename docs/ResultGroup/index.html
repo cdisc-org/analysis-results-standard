@@ -103,19 +103,19 @@
 <tr>
 <td><a href="../groupingId/">groupingId</a></td>
 <td>0..1 <br/> <a href="../GroupingFactor/">GroupingFactor</a></td>
-<td></td>
+<td>The identifier of the referenced subject or data grouping factor</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../groupId/">groupId</a></td>
 <td>0..1 <br/> <a href="../Group/">Group</a></td>
-<td></td>
+<td>The identifier of a referenced predefined group within a grouping</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../groupValue/">groupValue</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>The data value used as a group within a data-driven grouping</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -189,6 +189,7 @@ rank: 1000
 attributes:
   groupingId:
     name: groupingId
+    description: The identifier of the referenced subject or data grouping factor.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: groupingId
@@ -200,6 +201,7 @@ attributes:
     inlined: false
   groupId:
     name: groupId
+    description: The identifier of a referenced predefined group within a grouping.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: groupId
@@ -210,6 +212,7 @@ attributes:
     inlined: false
   groupValue:
     name: groupValue
+    description: The data value used as a group within a data-driven grouping.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: groupValue

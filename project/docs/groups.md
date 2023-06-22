@@ -1,5 +1,10 @@
 # Slot: groups
 
+
+_The pre-specified groups within the grouping._
+
+
+
 URI: [ars:groups](https://www.cdisc.org/ars/1-0/groups)
 
 
@@ -33,6 +38,14 @@ URI: [ars:groups](https://www.cdisc.org/ars/1-0/groups)
 
 
 
+
+## Examples
+
+| Value |
+| --- |
+| 'Male' and 'Female' might be groups within a sex grouping. |
+| 'Treatment A', 'Treatment B', 'Placebo' might be groups within a treatment grouping. |
+
 ## Identifier and Mapping Information
 
 
@@ -54,6 +67,11 @@ URI: [ars:groups](https://www.cdisc.org/ars/1-0/groups)
 <details>
 ```yaml
 name: groups
+description: The pre-specified groups within the grouping.
+examples:
+- value: '''Male'' and ''Female'' might be groups within a sex grouping.'
+- value: '''Treatment A'', ''Treatment B'', ''Placebo'' might be groups within a treatment
+    grouping.'
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 multivalued: true

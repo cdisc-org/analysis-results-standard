@@ -1,5 +1,10 @@
 # Slot: level
 
+
+_The level of the entry within a hierarchical structure._
+
+
+
 URI: [ars:level](https://www.cdisc.org/ars/1-0/level)
 
 
@@ -14,7 +19,7 @@ URI: [ars:level](https://www.cdisc.org/ars/1-0/level)
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 [OrderedListItem](OrderedListItem.md) | An item (analysis, output or sub-list) ordered relative to other items within... |  yes  |
-[WhereClause](WhereClause.md) |  |  no  |
+[WhereClause](WhereClause.md) | Selection criteria defined as either a simple condition ([variable] [comparat... |  no  |
 [AnalysisSet](AnalysisSet.md) | A set of subjects whose data are to be included in the main analyses |  no  |
 [Group](Group.md) | A subdivision of the subject population or analysis dataset record set based ... |  no  |
 [AnalysisGroup](AnalysisGroup.md) | A subdivision of the subject population based on a defined factor (e |  no  |
@@ -34,6 +39,10 @@ URI: [ars:level](https://www.cdisc.org/ars/1-0/level)
 
 
 
+
+## Comments
+
+* 1 is the top level.
 
 ## Identifier and Mapping Information
 
@@ -56,6 +65,9 @@ URI: [ars:level](https://www.cdisc.org/ars/1-0/level)
 <details>
 ```yaml
 name: level
+description: The level of the entry within a hierarchical structure.
+comments:
+- 1 is the top level.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 alias: level

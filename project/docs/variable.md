@@ -14,7 +14,7 @@ URI: [ars:variable](https://www.cdisc.org/ars/1-0/variable)
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 [Analysis](Analysis.md) | An analysis that is designed to meet a requirement of the reporting event |  no  |
-[WhereClauseCondition](WhereClauseCondition.md) |  |  no  |
+[WhereClauseCondition](WhereClauseCondition.md) | A simple selection criterion exressed as [dataset] |  no  |
 
 
 

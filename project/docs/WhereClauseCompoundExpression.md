@@ -1,6 +1,11 @@
 # Class: WhereClauseCompoundExpression
 
 
+_A compound expression consisting of either two or more where clauses combined with the `AND` or `OR` logical operator, or a single where clause negated with the `NOT` logical operator._
+
+
+
+
 
 URI: [ars:WhereClauseCompoundExpression](https://www.cdisc.org/ars/1-0/WhereClauseCompoundExpression)
 
@@ -83,6 +88,61 @@ URI: [ars:WhereClauseCompoundExpression](https://www.cdisc.org/ars/1-0/WhereClau
 | native | ars:WhereClauseCompoundExpression |
 
 
+## Examples
+### Example: WhereClauseCompoundExpression-01 AND
+
+```yaml
+# Compound expression: (    ADAE.TRTEMFL EQ 'Y'
+#                       AND ADAE.AESDTH EQ 'Y')
+logicalOperator: AND
+whereClauses:
+- level: 2
+  order: 1
+  condition:
+    dataset: ADAE
+    variable: TRTEMFL
+    comparator: EQ
+    value:
+    - Y
+- level: 2
+  order: 2
+  condition:
+    dataset: ADAE
+    variable: AESDTH
+    comparator: EQ
+    value:
+    - Y
+```
+### Example: WhereClauseCompoundExpression-02 NOT with OR
+
+```yaml
+# Compound expression: NOT (ADXX.VAR1 IN ('value 1','value 2') OR ADXX.VAR2 GT 37)
+logicalOperator: NOT
+whereClauses:
+- level: 2
+  order: 1
+  compoundExpression:
+    logicalOperator: OR
+    whereClauses:
+    - level: 3
+      order: 1
+      condition:
+        dataset: ADXX
+        variable: VAR1
+        comparator: IN
+        value:
+        - value 1
+        - value 2
+    - level: 3
+      order: 2
+      condition:
+        dataset: ADXX
+        variable: VAR2
+        comparator: GT
+        value:
+        - 37
+```
+
 
 
 
@@ -95,6 +155,9 @@ URI: [ars:WhereClauseCompoundExpression](https://www.cdisc.org/ars/1-0/WhereClau
 <details>
 ```yaml
 name: WhereClauseCompoundExpression
+description: A compound expression consisting of either two or more where clauses
+  combined with the `AND` or `OR` logical operator, or a single where clause negated
+  with the `NOT` logical operator.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 slots:
@@ -109,6 +172,9 @@ slots:
 <details>
 ```yaml
 name: WhereClauseCompoundExpression
+description: A compound expression consisting of either two or more where clauses
+  combined with the `AND` or `OR` logical operator, or a single where clause negated
+  with the `NOT` logical operator.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 attributes:

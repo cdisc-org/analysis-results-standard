@@ -1,5 +1,5 @@
 # Auto generated from ars_ldm.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-06-20T13:52:22
+# Generation date: 2023-06-22T16:38:41
 # Schema: ars_ldm
 #
 # id: https://www.cdisc.org/ars/1-0
@@ -127,6 +127,9 @@ class SponsorTermId(extended_str):
 
 @dataclass
 class NamedObject(YAMLRoot):
+    """
+    An object with a name.
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ARS.NamedObject
@@ -491,17 +494,19 @@ class ReferencedAnalysisOperation(YAMLRoot):
     class_name: ClassVar[str] = "ReferencedAnalysisOperation"
     class_model_uri: ClassVar[URIRef] = ARS.ReferencedAnalysisOperation
 
+    referencedOperationRelationshipId: Union[str, ReferencedOperationRelationshipId] = None
     analysisId: Union[str, AnalysisId] = None
-    referencedOperationId: Optional[Union[str, ReferencedOperationRelationshipId]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.referencedOperationRelationshipId):
+            self.MissingRequiredField("referencedOperationRelationshipId")
+        if not isinstance(self.referencedOperationRelationshipId, ReferencedOperationRelationshipId):
+            self.referencedOperationRelationshipId = ReferencedOperationRelationshipId(self.referencedOperationRelationshipId)
+
         if self._is_empty(self.analysisId):
             self.MissingRequiredField("analysisId")
         if not isinstance(self.analysisId, AnalysisId):
             self.analysisId = AnalysisId(self.analysisId)
-
-        if self.referencedOperationId is not None and not isinstance(self.referencedOperationId, ReferencedOperationRelationshipId):
-            self.referencedOperationId = ReferencedOperationRelationshipId(self.referencedOperationId)
 
         super().__post_init__(**kwargs)
 
@@ -656,7 +661,7 @@ class Operation(NamedObject):
 @dataclass
 class ReferencedOperationRelationship(YAMLRoot):
     """
-    A reference to an statistical operation whose results is used in the calculation of the result for this operation.
+    A reference to a statistical operation whose results are used in the calculation of the result for this operation.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -1020,6 +1025,9 @@ class DisplaySection(YAMLRoot):
 
 @dataclass
 class OrderedDisplaySubSection(YAMLRoot):
+    """
+    A single subsection ordered with respect to other subsections in the same section of a display.
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ARS.OrderedDisplaySubSection
@@ -1106,8 +1114,7 @@ class OrderedSubSectionRef(OrderedDisplaySubSection):
 @dataclass
 class DisplaySubSection(YAMLRoot):
     """
-    An occurrence of a display section containing text that is ordered with respect to other occurrences of the same
-    type of display section.
+    An occurrence of a display section containing text.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -1136,7 +1143,8 @@ class DisplaySubSection(YAMLRoot):
 @dataclass
 class GlobalDisplaySection(YAMLRoot):
     """
-    A part of a tabular display containing one or more pieces of informational text.
+    A global definition for part of a tabular display containing one or more pieces of informational text that may be
+    used in multiple displays.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -1159,6 +1167,10 @@ class GlobalDisplaySection(YAMLRoot):
 
 @dataclass
 class WhereClause(YAMLRoot):
+    """
+    Selection criteria defined as either a simple condition ([variable] [comparator] [value(s)]) or a compound
+    expression that may combine simple conditions or compound expressions.
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ARS.WhereClause
@@ -1189,6 +1201,9 @@ class WhereClause(YAMLRoot):
 
 @dataclass
 class WhereClauseCondition(YAMLRoot):
+    """
+    A simple selection criterion exressed as [dataset].[variable] [comparator] [value(s)]
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ARS.WhereClauseCondition
@@ -1220,6 +1235,10 @@ class WhereClauseCondition(YAMLRoot):
 
 @dataclass
 class WhereClauseCompoundExpression(YAMLRoot):
+    """
+    A compound expression consisting of either two or more where clauses combined with the `AND` or `OR` logical
+    operator, or a single where clause negated with the `NOT` logical operator.
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ARS.WhereClauseCompoundExpression
@@ -1245,6 +1264,10 @@ class WhereClauseCompoundExpression(YAMLRoot):
 
 @dataclass
 class CompoundSetExpression(WhereClauseCompoundExpression):
+    """
+    A compound expression consisting of either two or more identified analysis sets combined with the `AND` or `OR`
+    logical operator, or a single identified analysis set negated with the `NOT` logical operator.
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ARS.CompoundSetExpression
@@ -1265,6 +1288,10 @@ class CompoundSetExpression(WhereClauseCompoundExpression):
 
 @dataclass
 class CompoundGroupExpression(WhereClauseCompoundExpression):
+    """
+    A compound expression consisting of either two or more identified group combined with the `AND` or `OR` logical
+    operator, or a single identified group negated with the `NOT` logical operator.
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ARS.CompoundGroupExpression
@@ -1285,6 +1312,10 @@ class CompoundGroupExpression(WhereClauseCompoundExpression):
 
 @dataclass
 class CompoundSubsetExpression(WhereClauseCompoundExpression):
+    """
+    A compound expression consisting of either two or more where clauses combined with the `AND` or `OR` logical
+    operator, or a single where clause negated with the `NOT` logical operator.
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ARS.CompoundSubsetExpression
@@ -1541,6 +1572,9 @@ class DataSubset(WhereClause):
 
 @dataclass
 class ReferenceDocument(NamedObject):
+    """
+    An external document containing supporting documentation or programming code.
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ARS.ReferenceDocument
@@ -1566,6 +1600,9 @@ class ReferenceDocument(NamedObject):
 
 @dataclass
 class DocumentReference(YAMLRoot):
+    """
+    A reference to an external document.
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ARS.DocumentReference
@@ -1591,6 +1628,10 @@ class DocumentReference(YAMLRoot):
 
 @dataclass
 class PageRef(YAMLRoot):
+    """
+    A reference to a specific part of a document as indicated by a list of one or more page numbers, a range of page
+    numbers, or a list of named destinations in the document (e.g. bookmarks).
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ARS.PageRef
@@ -1765,7 +1806,7 @@ class PageNameRef(PageRef):
 @dataclass
 class TerminologyExtension(YAMLRoot):
     """
-    A sponsor-defined term that is included in an extensible set of controlled terminology.
+    An extensible set of controlled terminology that has been extended with at least one sponsor-defined term.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -1829,6 +1870,9 @@ class SponsorTerm(YAMLRoot):
 
 @dataclass
 class ExtensibleTerminologyTerm(YAMLRoot):
+    """
+    The term used for an attribute whose terminology is extensible.
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ARS.ExtensibleTerminologyTerm
@@ -1851,6 +1895,9 @@ class ExtensibleTerminologyTerm(YAMLRoot):
 
 @dataclass
 class AnalysisReason(ExtensibleTerminologyTerm):
+    """
+    The rationale for performing this analysis.
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ARS.AnalysisReason
@@ -1875,6 +1922,9 @@ class AnalysisReason(ExtensibleTerminologyTerm):
 
 @dataclass
 class SponsorAnalysisReason(ExtensibleTerminologyTerm):
+    """
+    The sponsor-defined rationale for performing this analysis.
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ARS.SponsorAnalysisReason
@@ -1899,6 +1949,9 @@ class SponsorAnalysisReason(ExtensibleTerminologyTerm):
 
 @dataclass
 class AnalysisPurpose(ExtensibleTerminologyTerm):
+    """
+    The purpose of the analysis within the body of evidence (e.g., section in the clinical study report).
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ARS.AnalysisPurpose
@@ -1923,6 +1976,10 @@ class AnalysisPurpose(ExtensibleTerminologyTerm):
 
 @dataclass
 class SponsorAnalysisPurpose(ExtensibleTerminologyTerm):
+    """
+    The sponsor-defined purpose of the analysis within the body of evidence (e.g., section in the clinical study
+    report).
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ARS.SponsorAnalysisPurpose
@@ -1947,6 +2004,9 @@ class SponsorAnalysisPurpose(ExtensibleTerminologyTerm):
 
 @dataclass
 class OperationRole(ExtensibleTerminologyTerm):
+    """
+    The role that the referenced operation's result plays in the calculation of the result of this operation.
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ARS.OperationRole
@@ -1971,6 +2031,10 @@ class OperationRole(ExtensibleTerminologyTerm):
 
 @dataclass
 class SponsorOperationRole(ExtensibleTerminologyTerm):
+    """
+    The sponsor-defined role that the referenced operation's result plays in the calculation of the result of this
+    operation.
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ARS.SponsorOperationRole
@@ -1995,6 +2059,9 @@ class SponsorOperationRole(ExtensibleTerminologyTerm):
 
 @dataclass
 class OutputFileType(ExtensibleTerminologyTerm):
+    """
+    The file format of the file containing output from analyses.
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ARS.OutputFileType
@@ -2019,6 +2086,9 @@ class OutputFileType(ExtensibleTerminologyTerm):
 
 @dataclass
 class SponsorOutputFileType(ExtensibleTerminologyTerm):
+    """
+    The sponsor-defined file format of the file containing output from analyses.
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = ARS.SponsorOutputFileType
@@ -2043,35 +2113,63 @@ class SponsorOutputFileType(ExtensibleTerminologyTerm):
 
 # Enumerations
 class OutputFileTypeEnum(EnumDefinitionImpl):
-
-    pdf = PermissibleValue(text="pdf")
-    rtf = PermissibleValue(text="rtf")
-    txt = PermissibleValue(text="txt")
+    """
+    The file format of the file containing output from analyses.
+    """
+    pdf = PermissibleValue(
+        text="pdf",
+        description="Portable Document Format (PDF)")
+    rtf = PermissibleValue(
+        text="rtf",
+        description="Rich Text Format (RTF)")
+    txt = PermissibleValue(
+        text="txt",
+        description="Plain text")
 
     _defn = EnumDefinition(
         name="OutputFileTypeEnum",
+        description="The file format of the file containing output from analyses.",
     )
 
 class ExpressionLogicalOperatorEnum(EnumDefinitionImpl):
-
+    """
+    A Boolean operator, a symbol or a function that denotes a logical operation (e.g., and, or, not).
+    """
     AND = PermissibleValue(text="AND")
     OR = PermissibleValue(text="OR")
     NOT = PermissibleValue(text="NOT")
 
     _defn = EnumDefinition(
         name="ExpressionLogicalOperatorEnum",
+        description="A Boolean operator, a symbol or a function that denotes a logical operation (e.g., and, or, not).",
     )
 
 class ConditionComparatorEnum(EnumDefinitionImpl):
 
-    EQ = PermissibleValue(text="EQ")
-    NE = PermissibleValue(text="NE")
-    GT = PermissibleValue(text="GT")
-    GE = PermissibleValue(text="GE")
-    LT = PermissibleValue(text="LT")
-    LE = PermissibleValue(text="LE")
-    IN = PermissibleValue(text="IN")
-    NOTIN = PermissibleValue(text="NOTIN")
+    EQ = PermissibleValue(
+        text="EQ",
+        description="Is equal to")
+    NE = PermissibleValue(
+        text="NE",
+        description="Is not equal to")
+    GT = PermissibleValue(
+        text="GT",
+        description="Is greater than")
+    GE = PermissibleValue(
+        text="GE",
+        description="Is greater than or equal to")
+    LT = PermissibleValue(
+        text="LT",
+        description="Is less than")
+    LE = PermissibleValue(
+        text="LE",
+        description="Is less than or equal to")
+    IN = PermissibleValue(
+        text="IN",
+        description="Is in")
+    NOTIN = PermissibleValue(
+        text="NOTIN",
+        description="Is not in")
 
     _defn = EnumDefinition(
         name="ConditionComparatorEnum",
@@ -2094,12 +2192,19 @@ class DisplaySectionTypeEnum(EnumDefinitionImpl):
             PermissibleValue(text="Rowlabel Header"))
 
 class OperationRoleEnum(EnumDefinitionImpl):
-
-    NUMERATOR = PermissibleValue(text="NUMERATOR")
-    DENOMINATOR = PermissibleValue(text="DENOMINATOR")
+    """
+    The role that the referenced operation's result plays in the calculation of the result of this operation.
+    """
+    NUMERATOR = PermissibleValue(
+        text="NUMERATOR",
+        description="The dividend of a fraction.")
+    DENOMINATOR = PermissibleValue(
+        text="DENOMINATOR",
+        description="The divisor of a fraction.")
 
     _defn = EnumDefinition(
         name="OperationRoleEnum",
+        description="""The role that the referenced operation's result plays in the calculation of the result of this operation.""",
     )
 
 class AnalysisReasonEnum(EnumDefinitionImpl):
@@ -2185,7 +2290,7 @@ class ExtensibleTerminologyEnum(EnumDefinitionImpl):
 
 class PageRefTypeEnum(EnumDefinitionImpl):
     """
-    Type of page for page references.
+    Type of reference for page references.
     """
     PhysicalRef = PermissibleValue(
         text="PhysicalRef",
@@ -2196,7 +2301,7 @@ class PageRefTypeEnum(EnumDefinitionImpl):
 
     _defn = EnumDefinition(
         name="PageRefTypeEnum",
-        description="Type of page for page references.",
+        description="Type of reference for page references.",
     )
 
 # Slots
@@ -2248,8 +2353,8 @@ slots.methods = Slot(uri=ARS.methods, name="methods", curie=ARS.curie('methods')
 slots.operations = Slot(uri=ARS.operations, name="operations", curie=ARS.curie('operations'),
                    model_uri=ARS.operations, domain=None, range=Union[Dict[Union[str, OperationId], Union[dict, Operation]], List[Union[dict, Operation]]])
 
-slots.referencedOperationId = Slot(uri=ARS.referencedOperationId, name="referencedOperationId", curie=ARS.curie('referencedOperationId'),
-                   model_uri=ARS.referencedOperationId, domain=None, range=Optional[Union[str, ReferencedOperationRelationshipId]])
+slots.referencedOperationRelationshipId = Slot(uri=ARS.referencedOperationRelationshipId, name="referencedOperationRelationshipId", curie=ARS.curie('referencedOperationRelationshipId'),
+                   model_uri=ARS.referencedOperationRelationshipId, domain=None, range=Union[str, ReferencedOperationRelationshipId])
 
 slots.analysisCategorizations = Slot(uri=ARS.analysisCategorizations, name="analysisCategorizations", curie=ARS.curie('analysisCategorizations'),
                    model_uri=ARS.analysisCategorizations, domain=None, range=Optional[Union[Dict[Union[str, AnalysisCategorizationId], Union[dict, AnalysisCategorization]], List[Union[dict, AnalysisCategorization]]]])
@@ -2487,6 +2592,9 @@ slots.OrderedListItem_level = Slot(uri=ARS.level, name="OrderedListItem_level", 
 
 slots.OrderedListItem_order = Slot(uri=ARS.order, name="OrderedListItem_order", curie=ARS.curie('order'),
                    model_uri=ARS.OrderedListItem_order, domain=OrderedListItem, range=int)
+
+slots.Analysis_categoryIds = Slot(uri=ARS.categoryIds, name="Analysis_categoryIds", curie=ARS.curie('categoryIds'),
+                   model_uri=ARS.Analysis_categoryIds, domain=Analysis, range=Optional[Union[Union[str, AnalysisCategoryId], List[Union[str, AnalysisCategoryId]]]])
 
 slots.Analysis_programmingCode = Slot(uri=ARS.programmingCode, name="Analysis_programmingCode", curie=ARS.curie('programmingCode'),
                    model_uri=ARS.Analysis_programmingCode, domain=Analysis, range=Optional[Union[dict, "AnalysisOutputProgrammingCode"]])

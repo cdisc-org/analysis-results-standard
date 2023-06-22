@@ -1,7 +1,7 @@
 # Slot: parameters
 
 
-_Replacement parameters that are referenced in the programming code or programming code template and  are used to generate or execute the programming code._
+_Replacement parameters that are referenced in the programming code or programming code template and are used to generate or execute the programming code._
 
 __
 
@@ -61,7 +61,7 @@ URI: [ars:parameters](https://www.cdisc.org/ars/1-0/parameters)
 ```yaml
 name: parameters
 description: 'Replacement parameters that are referenced in the programming code or
-  programming code template and  are used to generate or execute the programming code.
+  programming code template and are used to generate or execute the programming code.
 
   '
 from_schema: https://www.cdisc.org/ars/1-0

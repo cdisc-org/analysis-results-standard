@@ -20,30 +20,30 @@ Name: ars_ldm
 | [AnalysisOutputCodeParameter](AnalysisOutputCodeParameter.md) | A parameter whose value is used in programming code for a specific analysis o... |
 | [AnalysisOutputProgrammingCode](AnalysisOutputProgrammingCode.md) | Programming statements and/or a reference to the program used to perform a sp... |
 | [AnalysisProgrammingCodeTemplate](AnalysisProgrammingCodeTemplate.md) | Programming statements and/or a reference to a used as a template for creatio... |
-| [AnalysisPurpose](AnalysisPurpose.md) |  |
-| [AnalysisReason](AnalysisReason.md) |  |
+| [AnalysisPurpose](AnalysisPurpose.md) | The purpose of the analysis within the body of evidence (e |
+| [AnalysisReason](AnalysisReason.md) | The rationale for performing this analysis |
 | [AnalysisSet](AnalysisSet.md) | A set of subjects whose data are to be included in the main analyses |
 | [CodeParameter](CodeParameter.md) | A replacement parameter whose value is substituted in template programming co... |
-| [CompoundGroupExpression](CompoundGroupExpression.md) |  |
-| [CompoundSetExpression](CompoundSetExpression.md) |  |
-| [CompoundSubsetExpression](CompoundSubsetExpression.md) |  |
+| [CompoundGroupExpression](CompoundGroupExpression.md) | A compound expression consisting of either two or more identified group combi... |
+| [CompoundSetExpression](CompoundSetExpression.md) | A compound expression consisting of either two or more identified analysis se... |
+| [CompoundSubsetExpression](CompoundSubsetExpression.md) | A compound expression consisting of either two or more where clauses combined... |
 | [DataGroup](DataGroup.md) | A subdivision of the analysis dataset records based on a defined factor |
 | [DataGroupingFactor](DataGroupingFactor.md) | A factor used to subdivide data records in an analysis dataset for analysis |
 | [DataSubset](DataSubset.md) | A subset of data identified by selection criteria for inclusion in the analys... |
 | [DisplaySection](DisplaySection.md) | A part of a tabular display containing one or more pieces of informational te... |
-| [DisplaySubSection](DisplaySubSection.md) | An occurrence of a display section containing text that is ordered with respe... |
-| [DocumentReference](DocumentReference.md) |  |
-| [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) |  |
-| [GlobalDisplaySection](GlobalDisplaySection.md) | A part of a tabular display containing one or more pieces of informational te... |
+| [DisplaySubSection](DisplaySubSection.md) | An occurrence of a display section containing text |
+| [DocumentReference](DocumentReference.md) | A reference to an external document |
+| [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) | The term used for an attribute whose terminology is extensible |
+| [GlobalDisplaySection](GlobalDisplaySection.md) | A global definition for part of a tabular display containing one or more piec... |
 | [Group](Group.md) | A subdivision of the subject population or analysis dataset record set based ... |
 | [GroupingFactor](GroupingFactor.md) | A factor used to subdivide either the subject population or data records in a... |
-| [NamedObject](NamedObject.md) |  |
+| [NamedObject](NamedObject.md) | An object with a name |
 | [NestedList](NestedList.md) | A list of items (analyses or outputs) that may be organized within sub-lists |
 | [Operation](Operation.md) | A statistical operation that produces a single analysis result value as part ... |
 | [OperationResult](OperationResult.md) | The result of an analysis method operation performed on a subdivision of subj... |
-| [OperationRole](OperationRole.md) |  |
+| [OperationRole](OperationRole.md) | The role that the referenced operation's result plays in the calculation of t... |
 | [OrderedDisplay](OrderedDisplay.md) | A display ordered with respect to other displays in an analysis output |
-| [OrderedDisplaySubSection](OrderedDisplaySubSection.md) |  |
+| [OrderedDisplaySubSection](OrderedDisplaySubSection.md) | A single subsection ordered with respect to other subsections in the same sec... |
 | [OrderedGroupingFactor](OrderedGroupingFactor.md) | A reference to a defined factor by which subjects or data records are grouped... |
 | [OrderedListItem](OrderedListItem.md) | An item (analysis, output or sub-list) ordered relative to other items within... |
 | [OrderedSubSection](OrderedSubSection.md) | A subsection ordered with respect to other subsections of the same type |
@@ -51,27 +51,27 @@ Name: ars_ldm
 | [Output](Output.md) | A report of results and their evaluation based on planned analyses performed ... |
 | [OutputDisplay](OutputDisplay.md) | A tabular representation of the results of one or more analyses |
 | [OutputFile](OutputFile.md) | A file containing analysis output displays |
-| [OutputFileType](OutputFileType.md) |  |
+| [OutputFileType](OutputFileType.md) | The file format of the file containing output from analyses |
 | [PageNameRef](PageNameRef.md) | One or more pages in the reference document, referenced by named destination |
 | [PageNumberListRef](PageNumberListRef.md) | One or more individual pages in the reference document, referenced by page nu... |
 | [PageNumberRangeRef](PageNumberRangeRef.md) | A range of pages in the reference document, indicated by the first and last p... |
-| [PageRef](PageRef.md) |  |
+| [PageRef](PageRef.md) | A reference to a specific part of a document as indicated by a list of one or... |
 | [ReferencedAnalysisOperation](ReferencedAnalysisOperation.md) | An indication of the analysis that contains results of a referenced operation |
-| [ReferenceDocument](ReferenceDocument.md) |  |
-| [ReferencedOperationRelationship](ReferencedOperationRelationship.md) | A reference to an statistical operation whose results is used in the calculat... |
+| [ReferenceDocument](ReferenceDocument.md) | An external document containing supporting documentation or programming code |
+| [ReferencedOperationRelationship](ReferencedOperationRelationship.md) | A reference to a statistical operation whose results are used in the calculat... |
 | [ReportingEvent](ReportingEvent.md) | A set of analyses and outputs created to meet a specific reporting requiremen... |
 | [ResultGroup](ResultGroup.md) | For the specified grouping factor, an indication of the specific group of sub... |
-| [SponsorAnalysisPurpose](SponsorAnalysisPurpose.md) |  |
-| [SponsorAnalysisReason](SponsorAnalysisReason.md) |  |
-| [SponsorOperationRole](SponsorOperationRole.md) |  |
-| [SponsorOutputFileType](SponsorOutputFileType.md) |  |
+| [SponsorAnalysisPurpose](SponsorAnalysisPurpose.md) | The sponsor-defined purpose of the analysis within the body of evidence (e |
+| [SponsorAnalysisReason](SponsorAnalysisReason.md) | The sponsor-defined rationale for performing this analysis |
+| [SponsorOperationRole](SponsorOperationRole.md) | The sponsor-defined role that the referenced operation's result plays in the ... |
+| [SponsorOutputFileType](SponsorOutputFileType.md) | The sponsor-defined file format of the file containing output from analyses |
 | [SponsorTerm](SponsorTerm.md) | A sponsor-defined term that is included in an extensible set of controlled te... |
 | [SubjectGroupingFactor](SubjectGroupingFactor.md) | A factor used to subdivide the subject population for comparative analysis (e |
 | [TemplateCodeParameter](TemplateCodeParameter.md) | A replacement parameter whose value is substituted in template programming co... |
-| [TerminologyExtension](TerminologyExtension.md) | A sponsor-defined term that is included in an extensible set of controlled te... |
-| [WhereClause](WhereClause.md) |  |
-| [WhereClauseCompoundExpression](WhereClauseCompoundExpression.md) |  |
-| [WhereClauseCondition](WhereClauseCondition.md) |  |
+| [TerminologyExtension](TerminologyExtension.md) | An extensible set of controlled terminology that has been extended with at le... |
+| [WhereClause](WhereClause.md) | Selection criteria defined as either a simple condition ([variable] [comparat... |
+| [WhereClauseCompoundExpression](WhereClauseCompoundExpression.md) | A compound expression consisting of either two or more where clauses combined... |
+| [WhereClauseCondition](WhereClauseCondition.md) | A simple selection criterion exressed as [dataset] |
 
 
 ## Slots
@@ -79,26 +79,26 @@ Name: ars_ldm
 | Slot | Description |
 | --- | --- |
 | [analyses](analyses.md) | The analyses defined for the reporting event |
-| [analysisCategorizations](analysisCategorizations.md) |  |
+| [analysisCategorizations](analysisCategorizations.md) | Sets of related implementer-defined categories that can be used to categorize... |
 | [analysisGroupings](analysisGroupings.md) | Characteristics used to subdivide the subject population (e |
-| [analysisId](analysisId.md) |  |
-| [analysisSetId](analysisSetId.md) |  |
+| [analysisId](analysisId.md) | The identifier of the referenced analysis |
+| [analysisSetId](analysisSetId.md) | The identifier of the referenced analysis set |
 | [analysisSets](analysisSets.md) | The analysis sets (subject populations) defined for the reporting event |
-| [categories](categories.md) |  |
-| [categoryIds](categoryIds.md) |  |
+| [categories](categories.md) | Implementer-defined categories of analyses/outputs, each of which may include... |
+| [categoryIds](categoryIds.md) | References to any implementer-defined categories that apply to the analysis o... |
 | [code](code.md) | Programming statements used to perform the specific analysis |
 | [codeTemplate](codeTemplate.md) | Template programming statements and/or a reference to the template program us... |
 | [comparator](comparator.md) |  |
 | [compoundExpression](compoundExpression.md) |  |
 | [condition](condition.md) |  |
 | [context](context.md) | The name and version of the computer language used for the actual programming... |
-| [controlledTerm](controlledTerm.md) |  |
+| [controlledTerm](controlledTerm.md) | One of the permissible values from the referenced enumeration |
 | [dataDriven](dataDriven.md) | Indicates whether the groups defined by the grouping are prespecified (false)... |
-| [dataGroupings](dataGroupings.md) | Characteristics used to subdivide data records in the analysis dataset (e |
+| [dataGroupings](dataGroupings.md) | Characteristics used to subdivide data records in analysis datasets (e |
 | [dataset](dataset.md) |  |
-| [dataSubsetId](dataSubsetId.md) |  |
-| [dataSubsets](dataSubsets.md) |  |
-| [description](description.md) |  |
+| [dataSubsetId](dataSubsetId.md) | The identifier of the referenced data subset |
+| [dataSubsets](dataSubsets.md) | Subsets of data identified by selection criteria for inclusion in analysis de... |
+| [description](description.md) | A textual description of the instance of the class |
 | [display](display.md) |  |
 | [displays](displays.md) |  |
 | [displaySections](displaySections.md) |  |
@@ -111,15 +111,15 @@ Name: ars_ldm
 | [firstPage](firstPage.md) | The page number of the first page in a range of pages |
 | [formattedValue](formattedValue.md) |  |
 | [globalDisplaySections](globalDisplaySections.md) |  |
-| [groupId](groupId.md) |  |
-| [groupingId](groupingId.md) |  |
+| [groupId](groupId.md) | The identifier of a referenced predefined group within a grouping |
+| [groupingId](groupingId.md) | The identifier of the referenced subject or data grouping factor |
 | [groupingVariable](groupingVariable.md) | For groupings based on a single variable, a reference to the dataset variable... |
-| [groups](groups.md) |  |
-| [groupValue](groupValue.md) |  |
-| [id](id.md) |  |
+| [groups](groups.md) | The pre-specified groups within the grouping |
+| [groupValue](groupValue.md) | The data value used as a group within a data-driven grouping |
+| [id](id.md) | The assigned identifying value for the instance of the class |
 | [label](label.md) |  |
 | [lastPage](lastPage.md) | The page number of the last page in a range of pages |
-| [level](level.md) |  |
+| [level](level.md) | The level of the entry within a hierarchical structure |
 | [listItems](listItems.md) |  |
 | [listOfPlannedAnalyses](listOfPlannedAnalyses.md) | A structured list of the analyses defined for the reporting event |
 | [listOfPlannedOutputs](listOfPlannedOutputs.md) | An optional structured list of the outputs defined for the reporting event |
@@ -127,39 +127,39 @@ Name: ars_ldm
 | [logicalOperator](logicalOperator.md) |  |
 | [methodId](methodId.md) | A reference to the set of one or more statistical operations performed for th... |
 | [methods](methods.md) | The defined methods used to analyze any analysis variable |
-| [name](name.md) |  |
-| [operationId](operationId.md) |  |
-| [operations](operations.md) |  |
-| [order](order.md) |  |
-| [orderedGroupings](orderedGroupings.md) |  |
+| [name](name.md) | The name for the instance of the class |
+| [operationId](operationId.md) | The identifier of the referenced operation |
+| [operations](operations.md) | The calculations performed for the method |
+| [order](order.md) | The ordinal of the instance with respect to other instances |
+| [orderedGroupings](orderedGroupings.md) | An ordered list of grouping factors used in the analysis |
 | [orderedSubSections](orderedSubSections.md) |  |
-| [outputId](outputId.md) |  |
-| [outputs](outputs.md) |  |
+| [outputId](outputId.md) | The identifier of the referenced output |
+| [outputs](outputs.md) | The outputs defined for the reporting event |
 | [pageNames](pageNames.md) | One or more named document references which each correspond with a page |
 | [pageNumbers](pageNumbers.md) | One or more page numbers |
-| [pageRefs](pageRefs.md) |  |
+| [pageRefs](pageRefs.md) | A list of references to specific parts of a document, which may be referenced... |
 | [parameters](parameters.md) | Replacement parameters that are referenced in the programming code or program... |
 | [programmingCode](programmingCode.md) | Programming statements and/or a reference to the program used to perform the ... |
 | [purpose](purpose.md) | The purpose of the analysis within the body of evidence (e |
 | [rawValue](rawValue.md) |  |
 | [reason](reason.md) | The rationale for performing this analysis |
-| [referencedAnalysisOperations](referencedAnalysisOperations.md) |  |
+| [referencedAnalysisOperations](referencedAnalysisOperations.md) | Indications of which analysis contains the results for each referenced operat... |
 | [referenceDocumentId](referenceDocumentId.md) |  |
 | [referenceDocuments](referenceDocuments.md) |  |
-| [referencedOperationId](referencedOperationId.md) |  |
+| [referencedOperationRelationshipId](referencedOperationRelationshipId.md) | The identifier of the defined referenced operation relationship |
 | [referencedOperationRelationships](referencedOperationRelationships.md) |  |
 | [referencedOperationRole](referencedOperationRole.md) |  |
-| [refType](refType.md) |  |
+| [refType](refType.md) | The type of reference for page references |
 | [resultGroups](resultGroups.md) |  |
 | [resultPattern](resultPattern.md) |  |
 | [results](results.md) |  |
 | [resultsByGroup](resultsByGroup.md) | Indicates whether a result is expected for each group in the grouping |
 | [sectionType](sectionType.md) |  |
-| [sponsorTermId](sponsorTermId.md) |  |
+| [sponsorTermId](sponsorTermId.md) | The identifier of the referenced sponsor term |
 | [sponsorTerms](sponsorTerms.md) | The sponsor-defined terms added to the extensible terminology |
 | [style](style.md) |  |
-| [subCategorizations](subCategorizations.md) |  |
-| [sublist](sublist.md) |  |
+| [subCategorizations](subCategorizations.md) | Sets of related implementer-defined sub-categories that can be used to catego... |
+| [sublist](sublist.md) | A sub-list of items (analyses or outputs) that may be further organized withi... |
 | [submissionValue](submissionValue.md) | The specific value expected for submissions |
 | [subSection](subSection.md) |  |
 | [subSectionId](subSectionId.md) |  |
@@ -181,11 +181,11 @@ Name: ars_ldm
 | [AnalysisReasonEnum](AnalysisReasonEnum.md) | The rationale for performing this analysis |
 | [ConditionComparatorEnum](ConditionComparatorEnum.md) |  |
 | [DisplaySectionTypeEnum](DisplaySectionTypeEnum.md) |  |
-| [ExpressionLogicalOperatorEnum](ExpressionLogicalOperatorEnum.md) |  |
+| [ExpressionLogicalOperatorEnum](ExpressionLogicalOperatorEnum.md) | A Boolean operator, a symbol or a function that denotes a logical operation (... |
 | [ExtensibleTerminologyEnum](ExtensibleTerminologyEnum.md) | Extensible ARS enumerations |
-| [OperationRoleEnum](OperationRoleEnum.md) |  |
-| [OutputFileTypeEnum](OutputFileTypeEnum.md) |  |
-| [PageRefTypeEnum](PageRefTypeEnum.md) | Type of page for page references |
+| [OperationRoleEnum](OperationRoleEnum.md) | The role that the referenced operation's result plays in the calculation of t... |
+| [OutputFileTypeEnum](OutputFileTypeEnum.md) | The file format of the file containing output from analyses |
+| [PageRefTypeEnum](PageRefTypeEnum.md) | Type of reference for page references |
 
 
 ## Types

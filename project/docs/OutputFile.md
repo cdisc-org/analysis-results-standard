@@ -46,7 +46,7 @@ URI: [ars:OutputFile](https://www.cdisc.org/ars/1-0/OutputFile)
 | [fileType](fileType.md) | 0..1 <br/> [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) |  | direct |
 | [location](location.md) | 0..1 <br/> [Uri](Uri.md) |  | direct |
 | [style](style.md) | 0..1 <br/> [String](String.md) |  | direct |
-| [name](name.md) | 1..1 <br/> [String](String.md) |  | [NamedObject](NamedObject.md) |
+| [name](name.md) | 1..1 <br/> [String](String.md) | The name for the instance of the class | [NamedObject](NamedObject.md) |
 
 
 
@@ -155,6 +155,7 @@ attributes:
     range: string
   name:
     name: name
+    description: The name for the instance of the class.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: name

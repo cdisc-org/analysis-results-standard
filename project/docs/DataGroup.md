@@ -50,10 +50,10 @@ URI: [ars:DataGroup](https://www.cdisc.org/ars/1-0/DataGroup)
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [id](id.md) | 1..1 <br/> [String](String.md) |  | [Group](Group.md) |
+| [id](id.md) | 1..1 <br/> [String](String.md) | The assigned identifying value for the instance of the class | [Group](Group.md) |
 | [label](label.md) | 0..1 <br/> [String](String.md) |  | [Group](Group.md) |
-| [level](level.md) | 0..1 <br/> [Integer](Integer.md) |  | [WhereClause](WhereClause.md) |
-| [order](order.md) | 0..1 <br/> [Integer](Integer.md) |  | [WhereClause](WhereClause.md) |
+| [level](level.md) | 0..1 <br/> [Integer](Integer.md) | The level of the entry within a hierarchical structure | [WhereClause](WhereClause.md) |
+| [order](order.md) | 0..1 <br/> [Integer](Integer.md) | The ordinal of the instance with respect to other instances | [WhereClause](WhereClause.md) |
 | [condition](condition.md) | 0..1 <br/> [WhereClauseCondition](WhereClauseCondition.md) |  | [WhereClause](WhereClause.md) |
 | [compoundExpression](compoundExpression.md) | 0..1 <br/> [CompoundGroupExpression](CompoundGroupExpression.md) |  | [WhereClause](WhereClause.md) |
 
@@ -129,6 +129,7 @@ is_a: Group
 attributes:
   id:
     name: id
+    description: The assigned identifying value for the instance of the class.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     identifier: true
@@ -173,6 +174,9 @@ attributes:
     range: string
   level:
     name: level
+    description: The level of the entry within a hierarchical structure.
+    comments:
+    - 1 is the top level.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: level
@@ -183,6 +187,7 @@ attributes:
     range: integer
   order:
     name: order
+    description: The ordinal of the instance with respect to other instances.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: order

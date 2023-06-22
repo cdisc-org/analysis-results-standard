@@ -13,7 +13,7 @@ URI: [ars:subSectionId](https://www.cdisc.org/ars/1-0/subSectionId)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-[OrderedDisplaySubSection](OrderedDisplaySubSection.md) |  |  no  |
+[OrderedDisplaySubSection](OrderedDisplaySubSection.md) | A single subsection ordered with respect to other subsections in the same sec... |  no  |
 [OrderedSubSection](OrderedSubSection.md) | A subsection ordered with respect to other subsections of the same type |  yes  |
 [OrderedSubSectionRef](OrderedSubSectionRef.md) | A reference to a subsection defined either globally or in another display sec... |  yes  |
 

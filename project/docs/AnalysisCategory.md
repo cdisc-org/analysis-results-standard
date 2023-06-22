@@ -35,9 +35,9 @@ URI: [ars:AnalysisCategory](https://www.cdisc.org/ars/1-0/AnalysisCategory)
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [id](id.md) | 1..1 <br/> [String](String.md) |  | direct |
+| [id](id.md) | 1..1 <br/> [String](String.md) | The assigned identifying value for the instance of the class | direct |
 | [label](label.md) | 0..1 <br/> [String](String.md) |  | direct |
-| [subCategorizations](subCategorizations.md) | 0..* <br/> [AnalysisCategorization](AnalysisCategorization.md) |  | direct |
+| [subCategorizations](subCategorizations.md) | 0..* <br/> [AnalysisCategorization](AnalysisCategorization.md) | Sets of related implementer-defined sub-categories that can be used to catego... | direct |
 
 
 
@@ -117,6 +117,7 @@ rank: 1000
 attributes:
   id:
     name: id
+    description: The assigned identifying value for the instance of the class.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     identifier: true
@@ -161,6 +162,8 @@ attributes:
     range: string
   subCategorizations:
     name: subCategorizations
+    description: Sets of related implementer-defined sub-categories that can be used
+      to categorize analyses or outputs.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     multivalued: true

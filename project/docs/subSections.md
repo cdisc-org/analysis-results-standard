@@ -13,7 +13,7 @@ URI: [ars:subSections](https://www.cdisc.org/ars/1-0/subSections)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-[GlobalDisplaySection](GlobalDisplaySection.md) | A part of a tabular display containing one or more pieces of informational te... |  no  |
+[GlobalDisplaySection](GlobalDisplaySection.md) | A global definition for part of a tabular display containing one or more piec... |  no  |
 
 
 

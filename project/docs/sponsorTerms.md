@@ -18,7 +18,7 @@ URI: [ars:sponsorTerms](https://www.cdisc.org/ars/1-0/sponsorTerms)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-[TerminologyExtension](TerminologyExtension.md) | A sponsor-defined term that is included in an extensible set of controlled te... |  no  |
+[TerminologyExtension](TerminologyExtension.md) | An extensible set of controlled terminology that has been extended with at le... |  no  |
 
 
 

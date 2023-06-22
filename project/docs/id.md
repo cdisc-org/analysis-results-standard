@@ -1,5 +1,10 @@
 # Slot: id
 
+
+_The assigned identifying value for the instance of the class._
+
+
+
 URI: [ars:id](https://www.cdisc.org/ars/1-0/id)
 
 
@@ -19,16 +24,16 @@ URI: [ars:id](https://www.cdisc.org/ars/1-0/id)
 [Analysis](Analysis.md) | An analysis that is designed to meet a requirement of the reporting event |  no  |
 [AnalysisMethod](AnalysisMethod.md) | A set of one or more statistical operations |  no  |
 [Operation](Operation.md) | A statistical operation that produces a single analysis result value as part ... |  no  |
-[ReferencedOperationRelationship](ReferencedOperationRelationship.md) | A reference to an statistical operation whose results is used in the calculat... |  no  |
+[ReferencedOperationRelationship](ReferencedOperationRelationship.md) | A reference to a statistical operation whose results are used in the calculat... |  no  |
 [Output](Output.md) | A report of results and their evaluation based on planned analyses performed ... |  no  |
 [OutputDisplay](OutputDisplay.md) | A tabular representation of the results of one or more analyses |  no  |
-[DisplaySubSection](DisplaySubSection.md) | An occurrence of a display section containing text that is ordered with respe... |  no  |
+[DisplaySubSection](DisplaySubSection.md) | An occurrence of a display section containing text |  no  |
 [AnalysisSet](AnalysisSet.md) | A set of subjects whose data are to be included in the main analyses |  no  |
 [GroupingFactor](GroupingFactor.md) | A factor used to subdivide either the subject population or data records in a... |  no  |
 [Group](Group.md) | A subdivision of the subject population or analysis dataset record set based ... |  no  |
 [DataSubset](DataSubset.md) | A subset of data identified by selection criteria for inclusion in the analys... |  no  |
-[ReferenceDocument](ReferenceDocument.md) |  |  no  |
-[TerminologyExtension](TerminologyExtension.md) | A sponsor-defined term that is included in an extensible set of controlled te... |  no  |
+[ReferenceDocument](ReferenceDocument.md) | An external document containing supporting documentation or programming code |  no  |
+[TerminologyExtension](TerminologyExtension.md) | An extensible set of controlled terminology that has been extended with at le... |  no  |
 [SponsorTerm](SponsorTerm.md) | A sponsor-defined term that is included in an extensible set of controlled te... |  no  |
 [SubjectGroupingFactor](SubjectGroupingFactor.md) | A factor used to subdivide the subject population for comparative analysis (e |  no  |
 [DataGroupingFactor](DataGroupingFactor.md) | A factor used to subdivide data records in an analysis dataset for analysis |  no  |
@@ -72,6 +77,7 @@ URI: [ars:id](https://www.cdisc.org/ars/1-0/id)
 <details>
 ```yaml
 name: id
+description: The assigned identifying value for the instance of the class.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 identifier: true

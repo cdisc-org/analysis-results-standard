@@ -101,7 +101,7 @@
 <tr>
 <td><a href="../id/">id</a></td>
 <td>1..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>The assigned identifying value for the instance of the class</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -113,7 +113,7 @@
 <tr>
 <td><a href="../subCategorizations/">subCategorizations</a></td>
 <td>0..* <br/> <a href="../AnalysisCategorization/">AnalysisCategorization</a></td>
-<td></td>
+<td>Sets of related implementer-defined sub-categories that can be used to catego...</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -199,6 +199,7 @@ rank: 1000
 attributes:
   id:
     name: id
+    description: The assigned identifying value for the instance of the class.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     identifier: true
@@ -243,6 +244,8 @@ attributes:
     range: string
   subCategorizations:
     name: subCategorizations
+    description: Sets of related implementer-defined sub-categories that can be used
+      to categorize analyses or outputs.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     multivalued: true

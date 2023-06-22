@@ -1,7 +1,7 @@
 # Class: TerminologyExtension
 
 
-_A sponsor-defined term that is included in an extensible set of controlled terminology._
+_An extensible set of controlled terminology that has been extended with at least one sponsor-defined term._
 
 
 
@@ -37,7 +37,7 @@ URI: [ars:TerminologyExtension](https://www.cdisc.org/ars/1-0/TerminologyExtensi
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [id](id.md) | 1..1 <br/> [String](String.md) |  | direct |
+| [id](id.md) | 1..1 <br/> [String](String.md) | The assigned identifying value for the instance of the class | direct |
 | [enumeration](enumeration.md) | 0..1 <br/> [ExtensibleTerminologyEnum](ExtensibleTerminologyEnum.md) | The name of the extensible enumeration | direct |
 | [sponsorTerms](sponsorTerms.md) | 1..* <br/> [SponsorTerm](SponsorTerm.md) | The sponsor-defined terms added to the extensible terminology | direct |
 
@@ -93,8 +93,8 @@ URI: [ars:TerminologyExtension](https://www.cdisc.org/ars/1-0/TerminologyExtensi
 <details>
 ```yaml
 name: TerminologyExtension
-description: A sponsor-defined term that is included in an extensible set of controlled
-  terminology.
+description: An extensible set of controlled terminology that has been extended with
+  at least one sponsor-defined term.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 slots:
@@ -110,13 +110,14 @@ slots:
 <details>
 ```yaml
 name: TerminologyExtension
-description: A sponsor-defined term that is included in an extensible set of controlled
-  terminology.
+description: An extensible set of controlled terminology that has been extended with
+  at least one sponsor-defined term.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 attributes:
   id:
     name: id
+    description: The assigned identifying value for the instance of the class.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     identifier: true

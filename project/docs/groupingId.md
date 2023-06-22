@@ -1,5 +1,10 @@
 # Slot: groupingId
 
+
+_The identifier of the referenced subject or data grouping factor._
+
+
+
 URI: [ars:groupingId](https://www.cdisc.org/ars/1-0/groupingId)
 
 
@@ -51,6 +56,7 @@ URI: [ars:groupingId](https://www.cdisc.org/ars/1-0/groupingId)
 <details>
 ```yaml
 name: groupingId
+description: The identifier of the referenced subject or data grouping factor.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 alias: groupingId

@@ -1,5 +1,10 @@
 # Slot: sublist
 
+
+_A sub-list of items (analyses or outputs) that may be further organized within sub-lists._
+
+
+
 URI: [ars:sublist](https://www.cdisc.org/ars/1-0/sublist)
 
 
@@ -50,6 +55,8 @@ URI: [ars:sublist](https://www.cdisc.org/ars/1-0/sublist)
 <details>
 ```yaml
 name: sublist
+description: A sub-list of items (analyses or outputs) that may be further organized
+  within sub-lists.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 multivalued: false

@@ -1,6 +1,11 @@
 # Class: SponsorAnalysisReason
 
 
+_The sponsor-defined rationale for performing this analysis._
+
+
+
+
 
 URI: [ars:SponsorAnalysisReason](https://www.cdisc.org/ars/1-0/SponsorAnalysisReason)
 
@@ -34,8 +39,8 @@ URI: [ars:SponsorAnalysisReason](https://www.cdisc.org/ars/1-0/SponsorAnalysisRe
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [controlledTerm](controlledTerm.md) | 0..1 <br/> [String](String.md) |  | [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) |
-| [sponsorTermId](sponsorTermId.md) | 1..1 <br/> [SponsorTerm](SponsorTerm.md) |  | [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) |
+| [controlledTerm](controlledTerm.md) | 0..1 <br/> [String](String.md) | NOT USED | [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) |
+| [sponsorTermId](sponsorTermId.md) | 1..1 <br/> [SponsorTerm](SponsorTerm.md) | A reference to a sponsor term in the TerminologyExtension with enumeration=An... | [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) |
 
 
 
@@ -82,17 +87,20 @@ URI: [ars:SponsorAnalysisReason](https://www.cdisc.org/ars/1-0/SponsorAnalysisRe
 <details>
 ```yaml
 name: SponsorAnalysisReason
+description: The sponsor-defined rationale for performing this analysis.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 is_a: ExtensibleTerminologyTerm
 slot_usage:
   controlledTerm:
     name: controlledTerm
+    description: NOT USED
     domain_of:
     - ExtensibleTerminologyTerm
     value_presence: ABSENT
   sponsorTermId:
     name: sponsorTermId
+    description: A reference to a sponsor term in the TerminologyExtension with enumeration=AnalysisReasonEnum
     domain_of:
     - ExtensibleTerminologyTerm
     required: true
@@ -106,17 +114,20 @@ slot_usage:
 <details>
 ```yaml
 name: SponsorAnalysisReason
+description: The sponsor-defined rationale for performing this analysis.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 is_a: ExtensibleTerminologyTerm
 slot_usage:
   controlledTerm:
     name: controlledTerm
+    description: NOT USED
     domain_of:
     - ExtensibleTerminologyTerm
     value_presence: ABSENT
   sponsorTermId:
     name: sponsorTermId
+    description: A reference to a sponsor term in the TerminologyExtension with enumeration=AnalysisReasonEnum
     domain_of:
     - ExtensibleTerminologyTerm
     required: true
@@ -124,6 +135,7 @@ slot_usage:
 attributes:
   controlledTerm:
     name: controlledTerm
+    description: NOT USED
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: controlledTerm
@@ -134,6 +146,7 @@ attributes:
     value_presence: ABSENT
   sponsorTermId:
     name: sponsorTermId
+    description: A reference to a sponsor term in the TerminologyExtension with enumeration=AnalysisReasonEnum
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: sponsorTermId

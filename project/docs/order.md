@@ -1,5 +1,10 @@
 # Slot: order
 
+
+_The ordinal of the instance with respect to other instances._
+
+
+
 URI: [ars:order](https://www.cdisc.org/ars/1-0/order)
 
 
@@ -16,8 +21,8 @@ URI: [ars:order](https://www.cdisc.org/ars/1-0/order)
 [OrderedListItem](OrderedListItem.md) | An item (analysis, output or sub-list) ordered relative to other items within... |  yes  |
 [OrderedGroupingFactor](OrderedGroupingFactor.md) | A reference to a defined factor by which subjects or data records are grouped... |  yes  |
 [OrderedDisplay](OrderedDisplay.md) | A display ordered with respect to other displays in an analysis output |  yes  |
-[OrderedDisplaySubSection](OrderedDisplaySubSection.md) |  |  yes  |
-[WhereClause](WhereClause.md) |  |  no  |
+[OrderedDisplaySubSection](OrderedDisplaySubSection.md) | A single subsection ordered with respect to other subsections in the same sec... |  yes  |
+[WhereClause](WhereClause.md) | Selection criteria defined as either a simple condition ([variable] [comparat... |  no  |
 [OrderedSubSection](OrderedSubSection.md) | A subsection ordered with respect to other subsections of the same type |  no  |
 [OrderedSubSectionRef](OrderedSubSectionRef.md) | A reference to a subsection defined either globally or in another display sec... |  no  |
 [AnalysisSet](AnalysisSet.md) | A set of subjects whose data are to be included in the main analyses |  no  |
@@ -61,6 +66,7 @@ URI: [ars:order](https://www.cdisc.org/ars/1-0/order)
 <details>
 ```yaml
 name: order
+description: The ordinal of the instance with respect to other instances.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 alias: order
