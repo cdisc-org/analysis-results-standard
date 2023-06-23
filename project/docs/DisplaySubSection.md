@@ -32,7 +32,7 @@ URI: [ars:DisplaySubSection](https://www.cdisc.org/ars/1-0/DisplaySubSection)
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [id](id.md) | 1..1 <br/> [String](String.md) | The assigned identifying value for the instance of the class | direct |
-| [text](text.md) | 1..1 <br/> [String](String.md) |  | direct |
+| [text](text.md) | 1..1 <br/> [String](String.md) | The text to be displayed in the display section | direct |
 
 
 
@@ -153,6 +153,7 @@ attributes:
     required: true
   text:
     name: text
+    description: The text to be displayed in the display section.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: text

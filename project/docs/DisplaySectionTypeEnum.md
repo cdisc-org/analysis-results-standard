@@ -2,6 +2,11 @@
 
 
 
+
+_Types of display section that contain one or more pieces of informational text._
+
+
+
 URI: [DisplaySectionTypeEnum](DisplaySectionTypeEnum)
 
 ## Permissible Values
@@ -21,7 +26,7 @@ URI: [DisplaySectionTypeEnum](DisplaySectionTypeEnum)
 
 | Name | Description |
 | ---  | --- |
-| [sectionType](sectionType.md) |  |
+| [sectionType](sectionType.md) | The type of display section that contains one or more pieces of informational... |
 
 
 
@@ -49,6 +54,8 @@ URI: [DisplaySectionTypeEnum](DisplaySectionTypeEnum)
 <details>
 ```yaml
 name: DisplaySectionTypeEnum
+description: Types of display section that contain one or more pieces of informational
+  text.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 permissible_values:

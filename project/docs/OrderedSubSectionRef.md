@@ -45,7 +45,7 @@ URI: [ars:OrderedSubSectionRef](https://www.cdisc.org/ars/1-0/OrderedSubSectionR
 | ---  | --- | --- | --- |
 | [order](order.md) | 1..1 <br/> [Integer](Integer.md) | The ordinal of the instance with respect to other instances | [OrderedDisplaySubSection](OrderedDisplaySubSection.md) |
 | [subSection](subSection.md) | 0..1 <br/> [DisplaySubSection](DisplaySubSection.md) | NOT USED | [OrderedDisplaySubSection](OrderedDisplaySubSection.md) |
-| [subSectionId](subSectionId.md) | 1..1 <br/> [DisplaySubSection](DisplaySubSection.md) |  | [OrderedDisplaySubSection](OrderedDisplaySubSection.md) |
+| [subSectionId](subSectionId.md) | 1..1 <br/> [DisplaySubSection](DisplaySubSection.md) | The identifier of the referenced subsection | [OrderedDisplaySubSection](OrderedDisplaySubSection.md) |
 
 
 
@@ -169,6 +169,7 @@ attributes:
     value_presence: ABSENT
   subSectionId:
     name: subSectionId
+    description: The identifier of the referenced subsection.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: subSectionId

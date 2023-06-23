@@ -1,5 +1,10 @@
 # Slot: subSection
 
+
+_A defined piece of information text to display in a display section._
+
+
+
 URI: [ars:subSection](https://www.cdisc.org/ars/1-0/subSection)
 
 
@@ -52,6 +57,7 @@ URI: [ars:subSection](https://www.cdisc.org/ars/1-0/subSection)
 <details>
 ```yaml
 name: subSection
+description: A defined piece of information text to display in a display section.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 alias: subSection

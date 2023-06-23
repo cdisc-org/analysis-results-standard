@@ -1,7 +1,7 @@
 # Slot: codeTemplate
 
 
-_Template programming statements and/or a reference to the template program used to perform the specific analysis._
+_Template programming statements used to perform the statistical operations for any analysis that uses this method._
 
 
 
@@ -34,6 +34,10 @@ URI: [ars:codeTemplate](https://www.cdisc.org/ars/1-0/codeTemplate)
 
 
 
+## Comments
+
+* Template programming statements may be represented as code or as a reference to the program file.
+
 ## Identifier and Mapping Information
 
 
@@ -55,8 +59,11 @@ URI: [ars:codeTemplate](https://www.cdisc.org/ars/1-0/codeTemplate)
 <details>
 ```yaml
 name: codeTemplate
-description: Template programming statements and/or a reference to the template program
-  used to perform the specific analysis.
+description: Template programming statements used to perform the statistical operations
+  for any analysis that uses this method.
+comments:
+- Template programming statements may be represented as code or as a reference to
+  the program file.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 alias: codeTemplate

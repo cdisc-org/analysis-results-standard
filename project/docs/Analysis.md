@@ -102,21 +102,21 @@ URI: [ars:Analysis](https://www.cdisc.org/ars/1-0/Analysis)
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [id](id.md) | 1..1 <br/> [String](String.md) | The assigned identifying value for the instance of the class | direct |
-| [version](version.md) | 0..1 <br/> [Integer](Integer.md) |  | direct |
+| [version](version.md) | 0..1 <br/> [Integer](Integer.md) | An ordinal indicating the version of the identified instance of the class | direct |
 | [categoryIds](categoryIds.md) | 0..* <br/> [AnalysisCategory](AnalysisCategory.md) | References to any implementer-defined categories that apply to the analysis | direct |
 | [description](description.md) | 0..1 <br/> [String](String.md) | A textual description of the instance of the class | direct |
 | [reason](reason.md) | 1..1 <br/> [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) | The rationale for performing this analysis | direct |
 | [purpose](purpose.md) | 1..1 <br/> [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) | The purpose of the analysis within the body of evidence (e | direct |
-| [documentRefs](documentRefs.md) | 0..* <br/> [DocumentReference](DocumentReference.md) |  | direct |
+| [documentRefs](documentRefs.md) | 0..* <br/> [DocumentReference](DocumentReference.md) | References to external documents containing additional information | direct |
 | [analysisSetId](analysisSetId.md) | 0..1 <br/> [AnalysisSet](AnalysisSet.md) | The identifier of the referenced analysis set | direct |
 | [orderedGroupings](orderedGroupings.md) | 0..* <br/> [OrderedGroupingFactor](OrderedGroupingFactor.md) | An ordered list of grouping factors used in the analysis | direct |
 | [dataSubsetId](dataSubsetId.md) | 0..1 <br/> [DataSubset](DataSubset.md) | The identifier of the referenced data subset | direct |
-| [dataset](dataset.md) | 0..1 <br/> [String](String.md) |  | direct |
-| [variable](variable.md) | 0..1 <br/> [String](String.md) |  | direct |
+| [dataset](dataset.md) | 0..1 <br/> [String](String.md) | The name of the analysis dataset | direct |
+| [variable](variable.md) | 0..1 <br/> [String](String.md) | The name of the variable | direct |
 | [methodId](methodId.md) | 1..1 <br/> [AnalysisMethod](AnalysisMethod.md) | A reference to the set of one or more statistical operations performed for th... | direct |
 | [referencedAnalysisOperations](referencedAnalysisOperations.md) | 0..* <br/> [ReferencedAnalysisOperation](ReferencedAnalysisOperation.md) | Indications of which analysis contains the results for each referenced operat... | direct |
 | [programmingCode](programmingCode.md) | 0..1 <br/> [AnalysisOutputProgrammingCode](AnalysisOutputProgrammingCode.md) | Programming statements and/or a reference to the program used to perform the ... | direct |
-| [results](results.md) | 0..* <br/> [OperationResult](OperationResult.md) |  | direct |
+| [results](results.md) | 0..* <br/> [OperationResult](OperationResult.md) | The results of the analysis | direct |
 | [name](name.md) | 1..1 <br/> [String](String.md) | The name for the instance of the class | [NamedObject](NamedObject.md) |
 
 
@@ -299,6 +299,8 @@ attributes:
     required: true
   version:
     name: version
+    description: An ordinal indicating the version of the identified instance of the
+      class.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: version
@@ -370,6 +372,7 @@ attributes:
     - range: SponsorAnalysisPurpose
   documentRefs:
     name: documentRefs
+    description: References to external documents containing additional information.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     multivalued: true
@@ -421,6 +424,7 @@ attributes:
     inlined: false
   dataset:
     name: dataset
+    description: The name of the analysis dataset.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: dataset
@@ -431,6 +435,7 @@ attributes:
     range: string
   variable:
     name: variable
+    description: The name of the variable.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: variable
@@ -480,6 +485,7 @@ attributes:
     range: AnalysisOutputProgrammingCode
   results:
     name: results
+    description: The results of the analysis.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     multivalued: true

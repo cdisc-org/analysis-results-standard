@@ -92,19 +92,19 @@ URI: [ars:ReportingEvent](https://www.cdisc.org/ars/1-0/ReportingEvent)
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [id](id.md) | 1..1 <br/> [String](String.md) | The assigned identifying value for the instance of the class | direct |
-| [version](version.md) | 0..1 <br/> [Integer](Integer.md) |  | direct |
+| [version](version.md) | 0..1 <br/> [Integer](Integer.md) | An ordinal indicating the version of the identified instance of the class | direct |
 | [listOfPlannedAnalyses](listOfPlannedAnalyses.md) | 1..1 <br/> [NestedList](NestedList.md) | A structured list of the analyses defined for the reporting event | direct |
 | [listOfPlannedOutputs](listOfPlannedOutputs.md) | 0..1 <br/> [NestedList](NestedList.md) | An optional structured list of the outputs defined for the reporting event | direct |
 | [analysisSets](analysisSets.md) | 0..* <br/> [AnalysisSet](AnalysisSet.md) | The analysis sets (subject populations) defined for the reporting event | direct |
 | [analysisGroupings](analysisGroupings.md) | 0..* <br/> [SubjectGroupingFactor](SubjectGroupingFactor.md) | Characteristics used to subdivide the subject population (e | direct |
 | [dataSubsets](dataSubsets.md) | 0..* <br/> [DataSubset](DataSubset.md) | Subsets of data identified by selection criteria for inclusion in analysis de... | direct |
 | [dataGroupings](dataGroupings.md) | 0..* <br/> [DataGroupingFactor](DataGroupingFactor.md) | Characteristics used to subdivide data records in analysis datasets (e | direct |
-| [globalDisplaySections](globalDisplaySections.md) | 0..* <br/> [GlobalDisplaySection](GlobalDisplaySection.md) |  | direct |
+| [globalDisplaySections](globalDisplaySections.md) | 0..* <br/> [GlobalDisplaySection](GlobalDisplaySection.md) | Display section specifications that may be applied to any display | direct |
 | [analysisCategorizations](analysisCategorizations.md) | 0..* <br/> [AnalysisCategorization](AnalysisCategorization.md) | Sets of related implementer-defined categories that can be used to categorize... | direct |
 | [analyses](analyses.md) | 0..* <br/> [Analysis](Analysis.md) | The analyses defined for the reporting event | direct |
 | [methods](methods.md) | 0..* <br/> [AnalysisMethod](AnalysisMethod.md) | The defined methods used to analyze any analysis variable | direct |
 | [outputs](outputs.md) | 0..* <br/> [Output](Output.md) | The outputs defined for the reporting event | direct |
-| [referenceDocuments](referenceDocuments.md) | 0..* <br/> [ReferenceDocument](ReferenceDocument.md) |  | direct |
+| [referenceDocuments](referenceDocuments.md) | 0..* <br/> [ReferenceDocument](ReferenceDocument.md) | External documents containing information referenced for the reporting event | direct |
 | [terminologyExtensions](terminologyExtensions.md) | 0..* <br/> [TerminologyExtension](TerminologyExtension.md) | Any sponsor-defined extensions to extensible terminology | direct |
 | [name](name.md) | 1..1 <br/> [String](String.md) | The name for the instance of the class | [NamedObject](NamedObject.md) |
 
@@ -220,6 +220,8 @@ attributes:
     required: true
   version:
     name: version
+    description: An ordinal indicating the version of the identified instance of the
+      class.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: version
@@ -311,6 +313,7 @@ attributes:
     inlined_as_list: true
   globalDisplaySections:
     name: globalDisplaySections
+    description: Display section specifications that may be applied to any display.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     multivalued: true
@@ -376,6 +379,11 @@ attributes:
     inlined_as_list: true
   referenceDocuments:
     name: referenceDocuments
+    description: External documents containing information referenced for the reporting
+      event.
+    comments:
+    - May include specification or report documents (e.g. the SAP or CSR) and program
+      files.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     multivalued: true

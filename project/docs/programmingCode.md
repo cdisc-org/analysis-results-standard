@@ -1,7 +1,7 @@
 # Slot: programmingCode
 
 
-_Programming statements and/or a reference to the program used to perform the specific analysis or create the specific output._
+_Programming statements used to perform the specific analysis or create the specific output._
 
 
 
@@ -35,6 +35,10 @@ URI: [ars:programmingCode](https://www.cdisc.org/ars/1-0/programmingCode)
 
 
 
+## Comments
+
+* Programming statements may be represented as code or as a reference to the program file.
+
 ## Identifier and Mapping Information
 
 
@@ -56,8 +60,11 @@ URI: [ars:programmingCode](https://www.cdisc.org/ars/1-0/programmingCode)
 <details>
 ```yaml
 name: programmingCode
-description: Programming statements and/or a reference to the program used to perform
-  the specific analysis or create the specific output.
+description: Programming statements used to perform the specific analysis or create
+  the specific output.
+comments:
+- Programming statements may be represented as code or as a reference to the program
+  file.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 alias: programmingCode

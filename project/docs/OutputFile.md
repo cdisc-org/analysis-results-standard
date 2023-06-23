@@ -43,9 +43,9 @@ URI: [ars:OutputFile](https://www.cdisc.org/ars/1-0/OutputFile)
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [fileType](fileType.md) | 0..1 <br/> [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) |  | direct |
-| [location](location.md) | 0..1 <br/> [Uri](Uri.md) |  | direct |
-| [style](style.md) | 0..1 <br/> [String](String.md) |  | direct |
+| [fileType](fileType.md) | 0..1 <br/> [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) | The format of the output file | direct |
+| [location](location.md) | 0..1 <br/> [Uri](Uri.md) | A path (relative or absolute) indicating the location of the file | direct |
+| [style](style.md) | 0..1 <br/> [String](String.md) | Reference to the specification of the style used for the output | direct |
 | [name](name.md) | 1..1 <br/> [String](String.md) | The name for the instance of the class | [NamedObject](NamedObject.md) |
 
 
@@ -124,6 +124,7 @@ is_a: NamedObject
 attributes:
   fileType:
     name: fileType
+    description: The format of the output file.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: fileType
@@ -136,6 +137,7 @@ attributes:
     - range: SponsorOutputFileType
   location:
     name: location
+    description: A path (relative or absolute) indicating the location of the file.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: location
@@ -146,6 +148,10 @@ attributes:
     range: uri
   style:
     name: style
+    description: Reference to the specification of the style used for the output.
+    comments:
+    - This is a placeholder attribute. Style specifications are not yet included in
+      the model.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: style

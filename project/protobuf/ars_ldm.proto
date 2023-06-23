@@ -152,7 +152,7 @@ message DataSubset
   string label = 0
   compoundSubsetExpression compoundExpression = 0
  }
-// A part of a tabular display containing one or more pieces of informational text.
+// A part of a tabular display containing one or more pieces of informational text (e.g., title, footnote).
 message DisplaySection
  {
   displaySectionTypeEnum sectionType = 0

@@ -87,44 +87,44 @@ Name: ars_ldm
 | [categories](categories.md) | Implementer-defined categories of analyses/outputs, each of which may include... |
 | [categoryIds](categoryIds.md) | References to any implementer-defined categories that apply to the analysis o... |
 | [code](code.md) | Programming statements used to perform the specific analysis |
-| [codeTemplate](codeTemplate.md) | Template programming statements and/or a reference to the template program us... |
-| [comparator](comparator.md) |  |
-| [compoundExpression](compoundExpression.md) |  |
-| [condition](condition.md) |  |
+| [codeTemplate](codeTemplate.md) | Template programming statements used to perform the statistical operations fo... |
+| [comparator](comparator.md) | Comparison operator indicating how the variable is compared to the value(s) |
+| [compoundExpression](compoundExpression.md) | A compound expression that combines or negates where clauses |
+| [condition](condition.md) | A simple selection criterion exressed as [dataset] |
 | [context](context.md) | The name and version of the computer language used for the actual programming... |
 | [controlledTerm](controlledTerm.md) | One of the permissible values from the referenced enumeration |
 | [dataDriven](dataDriven.md) | Indicates whether the groups defined by the grouping are prespecified (false)... |
 | [dataGroupings](dataGroupings.md) | Characteristics used to subdivide data records in analysis datasets (e |
-| [dataset](dataset.md) |  |
+| [dataset](dataset.md) | The name of the analysis dataset |
 | [dataSubsetId](dataSubsetId.md) | The identifier of the referenced data subset |
 | [dataSubsets](dataSubsets.md) | Subsets of data identified by selection criteria for inclusion in analysis de... |
 | [description](description.md) | A textual description of the instance of the class |
-| [display](display.md) |  |
-| [displays](displays.md) |  |
-| [displaySections](displaySections.md) |  |
-| [displayTitle](displayTitle.md) |  |
-| [documentRef](documentRef.md) |  |
-| [documentRefs](documentRefs.md) |  |
+| [display](display.md) | A display contained in the output |
+| [displays](displays.md) | An ordered list of the displays included in the output |
+| [displaySections](displaySections.md) | The parts of the display containing one or more pieces of informational text ... |
+| [displayTitle](displayTitle.md) | Display description which uniquely identifies the display in the report |
+| [documentRef](documentRef.md) | A reference to the document containing programming code |
+| [documentRefs](documentRefs.md) | References to external documents containing additional information |
 | [enumeration](enumeration.md) | The name of the extensible enumeration |
-| [fileSpecifications](fileSpecifications.md) |  |
-| [fileType](fileType.md) |  |
+| [fileSpecifications](fileSpecifications.md) | Specifications of output files |
+| [fileType](fileType.md) | The format of the output file |
 | [firstPage](firstPage.md) | The page number of the first page in a range of pages |
-| [formattedValue](formattedValue.md) |  |
-| [globalDisplaySections](globalDisplaySections.md) |  |
+| [formattedValue](formattedValue.md) | The result value formatted for display according to the resultPattern |
+| [globalDisplaySections](globalDisplaySections.md) | Display section specifications that may be applied to any display |
 | [groupId](groupId.md) | The identifier of a referenced predefined group within a grouping |
 | [groupingId](groupingId.md) | The identifier of the referenced subject or data grouping factor |
 | [groupingVariable](groupingVariable.md) | For groupings based on a single variable, a reference to the dataset variable... |
 | [groups](groups.md) | The pre-specified groups within the grouping |
 | [groupValue](groupValue.md) | The data value used as a group within a data-driven grouping |
 | [id](id.md) | The assigned identifying value for the instance of the class |
-| [label](label.md) |  |
+| [label](label.md) | A short informative description that may be used for display |
 | [lastPage](lastPage.md) | The page number of the last page in a range of pages |
 | [level](level.md) | The level of the entry within a hierarchical structure |
-| [listItems](listItems.md) |  |
+| [listItems](listItems.md) | Items in the list |
 | [listOfPlannedAnalyses](listOfPlannedAnalyses.md) | A structured list of the analyses defined for the reporting event |
 | [listOfPlannedOutputs](listOfPlannedOutputs.md) | An optional structured list of the outputs defined for the reporting event |
-| [location](location.md) |  |
-| [logicalOperator](logicalOperator.md) |  |
+| [location](location.md) | A path (relative or absolute) indicating the location of the file |
+| [logicalOperator](logicalOperator.md) | The boolean operator that is used to combine (AND, OR) or negate (NOT) the wh... |
 | [methodId](methodId.md) | A reference to the set of one or more statistical operations performed for th... |
 | [methods](methods.md) | The defined methods used to analyze any analysis variable |
 | [name](name.md) | The name for the instance of the class |
@@ -132,45 +132,45 @@ Name: ars_ldm
 | [operations](operations.md) | The calculations performed for the method |
 | [order](order.md) | The ordinal of the instance with respect to other instances |
 | [orderedGroupings](orderedGroupings.md) | An ordered list of grouping factors used in the analysis |
-| [orderedSubSections](orderedSubSections.md) |  |
+| [orderedSubSections](orderedSubSections.md) | An ordered list of the informational text to display in the display section |
 | [outputId](outputId.md) | The identifier of the referenced output |
 | [outputs](outputs.md) | The outputs defined for the reporting event |
 | [pageNames](pageNames.md) | One or more named document references which each correspond with a page |
 | [pageNumbers](pageNumbers.md) | One or more page numbers |
 | [pageRefs](pageRefs.md) | A list of references to specific parts of a document, which may be referenced... |
 | [parameters](parameters.md) | Replacement parameters that are referenced in the programming code or program... |
-| [programmingCode](programmingCode.md) | Programming statements and/or a reference to the program used to perform the ... |
+| [programmingCode](programmingCode.md) | Programming statements used to perform the specific analysis or create the sp... |
 | [purpose](purpose.md) | The purpose of the analysis within the body of evidence (e |
-| [rawValue](rawValue.md) |  |
+| [rawValue](rawValue.md) | The raw result value (e |
 | [reason](reason.md) | The rationale for performing this analysis |
 | [referencedAnalysisOperations](referencedAnalysisOperations.md) | Indications of which analysis contains the results for each referenced operat... |
-| [referenceDocumentId](referenceDocumentId.md) |  |
-| [referenceDocuments](referenceDocuments.md) |  |
+| [referenceDocumentId](referenceDocumentId.md) | The identifier of the referenced document |
+| [referenceDocuments](referenceDocuments.md) | External documents containing information referenced for the reporting event |
 | [referencedOperationRelationshipId](referencedOperationRelationshipId.md) | The identifier of the defined referenced operation relationship |
-| [referencedOperationRelationships](referencedOperationRelationships.md) |  |
-| [referencedOperationRole](referencedOperationRole.md) |  |
+| [referencedOperationRelationships](referencedOperationRelationships.md) | Relationships to other operations indicating how the result of the referenced... |
+| [referencedOperationRole](referencedOperationRole.md) | The role that the referenced operation's result plays in the calculation of t... |
 | [refType](refType.md) | The type of reference for page references |
-| [resultGroups](resultGroups.md) |  |
-| [resultPattern](resultPattern.md) |  |
-| [results](results.md) |  |
+| [resultGroups](resultGroups.md) | The group values associated with the result |
+| [resultPattern](resultPattern.md) | The default pattern or format to apply to the result for display |
+| [results](results.md) | The results of the analysis |
 | [resultsByGroup](resultsByGroup.md) | Indicates whether a result is expected for each group in the grouping |
-| [sectionType](sectionType.md) |  |
+| [sectionType](sectionType.md) | The type of display section that contains one or more pieces of informational... |
 | [sponsorTermId](sponsorTermId.md) | The identifier of the referenced sponsor term |
 | [sponsorTerms](sponsorTerms.md) | The sponsor-defined terms added to the extensible terminology |
-| [style](style.md) |  |
+| [style](style.md) | Reference to the specification of the style used for the output |
 | [subCategorizations](subCategorizations.md) | Sets of related implementer-defined sub-categories that can be used to catego... |
 | [sublist](sublist.md) | A sub-list of items (analyses or outputs) that may be further organized withi... |
 | [submissionValue](submissionValue.md) | The specific value expected for submissions |
-| [subSection](subSection.md) |  |
-| [subSectionId](subSectionId.md) |  |
-| [subSections](subSections.md) |  |
+| [subSection](subSection.md) | A defined piece of information text to display in a display section |
+| [subSectionId](subSectionId.md) | The identifier of the referenced subsection |
+| [subSections](subSections.md) | A list of defined pieces of information text that may be displayed in display... |
 | [terminologyExtensions](terminologyExtensions.md) | Any sponsor-defined extensions to extensible terminology |
-| [text](text.md) |  |
-| [value](value.md) |  |
+| [text](text.md) | The text to be displayed in the display section |
+| [value](value.md) | The prespecified value or values |
 | [valueSource](valueSource.md) | A reference to the prespecified source of the value for the parameter |
-| [variable](variable.md) |  |
-| [version](version.md) |  |
-| [whereClauses](whereClauses.md) |  |
+| [variable](variable.md) | The name of the variable |
+| [version](version.md) | An ordinal indicating the version of the identified instance of the class |
+| [whereClauses](whereClauses.md) | A list of one or more where clauses (selection criteria) to be combined or ne... |
 
 
 ## Enumerations
@@ -179,9 +179,9 @@ Name: ars_ldm
 | --- | --- |
 | [AnalysisPurposeEnum](AnalysisPurposeEnum.md) | The purpose of the analysis within the body of evidence (e |
 | [AnalysisReasonEnum](AnalysisReasonEnum.md) | The rationale for performing this analysis |
-| [ConditionComparatorEnum](ConditionComparatorEnum.md) |  |
-| [DisplaySectionTypeEnum](DisplaySectionTypeEnum.md) |  |
-| [ExpressionLogicalOperatorEnum](ExpressionLogicalOperatorEnum.md) | A Boolean operator, a symbol or a function that denotes a logical operation (... |
+| [ConditionComparatorEnum](ConditionComparatorEnum.md) | Comparison operators indicating how the value of a variable is compared to a ... |
+| [DisplaySectionTypeEnum](DisplaySectionTypeEnum.md) | Types of display section that contain one or more pieces of informational tex... |
+| [ExpressionLogicalOperatorEnum](ExpressionLogicalOperatorEnum.md) | Boolean operators denoting a logical operation (e |
 | [ExtensibleTerminologyEnum](ExtensibleTerminologyEnum.md) | Extensible ARS enumerations |
 | [OperationRoleEnum](OperationRoleEnum.md) | The role that the referenced operation's result plays in the calculation of t... |
 | [OutputFileTypeEnum](OutputFileTypeEnum.md) | The file format of the file containing output from analyses |

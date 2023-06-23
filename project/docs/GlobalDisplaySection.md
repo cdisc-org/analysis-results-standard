@@ -35,8 +35,8 @@ URI: [ars:GlobalDisplaySection](https://www.cdisc.org/ars/1-0/GlobalDisplaySecti
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [sectionType](sectionType.md) | 0..1 <br/> [DisplaySectionTypeEnum](DisplaySectionTypeEnum.md) |  | direct |
-| [subSections](subSections.md) | 0..* <br/> [DisplaySubSection](DisplaySubSection.md) |  | direct |
+| [sectionType](sectionType.md) | 0..1 <br/> [DisplaySectionTypeEnum](DisplaySectionTypeEnum.md) | The type of display section that contains one or more pieces of informational... | direct |
+| [subSections](subSections.md) | 0..* <br/> [DisplaySubSection](DisplaySubSection.md) | A list of defined pieces of information text that may be displayed in display... | direct |
 
 
 
@@ -113,6 +113,13 @@ rank: 1000
 attributes:
   sectionType:
     name: sectionType
+    description: The type of display section that contains one or more pieces of informational
+      text.
+    examples:
+    - value: Title
+    - value: Footnote
+    - value: Legend
+    - value: Abbreviation
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: sectionType
@@ -123,6 +130,8 @@ attributes:
     range: DisplaySectionTypeEnum
   subSections:
     name: subSections
+    description: A list of defined pieces of information text that may be displayed
+      in display sections of the same type.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     multivalued: true

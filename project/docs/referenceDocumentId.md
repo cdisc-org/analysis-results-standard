@@ -1,5 +1,10 @@
 # Slot: referenceDocumentId
 
+
+_The identifier of the referenced document._
+
+
+
 URI: [ars:referenceDocumentId](https://www.cdisc.org/ars/1-0/referenceDocumentId)
 
 
@@ -52,6 +57,7 @@ URI: [ars:referenceDocumentId](https://www.cdisc.org/ars/1-0/referenceDocumentId
 <details>
 ```yaml
 name: referenceDocumentId
+description: The identifier of the referenced document.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 alias: referenceDocumentId

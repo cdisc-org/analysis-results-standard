@@ -54,11 +54,11 @@ URI: [ars:AnalysisMethod](https://www.cdisc.org/ars/1-0/AnalysisMethod)
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [id](id.md) | 1..1 <br/> [String](String.md) | The assigned identifying value for the instance of the class | direct |
-| [label](label.md) | 0..1 <br/> [String](String.md) |  | direct |
+| [label](label.md) | 0..1 <br/> [String](String.md) | A short informative description that may be used for display | direct |
 | [description](description.md) | 0..1 <br/> [String](String.md) | A textual description of the instance of the class | direct |
 | [operations](operations.md) | 1..* <br/> [Operation](Operation.md) | The calculations performed for the method | direct |
-| [documentRefs](documentRefs.md) | 0..* <br/> [DocumentReference](DocumentReference.md) |  | direct |
-| [codeTemplate](codeTemplate.md) | 0..1 <br/> [AnalysisProgrammingCodeTemplate](AnalysisProgrammingCodeTemplate.md) | Template programming statements and/or a reference to the template program us... | direct |
+| [documentRefs](documentRefs.md) | 0..* <br/> [DocumentReference](DocumentReference.md) | References to external documents containing additional information | direct |
+| [codeTemplate](codeTemplate.md) | 0..1 <br/> [AnalysisProgrammingCodeTemplate](AnalysisProgrammingCodeTemplate.md) | Template programming statements used to perform the statistical operations fo... | direct |
 | [name](name.md) | 1..1 <br/> [String](String.md) | The name for the instance of the class | [NamedObject](NamedObject.md) |
 
 
@@ -169,6 +169,7 @@ attributes:
     required: true
   label:
     name: label
+    description: A short informative description that may be used for display.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: label
@@ -215,6 +216,7 @@ attributes:
     inlined_as_list: true
   documentRefs:
     name: documentRefs
+    description: References to external documents containing additional information.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     multivalued: true
@@ -229,8 +231,11 @@ attributes:
     inlined_as_list: true
   codeTemplate:
     name: codeTemplate
-    description: Template programming statements and/or a reference to the template
-      program used to perform the specific analysis.
+    description: Template programming statements used to perform the statistical operations
+      for any analysis that uses this method.
+    comments:
+    - Template programming statements may be represented as code or as a reference
+      to the program file.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: codeTemplate

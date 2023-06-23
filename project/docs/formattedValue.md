@@ -1,5 +1,10 @@
 # Slot: formattedValue
 
+
+_The result value formatted for display according to the resultPattern._
+
+
+
 URI: [ars:formattedValue](https://www.cdisc.org/ars/1-0/formattedValue)
 
 
@@ -50,6 +55,7 @@ URI: [ars:formattedValue](https://www.cdisc.org/ars/1-0/formattedValue)
 <details>
 ```yaml
 name: formattedValue
+description: The result value formatted for display according to the resultPattern.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 alias: formattedValue

@@ -1,5 +1,5 @@
 # Auto generated from ars_ldm.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-06-22T16:38:41
+# Generation date: 2023-06-23T13:46:32
 # Schema: ars_ldm
 #
 # id: https://www.cdisc.org/ars/1-0
@@ -1000,7 +1000,7 @@ class OutputDisplay(NamedObject):
 @dataclass
 class DisplaySection(YAMLRoot):
     """
-    A part of a tabular display containing one or more pieces of informational text.
+    A part of a tabular display containing one or more pieces of informational text (e.g., title, footnote).
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -2133,7 +2133,7 @@ class OutputFileTypeEnum(EnumDefinitionImpl):
 
 class ExpressionLogicalOperatorEnum(EnumDefinitionImpl):
     """
-    A Boolean operator, a symbol or a function that denotes a logical operation (e.g., and, or, not).
+    Boolean operators denoting a logical operation (e.g., and, or, not).
     """
     AND = PermissibleValue(text="AND")
     OR = PermissibleValue(text="OR")
@@ -2141,11 +2141,13 @@ class ExpressionLogicalOperatorEnum(EnumDefinitionImpl):
 
     _defn = EnumDefinition(
         name="ExpressionLogicalOperatorEnum",
-        description="A Boolean operator, a symbol or a function that denotes a logical operation (e.g., and, or, not).",
+        description="Boolean operators denoting a logical operation (e.g., and, or, not).",
     )
 
 class ConditionComparatorEnum(EnumDefinitionImpl):
-
+    """
+    Comparison operators indicating how the value of a variable is compared to a (list of) prespecified value(s).
+    """
     EQ = PermissibleValue(
         text="EQ",
         description="Is equal to")
@@ -2173,10 +2175,13 @@ class ConditionComparatorEnum(EnumDefinitionImpl):
 
     _defn = EnumDefinition(
         name="ConditionComparatorEnum",
+        description="""Comparison operators indicating how the value of a variable is compared to a (list of) prespecified value(s).""",
     )
 
 class DisplaySectionTypeEnum(EnumDefinitionImpl):
-
+    """
+    Types of display section that contain one or more pieces of informational text.
+    """
     Title = PermissibleValue(text="Title")
     Footnote = PermissibleValue(text="Footnote")
     Abbreviation = PermissibleValue(text="Abbreviation")
@@ -2184,6 +2189,7 @@ class DisplaySectionTypeEnum(EnumDefinitionImpl):
 
     _defn = EnumDefinition(
         name="DisplaySectionTypeEnum",
+        description="Types of display section that contain one or more pieces of informational text.",
     )
 
     @classmethod
@@ -2643,6 +2649,9 @@ slots.OrderedSubSectionRef_subSectionId = Slot(uri=ARS.subSectionId, name="Order
 
 slots.DisplaySubSection_text = Slot(uri=ARS.text, name="DisplaySubSection_text", curie=ARS.curie('text'),
                    model_uri=ARS.DisplaySubSection_text, domain=DisplaySubSection, range=str)
+
+slots.WhereClauseCondition_value = Slot(uri=ARS.value, name="WhereClauseCondition_value", curie=ARS.curie('value'),
+                   model_uri=ARS.WhereClauseCondition_value, domain=WhereClauseCondition, range=Optional[Union[str, List[str]]])
 
 slots.CompoundSetExpression_whereClauses = Slot(uri=ARS.whereClauses, name="CompoundSetExpression_whereClauses", curie=ARS.curie('whereClauses'),
                    model_uri=ARS.CompoundSetExpression_whereClauses, domain=CompoundSetExpression, range=Optional[Union[Union[str, AnalysisSetId], List[Union[str, AnalysisSetId]]]])

@@ -34,7 +34,7 @@ URI: [ars:OrderedDisplay](https://www.cdisc.org/ars/1-0/OrderedDisplay)
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [order](order.md) | 1..1 <br/> [Integer](Integer.md) | The ordinal of the instance with respect to other instances | direct |
-| [display](display.md) | 0..1 <br/> [OutputDisplay](OutputDisplay.md) |  | direct |
+| [display](display.md) | 0..1 <br/> [OutputDisplay](OutputDisplay.md) | A display contained in the output | direct |
 
 
 
@@ -144,6 +144,7 @@ attributes:
     required: true
   display:
     name: display
+    description: A display contained in the output.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: display

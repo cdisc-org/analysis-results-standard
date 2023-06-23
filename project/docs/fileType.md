@@ -1,5 +1,10 @@
 # Slot: fileType
 
+
+_The format of the output file._
+
+
+
 URI: [ars:fileType](https://www.cdisc.org/ars/1-0/fileType)
 
 
@@ -50,6 +55,7 @@ URI: [ars:fileType](https://www.cdisc.org/ars/1-0/fileType)
 <details>
 ```yaml
 name: fileType
+description: The format of the output file.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 alias: fileType

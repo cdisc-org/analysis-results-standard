@@ -107,25 +107,25 @@
 <tr>
 <td><a href="../dataset/">dataset</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>The name of the analysis dataset</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../variable/">variable</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>The name of the variable</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../comparator/">comparator</a></td>
 <td>0..1 <br/> <a href="../ConditionComparatorEnum/">ConditionComparatorEnum</a></td>
-<td></td>
+<td>Comparison operator indicating how the variable is compared to the value(s)</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../value/">value</a></td>
 <td>0..* <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>The value(s) for comparison with the variable</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -232,6 +232,14 @@ slots:
 - variable
 - comparator
 - value
+slot_usage:
+  value:
+    name: value
+    description: The value(s) for comparison with the variable.
+    domain_of:
+    - AnalysisOutputCodeParameter
+    - TemplateCodeParameter
+    - WhereClauseCondition
 rules:
 - preconditions:
     slot_conditions:
@@ -276,9 +284,18 @@ examples:
 - value: ADSL.SAFFL EQ 'Y'
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
+slot_usage:
+  value:
+    name: value
+    description: The value(s) for comparison with the variable.
+    domain_of:
+    - AnalysisOutputCodeParameter
+    - TemplateCodeParameter
+    - WhereClauseCondition
 attributes:
   dataset:
     name: dataset
+    description: The name of the analysis dataset.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: dataset
@@ -289,6 +306,7 @@ attributes:
     range: string
   variable:
     name: variable
+    description: The name of the variable.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: variable
@@ -299,6 +317,8 @@ attributes:
     range: string
   comparator:
     name: comparator
+    description: Comparison operator indicating how the variable is compared to the
+      value(s).
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: comparator
@@ -308,6 +328,7 @@ attributes:
     range: ConditionComparatorEnum
   value:
     name: value
+    description: The value(s) for comparison with the variable.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     multivalued: true

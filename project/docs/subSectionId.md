@@ -1,5 +1,10 @@
 # Slot: subSectionId
 
+
+_The identifier of the referenced subsection._
+
+
+
 URI: [ars:subSectionId](https://www.cdisc.org/ars/1-0/subSectionId)
 
 
@@ -52,6 +57,7 @@ URI: [ars:subSectionId](https://www.cdisc.org/ars/1-0/subSectionId)
 <details>
 ```yaml
 name: subSectionId
+description: The identifier of the referenced subsection.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 alias: subSectionId

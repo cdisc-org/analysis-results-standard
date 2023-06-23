@@ -1,5 +1,10 @@
 # Slot: compoundExpression
 
+
+_A compound expression that combines or negates where clauses._
+
+
+
 URI: [ars:compoundExpression](https://www.cdisc.org/ars/1-0/compoundExpression)
 
 
@@ -55,6 +60,7 @@ URI: [ars:compoundExpression](https://www.cdisc.org/ars/1-0/compoundExpression)
 <details>
 ```yaml
 name: compoundExpression
+description: A compound expression that combines or negates where clauses.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 alias: compoundExpression

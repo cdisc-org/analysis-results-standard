@@ -1,5 +1,10 @@
 # Slot: displayTitle
 
+
+_Display description which uniquely identifies the display in the report._
+
+
+
 URI: [ars:displayTitle](https://www.cdisc.org/ars/1-0/displayTitle)
 
 
@@ -50,6 +55,7 @@ URI: [ars:displayTitle](https://www.cdisc.org/ars/1-0/displayTitle)
 <details>
 ```yaml
 name: displayTitle
+description: Display description which uniquely identifies the display in the report.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 alias: displayTitle

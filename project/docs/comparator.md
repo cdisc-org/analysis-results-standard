@@ -1,5 +1,10 @@
 # Slot: comparator
 
+
+_Comparison operator indicating how the variable is compared to the value(s)._
+
+
+
 URI: [ars:comparator](https://www.cdisc.org/ars/1-0/comparator)
 
 
@@ -50,6 +55,7 @@ URI: [ars:comparator](https://www.cdisc.org/ars/1-0/comparator)
 <details>
 ```yaml
 name: comparator
+description: Comparison operator indicating how the variable is compared to the value(s).
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 alias: comparator

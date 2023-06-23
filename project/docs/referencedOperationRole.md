@@ -1,5 +1,10 @@
 # Slot: referencedOperationRole
 
+
+_The role that the referenced operation's result plays in the calculation of the result of the parent operation._
+
+
+
 URI: [ars:referencedOperationRole](https://www.cdisc.org/ars/1-0/referencedOperationRole)
 
 
@@ -52,6 +57,8 @@ URI: [ars:referencedOperationRole](https://www.cdisc.org/ars/1-0/referencedOpera
 <details>
 ```yaml
 name: referencedOperationRole
+description: The role that the referenced operation's result plays in the calculation
+  of the result of the parent operation.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 alias: referencedOperationRole

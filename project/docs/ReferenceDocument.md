@@ -40,7 +40,7 @@ URI: [ars:ReferenceDocument](https://www.cdisc.org/ars/1-0/ReferenceDocument)
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [id](id.md) | 1..1 <br/> [String](String.md) | The assigned identifying value for the instance of the class | direct |
-| [location](location.md) | 0..1 <br/> [Uri](Uri.md) |  | direct |
+| [location](location.md) | 0..1 <br/> [Uri](Uri.md) | A path (relative or absolute) indicating the location of the file | direct |
 | [name](name.md) | 1..1 <br/> [String](String.md) | The name for the instance of the class | [NamedObject](NamedObject.md) |
 
 
@@ -149,6 +149,7 @@ attributes:
     required: true
   location:
     name: location
+    description: A path (relative or absolute) indicating the location of the file.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: location

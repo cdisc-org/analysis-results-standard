@@ -1,5 +1,10 @@
 # Slot: rawValue
 
+
+_The raw result value (e.g., with no rounding applied)._
+
+
+
 URI: [ars:rawValue](https://www.cdisc.org/ars/1-0/rawValue)
 
 
@@ -50,6 +55,7 @@ URI: [ars:rawValue](https://www.cdisc.org/ars/1-0/rawValue)
 <details>
 ```yaml
 name: rawValue
+description: The raw result value (e.g., with no rounding applied).
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 alias: rawValue

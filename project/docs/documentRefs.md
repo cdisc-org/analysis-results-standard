@@ -1,5 +1,10 @@
 # Slot: documentRefs
 
+
+_References to external documents containing additional information._
+
+
+
 URI: [ars:documentRefs](https://www.cdisc.org/ars/1-0/documentRefs)
 
 
@@ -54,6 +59,7 @@ URI: [ars:documentRefs](https://www.cdisc.org/ars/1-0/documentRefs)
 <details>
 ```yaml
 name: documentRefs
+description: References to external documents containing additional information.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 multivalued: true

@@ -20,6 +20,7 @@
                     "type": "string"
                 },
                 "dataset": {
+                    "description": "The name of the analysis dataset.",
                     "type": "string"
                 },
                 "description": {
@@ -27,6 +28,7 @@
                     "type": "string"
                 },
                 "documentRefs": {
+                    "description": "References to external documents containing additional information.",
                     "items": {
                         "$ref": "#/$defs/DocumentReference"
                     },
@@ -85,15 +87,18 @@
                     "type": "array"
                 },
                 "results": {
+                    "description": "The results of the analysis.",
                     "items": {
                         "$ref": "#/$defs/OperationResult"
                     },
                     "type": "array"
                 },
                 "variable": {
+                    "description": "The name of the variable.",
                     "type": "string"
                 },
                 "version": {
+                    "description": "An ordinal indicating the version of the identified instance of the class.",
                     "type": "integer"
                 }
             },
@@ -123,6 +128,7 @@
                     "type": "string"
                 },
                 "label": {
+                    "description": "A short informative description that may be used for display.",
                     "type": "string"
                 }
             },
@@ -142,6 +148,7 @@
                     "type": "string"
                 },
                 "label": {
+                    "description": "A short informative description that may be used for display.",
                     "type": "string"
                 },
                 "subCategorizations": {
@@ -163,16 +170,19 @@
             "description": "A subdivision of the subject population based on a defined factor (e.g., subjects whose treatment is Drug A, subjects whose gender is male).",
             "properties": {
                 "compoundExpression": {
-                    "$ref": "#/$defs/CompoundGroupExpression"
+                    "$ref": "#/$defs/CompoundGroupExpression",
+                    "description": "A compound expression that combines or negates where clauses."
                 },
                 "condition": {
-                    "$ref": "#/$defs/WhereClauseCondition"
+                    "$ref": "#/$defs/WhereClauseCondition",
+                    "description": "A simple selection criterion exressed as [dataset].[variable] [comparator] [value(s)]"
                 },
                 "id": {
                     "description": "The assigned identifying value for the instance of the class.",
                     "type": "string"
                 },
                 "label": {
+                    "description": "A short informative description that may be used for display.",
                     "type": "string"
                 },
                 "level": {
@@ -196,13 +206,14 @@
             "properties": {
                 "codeTemplate": {
                     "$ref": "#/$defs/AnalysisProgrammingCodeTemplate",
-                    "description": "Template programming statements and/or a reference to the template program used to perform the specific analysis."
+                    "description": "Template programming statements used to perform the statistical operations for any analysis that uses this method."
                 },
                 "description": {
                     "description": "A textual description of the instance of the class.",
                     "type": "string"
                 },
                 "documentRefs": {
+                    "description": "References to external documents containing additional information.",
                     "items": {
                         "$ref": "#/$defs/DocumentReference"
                     },
@@ -213,6 +224,7 @@
                     "type": "string"
                 },
                 "label": {
+                    "description": "A short informative description that may be used for display.",
                     "type": "string"
                 },
                 "name": {
@@ -276,7 +288,8 @@
                     "type": "string"
                 },
                 "documentRef": {
-                    "$ref": "#/$defs/DocumentReference"
+                    "$ref": "#/$defs/DocumentReference",
+                    "description": "A reference to the document containing programming code."
                 },
                 "parameters": {
                     "description": "Parameter values used to generate or execute the programming code.",
@@ -305,7 +318,8 @@
                     "type": "string"
                 },
                 "documentRef": {
-                    "$ref": "#/$defs/DocumentReference"
+                    "$ref": "#/$defs/DocumentReference",
+                    "description": "A reference to the document containing programming code."
                 },
                 "parameters": {
                     "description": "Parameters whose values will be used to generate or execute the programming code for a specific analysis.",
@@ -385,16 +399,19 @@
             "description": "A set of subjects whose data are to be included in the main analyses. This should be defined in the statistical section of the protocol. NOTE: There are a number of potential analysis sets, including, for example, the set based upon the intent-to-treat principle. [ICH E9]",
             "properties": {
                 "compoundExpression": {
-                    "$ref": "#/$defs/CompoundSetExpression"
+                    "$ref": "#/$defs/CompoundSetExpression",
+                    "description": "A compound expression that combines or negates where clauses."
                 },
                 "condition": {
-                    "$ref": "#/$defs/WhereClauseCondition"
+                    "$ref": "#/$defs/WhereClauseCondition",
+                    "description": "A simple selection criterion exressed as [dataset].[variable] [comparator] [value(s)]"
                 },
                 "id": {
                     "description": "The assigned identifying value for the instance of the class.",
                     "type": "string"
                 },
                 "label": {
+                    "description": "A short informative description that may be used for display.",
                     "type": "string"
                 },
                 "level": {
@@ -417,9 +434,11 @@
             "description": "A compound expression consisting of either two or more identified group combined with the `AND` or `OR` logical operator, or a single identified group negated with the `NOT` logical operator.",
             "properties": {
                 "logicalOperator": {
-                    "$ref": "#/$defs/ExpressionLogicalOperatorEnum"
+                    "$ref": "#/$defs/ExpressionLogicalOperatorEnum",
+                    "description": "The boolean operator that is used to combine (AND, OR) or negate (NOT) the where claus(s) in the compound expression."
                 },
                 "whereClauses": {
+                    "description": "A list of one or more where clauses (selection criteria) to be combined or negated.",
                     "items": {
                         "type": "string"
                     },
@@ -437,9 +456,11 @@
             "description": "A compound expression consisting of either two or more identified analysis sets combined with the `AND` or `OR` logical operator, or a single identified analysis set negated with the `NOT` logical operator.",
             "properties": {
                 "logicalOperator": {
-                    "$ref": "#/$defs/ExpressionLogicalOperatorEnum"
+                    "$ref": "#/$defs/ExpressionLogicalOperatorEnum",
+                    "description": "The boolean operator that is used to combine (AND, OR) or negate (NOT) the where claus(s) in the compound expression."
                 },
                 "whereClauses": {
+                    "description": "A list of one or more where clauses (selection criteria) to be combined or negated.",
                     "items": {
                         "type": "string"
                     },
@@ -457,9 +478,11 @@
             "description": "A compound expression consisting of either two or more where clauses combined with the `AND` or `OR` logical operator, or a single where clause negated with the `NOT` logical operator.",
             "properties": {
                 "logicalOperator": {
-                    "$ref": "#/$defs/ExpressionLogicalOperatorEnum"
+                    "$ref": "#/$defs/ExpressionLogicalOperatorEnum",
+                    "description": "The boolean operator that is used to combine (AND, OR) or negate (NOT) the where claus(s) in the compound expression."
                 },
                 "whereClauses": {
+                    "description": "A list of one or more where clauses (selection criteria) to be combined or negated.",
                     "items": {
                         "$ref": "#/$defs/WhereClause"
                     },
@@ -473,7 +496,7 @@
             "type": "object"
         },
         "ConditionComparatorEnum": {
-            "description": "",
+            "description": "Comparison operators indicating how the value of a variable is compared to a (list of) prespecified value(s).",
             "enum": [
                 "EQ",
                 "NE",
@@ -492,16 +515,19 @@
             "description": "A subdivision of the analysis dataset records based on a defined factor.",
             "properties": {
                 "compoundExpression": {
-                    "$ref": "#/$defs/CompoundGroupExpression"
+                    "$ref": "#/$defs/CompoundGroupExpression",
+                    "description": "A compound expression that combines or negates where clauses."
                 },
                 "condition": {
-                    "$ref": "#/$defs/WhereClauseCondition"
+                    "$ref": "#/$defs/WhereClauseCondition",
+                    "description": "A simple selection criterion exressed as [dataset].[variable] [comparator] [value(s)]"
                 },
                 "id": {
                     "description": "The assigned identifying value for the instance of the class.",
                     "type": "string"
                 },
                 "label": {
+                    "description": "A short informative description that may be used for display.",
                     "type": "string"
                 },
                 "level": {
@@ -543,6 +569,7 @@
                     "type": "string"
                 },
                 "label": {
+                    "description": "A short informative description that may be used for display.",
                     "type": "string"
                 }
             },
@@ -558,16 +585,19 @@
             "description": "A subset of data identified by selection criteria for inclusion in the analysis.",
             "properties": {
                 "compoundExpression": {
-                    "$ref": "#/$defs/CompoundSubsetExpression"
+                    "$ref": "#/$defs/CompoundSubsetExpression",
+                    "description": "A compound expression that combines or negates where clauses."
                 },
                 "condition": {
-                    "$ref": "#/$defs/WhereClauseCondition"
+                    "$ref": "#/$defs/WhereClauseCondition",
+                    "description": "A simple selection criterion exressed as [dataset].[variable] [comparator] [value(s)]"
                 },
                 "id": {
                     "description": "The assigned identifying value for the instance of the class.",
                     "type": "string"
                 },
                 "label": {
+                    "description": "A short informative description that may be used for display.",
                     "type": "string"
                 },
                 "level": {
@@ -587,9 +617,10 @@
         },
         "DisplaySection": {
             "additionalProperties": false,
-            "description": "A part of a tabular display containing one or more pieces of informational text.",
+            "description": "A part of a tabular display containing one or more pieces of informational text (e.g., title, footnote).",
             "properties": {
                 "orderedSubSections": {
+                    "description": "An ordered list of the informational text to display in the display section.",
                     "items": {
                         "anyOf": [
                             {
@@ -603,14 +634,15 @@
                     "type": "array"
                 },
                 "sectionType": {
-                    "$ref": "#/$defs/DisplaySectionTypeEnum"
+                    "$ref": "#/$defs/DisplaySectionTypeEnum",
+                    "description": "The type of display section that contains one or more pieces of informational text."
                 }
             },
             "title": "DisplaySection",
             "type": "object"
         },
         "DisplaySectionTypeEnum": {
-            "description": "",
+            "description": "Types of display section that contain one or more pieces of informational text.",
             "enum": [
                 "Title",
                 "Footnote",
@@ -630,6 +662,7 @@
                     "type": "string"
                 },
                 "text": {
+                    "description": "The text to be displayed in the display section.",
                     "type": "string"
                 }
             },
@@ -662,6 +695,7 @@
                     "type": "array"
                 },
                 "referenceDocumentId": {
+                    "description": "The identifier of the referenced document.",
                     "type": "string"
                 }
             },
@@ -672,7 +706,7 @@
             "type": "object"
         },
         "ExpressionLogicalOperatorEnum": {
-            "description": "A Boolean operator, a symbol or a function that denotes a logical operation (e.g., and, or, not).",
+            "description": "Boolean operators denoting a logical operation (e.g., and, or, not).",
             "enum": [
                 "AND",
                 "OR",
@@ -697,9 +731,11 @@
             "description": "A global definition for part of a tabular display containing one or more pieces of informational text that may be used in multiple displays.",
             "properties": {
                 "sectionType": {
-                    "$ref": "#/$defs/DisplaySectionTypeEnum"
+                    "$ref": "#/$defs/DisplaySectionTypeEnum",
+                    "description": "The type of display section that contains one or more pieces of informational text."
                 },
                 "subSections": {
+                    "description": "A list of defined pieces of information text that may be displayed in display sections of the same type.",
                     "items": {
                         "$ref": "#/$defs/DisplaySubSection"
                     },
@@ -714,16 +750,19 @@
             "description": "A subdivision of the subject population or analysis dataset record set based on a defined factor.",
             "properties": {
                 "compoundExpression": {
-                    "$ref": "#/$defs/CompoundGroupExpression"
+                    "$ref": "#/$defs/CompoundGroupExpression",
+                    "description": "A compound expression that combines or negates where clauses."
                 },
                 "condition": {
-                    "$ref": "#/$defs/WhereClauseCondition"
+                    "$ref": "#/$defs/WhereClauseCondition",
+                    "description": "A simple selection criterion exressed as [dataset].[variable] [comparator] [value(s)]"
                 },
                 "id": {
                     "description": "The assigned identifying value for the instance of the class.",
                     "type": "string"
                 },
                 "label": {
+                    "description": "A short informative description that may be used for display.",
                     "type": "string"
                 },
                 "level": {
@@ -746,6 +785,7 @@
             "description": "A list of items (analyses or outputs) that may be organized within sub-lists.",
             "properties": {
                 "listItems": {
+                    "description": "Items in the list. Each item may include a reference to an analysis, a reference to an output, or a sub-list.",
                     "items": {
                         "$ref": "#/$defs/OrderedListItem"
                     },
@@ -764,6 +804,7 @@
                     "type": "string"
                 },
                 "label": {
+                    "description": "A short informative description that may be used for display.",
                     "type": "string"
                 },
                 "name": {
@@ -771,12 +812,14 @@
                     "type": "string"
                 },
                 "referencedOperationRelationships": {
+                    "description": "Relationships to other operations indicating how the result of the referenced operation are used in the calculation of the result for this operation.",
                     "items": {
                         "$ref": "#/$defs/ReferencedOperationRelationship"
                     },
                     "type": "array"
                 },
                 "resultPattern": {
+                    "description": "The default pattern or format to apply to the result for display.",
                     "type": "string"
                 }
             },
@@ -792,6 +835,7 @@
             "description": "The result of an analysis method operation performed on a subdivision of subjects or data records.",
             "properties": {
                 "formattedValue": {
+                    "description": "The result value formatted for display according to the resultPattern.",
                     "type": "string"
                 },
                 "operationId": {
@@ -799,9 +843,11 @@
                     "type": "string"
                 },
                 "rawValue": {
+                    "description": "The raw result value (e.g., with no rounding applied).",
                     "type": "string"
                 },
                 "resultGroups": {
+                    "description": "The group values associated with the result.",
                     "items": {
                         "$ref": "#/$defs/ResultGroup"
                     },
@@ -847,7 +893,8 @@
             "description": "A display ordered with respect to other displays in an analysis output.",
             "properties": {
                 "display": {
-                    "$ref": "#/$defs/OutputDisplay"
+                    "$ref": "#/$defs/OutputDisplay",
+                    "description": "A display contained in the output."
                 },
                 "order": {
                     "description": "The ordinal of the instance with respect to other instances.",
@@ -930,7 +977,8 @@
                     "type": "integer"
                 },
                 "subSection": {
-                    "$ref": "#/$defs/DisplaySubSection"
+                    "$ref": "#/$defs/DisplaySubSection",
+                    "description": "A defined piece of information text to display in a display section."
                 },
                 "subSectionId": {
                     "description": "NOT USED",
@@ -957,6 +1005,7 @@
                     "description": "NOT USED"
                 },
                 "subSectionId": {
+                    "description": "The identifier of the referenced subsection.",
                     "type": "string"
                 }
             },
@@ -979,18 +1028,21 @@
                     "type": "array"
                 },
                 "displays": {
+                    "description": "An ordered list of the displays included in the output.",
                     "items": {
                         "$ref": "#/$defs/OrderedDisplay"
                     },
                     "type": "array"
                 },
                 "documentRefs": {
+                    "description": "References to external documents containing additional information.",
                     "items": {
                         "$ref": "#/$defs/DocumentReference"
                     },
                     "type": "array"
                 },
                 "fileSpecifications": {
+                    "description": "Specifications of output files.",
                     "items": {
                         "$ref": "#/$defs/OutputFile"
                     },
@@ -1009,6 +1061,7 @@
                     "description": "Programming statements and/or a reference to the program used to perform the specific output."
                 },
                 "version": {
+                    "description": "An ordinal indicating the version of the identified instance of the class.",
                     "type": "integer"
                 }
             },
@@ -1024,12 +1077,14 @@
             "description": "A tabular representation of the results of one or more analyses.",
             "properties": {
                 "displaySections": {
+                    "description": "The parts of the display containing one or more pieces of informational text (e.g. title, footnote).",
                     "items": {
                         "$ref": "#/$defs/DisplaySection"
                     },
                     "type": "array"
                 },
                 "displayTitle": {
+                    "description": "Display description which uniquely identifies the display in the report.",
                     "type": "string"
                 },
                 "id": {
@@ -1041,6 +1096,7 @@
                     "type": "string"
                 },
                 "version": {
+                    "description": "An ordinal indicating the version of the identified instance of the class.",
                     "type": "integer"
                 }
             },
@@ -1063,9 +1119,11 @@
                         {
                             "$ref": "#/$defs/SponsorOutputFileType"
                         }
-                    ]
+                    ],
+                    "description": "The format of the output file."
                 },
                 "location": {
+                    "description": "A path (relative or absolute) indicating the location of the file.",
                     "type": "string"
                 },
                 "name": {
@@ -1073,6 +1131,7 @@
                     "type": "string"
                 },
                 "style": {
+                    "description": "Reference to the specification of the style used for the output.",
                     "type": "string"
                 }
             },
@@ -1259,6 +1318,7 @@
                     "type": "string"
                 },
                 "location": {
+                    "description": "A path (relative or absolute) indicating the location of the file.",
                     "type": "string"
                 },
                 "name": {
@@ -1321,7 +1381,8 @@
                         {
                             "$ref": "#/$defs/SponsorOperationRole"
                         }
-                    ]
+                    ],
+                    "description": "The role that the referenced operation's result plays in the calculation of the result of the parent operation."
                 }
             },
             "required": [
@@ -1379,6 +1440,7 @@
                     "type": "array"
                 },
                 "globalDisplaySections": {
+                    "description": "Display section specifications that may be applied to any display.",
                     "items": {
                         "$ref": "#/$defs/GlobalDisplaySection"
                     },
@@ -1415,6 +1477,7 @@
                     "type": "array"
                 },
                 "referenceDocuments": {
+                    "description": "External documents containing information referenced for the reporting event.",
                     "items": {
                         "$ref": "#/$defs/ReferenceDocument"
                     },
@@ -1428,6 +1491,7 @@
                     "type": "array"
                 },
                 "version": {
+                    "description": "An ordinal indicating the version of the identified instance of the class.",
                     "type": "integer"
                 }
             },
@@ -1583,6 +1647,7 @@
                     "type": "string"
                 },
                 "label": {
+                    "description": "A short informative description that may be used for display.",
                     "type": "string"
                 }
             },
@@ -1655,10 +1720,12 @@
             "description": "Selection criteria defined as either a simple condition ([variable] [comparator] [value(s)]) or a compound expression that may combine simple conditions or compound expressions.",
             "properties": {
                 "compoundExpression": {
-                    "$ref": "#/$defs/WhereClauseCompoundExpression"
+                    "$ref": "#/$defs/WhereClauseCompoundExpression",
+                    "description": "A compound expression that combines or negates where clauses."
                 },
                 "condition": {
-                    "$ref": "#/$defs/WhereClauseCondition"
+                    "$ref": "#/$defs/WhereClauseCondition",
+                    "description": "A simple selection criterion exressed as [dataset].[variable] [comparator] [value(s)]"
                 },
                 "level": {
                     "description": "The level of the entry within a hierarchical structure.",
@@ -1674,12 +1741,63 @@
         },
         "WhereClauseCompoundExpression": {
             "additionalProperties": false,
+            "allOf": [
+                {
+                    "if": {
+                        "properties": {
+                            "logicalOperator": {
+                                "anyOf": [
+                                    {
+                                        "const": "AND"
+                                    },
+                                    {
+                                        "const": "OR"
+                                    }
+                                ]
+                            }
+                        },
+                        "required": [
+                            "logicalOperator"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "whereClauses": {}
+                        },
+                        "required": [
+                            "whereClauses"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "logicalOperator": {
+                                "const": "NOT"
+                            }
+                        },
+                        "required": [
+                            "logicalOperator"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "value": {}
+                        },
+                        "required": [
+                            "value"
+                        ]
+                    }
+                }
+            ],
             "description": "A compound expression consisting of either two or more where clauses combined with the `AND` or `OR` logical operator, or a single where clause negated with the `NOT` logical operator.",
             "properties": {
                 "logicalOperator": {
-                    "$ref": "#/$defs/ExpressionLogicalOperatorEnum"
+                    "$ref": "#/$defs/ExpressionLogicalOperatorEnum",
+                    "description": "The boolean operator that is used to combine (AND, OR) or negate (NOT) the where claus(s) in the compound expression."
                 },
                 "whereClauses": {
+                    "description": "A list of one or more where clauses (selection criteria) to be combined or negated.",
                     "items": {
                         "$ref": "#/$defs/WhereClause"
                     },
@@ -1765,18 +1883,22 @@
             "description": "A simple selection criterion exressed as [dataset].[variable] [comparator] [value(s)]",
             "properties": {
                 "comparator": {
-                    "$ref": "#/$defs/ConditionComparatorEnum"
+                    "$ref": "#/$defs/ConditionComparatorEnum",
+                    "description": "Comparison operator indicating how the variable is compared to the value(s)."
                 },
                 "dataset": {
+                    "description": "The name of the analysis dataset.",
                     "type": "string"
                 },
                 "value": {
+                    "description": "The value(s) for comparison with the variable.",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "variable": {
+                    "description": "The name of the variable.",
                     "type": "string"
                 }
             },
@@ -1833,6 +1955,7 @@
             "type": "array"
         },
         "globalDisplaySections": {
+            "description": "Display section specifications that may be applied to any display.",
             "items": {
                 "$ref": "#/$defs/GlobalDisplaySection"
             },
@@ -1869,6 +1992,7 @@
             "type": "array"
         },
         "referenceDocuments": {
+            "description": "External documents containing information referenced for the reporting event.",
             "items": {
                 "$ref": "#/$defs/ReferenceDocument"
             },
@@ -1882,6 +2006,7 @@
             "type": "array"
         },
         "version": {
+            "description": "An ordinal indicating the version of the identified instance of the class.",
             "type": "integer"
         }
     },

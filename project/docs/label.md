@@ -1,5 +1,10 @@
 # Slot: label
 
+
+_A short informative description that may be used for display._
+
+
+
 URI: [ars:label](https://www.cdisc.org/ars/1-0/label)
 
 
@@ -65,6 +70,7 @@ URI: [ars:label](https://www.cdisc.org/ars/1-0/label)
 <details>
 ```yaml
 name: label
+description: A short informative description that may be used for display.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 alias: label

@@ -1,5 +1,10 @@
 # Slot: variable
 
+
+_The name of the variable._
+
+
+
 URI: [ars:variable](https://www.cdisc.org/ars/1-0/variable)
 
 
@@ -51,6 +56,7 @@ URI: [ars:variable](https://www.cdisc.org/ars/1-0/variable)
 <details>
 ```yaml
 name: variable
+description: The name of the variable.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 alias: variable

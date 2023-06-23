@@ -35,7 +35,7 @@ URI: [ars:DocumentReference](https://www.cdisc.org/ars/1-0/DocumentReference)
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [referenceDocumentId](referenceDocumentId.md) | 1..1 <br/> [ReferenceDocument](ReferenceDocument.md) |  | direct |
+| [referenceDocumentId](referenceDocumentId.md) | 1..1 <br/> [ReferenceDocument](ReferenceDocument.md) | The identifier of the referenced document | direct |
 | [pageRefs](pageRefs.md) | 0..* <br/> [PageRef](PageRef.md) | A list of references to specific parts of a document, which may be referenced... | direct |
 
 
@@ -125,6 +125,7 @@ rank: 1000
 attributes:
   referenceDocumentId:
     name: referenceDocumentId
+    description: The identifier of the referenced document.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: referenceDocumentId

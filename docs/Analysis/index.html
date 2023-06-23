@@ -173,7 +173,7 @@
 <tr>
 <td><a href="../version/">version</a></td>
 <td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td></td>
+<td>An ordinal indicating the version of the identified instance of the class</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -203,7 +203,7 @@
 <tr>
 <td><a href="../documentRefs/">documentRefs</a></td>
 <td>0..* <br/> <a href="../DocumentReference/">DocumentReference</a></td>
-<td></td>
+<td>References to external documents containing additional information</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -227,13 +227,13 @@
 <tr>
 <td><a href="../dataset/">dataset</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>The name of the analysis dataset</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../variable/">variable</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>The name of the variable</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -257,7 +257,7 @@
 <tr>
 <td><a href="../results/">results</a></td>
 <td>0..* <br/> <a href="../OperationResult/">OperationResult</a></td>
-<td></td>
+<td>The results of the analysis</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -456,6 +456,8 @@ attributes:
     required: true
   version:
     name: version
+    description: An ordinal indicating the version of the identified instance of the
+      class.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: version
@@ -527,6 +529,7 @@ attributes:
     - range: SponsorAnalysisPurpose
   documentRefs:
     name: documentRefs
+    description: References to external documents containing additional information.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     multivalued: true
@@ -578,6 +581,7 @@ attributes:
     inlined: false
   dataset:
     name: dataset
+    description: The name of the analysis dataset.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: dataset
@@ -588,6 +592,7 @@ attributes:
     range: string
   variable:
     name: variable
+    description: The name of the variable.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: variable
@@ -637,6 +642,7 @@ attributes:
     range: AnalysisOutputProgrammingCode
   results:
     name: results
+    description: The results of the analysis.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     multivalued: true

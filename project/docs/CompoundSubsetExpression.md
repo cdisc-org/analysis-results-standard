@@ -41,8 +41,8 @@ URI: [ars:CompoundSubsetExpression](https://www.cdisc.org/ars/1-0/CompoundSubset
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [logicalOperator](logicalOperator.md) | 1..1 <br/> [ExpressionLogicalOperatorEnum](ExpressionLogicalOperatorEnum.md) |  | [WhereClauseCompoundExpression](WhereClauseCompoundExpression.md) |
-| [whereClauses](whereClauses.md) | 0..* <br/> [WhereClause](WhereClause.md) |  | [WhereClauseCompoundExpression](WhereClauseCompoundExpression.md) |
+| [logicalOperator](logicalOperator.md) | 1..1 <br/> [ExpressionLogicalOperatorEnum](ExpressionLogicalOperatorEnum.md) | The boolean operator that is used to combine (AND, OR) or negate (NOT) the wh... | [WhereClauseCompoundExpression](WhereClauseCompoundExpression.md) |
+| [whereClauses](whereClauses.md) | 0..* <br/> [WhereClause](WhereClause.md) | A list of one or more where clauses (selection criteria) to be combined or ne... | [WhereClauseCompoundExpression](WhereClauseCompoundExpression.md) |
 
 
 
@@ -134,6 +134,8 @@ slot_usage:
 attributes:
   logicalOperator:
     name: logicalOperator
+    description: The boolean operator that is used to combine (AND, OR) or negate
+      (NOT) the where claus(s) in the compound expression.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: logicalOperator
@@ -144,6 +146,8 @@ attributes:
     required: true
   whereClauses:
     name: whereClauses
+    description: A list of one or more where clauses (selection criteria) to be combined
+      or negated.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     multivalued: true

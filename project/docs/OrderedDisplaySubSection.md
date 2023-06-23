@@ -48,8 +48,8 @@ URI: [ars:OrderedDisplaySubSection](https://www.cdisc.org/ars/1-0/OrderedDisplay
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [order](order.md) | 1..1 <br/> [Integer](Integer.md) | The ordinal of the instance with respect to other instances | direct |
-| [subSection](subSection.md) | 0..1 <br/> [DisplaySubSection](DisplaySubSection.md) |  | direct |
-| [subSectionId](subSectionId.md) | 0..1 <br/> [DisplaySubSection](DisplaySubSection.md) |  | direct |
+| [subSection](subSection.md) | 0..1 <br/> [DisplaySubSection](DisplaySubSection.md) | A defined piece of information text to display in a display section | direct |
+| [subSectionId](subSectionId.md) | 0..1 <br/> [DisplaySubSection](DisplaySubSection.md) | The identifier of the referenced subsection | direct |
 
 
 
@@ -174,6 +174,7 @@ attributes:
     required: true
   subSection:
     name: subSection
+    description: A defined piece of information text to display in a display section.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: subSection
@@ -184,6 +185,7 @@ attributes:
     inlined: true
   subSectionId:
     name: subSectionId
+    description: The identifier of the referenced subsection.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: subSectionId

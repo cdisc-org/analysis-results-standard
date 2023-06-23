@@ -1,5 +1,10 @@
 # Slot: listItems
 
+
+_Items in the list. Each item may include a reference to an analysis, a reference to an output, or a sub-list._
+
+
+
 URI: [ars:listItems](https://www.cdisc.org/ars/1-0/listItems)
 
 
@@ -52,6 +57,8 @@ URI: [ars:listItems](https://www.cdisc.org/ars/1-0/listItems)
 <details>
 ```yaml
 name: listItems
+description: Items in the list. Each item may include a reference to an analysis,
+  a reference to an output, or a sub-list.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 multivalued: true

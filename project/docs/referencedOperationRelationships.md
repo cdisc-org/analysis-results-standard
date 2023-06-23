@@ -1,5 +1,10 @@
 # Slot: referencedOperationRelationships
 
+
+_Relationships to other operations indicating how the result of the referenced operation are used in the calculation of the result for this operation._
+
+
+
 URI: [ars:referencedOperationRelationships](https://www.cdisc.org/ars/1-0/referencedOperationRelationships)
 
 
@@ -52,6 +57,8 @@ URI: [ars:referencedOperationRelationships](https://www.cdisc.org/ars/1-0/refere
 <details>
 ```yaml
 name: referencedOperationRelationships
+description: Relationships to other operations indicating how the result of the referenced
+  operation are used in the calculation of the result for this operation.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 multivalued: true

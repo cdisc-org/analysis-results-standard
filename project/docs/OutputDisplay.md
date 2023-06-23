@@ -46,9 +46,9 @@ URI: [ars:OutputDisplay](https://www.cdisc.org/ars/1-0/OutputDisplay)
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [id](id.md) | 1..1 <br/> [String](String.md) | The assigned identifying value for the instance of the class | direct |
-| [version](version.md) | 0..1 <br/> [Integer](Integer.md) |  | direct |
-| [displayTitle](displayTitle.md) | 0..1 <br/> [String](String.md) |  | direct |
-| [displaySections](displaySections.md) | 0..* <br/> [DisplaySection](DisplaySection.md) |  | direct |
+| [version](version.md) | 0..1 <br/> [Integer](Integer.md) | An ordinal indicating the version of the identified instance of the class | direct |
+| [displayTitle](displayTitle.md) | 0..1 <br/> [String](String.md) | Display description which uniquely identifies the display in the report | direct |
+| [displaySections](displaySections.md) | 0..* <br/> [DisplaySection](DisplaySection.md) | The parts of the display containing one or more pieces of informational text ... | direct |
 | [name](name.md) | 1..1 <br/> [String](String.md) | The name for the instance of the class | [NamedObject](NamedObject.md) |
 
 
@@ -156,6 +156,8 @@ attributes:
     required: true
   version:
     name: version
+    description: An ordinal indicating the version of the identified instance of the
+      class.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: version
@@ -168,6 +170,8 @@ attributes:
     range: integer
   displayTitle:
     name: displayTitle
+    description: Display description which uniquely identifies the display in the
+      report.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: displayTitle
@@ -177,6 +181,8 @@ attributes:
     range: string
   displaySections:
     name: displaySections
+    description: The parts of the display containing one or more pieces of informational
+      text (e.g. title, footnote).
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     multivalued: true

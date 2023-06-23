@@ -1,5 +1,10 @@
 # Slot: text
 
+
+_The text to be displayed in the display section._
+
+
+
 URI: [ars:text](https://www.cdisc.org/ars/1-0/text)
 
 
@@ -50,6 +55,7 @@ URI: [ars:text](https://www.cdisc.org/ars/1-0/text)
 <details>
 ```yaml
 name: text
+description: The text to be displayed in the display section.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 alias: text

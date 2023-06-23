@@ -130,7 +130,7 @@
 <tr>
 <td><a href="../label/">label</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>A short informative description that may be used for display</td>
 <td><a href="../Group/">Group</a></td>
 </tr>
 <tr>
@@ -148,13 +148,13 @@
 <tr>
 <td><a href="../condition/">condition</a></td>
 <td>0..1 <br/> <a href="../WhereClauseCondition/">WhereClauseCondition</a></td>
-<td></td>
+<td>A simple selection criterion exressed as [dataset]</td>
 <td><a href="../WhereClause/">WhereClause</a></td>
 </tr>
 <tr>
 <td><a href="../compoundExpression/">compoundExpression</a></td>
 <td>0..1 <br/> <a href="../CompoundGroupExpression/">CompoundGroupExpression</a></td>
-<td></td>
+<td>A compound expression that combines or negates where clauses</td>
 <td><a href="../WhereClause/">WhereClause</a></td>
 </tr>
 </tbody>
@@ -252,6 +252,7 @@ attributes:
     required: true
   label:
     name: label
+    description: A short informative description that may be used for display.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: label
@@ -296,6 +297,8 @@ attributes:
     range: integer
   condition:
     name: condition
+    description: A simple selection criterion exressed as [dataset].[variable] [comparator]
+      [value(s)]
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: condition
@@ -305,6 +308,7 @@ attributes:
     range: WhereClauseCondition
   compoundExpression:
     name: compoundExpression
+    description: A compound expression that combines or negates where clauses.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: compoundExpression

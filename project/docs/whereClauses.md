@@ -1,5 +1,10 @@
 # Slot: whereClauses
 
+
+_A list of one or more where clauses (selection criteria) to be combined or negated._
+
+
+
 URI: [ars:whereClauses](https://www.cdisc.org/ars/1-0/whereClauses)
 
 
@@ -34,6 +39,12 @@ URI: [ars:whereClauses](https://www.cdisc.org/ars/1-0/whereClauses)
 
 
 
+## Comments
+
+* Each where clause may be defined as either a simple condition ([variable] [comparator] [value(s)]) or a compound expression that may combine additional simple conditions or compound expressions.
+* Two or more where clauses should be specified when the logical operator is AND or OR.
+* Only one where clause should be specfied when the logical operator is NOT. This where clause will usually be a compound expression.
+
 ## Identifier and Mapping Information
 
 
@@ -55,6 +66,16 @@ URI: [ars:whereClauses](https://www.cdisc.org/ars/1-0/whereClauses)
 <details>
 ```yaml
 name: whereClauses
+description: A list of one or more where clauses (selection criteria) to be combined
+  or negated.
+comments:
+- Each where clause may be defined as either a simple condition ([variable] [comparator]
+  [value(s)]) or a compound expression that may combine additional simple conditions
+  or compound expressions.
+- Two or more where clauses should be specified when the logical operator is AND or
+  OR.
+- Only one where clause should be specfied when the logical operator is NOT. This
+  where clause will usually be a compound expression.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 multivalued: true

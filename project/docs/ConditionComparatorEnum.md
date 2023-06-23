@@ -2,6 +2,11 @@
 
 
 
+
+_Comparison operators indicating how the value of a variable is compared to a (list of) prespecified value(s)._
+
+
+
 URI: [ConditionComparatorEnum](ConditionComparatorEnum)
 
 ## Permissible Values
@@ -24,7 +29,7 @@ URI: [ConditionComparatorEnum](ConditionComparatorEnum)
 
 | Name | Description |
 | ---  | --- |
-| [comparator](comparator.md) |  |
+| [comparator](comparator.md) | Comparison operator indicating how the variable is compared to the value(s) |
 
 
 
@@ -52,6 +57,8 @@ URI: [ConditionComparatorEnum](ConditionComparatorEnum)
 <details>
 ```yaml
 name: ConditionComparatorEnum
+description: Comparison operators indicating how the value of a variable is compared
+  to a (list of) prespecified value(s).
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 permissible_values:

@@ -44,7 +44,7 @@ URI: [ars:ReferencedOperationRelationship](https://www.cdisc.org/ars/1-0/Referen
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [id](id.md) | 1..1 <br/> [String](String.md) | The assigned identifying value for the instance of the class | direct |
-| [referencedOperationRole](referencedOperationRole.md) | 1..1 <br/> [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) |  | direct |
+| [referencedOperationRole](referencedOperationRole.md) | 1..1 <br/> [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) | The role that the referenced operation's result plays in the calculation of t... | direct |
 | [operationId](operationId.md) | 1..1 <br/> [Operation](Operation.md) | The identifier of the referenced operation | direct |
 | [analysisId](analysisId.md) | 0..1 <br/> [Analysis](Analysis.md) | The identifier of the referenced analysis | direct |
 | [description](description.md) | 0..1 <br/> [String](String.md) | A textual description of the instance of the class | direct |
@@ -156,6 +156,8 @@ attributes:
     required: true
   referencedOperationRole:
     name: referencedOperationRole
+    description: The role that the referenced operation's result plays in the calculation
+      of the result of the parent operation.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: referencedOperationRole

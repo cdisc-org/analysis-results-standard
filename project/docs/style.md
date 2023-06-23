@@ -1,5 +1,10 @@
 # Slot: style
 
+
+_Reference to the specification of the style used for the output._
+
+
+
 URI: [ars:style](https://www.cdisc.org/ars/1-0/style)
 
 
@@ -29,6 +34,10 @@ URI: [ars:style](https://www.cdisc.org/ars/1-0/style)
 
 
 
+## Comments
+
+* This is a placeholder attribute. Style specifications are not yet included in the model.
+
 ## Identifier and Mapping Information
 
 
@@ -50,6 +59,10 @@ URI: [ars:style](https://www.cdisc.org/ars/1-0/style)
 <details>
 ```yaml
 name: style
+description: Reference to the specification of the style used for the output.
+comments:
+- This is a placeholder attribute. Style specifications are not yet included in the
+  model.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 alias: style

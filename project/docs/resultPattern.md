@@ -1,5 +1,10 @@
 # Slot: resultPattern
 
+
+_The default pattern or format to apply to the result for display._
+
+
+
 URI: [ars:resultPattern](https://www.cdisc.org/ars/1-0/resultPattern)
 
 
@@ -29,6 +34,10 @@ URI: [ars:resultPattern](https://www.cdisc.org/ars/1-0/resultPattern)
 
 
 
+## Comments
+
+* May be a textual representation of a generic result to be displayed in a table shell (e.g. XX.X) or a machine readable formatting instruction.
+
 ## Identifier and Mapping Information
 
 
@@ -50,6 +59,10 @@ URI: [ars:resultPattern](https://www.cdisc.org/ars/1-0/resultPattern)
 <details>
 ```yaml
 name: resultPattern
+description: The default pattern or format to apply to the result for display.
+comments:
+- May be a textual representation of a generic result to be displayed in a table shell
+  (e.g. XX.X) or a machine readable formatting instruction.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 alias: resultPattern

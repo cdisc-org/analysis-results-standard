@@ -1,5 +1,10 @@
 # Slot: displaySections
 
+
+_The parts of the display containing one or more pieces of informational text (e.g. title, footnote)._
+
+
+
 URI: [ars:displaySections](https://www.cdisc.org/ars/1-0/displaySections)
 
 
@@ -52,6 +57,8 @@ URI: [ars:displaySections](https://www.cdisc.org/ars/1-0/displaySections)
 <details>
 ```yaml
 name: displaySections
+description: The parts of the display containing one or more pieces of informational
+  text (e.g. title, footnote).
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 multivalued: true

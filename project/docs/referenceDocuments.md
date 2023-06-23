@@ -1,5 +1,10 @@
 # Slot: referenceDocuments
 
+
+_External documents containing information referenced for the reporting event._
+
+
+
 URI: [ars:referenceDocuments](https://www.cdisc.org/ars/1-0/referenceDocuments)
 
 
@@ -31,6 +36,10 @@ URI: [ars:referenceDocuments](https://www.cdisc.org/ars/1-0/referenceDocuments)
 
 
 
+## Comments
+
+* May include specification or report documents (e.g. the SAP or CSR) and program files.
+
 ## Identifier and Mapping Information
 
 
@@ -52,6 +61,11 @@ URI: [ars:referenceDocuments](https://www.cdisc.org/ars/1-0/referenceDocuments)
 <details>
 ```yaml
 name: referenceDocuments
+description: External documents containing information referenced for the reporting
+  event.
+comments:
+- May include specification or report documents (e.g. the SAP or CSR) and program
+  files.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 multivalued: true

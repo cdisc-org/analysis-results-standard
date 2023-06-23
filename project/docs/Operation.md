@@ -46,9 +46,9 @@ URI: [ars:Operation](https://www.cdisc.org/ars/1-0/Operation)
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [id](id.md) | 1..1 <br/> [String](String.md) | The assigned identifying value for the instance of the class | direct |
-| [label](label.md) | 0..1 <br/> [String](String.md) |  | direct |
-| [referencedOperationRelationships](referencedOperationRelationships.md) | 0..* <br/> [ReferencedOperationRelationship](ReferencedOperationRelationship.md) |  | direct |
-| [resultPattern](resultPattern.md) | 0..1 <br/> [String](String.md) |  | direct |
+| [label](label.md) | 0..1 <br/> [String](String.md) | A short informative description that may be used for display | direct |
+| [referencedOperationRelationships](referencedOperationRelationships.md) | 0..* <br/> [ReferencedOperationRelationship](ReferencedOperationRelationship.md) | Relationships to other operations indicating how the result of the referenced... | direct |
+| [resultPattern](resultPattern.md) | 0..1 <br/> [String](String.md) | The default pattern or format to apply to the result for display | direct |
 | [name](name.md) | 1..1 <br/> [String](String.md) | The name for the instance of the class | [NamedObject](NamedObject.md) |
 
 
@@ -160,6 +160,7 @@ attributes:
     required: true
   label:
     name: label
+    description: A short informative description that may be used for display.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: label
@@ -177,6 +178,8 @@ attributes:
     range: string
   referencedOperationRelationships:
     name: referencedOperationRelationships
+    description: Relationships to other operations indicating how the result of the
+      referenced operation are used in the calculation of the result for this operation.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     multivalued: true
@@ -189,6 +192,10 @@ attributes:
     inlined_as_list: true
   resultPattern:
     name: resultPattern
+    description: The default pattern or format to apply to the result for display.
+    comments:
+    - May be a textual representation of a generic result to be displayed in a table
+      shell (e.g. XX.X) or a machine readable formatting instruction.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: resultPattern

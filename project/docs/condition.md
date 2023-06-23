@@ -1,5 +1,10 @@
 # Slot: condition
 
+
+_A simple selection criterion exressed as [dataset].[variable] [comparator] [value(s)]_
+
+
+
 URI: [ars:condition](https://www.cdisc.org/ars/1-0/condition)
 
 
@@ -55,6 +60,8 @@ URI: [ars:condition](https://www.cdisc.org/ars/1-0/condition)
 <details>
 ```yaml
 name: condition
+description: A simple selection criterion exressed as [dataset].[variable] [comparator]
+  [value(s)]
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 alias: condition

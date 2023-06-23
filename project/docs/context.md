@@ -42,7 +42,7 @@ URI: [ars:context](https://www.cdisc.org/ars/1-0/context)
 
 | Value |
 | --- |
-| SAS Version 9.2 |
+| SAS Version 9.4 |
 
 ## Identifier and Mapping Information
 
@@ -68,7 +68,7 @@ name: context
 description: The name and version of the computer language used for the actual programming
   statements provided.
 examples:
-- value: SAS Version 9.2
+- value: SAS Version 9.4
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 alias: context

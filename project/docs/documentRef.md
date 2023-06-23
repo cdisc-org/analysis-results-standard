@@ -1,5 +1,10 @@
 # Slot: documentRef
 
+
+_A reference to the document containing programming code._
+
+
+
 URI: [ars:documentRef](https://www.cdisc.org/ars/1-0/documentRef)
 
 
@@ -51,6 +56,7 @@ URI: [ars:documentRef](https://www.cdisc.org/ars/1-0/documentRef)
 <details>
 ```yaml
 name: documentRef
+description: A reference to the document containing programming code.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 multivalued: false

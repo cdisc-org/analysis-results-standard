@@ -1,5 +1,10 @@
 # Slot: display
 
+
+_A display contained in the output._
+
+
+
 URI: [ars:display](https://www.cdisc.org/ars/1-0/display)
 
 
@@ -50,6 +55,7 @@ URI: [ars:display](https://www.cdisc.org/ars/1-0/display)
 <details>
 ```yaml
 name: display
+description: A display contained in the output.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 alias: display

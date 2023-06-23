@@ -1,5 +1,10 @@
 # Slot: dataset
 
+
+_The name of the analysis dataset._
+
+
+
 URI: [ars:dataset](https://www.cdisc.org/ars/1-0/dataset)
 
 
@@ -51,6 +56,7 @@ URI: [ars:dataset](https://www.cdisc.org/ars/1-0/dataset)
 <details>
 ```yaml
 name: dataset
+description: The name of the analysis dataset.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 alias: dataset

@@ -40,9 +40,9 @@ URI: [ars:OperationResult](https://www.cdisc.org/ars/1-0/OperationResult)
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [operationId](operationId.md) | 1..1 <br/> [Operation](Operation.md) | The identifier of the referenced operation | direct |
-| [resultGroups](resultGroups.md) | 0..* <br/> [ResultGroup](ResultGroup.md) |  | direct |
-| [rawValue](rawValue.md) | 0..1 <br/> [String](String.md) |  | direct |
-| [formattedValue](formattedValue.md) | 0..1 <br/> [String](String.md) |  | direct |
+| [resultGroups](resultGroups.md) | 0..* <br/> [ResultGroup](ResultGroup.md) | The group values associated with the result | direct |
+| [rawValue](rawValue.md) | 0..1 <br/> [String](String.md) | The raw result value (e | direct |
+| [formattedValue](formattedValue.md) | 0..1 <br/> [String](String.md) | The result value formatted for display according to the resultPattern | direct |
 
 
 
@@ -134,6 +134,10 @@ attributes:
     inlined: false
   resultGroups:
     name: resultGroups
+    description: The group values associated with the result.
+    comments:
+    - There should be a result group value for each grouping that is indicated as
+      being associated with a separate result (resultsByGroup = True)
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     multivalued: true
@@ -146,6 +150,7 @@ attributes:
     inlined_as_list: true
   rawValue:
     name: rawValue
+    description: The raw result value (e.g., with no rounding applied).
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: rawValue
@@ -155,6 +160,7 @@ attributes:
     range: string
   formattedValue:
     name: formattedValue
+    description: The result value formatted for display according to the resultPattern.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: formattedValue

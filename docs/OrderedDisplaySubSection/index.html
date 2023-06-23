@@ -130,13 +130,13 @@
 <tr>
 <td><a href="../subSection/">subSection</a></td>
 <td>0..1 <br/> <a href="../DisplaySubSection/">DisplaySubSection</a></td>
-<td></td>
+<td>A defined piece of information text to display in a display section</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../subSectionId/">subSectionId</a></td>
 <td>0..1 <br/> <a href="../DisplaySubSection/">DisplaySubSection</a></td>
-<td></td>
+<td>The identifier of the referenced subsection</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -257,6 +257,7 @@ attributes:
     required: true
   subSection:
     name: subSection
+    description: A defined piece of information text to display in a display section.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: subSection
@@ -267,6 +268,7 @@ attributes:
     inlined: true
   subSectionId:
     name: subSectionId
+    description: The identifier of the referenced subsection.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: subSectionId

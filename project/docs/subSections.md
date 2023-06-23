@@ -1,5 +1,10 @@
 # Slot: subSections
 
+
+_A list of defined pieces of information text that may be displayed in display sections of the same type._
+
+
+
 URI: [ars:subSections](https://www.cdisc.org/ars/1-0/subSections)
 
 
@@ -52,6 +57,8 @@ URI: [ars:subSections](https://www.cdisc.org/ars/1-0/subSections)
 <details>
 ```yaml
 name: subSections
+description: A list of defined pieces of information text that may be displayed in
+  display sections of the same type.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 multivalued: true

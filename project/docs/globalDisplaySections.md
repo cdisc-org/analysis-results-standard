@@ -1,5 +1,10 @@
 # Slot: globalDisplaySections
 
+
+_Display section specifications that may be applied to any display._
+
+
+
 URI: [ars:globalDisplaySections](https://www.cdisc.org/ars/1-0/globalDisplaySections)
 
 
@@ -52,6 +57,7 @@ URI: [ars:globalDisplaySections](https://www.cdisc.org/ars/1-0/globalDisplaySect
 <details>
 ```yaml
 name: globalDisplaySections
+description: Display section specifications that may be applied to any display.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 multivalued: true

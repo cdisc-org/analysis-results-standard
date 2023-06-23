@@ -51,8 +51,8 @@ URI: [ars:WhereClause](https://www.cdisc.org/ars/1-0/WhereClause)
 | ---  | --- | --- | --- |
 | [level](level.md) | 0..1 <br/> [Integer](Integer.md) | The level of the entry within a hierarchical structure | direct |
 | [order](order.md) | 0..1 <br/> [Integer](Integer.md) | The ordinal of the instance with respect to other instances | direct |
-| [condition](condition.md) | 0..1 <br/> [WhereClauseCondition](WhereClauseCondition.md) |  | direct |
-| [compoundExpression](compoundExpression.md) | 0..1 <br/> [WhereClauseCompoundExpression](WhereClauseCompoundExpression.md) |  | direct |
+| [condition](condition.md) | 0..1 <br/> [WhereClauseCondition](WhereClauseCondition.md) | A simple selection criterion exressed as [dataset] | direct |
+| [compoundExpression](compoundExpression.md) | 0..1 <br/> [WhereClauseCompoundExpression](WhereClauseCompoundExpression.md) | A compound expression that combines or negates where clauses | direct |
 
 
 
@@ -236,6 +236,8 @@ attributes:
     range: integer
   condition:
     name: condition
+    description: A simple selection criterion exressed as [dataset].[variable] [comparator]
+      [value(s)]
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: condition
@@ -245,6 +247,7 @@ attributes:
     range: WhereClauseCondition
   compoundExpression:
     name: compoundExpression
+    description: A compound expression that combines or negates where clauses.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: compoundExpression

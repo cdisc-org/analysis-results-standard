@@ -113,13 +113,13 @@
 <tr>
 <td><a href="../logicalOperator/">logicalOperator</a></td>
 <td>1..1 <br/> <a href="../ExpressionLogicalOperatorEnum/">ExpressionLogicalOperatorEnum</a></td>
-<td></td>
+<td>The boolean operator that is used to combine (AND, OR) or negate (NOT) the wh...</td>
 <td><a href="../WhereClauseCompoundExpression/">WhereClauseCompoundExpression</a></td>
 </tr>
 <tr>
 <td><a href="../whereClauses/">whereClauses</a></td>
 <td>0..* <br/> <a href="../Group/">Group</a></td>
-<td></td>
+<td>A list of one or more where clauses (selection criteria) to be combined or ne...</td>
 <td><a href="../WhereClauseCompoundExpression/">WhereClauseCompoundExpression</a></td>
 </tr>
 </tbody>
@@ -219,6 +219,8 @@ slot_usage:
 attributes:
   logicalOperator:
     name: logicalOperator
+    description: The boolean operator that is used to combine (AND, OR) or negate
+      (NOT) the where claus(s) in the compound expression.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: logicalOperator
@@ -229,6 +231,8 @@ attributes:
     required: true
   whereClauses:
     name: whereClauses
+    description: A list of one or more where clauses (selection criteria) to be combined
+      or negated.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     multivalued: true

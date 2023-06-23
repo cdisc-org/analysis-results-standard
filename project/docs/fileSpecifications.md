@@ -1,5 +1,10 @@
 # Slot: fileSpecifications
 
+
+_Specifications of output files._
+
+
+
 URI: [ars:fileSpecifications](https://www.cdisc.org/ars/1-0/fileSpecifications)
 
 
@@ -52,6 +57,7 @@ URI: [ars:fileSpecifications](https://www.cdisc.org/ars/1-0/fileSpecifications)
 <details>
 ```yaml
 name: fileSpecifications
+description: Specifications of output files.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 multivalued: true

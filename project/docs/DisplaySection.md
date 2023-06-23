@@ -1,7 +1,7 @@
 # Class: DisplaySection
 
 
-_A part of a tabular display containing one or more pieces of informational text._
+_A part of a tabular display containing one or more pieces of informational text (e.g., title, footnote)._
 
 
 
@@ -35,8 +35,8 @@ URI: [ars:DisplaySection](https://www.cdisc.org/ars/1-0/DisplaySection)
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [sectionType](sectionType.md) | 0..1 <br/> [DisplaySectionTypeEnum](DisplaySectionTypeEnum.md) |  | direct |
-| [orderedSubSections](orderedSubSections.md) | 0..* <br/> [OrderedDisplaySubSection](OrderedDisplaySubSection.md) |  | direct |
+| [sectionType](sectionType.md) | 0..1 <br/> [DisplaySectionTypeEnum](DisplaySectionTypeEnum.md) | The type of display section that contains one or more pieces of informational... | direct |
+| [orderedSubSections](orderedSubSections.md) | 0..* <br/> [OrderedDisplaySubSection](OrderedDisplaySubSection.md) | An ordered list of the informational text to display in the display section | direct |
 
 
 
@@ -52,16 +52,6 @@ URI: [ars:DisplaySection](https://www.cdisc.org/ars/1-0/DisplaySection)
 
 
 
-
-
-## Examples
-
-| Value |
-| --- |
-| Title |
-| Footnote |
-| Legend |
-| Abbreviation |
 
 ## Identifier and Mapping Information
 
@@ -101,12 +91,7 @@ URI: [ars:DisplaySection](https://www.cdisc.org/ars/1-0/DisplaySection)
 ```yaml
 name: DisplaySection
 description: A part of a tabular display containing one or more pieces of informational
-  text.
-examples:
-- value: Title
-- value: Footnote
-- value: Legend
-- value: Abbreviation
+  text (e.g., title, footnote).
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 slots:
@@ -122,17 +107,19 @@ slots:
 ```yaml
 name: DisplaySection
 description: A part of a tabular display containing one or more pieces of informational
-  text.
-examples:
-- value: Title
-- value: Footnote
-- value: Legend
-- value: Abbreviation
+  text (e.g., title, footnote).
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 attributes:
   sectionType:
     name: sectionType
+    description: The type of display section that contains one or more pieces of informational
+      text.
+    examples:
+    - value: Title
+    - value: Footnote
+    - value: Legend
+    - value: Abbreviation
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: sectionType
@@ -143,6 +130,8 @@ attributes:
     range: DisplaySectionTypeEnum
   orderedSubSections:
     name: orderedSubSections
+    description: An ordered list of the informational text to display in the display
+      section.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     multivalued: true

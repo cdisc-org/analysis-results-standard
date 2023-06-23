@@ -1,5 +1,10 @@
 # Slot: results
 
+
+_The results of the analysis._
+
+
+
 URI: [ars:results](https://www.cdisc.org/ars/1-0/results)
 
 
@@ -52,6 +57,7 @@ URI: [ars:results](https://www.cdisc.org/ars/1-0/results)
 <details>
 ```yaml
 name: results
+description: The results of the analysis.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 multivalued: true

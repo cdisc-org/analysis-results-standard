@@ -36,7 +36,7 @@ URI: [ars:AnalysisCategorization](https://www.cdisc.org/ars/1-0/AnalysisCategori
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [id](id.md) | 1..1 <br/> [String](String.md) | The assigned identifying value for the instance of the class | direct |
-| [label](label.md) | 0..1 <br/> [String](String.md) |  | direct |
+| [label](label.md) | 0..1 <br/> [String](String.md) | A short informative description that may be used for display | direct |
 | [categories](categories.md) | 1..* <br/> [AnalysisCategory](AnalysisCategory.md) | Implementer-defined categories of analyses/outputs, each of which may include... | direct |
 
 
@@ -144,6 +144,7 @@ attributes:
     required: true
   label:
     name: label
+    description: A short informative description that may be used for display.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: label

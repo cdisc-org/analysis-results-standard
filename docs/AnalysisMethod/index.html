@@ -131,7 +131,7 @@
 <tr>
 <td><a href="../label/">label</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>A short informative description that may be used for display</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -149,13 +149,13 @@
 <tr>
 <td><a href="../documentRefs/">documentRefs</a></td>
 <td>0..* <br/> <a href="../DocumentReference/">DocumentReference</a></td>
-<td></td>
+<td>References to external documents containing additional information</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../codeTemplate/">codeTemplate</a></td>
 <td>0..1 <br/> <a href="../AnalysisProgrammingCodeTemplate/">AnalysisProgrammingCodeTemplate</a></td>
-<td>Template programming statements and/or a reference to the template program us...</td>
+<td>Template programming statements used to perform the statistical operations fo...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -272,6 +272,7 @@ attributes:
     required: true
   label:
     name: label
+    description: A short informative description that may be used for display.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: label
@@ -318,6 +319,7 @@ attributes:
     inlined_as_list: true
   documentRefs:
     name: documentRefs
+    description: References to external documents containing additional information.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     multivalued: true
@@ -332,8 +334,11 @@ attributes:
     inlined_as_list: true
   codeTemplate:
     name: codeTemplate
-    description: Template programming statements and/or a reference to the template
-      program used to perform the specific analysis.
+    description: Template programming statements used to perform the statistical operations
+      for any analysis that uses this method.
+    comments:
+    - Template programming statements may be represented as code or as a reference
+      to the program file.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: codeTemplate

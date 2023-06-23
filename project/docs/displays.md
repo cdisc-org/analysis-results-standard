@@ -1,5 +1,10 @@
 # Slot: displays
 
+
+_An ordered list of the displays included in the output._
+
+
+
 URI: [ars:displays](https://www.cdisc.org/ars/1-0/displays)
 
 
@@ -52,6 +57,7 @@ URI: [ars:displays](https://www.cdisc.org/ars/1-0/displays)
 <details>
 ```yaml
 name: displays
+description: An ordered list of the displays included in the output.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 multivalued: true

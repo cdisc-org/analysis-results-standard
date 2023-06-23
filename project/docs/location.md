@@ -1,5 +1,10 @@
 # Slot: location
 
+
+_A path (relative or absolute) indicating the location of the file._
+
+
+
 URI: [ars:location](https://www.cdisc.org/ars/1-0/location)
 
 
@@ -51,6 +56,7 @@ URI: [ars:location](https://www.cdisc.org/ars/1-0/location)
 <details>
 ```yaml
 name: location
+description: A path (relative or absolute) indicating the location of the file.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 alias: location

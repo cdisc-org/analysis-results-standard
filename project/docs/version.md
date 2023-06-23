@@ -1,5 +1,10 @@
 # Slot: version
 
+
+_An ordinal indicating the version of the identified instance of the class._
+
+
+
 URI: [ars:version](https://www.cdisc.org/ars/1-0/version)
 
 
@@ -53,6 +58,7 @@ URI: [ars:version](https://www.cdisc.org/ars/1-0/version)
 <details>
 ```yaml
 name: version
+description: An ordinal indicating the version of the identified instance of the class.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 alias: version

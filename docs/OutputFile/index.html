@@ -115,19 +115,19 @@
 <tr>
 <td><a href="../fileType/">fileType</a></td>
 <td>0..1 <br/> <a href="../ExtensibleTerminologyTerm/">ExtensibleTerminologyTerm</a></td>
-<td></td>
+<td>The format of the output file</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../location/">location</a></td>
 <td>0..1 <br/> <a href="../Uri/">Uri</a></td>
-<td></td>
+<td>A path (relative or absolute) indicating the location of the file</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../style/">style</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>Reference to the specification of the style used for the output</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -207,6 +207,7 @@ is_a: NamedObject
 attributes:
   fileType:
     name: fileType
+    description: The format of the output file.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: fileType
@@ -219,6 +220,7 @@ attributes:
     - range: SponsorOutputFileType
   location:
     name: location
+    description: A path (relative or absolute) indicating the location of the file.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: location
@@ -229,6 +231,10 @@ attributes:
     range: uri
   style:
     name: style
+    description: Reference to the specification of the style used for the output.
+    comments:
+    - This is a placeholder attribute. Style specifications are not yet included in
+      the model.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: style

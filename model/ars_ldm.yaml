@@ -272,15 +272,10 @@ classes:
       - displaySections
 
   DisplaySection:
-    description: A part of a tabular display containing one or more pieces of informational text.
+    description: A part of a tabular display containing one or more pieces of informational text (e.g., title, footnote).
     slots:
       - sectionType
       - orderedSubSections
-    examples:
-      - value: Title
-      - value: Footnote
-      - value: Legend
-      - value: Abbreviation
 
   OrderedDisplaySubSection:
     description: A single subsection ordered with respect to other subsections in the same section of a display.
@@ -357,6 +352,9 @@ classes:
       - variable
       - comparator
       - value
+    slot_usage:
+      value:
+        description: The value(s) for comparison with the variable.
     rules:
       - preconditions:
           slot_conditions:
@@ -392,6 +390,27 @@ classes:
     slots:
       - logicalOperator
       - whereClauses
+    rules:
+      - preconditions:
+          slot_conditions:
+            logicalOperator:
+              any_of:
+                - equals_string: AND
+                - equals_string: OR
+        postconditions:
+          slot_conditions:
+            whereClauses:
+              minimum_cardinality: 2
+        description: At least 2 where clauses are required when logicalOperator is AND or OR.
+      - preconditions:
+          slot_conditions:
+            logicalOperator:
+              equals_string: NOT
+        postconditions:
+          slot_conditions:
+            value:
+              maximum_cardinality: 1
+        description: Only a single where clause is allowed when logicalOperator is NOT.
 
   CompoundSetExpression:
     description: >-
@@ -853,6 +872,7 @@ slots:
     range: Output
 
   listItems:
+    description: Items in the list. Each item may include a reference to an analysis, a reference to an output, or a sub-list.
     multivalued: true
     list_elements_ordered: true
     inlined: true
@@ -917,6 +937,7 @@ slots:
     inlined: false
 
   description:
+    range: string
     description: A textual description of the instance of the class.
 
   referencedAnalysisOperations:
@@ -927,14 +948,21 @@ slots:
     inlined_as_list: true
 
   resultPattern:
+    description: The default pattern or format to apply to the result for display.
+    comments:
+      - May be a textual representation of a generic result to be displayed in a table shell (e.g. XX.X) or a machine readable formatting instruction.
 
   results:
+    description: The results of the analysis.
     multivalued: true
     range: OperationResult
     inlined: true
     inlined_as_list: true
 
   resultGroups:
+    description: The group values associated with the result.
+    comments:
+      - There should be a result group value for each grouping that is indicated as being associated with a separate result (resultsByGroup = True)
     multivalued: true
     range: ResultGroup
     inlined: true
@@ -949,16 +977,21 @@ slots:
     description: The data value used as a group within a data-driven grouping.
 
   rawValue:
+    description: The raw result value (e.g., with no rounding applied).
 
   formattedValue:
+    description: The result value formatted for display according to the resultPattern.
 
   referencedOperationRelationships:
+    description: >-
+      Relationships to other operations indicating how the result of the referenced operation are used in the calculation of the result for this operation.
     multivalued: true
     range: ReferencedOperationRelationship
     inlined: true
     inlined_as_list: true
 
   referencedOperationRole:
+    description: The role that the referenced operation's result plays in the calculation of the result of the parent operation.
     range: ExtensibleTerminologyTerm
     required: true
     any_of:
@@ -972,17 +1005,21 @@ slots:
     inlined: false
 
   programmingCode:
-    description: Programming statements and/or a reference to the program used to perform the specific analysis or create the specific output.
+    description: Programming statements used to perform the specific analysis or create the specific output.
+    comments:
+      - Programming statements may be represented as code or as a reference to the program file.
     range: AnalysisOutputProgrammingCode
 
   codeTemplate:
-    description: Template programming statements and/or a reference to the template program used to perform the specific analysis.
+    description: Template programming statements used to perform the statistical operations for any analysis that uses this method.
+    comments:
+      - Template programming statements may be represented as code or as a reference to the program file.
     range: AnalysisProgrammingCodeTemplate
 
   context:
     description: The name and version of the computer language used for the actual programming statements provided.
     examples:
-      - value: SAS Version 9.2
+      - value: SAS Version 9.4
     range: string
     required: true
 
@@ -1017,28 +1054,37 @@ slots:
     range: string
 
   version:
+    description: An ordinal indicating the version of the identified instance of the class.
     range: integer
 
   displayTitle:
+    description: Display description which uniquely identifies the display in the report.
 
   fileSpecifications:
+    description: Specifications of output files.
     multivalued: true
     inlined: true
     inlined_as_list: true
     range: OutputFile
 
   fileType:
+    description: The format of the output file.
     range: ExtensibleTerminologyTerm
     any_of:
       - range: OutputFileType
       - range: SponsorOutputFileType
 
   location:
+    description: A path (relative or absolute) indicating the location of the file.
     range: uri
 
   style:
+    description: Reference to the specification of the style used for the output.
+    comments:
+      - This is a placeholder attribute. Style specifications are not yet included in the model.
 
   displays:
+    description: An ordered list of the displays included in the output.
     range: OrderedDisplay
     multivalued: true
     inlined: true
@@ -1046,25 +1092,35 @@ slots:
     list_elements_ordered: true
 
   display:
+    description: A display contained in the output.
     range: OutputDisplay
     inlined: true
 
   globalDisplaySections:
+    description: Display section specifications that may be applied to any display.
     multivalued: true
     inlined: true
     inlined_as_list: true
     range: GlobalDisplaySection
 
   displaySections:
+    description: The parts of the display containing one or more pieces of informational text (e.g. title, footnote).
     multivalued: true
     inlined: true
     inlined_as_list: true
     range: DisplaySection
 
   sectionType:
+    description: The type of display section that contains one or more pieces of informational text.
     range: DisplaySectionTypeEnum
+    examples:
+      - value: Title
+      - value: Footnote
+      - value: Legend
+      - value: Abbreviation
 
   orderedSubSections:
+    description: An ordered list of the informational text to display in the display section.
     multivalued: true
     list_elements_ordered: true
     inlined: true
@@ -1075,68 +1131,94 @@ slots:
       - range: OrderedSubSectionRef
 
   subSection:
+    description: A defined piece of information text to display in a display section.
     range: DisplaySubSection
     inlined: true
 
   subSectionId:
+    description: The identifier of the referenced subsection.
     range: DisplaySubSection
     inlined: false
 
   subSections:
+    description: A list of defined pieces of information text that may be displayed in display sections of the same type.
     multivalued: true
     inlined: true
     inlined_as_list: true
     range: DisplaySubSection
 
   text:
+    description: The text to be displayed in the display section.
 
   logicalOperator:
+    description: The boolean operator that is used to combine (AND, OR) or negate (NOT) the where claus(s) in the compound expression.
     required: true
     range: ExpressionLogicalOperatorEnum
 
   condition:
+    description: A simple selection criterion exressed as [dataset].[variable] [comparator] [value(s)]
     range: WhereClauseCondition
 
   compoundExpression:
+    description: >-
+      A compound expression that combines or negates where clauses.
     range: WhereClauseCompoundExpression
 
   whereClauses:
+    description: A list of one or more where clauses (selection criteria) to be combined or negated.
+    comments:
+      - >-
+        Each where clause may be defined as either a simple condition ([variable] [comparator] [value(s)]) or a compound expression that may combine
+        additional simple conditions or compound expressions.
+      - Two or more where clauses should be specified when the logical operator is AND or OR.
+      - Only one where clause should be specfied when the logical operator is NOT. This where clause will usually be a compound expression.
     multivalued: true
     list_elements_ordered: true
     inlined: false
     range: WhereClause
 
   dataset:
+    description: The name of the analysis dataset.
 
   variable:
+    description: The name of the variable.
 
   comparator:
+    description: Comparison operator indicating how the variable is compared to the value(s).
     range: ConditionComparatorEnum
 
   value:
+    description: The prespecified value or values.
     multivalued: true
 
   label:
+    description: A short informative description that may be used for display.
 
   referenceDocuments:
+    description: External documents containing information referenced for the reporting event.
+    comments:
+      - May include specification or report documents (e.g. the SAP or CSR) and program files.
     multivalued: true
     range: ReferenceDocument
     inlined: true
     inlined_as_list: true
 
   documentRefs:
+    description: References to external documents containing additional information.
     multivalued: true
     range: DocumentReference
     inlined: true
     inlined_as_list: true
 
   documentRef:
+    description: A reference to the document containing programming code.
     multivalued: false
     range: DocumentReference
     inlined: true
     inlined_as_list: true
 
   referenceDocumentId:
+    description: The identifier of the referenced document.
     range: ReferenceDocument
     required: true
     inlined: false
@@ -1228,13 +1310,14 @@ enums:
         description: Plain text
 
   ExpressionLogicalOperatorEnum:
-    description: A Boolean operator, a symbol or a function that denotes a logical operation (e.g., and, or, not).
+    description: Boolean operators denoting a logical operation (e.g., and, or, not).
     permissible_values:
       AND:
       OR:
       NOT:
 
   ConditionComparatorEnum:
+    description: Comparison operators indicating how the value of a variable is compared to a (list of) prespecified value(s).
     permissible_values:
       EQ:
         description: Is equal to
@@ -1254,6 +1337,7 @@ enums:
         description: Is not in
 
   DisplaySectionTypeEnum:
+    description: Types of display section that contain one or more pieces of informational text.
     permissible_values:
       Title:
       Footnote:

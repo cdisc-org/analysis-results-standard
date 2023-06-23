@@ -1,5 +1,10 @@
 # Slot: logicalOperator
 
+
+_The boolean operator that is used to combine (AND, OR) or negate (NOT) the where claus(s) in the compound expression._
+
+
+
 URI: [ars:logicalOperator](https://www.cdisc.org/ars/1-0/logicalOperator)
 
 
@@ -55,6 +60,8 @@ URI: [ars:logicalOperator](https://www.cdisc.org/ars/1-0/logicalOperator)
 <details>
 ```yaml
 name: logicalOperator
+description: The boolean operator that is used to combine (AND, OR) or negate (NOT)
+  the where claus(s) in the compound expression.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 alias: logicalOperator

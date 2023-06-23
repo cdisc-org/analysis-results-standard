@@ -1,5 +1,10 @@
 # Slot: orderedSubSections
 
+
+_An ordered list of the informational text to display in the display section._
+
+
+
 URI: [ars:orderedSubSections](https://www.cdisc.org/ars/1-0/orderedSubSections)
 
 
@@ -52,6 +57,7 @@ URI: [ars:orderedSubSections](https://www.cdisc.org/ars/1-0/orderedSubSections)
 <details>
 ```yaml
 name: orderedSubSections
+description: An ordered list of the informational text to display in the display section.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 multivalued: true

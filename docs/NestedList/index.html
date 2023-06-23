@@ -97,7 +97,7 @@
 <tr>
 <td><a href="../listItems/">listItems</a></td>
 <td>0..* <br/> <a href="../OrderedListItem/">OrderedListItem</a></td>
-<td></td>
+<td>Items in the list</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -179,6 +179,8 @@ rank: 1000
 attributes:
   listItems:
     name: listItems
+    description: Items in the list. Each item may include a reference to an analysis,
+      a reference to an output, or a sub-list.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     multivalued: true

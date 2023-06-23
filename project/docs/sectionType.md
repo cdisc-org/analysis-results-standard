@@ -1,5 +1,10 @@
 # Slot: sectionType
 
+
+_The type of display section that contains one or more pieces of informational text._
+
+
+
 URI: [ars:sectionType](https://www.cdisc.org/ars/1-0/sectionType)
 
 
@@ -30,6 +35,16 @@ URI: [ars:sectionType](https://www.cdisc.org/ars/1-0/sectionType)
 
 
 
+
+## Examples
+
+| Value |
+| --- |
+| Title |
+| Footnote |
+| Legend |
+| Abbreviation |
+
 ## Identifier and Mapping Information
 
 
@@ -51,6 +66,13 @@ URI: [ars:sectionType](https://www.cdisc.org/ars/1-0/sectionType)
 <details>
 ```yaml
 name: sectionType
+description: The type of display section that contains one or more pieces of informational
+  text.
+examples:
+- value: Title
+- value: Footnote
+- value: Legend
+- value: Abbreviation
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 alias: sectionType

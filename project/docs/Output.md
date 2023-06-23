@@ -60,11 +60,11 @@ URI: [ars:Output](https://www.cdisc.org/ars/1-0/Output)
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [id](id.md) | 1..1 <br/> [String](String.md) | The assigned identifying value for the instance of the class | direct |
-| [version](version.md) | 0..1 <br/> [Integer](Integer.md) |  | direct |
-| [fileSpecifications](fileSpecifications.md) | 0..* <br/> [OutputFile](OutputFile.md) |  | direct |
-| [displays](displays.md) | 0..* <br/> [OrderedDisplay](OrderedDisplay.md) |  | direct |
+| [version](version.md) | 0..1 <br/> [Integer](Integer.md) | An ordinal indicating the version of the identified instance of the class | direct |
+| [fileSpecifications](fileSpecifications.md) | 0..* <br/> [OutputFile](OutputFile.md) | Specifications of output files | direct |
+| [displays](displays.md) | 0..* <br/> [OrderedDisplay](OrderedDisplay.md) | An ordered list of the displays included in the output | direct |
 | [categoryIds](categoryIds.md) | 0..* <br/> [AnalysisCategory](AnalysisCategory.md) | References to any implementer-defined categories that apply to the output | direct |
-| [documentRefs](documentRefs.md) | 0..* <br/> [DocumentReference](DocumentReference.md) |  | direct |
+| [documentRefs](documentRefs.md) | 0..* <br/> [DocumentReference](DocumentReference.md) | References to external documents containing additional information | direct |
 | [programmingCode](programmingCode.md) | 0..1 <br/> [AnalysisOutputProgrammingCode](AnalysisOutputProgrammingCode.md) | Programming statements and/or a reference to the program used to perform the ... | direct |
 | [name](name.md) | 1..1 <br/> [String](String.md) | The name for the instance of the class | [NamedObject](NamedObject.md) |
 
@@ -209,6 +209,8 @@ attributes:
     required: true
   version:
     name: version
+    description: An ordinal indicating the version of the identified instance of the
+      class.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: version
@@ -221,6 +223,7 @@ attributes:
     range: integer
   fileSpecifications:
     name: fileSpecifications
+    description: Specifications of output files.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     multivalued: true
@@ -233,6 +236,7 @@ attributes:
     inlined_as_list: true
   displays:
     name: displays
+    description: An ordered list of the displays included in the output.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     multivalued: true
@@ -261,6 +265,7 @@ attributes:
     inlined: false
   documentRefs:
     name: documentRefs
+    description: References to external documents containing additional information.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     multivalued: true

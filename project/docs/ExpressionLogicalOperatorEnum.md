@@ -3,7 +3,7 @@
 
 
 
-_A Boolean operator, a symbol or a function that denotes a logical operation (e.g., and, or, not)._
+_Boolean operators denoting a logical operation (e.g., and, or, not)._
 
 
 
@@ -24,7 +24,7 @@ URI: [ExpressionLogicalOperatorEnum](ExpressionLogicalOperatorEnum)
 
 | Name | Description |
 | ---  | --- |
-| [logicalOperator](logicalOperator.md) |  |
+| [logicalOperator](logicalOperator.md) | The boolean operator that is used to combine (AND, OR) or negate (NOT) the wh... |
 
 
 
@@ -52,8 +52,7 @@ URI: [ExpressionLogicalOperatorEnum](ExpressionLogicalOperatorEnum)
 <details>
 ```yaml
 name: ExpressionLogicalOperatorEnum
-description: A Boolean operator, a symbol or a function that denotes a logical operation
-  (e.g., and, or, not).
+description: Boolean operators denoting a logical operation (e.g., and, or, not).
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 permissible_values:

@@ -31,7 +31,7 @@ URI: [ars:NestedList](https://www.cdisc.org/ars/1-0/NestedList)
 
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [listItems](listItems.md) | 0..* <br/> [OrderedListItem](OrderedListItem.md) |  | direct |
+| [listItems](listItems.md) | 0..* <br/> [OrderedListItem](OrderedListItem.md) | Items in the list | direct |
 
 
 
@@ -107,6 +107,8 @@ rank: 1000
 attributes:
   listItems:
     name: listItems
+    description: Items in the list. Each item may include a reference to an analysis,
+      a reference to an output, or a sub-list.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     multivalued: true

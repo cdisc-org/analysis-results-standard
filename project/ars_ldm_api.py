@@ -83,19 +83,19 @@ class ArsLdmAPI:
         Queries for instances of `ReportingEvent`
 
         :param id: The assigned identifying value for the instance of the class.
-        :param version: None
+        :param version: An ordinal indicating the version of the identified instance of the class.
         :param listOfPlannedAnalyses: A structured list of the analyses defined for the reporting event.
         :param listOfPlannedOutputs: An optional structured list of the outputs defined for the reporting event.
         :param analysisSets: The analysis sets (subject populations) defined for the reporting event.
         :param analysisGroupings: Characteristics used to subdivide the subject population (e.g., treatment, sex, age group).
         :param dataSubsets: Subsets of data identified by selection criteria for inclusion in analysis definitions.
         :param dataGroupings: Characteristics used to subdivide data records in analysis datasets (e.g., visit, system organ class).
-        :param globalDisplaySections: None
+        :param globalDisplaySections: Display section specifications that may be applied to any display.
         :param analysisCategorizations: Sets of related implementer-defined categories that can be used to categorize analyses or outputs.
         :param analyses: The analyses defined for the reporting event.
         :param methods: The defined methods used to analyze any analysis variable.
         :param outputs: The outputs defined for the reporting event.
-        :param referenceDocuments: None
+        :param referenceDocuments: External documents containing information referenced for the reporting event.
         :param terminologyExtensions: Any sponsor-defined extensions to extensible terminology.
         :param name: The name for the instance of the class.
         
@@ -159,7 +159,7 @@ class ArsLdmAPI:
         """
         Queries for instances of `NestedList`
 
-        :param listItems: None
+        :param listItems: Items in the list. Each item may include a reference to an analysis, a reference to an output, or a sub-list.
         
         :return: Person list matching constraints
         """
@@ -246,7 +246,7 @@ class ArsLdmAPI:
         Queries for instances of `AnalysisCategorization`
 
         :param id: The assigned identifying value for the instance of the class.
-        :param label: None
+        :param label: A short informative description that may be used for display.
         :param categories: Implementer-defined categories of analyses/outputs, each of which may include one or more sub-categorization.
         
         :return: Person list matching constraints
@@ -286,7 +286,7 @@ class ArsLdmAPI:
         Queries for instances of `AnalysisCategory`
 
         :param id: The assigned identifying value for the instance of the class.
-        :param label: None
+        :param label: A short informative description that may be used for display.
         :param subCategorizations: Sets of related implementer-defined sub-categories that can be used to categorize analyses or outputs.
         
         :return: Person list matching constraints
@@ -340,21 +340,21 @@ class ArsLdmAPI:
         Queries for instances of `Analysis`
 
         :param id: The assigned identifying value for the instance of the class.
-        :param version: None
+        :param version: An ordinal indicating the version of the identified instance of the class.
         :param categoryIds: References to any implementer-defined categories that apply to the analysis.
         :param description: A textual description of the instance of the class.
         :param reason: The rationale for performing this analysis. It indicates when the analysis was planned.
         :param purpose: The purpose of the analysis within the body of evidence (e.g., section in the clinical study report).
-        :param documentRefs: None
+        :param documentRefs: References to external documents containing additional information.
         :param analysisSetId: The identifier of the referenced analysis set.
         :param orderedGroupings: An ordered list of grouping factors used in the analysis.
         :param dataSubsetId: The identifier of the referenced data subset.
-        :param dataset: None
-        :param variable: None
+        :param dataset: The name of the analysis dataset.
+        :param variable: The name of the variable.
         :param methodId: A reference to the set of one or more statistical operations performed for the analysis.
         :param referencedAnalysisOperations: Indications of which analysis contains the results for each referenced operation.
         :param programmingCode: Programming statements and/or a reference to the program used to perform the specific analysis.
-        :param results: None
+        :param results: The results of the analysis.
         :param name: The name for the instance of the class.
         
         :return: Person list matching constraints
@@ -499,9 +499,9 @@ class ArsLdmAPI:
         Queries for instances of `OperationResult`
 
         :param operationId: The identifier of the referenced operation.
-        :param resultGroups: None
-        :param rawValue: None
-        :param formattedValue: None
+        :param resultGroups: The group values associated with the result.
+        :param rawValue: The raw result value (e.g., with no rounding applied).
+        :param formattedValue: The result value formatted for display according to the resultPattern.
         
         :return: Person list matching constraints
         """
@@ -586,11 +586,11 @@ class ArsLdmAPI:
         Queries for instances of `AnalysisMethod`
 
         :param id: The assigned identifying value for the instance of the class.
-        :param label: None
+        :param label: A short informative description that may be used for display.
         :param description: A textual description of the instance of the class.
         :param operations: The calculations performed for the method. Each operation generates a statistical result.
-        :param documentRefs: None
-        :param codeTemplate: Template programming statements and/or a reference to the template program used to perform the specific analysis.
+        :param documentRefs: References to external documents containing additional information.
+        :param codeTemplate: Template programming statements used to perform the statistical operations for any analysis that uses this method.
         :param name: The name for the instance of the class.
         
         :return: Person list matching constraints
@@ -640,9 +640,9 @@ class ArsLdmAPI:
         Queries for instances of `Operation`
 
         :param id: The assigned identifying value for the instance of the class.
-        :param label: None
-        :param referencedOperationRelationships: None
-        :param resultPattern: None
+        :param label: A short informative description that may be used for display.
+        :param referencedOperationRelationships: Relationships to other operations indicating how the result of the referenced operation are used in the calculation of the result for this operation.
+        :param resultPattern: The default pattern or format to apply to the result for display.
         :param name: The name for the instance of the class.
         
         :return: Person list matching constraints
@@ -688,7 +688,7 @@ class ArsLdmAPI:
         Queries for instances of `ReferencedOperationRelationship`
 
         :param id: The assigned identifying value for the instance of the class.
-        :param referencedOperationRole: None
+        :param referencedOperationRole: The role that the referenced operation's result plays in the calculation of the result of the parent operation.
         :param operationId: The identifier of the referenced operation.
         :param analysisId: The identifier of the referenced analysis.
         :param description: A textual description of the instance of the class.
@@ -736,7 +736,7 @@ class ArsLdmAPI:
 
         :param context: The name and version of the computer language used for the actual programming statements provided.
         :param code: Programming statements used to perform the specific analysis.
-        :param documentRef: None
+        :param documentRef: A reference to the document containing programming code.
         :param parameters: Parameter values used to generate or execute the programming code.
         
         :return: Person list matching constraints
@@ -780,7 +780,7 @@ class ArsLdmAPI:
 
         :param context: The name and version of the computer language used for the actual programming statements provided.
         :param code: Programming statements used to perform the specific analysis.
-        :param documentRef: None
+        :param documentRef: A reference to the document containing programming code.
         :param parameters: Parameters whose values will be used to generate or execute the programming code for a specific analysis.
         
         :return: Person list matching constraints
@@ -947,11 +947,11 @@ class ArsLdmAPI:
         Queries for instances of `Output`
 
         :param id: The assigned identifying value for the instance of the class.
-        :param version: None
-        :param fileSpecifications: None
-        :param displays: None
+        :param version: An ordinal indicating the version of the identified instance of the class.
+        :param fileSpecifications: Specifications of output files.
+        :param displays: An ordered list of the displays included in the output.
         :param categoryIds: References to any implementer-defined categories that apply to the output.
-        :param documentRefs: None
+        :param documentRefs: References to external documents containing additional information.
         :param programmingCode: Programming statements and/or a reference to the program used to perform the specific output.
         :param name: The name for the instance of the class.
         
@@ -1002,9 +1002,9 @@ class ArsLdmAPI:
         """
         Queries for instances of `OutputFile`
 
-        :param fileType: None
-        :param location: None
-        :param style: None
+        :param fileType: The format of the output file.
+        :param location: A path (relative or absolute) indicating the location of the file.
+        :param style: Reference to the specification of the style used for the output.
         :param name: The name for the instance of the class.
         
         :return: Person list matching constraints
@@ -1045,7 +1045,7 @@ class ArsLdmAPI:
         Queries for instances of `OrderedDisplay`
 
         :param order: The ordinal of the instance with respect to other instances.
-        :param display: None
+        :param display: A display contained in the output.
         
         :return: Person list matching constraints
         """
@@ -1084,9 +1084,9 @@ class ArsLdmAPI:
         Queries for instances of `OutputDisplay`
 
         :param id: The assigned identifying value for the instance of the class.
-        :param version: None
-        :param displayTitle: None
-        :param displaySections: None
+        :param version: An ordinal indicating the version of the identified instance of the class.
+        :param displayTitle: Display description which uniquely identifies the display in the report.
+        :param displaySections: The parts of the display containing one or more pieces of informational text (e.g. title, footnote).
         :param name: The name for the instance of the class.
         
         :return: Person list matching constraints
@@ -1128,8 +1128,8 @@ class ArsLdmAPI:
         """
         Queries for instances of `DisplaySection`
 
-        :param sectionType: None
-        :param orderedSubSections: None
+        :param sectionType: The type of display section that contains one or more pieces of informational text.
+        :param orderedSubSections: An ordered list of the informational text to display in the display section.
         
         :return: Person list matching constraints
         """
@@ -1166,8 +1166,8 @@ class ArsLdmAPI:
         Queries for instances of `OrderedDisplaySubSection`
 
         :param order: The ordinal of the instance with respect to other instances.
-        :param subSection: None
-        :param subSectionId: None
+        :param subSection: A defined piece of information text to display in a display section.
+        :param subSectionId: The identifier of the referenced subsection.
         
         :return: Person list matching constraints
         """
@@ -1206,7 +1206,7 @@ class ArsLdmAPI:
         Queries for instances of `OrderedSubSection`
 
         :param order: The ordinal of the instance with respect to other instances.
-        :param subSection: None
+        :param subSection: A defined piece of information text to display in a display section.
         :param subSectionId: NOT USED
         
         :return: Person list matching constraints
@@ -1247,7 +1247,7 @@ class ArsLdmAPI:
 
         :param order: The ordinal of the instance with respect to other instances.
         :param subSection: NOT USED
-        :param subSectionId: None
+        :param subSectionId: The identifier of the referenced subsection.
         
         :return: Person list matching constraints
         """
@@ -1285,7 +1285,7 @@ class ArsLdmAPI:
         Queries for instances of `DisplaySubSection`
 
         :param id: The assigned identifying value for the instance of the class.
-        :param text: None
+        :param text: The text to be displayed in the display section.
         
         :return: Person list matching constraints
         """
@@ -1320,8 +1320,8 @@ class ArsLdmAPI:
         """
         Queries for instances of `GlobalDisplaySection`
 
-        :param sectionType: None
-        :param subSections: None
+        :param sectionType: The type of display section that contains one or more pieces of informational text.
+        :param subSections: A list of defined pieces of information text that may be displayed in display sections of the same type.
         
         :return: Person list matching constraints
         """
@@ -1360,8 +1360,8 @@ class ArsLdmAPI:
 
         :param level: The level of the entry within a hierarchical structure.
         :param order: The ordinal of the instance with respect to other instances.
-        :param condition: None
-        :param compoundExpression: None
+        :param condition: A simple selection criterion exressed as [dataset].[variable] [comparator] [value(s)]
+        :param compoundExpression: A compound expression that combines or negates where clauses.
         
         :return: Person list matching constraints
         """
@@ -1402,10 +1402,10 @@ class ArsLdmAPI:
         """
         Queries for instances of `WhereClauseCondition`
 
-        :param dataset: None
-        :param variable: None
-        :param comparator: None
-        :param value: None
+        :param dataset: The name of the analysis dataset.
+        :param variable: The name of the variable.
+        :param comparator: Comparison operator indicating how the variable is compared to the value(s).
+        :param value: The value(s) for comparison with the variable.
         
         :return: Person list matching constraints
         """
@@ -1444,8 +1444,8 @@ class ArsLdmAPI:
         """
         Queries for instances of `WhereClauseCompoundExpression`
 
-        :param logicalOperator: None
-        :param whereClauses: None
+        :param logicalOperator: The boolean operator that is used to combine (AND, OR) or negate (NOT) the where claus(s) in the compound expression.
+        :param whereClauses: A list of one or more where clauses (selection criteria) to be combined or negated.
         
         :return: Person list matching constraints
         """
@@ -1480,8 +1480,8 @@ class ArsLdmAPI:
         """
         Queries for instances of `CompoundSetExpression`
 
-        :param logicalOperator: None
-        :param whereClauses: None
+        :param logicalOperator: The boolean operator that is used to combine (AND, OR) or negate (NOT) the where claus(s) in the compound expression.
+        :param whereClauses: A list of one or more where clauses (selection criteria) to be combined or negated.
         
         :return: Person list matching constraints
         """
@@ -1516,8 +1516,8 @@ class ArsLdmAPI:
         """
         Queries for instances of `CompoundGroupExpression`
 
-        :param logicalOperator: None
-        :param whereClauses: None
+        :param logicalOperator: The boolean operator that is used to combine (AND, OR) or negate (NOT) the where claus(s) in the compound expression.
+        :param whereClauses: A list of one or more where clauses (selection criteria) to be combined or negated.
         
         :return: Person list matching constraints
         """
@@ -1552,8 +1552,8 @@ class ArsLdmAPI:
         """
         Queries for instances of `CompoundSubsetExpression`
 
-        :param logicalOperator: None
-        :param whereClauses: None
+        :param logicalOperator: The boolean operator that is used to combine (AND, OR) or negate (NOT) the where claus(s) in the compound expression.
+        :param whereClauses: A list of one or more where clauses (selection criteria) to be combined or negated.
         
         :return: Person list matching constraints
         """
@@ -1593,11 +1593,11 @@ class ArsLdmAPI:
         Queries for instances of `AnalysisSet`
 
         :param id: The assigned identifying value for the instance of the class.
-        :param label: None
+        :param label: A short informative description that may be used for display.
         :param level: The level of the entry within a hierarchical structure.
         :param order: The ordinal of the instance with respect to other instances.
-        :param condition: None
-        :param compoundExpression: None
+        :param condition: A simple selection criterion exressed as [dataset].[variable] [comparator] [value(s)]
+        :param compoundExpression: A compound expression that combines or negates where clauses.
         
         :return: Person list matching constraints
         """
@@ -1644,7 +1644,7 @@ class ArsLdmAPI:
         Queries for instances of `GroupingFactor`
 
         :param id: The assigned identifying value for the instance of the class.
-        :param label: None
+        :param label: A short informative description that may be used for display.
         :param groupingVariable: For groupings based on a single variable, a reference to the dataset variable upon which grouping is based.
         :param dataDriven: Indicates whether the groups defined by the grouping are prespecified (false) or obtained from distinct data values of the groupingVariable (true).
         :param groups: The pre-specified groups within the grouping.
@@ -1692,7 +1692,7 @@ class ArsLdmAPI:
         Queries for instances of `SubjectGroupingFactor`
 
         :param id: The assigned identifying value for the instance of the class.
-        :param label: None
+        :param label: A short informative description that may be used for display.
         :param groupingVariable: For groupings based on a single variable, a reference to the dataset variable upon which grouping is based.
         :param dataDriven: Indicates whether the groups defined by the grouping are prespecified (false) or obtained from distinct data values of the groupingVariable (true).
         :param groups: The pre-specified groups within the grouping.
@@ -1740,7 +1740,7 @@ class ArsLdmAPI:
         Queries for instances of `DataGroupingFactor`
 
         :param id: The assigned identifying value for the instance of the class.
-        :param label: None
+        :param label: A short informative description that may be used for display.
         :param groupingVariable: For groupings based on a single variable, a reference to the dataset variable upon which grouping is based.
         :param dataDriven: Indicates whether the groups defined by the grouping are prespecified (false) or obtained from distinct data values of the groupingVariable (true).
         :param groups: The pre-specified groups within the grouping.
@@ -1789,11 +1789,11 @@ class ArsLdmAPI:
         Queries for instances of `Group`
 
         :param id: The assigned identifying value for the instance of the class.
-        :param label: None
+        :param label: A short informative description that may be used for display.
         :param level: The level of the entry within a hierarchical structure.
         :param order: The ordinal of the instance with respect to other instances.
-        :param condition: None
-        :param compoundExpression: None
+        :param condition: A simple selection criterion exressed as [dataset].[variable] [comparator] [value(s)]
+        :param compoundExpression: A compound expression that combines or negates where clauses.
         
         :return: Person list matching constraints
         """
@@ -1841,11 +1841,11 @@ class ArsLdmAPI:
         Queries for instances of `AnalysisGroup`
 
         :param id: The assigned identifying value for the instance of the class.
-        :param label: None
+        :param label: A short informative description that may be used for display.
         :param level: The level of the entry within a hierarchical structure.
         :param order: The ordinal of the instance with respect to other instances.
-        :param condition: None
-        :param compoundExpression: None
+        :param condition: A simple selection criterion exressed as [dataset].[variable] [comparator] [value(s)]
+        :param compoundExpression: A compound expression that combines or negates where clauses.
         
         :return: Person list matching constraints
         """
@@ -1893,11 +1893,11 @@ class ArsLdmAPI:
         Queries for instances of `DataGroup`
 
         :param id: The assigned identifying value for the instance of the class.
-        :param label: None
+        :param label: A short informative description that may be used for display.
         :param level: The level of the entry within a hierarchical structure.
         :param order: The ordinal of the instance with respect to other instances.
-        :param condition: None
-        :param compoundExpression: None
+        :param condition: A simple selection criterion exressed as [dataset].[variable] [comparator] [value(s)]
+        :param compoundExpression: A compound expression that combines or negates where clauses.
         
         :return: Person list matching constraints
         """
@@ -1945,11 +1945,11 @@ class ArsLdmAPI:
         Queries for instances of `DataSubset`
 
         :param id: The assigned identifying value for the instance of the class.
-        :param label: None
+        :param label: A short informative description that may be used for display.
         :param level: The level of the entry within a hierarchical structure.
         :param order: The ordinal of the instance with respect to other instances.
-        :param condition: None
-        :param compoundExpression: None
+        :param condition: A simple selection criterion exressed as [dataset].[variable] [comparator] [value(s)]
+        :param compoundExpression: A compound expression that combines or negates where clauses.
         
         :return: Person list matching constraints
         """
@@ -1994,7 +1994,7 @@ class ArsLdmAPI:
         Queries for instances of `ReferenceDocument`
 
         :param id: The assigned identifying value for the instance of the class.
-        :param location: None
+        :param location: A path (relative or absolute) indicating the location of the file.
         :param name: The name for the instance of the class.
         
         :return: Person list matching constraints
@@ -2032,7 +2032,7 @@ class ArsLdmAPI:
         """
         Queries for instances of `DocumentReference`
 
-        :param referenceDocumentId: None
+        :param referenceDocumentId: The identifier of the referenced document.
         :param pageRefs: A list of references to specific parts of a document, which may be referenced as a list of one or more page numbers, a range of page numbers, or a list of named destinations in the document (e.g. bookmarks).
         
         :return: Person list matching constraints

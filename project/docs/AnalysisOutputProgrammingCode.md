@@ -41,7 +41,7 @@ URI: [ars:AnalysisOutputProgrammingCode](https://www.cdisc.org/ars/1-0/AnalysisO
 | ---  | --- | --- | --- |
 | [context](context.md) | 1..1 <br/> [String](String.md) | The name and version of the computer language used for the actual programming... | direct |
 | [code](code.md) | 0..1 <br/> [String](String.md) | Programming statements used to perform the specific analysis | direct |
-| [documentRef](documentRef.md) | 0..1 <br/> [DocumentReference](DocumentReference.md) |  | direct |
+| [documentRef](documentRef.md) | 0..1 <br/> [DocumentReference](DocumentReference.md) | A reference to the document containing programming code | direct |
 | [parameters](parameters.md) | 0..* <br/> [AnalysisOutputCodeParameter](AnalysisOutputCodeParameter.md) | Parameter values used to generate or execute the programming code | direct |
 
 
@@ -141,7 +141,7 @@ attributes:
     description: The name and version of the computer language used for the actual
       programming statements provided.
     examples:
-    - value: SAS Version 9.2
+    - value: SAS Version 9.4
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: context
@@ -164,6 +164,7 @@ attributes:
     range: string
   documentRef:
     name: documentRef
+    description: A reference to the document containing programming code.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     multivalued: false

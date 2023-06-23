@@ -50,11 +50,11 @@ URI: [ars:DataSubset](https://www.cdisc.org/ars/1-0/DataSubset)
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [id](id.md) | 1..1 <br/> [String](String.md) | The assigned identifying value for the instance of the class | direct |
-| [label](label.md) | 0..1 <br/> [String](String.md) |  | direct |
+| [label](label.md) | 0..1 <br/> [String](String.md) | A short informative description that may be used for display | direct |
 | [level](level.md) | 0..1 <br/> [Integer](Integer.md) | The level of the entry within a hierarchical structure | [WhereClause](WhereClause.md) |
 | [order](order.md) | 0..1 <br/> [Integer](Integer.md) | The ordinal of the instance with respect to other instances | [WhereClause](WhereClause.md) |
-| [condition](condition.md) | 0..1 <br/> [WhereClauseCondition](WhereClauseCondition.md) |  | [WhereClause](WhereClause.md) |
-| [compoundExpression](compoundExpression.md) | 0..1 <br/> [CompoundSubsetExpression](CompoundSubsetExpression.md) |  | [WhereClause](WhereClause.md) |
+| [condition](condition.md) | 0..1 <br/> [WhereClauseCondition](WhereClauseCondition.md) | A simple selection criterion exressed as [dataset] | [WhereClause](WhereClause.md) |
+| [compoundExpression](compoundExpression.md) | 0..1 <br/> [CompoundSubsetExpression](CompoundSubsetExpression.md) | A compound expression that combines or negates where clauses | [WhereClause](WhereClause.md) |
 
 
 
@@ -174,6 +174,7 @@ attributes:
     required: true
   label:
     name: label
+    description: A short informative description that may be used for display.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: label
@@ -218,6 +219,8 @@ attributes:
     range: integer
   condition:
     name: condition
+    description: A simple selection criterion exressed as [dataset].[variable] [comparator]
+      [value(s)]
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: condition
@@ -227,6 +230,7 @@ attributes:
     range: WhereClauseCondition
   compoundExpression:
     name: compoundExpression
+    description: A compound expression that combines or negates where clauses.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: compoundExpression
