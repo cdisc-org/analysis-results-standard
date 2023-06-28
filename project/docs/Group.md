@@ -10,36 +10,29 @@ _A subdivision of the subject population or analysis dataset record set based on
 URI: [ars:Group](https://www.cdisc.org/ars/1-0/Group)
 
 
-
 ```mermaid
- classDiagram
-    class Group
-      WhereClause <|-- Group
-      
+erDiagram
+Group {
+    string id  
+    string label  
+    integer level  
+    integer order  
+}
+CompoundGroupExpression {
+    ExpressionLogicalOperatorEnum logicalOperator  
+}
+WhereClauseCondition {
+    string dataset  
+    string variable  
+    ConditionComparatorEnum comparator  
+    stringList value  
+}
 
-      Group <|-- AnalysisGroup
-      Group <|-- DataGroup
-      
-      
-      Group : compoundExpression
-        
-          Group --|> CompoundGroupExpression : compoundExpression
-        
-      Group : condition
-        
-          Group --|> WhereClauseCondition : condition
-        
-      Group : id
-        
-      Group : label
-        
-      Group : level
-        
-      Group : order
-        
-      
+Group ||--|o WhereClauseCondition : "condition"
+Group ||--|o CompoundGroupExpression : "compoundExpression"
+CompoundGroupExpression ||--}o Group : "whereClauses"
+
 ```
-
 
 
 

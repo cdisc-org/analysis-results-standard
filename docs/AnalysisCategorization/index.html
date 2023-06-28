@@ -74,16 +74,18 @@
 <h1 id="class-analysiscategorization">Class: AnalysisCategorization</h1>
 <p><em>A set of related implementer-defined categories that can be used to categorize analyses or outputs.</em></p>
 <p>URI: <a href="https://www.cdisc.org/ars/1-0/AnalysisCategorization">ars:AnalysisCategorization</a></p>
-<div class="mermaid"> classDiagram
-    class AnalysisCategorization
-      AnalysisCategorization : categories
+<div class="mermaid">erDiagram
+AnalysisCategorization {
+    string id  
+    string label  
+}
+AnalysisCategory {
+    string id  
+    string label  
+}
 
-          AnalysisCategorization --|&gt; AnalysisCategory : categories
-
-      AnalysisCategorization : id
-
-      AnalysisCategorization : label
-
+AnalysisCategorization ||--}| AnalysisCategory : "categories"
+AnalysisCategory ||--}o AnalysisCategorization : "subCategorizations"
 
 </div>
 <!-- no inheritance hierarchy -->

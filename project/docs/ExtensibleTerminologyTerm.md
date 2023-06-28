@@ -12,28 +12,20 @@ _The term used for an attribute whose terminology is extensible._
 URI: [ars:ExtensibleTerminologyTerm](https://www.cdisc.org/ars/1-0/ExtensibleTerminologyTerm)
 
 
-
 ```mermaid
- classDiagram
-    class ExtensibleTerminologyTerm
-      ExtensibleTerminologyTerm <|-- AnalysisReason
-      ExtensibleTerminologyTerm <|-- SponsorAnalysisReason
-      ExtensibleTerminologyTerm <|-- AnalysisPurpose
-      ExtensibleTerminologyTerm <|-- SponsorAnalysisPurpose
-      ExtensibleTerminologyTerm <|-- OperationRole
-      ExtensibleTerminologyTerm <|-- SponsorOperationRole
-      ExtensibleTerminologyTerm <|-- OutputFileType
-      ExtensibleTerminologyTerm <|-- SponsorOutputFileType
-      
-      ExtensibleTerminologyTerm : controlledTerm
-        
-      ExtensibleTerminologyTerm : sponsorTermId
-        
-          ExtensibleTerminologyTerm --|> SponsorTerm : sponsorTermId
-        
-      
-```
+erDiagram
+ExtensibleTerminologyTerm {
+    string controlledTerm  
+}
+SponsorTerm {
+    string id  
+    string submissionValue  
+    string description  
+}
 
+ExtensibleTerminologyTerm ||--|o SponsorTerm : "sponsorTermId"
+
+```
 
 
 

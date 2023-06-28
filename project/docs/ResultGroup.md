@@ -10,23 +10,41 @@ _For the specified grouping factor, an indication of the specific group of subje
 URI: [ars:ResultGroup](https://www.cdisc.org/ars/1-0/ResultGroup)
 
 
-
 ```mermaid
- classDiagram
-    class ResultGroup
-      ResultGroup : groupId
-        
-          ResultGroup --|> Group : groupId
-        
-      ResultGroup : groupingId
-        
-          ResultGroup --|> GroupingFactor : groupingId
-        
-      ResultGroup : groupValue
-        
-      
-```
+erDiagram
+ResultGroup {
+    string groupValue  
+}
+Group {
+    string id  
+    string label  
+    integer level  
+    integer order  
+}
+CompoundGroupExpression {
+    ExpressionLogicalOperatorEnum logicalOperator  
+}
+WhereClauseCondition {
+    string dataset  
+    string variable  
+    ConditionComparatorEnum comparator  
+    stringList value  
+}
+GroupingFactor {
+    string id  
+    string label  
+    string groupingVariable  
+    boolean dataDriven  
+}
 
+ResultGroup ||--|o GroupingFactor : "groupingId"
+ResultGroup ||--|o Group : "groupId"
+Group ||--|o WhereClauseCondition : "condition"
+Group ||--|o CompoundGroupExpression : "compoundExpression"
+CompoundGroupExpression ||--}o Group : "whereClauses"
+GroupingFactor ||--}o Group : "groups"
+
+```
 
 
 

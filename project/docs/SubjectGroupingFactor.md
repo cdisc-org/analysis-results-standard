@@ -10,27 +10,36 @@ _A factor used to subdivide the subject population for comparative analysis (e.g
 URI: [ars:SubjectGroupingFactor](https://www.cdisc.org/ars/1-0/SubjectGroupingFactor)
 
 
-
 ```mermaid
- classDiagram
-    class SubjectGroupingFactor
-      GroupingFactor <|-- SubjectGroupingFactor
-      
-      SubjectGroupingFactor : dataDriven
-        
-      SubjectGroupingFactor : groupingVariable
-        
-      SubjectGroupingFactor : groups
-        
-          SubjectGroupingFactor --|> AnalysisGroup : groups
-        
-      SubjectGroupingFactor : id
-        
-      SubjectGroupingFactor : label
-        
-      
-```
+erDiagram
+SubjectGroupingFactor {
+    string id  
+    string label  
+    string groupingVariable  
+    boolean dataDriven  
+}
+AnalysisGroup {
+    string id  
+    string label  
+    integer level  
+    integer order  
+}
+CompoundGroupExpression {
+    ExpressionLogicalOperatorEnum logicalOperator  
+}
+WhereClauseCondition {
+    string dataset  
+    string variable  
+    ConditionComparatorEnum comparator  
+    stringList value  
+}
 
+SubjectGroupingFactor ||--}o AnalysisGroup : "groups"
+AnalysisGroup ||--|o WhereClauseCondition : "condition"
+AnalysisGroup ||--|o CompoundGroupExpression : "compoundExpression"
+CompoundGroupExpression ||--}o Group : "whereClauses"
+
+```
 
 
 

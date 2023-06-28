@@ -10,23 +10,21 @@ _An extensible set of controlled terminology that has been extended with at leas
 URI: [ars:TerminologyExtension](https://www.cdisc.org/ars/1-0/TerminologyExtension)
 
 
-
 ```mermaid
- classDiagram
-    class TerminologyExtension
-      TerminologyExtension : enumeration
-        
-          TerminologyExtension --|> ExtensibleTerminologyEnum : enumeration
-        
-      TerminologyExtension : id
-        
-      TerminologyExtension : sponsorTerms
-        
-          TerminologyExtension --|> SponsorTerm : sponsorTerms
-        
-      
-```
+erDiagram
+TerminologyExtension {
+    string id  
+    ExtensibleTerminologyEnum enumeration  
+}
+SponsorTerm {
+    string id  
+    string submissionValue  
+    string description  
+}
 
+TerminologyExtension ||--}| SponsorTerm : "sponsorTerms"
+
+```
 
 
 

@@ -10,31 +10,37 @@ _A subdivision of the analysis dataset records based on a defined factor._
 URI: [ars:DataGroup](https://www.cdisc.org/ars/1-0/DataGroup)
 
 
-
 ```mermaid
- classDiagram
-    class DataGroup
-      Group <|-- DataGroup
-      
-      DataGroup : compoundExpression
-        
-          DataGroup --|> CompoundGroupExpression : compoundExpression
-        
-      DataGroup : condition
-        
-          DataGroup --|> WhereClauseCondition : condition
-        
-      DataGroup : id
-        
-      DataGroup : label
-        
-      DataGroup : level
-        
-      DataGroup : order
-        
-      
-```
+erDiagram
+DataGroup {
+    string id  
+    string label  
+    integer level  
+    integer order  
+}
+CompoundGroupExpression {
+    ExpressionLogicalOperatorEnum logicalOperator  
+}
+Group {
+    string id  
+    string label  
+    integer level  
+    integer order  
+}
+WhereClauseCondition {
+    string dataset  
+    string variable  
+    ConditionComparatorEnum comparator  
+    stringList value  
+}
 
+DataGroup ||--|o WhereClauseCondition : "condition"
+DataGroup ||--|o CompoundGroupExpression : "compoundExpression"
+CompoundGroupExpression ||--}o Group : "whereClauses"
+Group ||--|o WhereClauseCondition : "condition"
+Group ||--|o CompoundGroupExpression : "compoundExpression"
+
+```
 
 
 

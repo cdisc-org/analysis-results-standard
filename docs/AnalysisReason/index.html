@@ -74,18 +74,17 @@
 <h1 id="class-analysisreason">Class: AnalysisReason</h1>
 <p><em>The rationale for performing this analysis.</em></p>
 <p>URI: <a href="https://www.cdisc.org/ars/1-0/AnalysisReason">ars:AnalysisReason</a></p>
-<div class="mermaid"> classDiagram
-    class AnalysisReason
-      ExtensibleTerminologyTerm &lt;|-- AnalysisReason
+<div class="mermaid">erDiagram
+AnalysisReason {
+    AnalysisReasonEnum controlledTerm  
+}
+SponsorTerm {
+    string id  
+    string submissionValue  
+    string description  
+}
 
-      AnalysisReason : controlledTerm
-
-          AnalysisReason --|&gt; AnalysisReasonEnum : controlledTerm
-
-      AnalysisReason : sponsorTermId
-
-          AnalysisReason --|&gt; SponsorTerm : sponsorTermId
-
+AnalysisReason ||--|o SponsorTerm : "sponsorTermId"
 
 </div>
 <h2 id="inheritance">Inheritance</h2>

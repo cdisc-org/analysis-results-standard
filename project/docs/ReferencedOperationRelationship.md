@@ -10,29 +10,105 @@ _A reference to a statistical operation whose results are used in the calculatio
 URI: [ars:ReferencedOperationRelationship](https://www.cdisc.org/ars/1-0/ReferencedOperationRelationship)
 
 
-
 ```mermaid
- classDiagram
-    class ReferencedOperationRelationship
-      ReferencedOperationRelationship : analysisId
-        
-          ReferencedOperationRelationship --|> Analysis : analysisId
-        
-      ReferencedOperationRelationship : description
-        
-      ReferencedOperationRelationship : id
-        
-      ReferencedOperationRelationship : operationId
-        
-          ReferencedOperationRelationship --|> Operation : operationId
-        
-      ReferencedOperationRelationship : referencedOperationRole
-        
-          ReferencedOperationRelationship --|> ExtensibleTerminologyTerm : referencedOperationRole
-        
-      
-```
+erDiagram
+ReferencedOperationRelationship {
+    string id  
+    string description  
+}
+Analysis {
+    string id  
+    integer version  
+    string description  
+    string dataset  
+    string variable  
+    string name  
+}
+OperationResult {
+    string rawValue  
+    string formattedValue  
+}
+AnalysisOutputProgrammingCode {
+    string context  
+    string code  
+}
+ReferencedAnalysisOperation {
 
+}
+AnalysisMethod {
+    string id  
+    string label  
+    string description  
+    string name  
+}
+DataSubset {
+    string id  
+    string label  
+    integer level  
+    integer order  
+}
+OrderedGroupingFactor {
+    integer order  
+    boolean resultsByGroup  
+}
+AnalysisSet {
+    string id  
+    string label  
+    integer level  
+    integer order  
+}
+DocumentReference {
+
+}
+ExtensibleTerminologyTerm {
+    string controlledTerm  
+}
+AnalysisCategory {
+    string id  
+    string label  
+}
+Operation {
+    string id  
+    string label  
+    string resultPattern  
+    string name  
+}
+
+ReferencedOperationRelationship ||--|| ExtensibleTerminologyTerm : "referencedOperationRole"
+ReferencedOperationRelationship ||--|| Operation : "operationId"
+ReferencedOperationRelationship ||--|o Analysis : "analysisId"
+Analysis ||--}o AnalysisCategory : "categoryIds"
+Analysis ||--|| ExtensibleTerminologyTerm : "reason"
+Analysis ||--|| ExtensibleTerminologyTerm : "purpose"
+Analysis ||--}o DocumentReference : "documentRefs"
+Analysis ||--|o AnalysisSet : "analysisSetId"
+Analysis ||--}o OrderedGroupingFactor : "orderedGroupings"
+Analysis ||--|o DataSubset : "dataSubsetId"
+Analysis ||--|| AnalysisMethod : "methodId"
+Analysis ||--}o ReferencedAnalysisOperation : "referencedAnalysisOperations"
+Analysis ||--|o AnalysisOutputProgrammingCode : "programmingCode"
+Analysis ||--}o OperationResult : "results"
+OperationResult ||--|| Operation : "operationId"
+OperationResult ||--}o ResultGroup : "resultGroups"
+AnalysisOutputProgrammingCode ||--|o DocumentReference : "documentRef"
+AnalysisOutputProgrammingCode ||--}o AnalysisOutputCodeParameter : "parameters"
+ReferencedAnalysisOperation ||--|| ReferencedOperationRelationship : "referencedOperationRelationshipId"
+ReferencedAnalysisOperation ||--|| Analysis : "analysisId"
+AnalysisMethod ||--}| Operation : "operations"
+AnalysisMethod ||--}o DocumentReference : "documentRefs"
+AnalysisMethod ||--|o AnalysisProgrammingCodeTemplate : "codeTemplate"
+DataSubset ||--|o WhereClauseCondition : "condition"
+DataSubset ||--|o CompoundSubsetExpression : "compoundExpression"
+OrderedGroupingFactor ||--|o GroupingFactor : "groupingId"
+AnalysisSet ||--|o WhereClauseCondition : "condition"
+AnalysisSet ||--|o CompoundSetExpression : "compoundExpression"
+DocumentReference ||--|| ReferenceDocument : "referenceDocumentId"
+DocumentReference ||--}o PageRef : "pageRefs"
+ExtensibleTerminologyTerm ||--|o SponsorTerm : "sponsorTermId"
+AnalysisCategory ||--}o AnalysisCategorization : "subCategorizations"
+Operation ||--}o ReferencedOperationRelationship : "referencedOperationRelationships"
+
+```
 
 
 

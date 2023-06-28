@@ -10,23 +10,29 @@ _A compound expression consisting of either two or more identified analysis sets
 URI: [ars:CompoundSetExpression](https://www.cdisc.org/ars/1-0/CompoundSetExpression)
 
 
-
 ```mermaid
- classDiagram
-    class CompoundSetExpression
-      WhereClauseCompoundExpression <|-- CompoundSetExpression
-      
-      CompoundSetExpression : logicalOperator
-        
-          CompoundSetExpression --|> ExpressionLogicalOperatorEnum : logicalOperator
-        
-      CompoundSetExpression : whereClauses
-        
-          CompoundSetExpression --|> AnalysisSet : whereClauses
-        
-      
-```
+erDiagram
+CompoundSetExpression {
+    ExpressionLogicalOperatorEnum logicalOperator  
+}
+AnalysisSet {
+    string id  
+    string label  
+    integer level  
+    integer order  
+}
+WhereClauseCondition {
+    string dataset  
+    string variable  
+    ConditionComparatorEnum comparator  
+    stringList value  
+}
 
+CompoundSetExpression ||--}o AnalysisSet : "whereClauses"
+AnalysisSet ||--|o WhereClauseCondition : "condition"
+AnalysisSet ||--|o CompoundSetExpression : "compoundExpression"
+
+```
 
 
 

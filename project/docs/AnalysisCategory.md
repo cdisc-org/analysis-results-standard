@@ -10,21 +10,21 @@ _An implementer-defined category of analyses/outputs, which may include one or m
 URI: [ars:AnalysisCategory](https://www.cdisc.org/ars/1-0/AnalysisCategory)
 
 
-
 ```mermaid
- classDiagram
-    class AnalysisCategory
-      AnalysisCategory : id
-        
-      AnalysisCategory : label
-        
-      AnalysisCategory : subCategorizations
-        
-          AnalysisCategory --|> AnalysisCategorization : subCategorizations
-        
-      
-```
+erDiagram
+AnalysisCategory {
+    string id  
+    string label  
+}
+AnalysisCategorization {
+    string id  
+    string label  
+}
 
+AnalysisCategory ||--}o AnalysisCategorization : "subCategorizations"
+AnalysisCategorization ||--}| AnalysisCategory : "categories"
+
+```
 
 
 

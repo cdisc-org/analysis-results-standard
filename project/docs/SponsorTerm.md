@@ -10,19 +10,17 @@ _A sponsor-defined term that is included in an extensible set of controlled term
 URI: [ars:SponsorTerm](https://www.cdisc.org/ars/1-0/SponsorTerm)
 
 
-
 ```mermaid
- classDiagram
-    class SponsorTerm
-      SponsorTerm : description
-        
-      SponsorTerm : id
-        
-      SponsorTerm : submissionValue
-        
-      
-```
+erDiagram
+SponsorTerm {
+    string id  
+    string submissionValue  
+    string description  
+}
 
+
+
+```
 
 
 

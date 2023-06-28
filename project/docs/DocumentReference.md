@@ -10,21 +10,29 @@ _A reference to an external document._
 URI: [ars:DocumentReference](https://www.cdisc.org/ars/1-0/DocumentReference)
 
 
-
 ```mermaid
- classDiagram
-    class DocumentReference
-      DocumentReference : pageRefs
-        
-          DocumentReference --|> PageRef : pageRefs
-        
-      DocumentReference : referenceDocumentId
-        
-          DocumentReference --|> ReferenceDocument : referenceDocumentId
-        
-      
-```
+erDiagram
+DocumentReference {
 
+}
+PageRef {
+    PageRefTypeEnum refType  
+    string label  
+    stringList pageNames  
+    integerList pageNumbers  
+    integer firstPage  
+    integer lastPage  
+}
+ReferenceDocument {
+    string id  
+    uri location  
+    string name  
+}
+
+DocumentReference ||--|| ReferenceDocument : "referenceDocumentId"
+DocumentReference ||--}o PageRef : "pageRefs"
+
+```
 
 
 

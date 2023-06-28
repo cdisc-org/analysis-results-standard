@@ -91,13 +91,13 @@ ars:OperationRole a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "OperationRole" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass ars:OperationRoleEnum ;
-            owl:onProperty ars:controlledTerm ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass ars:SponsorTerm ;
             owl:onProperty ars:sponsorTermId ],
+        [ a owl:Restriction ;
+            owl:onClass ars:OperationRoleEnum ;
+            owl:onProperty ars:controlledTerm ;
+            owl:qualifiedCardinality 1 ],
         ars:ExtensibleTerminologyTerm ;
     skos:definition "The role that the referenced operation's result plays in the calculation of the result of this operation." ;
     linkml:attributes "{}" ;
@@ -107,13 +107,13 @@ ars:OrderedSubSection a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "OrderedSubSection" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass ars:DisplaySubSection ;
-            owl:onProperty ars:subSectionId ],
-        [ a owl:Restriction ;
             owl:onClass ars:DisplaySubSection ;
             owl:onProperty ars:subSection ;
             owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass ars:DisplaySubSection ;
+            owl:onProperty ars:subSectionId ],
         ars:OrderedDisplaySubSection ;
     skos:definition "A subsection ordered with respect to other subsections of the same type." ;
     linkml:attributes "{}" ;
@@ -159,22 +159,22 @@ ars:PageNameRef a owl:Class,
             owl:onClass linkml:Integer ;
             owl:onProperty ars:lastPage ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Integer ;
-            owl:onProperty ars:firstPage ],
-        [ a owl:Restriction ;
             owl:onClass ars:PageRefTypeEnum ;
             owl:onProperty ars:refType ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Integer ;
-            owl:onProperty ars:pageNumbers ],
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Integer ;
+            owl:onProperty ars:firstPage ],
         [ a owl:Class ;
             owl:intersectionOf ( [ a owl:Restriction ;
                         owl:allValuesFrom linkml:String ;
                         owl:onProperty ars:pageNames ] [ a owl:Restriction ;
                         owl:onProperty ars:pageNames ;
                         owl:someValuesFrom linkml:String ] ) ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty ars:pageNumbers ],
         ars:PageRef ;
     skos:definition "One or more pages in the reference document, referenced by named destination." ;
     linkml:attributes "{}" ;
@@ -192,10 +192,6 @@ ars:PageNumberListRef a owl:Class,
             owl:onProperty ars:refType ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Integer ;
-            owl:onProperty ars:firstPage ],
-        [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty ars:pageNames ],
         [ a owl:Class ;
@@ -204,6 +200,10 @@ ars:PageNumberListRef a owl:Class,
                         owl:onProperty ars:pageNumbers ] [ a owl:Restriction ;
                         owl:onProperty ars:pageNumbers ;
                         owl:someValuesFrom linkml:Integer ] ) ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Integer ;
+            owl:onProperty ars:firstPage ],
         ars:PageRef ;
     skos:definition "One or more individual pages in the reference document, referenced by page number." ;
     linkml:attributes "{}" ;
@@ -214,18 +214,18 @@ ars:PageNumberRangeRef a owl:Class,
     rdfs:label "PageNumberRangeRef" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onClass linkml:Integer ;
-            owl:onProperty ars:lastPage ;
+            owl:onProperty ars:firstPage ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty ars:pageNumbers ],
+        [ a owl:Restriction ;
             owl:onClass linkml:Integer ;
-            owl:onProperty ars:firstPage ;
+            owl:onProperty ars:lastPage ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty ars:pageNames ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Integer ;
-            owl:onProperty ars:pageNumbers ],
         [ a owl:Restriction ;
             owl:onClass ars:PageRefTypeEnum ;
             owl:onProperty ars:refType ;
@@ -239,12 +239,25 @@ ars:ReportingEvent a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "ReportingEvent" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom ars:ReferenceDocument ;
-            owl:onProperty ars:referenceDocuments ],
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Integer ;
+            owl:onProperty ars:version ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom ars:TerminologyExtension ;
+            owl:onProperty ars:terminologyExtensions ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom ars:DataGroupingFactor ;
+            owl:onProperty ars:dataGroupings ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom ars:AnalysisMethod ;
+            owl:onProperty ars:methods ],
         [ a owl:Restriction ;
             owl:onClass ars:NestedList ;
             owl:onProperty ars:listOfPlannedAnalyses ;
             owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom ars:AnalysisCategorization ;
+            owl:onProperty ars:analysisCategorizations ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty ars:id ;
@@ -254,39 +267,26 @@ ars:ReportingEvent a owl:Class,
             owl:onClass ars:NestedList ;
             owl:onProperty ars:listOfPlannedOutputs ],
         [ a owl:Restriction ;
-            owl:allValuesFrom ars:DataGroupingFactor ;
-            owl:onProperty ars:dataGroupings ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom ars:SubjectGroupingFactor ;
-            owl:onProperty ars:analysisGroupings ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom ars:GlobalDisplaySection ;
-            owl:onProperty ars:globalDisplaySections ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom ars:TerminologyExtension ;
-            owl:onProperty ars:terminologyExtensions ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom ars:AnalysisSet ;
-            owl:onProperty ars:analysisSets ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom ars:AnalysisCategorization ;
-            owl:onProperty ars:analysisCategorizations ],
-        [ a owl:Restriction ;
             owl:allValuesFrom ars:Analysis ;
             owl:onProperty ars:analyses ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom ars:ReferenceDocument ;
+            owl:onProperty ars:referenceDocuments ],
         [ a owl:Restriction ;
             owl:allValuesFrom ars:Output ;
             owl:onProperty ars:outputs ],
         [ a owl:Restriction ;
+            owl:allValuesFrom ars:AnalysisSet ;
+            owl:onProperty ars:analysisSets ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom ars:SubjectGroupingFactor ;
+            owl:onProperty ars:analysisGroupings ],
+        [ a owl:Restriction ;
             owl:allValuesFrom ars:DataSubset ;
             owl:onProperty ars:dataSubsets ],
         [ a owl:Restriction ;
-            owl:allValuesFrom ars:AnalysisMethod ;
-            owl:onProperty ars:methods ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Integer ;
-            owl:onProperty ars:version ],
+            owl:allValuesFrom ars:GlobalDisplaySection ;
+            owl:onProperty ars:globalDisplaySections ],
         ars:NamedObject ;
     skos:definition "A set of analyses and outputs created to meet a specific reporting requirement, such as a CSR or interim analysis." ;
     linkml:attributes "{}" ;
@@ -312,13 +312,13 @@ ars:SponsorAnalysisReason a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "SponsorAnalysisReason" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass ars:SponsorTerm ;
-            owl:onProperty ars:sponsorTermId ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty ars:controlledTerm ],
+        [ a owl:Restriction ;
+            owl:onClass ars:SponsorTerm ;
+            owl:onProperty ars:sponsorTermId ;
+            owl:qualifiedCardinality 1 ],
         ars:ExtensibleTerminologyTerm ;
     skos:definition "The sponsor-defined rationale for performing this analysis." ;
     linkml:attributes "{}" ;
@@ -328,13 +328,13 @@ ars:SponsorOperationRole a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "SponsorOperationRole" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass ars:SponsorTerm ;
-            owl:onProperty ars:sponsorTermId ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty ars:controlledTerm ],
+        [ a owl:Restriction ;
+            owl:onClass ars:SponsorTerm ;
+            owl:onProperty ars:sponsorTermId ;
+            owl:qualifiedCardinality 1 ],
         ars:ExtensibleTerminologyTerm ;
     skos:definition "The sponsor-defined role that the referenced operation's result plays in the calculation of the result of this operation." ;
     linkml:attributes "{}" ;
@@ -344,13 +344,13 @@ ars:SponsorOutputFileType a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "SponsorOutputFileType" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass ars:SponsorTerm ;
-            owl:onProperty ars:sponsorTermId ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty ars:controlledTerm ],
+        [ a owl:Restriction ;
+            owl:onClass ars:SponsorTerm ;
+            owl:onProperty ars:sponsorTermId ;
+            owl:qualifiedCardinality 1 ],
         ars:ExtensibleTerminologyTerm ;
     skos:definition "The sponsor-defined file format of the file containing output from analyses." ;
     linkml:attributes "{}" ;
@@ -423,12 +423,12 @@ ars:TemplateCodeParameter a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "TemplateCodeParameter" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty ars:value ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty ars:valueSource ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty ars:value ],
         ars:CodeParameter ;
     skos:definition "A replacement parameter whose value is substituted in template programming code to create statements required for a specific analysis." ;
     linkml:attributes "{}" ;
@@ -907,21 +907,21 @@ ars:OrderedListItem a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "OrderedListItem" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass ars:Output ;
-            owl:onProperty ars:outputId ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass ars:NestedList ;
-            owl:onProperty ars:sublist ],
+            owl:onClass linkml:Integer ;
+            owl:onProperty ars:level ;
+            owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:Integer ;
             owl:onProperty ars:order ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
-            owl:onClass linkml:Integer ;
-            owl:onProperty ars:level ;
-            owl:qualifiedCardinality 1 ],
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass ars:NestedList ;
+            owl:onProperty ars:sublist ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass ars:Output ;
+            owl:onProperty ars:outputId ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass ars:Analysis ;
@@ -940,15 +940,15 @@ ars:OutputDisplay a owl:Class,
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Integer ;
-            owl:onProperty ars:version ],
+            owl:onClass linkml:String ;
+            owl:onProperty ars:displayTitle ],
         [ a owl:Restriction ;
             owl:allValuesFrom ars:DisplaySection ;
             owl:onProperty ars:displaySections ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty ars:displayTitle ],
+            owl:onClass linkml:Integer ;
+            owl:onProperty ars:version ],
         ars:NamedObject ;
     skos:definition "A tabular representation of the results of one or more analyses." ;
     linkml:attributes "{}" ;
@@ -1106,9 +1106,6 @@ ars:AnalysisProgrammingCodeTemplate a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "AnalysisProgrammingCodeTemplate" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom ars:TemplateCodeParameter ;
-            owl:onProperty ars:parameters ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty ars:code ],
@@ -1119,7 +1116,10 @@ ars:AnalysisProgrammingCodeTemplate a owl:Class,
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty ars:context ;
-            owl:qualifiedCardinality 1 ] ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom ars:TemplateCodeParameter ;
+            owl:onProperty ars:parameters ] ;
     skos:definition "Programming statements and/or a reference to a used as a template for creation of a program to perform method operations for a specific analysis." ;
     linkml:attributes "{}" .
 
@@ -1152,12 +1152,12 @@ ars:GlobalDisplaySection a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "GlobalDisplaySection" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom ars:DisplaySubSection ;
-            owl:onProperty ars:subSections ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass ars:DisplaySectionTypeEnum ;
-            owl:onProperty ars:sectionType ] ;
+            owl:onProperty ars:sectionType ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom ars:DisplaySubSection ;
+            owl:onProperty ars:subSections ] ;
     skos:definition "A global definition for part of a tabular display containing one or more pieces of informational text that may be used in multiple displays." ;
     linkml:attributes "{}" .
 
@@ -1165,20 +1165,20 @@ ars:OperationResult a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "OperationResult" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty ars:rawValue ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom ars:ResultGroup ;
+            owl:onProperty ars:resultGroups ],
+        [ a owl:Restriction ;
             owl:onClass ars:Operation ;
             owl:onProperty ars:operationId ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty ars:rawValue ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty ars:formattedValue ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom ars:ResultGroup ;
-            owl:onProperty ars:resultGroups ] ;
+            owl:onProperty ars:formattedValue ] ;
     skos:definition "The result of an analysis method operation performed on a subdivision of subjects or data records." ;
     linkml:attributes "{}" .
 
@@ -1240,36 +1240,36 @@ ars:ResultGroup a owl:Class,
     rdfs:label "ResultGroup" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty ars:groupValue ],
+            owl:onClass ars:GroupingFactor ;
+            owl:onProperty ars:groupingId ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass ars:Group ;
             owl:onProperty ars:groupId ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass ars:GroupingFactor ;
-            owl:onProperty ars:groupingId ] ;
+            owl:onClass linkml:String ;
+            owl:onProperty ars:groupValue ] ;
     skos:definition "For the specified grouping factor, an indication of the specific group of subjects or data records associated with the analysis result." ;
     linkml:attributes "{}" .
 
 ars:TerminologyExtension a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "TerminologyExtension" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass ars:ExtensibleTerminologyEnum ;
-            owl:onProperty ars:enumeration ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty ars:id ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Class ;
+    rdfs:subClassOf [ a owl:Class ;
             owl:intersectionOf ( [ a owl:Restriction ;
                         owl:allValuesFrom ars:SponsorTerm ;
                         owl:onProperty ars:sponsorTerms ] [ a owl:Restriction ;
                         owl:onProperty ars:sponsorTerms ;
-                        owl:someValuesFrom ars:SponsorTerm ] ) ] ;
+                        owl:someValuesFrom ars:SponsorTerm ] ) ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty ars:id ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass ars:ExtensibleTerminologyEnum ;
+            owl:onProperty ars:enumeration ] ;
     skos:definition "An extensible set of controlled terminology that has been extended with at least one sponsor-defined term." ;
     linkml:attributes "{}" .
 
@@ -1277,6 +1277,10 @@ ars:WhereClauseCondition a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "WhereClauseCondition" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass ars:ConditionComparatorEnum ;
+            owl:onProperty ars:comparator ],
+        [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty ars:value ],
         [ a owl:Restriction ;
@@ -1286,11 +1290,7 @@ ars:WhereClauseCondition a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty ars:variable ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass ars:ConditionComparatorEnum ;
-            owl:onProperty ars:comparator ] ;
+            owl:onProperty ars:variable ] ;
     skos:definition "A simple selection criterion exressed as [dataset].[variable] [comparator] [value(s)]" ;
     linkml:attributes "{}" .
 
@@ -1328,16 +1328,13 @@ ars:AnalysisMethod a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "AnalysisMethod" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom ars:DocumentReference ;
-            owl:onProperty ars:documentRefs ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty ars:description ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass ars:AnalysisProgrammingCodeTemplate ;
             owl:onProperty ars:codeTemplate ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty ars:label ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty ars:id ;
@@ -1345,7 +1342,10 @@ ars:AnalysisMethod a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty ars:label ],
+            owl:onProperty ars:description ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom ars:DocumentReference ;
+            owl:onProperty ars:documentRefs ],
         [ a owl:Class ;
             owl:intersectionOf ( [ a owl:Restriction ;
                         owl:allValuesFrom ars:Operation ;
@@ -1361,20 +1361,20 @@ ars:AnalysisOutputProgrammingCode a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "AnalysisOutputProgrammingCode" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty ars:context ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom ars:AnalysisOutputCodeParameter ;
-            owl:onProperty ars:parameters ],
+            owl:onProperty ars:code ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass ars:DocumentReference ;
             owl:onProperty ars:documentRef ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
+            owl:allValuesFrom ars:AnalysisOutputCodeParameter ;
+            owl:onProperty ars:parameters ],
+        [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty ars:code ] ;
+            owl:onProperty ars:context ;
+            owl:qualifiedCardinality 1 ] ;
     skos:definition "Programming statements and/or a reference to the program used to perform a specific analysis or create a specific output." ;
     linkml:attributes "{}" .
 
@@ -1390,17 +1390,17 @@ ars:DataSubset a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "DataSubset" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass ars:CompoundSubsetExpression ;
-            owl:onProperty ars:compoundExpression ],
+            owl:onClass linkml:String ;
+            owl:onProperty ars:id ;
+            owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty ars:label ],
         [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty ars:id ;
-            owl:qualifiedCardinality 1 ],
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass ars:CompoundSubsetExpression ;
+            owl:onProperty ars:compoundExpression ],
         ars:WhereClause ;
     skos:definition "A subset of data identified by selection criteria for inclusion in the analysis." ;
     linkml:attributes "{}" ;
@@ -1421,18 +1421,18 @@ ars:Output a owl:Class,
             owl:onClass ars:AnalysisOutputProgrammingCode ;
             owl:onProperty ars:programmingCode ],
         [ a owl:Restriction ;
+            owl:allValuesFrom ars:OutputFile ;
+            owl:onProperty ars:fileSpecifications ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom ars:AnalysisCategory ;
+            owl:onProperty ars:categoryIds ],
+        [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty ars:id ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:allValuesFrom ars:OrderedDisplay ;
             owl:onProperty ars:displays ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom ars:AnalysisCategory ;
-            owl:onProperty ars:categoryIds ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom ars:OutputFile ;
-            owl:onProperty ars:fileSpecifications ],
         ars:NamedObject ;
     skos:definition "A report of results and their evaluation based on planned analyses performed during the course of a trial." ;
     linkml:attributes "{}" ;
@@ -1450,13 +1450,13 @@ ars:ReferenceDocument a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "ReferenceDocument" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty ars:id ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Uri ;
             owl:onProperty ars:location ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty ars:id ;
+            owl:qualifiedCardinality 1 ],
         ars:NamedObject ;
     skos:definition "An external document containing supporting documentation or programming code." ;
     linkml:attributes "{}" ;
@@ -1508,9 +1508,9 @@ ars:AnalysisCategorization a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "AnalysisCategorization" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty ars:id ;
-            owl:qualifiedCardinality 1 ],
+            owl:onProperty ars:label ],
         [ a owl:Class ;
             owl:intersectionOf ( [ a owl:Restriction ;
                         owl:allValuesFrom ars:AnalysisCategory ;
@@ -1518,9 +1518,9 @@ ars:AnalysisCategorization a owl:Class,
                         owl:onProperty ars:categories ;
                         owl:someValuesFrom ars:AnalysisCategory ] ) ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty ars:label ] ;
+            owl:onProperty ars:id ;
+            owl:qualifiedCardinality 1 ] ;
     skos:definition "A set of related implementer-defined categories that can be used to categorize analyses or outputs." ;
     linkml:attributes "{}" .
 
@@ -1542,12 +1542,12 @@ ars:AnalysisSet a owl:Class,
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty ars:label ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
             owl:onClass ars:CompoundSetExpression ;
             owl:onProperty ars:compoundExpression ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty ars:label ],
         ars:WhereClause ;
     skos:definition "A set of subjects whose data are to be included in the main analyses. This should be defined in the statistical section of the protocol. NOTE: There are a number of potential analysis sets, including, for example, the set based upon the intent-to-treat principle. [ICH E9]" ;
     linkml:attributes "{}" ;
@@ -1588,20 +1588,20 @@ ars:ReferencedOperationRelationship a owl:Class,
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty ars:description ],
+            owl:onClass ars:Analysis ;
+            owl:onProperty ars:analysisId ],
+        [ a owl:Restriction ;
+            owl:onClass ars:Operation ;
+            owl:onProperty ars:operationId ;
+            owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty ars:id ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass ars:Analysis ;
-            owl:onProperty ars:analysisId ],
-        [ a owl:Restriction ;
-            owl:onClass ars:Operation ;
-            owl:onProperty ars:operationId ;
-            owl:qualifiedCardinality 1 ] ;
+            owl:onClass linkml:String ;
+            owl:onProperty ars:description ] ;
     skos:definition "A reference to a statistical operation whose results are used in the calculation of the result for this operation." ;
     linkml:attributes "{}" .
 
@@ -1633,64 +1633,64 @@ ars:Analysis a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Analysis" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass ars:AnalysisMethod ;
+            owl:onProperty ars:methodId ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom ars:ReferencedAnalysisOperation ;
+            owl:onProperty ars:referencedAnalysisOperations ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom ars:AnalysisCategory ;
+            owl:onProperty ars:categoryIds ],
+        [ a owl:Restriction ;
+            owl:onClass ars:ExtensibleTerminologyTerm ;
+            owl:onProperty ars:reason ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty ars:id ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom ars:DocumentReference ;
+            owl:onProperty ars:documentRefs ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty ars:description ],
+        [ a owl:Restriction ;
             owl:allValuesFrom ars:OrderedGroupingFactor ;
             owl:onProperty ars:orderedGroupings ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass ars:DataSubset ;
+            owl:onProperty ars:dataSubsetId ],
         [ a owl:Restriction ;
             owl:onClass ars:ExtensibleTerminologyTerm ;
             owl:onProperty ars:purpose ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty ars:dataset ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom ars:ReferencedAnalysisOperation ;
-            owl:onProperty ars:referencedAnalysisOperations ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom ars:OperationResult ;
-            owl:onProperty ars:results ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
             owl:onClass ars:AnalysisOutputProgrammingCode ;
             owl:onProperty ars:programmingCode ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom ars:AnalysisCategory ;
-            owl:onProperty ars:categoryIds ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty ars:description ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty ars:id ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty ars:variable ],
-        [ a owl:Restriction ;
-            owl:onClass ars:ExtensibleTerminologyTerm ;
-            owl:onProperty ars:reason ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Integer ;
-            owl:onProperty ars:version ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass ars:AnalysisSet ;
             owl:onProperty ars:analysisSetId ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass ars:DataSubset ;
-            owl:onProperty ars:dataSubsetId ],
+            owl:onClass linkml:String ;
+            owl:onProperty ars:dataset ],
         [ a owl:Restriction ;
-            owl:onClass ars:AnalysisMethod ;
-            owl:onProperty ars:methodId ;
-            owl:qualifiedCardinality 1 ],
+            owl:allValuesFrom ars:OperationResult ;
+            owl:onProperty ars:results ],
         [ a owl:Restriction ;
-            owl:allValuesFrom ars:DocumentReference ;
-            owl:onProperty ars:documentRefs ],
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Integer ;
+            owl:onProperty ars:version ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty ars:variable ],
         ars:NamedObject ;
     skos:definition """An analysis that is designed to meet a requirement of the reporting event. Each analysis is defined as a set of specifications, including:
 * The analysis variable that is the subject of the analysis.
@@ -1715,6 +1715,14 @@ ars:GroupingFactor a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "GroupingFactor" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty ars:label ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:Boolean ;
+            owl:onProperty ars:dataDriven ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty ars:id ;
             owl:qualifiedCardinality 1 ],
@@ -1724,15 +1732,7 @@ ars:GroupingFactor a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty ars:groupingVariable ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:Boolean ;
-            owl:onProperty ars:dataDriven ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty ars:label ] ;
+            owl:onProperty ars:groupingVariable ] ;
     skos:definition "A factor used to subdivide either the subject population or data records in an analysis dataset for analysis." ;
     linkml:attributes "{}" .
 
@@ -1740,20 +1740,20 @@ ars:Operation a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Operation" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty ars:resultPattern ],
+            owl:onProperty ars:id ;
+            owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:allValuesFrom ars:ReferencedOperationRelationship ;
             owl:onProperty ars:referencedOperationRelationships ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty ars:label ],
+            owl:onProperty ars:resultPattern ],
         [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty ars:id ;
-            owl:qualifiedCardinality 1 ],
+            owl:onProperty ars:label ],
         ars:NamedObject ;
     skos:definition "A statistical operation that produces a single analysis result value as part of an analysis method." ;
     linkml:attributes "{}" ;
@@ -1763,16 +1763,13 @@ ars:PageRef a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "PageRef" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Integer ;
-            owl:onProperty ars:lastPage ],
+            owl:onClass ars:PageRefTypeEnum ;
+            owl:onProperty ars:refType ;
+            owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Integer ;
             owl:onProperty ars:firstPage ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Integer ;
-            owl:onProperty ars:pageNumbers ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -1781,9 +1778,12 @@ ars:PageRef a owl:Class,
             owl:allValuesFrom linkml:String ;
             owl:onProperty ars:pageNames ],
         [ a owl:Restriction ;
-            owl:onClass ars:PageRefTypeEnum ;
-            owl:onProperty ars:refType ;
-            owl:qualifiedCardinality 1 ] ;
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty ars:pageNumbers ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Integer ;
+            owl:onProperty ars:lastPage ] ;
     skos:definition "A reference to a specific part of a document as indicated by a list of one or more page numbers, a range of page numbers, or a list of named destinations in the document (e.g. bookmarks)." ;
     linkml:attributes "{}" .
 
@@ -1791,12 +1791,12 @@ ars:WhereClauseCompoundExpression a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "WhereClauseCompoundExpression" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom ars:WhereClause ;
-            owl:onProperty ars:whereClauses ],
-        [ a owl:Restriction ;
             owl:onClass ars:ExpressionLogicalOperatorEnum ;
             owl:onProperty ars:logicalOperator ;
-            owl:qualifiedCardinality 1 ] ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom ars:WhereClause ;
+            owl:onProperty ars:whereClauses ] ;
     skos:definition "A compound expression consisting of either two or more where clauses combined with the `AND` or `OR` logical operator, or a single where clause negated with the `NOT` logical operator." ;
     linkml:attributes "{}" .
 
@@ -1804,16 +1804,16 @@ ars:AnalysisCategory a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "AnalysisCategory" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty ars:label ],
-        [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty ars:id ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:allValuesFrom ars:AnalysisCategorization ;
-            owl:onProperty ars:subCategorizations ] ;
+            owl:onProperty ars:subCategorizations ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty ars:label ] ;
     skos:definition "An implementer-defined category of analyses/outputs, which may include one or more sub-categorization." ;
     linkml:attributes "{}" .
 
@@ -1862,16 +1862,16 @@ ars:WhereClause a owl:Class,
             owl:onProperty ars:condition ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Integer ;
-            owl:onProperty ars:order ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
             owl:onClass ars:WhereClauseCompoundExpression ;
             owl:onProperty ars:compoundExpression ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Integer ;
-            owl:onProperty ars:level ] ;
+            owl:onProperty ars:level ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Integer ;
+            owl:onProperty ars:order ] ;
     skos:definition "Selection criteria defined as either a simple condition ([variable] [comparator] [value(s)]) or a compound expression that may combine simple conditions or compound expressions." ;
     linkml:attributes "{}" .
 
@@ -1889,12 +1889,12 @@ ars:DocumentReference a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "DocumentReference" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom ars:PageRef ;
-            owl:onProperty ars:pageRefs ],
-        [ a owl:Restriction ;
             owl:onClass ars:ReferenceDocument ;
             owl:onProperty ars:referenceDocumentId ;
-            owl:qualifiedCardinality 1 ] ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom ars:PageRef ;
+            owl:onProperty ars:pageRefs ] ;
     skos:definition "A reference to an external document." ;
     linkml:attributes "{}" .
 
@@ -1957,17 +1957,17 @@ ars:SponsorTerm a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "SponsorTerm" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty ars:description ],
+            owl:onProperty ars:id ;
+            owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty ars:submissionValue ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty ars:id ;
-            owl:qualifiedCardinality 1 ] ;
+            owl:onProperty ars:description ] ;
     skos:definition "A sponsor-defined term that is included in an extensible set of controlled terminology." ;
     linkml:attributes "{}" .
 
@@ -1976,12 +1976,12 @@ ars:ExtensibleTerminologyTerm a owl:Class,
     rdfs:label "ExtensibleTerminologyTerm" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty ars:controlledTerm ],
+            owl:onClass ars:SponsorTerm ;
+            owl:onProperty ars:sponsorTermId ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass ars:SponsorTerm ;
-            owl:onProperty ars:sponsorTermId ] ;
+            owl:onClass linkml:String ;
+            owl:onProperty ars:controlledTerm ] ;
     skos:definition "The term used for an attribute whose terminology is extensible." ;
     linkml:attributes "{}" .
 

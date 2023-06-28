@@ -10,21 +10,17 @@ _An external document containing supporting documentation or programming code._
 URI: [ars:ReferenceDocument](https://www.cdisc.org/ars/1-0/ReferenceDocument)
 
 
-
 ```mermaid
- classDiagram
-    class ReferenceDocument
-      NamedObject <|-- ReferenceDocument
-      
-      ReferenceDocument : id
-        
-      ReferenceDocument : location
-        
-      ReferenceDocument : name
-        
-      
-```
+erDiagram
+ReferenceDocument {
+    string id  
+    uri location  
+    string name  
+}
 
+
+
+```
 
 
 

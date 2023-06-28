@@ -10,23 +10,29 @@ _A compound expression consisting of either two or more identified group combine
 URI: [ars:CompoundGroupExpression](https://www.cdisc.org/ars/1-0/CompoundGroupExpression)
 
 
-
 ```mermaid
- classDiagram
-    class CompoundGroupExpression
-      WhereClauseCompoundExpression <|-- CompoundGroupExpression
-      
-      CompoundGroupExpression : logicalOperator
-        
-          CompoundGroupExpression --|> ExpressionLogicalOperatorEnum : logicalOperator
-        
-      CompoundGroupExpression : whereClauses
-        
-          CompoundGroupExpression --|> Group : whereClauses
-        
-      
-```
+erDiagram
+CompoundGroupExpression {
+    ExpressionLogicalOperatorEnum logicalOperator  
+}
+Group {
+    string id  
+    string label  
+    integer level  
+    integer order  
+}
+WhereClauseCondition {
+    string dataset  
+    string variable  
+    ConditionComparatorEnum comparator  
+    stringList value  
+}
 
+CompoundGroupExpression ||--}o Group : "whereClauses"
+Group ||--|o WhereClauseCondition : "condition"
+Group ||--|o CompoundGroupExpression : "compoundExpression"
+
+```
 
 
 

@@ -10,25 +10,20 @@ _A subsection ordered with respect to other subsections of the same type._
 URI: [ars:OrderedSubSection](https://www.cdisc.org/ars/1-0/OrderedSubSection)
 
 
-
 ```mermaid
- classDiagram
-    class OrderedSubSection
-      OrderedDisplaySubSection <|-- OrderedSubSection
-      
-      OrderedSubSection : order
-        
-      OrderedSubSection : subSection
-        
-          OrderedSubSection --|> DisplaySubSection : subSection
-        
-      OrderedSubSection : subSectionId
-        
-          OrderedSubSection --|> DisplaySubSection : subSectionId
-        
-      
-```
+erDiagram
+OrderedSubSection {
+    integer order  
+}
+DisplaySubSection {
+    string id  
+    string text  
+}
 
+OrderedSubSection ||--|| DisplaySubSection : "subSection"
+OrderedSubSection ||--|o DisplaySubSection : "subSectionId"
+
+```
 
 
 

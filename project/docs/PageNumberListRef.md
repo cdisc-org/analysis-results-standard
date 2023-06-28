@@ -10,29 +10,20 @@ _One or more individual pages in the reference document, referenced by page numb
 URI: [ars:PageNumberListRef](https://www.cdisc.org/ars/1-0/PageNumberListRef)
 
 
-
 ```mermaid
- classDiagram
-    class PageNumberListRef
-      PageRef <|-- PageNumberListRef
-      
-      PageNumberListRef : firstPage
-        
-      PageNumberListRef : label
-        
-      PageNumberListRef : lastPage
-        
-      PageNumberListRef : pageNames
-        
-      PageNumberListRef : pageNumbers
-        
-      PageNumberListRef : refType
-        
-          PageNumberListRef --|> PageRefTypeEnum : refType
-        
-      
-```
+erDiagram
+PageNumberListRef {
+    PageRefTypeEnum refType  
+    string label  
+    stringList pageNames  
+    integerList pageNumbers  
+    integer firstPage  
+    integer lastPage  
+}
 
+
+
+```
 
 
 

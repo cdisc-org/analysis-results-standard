@@ -10,27 +10,48 @@ _A statistical operation that produces a single analysis result value as part of
 URI: [ars:Operation](https://www.cdisc.org/ars/1-0/Operation)
 
 
-
 ```mermaid
- classDiagram
-    class Operation
-      NamedObject <|-- Operation
-      
-      Operation : id
-        
-      Operation : label
-        
-      Operation : name
-        
-      Operation : referencedOperationRelationships
-        
-          Operation --|> ReferencedOperationRelationship : referencedOperationRelationships
-        
-      Operation : resultPattern
-        
-      
-```
+erDiagram
+Operation {
+    string id  
+    string label  
+    string resultPattern  
+    string name  
+}
+ReferencedOperationRelationship {
+    string id  
+    string description  
+}
+Analysis {
+    string id  
+    integer version  
+    string description  
+    string dataset  
+    string variable  
+    string name  
+}
+ExtensibleTerminologyTerm {
+    string controlledTerm  
+}
 
+Operation ||--}o ReferencedOperationRelationship : "referencedOperationRelationships"
+ReferencedOperationRelationship ||--|| ExtensibleTerminologyTerm : "referencedOperationRole"
+ReferencedOperationRelationship ||--|| Operation : "operationId"
+ReferencedOperationRelationship ||--|o Analysis : "analysisId"
+Analysis ||--}o AnalysisCategory : "categoryIds"
+Analysis ||--|| ExtensibleTerminologyTerm : "reason"
+Analysis ||--|| ExtensibleTerminologyTerm : "purpose"
+Analysis ||--}o DocumentReference : "documentRefs"
+Analysis ||--|o AnalysisSet : "analysisSetId"
+Analysis ||--}o OrderedGroupingFactor : "orderedGroupings"
+Analysis ||--|o DataSubset : "dataSubsetId"
+Analysis ||--|| AnalysisMethod : "methodId"
+Analysis ||--}o ReferencedAnalysisOperation : "referencedAnalysisOperations"
+Analysis ||--|o AnalysisOutputProgrammingCode : "programmingCode"
+Analysis ||--}o OperationResult : "results"
+ExtensibleTerminologyTerm ||--|o SponsorTerm : "sponsorTermId"
+
+```
 
 
 

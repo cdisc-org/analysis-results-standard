@@ -10,35 +10,51 @@ _A set of one or more statistical operations._
 URI: [ars:AnalysisMethod](https://www.cdisc.org/ars/1-0/AnalysisMethod)
 
 
-
 ```mermaid
- classDiagram
-    class AnalysisMethod
-      NamedObject <|-- AnalysisMethod
-      
-      AnalysisMethod : codeTemplate
-        
-          AnalysisMethod --|> AnalysisProgrammingCodeTemplate : codeTemplate
-        
-      AnalysisMethod : description
-        
-      AnalysisMethod : documentRefs
-        
-          AnalysisMethod --|> DocumentReference : documentRefs
-        
-      AnalysisMethod : id
-        
-      AnalysisMethod : label
-        
-      AnalysisMethod : name
-        
-      AnalysisMethod : operations
-        
-          AnalysisMethod --|> Operation : operations
-        
-      
-```
+erDiagram
+AnalysisMethod {
+    string id  
+    string label  
+    string description  
+    string name  
+}
+AnalysisProgrammingCodeTemplate {
+    string context  
+    string code  
+}
+TemplateCodeParameter {
+    string valueSource  
+    stringList value  
+    string description  
+    string name  
+}
+DocumentReference {
 
+}
+Operation {
+    string id  
+    string label  
+    string resultPattern  
+    string name  
+}
+ReferencedOperationRelationship {
+    string id  
+    string description  
+}
+
+AnalysisMethod ||--}| Operation : "operations"
+AnalysisMethod ||--}o DocumentReference : "documentRefs"
+AnalysisMethod ||--|o AnalysisProgrammingCodeTemplate : "codeTemplate"
+AnalysisProgrammingCodeTemplate ||--|o DocumentReference : "documentRef"
+AnalysisProgrammingCodeTemplate ||--}o TemplateCodeParameter : "parameters"
+DocumentReference ||--|| ReferenceDocument : "referenceDocumentId"
+DocumentReference ||--}o PageRef : "pageRefs"
+Operation ||--}o ReferencedOperationRelationship : "referencedOperationRelationships"
+ReferencedOperationRelationship ||--|| ExtensibleTerminologyTerm : "referencedOperationRole"
+ReferencedOperationRelationship ||--|| Operation : "operationId"
+ReferencedOperationRelationship ||--|o Analysis : "analysisId"
+
+```
 
 
 

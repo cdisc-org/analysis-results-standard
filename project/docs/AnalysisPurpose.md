@@ -10,23 +10,20 @@ _The purpose of the analysis within the body of evidence (e.g., section in the c
 URI: [ars:AnalysisPurpose](https://www.cdisc.org/ars/1-0/AnalysisPurpose)
 
 
-
 ```mermaid
- classDiagram
-    class AnalysisPurpose
-      ExtensibleTerminologyTerm <|-- AnalysisPurpose
-      
-      AnalysisPurpose : controlledTerm
-        
-          AnalysisPurpose --|> AnalysisPurposeEnum : controlledTerm
-        
-      AnalysisPurpose : sponsorTermId
-        
-          AnalysisPurpose --|> SponsorTerm : sponsorTermId
-        
-      
-```
+erDiagram
+AnalysisPurpose {
+    AnalysisPurposeEnum controlledTerm  
+}
+SponsorTerm {
+    string id  
+    string submissionValue  
+    string description  
+}
 
+AnalysisPurpose ||--|o SponsorTerm : "sponsorTermId"
+
+```
 
 
 

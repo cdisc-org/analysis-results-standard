@@ -10,17 +10,16 @@ _An occurrence of a display section containing text._
 URI: [ars:DisplaySubSection](https://www.cdisc.org/ars/1-0/DisplaySubSection)
 
 
-
 ```mermaid
- classDiagram
-    class DisplaySubSection
-      DisplaySubSection : id
-        
-      DisplaySubSection : text
-        
-      
-```
+erDiagram
+DisplaySubSection {
+    string id  
+    string text  
+}
 
+
+
+```
 
 
 

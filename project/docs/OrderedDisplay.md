@@ -10,19 +10,26 @@ _A display ordered with respect to other displays in an analysis output._
 URI: [ars:OrderedDisplay](https://www.cdisc.org/ars/1-0/OrderedDisplay)
 
 
-
 ```mermaid
- classDiagram
-    class OrderedDisplay
-      OrderedDisplay : display
-        
-          OrderedDisplay --|> OutputDisplay : display
-        
-      OrderedDisplay : order
-        
-      
-```
+erDiagram
+OrderedDisplay {
+    integer order  
+}
+OutputDisplay {
+    string id  
+    integer version  
+    string displayTitle  
+    string name  
+}
+DisplaySection {
+    DisplaySectionTypeEnum sectionType  
+}
 
+OrderedDisplay ||--|o OutputDisplay : "display"
+OutputDisplay ||--}o DisplaySection : "displaySections"
+DisplaySection ||--}o OrderedDisplaySubSection : "orderedSubSections"
+
+```
 
 
 

@@ -74,23 +74,16 @@
 <h1 id="class-pagenameref">Class: PageNameRef</h1>
 <p><em>One or more pages in the reference document, referenced by named destination.</em></p>
 <p>URI: <a href="https://www.cdisc.org/ars/1-0/PageNameRef">ars:PageNameRef</a></p>
-<div class="mermaid"> classDiagram
-    class PageNameRef
-      PageRef &lt;|-- PageNameRef
+<div class="mermaid">erDiagram
+PageNameRef {
+    PageRefTypeEnum refType  
+    string label  
+    stringList pageNames  
+    integerList pageNumbers  
+    integer firstPage  
+    integer lastPage  
+}
 
-      PageNameRef : firstPage
-
-      PageNameRef : label
-
-      PageNameRef : lastPage
-
-      PageNameRef : pageNames
-
-      PageNameRef : pageNumbers
-
-      PageNameRef : refType
-
-          PageNameRef --|&gt; PageRefTypeEnum : refType
 
 
 </div>

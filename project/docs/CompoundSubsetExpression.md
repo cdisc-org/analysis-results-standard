@@ -10,23 +10,31 @@ _A compound expression consisting of either two or more where clauses combined w
 URI: [ars:CompoundSubsetExpression](https://www.cdisc.org/ars/1-0/CompoundSubsetExpression)
 
 
-
 ```mermaid
- classDiagram
-    class CompoundSubsetExpression
-      WhereClauseCompoundExpression <|-- CompoundSubsetExpression
-      
-      CompoundSubsetExpression : logicalOperator
-        
-          CompoundSubsetExpression --|> ExpressionLogicalOperatorEnum : logicalOperator
-        
-      CompoundSubsetExpression : whereClauses
-        
-          CompoundSubsetExpression --|> WhereClause : whereClauses
-        
-      
-```
+erDiagram
+CompoundSubsetExpression {
+    ExpressionLogicalOperatorEnum logicalOperator  
+}
+WhereClause {
+    integer level  
+    integer order  
+}
+WhereClauseCompoundExpression {
+    ExpressionLogicalOperatorEnum logicalOperator  
+}
+WhereClauseCondition {
+    string dataset  
+    string variable  
+    ConditionComparatorEnum comparator  
+    stringList value  
+}
 
+CompoundSubsetExpression ||--}o WhereClause : "whereClauses"
+WhereClause ||--|o WhereClauseCondition : "condition"
+WhereClause ||--|o WhereClauseCompoundExpression : "compoundExpression"
+WhereClauseCompoundExpression ||--}o WhereClause : "whereClauses"
+
+```
 
 
 

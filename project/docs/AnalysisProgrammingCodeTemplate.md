@@ -10,25 +10,41 @@ _Programming statements and/or a reference to a used as a template for creation 
 URI: [ars:AnalysisProgrammingCodeTemplate](https://www.cdisc.org/ars/1-0/AnalysisProgrammingCodeTemplate)
 
 
-
 ```mermaid
- classDiagram
-    class AnalysisProgrammingCodeTemplate
-      AnalysisProgrammingCodeTemplate : code
-        
-      AnalysisProgrammingCodeTemplate : context
-        
-      AnalysisProgrammingCodeTemplate : documentRef
-        
-          AnalysisProgrammingCodeTemplate --|> DocumentReference : documentRef
-        
-      AnalysisProgrammingCodeTemplate : parameters
-        
-          AnalysisProgrammingCodeTemplate --|> TemplateCodeParameter : parameters
-        
-      
-```
+erDiagram
+AnalysisProgrammingCodeTemplate {
+    string context  
+    string code  
+}
+TemplateCodeParameter {
+    string valueSource  
+    stringList value  
+    string description  
+    string name  
+}
+DocumentReference {
 
+}
+PageRef {
+    PageRefTypeEnum refType  
+    string label  
+    stringList pageNames  
+    integerList pageNumbers  
+    integer firstPage  
+    integer lastPage  
+}
+ReferenceDocument {
+    string id  
+    uri location  
+    string name  
+}
+
+AnalysisProgrammingCodeTemplate ||--|o DocumentReference : "documentRef"
+AnalysisProgrammingCodeTemplate ||--}o TemplateCodeParameter : "parameters"
+DocumentReference ||--|| ReferenceDocument : "referenceDocumentId"
+DocumentReference ||--}o PageRef : "pageRefs"
+
+```
 
 
 

@@ -12,31 +12,20 @@ _A reference to a specific part of a document as indicated by a list of one or m
 URI: [ars:PageRef](https://www.cdisc.org/ars/1-0/PageRef)
 
 
-
 ```mermaid
- classDiagram
-    class PageRef
-      PageRef <|-- PageNumberListRef
-      PageRef <|-- PageNumberRangeRef
-      PageRef <|-- PageNameRef
-      
-      PageRef : firstPage
-        
-      PageRef : label
-        
-      PageRef : lastPage
-        
-      PageRef : pageNames
-        
-      PageRef : pageNumbers
-        
-      PageRef : refType
-        
-          PageRef --|> PageRefTypeEnum : refType
-        
-      
-```
+erDiagram
+PageRef {
+    PageRefTypeEnum refType  
+    string label  
+    stringList pageNames  
+    integerList pageNumbers  
+    integer firstPage  
+    integer lastPage  
+}
 
+
+
+```
 
 
 

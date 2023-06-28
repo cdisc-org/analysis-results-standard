@@ -10,21 +10,31 @@ _A reference to a defined factor by which subjects or data records are grouped f
 URI: [ars:OrderedGroupingFactor](https://www.cdisc.org/ars/1-0/OrderedGroupingFactor)
 
 
-
 ```mermaid
- classDiagram
-    class OrderedGroupingFactor
-      OrderedGroupingFactor : groupingId
-        
-          OrderedGroupingFactor --|> GroupingFactor : groupingId
-        
-      OrderedGroupingFactor : order
-        
-      OrderedGroupingFactor : resultsByGroup
-        
-      
-```
+erDiagram
+OrderedGroupingFactor {
+    integer order  
+    boolean resultsByGroup  
+}
+GroupingFactor {
+    string id  
+    string label  
+    string groupingVariable  
+    boolean dataDriven  
+}
+Group {
+    string id  
+    string label  
+    integer level  
+    integer order  
+}
 
+OrderedGroupingFactor ||--|o GroupingFactor : "groupingId"
+GroupingFactor ||--}o Group : "groups"
+Group ||--|o WhereClauseCondition : "condition"
+Group ||--|o CompoundGroupExpression : "compoundExpression"
+
+```
 
 
 

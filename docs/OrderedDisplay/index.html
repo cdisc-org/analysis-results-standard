@@ -74,14 +74,23 @@
 <h1 id="class-ordereddisplay">Class: OrderedDisplay</h1>
 <p><em>A display ordered with respect to other displays in an analysis output.</em></p>
 <p>URI: <a href="https://www.cdisc.org/ars/1-0/OrderedDisplay">ars:OrderedDisplay</a></p>
-<div class="mermaid"> classDiagram
-    class OrderedDisplay
-      OrderedDisplay : display
+<div class="mermaid">erDiagram
+OrderedDisplay {
+    integer order  
+}
+OutputDisplay {
+    string id  
+    integer version  
+    string displayTitle  
+    string name  
+}
+DisplaySection {
+    DisplaySectionTypeEnum sectionType  
+}
 
-          OrderedDisplay --|&gt; OutputDisplay : display
-
-      OrderedDisplay : order
-
+OrderedDisplay ||--|o OutputDisplay : "display"
+OutputDisplay ||--}o DisplaySection : "displaySections"
+DisplaySection ||--}o OrderedDisplaySubSection : "orderedSubSections"
 
 </div>
 <!-- no inheritance hierarchy -->

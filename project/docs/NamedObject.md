@@ -12,26 +12,15 @@ _An object with a name._
 URI: [ars:NamedObject](https://www.cdisc.org/ars/1-0/NamedObject)
 
 
-
 ```mermaid
- classDiagram
-    class NamedObject
-      NamedObject <|-- ReportingEvent
-      NamedObject <|-- OrderedListItem
-      NamedObject <|-- Analysis
-      NamedObject <|-- AnalysisMethod
-      NamedObject <|-- Operation
-      NamedObject <|-- CodeParameter
-      NamedObject <|-- Output
-      NamedObject <|-- OutputFile
-      NamedObject <|-- OutputDisplay
-      NamedObject <|-- ReferenceDocument
-      
-      NamedObject : name
-        
-      
-```
+erDiagram
+NamedObject {
+    string name  
+}
 
+
+
+```
 
 
 

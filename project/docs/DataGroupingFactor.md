@@ -10,27 +10,36 @@ _A factor used to subdivide data records in an analysis dataset for analysis._
 URI: [ars:DataGroupingFactor](https://www.cdisc.org/ars/1-0/DataGroupingFactor)
 
 
-
 ```mermaid
- classDiagram
-    class DataGroupingFactor
-      GroupingFactor <|-- DataGroupingFactor
-      
-      DataGroupingFactor : dataDriven
-        
-      DataGroupingFactor : groupingVariable
-        
-      DataGroupingFactor : groups
-        
-          DataGroupingFactor --|> DataGroup : groups
-        
-      DataGroupingFactor : id
-        
-      DataGroupingFactor : label
-        
-      
-```
+erDiagram
+DataGroupingFactor {
+    string id  
+    string label  
+    string groupingVariable  
+    boolean dataDriven  
+}
+DataGroup {
+    string id  
+    string label  
+    integer level  
+    integer order  
+}
+CompoundGroupExpression {
+    ExpressionLogicalOperatorEnum logicalOperator  
+}
+WhereClauseCondition {
+    string dataset  
+    string variable  
+    ConditionComparatorEnum comparator  
+    stringList value  
+}
 
+DataGroupingFactor ||--}o DataGroup : "groups"
+DataGroup ||--|o WhereClauseCondition : "condition"
+DataGroup ||--|o CompoundGroupExpression : "compoundExpression"
+CompoundGroupExpression ||--}o Group : "whereClauses"
+
+```
 
 
 
