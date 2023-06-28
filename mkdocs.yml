@@ -5,6 +5,7 @@ nav:
     #- About: about.md
 plugins:
     - search
-    - mermaid2
+    - mermaid2:
+        version: '9'
 docs_dir: project/docs
 site_dir: docs
