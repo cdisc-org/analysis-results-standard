@@ -10,39 +10,24 @@ _Programming statements and/or a reference to the program used to perform a spec
 URI: [ars:AnalysisOutputProgrammingCode](https://www.cdisc.org/ars/1-0/AnalysisOutputProgrammingCode)
 
 
+
+
 ```mermaid
-erDiagram
-AnalysisOutputProgrammingCode {
-    string context  
-    string code  
-}
-AnalysisOutputCodeParameter {
-    stringList value  
-    string description  
-    string name  
-}
-DocumentReference {
-
-}
-PageRef {
-    PageRefTypeEnum refType  
-    string label  
-    stringList pageNames  
-    integerList pageNumbers  
-    integer firstPage  
-    integer lastPage  
-}
-ReferenceDocument {
-    string id  
-    uri location  
-    string name  
-}
-
-AnalysisOutputProgrammingCode ||--|o DocumentReference : "documentRef"
-AnalysisOutputProgrammingCode ||--}o AnalysisOutputCodeParameter : "parameters"
-DocumentReference ||--|| ReferenceDocument : "referenceDocumentId"
-DocumentReference ||--}o PageRef : "pageRefs"
-
+ classDiagram
+    class AnalysisOutputProgrammingCode
+      AnalysisOutputProgrammingCode : code
+        
+      AnalysisOutputProgrammingCode : context
+        
+      AnalysisOutputProgrammingCode : documentRef
+        
+          AnalysisOutputProgrammingCode --|> DocumentReference : documentRef
+        
+      AnalysisOutputProgrammingCode : parameters
+        
+          AnalysisOutputProgrammingCode --|> AnalysisOutputCodeParameter : parameters
+        
+      
 ```
 
 

@@ -82,24 +82,20 @@
 <h1 id="class-whereclausecompoundexpression">Class: WhereClauseCompoundExpression</h1>
 <p><em>A compound expression consisting of either two or more where clauses combined with the <code>AND</code> or <code>OR</code> logical operator, or a single where clause negated with the <code>NOT</code> logical operator.</em></p>
 <p>URI: <a href="https://www.cdisc.org/ars/1-0/WhereClauseCompoundExpression">ars:WhereClauseCompoundExpression</a></p>
-<div class="mermaid">erDiagram
-WhereClauseCompoundExpression {
-    ExpressionLogicalOperatorEnum logicalOperator  
-}
-WhereClause {
-    integer level  
-    integer order  
-}
-WhereClauseCondition {
-    string dataset  
-    string variable  
-    ConditionComparatorEnum comparator  
-    stringList value  
-}
+<div class="mermaid"> classDiagram
+    class WhereClauseCompoundExpression
+      WhereClauseCompoundExpression &lt;|-- CompoundSetExpression
+      WhereClauseCompoundExpression &lt;|-- CompoundGroupExpression
+      WhereClauseCompoundExpression &lt;|-- CompoundSubsetExpression
 
-WhereClauseCompoundExpression ||--}o WhereClause : "whereClauses"
-WhereClause ||--|o WhereClauseCondition : "condition"
-WhereClause ||--|o WhereClauseCompoundExpression : "compoundExpression"
+      WhereClauseCompoundExpression : logicalOperator
+
+          WhereClauseCompoundExpression --|&gt; ExpressionLogicalOperatorEnum : logicalOperator
+
+      WhereClauseCompoundExpression : whereClauses
+
+          WhereClauseCompoundExpression --|&gt; WhereClause : whereClauses
+
 
 </div>
 <h2 id="inheritance">Inheritance</h2>
@@ -354,6 +350,7 @@ rules:
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
 <script defer="" src="../js/base.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/svg-pan-zoom-container@0.6.1"></script>
 <script defer="" src="../search/main.js"></script>
 <div aria-hidden="true" aria-labelledby="searchModalLabel" class="modal" id="mkdocs_search_modal" role="dialog" tabindex="-1">
 <div class="modal-dialog modal-lg">
@@ -415,5 +412,5 @@ rules:
 </div>
 </div>
 </div>
-<script src="https://unpkg.com/mermaid@9/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
+<script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
 </html>

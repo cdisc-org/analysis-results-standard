@@ -78,45 +78,22 @@
 <h1 id="class-operation">Class: Operation</h1>
 <p><em>A statistical operation that produces a single analysis result value as part of an analysis method.</em></p>
 <p>URI: <a href="https://www.cdisc.org/ars/1-0/Operation">ars:Operation</a></p>
-<div class="mermaid">erDiagram
-Operation {
-    string id  
-    string label  
-    string resultPattern  
-    string name  
-}
-ReferencedOperationRelationship {
-    string id  
-    string description  
-}
-Analysis {
-    string id  
-    integer version  
-    string description  
-    string dataset  
-    string variable  
-    string name  
-}
-ExtensibleTerminologyTerm {
-    string controlledTerm  
-}
+<div class="mermaid"> classDiagram
+    class Operation
+      NamedObject &lt;|-- Operation
 
-Operation ||--}o ReferencedOperationRelationship : "referencedOperationRelationships"
-ReferencedOperationRelationship ||--|| ExtensibleTerminologyTerm : "referencedOperationRole"
-ReferencedOperationRelationship ||--|| Operation : "operationId"
-ReferencedOperationRelationship ||--|o Analysis : "analysisId"
-Analysis ||--}o AnalysisCategory : "categoryIds"
-Analysis ||--|| ExtensibleTerminologyTerm : "reason"
-Analysis ||--|| ExtensibleTerminologyTerm : "purpose"
-Analysis ||--}o DocumentReference : "documentRefs"
-Analysis ||--|o AnalysisSet : "analysisSetId"
-Analysis ||--}o OrderedGroupingFactor : "orderedGroupings"
-Analysis ||--|o DataSubset : "dataSubsetId"
-Analysis ||--|| AnalysisMethod : "methodId"
-Analysis ||--}o ReferencedAnalysisOperation : "referencedAnalysisOperations"
-Analysis ||--|o AnalysisOutputProgrammingCode : "programmingCode"
-Analysis ||--}o OperationResult : "results"
-ExtensibleTerminologyTerm ||--|o SponsorTerm : "sponsorTermId"
+      Operation : id
+
+      Operation : label
+
+      Operation : name
+
+      Operation : referencedOperationRelationships
+
+          Operation --|&gt; ReferencedOperationRelationship : referencedOperationRelationships
+
+      Operation : resultPattern
+
 
 </div>
 <h2 id="inheritance">Inheritance</h2>
@@ -349,6 +326,7 @@ attributes:
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
 <script defer="" src="../js/base.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/svg-pan-zoom-container@0.6.1"></script>
 <script defer="" src="../search/main.js"></script>
 <div aria-hidden="true" aria-labelledby="searchModalLabel" class="modal" id="mkdocs_search_modal" role="dialog" tabindex="-1">
 <div class="modal-dialog modal-lg">
@@ -410,5 +388,5 @@ attributes:
 </div>
 </div>
 </div>
-<script src="https://unpkg.com/mermaid@9/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
+<script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
 </html>

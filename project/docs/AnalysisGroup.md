@@ -10,36 +10,30 @@ _A subdivision of the subject population based on a defined factor (e.g., subjec
 URI: [ars:AnalysisGroup](https://www.cdisc.org/ars/1-0/AnalysisGroup)
 
 
+
+
 ```mermaid
-erDiagram
-AnalysisGroup {
-    string id  
-    string label  
-    integer level  
-    integer order  
-}
-CompoundGroupExpression {
-    ExpressionLogicalOperatorEnum logicalOperator  
-}
-Group {
-    string id  
-    string label  
-    integer level  
-    integer order  
-}
-WhereClauseCondition {
-    string dataset  
-    string variable  
-    ConditionComparatorEnum comparator  
-    stringList value  
-}
-
-AnalysisGroup ||--|o WhereClauseCondition : "condition"
-AnalysisGroup ||--|o CompoundGroupExpression : "compoundExpression"
-CompoundGroupExpression ||--}o Group : "whereClauses"
-Group ||--|o WhereClauseCondition : "condition"
-Group ||--|o CompoundGroupExpression : "compoundExpression"
-
+ classDiagram
+    class AnalysisGroup
+      Group <|-- AnalysisGroup
+      
+      AnalysisGroup : compoundExpression
+        
+          AnalysisGroup --|> CompoundGroupExpression : compoundExpression
+        
+      AnalysisGroup : condition
+        
+          AnalysisGroup --|> WhereClauseCondition : condition
+        
+      AnalysisGroup : id
+        
+      AnalysisGroup : label
+        
+      AnalysisGroup : level
+        
+      AnalysisGroup : order
+        
+      
 ```
 
 

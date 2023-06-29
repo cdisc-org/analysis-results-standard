@@ -10,26 +10,26 @@ _A tabular representation of the results of one or more analyses._
 URI: [ars:OutputDisplay](https://www.cdisc.org/ars/1-0/OutputDisplay)
 
 
+
+
 ```mermaid
-erDiagram
-OutputDisplay {
-    string id  
-    integer version  
-    string displayTitle  
-    string name  
-}
-DisplaySection {
-    DisplaySectionTypeEnum sectionType  
-}
-OrderedDisplaySubSection {
-    integer order  
-}
-
-OutputDisplay ||--}o DisplaySection : "displaySections"
-DisplaySection ||--}o OrderedDisplaySubSection : "orderedSubSections"
-OrderedDisplaySubSection ||--|o DisplaySubSection : "subSection"
-OrderedDisplaySubSection ||--|o DisplaySubSection : "subSectionId"
-
+ classDiagram
+    class OutputDisplay
+      NamedObject <|-- OutputDisplay
+      
+      OutputDisplay : displaySections
+        
+          OutputDisplay --|> DisplaySection : displaySections
+        
+      OutputDisplay : displayTitle
+        
+      OutputDisplay : id
+        
+      OutputDisplay : name
+        
+      OutputDisplay : version
+        
+      
 ```
 
 

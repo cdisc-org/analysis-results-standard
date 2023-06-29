@@ -10,17 +10,22 @@ _A simple selection criterion exressed as [dataset].[variable] [comparator] [val
 URI: [ars:WhereClauseCondition](https://www.cdisc.org/ars/1-0/WhereClauseCondition)
 
 
+
+
 ```mermaid
-erDiagram
-WhereClauseCondition {
-    string dataset  
-    string variable  
-    ConditionComparatorEnum comparator  
-    stringList value  
-}
-
-
-
+ classDiagram
+    class WhereClauseCondition
+      WhereClauseCondition : comparator
+        
+          WhereClauseCondition --|> ConditionComparatorEnum : comparator
+        
+      WhereClauseCondition : dataset
+        
+      WhereClauseCondition : value
+        
+      WhereClauseCondition : variable
+        
+      
 ```
 
 

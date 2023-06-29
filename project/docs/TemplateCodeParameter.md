@@ -10,17 +10,22 @@ _A replacement parameter whose value is substituted in template programming code
 URI: [ars:TemplateCodeParameter](https://www.cdisc.org/ars/1-0/TemplateCodeParameter)
 
 
+
+
 ```mermaid
-erDiagram
-TemplateCodeParameter {
-    string valueSource  
-    stringList value  
-    string description  
-    string name  
-}
-
-
-
+ classDiagram
+    class TemplateCodeParameter
+      CodeParameter <|-- TemplateCodeParameter
+      
+      TemplateCodeParameter : description
+        
+      TemplateCodeParameter : name
+        
+      TemplateCodeParameter : value
+        
+      TemplateCodeParameter : valueSource
+        
+      
 ```
 
 

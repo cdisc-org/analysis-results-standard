@@ -10,34 +10,30 @@ _A subset of data identified by selection criteria for inclusion in the analysis
 URI: [ars:DataSubset](https://www.cdisc.org/ars/1-0/DataSubset)
 
 
+
+
 ```mermaid
-erDiagram
-DataSubset {
-    string id  
-    string label  
-    integer level  
-    integer order  
-}
-CompoundSubsetExpression {
-    ExpressionLogicalOperatorEnum logicalOperator  
-}
-WhereClause {
-    integer level  
-    integer order  
-}
-WhereClauseCondition {
-    string dataset  
-    string variable  
-    ConditionComparatorEnum comparator  
-    stringList value  
-}
-
-DataSubset ||--|o WhereClauseCondition : "condition"
-DataSubset ||--|o CompoundSubsetExpression : "compoundExpression"
-CompoundSubsetExpression ||--}o WhereClause : "whereClauses"
-WhereClause ||--|o WhereClauseCondition : "condition"
-WhereClause ||--|o WhereClauseCompoundExpression : "compoundExpression"
-
+ classDiagram
+    class DataSubset
+      WhereClause <|-- DataSubset
+      
+      DataSubset : compoundExpression
+        
+          DataSubset --|> CompoundSubsetExpression : compoundExpression
+        
+      DataSubset : condition
+        
+          DataSubset --|> WhereClauseCondition : condition
+        
+      DataSubset : id
+        
+      DataSubset : label
+        
+      DataSubset : level
+        
+      DataSubset : order
+        
+      
 ```
 
 

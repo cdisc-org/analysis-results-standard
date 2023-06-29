@@ -10,19 +10,20 @@ _The sponsor-defined file format of the file containing output from analyses._
 URI: [ars:SponsorOutputFileType](https://www.cdisc.org/ars/1-0/SponsorOutputFileType)
 
 
+
+
 ```mermaid
-erDiagram
-SponsorOutputFileType {
-    string controlledTerm  
-}
-SponsorTerm {
-    string id  
-    string submissionValue  
-    string description  
-}
-
-SponsorOutputFileType ||--|| SponsorTerm : "sponsorTermId"
-
+ classDiagram
+    class SponsorOutputFileType
+      ExtensibleTerminologyTerm <|-- SponsorOutputFileType
+      
+      SponsorOutputFileType : controlledTerm
+        
+      SponsorOutputFileType : sponsorTermId
+        
+          SponsorOutputFileType --|> SponsorTerm : sponsorTermId
+        
+      
 ```
 
 

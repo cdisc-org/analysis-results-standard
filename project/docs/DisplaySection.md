@@ -10,23 +10,20 @@ _A part of a tabular display containing one or more pieces of informational text
 URI: [ars:DisplaySection](https://www.cdisc.org/ars/1-0/DisplaySection)
 
 
+
+
 ```mermaid
-erDiagram
-DisplaySection {
-    DisplaySectionTypeEnum sectionType  
-}
-OrderedDisplaySubSection {
-    integer order  
-}
-DisplaySubSection {
-    string id  
-    string text  
-}
-
-DisplaySection ||--}o OrderedDisplaySubSection : "orderedSubSections"
-OrderedDisplaySubSection ||--|o DisplaySubSection : "subSection"
-OrderedDisplaySubSection ||--|o DisplaySubSection : "subSectionId"
-
+ classDiagram
+    class DisplaySection
+      DisplaySection : orderedSubSections
+        
+          DisplaySection --|> OrderedDisplaySubSection : orderedSubSections
+        
+      DisplaySection : sectionType
+        
+          DisplaySection --|> DisplaySectionTypeEnum : sectionType
+        
+      
 ```
 
 

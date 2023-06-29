@@ -10,19 +10,22 @@ _The file format of the file containing output from analyses._
 URI: [ars:OutputFileType](https://www.cdisc.org/ars/1-0/OutputFileType)
 
 
+
+
 ```mermaid
-erDiagram
-OutputFileType {
-    OutputFileTypeEnum controlledTerm  
-}
-SponsorTerm {
-    string id  
-    string submissionValue  
-    string description  
-}
-
-OutputFileType ||--|o SponsorTerm : "sponsorTermId"
-
+ classDiagram
+    class OutputFileType
+      ExtensibleTerminologyTerm <|-- OutputFileType
+      
+      OutputFileType : controlledTerm
+        
+          OutputFileType --|> OutputFileTypeEnum : controlledTerm
+        
+      OutputFileType : sponsorTermId
+        
+          OutputFileType --|> SponsorTerm : sponsorTermId
+        
+      
 ```
 
 

@@ -10,19 +10,22 @@ _The rationale for performing this analysis._
 URI: [ars:AnalysisReason](https://www.cdisc.org/ars/1-0/AnalysisReason)
 
 
+
+
 ```mermaid
-erDiagram
-AnalysisReason {
-    AnalysisReasonEnum controlledTerm  
-}
-SponsorTerm {
-    string id  
-    string submissionValue  
-    string description  
-}
-
-AnalysisReason ||--|o SponsorTerm : "sponsorTermId"
-
+ classDiagram
+    class AnalysisReason
+      ExtensibleTerminologyTerm <|-- AnalysisReason
+      
+      AnalysisReason : controlledTerm
+        
+          AnalysisReason --|> AnalysisReasonEnum : controlledTerm
+        
+      AnalysisReason : sponsorTermId
+        
+          AnalysisReason --|> SponsorTerm : sponsorTermId
+        
+      
 ```
 
 

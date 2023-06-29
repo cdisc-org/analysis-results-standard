@@ -10,19 +10,22 @@ _The role that the referenced operation's result plays in the calculation of the
 URI: [ars:OperationRole](https://www.cdisc.org/ars/1-0/OperationRole)
 
 
+
+
 ```mermaid
-erDiagram
-OperationRole {
-    OperationRoleEnum controlledTerm  
-}
-SponsorTerm {
-    string id  
-    string submissionValue  
-    string description  
-}
-
-OperationRole ||--|o SponsorTerm : "sponsorTermId"
-
+ classDiagram
+    class OperationRole
+      ExtensibleTerminologyTerm <|-- OperationRole
+      
+      OperationRole : controlledTerm
+        
+          OperationRole --|> OperationRoleEnum : controlledTerm
+        
+      OperationRole : sponsorTermId
+        
+          OperationRole --|> SponsorTerm : sponsorTermId
+        
+      
 ```
 
 

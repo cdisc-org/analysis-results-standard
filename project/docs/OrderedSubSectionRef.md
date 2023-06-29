@@ -10,19 +10,24 @@ _A reference to a subsection defined either globally or in another display secti
 URI: [ars:OrderedSubSectionRef](https://www.cdisc.org/ars/1-0/OrderedSubSectionRef)
 
 
+
+
 ```mermaid
-erDiagram
-OrderedSubSectionRef {
-    integer order  
-}
-DisplaySubSection {
-    string id  
-    string text  
-}
-
-OrderedSubSectionRef ||--|o DisplaySubSection : "subSection"
-OrderedSubSectionRef ||--|| DisplaySubSection : "subSectionId"
-
+ classDiagram
+    class OrderedSubSectionRef
+      OrderedDisplaySubSection <|-- OrderedSubSectionRef
+      
+      OrderedSubSectionRef : order
+        
+      OrderedSubSectionRef : subSection
+        
+          OrderedSubSectionRef --|> DisplaySubSection : subSection
+        
+      OrderedSubSectionRef : subSectionId
+        
+          OrderedSubSectionRef --|> DisplaySubSection : subSectionId
+        
+      
 ```
 
 

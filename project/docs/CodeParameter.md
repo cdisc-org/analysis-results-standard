@@ -12,15 +12,23 @@ _A replacement parameter whose value is substituted in template programming code
 URI: [ars:CodeParameter](https://www.cdisc.org/ars/1-0/CodeParameter)
 
 
+
+
 ```mermaid
-erDiagram
-CodeParameter {
-    string description  
-    string name  
-}
+ classDiagram
+    class CodeParameter
+      NamedObject <|-- CodeParameter
+      
 
-
-
+      CodeParameter <|-- AnalysisOutputCodeParameter
+      CodeParameter <|-- TemplateCodeParameter
+      
+      
+      CodeParameter : description
+        
+      CodeParameter : name
+        
+      
 ```
 
 

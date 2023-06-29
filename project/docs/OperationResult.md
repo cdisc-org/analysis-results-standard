@@ -10,50 +10,24 @@ _The result of an analysis method operation performed on a subdivision of subjec
 URI: [ars:OperationResult](https://www.cdisc.org/ars/1-0/OperationResult)
 
 
+
+
 ```mermaid
-erDiagram
-OperationResult {
-    string rawValue  
-    string formattedValue  
-}
-ResultGroup {
-    string groupValue  
-}
-Group {
-    string id  
-    string label  
-    integer level  
-    integer order  
-}
-GroupingFactor {
-    string id  
-    string label  
-    string groupingVariable  
-    boolean dataDriven  
-}
-Operation {
-    string id  
-    string label  
-    string resultPattern  
-    string name  
-}
-ReferencedOperationRelationship {
-    string id  
-    string description  
-}
-
-OperationResult ||--|| Operation : "operationId"
-OperationResult ||--}o ResultGroup : "resultGroups"
-ResultGroup ||--|o GroupingFactor : "groupingId"
-ResultGroup ||--|o Group : "groupId"
-Group ||--|o WhereClauseCondition : "condition"
-Group ||--|o CompoundGroupExpression : "compoundExpression"
-GroupingFactor ||--}o Group : "groups"
-Operation ||--}o ReferencedOperationRelationship : "referencedOperationRelationships"
-ReferencedOperationRelationship ||--|| ExtensibleTerminologyTerm : "referencedOperationRole"
-ReferencedOperationRelationship ||--|| Operation : "operationId"
-ReferencedOperationRelationship ||--|o Analysis : "analysisId"
-
+ classDiagram
+    class OperationResult
+      OperationResult : formattedValue
+        
+      OperationResult : operationId
+        
+          OperationResult --|> Operation : operationId
+        
+      OperationResult : rawValue
+        
+      OperationResult : resultGroups
+        
+          OperationResult --|> ResultGroup : resultGroups
+        
+      
 ```
 
 

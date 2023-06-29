@@ -10,16 +10,20 @@ _A parameter whose value is used in programming code for a specific analysis or 
 URI: [ars:AnalysisOutputCodeParameter](https://www.cdisc.org/ars/1-0/AnalysisOutputCodeParameter)
 
 
+
+
 ```mermaid
-erDiagram
-AnalysisOutputCodeParameter {
-    stringList value  
-    string description  
-    string name  
-}
-
-
-
+ classDiagram
+    class AnalysisOutputCodeParameter
+      CodeParameter <|-- AnalysisOutputCodeParameter
+      
+      AnalysisOutputCodeParameter : description
+        
+      AnalysisOutputCodeParameter : name
+        
+      AnalysisOutputCodeParameter : value
+        
+      
 ```
 
 

@@ -10,19 +10,28 @@ _A range of pages in the reference document, indicated by the first and last pag
 URI: [ars:PageNumberRangeRef](https://www.cdisc.org/ars/1-0/PageNumberRangeRef)
 
 
+
+
 ```mermaid
-erDiagram
-PageNumberRangeRef {
-    PageRefTypeEnum refType  
-    string label  
-    stringList pageNames  
-    integerList pageNumbers  
-    integer firstPage  
-    integer lastPage  
-}
-
-
-
+ classDiagram
+    class PageNumberRangeRef
+      PageRef <|-- PageNumberRangeRef
+      
+      PageNumberRangeRef : firstPage
+        
+      PageNumberRangeRef : label
+        
+      PageNumberRangeRef : lastPage
+        
+      PageNumberRangeRef : pageNames
+        
+      PageNumberRangeRef : pageNumbers
+        
+      PageNumberRangeRef : refType
+        
+          PageNumberRangeRef --|> PageRefTypeEnum : refType
+        
+      
 ```
 
 

@@ -78,34 +78,26 @@
 <h1 id="class-datagroup">Class: DataGroup</h1>
 <p><em>A subdivision of the analysis dataset records based on a defined factor.</em></p>
 <p>URI: <a href="https://www.cdisc.org/ars/1-0/DataGroup">ars:DataGroup</a></p>
-<div class="mermaid">erDiagram
-DataGroup {
-    string id  
-    string label  
-    integer level  
-    integer order  
-}
-CompoundGroupExpression {
-    ExpressionLogicalOperatorEnum logicalOperator  
-}
-Group {
-    string id  
-    string label  
-    integer level  
-    integer order  
-}
-WhereClauseCondition {
-    string dataset  
-    string variable  
-    ConditionComparatorEnum comparator  
-    stringList value  
-}
+<div class="mermaid"> classDiagram
+    class DataGroup
+      Group &lt;|-- DataGroup
 
-DataGroup ||--|o WhereClauseCondition : "condition"
-DataGroup ||--|o CompoundGroupExpression : "compoundExpression"
-CompoundGroupExpression ||--}o Group : "whereClauses"
-Group ||--|o WhereClauseCondition : "condition"
-Group ||--|o CompoundGroupExpression : "compoundExpression"
+      DataGroup : compoundExpression
+
+          DataGroup --|&gt; CompoundGroupExpression : compoundExpression
+
+      DataGroup : condition
+
+          DataGroup --|&gt; WhereClauseCondition : condition
+
+      DataGroup : id
+
+      DataGroup : label
+
+      DataGroup : level
+
+      DataGroup : order
+
 
 </div>
 <h2 id="inheritance">Inheritance</h2>
@@ -338,6 +330,7 @@ attributes:
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
 <script defer="" src="../js/base.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/svg-pan-zoom-container@0.6.1"></script>
 <script defer="" src="../search/main.js"></script>
 <div aria-hidden="true" aria-labelledby="searchModalLabel" class="modal" id="mkdocs_search_modal" role="dialog" tabindex="-1">
 <div class="modal-dialog modal-lg">
@@ -399,5 +392,5 @@ attributes:
 </div>
 </div>
 </div>
-<script src="https://unpkg.com/mermaid@9/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
+<script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
 </html>

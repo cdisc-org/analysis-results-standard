@@ -10,67 +10,40 @@ _A report of results and their evaluation based on planned analyses performed du
 URI: [ars:Output](https://www.cdisc.org/ars/1-0/Output)
 
 
+
+
 ```mermaid
-erDiagram
-Output {
-    string id  
-    integer version  
-    string name  
-}
-AnalysisOutputProgrammingCode {
-    string context  
-    string code  
-}
-AnalysisOutputCodeParameter {
-    stringList value  
-    string description  
-    string name  
-}
-DocumentReference {
-
-}
-AnalysisCategory {
-    string id  
-    string label  
-}
-AnalysisCategorization {
-    string id  
-    string label  
-}
-OrderedDisplay {
-    integer order  
-}
-OutputDisplay {
-    string id  
-    integer version  
-    string displayTitle  
-    string name  
-}
-OutputFile {
-    uri location  
-    string style  
-    string name  
-}
-ExtensibleTerminologyTerm {
-    string controlledTerm  
-}
-
-Output ||--}o OutputFile : "fileSpecifications"
-Output ||--}o OrderedDisplay : "displays"
-Output ||--}o AnalysisCategory : "categoryIds"
-Output ||--}o DocumentReference : "documentRefs"
-Output ||--|o AnalysisOutputProgrammingCode : "programmingCode"
-AnalysisOutputProgrammingCode ||--|o DocumentReference : "documentRef"
-AnalysisOutputProgrammingCode ||--}o AnalysisOutputCodeParameter : "parameters"
-DocumentReference ||--|| ReferenceDocument : "referenceDocumentId"
-DocumentReference ||--}o PageRef : "pageRefs"
-AnalysisCategory ||--}o AnalysisCategorization : "subCategorizations"
-AnalysisCategorization ||--}| AnalysisCategory : "categories"
-OrderedDisplay ||--|o OutputDisplay : "display"
-OutputDisplay ||--}o DisplaySection : "displaySections"
-OutputFile ||--|o ExtensibleTerminologyTerm : "fileType"
-ExtensibleTerminologyTerm ||--|o SponsorTerm : "sponsorTermId"
-
+ classDiagram
+    class Output
+      NamedObject <|-- Output
+      
+      Output : categoryIds
+        
+          Output --|> AnalysisCategory : categoryIds
+        
+      Output : displays
+        
+          Output --|> OrderedDisplay : displays
+        
+      Output : documentRefs
+        
+          Output --|> DocumentReference : documentRefs
+        
+      Output : fileSpecifications
+        
+          Output --|> OutputFile : fileSpecifications
+        
+      Output : id
+        
+      Output : name
+        
+      Output : programmingCode
+        
+          Output --|> AnalysisOutputProgrammingCode : programmingCode
+        
+      Output : version
+        
+      
 ```
 
 

@@ -10,211 +10,72 @@ _A set of analyses and outputs created to meet a specific reporting requirement,
 URI: [ars:ReportingEvent](https://www.cdisc.org/ars/1-0/ReportingEvent)
 
 
+
+
 ```mermaid
-erDiagram
-ReportingEvent {
-    string id  
-    integer version  
-    string name  
-}
-TerminologyExtension {
-    string id  
-    ExtensibleTerminologyEnum enumeration  
-}
-SponsorTerm {
-    string id  
-    string submissionValue  
-    string description  
-}
-ReferenceDocument {
-    string id  
-    uri location  
-    string name  
-}
-Output {
-    string id  
-    integer version  
-    string name  
-}
-AnalysisOutputProgrammingCode {
-    string context  
-    string code  
-}
-DocumentReference {
-
-}
-AnalysisCategory {
-    string id  
-    string label  
-}
-OrderedDisplay {
-    integer order  
-}
-OutputFile {
-    uri location  
-    string style  
-    string name  
-}
-AnalysisMethod {
-    string id  
-    string label  
-    string description  
-    string name  
-}
-AnalysisProgrammingCodeTemplate {
-    string context  
-    string code  
-}
-Operation {
-    string id  
-    string label  
-    string resultPattern  
-    string name  
-}
-Analysis {
-    string id  
-    integer version  
-    string description  
-    string dataset  
-    string variable  
-    string name  
-}
-OperationResult {
-    string rawValue  
-    string formattedValue  
-}
-ReferencedAnalysisOperation {
-
-}
-DataSubset {
-    string id  
-    string label  
-    integer level  
-    integer order  
-}
-OrderedGroupingFactor {
-    integer order  
-    boolean resultsByGroup  
-}
-AnalysisSet {
-    string id  
-    string label  
-    integer level  
-    integer order  
-}
-ExtensibleTerminologyTerm {
-    string controlledTerm  
-}
-AnalysisCategorization {
-    string id  
-    string label  
-}
-GlobalDisplaySection {
-    DisplaySectionTypeEnum sectionType  
-}
-DisplaySubSection {
-    string id  
-    string text  
-}
-DataGroupingFactor {
-    string id  
-    string label  
-    string groupingVariable  
-    boolean dataDriven  
-}
-DataGroup {
-    string id  
-    string label  
-    integer level  
-    integer order  
-}
-SubjectGroupingFactor {
-    string id  
-    string label  
-    string groupingVariable  
-    boolean dataDriven  
-}
-AnalysisGroup {
-    string id  
-    string label  
-    integer level  
-    integer order  
-}
-NestedList {
-
-}
-OrderedListItem {
-    integer level  
-    integer order  
-    string name  
-}
-
-ReportingEvent ||--|| NestedList : "listOfPlannedAnalyses"
-ReportingEvent ||--|o NestedList : "listOfPlannedOutputs"
-ReportingEvent ||--}o AnalysisSet : "analysisSets"
-ReportingEvent ||--}o SubjectGroupingFactor : "analysisGroupings"
-ReportingEvent ||--}o DataSubset : "dataSubsets"
-ReportingEvent ||--}o DataGroupingFactor : "dataGroupings"
-ReportingEvent ||--}o GlobalDisplaySection : "globalDisplaySections"
-ReportingEvent ||--}o AnalysisCategorization : "analysisCategorizations"
-ReportingEvent ||--}o Analysis : "analyses"
-ReportingEvent ||--}o AnalysisMethod : "methods"
-ReportingEvent ||--}o Output : "outputs"
-ReportingEvent ||--}o ReferenceDocument : "referenceDocuments"
-ReportingEvent ||--}o TerminologyExtension : "terminologyExtensions"
-TerminologyExtension ||--}| SponsorTerm : "sponsorTerms"
-Output ||--}o OutputFile : "fileSpecifications"
-Output ||--}o OrderedDisplay : "displays"
-Output ||--}o AnalysisCategory : "categoryIds"
-Output ||--}o DocumentReference : "documentRefs"
-Output ||--|o AnalysisOutputProgrammingCode : "programmingCode"
-AnalysisOutputProgrammingCode ||--|o DocumentReference : "documentRef"
-AnalysisOutputProgrammingCode ||--}o AnalysisOutputCodeParameter : "parameters"
-DocumentReference ||--|| ReferenceDocument : "referenceDocumentId"
-DocumentReference ||--}o PageRef : "pageRefs"
-AnalysisCategory ||--}o AnalysisCategorization : "subCategorizations"
-OrderedDisplay ||--|o OutputDisplay : "display"
-OutputFile ||--|o ExtensibleTerminologyTerm : "fileType"
-AnalysisMethod ||--}| Operation : "operations"
-AnalysisMethod ||--}o DocumentReference : "documentRefs"
-AnalysisMethod ||--|o AnalysisProgrammingCodeTemplate : "codeTemplate"
-AnalysisProgrammingCodeTemplate ||--|o DocumentReference : "documentRef"
-AnalysisProgrammingCodeTemplate ||--}o TemplateCodeParameter : "parameters"
-Operation ||--}o ReferencedOperationRelationship : "referencedOperationRelationships"
-Analysis ||--}o AnalysisCategory : "categoryIds"
-Analysis ||--|| ExtensibleTerminologyTerm : "reason"
-Analysis ||--|| ExtensibleTerminologyTerm : "purpose"
-Analysis ||--}o DocumentReference : "documentRefs"
-Analysis ||--|o AnalysisSet : "analysisSetId"
-Analysis ||--}o OrderedGroupingFactor : "orderedGroupings"
-Analysis ||--|o DataSubset : "dataSubsetId"
-Analysis ||--|| AnalysisMethod : "methodId"
-Analysis ||--}o ReferencedAnalysisOperation : "referencedAnalysisOperations"
-Analysis ||--|o AnalysisOutputProgrammingCode : "programmingCode"
-Analysis ||--}o OperationResult : "results"
-OperationResult ||--|| Operation : "operationId"
-OperationResult ||--}o ResultGroup : "resultGroups"
-ReferencedAnalysisOperation ||--|| ReferencedOperationRelationship : "referencedOperationRelationshipId"
-ReferencedAnalysisOperation ||--|| Analysis : "analysisId"
-DataSubset ||--|o WhereClauseCondition : "condition"
-DataSubset ||--|o CompoundSubsetExpression : "compoundExpression"
-OrderedGroupingFactor ||--|o GroupingFactor : "groupingId"
-AnalysisSet ||--|o WhereClauseCondition : "condition"
-AnalysisSet ||--|o CompoundSetExpression : "compoundExpression"
-ExtensibleTerminologyTerm ||--|o SponsorTerm : "sponsorTermId"
-AnalysisCategorization ||--}| AnalysisCategory : "categories"
-GlobalDisplaySection ||--}o DisplaySubSection : "subSections"
-DataGroupingFactor ||--}o DataGroup : "groups"
-DataGroup ||--|o WhereClauseCondition : "condition"
-DataGroup ||--|o CompoundGroupExpression : "compoundExpression"
-SubjectGroupingFactor ||--}o AnalysisGroup : "groups"
-AnalysisGroup ||--|o WhereClauseCondition : "condition"
-AnalysisGroup ||--|o CompoundGroupExpression : "compoundExpression"
-NestedList ||--}o OrderedListItem : "listItems"
-OrderedListItem ||--|o NestedList : "sublist"
-OrderedListItem ||--|o Analysis : "analysisId"
-OrderedListItem ||--|o Output : "outputId"
-
+ classDiagram
+    class ReportingEvent
+      NamedObject <|-- ReportingEvent
+      
+      ReportingEvent : analyses
+        
+          ReportingEvent --|> Analysis : analyses
+        
+      ReportingEvent : analysisCategorizations
+        
+          ReportingEvent --|> AnalysisCategorization : analysisCategorizations
+        
+      ReportingEvent : analysisGroupings
+        
+          ReportingEvent --|> SubjectGroupingFactor : analysisGroupings
+        
+      ReportingEvent : analysisSets
+        
+          ReportingEvent --|> AnalysisSet : analysisSets
+        
+      ReportingEvent : dataGroupings
+        
+          ReportingEvent --|> DataGroupingFactor : dataGroupings
+        
+      ReportingEvent : dataSubsets
+        
+          ReportingEvent --|> DataSubset : dataSubsets
+        
+      ReportingEvent : globalDisplaySections
+        
+          ReportingEvent --|> GlobalDisplaySection : globalDisplaySections
+        
+      ReportingEvent : id
+        
+      ReportingEvent : listOfPlannedAnalyses
+        
+          ReportingEvent --|> NestedList : listOfPlannedAnalyses
+        
+      ReportingEvent : listOfPlannedOutputs
+        
+          ReportingEvent --|> NestedList : listOfPlannedOutputs
+        
+      ReportingEvent : methods
+        
+          ReportingEvent --|> AnalysisMethod : methods
+        
+      ReportingEvent : name
+        
+      ReportingEvent : outputs
+        
+          ReportingEvent --|> Output : outputs
+        
+      ReportingEvent : referenceDocuments
+        
+          ReportingEvent --|> ReferenceDocument : referenceDocuments
+        
+      ReportingEvent : terminologyExtensions
+        
+          ReportingEvent --|> TerminologyExtension : terminologyExtensions
+        
+      ReportingEvent : version
+        
+      
 ```
 
 

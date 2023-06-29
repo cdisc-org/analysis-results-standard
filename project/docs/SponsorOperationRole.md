@@ -10,19 +10,20 @@ _The sponsor-defined role that the referenced operation's result plays in the ca
 URI: [ars:SponsorOperationRole](https://www.cdisc.org/ars/1-0/SponsorOperationRole)
 
 
+
+
 ```mermaid
-erDiagram
-SponsorOperationRole {
-    string controlledTerm  
-}
-SponsorTerm {
-    string id  
-    string submissionValue  
-    string description  
-}
-
-SponsorOperationRole ||--|| SponsorTerm : "sponsorTermId"
-
+ classDiagram
+    class SponsorOperationRole
+      ExtensibleTerminologyTerm <|-- SponsorOperationRole
+      
+      SponsorOperationRole : controlledTerm
+        
+      SponsorOperationRole : sponsorTermId
+        
+          SponsorOperationRole --|> SponsorTerm : sponsorTermId
+        
+      
 ```
 
 

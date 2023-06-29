@@ -10,19 +10,20 @@ _The sponsor-defined rationale for performing this analysis._
 URI: [ars:SponsorAnalysisReason](https://www.cdisc.org/ars/1-0/SponsorAnalysisReason)
 
 
+
+
 ```mermaid
-erDiagram
-SponsorAnalysisReason {
-    string controlledTerm  
-}
-SponsorTerm {
-    string id  
-    string submissionValue  
-    string description  
-}
-
-SponsorAnalysisReason ||--|| SponsorTerm : "sponsorTermId"
-
+ classDiagram
+    class SponsorAnalysisReason
+      ExtensibleTerminologyTerm <|-- SponsorAnalysisReason
+      
+      SponsorAnalysisReason : controlledTerm
+        
+      SponsorAnalysisReason : sponsorTermId
+        
+          SponsorAnalysisReason --|> SponsorTerm : sponsorTermId
+        
+      
 ```
 
 

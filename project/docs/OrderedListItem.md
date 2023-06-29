@@ -10,122 +10,32 @@ _An item (analysis, output or sub-list) ordered relative to other items within a
 URI: [ars:OrderedListItem](https://www.cdisc.org/ars/1-0/OrderedListItem)
 
 
+
+
 ```mermaid
-erDiagram
-OrderedListItem {
-    integer level  
-    integer order  
-    string name  
-}
-Output {
-    string id  
-    integer version  
-    string name  
-}
-AnalysisOutputProgrammingCode {
-    string context  
-    string code  
-}
-DocumentReference {
-
-}
-AnalysisCategory {
-    string id  
-    string label  
-}
-OrderedDisplay {
-    integer order  
-}
-OutputFile {
-    uri location  
-    string style  
-    string name  
-}
-Analysis {
-    string id  
-    integer version  
-    string description  
-    string dataset  
-    string variable  
-    string name  
-}
-OperationResult {
-    string rawValue  
-    string formattedValue  
-}
-ReferencedAnalysisOperation {
-
-}
-AnalysisMethod {
-    string id  
-    string label  
-    string description  
-    string name  
-}
-DataSubset {
-    string id  
-    string label  
-    integer level  
-    integer order  
-}
-OrderedGroupingFactor {
-    integer order  
-    boolean resultsByGroup  
-}
-AnalysisSet {
-    string id  
-    string label  
-    integer level  
-    integer order  
-}
-ExtensibleTerminologyTerm {
-    string controlledTerm  
-}
-NestedList {
-
-}
-
-OrderedListItem ||--|o NestedList : "sublist"
-OrderedListItem ||--|o Analysis : "analysisId"
-OrderedListItem ||--|o Output : "outputId"
-Output ||--}o OutputFile : "fileSpecifications"
-Output ||--}o OrderedDisplay : "displays"
-Output ||--}o AnalysisCategory : "categoryIds"
-Output ||--}o DocumentReference : "documentRefs"
-Output ||--|o AnalysisOutputProgrammingCode : "programmingCode"
-AnalysisOutputProgrammingCode ||--|o DocumentReference : "documentRef"
-AnalysisOutputProgrammingCode ||--}o AnalysisOutputCodeParameter : "parameters"
-DocumentReference ||--|| ReferenceDocument : "referenceDocumentId"
-DocumentReference ||--}o PageRef : "pageRefs"
-AnalysisCategory ||--}o AnalysisCategorization : "subCategorizations"
-OrderedDisplay ||--|o OutputDisplay : "display"
-OutputFile ||--|o ExtensibleTerminologyTerm : "fileType"
-Analysis ||--}o AnalysisCategory : "categoryIds"
-Analysis ||--|| ExtensibleTerminologyTerm : "reason"
-Analysis ||--|| ExtensibleTerminologyTerm : "purpose"
-Analysis ||--}o DocumentReference : "documentRefs"
-Analysis ||--|o AnalysisSet : "analysisSetId"
-Analysis ||--}o OrderedGroupingFactor : "orderedGroupings"
-Analysis ||--|o DataSubset : "dataSubsetId"
-Analysis ||--|| AnalysisMethod : "methodId"
-Analysis ||--}o ReferencedAnalysisOperation : "referencedAnalysisOperations"
-Analysis ||--|o AnalysisOutputProgrammingCode : "programmingCode"
-Analysis ||--}o OperationResult : "results"
-OperationResult ||--|| Operation : "operationId"
-OperationResult ||--}o ResultGroup : "resultGroups"
-ReferencedAnalysisOperation ||--|| ReferencedOperationRelationship : "referencedOperationRelationshipId"
-ReferencedAnalysisOperation ||--|| Analysis : "analysisId"
-AnalysisMethod ||--}| Operation : "operations"
-AnalysisMethod ||--}o DocumentReference : "documentRefs"
-AnalysisMethod ||--|o AnalysisProgrammingCodeTemplate : "codeTemplate"
-DataSubset ||--|o WhereClauseCondition : "condition"
-DataSubset ||--|o CompoundSubsetExpression : "compoundExpression"
-OrderedGroupingFactor ||--|o GroupingFactor : "groupingId"
-AnalysisSet ||--|o WhereClauseCondition : "condition"
-AnalysisSet ||--|o CompoundSetExpression : "compoundExpression"
-ExtensibleTerminologyTerm ||--|o SponsorTerm : "sponsorTermId"
-NestedList ||--}o OrderedListItem : "listItems"
-
+ classDiagram
+    class OrderedListItem
+      NamedObject <|-- OrderedListItem
+      
+      OrderedListItem : analysisId
+        
+          OrderedListItem --|> Analysis : analysisId
+        
+      OrderedListItem : level
+        
+      OrderedListItem : name
+        
+      OrderedListItem : order
+        
+      OrderedListItem : outputId
+        
+          OrderedListItem --|> Output : outputId
+        
+      OrderedListItem : sublist
+        
+          OrderedListItem --|> NestedList : sublist
+        
+      
 ```
 
 

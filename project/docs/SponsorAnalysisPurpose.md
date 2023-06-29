@@ -10,19 +10,20 @@ _The sponsor-defined purpose of the analysis within the body of evidence (e.g., 
 URI: [ars:SponsorAnalysisPurpose](https://www.cdisc.org/ars/1-0/SponsorAnalysisPurpose)
 
 
+
+
 ```mermaid
-erDiagram
-SponsorAnalysisPurpose {
-    string controlledTerm  
-}
-SponsorTerm {
-    string id  
-    string submissionValue  
-    string description  
-}
-
-SponsorAnalysisPurpose ||--|| SponsorTerm : "sponsorTermId"
-
+ classDiagram
+    class SponsorAnalysisPurpose
+      ExtensibleTerminologyTerm <|-- SponsorAnalysisPurpose
+      
+      SponsorAnalysisPurpose : controlledTerm
+        
+      SponsorAnalysisPurpose : sponsorTermId
+        
+          SponsorAnalysisPurpose --|> SponsorTerm : sponsorTermId
+        
+      
 ```
 
 

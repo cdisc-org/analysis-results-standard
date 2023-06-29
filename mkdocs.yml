@@ -6,6 +6,8 @@ nav:
 plugins:
     - search
     - mermaid2:
-        version: '9'
+        version: 9.4.0
+extra_javascript:
+    - https://cdn.jsdelivr.net/npm/svg-pan-zoom-container@0.6.1
 docs_dir: project/docs
 site_dir: docs

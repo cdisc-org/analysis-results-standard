@@ -10,26 +10,24 @@ _A compound expression consisting of either two or more where clauses combined w
 URI: [ars:WhereClauseCompoundExpression](https://www.cdisc.org/ars/1-0/WhereClauseCompoundExpression)
 
 
+
+
 ```mermaid
-erDiagram
-WhereClauseCompoundExpression {
-    ExpressionLogicalOperatorEnum logicalOperator  
-}
-WhereClause {
-    integer level  
-    integer order  
-}
-WhereClauseCondition {
-    string dataset  
-    string variable  
-    ConditionComparatorEnum comparator  
-    stringList value  
-}
-
-WhereClauseCompoundExpression ||--}o WhereClause : "whereClauses"
-WhereClause ||--|o WhereClauseCondition : "condition"
-WhereClause ||--|o WhereClauseCompoundExpression : "compoundExpression"
-
+ classDiagram
+    class WhereClauseCompoundExpression
+      WhereClauseCompoundExpression <|-- CompoundSetExpression
+      WhereClauseCompoundExpression <|-- CompoundGroupExpression
+      WhereClauseCompoundExpression <|-- CompoundSubsetExpression
+      
+      WhereClauseCompoundExpression : logicalOperator
+        
+          WhereClauseCompoundExpression --|> ExpressionLogicalOperatorEnum : logicalOperator
+        
+      WhereClauseCompoundExpression : whereClauses
+        
+          WhereClauseCompoundExpression --|> WhereClause : whereClauses
+        
+      
 ```
 
 

@@ -10,18 +10,20 @@ _A global definition for part of a tabular display containing one or more pieces
 URI: [ars:GlobalDisplaySection](https://www.cdisc.org/ars/1-0/GlobalDisplaySection)
 
 
+
+
 ```mermaid
-erDiagram
-GlobalDisplaySection {
-    DisplaySectionTypeEnum sectionType  
-}
-DisplaySubSection {
-    string id  
-    string text  
-}
-
-GlobalDisplaySection ||--}o DisplaySubSection : "subSections"
-
+ classDiagram
+    class GlobalDisplaySection
+      GlobalDisplaySection : sectionType
+        
+          GlobalDisplaySection --|> DisplaySectionTypeEnum : sectionType
+        
+      GlobalDisplaySection : subSections
+        
+          GlobalDisplaySection --|> DisplaySubSection : subSections
+        
+      
 ```
 
 

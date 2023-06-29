@@ -12,19 +12,25 @@ _A single subsection ordered with respect to other subsections in the same secti
 URI: [ars:OrderedDisplaySubSection](https://www.cdisc.org/ars/1-0/OrderedDisplaySubSection)
 
 
+
+
 ```mermaid
-erDiagram
-OrderedDisplaySubSection {
-    integer order  
-}
-DisplaySubSection {
-    string id  
-    string text  
-}
-
-OrderedDisplaySubSection ||--|o DisplaySubSection : "subSection"
-OrderedDisplaySubSection ||--|o DisplaySubSection : "subSectionId"
-
+ classDiagram
+    class OrderedDisplaySubSection
+      OrderedDisplaySubSection <|-- OrderedSubSection
+      OrderedDisplaySubSection <|-- OrderedSubSectionRef
+      
+      OrderedDisplaySubSection : order
+        
+      OrderedDisplaySubSection : subSection
+        
+          OrderedDisplaySubSection --|> DisplaySubSection : subSection
+        
+      OrderedDisplaySubSection : subSectionId
+        
+          OrderedDisplaySubSection --|> DisplaySubSection : subSectionId
+        
+      
 ```
 
 

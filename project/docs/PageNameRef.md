@@ -10,19 +10,28 @@ _One or more pages in the reference document, referenced by named destination._
 URI: [ars:PageNameRef](https://www.cdisc.org/ars/1-0/PageNameRef)
 
 
+
+
 ```mermaid
-erDiagram
-PageNameRef {
-    PageRefTypeEnum refType  
-    string label  
-    stringList pageNames  
-    integerList pageNumbers  
-    integer firstPage  
-    integer lastPage  
-}
-
-
-
+ classDiagram
+    class PageNameRef
+      PageRef <|-- PageNameRef
+      
+      PageNameRef : firstPage
+        
+      PageNameRef : label
+        
+      PageNameRef : lastPage
+        
+      PageNameRef : pageNames
+        
+      PageNameRef : pageNumbers
+        
+      PageNameRef : refType
+        
+          PageNameRef --|> PageRefTypeEnum : refType
+        
+      
 ```
 
 

@@ -10,25 +10,24 @@ _A file containing analysis output displays._
 URI: [ars:OutputFile](https://www.cdisc.org/ars/1-0/OutputFile)
 
 
+
+
 ```mermaid
-erDiagram
-OutputFile {
-    uri location  
-    string style  
-    string name  
-}
-ExtensibleTerminologyTerm {
-    string controlledTerm  
-}
-SponsorTerm {
-    string id  
-    string submissionValue  
-    string description  
-}
-
-OutputFile ||--|o ExtensibleTerminologyTerm : "fileType"
-ExtensibleTerminologyTerm ||--|o SponsorTerm : "sponsorTermId"
-
+ classDiagram
+    class OutputFile
+      NamedObject <|-- OutputFile
+      
+      OutputFile : fileType
+        
+          OutputFile --|> ExtensibleTerminologyTerm : fileType
+        
+      OutputFile : location
+        
+      OutputFile : name
+        
+      OutputFile : style
+        
+      
 ```
 
 

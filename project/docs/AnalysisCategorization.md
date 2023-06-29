@@ -10,20 +10,20 @@ _A set of related implementer-defined categories that can be used to categorize 
 URI: [ars:AnalysisCategorization](https://www.cdisc.org/ars/1-0/AnalysisCategorization)
 
 
+
+
 ```mermaid
-erDiagram
-AnalysisCategorization {
-    string id  
-    string label  
-}
-AnalysisCategory {
-    string id  
-    string label  
-}
-
-AnalysisCategorization ||--}| AnalysisCategory : "categories"
-AnalysisCategory ||--}o AnalysisCategorization : "subCategorizations"
-
+ classDiagram
+    class AnalysisCategorization
+      AnalysisCategorization : categories
+        
+          AnalysisCategorization --|> AnalysisCategory : categories
+        
+      AnalysisCategorization : id
+        
+      AnalysisCategorization : label
+        
+      
 ```
 
 

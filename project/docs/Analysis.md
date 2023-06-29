@@ -22,151 +22,70 @@ __
 URI: [ars:Analysis](https://www.cdisc.org/ars/1-0/Analysis)
 
 
+
+
 ```mermaid
-erDiagram
-Analysis {
-    string id  
-    integer version  
-    string description  
-    string dataset  
-    string variable  
-    string name  
-}
-OperationResult {
-    string rawValue  
-    string formattedValue  
-}
-ResultGroup {
-    string groupValue  
-}
-Operation {
-    string id  
-    string label  
-    string resultPattern  
-    string name  
-}
-AnalysisOutputProgrammingCode {
-    string context  
-    string code  
-}
-AnalysisOutputCodeParameter {
-    stringList value  
-    string description  
-    string name  
-}
-DocumentReference {
-
-}
-ReferencedAnalysisOperation {
-
-}
-ReferencedOperationRelationship {
-    string id  
-    string description  
-}
-AnalysisMethod {
-    string id  
-    string label  
-    string description  
-    string name  
-}
-AnalysisProgrammingCodeTemplate {
-    string context  
-    string code  
-}
-DataSubset {
-    string id  
-    string label  
-    integer level  
-    integer order  
-}
-CompoundSubsetExpression {
-    ExpressionLogicalOperatorEnum logicalOperator  
-}
-WhereClauseCondition {
-    string dataset  
-    string variable  
-    ConditionComparatorEnum comparator  
-    stringList value  
-}
-OrderedGroupingFactor {
-    integer order  
-    boolean resultsByGroup  
-}
-GroupingFactor {
-    string id  
-    string label  
-    string groupingVariable  
-    boolean dataDriven  
-}
-AnalysisSet {
-    string id  
-    string label  
-    integer level  
-    integer order  
-}
-CompoundSetExpression {
-    ExpressionLogicalOperatorEnum logicalOperator  
-}
-ExtensibleTerminologyTerm {
-    string controlledTerm  
-}
-SponsorTerm {
-    string id  
-    string submissionValue  
-    string description  
-}
-AnalysisCategory {
-    string id  
-    string label  
-}
-AnalysisCategorization {
-    string id  
-    string label  
-}
-
-Analysis ||--}o AnalysisCategory : "categoryIds"
-Analysis ||--|| ExtensibleTerminologyTerm : "reason"
-Analysis ||--|| ExtensibleTerminologyTerm : "purpose"
-Analysis ||--}o DocumentReference : "documentRefs"
-Analysis ||--|o AnalysisSet : "analysisSetId"
-Analysis ||--}o OrderedGroupingFactor : "orderedGroupings"
-Analysis ||--|o DataSubset : "dataSubsetId"
-Analysis ||--|| AnalysisMethod : "methodId"
-Analysis ||--}o ReferencedAnalysisOperation : "referencedAnalysisOperations"
-Analysis ||--|o AnalysisOutputProgrammingCode : "programmingCode"
-Analysis ||--}o OperationResult : "results"
-OperationResult ||--|| Operation : "operationId"
-OperationResult ||--}o ResultGroup : "resultGroups"
-ResultGroup ||--|o GroupingFactor : "groupingId"
-ResultGroup ||--|o Group : "groupId"
-Operation ||--}o ReferencedOperationRelationship : "referencedOperationRelationships"
-AnalysisOutputProgrammingCode ||--|o DocumentReference : "documentRef"
-AnalysisOutputProgrammingCode ||--}o AnalysisOutputCodeParameter : "parameters"
-DocumentReference ||--|| ReferenceDocument : "referenceDocumentId"
-DocumentReference ||--}o PageRef : "pageRefs"
-ReferencedAnalysisOperation ||--|| ReferencedOperationRelationship : "referencedOperationRelationshipId"
-ReferencedAnalysisOperation ||--|| Analysis : "analysisId"
-ReferencedOperationRelationship ||--|| ExtensibleTerminologyTerm : "referencedOperationRole"
-ReferencedOperationRelationship ||--|| Operation : "operationId"
-ReferencedOperationRelationship ||--|o Analysis : "analysisId"
-AnalysisMethod ||--}| Operation : "operations"
-AnalysisMethod ||--}o DocumentReference : "documentRefs"
-AnalysisMethod ||--|o AnalysisProgrammingCodeTemplate : "codeTemplate"
-AnalysisProgrammingCodeTemplate ||--|o DocumentReference : "documentRef"
-AnalysisProgrammingCodeTemplate ||--}o TemplateCodeParameter : "parameters"
-DataSubset ||--|o WhereClauseCondition : "condition"
-DataSubset ||--|o CompoundSubsetExpression : "compoundExpression"
-CompoundSubsetExpression ||--}o WhereClause : "whereClauses"
-OrderedGroupingFactor ||--|o GroupingFactor : "groupingId"
-GroupingFactor ||--}o Group : "groups"
-AnalysisSet ||--|o WhereClauseCondition : "condition"
-AnalysisSet ||--|o CompoundSetExpression : "compoundExpression"
-CompoundSetExpression ||--}o AnalysisSet : "whereClauses"
-ExtensibleTerminologyTerm ||--|o SponsorTerm : "sponsorTermId"
-AnalysisCategory ||--}o AnalysisCategorization : "subCategorizations"
-AnalysisCategorization ||--}| AnalysisCategory : "categories"
-
+ classDiagram
+    class Analysis
+      NamedObject <|-- Analysis
+      
+      Analysis : analysisSetId
+        
+          Analysis --|> AnalysisSet : analysisSetId
+        
+      Analysis : categoryIds
+        
+          Analysis --|> AnalysisCategory : categoryIds
+        
+      Analysis : dataset
+        
+      Analysis : dataSubsetId
+        
+          Analysis --|> DataSubset : dataSubsetId
+        
+      Analysis : description
+        
+      Analysis : documentRefs
+        
+          Analysis --|> DocumentReference : documentRefs
+        
+      Analysis : id
+        
+      Analysis : methodId
+        
+          Analysis --|> AnalysisMethod : methodId
+        
+      Analysis : name
+        
+      Analysis : orderedGroupings
+        
+          Analysis --|> OrderedGroupingFactor : orderedGroupings
+        
+      Analysis : programmingCode
+        
+          Analysis --|> AnalysisOutputProgrammingCode : programmingCode
+        
+      Analysis : purpose
+        
+          Analysis --|> ExtensibleTerminologyTerm : purpose
+        
+      Analysis : reason
+        
+          Analysis --|> ExtensibleTerminologyTerm : reason
+        
+      Analysis : referencedAnalysisOperations
+        
+          Analysis --|> ReferencedAnalysisOperation : referencedAnalysisOperations
+        
+      Analysis : results
+        
+          Analysis --|> OperationResult : results
+        
+      Analysis : variable
+        
+      Analysis : version
+        
+      
 ```
 
 

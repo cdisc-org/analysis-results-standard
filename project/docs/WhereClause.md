@@ -10,26 +10,28 @@ _Selection criteria defined as either a simple condition ([variable] [comparator
 URI: [ars:WhereClause](https://www.cdisc.org/ars/1-0/WhereClause)
 
 
+
+
 ```mermaid
-erDiagram
-WhereClause {
-    integer level  
-    integer order  
-}
-WhereClauseCompoundExpression {
-    ExpressionLogicalOperatorEnum logicalOperator  
-}
-WhereClauseCondition {
-    string dataset  
-    string variable  
-    ConditionComparatorEnum comparator  
-    stringList value  
-}
-
-WhereClause ||--|o WhereClauseCondition : "condition"
-WhereClause ||--|o WhereClauseCompoundExpression : "compoundExpression"
-WhereClauseCompoundExpression ||--}o WhereClause : "whereClauses"
-
+ classDiagram
+    class WhereClause
+      WhereClause <|-- AnalysisSet
+      WhereClause <|-- Group
+      WhereClause <|-- DataSubset
+      
+      WhereClause : compoundExpression
+        
+          WhereClause --|> WhereClauseCompoundExpression : compoundExpression
+        
+      WhereClause : condition
+        
+          WhereClause --|> WhereClauseCondition : condition
+        
+      WhereClause : level
+        
+      WhereClause : order
+        
+      
 ```
 
 

@@ -12,35 +12,27 @@ _A factor used to subdivide either the subject population or data records in an 
 URI: [ars:GroupingFactor](https://www.cdisc.org/ars/1-0/GroupingFactor)
 
 
+
+
 ```mermaid
-erDiagram
-GroupingFactor {
-    string id  
-    string label  
-    string groupingVariable  
-    boolean dataDriven  
-}
-Group {
-    string id  
-    string label  
-    integer level  
-    integer order  
-}
-CompoundGroupExpression {
-    ExpressionLogicalOperatorEnum logicalOperator  
-}
-WhereClauseCondition {
-    string dataset  
-    string variable  
-    ConditionComparatorEnum comparator  
-    stringList value  
-}
-
-GroupingFactor ||--}o Group : "groups"
-Group ||--|o WhereClauseCondition : "condition"
-Group ||--|o CompoundGroupExpression : "compoundExpression"
-CompoundGroupExpression ||--}o Group : "whereClauses"
-
+ classDiagram
+    class GroupingFactor
+      GroupingFactor <|-- SubjectGroupingFactor
+      GroupingFactor <|-- DataGroupingFactor
+      
+      GroupingFactor : dataDriven
+        
+      GroupingFactor : groupingVariable
+        
+      GroupingFactor : groups
+        
+          GroupingFactor --|> Group : groups
+        
+      GroupingFactor : id
+        
+      GroupingFactor : label
+        
+      
 ```
 
 

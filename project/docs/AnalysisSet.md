@@ -10,28 +10,30 @@ _A set of subjects whose data are to be included in the main analyses. This shou
 URI: [ars:AnalysisSet](https://www.cdisc.org/ars/1-0/AnalysisSet)
 
 
+
+
 ```mermaid
-erDiagram
-AnalysisSet {
-    string id  
-    string label  
-    integer level  
-    integer order  
-}
-CompoundSetExpression {
-    ExpressionLogicalOperatorEnum logicalOperator  
-}
-WhereClauseCondition {
-    string dataset  
-    string variable  
-    ConditionComparatorEnum comparator  
-    stringList value  
-}
-
-AnalysisSet ||--|o WhereClauseCondition : "condition"
-AnalysisSet ||--|o CompoundSetExpression : "compoundExpression"
-CompoundSetExpression ||--}o AnalysisSet : "whereClauses"
-
+ classDiagram
+    class AnalysisSet
+      WhereClause <|-- AnalysisSet
+      
+      AnalysisSet : compoundExpression
+        
+          AnalysisSet --|> CompoundSetExpression : compoundExpression
+        
+      AnalysisSet : condition
+        
+          AnalysisSet --|> WhereClauseCondition : condition
+        
+      AnalysisSet : id
+        
+      AnalysisSet : label
+        
+      AnalysisSet : level
+        
+      AnalysisSet : order
+        
+      
 ```
 
 
