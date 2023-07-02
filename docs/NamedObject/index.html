@@ -77,7 +77,7 @@
 <li><strong>NOTE</strong>: this is an abstract class and should not be instantiated directly</li>
 </ul>
 <p>URI: <a href="https://www.cdisc.org/ars/1-0/NamedObject">ars:NamedObject</a></p>
-<div class="mermaid"> classDiagram
+<pre class="mermaid"><code> classDiagram
     class NamedObject
       NamedObject &lt;|-- ReportingEvent
       NamedObject &lt;|-- OrderedListItem
@@ -89,11 +89,10 @@
       NamedObject &lt;|-- OutputFile
       NamedObject &lt;|-- OutputDisplay
       NamedObject &lt;|-- ReferenceDocument
-
+      
       NamedObject : name
-
-
-</div>
+        
+      </code></pre>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><strong>NamedObject</strong><ul>
@@ -157,37 +156,35 @@
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
-<pre><code class="language-yaml">name: NamedObject
-description: An object with a name.
-from_schema: https://www.cdisc.org/ars/1-0
-rank: 1000
-abstract: true
-slots:
-- name
-
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NamedObject</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">An object with a name.</span>
+<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://www.cdisc.org/ars/1-0</span>
+<span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="nt">abstract</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">slots</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">name</span>
+</code></pre></div>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
-<pre><code class="language-yaml">name: NamedObject
-description: An object with a name.
-from_schema: https://www.cdisc.org/ars/1-0
-rank: 1000
-abstract: true
-attributes:
-  name:
-    name: name
-    description: The name for the instance of the class.
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    alias: name
-    owner: NamedObject
-    domain_of:
-    - NamedObject
-    range: string
-    required: true
-
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NamedObject</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">An object with a name.</span>
+<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://www.cdisc.org/ars/1-0</span>
+<span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="nt">abstract</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">attributes</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">name</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The name for the instance of the class.</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://www.cdisc.org/ars/1-0</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">name</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NamedObject</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NamedObject</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
 </details></div>
 </div>
 </div>
@@ -200,7 +197,9 @@ attributes:
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
 <script defer="" src="../js/base.js"></script>
-<script defer="" src="https://cdn.jsdelivr.net/npm/svg-pan-zoom-container@0.6.1"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.1/dist/svg-pan-zoom.min.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/mermaid@9.1.3/dist/mermaid.min.js"></script>
+<script defer="" src="../js/enable_zoom.js"></script>
 <script defer="" src="../search/main.js"></script>
 <div aria-hidden="true" aria-labelledby="searchModalLabel" class="modal" id="mkdocs_search_modal" role="dialog" tabindex="-1">
 <div class="modal-dialog modal-lg">
@@ -262,5 +261,5 @@ attributes:
 </div>
 </div>
 </div>
-<script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
+</body>
 </html>

@@ -74,22 +74,21 @@
 <h1 id="class-analysisoutputprogrammingcode">Class: AnalysisOutputProgrammingCode</h1>
 <p><em>Programming statements and/or a reference to the program used to perform a specific analysis or create a specific output.</em></p>
 <p>URI: <a href="https://www.cdisc.org/ars/1-0/AnalysisOutputProgrammingCode">ars:AnalysisOutputProgrammingCode</a></p>
-<div class="mermaid"> classDiagram
+<pre class="mermaid"><code> classDiagram
     class AnalysisOutputProgrammingCode
       AnalysisOutputProgrammingCode : code
-
+        
       AnalysisOutputProgrammingCode : context
-
+        
       AnalysisOutputProgrammingCode : documentRef
-
+        
           AnalysisOutputProgrammingCode --|&gt; DocumentReference : documentRef
-
+        
       AnalysisOutputProgrammingCode : parameters
-
+        
           AnalysisOutputProgrammingCode --|&gt; AnalysisOutputCodeParameter : parameters
-
-
-</div>
+        
+      </code></pre>
 <!-- no inheritance hierarchy -->
 <h2 id="slots">Slots</h2>
 <table>
@@ -181,99 +180,97 @@
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
-<pre><code class="language-yaml">name: AnalysisOutputProgrammingCode
-description: Programming statements and/or a reference to the program used to perform
-  a specific analysis or create a specific output.
-from_schema: https://www.cdisc.org/ars/1-0
-rank: 1000
-slots:
-- context
-- code
-- documentRef
-- parameters
-slot_usage:
-  parameters:
-    name: parameters
-    description: Parameter values used to generate or execute the programming code.
-    domain_of:
-    - AnalysisOutputProgrammingCode
-    - AnalysisProgrammingCodeTemplate
-    range: AnalysisOutputCodeParameter
-
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AnalysisOutputProgrammingCode</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Programming statements and/or a reference to the program used to perform</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">a specific analysis or create a specific output.</span>
+<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://www.cdisc.org/ars/1-0</span>
+<span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="nt">slots</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">context</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">code</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">documentRef</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">parameters</span>
+<span class="nt">slot_usage</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">parameters</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">parameters</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Parameter values used to generate or execute the programming code.</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AnalysisOutputProgrammingCode</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AnalysisProgrammingCodeTemplate</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AnalysisOutputCodeParameter</span>
+</code></pre></div>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
-<pre><code class="language-yaml">name: AnalysisOutputProgrammingCode
-description: Programming statements and/or a reference to the program used to perform
-  a specific analysis or create a specific output.
-from_schema: https://www.cdisc.org/ars/1-0
-rank: 1000
-slot_usage:
-  parameters:
-    name: parameters
-    description: Parameter values used to generate or execute the programming code.
-    domain_of:
-    - AnalysisOutputProgrammingCode
-    - AnalysisProgrammingCodeTemplate
-    range: AnalysisOutputCodeParameter
-attributes:
-  context:
-    name: context
-    description: The name and version of the computer language used for the actual
-      programming statements provided.
-    examples:
-    - value: SAS Version 9.4
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    alias: context
-    owner: AnalysisOutputProgrammingCode
-    domain_of:
-    - AnalysisOutputProgrammingCode
-    - AnalysisProgrammingCodeTemplate
-    range: string
-    required: true
-  code:
-    name: code
-    description: Programming statements used to perform the specific analysis.
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    alias: code
-    owner: AnalysisOutputProgrammingCode
-    domain_of:
-    - AnalysisOutputProgrammingCode
-    - AnalysisProgrammingCodeTemplate
-    range: string
-  documentRef:
-    name: documentRef
-    description: A reference to the document containing programming code.
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    multivalued: false
-    alias: documentRef
-    owner: AnalysisOutputProgrammingCode
-    domain_of:
-    - AnalysisOutputProgrammingCode
-    - AnalysisProgrammingCodeTemplate
-    range: DocumentReference
-    inlined: true
-    inlined_as_list: true
-  parameters:
-    name: parameters
-    description: Parameter values used to generate or execute the programming code.
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    multivalued: true
-    alias: parameters
-    owner: AnalysisOutputProgrammingCode
-    domain_of:
-    - AnalysisOutputProgrammingCode
-    - AnalysisProgrammingCodeTemplate
-    range: AnalysisOutputCodeParameter
-    inlined: true
-    inlined_as_list: true
-
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AnalysisOutputProgrammingCode</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Programming statements and/or a reference to the program used to perform</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">a specific analysis or create a specific output.</span>
+<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://www.cdisc.org/ars/1-0</span>
+<span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="nt">slot_usage</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">parameters</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">parameters</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Parameter values used to generate or execute the programming code.</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AnalysisOutputProgrammingCode</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AnalysisProgrammingCodeTemplate</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AnalysisOutputCodeParameter</span>
+<span class="nt">attributes</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">context</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">context</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The name and version of the computer language used for the actual</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">programming statements provided.</span>
+<span class="w">    </span><span class="nt">examples</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SAS Version 9.4</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://www.cdisc.org/ars/1-0</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">context</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AnalysisOutputProgrammingCode</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AnalysisOutputProgrammingCode</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AnalysisProgrammingCodeTemplate</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">code</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">code</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Programming statements used to perform the specific analysis.</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://www.cdisc.org/ars/1-0</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">code</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AnalysisOutputProgrammingCode</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AnalysisOutputProgrammingCode</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AnalysisProgrammingCodeTemplate</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">  </span><span class="nt">documentRef</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">documentRef</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A reference to the document containing programming code.</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://www.cdisc.org/ars/1-0</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">documentRef</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AnalysisOutputProgrammingCode</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AnalysisOutputProgrammingCode</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AnalysisProgrammingCodeTemplate</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DocumentReference</span>
+<span class="w">    </span><span class="nt">inlined</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">inlined_as_list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">parameters</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">parameters</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Parameter values used to generate or execute the programming code.</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://www.cdisc.org/ars/1-0</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">parameters</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AnalysisOutputProgrammingCode</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AnalysisOutputProgrammingCode</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AnalysisProgrammingCodeTemplate</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AnalysisOutputCodeParameter</span>
+<span class="w">    </span><span class="nt">inlined</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">inlined_as_list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
 </details></div>
 </div>
 </div>
@@ -286,7 +283,9 @@ attributes:
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
 <script defer="" src="../js/base.js"></script>
-<script defer="" src="https://cdn.jsdelivr.net/npm/svg-pan-zoom-container@0.6.1"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.1/dist/svg-pan-zoom.min.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/mermaid@9.1.3/dist/mermaid.min.js"></script>
+<script defer="" src="../js/enable_zoom.js"></script>
 <script defer="" src="../search/main.js"></script>
 <div aria-hidden="true" aria-labelledby="searchModalLabel" class="modal" id="mkdocs_search_modal" role="dialog" tabindex="-1">
 <div class="modal-dialog modal-lg">
@@ -348,5 +347,5 @@ attributes:
 </div>
 </div>
 </div>
-<script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
+</body>
 </html>

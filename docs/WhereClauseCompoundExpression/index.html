@@ -82,22 +82,21 @@
 <h1 id="class-whereclausecompoundexpression">Class: WhereClauseCompoundExpression</h1>
 <p><em>A compound expression consisting of either two or more where clauses combined with the <code>AND</code> or <code>OR</code> logical operator, or a single where clause negated with the <code>NOT</code> logical operator.</em></p>
 <p>URI: <a href="https://www.cdisc.org/ars/1-0/WhereClauseCompoundExpression">ars:WhereClauseCompoundExpression</a></p>
-<div class="mermaid"> classDiagram
+<pre class="mermaid"><code> classDiagram
     class WhereClauseCompoundExpression
       WhereClauseCompoundExpression &lt;|-- CompoundSetExpression
       WhereClauseCompoundExpression &lt;|-- CompoundGroupExpression
       WhereClauseCompoundExpression &lt;|-- CompoundSubsetExpression
-
+      
       WhereClauseCompoundExpression : logicalOperator
-
+        
           WhereClauseCompoundExpression --|&gt; ExpressionLogicalOperatorEnum : logicalOperator
-
+        
       WhereClauseCompoundExpression : whereClauses
-
+        
           WhereClauseCompoundExpression --|&gt; WhereClause : whereClauses
-
-
-</div>
+        
+      </code></pre>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><strong>WhereClauseCompoundExpression</strong><ul>
@@ -177,167 +176,165 @@
 </table>
 <h2 id="examples">Examples</h2>
 <h3 id="example-whereclausecompoundexpression-01-and">Example: WhereClauseCompoundExpression-01 AND</h3>
-<pre><code class="language-yaml"># Compound expression: (    ADAE.TRTEMFL EQ 'Y'
-#                       AND ADAE.AESDTH EQ 'Y')
-logicalOperator: AND
-whereClauses:
-- level: 2
-  order: 1
-  condition:
-    dataset: ADAE
-    variable: TRTEMFL
-    comparator: EQ
-    value:
-    - Y
-- level: 2
-  order: 2
-  condition:
-    dataset: ADAE
-    variable: AESDTH
-    comparator: EQ
-    value:
-    - Y
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># Compound expression: (    ADAE.TRTEMFL EQ 'Y'</span>
+<span class="c1">#                       AND ADAE.AESDTH EQ 'Y')</span>
+<span class="nt">logicalOperator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AND</span>
+<span class="nt">whereClauses</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">  </span><span class="nt">order</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">  </span><span class="nt">condition</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">dataset</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ADAE</span>
+<span class="w">    </span><span class="nt">variable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TRTEMFL</span>
+<span class="w">    </span><span class="nt">comparator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EQ</span>
+<span class="w">    </span><span class="nt">value</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Y</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">  </span><span class="nt">order</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">  </span><span class="nt">condition</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">dataset</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ADAE</span>
+<span class="w">    </span><span class="nt">variable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AESDTH</span>
+<span class="w">    </span><span class="nt">comparator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EQ</span>
+<span class="w">    </span><span class="nt">value</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Y</span>
+</code></pre></div>
 <h3 id="example-whereclausecompoundexpression-02-not-with-or">Example: WhereClauseCompoundExpression-02 NOT with OR</h3>
-<pre><code class="language-yaml"># Compound expression: NOT (ADXX.VAR1 IN ('value 1','value 2') OR ADXX.VAR2 GT 37)
-logicalOperator: NOT
-whereClauses:
-- level: 2
-  order: 1
-  compoundExpression:
-    logicalOperator: OR
-    whereClauses:
-    - level: 3
-      order: 1
-      condition:
-        dataset: ADXX
-        variable: VAR1
-        comparator: IN
-        value:
-        - value 1
-        - value 2
-    - level: 3
-      order: 2
-      condition:
-        dataset: ADXX
-        variable: VAR2
-        comparator: GT
-        value:
-        - 37
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># Compound expression: NOT (ADXX.VAR1 IN ('value 1','value 2') OR ADXX.VAR2 GT 37)</span>
+<span class="nt">logicalOperator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NOT</span>
+<span class="nt">whereClauses</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">  </span><span class="nt">order</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">  </span><span class="nt">compoundExpression</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">logicalOperator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OR</span>
+<span class="w">    </span><span class="nt">whereClauses</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">      </span><span class="nt">order</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">      </span><span class="nt">condition</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">dataset</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ADXX</span>
+<span class="w">        </span><span class="nt">variable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VAR1</span>
+<span class="w">        </span><span class="nt">comparator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IN</span>
+<span class="w">        </span><span class="nt">value</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">value 1</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">value 2</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">      </span><span class="nt">order</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">      </span><span class="nt">condition</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">dataset</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ADXX</span>
+<span class="w">        </span><span class="nt">variable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VAR2</span>
+<span class="w">        </span><span class="nt">comparator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GT</span>
+<span class="w">        </span><span class="nt">value</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">37</span>
+</code></pre></div>
 <h2 id="linkml-source">LinkML Source</h2>
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
-<pre><code class="language-yaml">name: WhereClauseCompoundExpression
-description: A compound expression consisting of either two or more where clauses
-  combined with the `AND` or `OR` logical operator, or a single where clause negated
-  with the `NOT` logical operator.
-from_schema: https://www.cdisc.org/ars/1-0
-rank: 1000
-slots:
-- logicalOperator
-- whereClauses
-rules:
-- preconditions:
-    slot_conditions:
-      logicalOperator:
-        name: logicalOperator
-        any_of:
-        - equals_string: AND
-        - equals_string: OR
-  postconditions:
-    slot_conditions:
-      whereClauses:
-        name: whereClauses
-        minimum_cardinality: 2
-  description: At least 2 where clauses are required when logicalOperator is AND or
-    OR.
-- preconditions:
-    slot_conditions:
-      logicalOperator:
-        name: logicalOperator
-        equals_string: NOT
-  postconditions:
-    slot_conditions:
-      value:
-        name: value
-        maximum_cardinality: 1
-  description: Only a single where clause is allowed when logicalOperator is NOT.
-
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WhereClauseCompoundExpression</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A compound expression consisting of either two or more where clauses</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">combined with the `AND` or `OR` logical operator, or a single where clause negated</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">with the `NOT` logical operator.</span>
+<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://www.cdisc.org/ars/1-0</span>
+<span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="nt">slots</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">logicalOperator</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">whereClauses</span>
+<span class="nt">rules</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">preconditions</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">slot_conditions</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">logicalOperator</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">logicalOperator</span>
+<span class="w">        </span><span class="nt">any_of</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AND</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OR</span>
+<span class="w">  </span><span class="nt">postconditions</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">slot_conditions</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">whereClauses</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">whereClauses</span>
+<span class="w">        </span><span class="nt">minimum_cardinality</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">At least 2 where clauses are required when logicalOperator is AND or</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">OR.</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">preconditions</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">slot_conditions</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">logicalOperator</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">logicalOperator</span>
+<span class="w">        </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NOT</span>
+<span class="w">  </span><span class="nt">postconditions</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">slot_conditions</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">value</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">value</span>
+<span class="w">        </span><span class="nt">maximum_cardinality</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Only a single where clause is allowed when logicalOperator is NOT.</span>
+</code></pre></div>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
-<pre><code class="language-yaml">name: WhereClauseCompoundExpression
-description: A compound expression consisting of either two or more where clauses
-  combined with the `AND` or `OR` logical operator, or a single where clause negated
-  with the `NOT` logical operator.
-from_schema: https://www.cdisc.org/ars/1-0
-rank: 1000
-attributes:
-  logicalOperator:
-    name: logicalOperator
-    description: The boolean operator that is used to combine (AND, OR) or negate
-      (NOT) the where claus(s) in the compound expression.
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    alias: logicalOperator
-    owner: WhereClauseCompoundExpression
-    domain_of:
-    - WhereClauseCompoundExpression
-    range: ExpressionLogicalOperatorEnum
-    required: true
-  whereClauses:
-    name: whereClauses
-    description: A list of one or more where clauses (selection criteria) to be combined
-      or negated.
-    comments:
-    - Each where clause may be defined as either a simple condition ([variable] [comparator]
-      [value(s)]) or a compound expression that may combine additional simple conditions
-      or compound expressions.
-    - Two or more where clauses should be specified when the logical operator is AND
-      or OR.
-    - Only one where clause should be specfied when the logical operator is NOT. This
-      where clause will usually be a compound expression.
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    multivalued: true
-    list_elements_ordered: true
-    alias: whereClauses
-    owner: WhereClauseCompoundExpression
-    domain_of:
-    - WhereClauseCompoundExpression
-    range: WhereClause
-    inlined: false
-rules:
-- preconditions:
-    slot_conditions:
-      logicalOperator:
-        name: logicalOperator
-        any_of:
-        - equals_string: AND
-        - equals_string: OR
-  postconditions:
-    slot_conditions:
-      whereClauses:
-        name: whereClauses
-        minimum_cardinality: 2
-  description: At least 2 where clauses are required when logicalOperator is AND or
-    OR.
-- preconditions:
-    slot_conditions:
-      logicalOperator:
-        name: logicalOperator
-        equals_string: NOT
-  postconditions:
-    slot_conditions:
-      value:
-        name: value
-        maximum_cardinality: 1
-  description: Only a single where clause is allowed when logicalOperator is NOT.
-
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WhereClauseCompoundExpression</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A compound expression consisting of either two or more where clauses</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">combined with the `AND` or `OR` logical operator, or a single where clause negated</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">with the `NOT` logical operator.</span>
+<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://www.cdisc.org/ars/1-0</span>
+<span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="nt">attributes</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">logicalOperator</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">logicalOperator</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The boolean operator that is used to combine (AND, OR) or negate</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">(NOT) the where claus(s) in the compound expression.</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://www.cdisc.org/ars/1-0</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">logicalOperator</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WhereClauseCompoundExpression</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WhereClauseCompoundExpression</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ExpressionLogicalOperatorEnum</span>
+<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">whereClauses</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">whereClauses</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A list of one or more where clauses (selection criteria) to be combined</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">or negated.</span>
+<span class="w">    </span><span class="nt">comments</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Each where clause may be defined as either a simple condition ([variable] [comparator]</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">[value(s)]) or a compound expression that may combine additional simple conditions</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">or compound expressions.</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Two or more where clauses should be specified when the logical operator is AND</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">or OR.</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Only one where clause should be specfied when the logical operator is NOT. This</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">where clause will usually be a compound expression.</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://www.cdisc.org/ars/1-0</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">list_elements_ordered</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">whereClauses</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WhereClauseCompoundExpression</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WhereClauseCompoundExpression</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WhereClause</span>
+<span class="w">    </span><span class="nt">inlined</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="nt">rules</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">preconditions</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">slot_conditions</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">logicalOperator</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">logicalOperator</span>
+<span class="w">        </span><span class="nt">any_of</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AND</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OR</span>
+<span class="w">  </span><span class="nt">postconditions</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">slot_conditions</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">whereClauses</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">whereClauses</span>
+<span class="w">        </span><span class="nt">minimum_cardinality</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">At least 2 where clauses are required when logicalOperator is AND or</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">OR.</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">preconditions</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">slot_conditions</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">logicalOperator</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">logicalOperator</span>
+<span class="w">        </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NOT</span>
+<span class="w">  </span><span class="nt">postconditions</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">slot_conditions</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">value</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">value</span>
+<span class="w">        </span><span class="nt">maximum_cardinality</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Only a single where clause is allowed when logicalOperator is NOT.</span>
+</code></pre></div>
 </details></div>
 </div>
 </div>
@@ -350,7 +347,9 @@ rules:
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
 <script defer="" src="../js/base.js"></script>
-<script defer="" src="https://cdn.jsdelivr.net/npm/svg-pan-zoom-container@0.6.1"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.1/dist/svg-pan-zoom.min.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/mermaid@9.1.3/dist/mermaid.min.js"></script>
+<script defer="" src="../js/enable_zoom.js"></script>
 <script defer="" src="../search/main.js"></script>
 <div aria-hidden="true" aria-labelledby="searchModalLabel" class="modal" id="mkdocs_search_modal" role="dialog" tabindex="-1">
 <div class="modal-dialog modal-lg">
@@ -412,5 +411,5 @@ rules:
 </div>
 </div>
 </div>
-<script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
+</body>
 </html>

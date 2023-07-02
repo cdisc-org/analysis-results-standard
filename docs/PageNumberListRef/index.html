@@ -74,26 +74,25 @@
 <h1 id="class-pagenumberlistref">Class: PageNumberListRef</h1>
 <p><em>One or more individual pages in the reference document, referenced by page number.</em></p>
 <p>URI: <a href="https://www.cdisc.org/ars/1-0/PageNumberListRef">ars:PageNumberListRef</a></p>
-<div class="mermaid"> classDiagram
+<pre class="mermaid"><code> classDiagram
     class PageNumberListRef
       PageRef &lt;|-- PageNumberListRef
-
+      
       PageNumberListRef : firstPage
-
+        
       PageNumberListRef : label
-
+        
       PageNumberListRef : lastPage
-
+        
       PageNumberListRef : pageNames
-
+        
       PageNumberListRef : pageNumbers
-
+        
       PageNumberListRef : refType
-
+        
           PageNumberListRef --|&gt; PageRefTypeEnum : refType
-
-
-</div>
+        
+      </code></pre>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../PageRef/">PageRef</a><ul>
@@ -178,168 +177,166 @@
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
-<pre><code class="language-yaml">name: PageNumberListRef
-description: One or more individual pages in the reference document, referenced by
-  page number.
-from_schema: https://www.cdisc.org/ars/1-0
-rank: 1000
-is_a: PageRef
-slot_usage:
-  refType:
-    name: refType
-    domain_of:
-    - PageRef
-    equals_string: PhysicalRef
-  pageNumbers:
-    name: pageNumbers
-    domain_of:
-    - PageRef
-    required: true
-    value_presence: PRESENT
-  pageNames:
-    name: pageNames
-    description: NOT USED
-    domain_of:
-    - PageRef
-    value_presence: ABSENT
-  firstPage:
-    name: firstPage
-    description: NOT USED
-    domain_of:
-    - PageRef
-    value_presence: ABSENT
-  lastPage:
-    name: lastPage
-    description: NOT USED
-    domain_of:
-    - PageRef
-    value_presence: ABSENT
-defining_slots:
-- pageNumbers
-
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PageNumberListRef</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">One or more individual pages in the reference document, referenced by</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">page number.</span>
+<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://www.cdisc.org/ars/1-0</span>
+<span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PageRef</span>
+<span class="nt">slot_usage</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">refType</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">refType</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PageRef</span>
+<span class="w">    </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PhysicalRef</span>
+<span class="w">  </span><span class="nt">pageNumbers</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pageNumbers</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PageRef</span>
+<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">value_presence</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PRESENT</span>
+<span class="w">  </span><span class="nt">pageNames</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pageNames</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NOT USED</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PageRef</span>
+<span class="w">    </span><span class="nt">value_presence</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ABSENT</span>
+<span class="w">  </span><span class="nt">firstPage</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">firstPage</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NOT USED</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PageRef</span>
+<span class="w">    </span><span class="nt">value_presence</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ABSENT</span>
+<span class="w">  </span><span class="nt">lastPage</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lastPage</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NOT USED</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PageRef</span>
+<span class="w">    </span><span class="nt">value_presence</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ABSENT</span>
+<span class="nt">defining_slots</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pageNumbers</span>
+</code></pre></div>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
-<pre><code class="language-yaml">name: PageNumberListRef
-description: One or more individual pages in the reference document, referenced by
-  page number.
-from_schema: https://www.cdisc.org/ars/1-0
-rank: 1000
-is_a: PageRef
-slot_usage:
-  refType:
-    name: refType
-    domain_of:
-    - PageRef
-    equals_string: PhysicalRef
-  pageNumbers:
-    name: pageNumbers
-    domain_of:
-    - PageRef
-    required: true
-    value_presence: PRESENT
-  pageNames:
-    name: pageNames
-    description: NOT USED
-    domain_of:
-    - PageRef
-    value_presence: ABSENT
-  firstPage:
-    name: firstPage
-    description: NOT USED
-    domain_of:
-    - PageRef
-    value_presence: ABSENT
-  lastPage:
-    name: lastPage
-    description: NOT USED
-    domain_of:
-    - PageRef
-    value_presence: ABSENT
-attributes:
-  refType:
-    name: refType
-    description: The type of reference for page references.
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    alias: refType
-    owner: PageNumberListRef
-    domain_of:
-    - PageRef
-    range: PageRefTypeEnum
-    required: true
-    equals_string: PhysicalRef
-  label:
-    name: label
-    description: Alternative label to provide a more specific and description to a
-      page link.
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    alias: label
-    owner: PageNumberListRef
-    domain_of:
-    - AnalysisCategorization
-    - AnalysisCategory
-    - AnalysisMethod
-    - Operation
-    - AnalysisSet
-    - GroupingFactor
-    - Group
-    - DataSubset
-    - PageRef
-    range: string
-  pageNames:
-    name: pageNames
-    description: NOT USED
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    multivalued: true
-    alias: pageNames
-    owner: PageNumberListRef
-    domain_of:
-    - PageRef
-    range: string
-    value_presence: ABSENT
-  pageNumbers:
-    name: pageNumbers
-    description: One or more page numbers.
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    multivalued: true
-    alias: pageNumbers
-    owner: PageNumberListRef
-    domain_of:
-    - PageRef
-    range: integer
-    required: true
-    value_presence: PRESENT
-  firstPage:
-    name: firstPage
-    description: NOT USED
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    alias: firstPage
-    owner: PageNumberListRef
-    domain_of:
-    - PageRef
-    range: integer
-    value_presence: ABSENT
-  lastPage:
-    name: lastPage
-    description: NOT USED
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    alias: lastPage
-    owner: PageNumberListRef
-    domain_of:
-    - PageRef
-    range: integer
-    value_presence: ABSENT
-defining_slots:
-- pageNumbers
-
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PageNumberListRef</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">One or more individual pages in the reference document, referenced by</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">page number.</span>
+<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://www.cdisc.org/ars/1-0</span>
+<span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PageRef</span>
+<span class="nt">slot_usage</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">refType</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">refType</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PageRef</span>
+<span class="w">    </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PhysicalRef</span>
+<span class="w">  </span><span class="nt">pageNumbers</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pageNumbers</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PageRef</span>
+<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">value_presence</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PRESENT</span>
+<span class="w">  </span><span class="nt">pageNames</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pageNames</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NOT USED</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PageRef</span>
+<span class="w">    </span><span class="nt">value_presence</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ABSENT</span>
+<span class="w">  </span><span class="nt">firstPage</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">firstPage</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NOT USED</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PageRef</span>
+<span class="w">    </span><span class="nt">value_presence</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ABSENT</span>
+<span class="w">  </span><span class="nt">lastPage</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lastPage</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NOT USED</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PageRef</span>
+<span class="w">    </span><span class="nt">value_presence</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ABSENT</span>
+<span class="nt">attributes</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">refType</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">refType</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The type of reference for page references.</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://www.cdisc.org/ars/1-0</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">refType</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PageNumberListRef</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PageRef</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PageRefTypeEnum</span>
+<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PhysicalRef</span>
+<span class="w">  </span><span class="nt">label</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">label</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Alternative label to provide a more specific and description to a</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">page link.</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://www.cdisc.org/ars/1-0</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">label</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PageNumberListRef</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AnalysisCategorization</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AnalysisCategory</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AnalysisMethod</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Operation</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AnalysisSet</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GroupingFactor</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Group</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DataSubset</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PageRef</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">  </span><span class="nt">pageNames</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pageNames</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NOT USED</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://www.cdisc.org/ars/1-0</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pageNames</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PageNumberListRef</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PageRef</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">    </span><span class="nt">value_presence</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ABSENT</span>
+<span class="w">  </span><span class="nt">pageNumbers</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pageNumbers</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">One or more page numbers.</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://www.cdisc.org/ars/1-0</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pageNumbers</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PageNumberListRef</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PageRef</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
+<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">value_presence</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PRESENT</span>
+<span class="w">  </span><span class="nt">firstPage</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">firstPage</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NOT USED</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://www.cdisc.org/ars/1-0</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">firstPage</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PageNumberListRef</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PageRef</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
+<span class="w">    </span><span class="nt">value_presence</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ABSENT</span>
+<span class="w">  </span><span class="nt">lastPage</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lastPage</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NOT USED</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://www.cdisc.org/ars/1-0</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lastPage</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PageNumberListRef</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PageRef</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
+<span class="w">    </span><span class="nt">value_presence</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ABSENT</span>
+<span class="nt">defining_slots</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pageNumbers</span>
+</code></pre></div>
 </details></div>
 </div>
 </div>
@@ -352,7 +349,9 @@ defining_slots:
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
 <script defer="" src="../js/base.js"></script>
-<script defer="" src="https://cdn.jsdelivr.net/npm/svg-pan-zoom-container@0.6.1"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.1/dist/svg-pan-zoom.min.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/mermaid@9.1.3/dist/mermaid.min.js"></script>
+<script defer="" src="../js/enable_zoom.js"></script>
 <script defer="" src="../search/main.js"></script>
 <div aria-hidden="true" aria-labelledby="searchModalLabel" class="modal" id="mkdocs_search_modal" role="dialog" tabindex="-1">
 <div class="modal-dialog modal-lg">
@@ -414,5 +413,5 @@ defining_slots:
 </div>
 </div>
 </div>
-<script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
+</body>
 </html>

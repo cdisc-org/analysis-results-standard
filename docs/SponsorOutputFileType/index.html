@@ -74,18 +74,17 @@
 <h1 id="class-sponsoroutputfiletype">Class: SponsorOutputFileType</h1>
 <p><em>The sponsor-defined file format of the file containing output from analyses.</em></p>
 <p>URI: <a href="https://www.cdisc.org/ars/1-0/SponsorOutputFileType">ars:SponsorOutputFileType</a></p>
-<div class="mermaid"> classDiagram
+<pre class="mermaid"><code> classDiagram
     class SponsorOutputFileType
       ExtensibleTerminologyTerm &lt;|-- SponsorOutputFileType
-
+      
       SponsorOutputFileType : controlledTerm
-
+        
       SponsorOutputFileType : sponsorTermId
-
+        
           SponsorOutputFileType --|&gt; SponsorTerm : sponsorTermId
-
-
-</div>
+        
+      </code></pre>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../ExtensibleTerminologyTerm/">ExtensibleTerminologyTerm</a><ul>
@@ -146,76 +145,74 @@
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
-<pre><code class="language-yaml">name: SponsorOutputFileType
-description: The sponsor-defined file format of the file containing output from analyses.
-from_schema: https://www.cdisc.org/ars/1-0
-rank: 1000
-is_a: ExtensibleTerminologyTerm
-slot_usage:
-  controlledTerm:
-    name: controlledTerm
-    description: NOT USED
-    domain_of:
-    - ExtensibleTerminologyTerm
-    value_presence: ABSENT
-  sponsorTermId:
-    name: sponsorTermId
-    description: A reference to a sponsor term in the TerminologyExtension with enumeration=OutputFileTypeEnum
-    domain_of:
-    - ExtensibleTerminologyTerm
-    required: true
-    value_presence: PRESENT
-
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SponsorOutputFileType</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The sponsor-defined file format of the file containing output from analyses.</span>
+<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://www.cdisc.org/ars/1-0</span>
+<span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ExtensibleTerminologyTerm</span>
+<span class="nt">slot_usage</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">controlledTerm</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">controlledTerm</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NOT USED</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ExtensibleTerminologyTerm</span>
+<span class="w">    </span><span class="nt">value_presence</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ABSENT</span>
+<span class="w">  </span><span class="nt">sponsorTermId</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sponsorTermId</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A reference to a sponsor term in the TerminologyExtension with enumeration=OutputFileTypeEnum</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ExtensibleTerminologyTerm</span>
+<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">value_presence</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PRESENT</span>
+</code></pre></div>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
-<pre><code class="language-yaml">name: SponsorOutputFileType
-description: The sponsor-defined file format of the file containing output from analyses.
-from_schema: https://www.cdisc.org/ars/1-0
-rank: 1000
-is_a: ExtensibleTerminologyTerm
-slot_usage:
-  controlledTerm:
-    name: controlledTerm
-    description: NOT USED
-    domain_of:
-    - ExtensibleTerminologyTerm
-    value_presence: ABSENT
-  sponsorTermId:
-    name: sponsorTermId
-    description: A reference to a sponsor term in the TerminologyExtension with enumeration=OutputFileTypeEnum
-    domain_of:
-    - ExtensibleTerminologyTerm
-    required: true
-    value_presence: PRESENT
-attributes:
-  controlledTerm:
-    name: controlledTerm
-    description: NOT USED
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    alias: controlledTerm
-    owner: SponsorOutputFileType
-    domain_of:
-    - ExtensibleTerminologyTerm
-    range: string
-    value_presence: ABSENT
-  sponsorTermId:
-    name: sponsorTermId
-    description: A reference to a sponsor term in the TerminologyExtension with enumeration=OutputFileTypeEnum
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    alias: sponsorTermId
-    owner: SponsorOutputFileType
-    domain_of:
-    - ExtensibleTerminologyTerm
-    range: SponsorTerm
-    required: true
-    inlined: false
-    value_presence: PRESENT
-
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SponsorOutputFileType</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The sponsor-defined file format of the file containing output from analyses.</span>
+<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://www.cdisc.org/ars/1-0</span>
+<span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ExtensibleTerminologyTerm</span>
+<span class="nt">slot_usage</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">controlledTerm</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">controlledTerm</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NOT USED</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ExtensibleTerminologyTerm</span>
+<span class="w">    </span><span class="nt">value_presence</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ABSENT</span>
+<span class="w">  </span><span class="nt">sponsorTermId</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sponsorTermId</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A reference to a sponsor term in the TerminologyExtension with enumeration=OutputFileTypeEnum</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ExtensibleTerminologyTerm</span>
+<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">value_presence</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PRESENT</span>
+<span class="nt">attributes</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">controlledTerm</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">controlledTerm</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NOT USED</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://www.cdisc.org/ars/1-0</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">controlledTerm</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SponsorOutputFileType</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ExtensibleTerminologyTerm</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">    </span><span class="nt">value_presence</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ABSENT</span>
+<span class="w">  </span><span class="nt">sponsorTermId</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sponsorTermId</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A reference to a sponsor term in the TerminologyExtension with enumeration=OutputFileTypeEnum</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://www.cdisc.org/ars/1-0</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sponsorTermId</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SponsorOutputFileType</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ExtensibleTerminologyTerm</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SponsorTerm</span>
+<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">inlined</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">value_presence</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PRESENT</span>
+</code></pre></div>
 </details></div>
 </div>
 </div>
@@ -228,7 +225,9 @@ attributes:
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
 <script defer="" src="../js/base.js"></script>
-<script defer="" src="https://cdn.jsdelivr.net/npm/svg-pan-zoom-container@0.6.1"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.1/dist/svg-pan-zoom.min.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/mermaid@9.1.3/dist/mermaid.min.js"></script>
+<script defer="" src="../js/enable_zoom.js"></script>
 <script defer="" src="../search/main.js"></script>
 <div aria-hidden="true" aria-labelledby="searchModalLabel" class="modal" id="mkdocs_search_modal" role="dialog" tabindex="-1">
 <div class="modal-dialog modal-lg">
@@ -290,5 +289,5 @@ attributes:
 </div>
 </div>
 </div>
-<script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
+</body>
 </html>

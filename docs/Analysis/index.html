@@ -84,68 +84,67 @@
 <p><em>* One or more factors by which either subjects or data records are grouped for analysis (optional).</em></p>
 <p>__</p>
 <p>URI: <a href="https://www.cdisc.org/ars/1-0/Analysis">ars:Analysis</a></p>
-<div class="mermaid"> classDiagram
+<pre class="mermaid"><code> classDiagram
     class Analysis
       NamedObject &lt;|-- Analysis
-
+      
       Analysis : analysisSetId
-
+        
           Analysis --|&gt; AnalysisSet : analysisSetId
-
+        
       Analysis : categoryIds
-
+        
           Analysis --|&gt; AnalysisCategory : categoryIds
-
+        
       Analysis : dataset
-
+        
       Analysis : dataSubsetId
-
+        
           Analysis --|&gt; DataSubset : dataSubsetId
-
+        
       Analysis : description
-
+        
       Analysis : documentRefs
-
+        
           Analysis --|&gt; DocumentReference : documentRefs
-
+        
       Analysis : id
-
+        
       Analysis : methodId
-
+        
           Analysis --|&gt; AnalysisMethod : methodId
-
+        
       Analysis : name
-
+        
       Analysis : orderedGroupings
-
+        
           Analysis --|&gt; OrderedGroupingFactor : orderedGroupings
-
+        
       Analysis : programmingCode
-
+        
           Analysis --|&gt; AnalysisOutputProgrammingCode : programmingCode
-
+        
       Analysis : purpose
-
+        
           Analysis --|&gt; ExtensibleTerminologyTerm : purpose
-
+        
       Analysis : reason
-
+        
           Analysis --|&gt; ExtensibleTerminologyTerm : reason
-
+        
       Analysis : referencedAnalysisOperations
-
+        
           Analysis --|&gt; ReferencedAnalysisOperation : referencedAnalysisOperations
-
+        
       Analysis : results
-
+        
           Analysis --|&gt; OperationResult : results
-
+        
       Analysis : variable
-
+        
       Analysis : version
-
-
-</div>
+        
+      </code></pre>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../NamedObject/">NamedObject</a><ul>
@@ -333,339 +332,337 @@
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
-<pre><code class="language-yaml">name: Analysis
-description: 'An analysis that is designed to meet a requirement of the reporting
-  event. Each analysis is defined as a set of specifications, including:
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Analysis</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'An</span><span class="nv"> </span><span class="s">analysis</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">designed</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">meet</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">requirement</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">reporting</span>
+<span class="w">  </span><span class="s">event.</span><span class="nv"> </span><span class="s">Each</span><span class="nv"> </span><span class="s">analysis</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">defined</span><span class="nv"> </span><span class="s">as</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">set</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">specifications,</span><span class="nv"> </span><span class="s">including:</span>
 
-  * The analysis variable that is the subject of the analysis.
+<span class="w">  </span><span class="s">*</span><span class="nv"> </span><span class="s">The</span><span class="nv"> </span><span class="s">analysis</span><span class="nv"> </span><span class="s">variable</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">subject</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">analysis.</span>
 
-  * The analysis method (set of statistical operations) that is performed for the
-  analysis variable.
+<span class="w">  </span><span class="s">*</span><span class="nv"> </span><span class="s">The</span><span class="nv"> </span><span class="s">analysis</span><span class="nv"> </span><span class="s">method</span><span class="nv"> </span><span class="s">(set</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">statistical</span><span class="nv"> </span><span class="s">operations)</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">performed</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">the</span>
+<span class="w">  </span><span class="s">analysis</span><span class="nv"> </span><span class="s">variable.</span>
 
-  * The analysis set (subject population) for which the analysis is performed.
+<span class="w">  </span><span class="s">*</span><span class="nv"> </span><span class="s">The</span><span class="nv"> </span><span class="s">analysis</span><span class="nv"> </span><span class="s">set</span><span class="nv"> </span><span class="s">(subject</span><span class="nv"> </span><span class="s">population)</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">which</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">analysis</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">performed.</span>
 
-  * The subset of data records on which the analysis is performed (optional).
+<span class="w">  </span><span class="s">*</span><span class="nv"> </span><span class="s">The</span><span class="nv"> </span><span class="s">subset</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">data</span><span class="nv"> </span><span class="s">records</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">which</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">analysis</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">performed</span><span class="nv"> </span><span class="s">(optional).</span>
 
-  * One or more factors by which either subjects or data records are grouped for analysis
-  (optional).
+<span class="w">  </span><span class="s">*</span><span class="nv"> </span><span class="s">One</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">more</span><span class="nv"> </span><span class="s">factors</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">which</span><span class="nv"> </span><span class="s">either</span><span class="nv"> </span><span class="s">subjects</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">data</span><span class="nv"> </span><span class="s">records</span><span class="nv"> </span><span class="s">are</span><span class="nv"> </span><span class="s">grouped</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">analysis</span>
+<span class="w">  </span><span class="s">(optional).</span>
 
-  '
-from_schema: https://www.cdisc.org/ars/1-0
-rank: 1000
-is_a: NamedObject
-slots:
-- id
-- version
-- categoryIds
-- description
-- reason
-- purpose
-- documentRefs
-- analysisSetId
-- orderedGroupings
-- dataSubsetId
-- dataset
-- variable
-- methodId
-- referencedAnalysisOperations
-- programmingCode
-- results
-slot_usage:
-  categoryIds:
-    name: categoryIds
-    description: References to any implementer-defined categories that apply to the
-      analysis.
-    domain_of:
-    - Analysis
-    - Output
-  programmingCode:
-    name: programmingCode
-    description: Programming statements and/or a reference to the program used to
-      perform the specific analysis.
-    domain_of:
-    - Analysis
-    - Output
-
-</code></pre>
+<span class="w">  </span><span class="s">'</span>
+<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://www.cdisc.org/ars/1-0</span>
+<span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NamedObject</span>
+<span class="nt">slots</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">id</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">version</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">categoryIds</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">description</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">reason</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">purpose</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">documentRefs</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">analysisSetId</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">orderedGroupings</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dataSubsetId</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dataset</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">variable</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">methodId</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">referencedAnalysisOperations</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">programmingCode</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">results</span>
+<span class="nt">slot_usage</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">categoryIds</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">categoryIds</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">References to any implementer-defined categories that apply to the</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">analysis.</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Analysis</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Output</span>
+<span class="w">  </span><span class="nt">programmingCode</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">programmingCode</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Programming statements and/or a reference to the program used to</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">perform the specific analysis.</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Analysis</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Output</span>
+</code></pre></div>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
-<pre><code class="language-yaml">name: Analysis
-description: 'An analysis that is designed to meet a requirement of the reporting
-  event. Each analysis is defined as a set of specifications, including:
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Analysis</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'An</span><span class="nv"> </span><span class="s">analysis</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">designed</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">meet</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">requirement</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">reporting</span>
+<span class="w">  </span><span class="s">event.</span><span class="nv"> </span><span class="s">Each</span><span class="nv"> </span><span class="s">analysis</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">defined</span><span class="nv"> </span><span class="s">as</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">set</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">specifications,</span><span class="nv"> </span><span class="s">including:</span>
 
-  * The analysis variable that is the subject of the analysis.
+<span class="w">  </span><span class="s">*</span><span class="nv"> </span><span class="s">The</span><span class="nv"> </span><span class="s">analysis</span><span class="nv"> </span><span class="s">variable</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">subject</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">analysis.</span>
 
-  * The analysis method (set of statistical operations) that is performed for the
-  analysis variable.
+<span class="w">  </span><span class="s">*</span><span class="nv"> </span><span class="s">The</span><span class="nv"> </span><span class="s">analysis</span><span class="nv"> </span><span class="s">method</span><span class="nv"> </span><span class="s">(set</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">statistical</span><span class="nv"> </span><span class="s">operations)</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">performed</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">the</span>
+<span class="w">  </span><span class="s">analysis</span><span class="nv"> </span><span class="s">variable.</span>
 
-  * The analysis set (subject population) for which the analysis is performed.
+<span class="w">  </span><span class="s">*</span><span class="nv"> </span><span class="s">The</span><span class="nv"> </span><span class="s">analysis</span><span class="nv"> </span><span class="s">set</span><span class="nv"> </span><span class="s">(subject</span><span class="nv"> </span><span class="s">population)</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">which</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">analysis</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">performed.</span>
 
-  * The subset of data records on which the analysis is performed (optional).
+<span class="w">  </span><span class="s">*</span><span class="nv"> </span><span class="s">The</span><span class="nv"> </span><span class="s">subset</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">data</span><span class="nv"> </span><span class="s">records</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">which</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">analysis</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">performed</span><span class="nv"> </span><span class="s">(optional).</span>
 
-  * One or more factors by which either subjects or data records are grouped for analysis
-  (optional).
+<span class="w">  </span><span class="s">*</span><span class="nv"> </span><span class="s">One</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">more</span><span class="nv"> </span><span class="s">factors</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">which</span><span class="nv"> </span><span class="s">either</span><span class="nv"> </span><span class="s">subjects</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">data</span><span class="nv"> </span><span class="s">records</span><span class="nv"> </span><span class="s">are</span><span class="nv"> </span><span class="s">grouped</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">analysis</span>
+<span class="w">  </span><span class="s">(optional).</span>
 
-  '
-from_schema: https://www.cdisc.org/ars/1-0
-rank: 1000
-is_a: NamedObject
-slot_usage:
-  categoryIds:
-    name: categoryIds
-    description: References to any implementer-defined categories that apply to the
-      analysis.
-    domain_of:
-    - Analysis
-    - Output
-  programmingCode:
-    name: programmingCode
-    description: Programming statements and/or a reference to the program used to
-      perform the specific analysis.
-    domain_of:
-    - Analysis
-    - Output
-attributes:
-  id:
-    name: id
-    description: The assigned identifying value for the instance of the class.
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    identifier: true
-    alias: id
-    owner: Analysis
-    domain_of:
-    - ReportingEvent
-    - AnalysisCategorization
-    - AnalysisCategory
-    - Analysis
-    - AnalysisMethod
-    - Operation
-    - ReferencedOperationRelationship
-    - Output
-    - OutputDisplay
-    - DisplaySubSection
-    - AnalysisSet
-    - GroupingFactor
-    - Group
-    - DataSubset
-    - ReferenceDocument
-    - TerminologyExtension
-    - SponsorTerm
-    range: string
-    required: true
-  version:
-    name: version
-    description: An ordinal indicating the version of the identified instance of the
-      class.
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    alias: version
-    owner: Analysis
-    domain_of:
-    - ReportingEvent
-    - Analysis
-    - Output
-    - OutputDisplay
-    range: integer
-  categoryIds:
-    name: categoryIds
-    description: References to any implementer-defined categories that apply to the
-      analysis.
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    multivalued: true
-    alias: categoryIds
-    owner: Analysis
-    domain_of:
-    - Analysis
-    - Output
-    range: AnalysisCategory
-    required: false
-    inlined: false
-  description:
-    name: description
-    description: A textual description of the instance of the class.
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    alias: description
-    owner: Analysis
-    domain_of:
-    - Analysis
-    - AnalysisMethod
-    - ReferencedOperationRelationship
-    - CodeParameter
-    - SponsorTerm
-    range: string
-  reason:
-    name: reason
-    description: The rationale for performing this analysis. It indicates when the
-      analysis was planned.
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    alias: reason
-    owner: Analysis
-    domain_of:
-    - Analysis
-    range: ExtensibleTerminologyTerm
-    required: true
-    any_of:
-    - range: AnalysisReason
-    - range: SponsorAnalysisReason
-  purpose:
-    name: purpose
-    description: The purpose of the analysis within the body of evidence (e.g., section
-      in the clinical study report).
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    alias: purpose
-    owner: Analysis
-    domain_of:
-    - Analysis
-    range: ExtensibleTerminologyTerm
-    required: true
-    any_of:
-    - range: AnalysisPurpose
-    - range: SponsorAnalysisPurpose
-  documentRefs:
-    name: documentRefs
-    description: References to external documents containing additional information.
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    multivalued: true
-    alias: documentRefs
-    owner: Analysis
-    domain_of:
-    - Analysis
-    - AnalysisMethod
-    - Output
-    range: DocumentReference
-    inlined: true
-    inlined_as_list: true
-  analysisSetId:
-    name: analysisSetId
-    description: The identifier of the referenced analysis set.
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    multivalued: false
-    alias: analysisSetId
-    owner: Analysis
-    domain_of:
-    - Analysis
-    range: AnalysisSet
-    inlined: false
-  orderedGroupings:
-    name: orderedGroupings
-    description: An ordered list of grouping factors used in the analysis.
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    multivalued: true
-    list_elements_ordered: true
-    alias: orderedGroupings
-    owner: Analysis
-    domain_of:
-    - Analysis
-    range: OrderedGroupingFactor
-    inlined: true
-    inlined_as_list: true
-  dataSubsetId:
-    name: dataSubsetId
-    description: The identifier of the referenced data subset.
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    alias: dataSubsetId
-    owner: Analysis
-    domain_of:
-    - Analysis
-    range: DataSubset
-    inlined: false
-  dataset:
-    name: dataset
-    description: The name of the analysis dataset.
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    alias: dataset
-    owner: Analysis
-    domain_of:
-    - Analysis
-    - WhereClauseCondition
-    range: string
-  variable:
-    name: variable
-    description: The name of the variable.
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    alias: variable
-    owner: Analysis
-    domain_of:
-    - Analysis
-    - WhereClauseCondition
-    range: string
-  methodId:
-    name: methodId
-    description: A reference to the set of one or more statistical operations performed
-      for the analysis.
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    alias: methodId
-    owner: Analysis
-    domain_of:
-    - Analysis
-    range: AnalysisMethod
-    required: true
-    inlined: false
-  referencedAnalysisOperations:
-    name: referencedAnalysisOperations
-    description: Indications of which analysis contains the results for each referenced
-      operation.
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    multivalued: true
-    alias: referencedAnalysisOperations
-    owner: Analysis
-    domain_of:
-    - Analysis
-    range: ReferencedAnalysisOperation
-    inlined: true
-    inlined_as_list: true
-  programmingCode:
-    name: programmingCode
-    description: Programming statements and/or a reference to the program used to
-      perform the specific analysis.
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    alias: programmingCode
-    owner: Analysis
-    domain_of:
-    - Analysis
-    - Output
-    range: AnalysisOutputProgrammingCode
-  results:
-    name: results
-    description: The results of the analysis.
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    multivalued: true
-    alias: results
-    owner: Analysis
-    domain_of:
-    - Analysis
-    range: OperationResult
-    inlined: true
-    inlined_as_list: true
-  name:
-    name: name
-    description: The name for the instance of the class.
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    alias: name
-    owner: Analysis
-    domain_of:
-    - NamedObject
-    range: string
-    required: true
-
-</code></pre>
+<span class="w">  </span><span class="s">'</span>
+<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://www.cdisc.org/ars/1-0</span>
+<span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NamedObject</span>
+<span class="nt">slot_usage</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">categoryIds</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">categoryIds</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">References to any implementer-defined categories that apply to the</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">analysis.</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Analysis</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Output</span>
+<span class="w">  </span><span class="nt">programmingCode</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">programmingCode</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Programming statements and/or a reference to the program used to</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">perform the specific analysis.</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Analysis</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Output</span>
+<span class="nt">attributes</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">id</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">id</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The assigned identifying value for the instance of the class.</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://www.cdisc.org/ars/1-0</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">identifier</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">id</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Analysis</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReportingEvent</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AnalysisCategorization</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AnalysisCategory</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Analysis</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AnalysisMethod</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Operation</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReferencedOperationRelationship</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Output</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OutputDisplay</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DisplaySubSection</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AnalysisSet</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GroupingFactor</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Group</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DataSubset</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReferenceDocument</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TerminologyExtension</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SponsorTerm</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">version</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">version</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">An ordinal indicating the version of the identified instance of the</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">class.</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://www.cdisc.org/ars/1-0</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">version</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Analysis</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReportingEvent</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Analysis</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Output</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OutputDisplay</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
+<span class="w">  </span><span class="nt">categoryIds</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">categoryIds</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">References to any implementer-defined categories that apply to the</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">analysis.</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://www.cdisc.org/ars/1-0</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">categoryIds</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Analysis</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Analysis</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Output</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AnalysisCategory</span>
+<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">inlined</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">description</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A textual description of the instance of the class.</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://www.cdisc.org/ars/1-0</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">description</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Analysis</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Analysis</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AnalysisMethod</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReferencedOperationRelationship</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CodeParameter</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SponsorTerm</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">  </span><span class="nt">reason</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">reason</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The rationale for performing this analysis. It indicates when the</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">analysis was planned.</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://www.cdisc.org/ars/1-0</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">reason</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Analysis</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Analysis</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ExtensibleTerminologyTerm</span>
+<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">any_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AnalysisReason</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SponsorAnalysisReason</span>
+<span class="w">  </span><span class="nt">purpose</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">purpose</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The purpose of the analysis within the body of evidence (e.g., section</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">in the clinical study report).</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://www.cdisc.org/ars/1-0</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">purpose</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Analysis</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Analysis</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ExtensibleTerminologyTerm</span>
+<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">any_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AnalysisPurpose</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SponsorAnalysisPurpose</span>
+<span class="w">  </span><span class="nt">documentRefs</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">documentRefs</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">References to external documents containing additional information.</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://www.cdisc.org/ars/1-0</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">documentRefs</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Analysis</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Analysis</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AnalysisMethod</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Output</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DocumentReference</span>
+<span class="w">    </span><span class="nt">inlined</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">inlined_as_list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">analysisSetId</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">analysisSetId</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The identifier of the referenced analysis set.</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://www.cdisc.org/ars/1-0</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">analysisSetId</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Analysis</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Analysis</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AnalysisSet</span>
+<span class="w">    </span><span class="nt">inlined</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">orderedGroupings</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">orderedGroupings</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">An ordered list of grouping factors used in the analysis.</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://www.cdisc.org/ars/1-0</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">list_elements_ordered</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">orderedGroupings</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Analysis</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Analysis</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OrderedGroupingFactor</span>
+<span class="w">    </span><span class="nt">inlined</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">inlined_as_list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">dataSubsetId</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dataSubsetId</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The identifier of the referenced data subset.</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://www.cdisc.org/ars/1-0</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dataSubsetId</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Analysis</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Analysis</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DataSubset</span>
+<span class="w">    </span><span class="nt">inlined</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">dataset</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dataset</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The name of the analysis dataset.</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://www.cdisc.org/ars/1-0</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dataset</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Analysis</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Analysis</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WhereClauseCondition</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">  </span><span class="nt">variable</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">variable</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The name of the variable.</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://www.cdisc.org/ars/1-0</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">variable</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Analysis</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Analysis</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WhereClauseCondition</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">  </span><span class="nt">methodId</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">methodId</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A reference to the set of one or more statistical operations performed</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">for the analysis.</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://www.cdisc.org/ars/1-0</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">methodId</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Analysis</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Analysis</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AnalysisMethod</span>
+<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">inlined</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">referencedAnalysisOperations</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">referencedAnalysisOperations</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Indications of which analysis contains the results for each referenced</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">operation.</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://www.cdisc.org/ars/1-0</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">referencedAnalysisOperations</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Analysis</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Analysis</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReferencedAnalysisOperation</span>
+<span class="w">    </span><span class="nt">inlined</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">inlined_as_list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">programmingCode</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">programmingCode</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Programming statements and/or a reference to the program used to</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">perform the specific analysis.</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://www.cdisc.org/ars/1-0</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">programmingCode</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Analysis</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Analysis</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Output</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AnalysisOutputProgrammingCode</span>
+<span class="w">  </span><span class="nt">results</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">results</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The results of the analysis.</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://www.cdisc.org/ars/1-0</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">results</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Analysis</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Analysis</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OperationResult</span>
+<span class="w">    </span><span class="nt">inlined</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">inlined_as_list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">name</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The name for the instance of the class.</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://www.cdisc.org/ars/1-0</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">name</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Analysis</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NamedObject</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
 </details></div>
 </div>
 </div>
@@ -678,7 +675,9 @@ attributes:
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
 <script defer="" src="../js/base.js"></script>
-<script defer="" src="https://cdn.jsdelivr.net/npm/svg-pan-zoom-container@0.6.1"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.1/dist/svg-pan-zoom.min.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/mermaid@9.1.3/dist/mermaid.min.js"></script>
+<script defer="" src="../js/enable_zoom.js"></script>
 <script defer="" src="../search/main.js"></script>
 <div aria-hidden="true" aria-labelledby="searchModalLabel" class="modal" id="mkdocs_search_modal" role="dialog" tabindex="-1">
 <div class="modal-dialog modal-lg">
@@ -740,5 +739,5 @@ attributes:
 </div>
 </div>
 </div>
-<script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
+</body>
 </html>

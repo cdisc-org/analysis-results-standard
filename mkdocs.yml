@@ -6,8 +6,21 @@ nav:
 plugins:
     - search
     - mermaid2:
-        version: 9.4.0
+        arguments:
+            startOnLoad: false
+            mermaid:
+                er: 
+                    useMaxWidth: true
+markdown_extensions: 
+    - pymdownx.superfences:
+        preserve_tabs: true
+        custom_fences:
+            - name: mermaid
+              class: mermaid
+              format: !!python/name:pymdownx.superfences.fence_code_format
 extra_javascript:
-    - https://cdn.jsdelivr.net/npm/svg-pan-zoom-container@0.6.1
+    - https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.1/dist/svg-pan-zoom.min.js
+    - https://cdn.jsdelivr.net/npm/mermaid@9.1.3/dist/mermaid.min.js
+    - js/enable_zoom.js
 docs_dir: project/docs
 site_dir: docs

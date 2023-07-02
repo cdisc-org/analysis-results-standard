@@ -8,14 +8,9 @@ Name: {{ schema.name }}
 {% if include_top_level_diagram %}
 
 ## Schema Diagram
-<div
-  data-zoom-on-wheel
-  data-pan-on-drag
-  style="height: 40vh;"> 
-```{{ gen.mermaid_directive() }}
+```{{ gen.mermaid_directive() }} 
 {{ gen.mermaid_diagram() }}
-```
-</div>
+``` 
 {% endif %}
 
 ## Classes

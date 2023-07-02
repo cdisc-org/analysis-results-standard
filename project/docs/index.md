@@ -9,11 +9,7 @@ Name: ars_ldm
 
 
 ## Schema Diagram
-<div
-  data-zoom-on-wheel
-  data-pan-on-drag
-  style="height: 40vh;"> 
-```mermaid
+```mermaid 
 erDiagram
 ReportingEvent {
     string id  
@@ -308,8 +304,7 @@ OrderedListItem ||--|o NestedList : "sublist"
 OrderedListItem ||--|o Analysis : "analysisId"
 OrderedListItem ||--|o Output : "outputId"
 
-```
-</div>
+``` 
 
 
 ## Classes
