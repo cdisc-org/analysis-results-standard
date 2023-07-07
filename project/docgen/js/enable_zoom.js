@@ -104,7 +104,7 @@ const uml = className => {
             const el = document.createElement("div")
             el.className = className
             el.innerHTML = content
-            el.style = "height: 35vh;"
+            el.style = "height: 250px;"
             // Insert the render where we want it and remove the original text source.
             // Mermaid will clean up the temporary element.
             const shadow = document.createElement("diagram-div")

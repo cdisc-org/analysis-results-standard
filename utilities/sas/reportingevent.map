@@ -1,0 +1,2355 @@
+{
+  "DATASETS": [
+    {
+      "DSNAME": "ReportingEvent",
+      "TABLEPATH": "/root",
+      "VARIABLES": [
+        {
+          "NAME": "id",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/id",
+          "CURRENT_LENGTH": 3
+        },
+        {
+          "NAME": "version",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/version"
+        },
+        {
+          "NAME": "name",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/name",
+          "CURRENT_LENGTH": 22
+        }
+      ]
+    },
+    {
+      "DSNAME": "listOfPlannedAnalyse_listItems",
+      "TABLEPATH": "/root/listOfPlannedAnalyses/listItems",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_listOfPlannedAnalyses",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/listOfPlannedAnalyses"
+        },
+        {
+          "NAME": "ordinal_listItems",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/listOfPlannedAnalyses/listItems"
+        },
+        {
+          "NAME": "name",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/listOfPlannedAnalyses/listItems/name",
+          "CURRENT_LENGTH": 91
+        },
+        {
+          "NAME": "level",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/listOfPlannedAnalyses/listItems/level"
+        },
+        {
+          "NAME": "order",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/listOfPlannedAnalyses/listItems/order"
+        },
+        {
+          "NAME": "outputId",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/listOfPlannedAnalyses/listItems/outputId",
+          "CURRENT_LENGTH": 12
+        }
+      ]
+    },
+    {
+      "DSNAME": "sublist_listItems",
+      "TABLEPATH": "/root/listOfPlannedAnalyses/listItems/sublist/listItems",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_sublist",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/listOfPlannedAnalyses/listItems/sublist"
+        },
+        {
+          "NAME": "ordinal_listItems",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/listOfPlannedAnalyses/listItems/sublist/listItems"
+        },
+        {
+          "NAME": "name",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/listOfPlannedAnalyses/listItems/sublist/listItems/name",
+          "CURRENT_LENGTH": 65
+        },
+        {
+          "NAME": "level",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/listOfPlannedAnalyses/listItems/sublist/listItems/level"
+        },
+        {
+          "NAME": "order",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/listOfPlannedAnalyses/listItems/sublist/listItems/order"
+        },
+        {
+          "NAME": "analysisId",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/listOfPlannedAnalyses/listItems/sublist/listItems/analysisId",
+          "CURRENT_LENGTH": 24
+        }
+      ]
+    },
+    {
+      "DSNAME": "sublist_listItems2",
+      "TABLEPATH": "/root/listOfPlannedAnalyses/listItems/sublist/listItems/sublist/listItems",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_sublist",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/listOfPlannedAnalyses/listItems/sublist/listItems/sublist"
+        },
+        {
+          "NAME": "ordinal_listItems",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/listOfPlannedAnalyses/listItems/sublist/listItems/sublist/listItems"
+        },
+        {
+          "NAME": "name",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/listOfPlannedAnalyses/listItems/sublist/listItems/sublist/listItems/name",
+          "CURRENT_LENGTH": 108
+        },
+        {
+          "NAME": "level",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/listOfPlannedAnalyses/listItems/sublist/listItems/sublist/listItems/level"
+        },
+        {
+          "NAME": "order",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/listOfPlannedAnalyses/listItems/sublist/listItems/sublist/listItems/order"
+        },
+        {
+          "NAME": "analysisId",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/listOfPlannedAnalyses/listItems/sublist/listItems/sublist/listItems/analysisId",
+          "CURRENT_LENGTH": 33
+        }
+      ]
+    },
+    {
+      "DSNAME": "listOfPlannedOutputs_listItems",
+      "TABLEPATH": "/root/listOfPlannedOutputs/listItems",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_listOfPlannedOutputs",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/listOfPlannedOutputs"
+        },
+        {
+          "NAME": "ordinal_listItems",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/listOfPlannedOutputs/listItems"
+        },
+        {
+          "NAME": "name",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/listOfPlannedOutputs/listItems/name",
+          "CURRENT_LENGTH": 91
+        },
+        {
+          "NAME": "level",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/listOfPlannedOutputs/listItems/level"
+        },
+        {
+          "NAME": "order",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/listOfPlannedOutputs/listItems/order"
+        },
+        {
+          "NAME": "outputId",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/listOfPlannedOutputs/listItems/outputId",
+          "CURRENT_LENGTH": 12
+        }
+      ]
+    },
+    {
+      "DSNAME": "analysisSets",
+      "TABLEPATH": "/root/analysisSets",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_root",
+          "TYPE": "ORDINAL",
+          "PATH": "/root"
+        },
+        {
+          "NAME": "ordinal_analysisSets",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/analysisSets"
+        },
+        {
+          "NAME": "level",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/analysisSets/level"
+        },
+        {
+          "NAME": "order",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/analysisSets/order"
+        },
+        {
+          "NAME": "id",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analysisSets/id",
+          "CURRENT_LENGTH": 18
+        },
+        {
+          "NAME": "label",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analysisSets/label",
+          "CURRENT_LENGTH": 26
+        }
+      ]
+    },
+    {
+      "DSNAME": "analysisSets_condition",
+      "TABLEPATH": "/root/analysisSets/condition",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_analysisSets",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/analysisSets"
+        },
+        {
+          "NAME": "ordinal_condition",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/analysisSets/condition"
+        },
+        {
+          "NAME": "dataset",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analysisSets/condition/dataset",
+          "CURRENT_LENGTH": 4
+        },
+        {
+          "NAME": "variable",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analysisSets/condition/variable",
+          "CURRENT_LENGTH": 5
+        },
+        {
+          "NAME": "comparator",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analysisSets/condition/comparator",
+          "CURRENT_LENGTH": 2
+        }
+      ]
+    },
+    {
+      "DSNAME": "condition_value",
+      "TABLEPATH": "/root/analysisSets/condition/value",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_condition",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/analysisSets/condition"
+        },
+        {
+          "NAME": "ordinal_value",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/analysisSets/condition/value"
+        },
+        {
+          "NAME": "value1",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analysisSets/condition/value/value1",
+          "CURRENT_LENGTH": 1
+        }
+      ]
+    },
+    {
+      "DSNAME": "analysisGroupings",
+      "TABLEPATH": "/root/analysisGroupings",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_root",
+          "TYPE": "ORDINAL",
+          "PATH": "/root"
+        },
+        {
+          "NAME": "ordinal_analysisGroupings",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/analysisGroupings"
+        },
+        {
+          "NAME": "id",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analysisGroupings/id",
+          "CURRENT_LENGTH": 22
+        },
+        {
+          "NAME": "dataDriven",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/analysisGroupings/dataDriven"
+        },
+        {
+          "NAME": "label",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analysisGroupings/label",
+          "CURRENT_LENGTH": 12
+        },
+        {
+          "NAME": "groupingVariable",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analysisGroupings/groupingVariable",
+          "CURRENT_LENGTH": 6
+        }
+      ]
+    },
+    {
+      "DSNAME": "analysisGroupings_groups",
+      "TABLEPATH": "/root/analysisGroupings/groups",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_analysisGroupings",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/analysisGroupings"
+        },
+        {
+          "NAME": "ordinal_groups",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/analysisGroupings/groups"
+        },
+        {
+          "NAME": "level",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/analysisGroupings/groups/level"
+        },
+        {
+          "NAME": "order",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/analysisGroupings/groups/order"
+        },
+        {
+          "NAME": "id",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analysisGroupings/groups/id",
+          "CURRENT_LENGTH": 24
+        },
+        {
+          "NAME": "label",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analysisGroupings/groups/label",
+          "CURRENT_LENGTH": 41
+        }
+      ]
+    },
+    {
+      "DSNAME": "groups_condition",
+      "TABLEPATH": "/root/analysisGroupings/groups/condition",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_groups",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/analysisGroupings/groups"
+        },
+        {
+          "NAME": "ordinal_condition",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/analysisGroupings/groups/condition"
+        },
+        {
+          "NAME": "dataset",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analysisGroupings/groups/condition/dataset",
+          "CURRENT_LENGTH": 4
+        },
+        {
+          "NAME": "variable",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analysisGroupings/groups/condition/variable",
+          "CURRENT_LENGTH": 6
+        },
+        {
+          "NAME": "comparator",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analysisGroupings/groups/condition/comparator",
+          "CURRENT_LENGTH": 2
+        }
+      ]
+    },
+    {
+      "DSNAME": "condition_value2",
+      "TABLEPATH": "/root/analysisGroupings/groups/condition/value",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_condition",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/analysisGroupings/groups/condition"
+        },
+        {
+          "NAME": "ordinal_value",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/analysisGroupings/groups/condition/value"
+        },
+        {
+          "NAME": "value1",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analysisGroupings/groups/condition/value/value1",
+          "CURRENT_LENGTH": 41
+        },
+        {
+          "NAME": "value2",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analysisGroupings/groups/condition/value/value2",
+          "CURRENT_LENGTH": 3
+        }
+      ]
+    },
+    {
+      "DSNAME": "dataSubsets",
+      "TABLEPATH": "/root/dataSubsets",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_root",
+          "TYPE": "ORDINAL",
+          "PATH": "/root"
+        },
+        {
+          "NAME": "ordinal_dataSubsets",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dataSubsets"
+        },
+        {
+          "NAME": "level",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/dataSubsets/level"
+        },
+        {
+          "NAME": "order",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/dataSubsets/order"
+        },
+        {
+          "NAME": "id",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dataSubsets/id",
+          "CURRENT_LENGTH": 21
+        },
+        {
+          "NAME": "label",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dataSubsets/label",
+          "CURRENT_LENGTH": 70
+        }
+      ]
+    },
+    {
+      "DSNAME": "dataSubsets_condition",
+      "TABLEPATH": "/root/dataSubsets/condition",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_dataSubsets",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dataSubsets"
+        },
+        {
+          "NAME": "ordinal_condition",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dataSubsets/condition"
+        },
+        {
+          "NAME": "dataset",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dataSubsets/condition/dataset",
+          "CURRENT_LENGTH": 4
+        },
+        {
+          "NAME": "variable",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dataSubsets/condition/variable",
+          "CURRENT_LENGTH": 7
+        },
+        {
+          "NAME": "comparator",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dataSubsets/condition/comparator",
+          "CURRENT_LENGTH": 2
+        }
+      ]
+    },
+    {
+      "DSNAME": "condition_value3",
+      "TABLEPATH": "/root/dataSubsets/condition/value",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_condition",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dataSubsets/condition"
+        },
+        {
+          "NAME": "ordinal_value",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dataSubsets/condition/value"
+        },
+        {
+          "NAME": "value1",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dataSubsets/condition/value/value1",
+          "CURRENT_LENGTH": 1
+        }
+      ]
+    },
+    {
+      "DSNAME": "dataSubsets_compoundExpression",
+      "TABLEPATH": "/root/dataSubsets/compoundExpression",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_dataSubsets",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dataSubsets"
+        },
+        {
+          "NAME": "ordinal_compoundExpression",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dataSubsets/compoundExpression"
+        },
+        {
+          "NAME": "logicalOperator",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dataSubsets/compoundExpression/logicalOperator",
+          "CURRENT_LENGTH": 3
+        }
+      ]
+    },
+    {
+      "DSNAME": "compoundExpressio_whereClauses",
+      "TABLEPATH": "/root/dataSubsets/compoundExpression/whereClauses",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_compoundExpression",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dataSubsets/compoundExpression"
+        },
+        {
+          "NAME": "ordinal_whereClauses",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dataSubsets/compoundExpression/whereClauses"
+        },
+        {
+          "NAME": "level",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/dataSubsets/compoundExpression/whereClauses/level"
+        },
+        {
+          "NAME": "order",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/dataSubsets/compoundExpression/whereClauses/order"
+        }
+      ]
+    },
+    {
+      "DSNAME": "whereClauses_condition",
+      "TABLEPATH": "/root/dataSubsets/compoundExpression/whereClauses/condition",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_whereClauses",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dataSubsets/compoundExpression/whereClauses"
+        },
+        {
+          "NAME": "ordinal_condition",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dataSubsets/compoundExpression/whereClauses/condition"
+        },
+        {
+          "NAME": "dataset",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dataSubsets/compoundExpression/whereClauses/condition/dataset",
+          "CURRENT_LENGTH": 4
+        },
+        {
+          "NAME": "variable",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dataSubsets/compoundExpression/whereClauses/condition/variable",
+          "CURRENT_LENGTH": 7
+        },
+        {
+          "NAME": "comparator",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dataSubsets/compoundExpression/whereClauses/condition/comparator",
+          "CURRENT_LENGTH": 2
+        }
+      ]
+    },
+    {
+      "DSNAME": "condition_value4",
+      "TABLEPATH": "/root/dataSubsets/compoundExpression/whereClauses/condition/value",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_condition",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dataSubsets/compoundExpression/whereClauses/condition"
+        },
+        {
+          "NAME": "ordinal_value",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dataSubsets/compoundExpression/whereClauses/condition/value"
+        },
+        {
+          "NAME": "value1",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dataSubsets/compoundExpression/whereClauses/condition/value/value1",
+          "CURRENT_LENGTH": 14
+        },
+        {
+          "NAME": "value2",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dataSubsets/compoundExpression/whereClauses/condition/value/value2",
+          "CURRENT_LENGTH": 20
+        }
+      ]
+    },
+    {
+      "DSNAME": "whereClauses_compoundExpressio",
+      "TABLEPATH": "/root/dataSubsets/compoundExpression/whereClauses/compoundExpression",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_whereClauses",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dataSubsets/compoundExpression/whereClauses"
+        },
+        {
+          "NAME": "ordinal_compoundExpression",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dataSubsets/compoundExpression/whereClauses/compoundExpression"
+        },
+        {
+          "NAME": "logicalOperator",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dataSubsets/compoundExpression/whereClauses/compoundExpression/logicalOperator",
+          "CURRENT_LENGTH": 2
+        }
+      ]
+    },
+    {
+      "DSNAME": "compoundExpressio_whereClauses2",
+      "TABLEPATH": "/root/dataSubsets/compoundExpression/whereClauses/compoundExpression/whereClauses",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_compoundExpression",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dataSubsets/compoundExpression/whereClauses/compoundExpression"
+        },
+        {
+          "NAME": "ordinal_whereClauses",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dataSubsets/compoundExpression/whereClauses/compoundExpression/whereClauses"
+        },
+        {
+          "NAME": "level",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/dataSubsets/compoundExpression/whereClauses/compoundExpression/whereClauses/level"
+        },
+        {
+          "NAME": "order",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/dataSubsets/compoundExpression/whereClauses/compoundExpression/whereClauses/order"
+        }
+      ]
+    },
+    {
+      "DSNAME": "whereClauses_condition2",
+      "TABLEPATH": "/root/dataSubsets/compoundExpression/whereClauses/compoundExpression/whereClauses/condition",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_whereClauses",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dataSubsets/compoundExpression/whereClauses/compoundExpression/whereClauses"
+        },
+        {
+          "NAME": "ordinal_condition",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dataSubsets/compoundExpression/whereClauses/compoundExpression/whereClauses/condition"
+        },
+        {
+          "NAME": "dataset",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dataSubsets/compoundExpression/whereClauses/compoundExpression/whereClauses/condition/dataset",
+          "CURRENT_LENGTH": 4
+        },
+        {
+          "NAME": "variable",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dataSubsets/compoundExpression/whereClauses/compoundExpression/whereClauses/condition/variable",
+          "CURRENT_LENGTH": 5
+        },
+        {
+          "NAME": "comparator",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dataSubsets/compoundExpression/whereClauses/compoundExpression/whereClauses/condition/comparator",
+          "CURRENT_LENGTH": 2
+        }
+      ]
+    },
+    {
+      "DSNAME": "condition_value5",
+      "TABLEPATH": "/root/dataSubsets/compoundExpression/whereClauses/compoundExpression/whereClauses/condition/value",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_condition",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dataSubsets/compoundExpression/whereClauses/compoundExpression/whereClauses/condition"
+        },
+        {
+          "NAME": "ordinal_value",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dataSubsets/compoundExpression/whereClauses/compoundExpression/whereClauses/condition/value"
+        },
+        {
+          "NAME": "value1",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dataSubsets/compoundExpression/whereClauses/compoundExpression/whereClauses/condition/value/value1",
+          "CURRENT_LENGTH": 8
+        }
+      ]
+    },
+    {
+      "DSNAME": "dataGroupings",
+      "TABLEPATH": "/root/dataGroupings",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_root",
+          "TYPE": "ORDINAL",
+          "PATH": "/root"
+        },
+        {
+          "NAME": "ordinal_dataGroupings",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dataGroupings"
+        },
+        {
+          "NAME": "id",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dataGroupings/id",
+          "CURRENT_LENGTH": 21
+        },
+        {
+          "NAME": "dataDriven",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/dataGroupings/dataDriven"
+        },
+        {
+          "NAME": "label",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dataGroupings/label",
+          "CURRENT_LENGTH": 18
+        },
+        {
+          "NAME": "groupingVariable",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dataGroupings/groupingVariable",
+          "CURRENT_LENGTH": 7
+        }
+      ]
+    },
+    {
+      "DSNAME": "dataGroupings_groups",
+      "TABLEPATH": "/root/dataGroupings/groups",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_dataGroupings",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dataGroupings"
+        },
+        {
+          "NAME": "ordinal_groups",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dataGroupings/groups"
+        },
+        {
+          "NAME": "level",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/dataGroupings/groups/level"
+        },
+        {
+          "NAME": "order",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/dataGroupings/groups/order"
+        },
+        {
+          "NAME": "id",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dataGroupings/groups/id",
+          "CURRENT_LENGTH": 24
+        },
+        {
+          "NAME": "label",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dataGroupings/groups/label",
+          "CURRENT_LENGTH": 31
+        }
+      ]
+    },
+    {
+      "DSNAME": "groups_condition2",
+      "TABLEPATH": "/root/dataGroupings/groups/condition",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_groups",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dataGroupings/groups"
+        },
+        {
+          "NAME": "ordinal_condition",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dataGroupings/groups/condition"
+        },
+        {
+          "NAME": "dataset",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dataGroupings/groups/condition/dataset",
+          "CURRENT_LENGTH": 4
+        },
+        {
+          "NAME": "variable",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dataGroupings/groups/condition/variable",
+          "CURRENT_LENGTH": 7
+        },
+        {
+          "NAME": "comparator",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dataGroupings/groups/condition/comparator",
+          "CURRENT_LENGTH": 2
+        }
+      ]
+    },
+    {
+      "DSNAME": "condition_value6",
+      "TABLEPATH": "/root/dataGroupings/groups/condition/value",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_condition",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dataGroupings/groups/condition"
+        },
+        {
+          "NAME": "ordinal_value",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/dataGroupings/groups/condition/value"
+        },
+        {
+          "NAME": "value1",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/dataGroupings/groups/condition/value/value1",
+          "CURRENT_LENGTH": 16
+        }
+      ]
+    },
+    {
+      "DSNAME": "GlobalDisplaySections",
+      "TABLEPATH": "/root/globalDisplaySections/subSections",
+      "VARIABLES": [
+        {
+          "NAME": "sectionType",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/globalDisplaySections/sectionType",
+          "CURRENT_LENGTH": 8,
+          "OPTIONS": ["RETAIN"]
+        },
+        {
+          "NAME": "subSection_id",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/globalDisplaySections/subSections/id",
+          "CURRENT_LENGTH": 21
+        },
+        {
+          "NAME": "subSection_text",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/globalDisplaySections/subSections/text",
+          "CURRENT_LENGTH": 73
+        }
+      ]
+    },
+    {
+      "DSNAME": "analysisCategorizations",
+      "TABLEPATH": "/root/analysisCategorizations",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_root",
+          "TYPE": "ORDINAL",
+          "PATH": "/root"
+        },
+        {
+          "NAME": "ordinal_analysisCategorizations",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/analysisCategorizations"
+        },
+        {
+          "NAME": "id",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analysisCategorizations/id",
+          "CURRENT_LENGTH": 14
+        },
+        {
+          "NAME": "label",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analysisCategorizations/label",
+          "CURRENT_LENGTH": 19
+        }
+      ]
+    },
+    {
+      "DSNAME": "analysisCategorizat_categories",
+      "TABLEPATH": "/root/analysisCategorizations/categories",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_analysisCategorizations",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/analysisCategorizations"
+        },
+        {
+          "NAME": "ordinal_categories",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/analysisCategorizations/categories"
+        },
+        {
+          "NAME": "id",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analysisCategorizations/categories/id",
+          "CURRENT_LENGTH": 20
+        },
+        {
+          "NAME": "label",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analysisCategorizations/categories/label",
+          "CURRENT_LENGTH": 22
+        }
+      ]
+    },
+    {
+      "DSNAME": "categories_subCategorizations",
+      "TABLEPATH": "/root/analysisCategorizations/categories/subCategorizations",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_categories",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/analysisCategorizations/categories"
+        },
+        {
+          "NAME": "ordinal_subCategorizations",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/analysisCategorizations/categories/subCategorizations"
+        },
+        {
+          "NAME": "id",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analysisCategorizations/categories/subCategorizations/id",
+          "CURRENT_LENGTH": 16
+        },
+        {
+          "NAME": "label",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analysisCategorizations/categories/subCategorizations/label",
+          "CURRENT_LENGTH": 23
+        }
+      ]
+    },
+    {
+      "DSNAME": "subCategorizations_categories",
+      "TABLEPATH": "/root/analysisCategorizations/categories/subCategorizations/categories",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_subCategorizations",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/analysisCategorizations/categories/subCategorizations"
+        },
+        {
+          "NAME": "ordinal_categories",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/analysisCategorizations/categories/subCategorizations/categories"
+        },
+        {
+          "NAME": "id",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analysisCategorizations/categories/subCategorizations/categories/id",
+          "CURRENT_LENGTH": 22
+        },
+        {
+          "NAME": "label",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analysisCategorizations/categories/subCategorizations/categories/label",
+          "CURRENT_LENGTH": 20
+        }
+      ]
+    },
+    {
+      "DSNAME": "analyses",
+      "TABLEPATH": "/root/analyses",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_root",
+          "TYPE": "ORDINAL",
+          "PATH": "/root"
+        },
+        {
+          "NAME": "ordinal_analyses",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/analyses"
+        },
+        {
+          "NAME": "name",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analyses/name",
+          "CURRENT_LENGTH": 108
+        },
+        {
+          "NAME": "id",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analyses/id",
+          "CURRENT_LENGTH": 33
+        },
+        {
+          "NAME": "methodId",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analyses/methodId",
+          "CURRENT_LENGTH": 24
+        },
+        {
+          "NAME": "version",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/analyses/version"
+        },
+        {
+          "NAME": "analysisSetId",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analyses/analysisSetId",
+          "CURRENT_LENGTH": 18
+        },
+        {
+          "NAME": "dataset",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analyses/dataset",
+          "CURRENT_LENGTH": 4
+        },
+        {
+          "NAME": "variable",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analyses/variable",
+          "CURRENT_LENGTH": 8
+        },
+        {
+          "NAME": "dataSubsetId",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analyses/dataSubsetId",
+          "CURRENT_LENGTH": 21
+        }
+      ]
+    },
+    {
+      "DSNAME": "analyses_reason",
+      "TABLEPATH": "/root/analyses/reason",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_analyses",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/analyses"
+        },
+        {
+          "NAME": "ordinal_reason",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/analyses/reason"
+        },
+        {
+          "NAME": "controlledTerm",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analyses/reason/controlledTerm",
+          "CURRENT_LENGTH": 16
+        },
+        {
+          "NAME": "sponsorTermId",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analyses/reason/sponsorTermId",
+          "CURRENT_LENGTH": 20
+        }
+      ]
+    },
+    {
+      "DSNAME": "analyses_purpose",
+      "TABLEPATH": "/root/analyses/purpose",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_analyses",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/analyses"
+        },
+        {
+          "NAME": "ordinal_purpose",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/analyses/purpose"
+        },
+        {
+          "NAME": "controlledTerm",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analyses/purpose/controlledTerm",
+          "CURRENT_LENGTH": 25
+        },
+        {
+          "NAME": "sponsorTermId",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analyses/purpose/sponsorTermId",
+          "CURRENT_LENGTH": 20
+        }
+      ]
+    },
+    {
+      "DSNAME": "analyses_categoryIds",
+      "TABLEPATH": "/root/analyses/categoryIds",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_analyses",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/analyses"
+        },
+        {
+          "NAME": "ordinal_categoryIds",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/analyses/categoryIds"
+        },
+        {
+          "NAME": "categoryIds1",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analyses/categoryIds/categoryIds1",
+          "CURRENT_LENGTH": 17
+        },
+        {
+          "NAME": "categoryIds2",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analyses/categoryIds/categoryIds2",
+          "CURRENT_LENGTH": 20
+        },
+        {
+          "NAME": "categoryIds3",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analyses/categoryIds/categoryIds3",
+          "CURRENT_LENGTH": 21
+        },
+        {
+          "NAME": "categoryIds4",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analyses/categoryIds/categoryIds4",
+          "CURRENT_LENGTH": 22
+        }
+      ]
+    },
+    {
+      "DSNAME": "analyses_documentRefs",
+      "TABLEPATH": "/root/analyses/documentRefs",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_analyses",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/analyses"
+        },
+        {
+          "NAME": "ordinal_documentRefs",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/analyses/documentRefs"
+        },
+        {
+          "NAME": "referenceDocumentId",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analyses/documentRefs/referenceDocumentId",
+          "CURRENT_LENGTH": 16
+        }
+      ]
+    },
+    {
+      "DSNAME": "analyses_documentRefs_pageRefs",
+      "TABLEPATH": "/root/analyses/documentRefs/pageRefs",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_documentRefs",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/analyses/documentRefs"
+        },
+        {
+          "NAME": "ordinal_pageRefs",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/analyses/documentRefs/pageRefs"
+        },
+        {
+          "NAME": "refType",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analyses/documentRefs/pageRefs/refType",
+          "CURRENT_LENGTH": 16
+        },
+        {
+          "NAME": "label",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analyses/documentRefs/pageRefs/label",
+          "CURRENT_LENGTH": 68
+        },
+        {
+          "NAME": "firstPage",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/analyses/documentRefs/pageRefs/firstPage"
+        },
+        {
+          "NAME": "lastPage",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/analyses/documentRefs/pageRefs/lastPage"
+        }
+      ]
+    },
+    {
+      "DSNAME": "analyses_pageRefs_pageNumbers",
+      "TABLEPATH": "/root/analyses/documentRefs/pageRefs/pageNumbers",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_pageRefs",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/analyses/documentRefs/pageRefs"
+        },
+        {
+          "NAME": "ordinal_pageNumbers",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/analyses/documentRefs/pageRefs/pageNumbers"
+        },
+        {
+          "NAME": "pageNumbers1",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/analyses/documentRefs/pageRefs/pageNumbers/pageNumbers1"
+        },
+        {
+          "NAME": "pageNumbers2",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/analyses/documentRefs/pageRefs/pageNumbers/pageNumbers2"
+        }
+      ]
+    },
+    {
+      "DSNAME": "analyses_orderedGroupings",
+      "TABLEPATH": "/root/analyses/orderedGroupings",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_analyses",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/analyses"
+        },
+        {
+          "NAME": "ordinal_orderedGroupings",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/analyses/orderedGroupings"
+        },
+        {
+          "NAME": "order",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/analyses/orderedGroupings/order"
+        },
+        {
+          "NAME": "resultsByGroup",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/analyses/orderedGroupings/resultsByGroup"
+        },
+        {
+          "NAME": "groupingId",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analyses/orderedGroupings/groupingId",
+          "CURRENT_LENGTH": 22
+        }
+      ]
+    },
+    {
+      "DSNAME": "analyses_results",
+      "TABLEPATH": "/root/analyses/results",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_analyses",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/analyses"
+        },
+        {
+          "NAME": "ordinal_results",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/analyses/results"
+        },
+        {
+          "NAME": "operationId",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analyses/results/operationId",
+          "CURRENT_LENGTH": 33
+        },
+        {
+          "NAME": "rawValue",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analyses/results/rawValue",
+          "CURRENT_LENGTH": 19
+        },
+        {
+          "NAME": "formattedValue",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analyses/results/formattedValue",
+          "CURRENT_LENGTH": 7
+        }
+      ]
+    },
+    {
+      "DSNAME": "results_resultGroups",
+      "TABLEPATH": "/root/analyses/results/resultGroups",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_results",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/analyses/results"
+        },
+        {
+          "NAME": "ordinal_resultGroups",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/analyses/results/resultGroups"
+        },
+        {
+          "NAME": "groupingId",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analyses/results/resultGroups/groupingId",
+          "CURRENT_LENGTH": 22
+        },
+        {
+          "NAME": "groupId",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analyses/results/resultGroups/groupId",
+          "CURRENT_LENGTH": 24
+        },
+        {
+          "NAME": "groupValue",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analyses/results/resultGroups/groupValue",
+          "CURRENT_LENGTH": 67
+        }
+      ]
+    },
+    {
+      "DSNAME": "analyses_programmingCode",
+      "TABLEPATH": "/root/analyses/programmingCode",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_analyses",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/analyses"
+        },
+        {
+          "NAME": "ordinal_programmingCode",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/analyses/programmingCode"
+        },
+        {
+          "NAME": "context",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analyses/programmingCode/context",
+          "CURRENT_LENGTH": 15
+        },
+        {
+          "NAME": "code",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analyses/programmingCode/code",
+          "CURRENT_LENGTH": 134
+        }
+      ]
+    },
+    {
+      "DSNAME": "analyses_programmingCode_params",
+      "TABLEPATH": "/root/analyses/programmingCode/parameters",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_programmingCode",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/analyses/programmingCode"
+        },
+        {
+          "NAME": "ordinal_parameters",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/analyses/programmingCode/parameters"
+        },
+        {
+          "NAME": "name",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analyses/programmingCode/parameters/name",
+          "CURRENT_LENGTH": 6
+        },
+        {
+          "NAME": "description",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analyses/programmingCode/parameters/description",
+          "CURRENT_LENGTH": 17
+        }
+      ]
+    },
+    {
+      "DSNAME": "analyses_parameters_value",
+      "TABLEPATH": "/root/analyses/programmingCode/parameters/value",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_parameters",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/analyses/programmingCode/parameters"
+        },
+        {
+          "NAME": "ordinal_value",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/analyses/programmingCode/parameters/value"
+        },
+        {
+          "NAME": "value1",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analyses/programmingCode/parameters/value/value1",
+          "CURRENT_LENGTH": 1
+        }
+      ]
+    },
+    {
+      "DSNAME": "analyses_referencedAnalysisOpe",
+      "TABLEPATH": "/root/analyses/referencedAnalysisOperations",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_analyses",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/analyses"
+        },
+        {
+          "NAME": "ordinal_referencedAnalysisOperat",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/analyses/referencedAnalysisOperations"
+        },
+        {
+          "NAME": "referencedOperationRelationshipI",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analyses/referencedAnalysisOperations/referencedOperationRelationshipId",
+          "CURRENT_LENGTH": 33
+        },
+        {
+          "NAME": "analysisId",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analyses/referencedAnalysisOperations/analysisId",
+          "CURRENT_LENGTH": 33
+        }
+      ]
+    },
+    {
+      "DSNAME": "analyses_programmingCode_docRef",
+      "TABLEPATH": "/root/analyses/programmingCode/documentRef",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_programmingCode",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/analyses/programmingCode"
+        },
+        {
+          "NAME": "ordinal_documentRef",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/analyses/programmingCode/documentRef"
+        },
+        {
+          "NAME": "referenceDocumentId",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analyses/programmingCode/documentRef/referenceDocumentId",
+          "CURRENT_LENGTH": 13
+        }
+      ]
+    },
+    {
+       "DSNAME": "analyses_pageRefs_pageNames",
+      "TABLEPATH": "/root/analyses/documentRefs/pageRefs/pageNames",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_pageRefs",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/analyses/documentRefs/pageRefs"
+        },
+        {
+          "NAME": "ordinal_pageNames",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/analyses/documentRefs/pageRefs/pageNames"
+        },
+        {
+          "NAME": "pageNames1",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/analyses/documentRefs/pageRefs/pageNames/pageNames1",
+          "CURRENT_LENGTH": 100
+        }
+      ]
+    },
+    {
+      "DSNAME": "methods",
+      "TABLEPATH": "/root/methods",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_root",
+          "TYPE": "ORDINAL",
+          "PATH": "/root"
+        },
+        {
+          "NAME": "ordinal_methods",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/methods"
+        },
+        {
+          "NAME": "name",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/methods/name",
+          "CURRENT_LENGTH": 69
+        },
+        {
+          "NAME": "id",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/methods/id",
+          "CURRENT_LENGTH": 24
+        },
+        {
+          "NAME": "label",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/methods/label",
+          "CURRENT_LENGTH": 67
+        },
+        {
+          "NAME": "description",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/methods/description",
+          "CURRENT_LENGTH": 100
+        }
+      ]
+    },
+    {
+      "DSNAME": "methods_operations",
+      "TABLEPATH": "/root/methods/operations",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_methods",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/methods"
+        },
+        {
+          "NAME": "ordinal_operations",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/methods/operations"
+        },
+        {
+          "NAME": "name",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/methods/operations/name",
+          "CURRENT_LENGTH": 27
+        },
+        {
+          "NAME": "id",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/methods/operations/id",
+          "CURRENT_LENGTH": 33
+        },
+        {
+          "NAME": "label",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/methods/operations/label",
+          "CURRENT_LENGTH": 7
+        },
+        {
+          "NAME": "resultPattern",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/methods/operations/resultPattern",
+          "CURRENT_LENGTH": 7
+        }
+      ]
+    },
+    {
+      "DSNAME": "operations_referencedOperation",
+      "TABLEPATH": "/root/methods/operations/referencedOperationRelationships",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_operations",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/methods/operations"
+        },
+        {
+          "NAME": "ordinal_referencedOperationRelat",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/methods/operations/referencedOperationRelationships"
+        },
+        {
+          "NAME": "id",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/methods/operations/referencedOperationRelationships/id",
+          "CURRENT_LENGTH": 33
+        },
+        {
+          "NAME": "operationId",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/methods/operations/referencedOperationRelationships/operationId",
+          "CURRENT_LENGTH": 28
+        },
+        {
+          "NAME": "description",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/methods/operations/referencedOperationRelationships/description",
+          "CURRENT_LENGTH": 225
+        }
+      ]
+    },
+    {
+      "DSNAME": "refere_referencedOperationRole",
+      "TABLEPATH": "/root/methods/operations/referencedOperationRelationships/referencedOperationRole",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_referencedOperationRelat",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/methods/operations/referencedOperationRelationships"
+        },
+        {
+          "NAME": "ordinal_referencedOperationRole",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/methods/operations/referencedOperationRelationships/referencedOperationRole"
+        },
+        {
+          "NAME": "controlledTerm",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/methods/operations/referencedOperationRelationships/referencedOperationRole/controlledTerm",
+          "CURRENT_LENGTH": 11
+        },
+        {
+          "NAME": "sponsorTermId",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/methods/operations/referencedOperationRelationships/referencedOperationRole/sponsorTermId",
+          "CURRENT_LENGTH": 20
+        }
+      ]
+    },
+    {
+      "DSNAME": "methods_documentRefs",
+      "TABLEPATH": "/root/methods/documentRefs",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_methods",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/methods"
+        },
+        {
+          "NAME": "ordinal_documentRefs",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/methods/documentRefs"
+        },
+        {
+          "NAME": "referenceDocumentId",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/methods/documentRefs/referenceDocumentId",
+          "CURRENT_LENGTH": 16
+        }
+      ]
+    },
+    {
+      "DSNAME": "methods_documentRefs_pageRefs",
+      "TABLEPATH": "/root/methods/documentRefs/pageRefs",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_documentRefs",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/methods/documentRefs"
+        },
+        {
+          "NAME": "ordinal_pageRefs",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/methods/documentRefs/pageRefs"
+        },
+        {
+          "NAME": "refType",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/methods/documentRefs/pageRefs/refType",
+          "CURRENT_LENGTH": 11
+        },
+        {
+          "NAME": "label",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/methods/documentRefs/pageRefs/label",
+          "CURRENT_LENGTH": 43
+        },
+        {
+          "NAME": "firstPage",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/methods/documentRefs/pageRefs/firstPage"
+        },
+        {
+          "NAME": "lastPage",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/methods/documentRefs/pageRefs/lastPage"
+        }
+      ]
+    },
+    {
+      "DSNAME": "methods_pageRefs_pageNumbers",
+      "TABLEPATH": "/root/methods/documentRefs/pageRefs/pageNumbers",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_pageRefs",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/methods/documentRefs/pageRefs"
+        },
+        {
+          "NAME": "ordinal_pageNumbers",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/methods/documentRefs/pageRefs/pageNumbers"
+        },
+        {
+          "NAME": "pageNumbers1",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/methods/documentRefs/pageRefs/pageNumbers/pageNumbers1"
+        }
+      ]
+    },
+    {
+       "DSNAME": "methods_pageRefs_pageNames",
+      "TABLEPATH": "/root/methods/documentRefs/pageRefs/pageNames",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_pageRefs",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/methods/documentRefs/pageRefs"
+        },
+        {
+          "NAME": "ordinal_pageNames",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/methods/documentRefs/pageRefs/pageNames"
+        },
+        {
+          "NAME": "pageNames1",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/methods/documentRefs/pageRefs/pageNames/pageNames1",
+          "CURRENT_LENGTH": 100
+        }
+      ]
+    },
+    {
+      "DSNAME": "methods_codeTemplate",
+      "TABLEPATH": "/root/methods/codeTemplate",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_methods",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/methods"
+        },
+        {
+          "NAME": "ordinal_codeTemplate",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/methods/codeTemplate"
+        },
+        {
+          "NAME": "context",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/methods/codeTemplate/context",
+          "CURRENT_LENGTH": 15
+        },
+        {
+          "NAME": "code",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/methods/codeTemplate/code",
+          "CURRENT_LENGTH": 148
+        }
+      ]
+    },
+    {
+      "DSNAME": "methods_codeTemplate_params",
+      "TABLEPATH": "/root/methods/codeTemplate/parameters",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_codeTemplate",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/methods/codeTemplate"
+        },
+        {
+          "NAME": "ordinal_parameters",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/methods/codeTemplate/parameters"
+        },
+        {
+          "NAME": "name",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/methods/codeTemplate/parameters/name",
+          "CURRENT_LENGTH": 8
+        },
+        {
+          "NAME": "description",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/methods/codeTemplate/parameters/description",
+          "CURRENT_LENGTH": 24
+        },
+        {
+          "NAME": "valueSource",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/methods/codeTemplate/parameters/valueSource",
+          "CURRENT_LENGTH": 36
+        }
+      ]
+    },
+    {
+      "DSNAME": "methods_codeTemplate_docRef",
+      "TABLEPATH": "/root/methods/codeTemplate/documentRef",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_codeTemplate",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/methods/codeTemplate"
+        },
+        {
+          "NAME": "ordinal_documentRef",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/methods/codeTemplate/documentRef"
+        },
+        {
+          "NAME": "referenceDocumentId",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/methods/codeTemplate/documentRef/referenceDocumentId",
+          "CURRENT_LENGTH": 20
+        }
+      ]
+    },
+    {
+      "DSNAME": "methods_parameters_value",
+      "TABLEPATH": "/root/methods/codeTemplate/parameters/value",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_parameters",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/methods/codeTemplate/parameters"
+        },
+        {
+          "NAME": "ordinal_value",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/methods/codeTemplate/parameters/value"
+        },
+        {
+          "NAME": "value1",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/methods/codeTemplate/parameters/value/value1",
+          "CURRENT_LENGTH": 1
+        }
+      ]
+    },
+    {
+      "DSNAME": "outputs",
+      "TABLEPATH": "/root/outputs",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_root",
+          "TYPE": "ORDINAL",
+          "PATH": "/root"
+        },
+        {
+          "NAME": "ordinal_outputs",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/outputs"
+        },
+        {
+          "NAME": "name",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/outputs/name",
+          "CURRENT_LENGTH": 89
+        },
+        {
+          "NAME": "id",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/outputs/id",
+          "CURRENT_LENGTH": 12
+        },
+        {
+          "NAME": "version",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/outputs/version"
+        }
+      ]
+    },
+    {
+      "DSNAME": "outputs_fileSpecifications",
+      "TABLEPATH": "/root/outputs/fileSpecifications",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_outputs",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/outputs"
+        },
+        {
+          "NAME": "ordinal_fileSpecifications",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/outputs/fileSpecifications"
+        },
+        {
+          "NAME": "name",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/outputs/fileSpecifications/name",
+          "CURRENT_LENGTH": 27
+        },
+        {
+          "NAME": "location",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/outputs/fileSpecifications/location",
+          "CURRENT_LENGTH": 1
+        }
+      ]
+    },
+    {
+      "DSNAME": "fileSpecifications_fileType",
+      "TABLEPATH": "/root/outputs/fileSpecifications/fileType",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_fileSpecifications",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/outputs/fileSpecifications"
+        },
+        {
+          "NAME": "ordinal_fileType",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/outputs/fileSpecifications/fileType"
+        },
+        {
+          "NAME": "controlledTerm",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/outputs/fileSpecifications/fileType/controlledTerm",
+          "CURRENT_LENGTH": 3
+        },
+        {
+          "NAME": "sponsorTermId",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/outputs/fileSpecifications/fileType/sponsorTermId",
+          "CURRENT_LENGTH": 20
+        }
+      ]
+    },
+    {
+      "DSNAME": "outputs_displays",
+      "TABLEPATH": "/root/outputs/displays",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_outputs",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/outputs"
+        },
+        {
+          "NAME": "ordinal_displays",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/outputs/displays"
+        },
+        {
+          "NAME": "order",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/outputs/displays/order"
+        }
+      ]
+    },
+    {
+      "DSNAME": "displays_display",
+      "TABLEPATH": "/root/outputs/displays/display",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_displays",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/outputs/displays"
+        },
+        {
+          "NAME": "ordinal_display",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/outputs/displays/display"
+        },
+        {
+          "NAME": "name",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/outputs/displays/display/name",
+          "CURRENT_LENGTH": 17
+        },
+        {
+          "NAME": "id",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/outputs/displays/display/id",
+          "CURRENT_LENGTH": 13
+        },
+        {
+          "NAME": "version",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/outputs/displays/display/version"
+        },
+        {
+          "NAME": "displayTitle",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/outputs/displays/display/displayTitle",
+          "CURRENT_LENGTH": 96
+        }
+      ]
+    },
+    {
+      "DSNAME": "display_displaySections",
+      "TABLEPATH": "/root/outputs/displays/display/displaySections",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_display",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/outputs/displays/display"
+        },
+        {
+          "NAME": "ordinal_displaySections",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/outputs/displays/display/displaySections"
+        },
+        {
+          "NAME": "sectionType",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/outputs/displays/display/displaySections/sectionType",
+          "CURRENT_LENGTH": 15
+        }
+      ]
+    },
+    {
+      "DSNAME": "displaySections_orderedSubSect",
+      "TABLEPATH": "/root/outputs/displays/display/displaySections/orderedSubSections",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_displaySections",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/outputs/displays/display/displaySections"
+        },
+        {
+          "NAME": "ordinal_orderedSubSections",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/outputs/displays/display/displaySections/orderedSubSections"
+        },
+        {
+          "NAME": "order",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/outputs/displays/display/displaySections/orderedSubSections/order"
+        },
+        {
+          "NAME": "subSectionId",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/outputs/displays/display/displaySections/orderedSubSections/subSectionId",
+          "CURRENT_LENGTH": 21
+        }
+      ]
+    },
+    {
+      "DSNAME": "orderedSubSections_subSection",
+      "TABLEPATH": "/root/outputs/displays/display/displaySections/orderedSubSections/subSection",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_orderedSubSections",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/outputs/displays/display/displaySections/orderedSubSections"
+        },
+        {
+          "NAME": "ordinal_subSection",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/outputs/displays/display/displaySections/orderedSubSections/subSection"
+        },
+        {
+          "NAME": "id",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/outputs/displays/display/displaySections/orderedSubSections/subSection/id",
+          "CURRENT_LENGTH": 21
+        },
+        {
+          "NAME": "text",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/outputs/displays/display/displaySections/orderedSubSections/subSection/text",
+          "CURRENT_LENGTH": 116
+        }
+      ]
+    },
+    {
+      "DSNAME": "outputs_categoryIds",
+      "TABLEPATH": "/root/outputs/categoryIds",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_outputs",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/outputs"
+        },
+        {
+          "NAME": "ordinal_categoryIds",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/outputs/categoryIds"
+        },
+        {
+          "NAME": "categoryIds1",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/outputs/categoryIds/categoryIds1",
+          "CURRENT_LENGTH": 17
+        },
+        {
+          "NAME": "categoryIds2",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/outputs/categoryIds/categoryIds2",
+          "CURRENT_LENGTH": 21
+        }
+      ]
+    },
+    {
+      "DSNAME": "outputs_documentRefs",
+      "TABLEPATH": "/root/outputs/documentRefs",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_outputs",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/outputs"
+        },
+        {
+          "NAME": "ordinal_documentRefs",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/outputs/documentRefs"
+        },
+        {
+          "NAME": "referenceDocumentId",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/outputs/documentRefs/referenceDocumentId",
+          "CURRENT_LENGTH": 22
+        }
+      ]
+    },
+    {
+      "DSNAME": "outputs_documentRefs_pageRefs",
+      "TABLEPATH": "/root/outputs/documentRefs/pageRefs",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_documentRefs",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/outputs/documentRefs"
+        },
+        {
+          "NAME": "ordinal_pageRefs",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/outputs/documentRefs/pageRefs"
+        },
+        {
+          "NAME": "refType",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/outputs/documentRefs/pageRefs/refType",
+          "CURRENT_LENGTH": 11
+        },
+        {
+          "NAME": "label",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/outputs/documentRefs/pageRefs/label",
+          "CURRENT_LENGTH": 13
+        },
+        {
+          "NAME": "firstPage",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/outputs/documentRefs/pageRefs/firstPage"
+        },
+        {
+          "NAME": "lastPage",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/outputs/documentRefs/pageRefs/lastPage"
+        }
+      ]
+    },
+    {
+      "DSNAME": "outputs_programmingCode",
+      "TABLEPATH": "/root/outputs/programmingCode",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_outputs",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/outputs"
+        },
+        {
+          "NAME": "ordinal_programmingCode",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/outputs/programmingCode"
+        },
+        {
+          "NAME": "context",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/outputs/programmingCode/context",
+          "CURRENT_LENGTH": 15
+        },
+        {
+          "NAME": "code",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/outputs/programmingCode/code",
+          "CURRENT_LENGTH": 200
+        }
+      ]
+    },
+    {
+      "DSNAME": "outputs_programmingCode_params",
+      "TABLEPATH": "/root/outputs/programmingCode/parameters",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_programmingCode",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/outputs/programmingCode"
+        },
+        {
+          "NAME": "ordinal_parameters",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/outputs/programmingCode/parameters"
+        },
+        {
+          "NAME": "name",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/outputs/programmingCode/parameters/name",
+          "CURRENT_LENGTH": 6
+        },
+        {
+          "NAME": "description",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/outputs/programmingCode/parameters/description",
+          "CURRENT_LENGTH": 17
+        }
+      ]
+    },
+    {
+      "DSNAME": "outputs_parameters_value",
+      "TABLEPATH": "/root/outputs/programmingCode/parameters/value",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_parameters",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/outputs/programmingCode/parameters"
+        },
+        {
+          "NAME": "ordinal_value",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/outputs/programmingCode/parameters/value"
+        },
+        {
+          "NAME": "value1",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/outputs/programmingCode/parameters/value/value1",
+          "CURRENT_LENGTH": 1
+        }
+      ]
+    },
+    {
+      "DSNAME": "outputs_pageRefs_pageNumbers",
+      "TABLEPATH": "/root/outputs/documentRefs/pageRefs/pageNumbers",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_pageRefs",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/outputs/documentRefs/pageRefs"
+        },
+        {
+          "NAME": "ordinal_pageNumbers",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/outputs/documentRefs/pageRefs/pageNumbers"
+        },
+        {
+          "NAME": "pageNumbers1",
+          "TYPE": "NUMERIC",
+          "PATH": "/root/outputs/documentRefs/pageRefs/pageNumbers/pageNumbers1"
+        }
+      ]
+    },
+    {
+       "DSNAME": "outputs_pageRefs_pageNames",
+      "TABLEPATH": "/root/outputs/documentRefs/pageRefs/pageNames",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_pageRefs",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/outputs/documentRefs/pageRefs"
+        },
+        {
+          "NAME": "ordinal_pageNames",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/outputs/documentRefs/pageRefs/pageNames"
+        },
+        {
+          "NAME": "pageNames1",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/outputs/documentRefs/pageRefs/pageNames/pageNames1",
+          "CURRENT_LENGTH": 100
+        }
+      ]
+    },
+    {
+      "DSNAME": "outputs_programmingCode_docRef",
+      "TABLEPATH": "/root/outputs/programmingCode/documentRef",
+      "VARIABLES": [
+        {
+          "NAME": "ordinal_programmingCode",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/outputs/programmingCode"
+        },
+        {
+          "NAME": "ordinal_documentRef",
+          "TYPE": "ORDINAL",
+          "PATH": "/root/outputs/programmingCode/documentRef"
+        },
+        {
+          "NAME": "referenceDocumentId",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/outputs/programmingCode/documentRef/referenceDocumentId",
+          "CURRENT_LENGTH": 13
+        }
+      ]
+    },
+    {
+      "DSNAME": "ReferenceDocuments",
+      "TABLEPATH": "/root/referenceDocuments",
+      "VARIABLES": [
+        {
+          "NAME": "id",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/referenceDocuments/id",
+          "CURRENT_LENGTH": 22
+        },
+        {
+          "NAME": "name",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/referenceDocuments/name",
+          "CURRENT_LENGTH": 25
+        },
+        {
+          "NAME": "location",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/referenceDocuments/location",
+          "CURRENT_LENGTH": 28
+        }
+      ]
+    },
+    {
+      "DSNAME": "TerminologyExtensions",
+      "TABLEPATH": "/root/terminologyExtensions/sponsorTerms",
+      "VARIABLES": [
+        {
+          "NAME": "id",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/terminologyExtensions/id",
+          "CURRENT_LENGTH": 7,
+          "OPTIONS": ["RETAIN"]
+        },
+        {
+          "NAME": "enumeration",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/terminologyExtensions/enumeration",
+          "CURRENT_LENGTH": 18,
+          "OPTIONS": ["RETAIN"]
+        },
+        {
+          "NAME": "sponsorTerm_id",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/terminologyExtensions/sponsorTerms/id",
+          "CURRENT_LENGTH": 9
+        },
+        {
+          "NAME": "sponsorTerm_submissionValue",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/terminologyExtensions/sponsorTerms/submissionValue",
+          "CURRENT_LENGTH": 18
+        },
+        {
+          "NAME": "sponsorTerm_description",
+          "TYPE": "CHARACTER",
+          "PATH": "/root/terminologyExtensions/sponsorTerms/description",
+          "CURRENT_LENGTH": 155
+        }
+      ]
+    }
+  ]
+}
