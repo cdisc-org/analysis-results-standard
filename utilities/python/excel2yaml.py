@@ -158,39 +158,95 @@ for value in wsTermEx.iter_rows(
 
 wsAnSet = wb["AnalysisSets"]
 
+asid = ""
+wcs = {}
+
 for value in wsAnSet.iter_rows(
     min_row=2, values_only=True):
-    anset = AnalysisSet(id=value[0],label=value[1],level=value[2],order=value[3],condition=WhereClauseCondition(dataset=value[5],variable=value[6],comparator=value[7],value=value[8]))
+
+    if value[4] == None:
+        wc = WhereClause(level=value[2],order=value[3],condition=WhereClauseCondition(dataset=value[5],variable=value[6],comparator=value[7],value=str(value[8]).split(" | ") if value[8] != None and str(value[8]).find(" | ") > -1 else value[8]) if value[6] != None else None)
+    else:
+        wc = WhereClause(level=value[2],order=value[3],compoundExpression=CompoundSetExpression(logicalOperator=value[4]) if value[4] != None else None)
+        wcs[value[2]] = wc
+        
+    if value[0] != asid:
+        if asid != "":
+            rptevt.analysisSets.append(anset)
+        anset = AnalysisSet(id=value[0],label=value[1],
+                                 level=wc.level,order=wc.order,                                 
+                                 condition=wc.condition,
+                                 compoundExpression=wc.compoundExpression)
+        asid = value[0]
+    else:
+        wcs[value[2]-1].compoundExpression.whereClauses.extend([wc])
+else:
     rptevt.analysisSets.append(anset)
 
 wsAnGrp = wb["AnalysisGroupings"]
+grpngid = ""
 grpid = ""
-angrp = GroupingFactor ("dummy",False,"dummy")
+
+grpng = GroupingFactor ("dummy",False,"dummy")
 for value in wsAnGrp.iter_rows(
     min_row=2, values_only=True):
-    # If this is a new grouping...
-    if str(value[1]) != grpid:
-        # Store what's been built for the previous grouping
-        if isinstance(angrp,SubjectGroupingFactor):
-            rptevt.analysisGroupings.append(angrp)
-        elif isinstance(angrp,DataGroupingFactor):
-            rptevt.dataGroupings.append(angrp)
-        grpid = str(value[1])
-        # Then process the new grouping
-        if value[10] == "ADSL":
-            angrp = SubjectGroupingFactor(id=grpid,dataDriven=value[4],label=value[2],groupingVariable=value[3],groups=[AnalysisGroup(id=value[5],label=value[6],level=value[7],order=value[8],condition=WhereClauseCondition(dataset=value[10],variable=value[11],comparator=value[12],value=value[13].split(" | ") if value[13] != None and value[13].find(" | ") > -1 else value[13]))] if value[5] != None else [])
+
+    if str(value[1]) != grpngid:
+        wcs = {}
+
+    if value[5] != None:
+        if value[9] == None:
+            wc = WhereClause(level=value[7],order=value[8],condition=WhereClauseCondition(dataset=value[10],variable=value[11],comparator=value[12],value=str(value[13]).split(" | ") if value[13] != None and str(value[13]).find(" | ") > -1 else value[13]) if value[11] != None else None)
         else:
-            angrp = DataGroupingFactor(id=grpid,dataDriven=value[4],label=value[2],groupingVariable=value[3],groups=[DataGroup(id=value[5],label=value[6],level=value[7],order=value[8],condition=WhereClauseCondition(dataset=value[10],variable=value[11],comparator=value[12],value=value[13].split(" | ") if value[13] != None and value[13].find(" | ") > -1 else value[13]))] if value[5] != None else [])
+            wc = WhereClause(level=value[7],order=value[8],compoundExpression=CompoundGroupExpression(logicalOperator=value[9],whereClauses=[]) if value[9] != None else None)
+            wcs[value[7]] = wc
+
+        if value[5] != grpid:
+            if grpid != "":
+                grpng.groups.append(grp)
+            if value[10] == "ADSL" or value[0] == "Subject":            
+                grp = AnalysisGroup(id=value[5],label=value[6],
+                                        level=wc.level,order=wc.order,                                 
+                                        condition=wc.condition,
+                                        compoundExpression=wc.compoundExpression)
+            else:
+                grp = DataGroup(id=value[5],label=value[6],
+                                        level=wc.level,order=wc.order,                                 
+                                        condition=wc.condition,
+                                        compoundExpression=wc.compoundExpression)
+            grpid = value[5]
+        else:
+            wcs[value[7]-1].compoundExpression.whereClauses.extend([wc])
     else:
-        angrp.groups.append(DataGroup(id=value[5],label=value[6],level=value[7],order=value[8],condition=WhereClauseCondition(dataset=value[10],variable=value[11],comparator=value[12],value=value[13].split(" | ") if value[13] != None and value[13].find(" | ") > -1 else value[13])))
+        wc = None
+        grpid = ""        
+    
+    # If this is a new grouping...
+    if str(value[1]) != grpngid:
+        # Store what's been built for the previous grouping
+        if isinstance(grpng,SubjectGroupingFactor):
+            rptevt.analysisGroupings.append(grpng)
+        elif isinstance(grpng,DataGroupingFactor):
+            rptevt.dataGroupings.append(grpng)
+        grpngid = str(value[1])
+        # Then process the new grouping
+        if value[10] == "ADSL" or value[0] == "Subject":
+            grpng = SubjectGroupingFactor(id=grpngid,dataDriven=value[4],label=value[2],groupingVariable=value[3],groups=[])
+        else:
+            grpng = DataGroupingFactor(id=grpngid,dataDriven=value[4],label=value[2],groupingVariable=value[3],groups=[])
+#    else:
+#        grpng.groups.append(DataGroup(id=value[5],label=value[6],level=value[7],order=value[8],condition=WhereClauseCondition(dataset=value[10],variable=value[11],comparator=value[12],value=str(value[13]).split(" | ") if value[13] != None and str(value[13]).find(" | ") > -1 else value[13])))
 else:
-    if isinstance(angrp,SubjectGroupingFactor):
-        rptevt.analysisGroupings.append(angrp)
+    if grpid != "":
+        grpng.groups.append(grp)
+    if isinstance(grpng,SubjectGroupingFactor):
+        rptevt.analysisGroupings.append(grpng)
     else:
-        rptevt.dataGroupings.append(angrp)
+        rptevt.dataGroupings.append(grpng)
 
 wsDss = wb["DataSubsets"]
 
+dss : DataSubset = None
 dssid = ""
 wcs = {}
 
@@ -198,7 +254,7 @@ for value in wsDss.iter_rows(
     min_row=2, values_only=True):
 
     if value[4] == None:
-        wc = WhereClause(level=value[2],order=value[3],condition=WhereClauseCondition(dataset=value[5],variable=value[6],comparator=value[7],value=value[8].split(" | ") if value[8] != None and value[8].find(" | ") > -1 else value[8]) if value[6] != None else None)
+        wc = WhereClause(level=value[2],order=value[3],condition=WhereClauseCondition(dataset=value[5],variable=value[6],comparator=value[7],value=str(value[8]).split(" | ") if value[8] != None and str(value[8]).find(" | ") > -1 else value[8]) if value[6] != None else None)
     else:
         wc = WhereClause(level=value[2],order=value[3],compoundExpression=CompoundSubsetExpression(logicalOperator=value[4]) if value[4] != None else None)
         wcs[value[2]] = wc
@@ -214,7 +270,8 @@ for value in wsDss.iter_rows(
     else:
         wcs[value[2]-1].compoundExpression.whereClauses.extend([wc])
 else:
-    rptevt.dataSubsets.append(dss)
+    if dss:
+        rptevt.dataSubsets.append(dss)
 
 results = {}
 

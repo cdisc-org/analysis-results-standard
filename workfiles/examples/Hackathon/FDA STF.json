@@ -1,0 +1,2107 @@
+{
+  "name": "FDA Standard Safety Tables and Figures",
+  "id": "FDASTF",
+  "listOfPlannedAnalyses": {
+    "listItems": [
+      {
+        "name": "Table 2. Baseline Demographic and Clinical Characteristics, Safety Population, Trial CDISCPILOT01",
+        "level": 1,
+        "order": 1,
+        "sublist": {
+          "listItems": [
+            {
+              "name": "Summary of Subjects by Treatment",
+              "level": 2,
+              "order": 1,
+              "analysisId": "A_SAF_SUM_USUBJID_TRT"
+            },
+            {
+              "name": "Sex",
+              "level": 2,
+              "order": 2,
+              "sublist": {
+                "listItems": [
+                  {
+                    "name": "Summary of Subjects by Treatment",
+                    "level": 3,
+                    "order": 1,
+                    "analysisId": "A_SAF_SUM_USUBJID_TRT_SEX"
+                  },
+                  {
+                    "name": "Comparison of Subjects by Treatment",
+                    "level": 3,
+                    "order": 2,
+                    "analysisId": "An03_03_Sex_Comp_ByTrt"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Age",
+              "level": 2,
+              "order": 3,
+              "sublist": {
+                "listItems": [
+                  {
+                    "name": "Summary by Treatment",
+                    "level": 3,
+                    "order": 1,
+                    "analysisId": "A_SAF_SUM_AGE_TRT"
+                  },
+                  {
+                    "name": "Comparison by Treatment",
+                    "level": 3,
+                    "order": 2,
+                    "analysisId": "An03_01_Age_Comp_ByTrt"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Age groups",
+              "level": 2,
+              "order": 4,
+              "sublist": {
+                "listItems": [
+                  {
+                    "name": "Summary of Subjects by Treatment",
+                    "level": 3,
+                    "order": 1,
+                    "analysisId": "A_SAF_SUM_USUBJID_TRT_AGEGRP"
+                  },
+                  {
+                    "name": "Comparison of Subjects by Treatment",
+                    "level": 3,
+                    "order": 2,
+                    "analysisId": "An03_02_AgeGrp_Comp_ByTrt"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Race",
+              "level": 2,
+              "order": 5,
+              "sublist": {
+                "listItems": [
+                  {
+                    "name": "Summary of Subjects by Treatment",
+                    "level": 3,
+                    "order": 1,
+                    "analysisId": "A_SAF_SUM_USUBJID_TRT_RACE"
+                  },
+                  {
+                    "name": "Comparison of Subjects by Treatment",
+                    "level": 3,
+                    "order": 2,
+                    "analysisId": "An03_05_Race_Comp_ByTrt"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Ethnicity",
+              "level": 2,
+              "order": 6,
+              "sublist": {
+                "listItems": [
+                  {
+                    "name": "Summary of Subjects by Treatment",
+                    "level": 3,
+                    "order": 1,
+                    "analysisId": "A_SAF_SUM_USUBJID_TRT_ETHNIC"
+                  },
+                  {
+                    "name": "Comparison of Subjects by Treatment",
+                    "level": 3,
+                    "order": 2,
+                    "analysisId": "An03_04_Ethnic_Comp_ByTrt"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "outputId": "O_T2"
+      }
+    ]
+  },
+  "version": 1,
+  "listOfPlannedOutputs": {
+    "listItems": [
+      {
+        "name": "Table 2. Baseline Demographic and Clinical Characteristics, Safety Population, Trial CDISCPILOT01",
+        "level": 1,
+        "order": 1,
+        "outputId": "O_T2"
+      }
+    ]
+  },
+  "analysisSets": [
+    {
+      "level": 1,
+      "order": 1,
+      "condition": {
+        "dataset": "ADSL",
+        "variable": "SAFFL",
+        "comparator": "EQ",
+        "value": [
+          "Y"
+        ]
+      },
+      "id": "AS_SAF",
+      "label": "Safety Population"
+    }
+  ],
+  "analysisGroupings": [
+    {
+      "id": "AG_TRT",
+      "dataDriven": false,
+      "label": "Treatment",
+      "groupingVariable": "TRT01A",
+      "groups": [
+        {
+          "level": 1,
+          "order": 1,
+          "condition": {
+            "dataset": "ADSL",
+            "variable": "TRT01A",
+            "comparator": "EQ",
+            "value": [
+              "Placebo"
+            ]
+          },
+          "id": "AG_TRT_1",
+          "label": "Placebo"
+        },
+        {
+          "level": 1,
+          "order": 2,
+          "condition": {
+            "dataset": "ADSL",
+            "variable": "TRT01A",
+            "comparator": "EQ",
+            "value": [
+              "Xanomeline Low Dose"
+            ]
+          },
+          "id": "AG_TRT_2",
+          "label": "Xanomeline Low Dose"
+        },
+        {
+          "level": 1,
+          "order": 3,
+          "condition": {
+            "dataset": "ADSL",
+            "variable": "TRT01A",
+            "comparator": "EQ",
+            "value": [
+              "Xanomeline High Dose"
+            ]
+          },
+          "id": "AG_TRT_3",
+          "label": "Xanomeline High Dose"
+        }
+      ]
+    },
+    {
+      "id": "AG_SEX",
+      "dataDriven": false,
+      "label": "Gender",
+      "groupingVariable": "SEX",
+      "groups": [
+        {
+          "level": 1,
+          "order": 1,
+          "condition": {
+            "dataset": "ADSL",
+            "variable": "SEX",
+            "comparator": "EQ",
+            "value": [
+              "M"
+            ]
+          },
+          "id": "AG_SEX_1",
+          "label": "Male"
+        },
+        {
+          "level": 1,
+          "order": 2,
+          "condition": {
+            "dataset": "ADSL",
+            "variable": "SEX",
+            "comparator": "EQ",
+            "value": [
+              "F"
+            ]
+          },
+          "id": "AG_SEX_2",
+          "label": "Female"
+        }
+      ]
+    },
+    {
+      "id": "AG_AGEGR2",
+      "dataDriven": false,
+      "label": "Age groups",
+      "groupingVariable": "AGEGR2",
+      "groups": [
+        {
+          "level": 1,
+          "order": 1,
+          "condition": {
+            "dataset": "ADSL",
+            "variable": "AGEGR2",
+            "comparator": "EQ",
+            "value": [
+              "<65"
+            ]
+          },
+          "id": "AG_AGEGR2_1",
+          "label": "< 65"
+        },
+        {
+          "level": 1,
+          "order": 2,
+          "condition": {
+            "dataset": "ADSL",
+            "variable": "AGEGR2",
+            "comparator": "EQ",
+            "value": [
+              "65+"
+            ]
+          },
+          "id": "AG_AGEGR2_2",
+          "label": "≥ 65"
+        }
+      ]
+    },
+    {
+      "id": "AG_AGEGR3",
+      "dataDriven": false,
+      "label": "Age sub-groups",
+      "groupingVariable": "AGEGR3",
+      "groups": [
+        {
+          "level": 1,
+          "order": 1,
+          "condition": {
+            "dataset": "ADSL",
+            "variable": "AGEGR3",
+            "comparator": "EQ",
+            "value": [
+              "17-<65"
+            ]
+          },
+          "id": "AG_AGEGR3_1",
+          "label": "≥17 to <65"
+        },
+        {
+          "level": 1,
+          "order": 2,
+          "condition": {
+            "dataset": "ADSL",
+            "variable": "AGEGR3",
+            "comparator": "EQ",
+            "value": [
+              "65-<75"
+            ]
+          },
+          "id": "AG_AGEGR3_2",
+          "label": "≥ 65 to < 75"
+        },
+        {
+          "level": 1,
+          "order": 3,
+          "condition": {
+            "dataset": "ADSL",
+            "variable": "AGEGR3",
+            "comparator": "EQ",
+            "value": [
+              "75+"
+            ]
+          },
+          "id": "AG_AGEGR3_3",
+          "label": "≥ 75"
+        }
+      ]
+    },
+    {
+      "id": "AG_RACE",
+      "dataDriven": false,
+      "label": "Race",
+      "groupingVariable": "RACE",
+      "groups": [
+        {
+          "level": 1,
+          "order": 1,
+          "condition": {
+            "dataset": "ADSL",
+            "variable": "RACE",
+            "comparator": "EQ",
+            "value": [
+              "AMERICAN INDIAN OR ALASKA NATIVE"
+            ]
+          },
+          "id": "AG_RACE_1",
+          "label": "American Indian or Alaska Native"
+        },
+        {
+          "level": 1,
+          "order": 2,
+          "condition": {
+            "dataset": "ADSL",
+            "variable": "RACE",
+            "comparator": "EQ",
+            "value": [
+              "BLACK OR AFRICAN AMERICAN"
+            ]
+          },
+          "id": "AG_RACE_2",
+          "label": "Black or African American"
+        },
+        {
+          "level": 1,
+          "order": 3,
+          "condition": {
+            "dataset": "ADSL",
+            "variable": "RACE",
+            "comparator": "EQ",
+            "value": [
+              "NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER"
+            ]
+          },
+          "id": "AG_RACE_3",
+          "label": "Native Hawaiian or Other Pacific Islander"
+        },
+        {
+          "level": 1,
+          "order": 4,
+          "condition": {
+            "dataset": "ADSL",
+            "variable": "RACE",
+            "comparator": "EQ",
+            "value": [
+              "WHITE"
+            ]
+          },
+          "id": "AG_RACE_4",
+          "label": "White"
+        },
+        {
+          "level": 1,
+          "order": 5,
+          "condition": {
+            "dataset": "ADSL",
+            "variable": "RACE",
+            "comparator": "NOTIN",
+            "value": [
+              "AMERICAN INDIAN OR ALASKA NATIVE",
+              "BLACK OR AFRICAN AMERICAN",
+              "NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER",
+              "WHITE"
+            ]
+          },
+          "id": "AG_RACE_5",
+          "label": "Other"
+        }
+      ]
+    },
+    {
+      "id": "AG_ETHNIC",
+      "dataDriven": false,
+      "label": "Ethnicity",
+      "groupingVariable": "ETHNIC",
+      "groups": [
+        {
+          "level": 1,
+          "order": 1,
+          "condition": {
+            "dataset": "ADSL",
+            "variable": "ETHNIC",
+            "comparator": "EQ",
+            "value": [
+              "HISPANIC OR LATINO"
+            ]
+          },
+          "id": "AG_ETHNIC_1",
+          "label": "Hispanic or Latino"
+        },
+        {
+          "level": 1,
+          "order": 2,
+          "condition": {
+            "dataset": "ADSL",
+            "variable": "ETHNIC",
+            "comparator": "EQ",
+            "value": [
+              "NOT HISPANIC OR LATINO"
+            ]
+          },
+          "id": "AG_ETHNIC_2",
+          "label": "Not Hispanic or Latino"
+        }
+      ]
+    }
+  ],
+  "analyses": [
+    {
+      "name": "Summary of Subjects by Treatment",
+      "id": "A_SAF_SUM_USUBJID_TRT",
+      "reason": {
+        "controlledTerm": "SPECIFIED IN SAP"
+      },
+      "purpose": {
+        "controlledTerm": "PRIMARY OUTCOME MEASURE"
+      },
+      "methodId": "M_GRP_CNT",
+      "version": 1,
+      "documentRefs": [
+        {
+          "referenceDocumentId": "CDISCPILOT01_SAP",
+          "pageRefs": [
+            {
+              "refType": "PhysicalRef",
+              "label": "6. ANALYSIS POPULATIONS",
+              "pageNumbers": [
+                9
+              ]
+            }
+          ]
+        }
+      ],
+      "analysisSetId": "AS_SAF",
+      "orderedGroupings": [
+        {
+          "order": 1,
+          "resultsByGroup": true,
+          "groupingId": "AG_TRT"
+        }
+      ],
+      "dataset": "ADSL",
+      "variable": "USUBJID",
+      "results": [
+        {
+          "operationId": "M_GRP_CNT_1_N",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_1"
+            }
+          ],
+          "rawValue": "86",
+          "formattedValue": "N = 86"
+        },
+        {
+          "operationId": "M_GRP_CNT_1_N",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_2"
+            }
+          ],
+          "rawValue": "84",
+          "formattedValue": "N = 84"
+        },
+        {
+          "operationId": "M_GRP_CNT_1_N",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_3"
+            }
+          ],
+          "rawValue": "84",
+          "formattedValue": "N = 84"
+        }
+      ]
+    },
+    {
+      "name": "Summary of Subjects by Treatment and Sex",
+      "id": "A_SAF_SUM_USUBJID_TRT_SEX",
+      "reason": {
+        "controlledTerm": "SPECIFIED IN SAP"
+      },
+      "purpose": {
+        "controlledTerm": "PRIMARY OUTCOME MEASURE"
+      },
+      "methodId": "M_GRP_SUM_CATEG",
+      "version": 1,
+      "documentRefs": [
+        {
+          "referenceDocumentId": "CDISCPILOT01_SAP",
+          "pageRefs": [
+            {
+              "refType": "PhysicalRef",
+              "label": "9.2. Demographic and Baseline Characteristics",
+              "pageNumbers": [
+                13
+              ]
+            }
+          ]
+        }
+      ],
+      "analysisSetId": "AS_SAF",
+      "orderedGroupings": [
+        {
+          "order": 1,
+          "resultsByGroup": true,
+          "groupingId": "AG_TRT"
+        },
+        {
+          "order": 2,
+          "resultsByGroup": true,
+          "groupingId": "AG_SEX"
+        }
+      ],
+      "dataset": "ADSL",
+      "variable": "USUBJID",
+      "referencedAnalysisOperations": [
+        {
+          "referencedOperationRelationshipId": "M_GRP_SUM_CATEG_2_PCT_NUM",
+          "analysisId": "A_SAF_SUM_USUBJID_TRT_SEX"
+        },
+        {
+          "referencedOperationRelationshipId": "M_GRP_SUM_CATEG_2_PCT_DEN",
+          "analysisId": "A_SAF_SUM_USUBJID_TRT"
+        }
+      ],
+      "results": [
+        {
+          "operationId": "M_GRP_SUM_CATEG_1_N",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_1"
+            },
+            {
+              "groupingId": "AG_SEX",
+              "groupId": "AG_SEX_1"
+            }
+          ],
+          "rawValue": "33",
+          "formattedValue": "33"
+        },
+        {
+          "operationId": "M_GRP_SUM_CATEG_2_PCT",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_1"
+            },
+            {
+              "groupingId": "AG_SEX",
+              "groupId": "AG_SEX_1"
+            }
+          ],
+          "rawValue": "38.3721",
+          "formattedValue": "(38.4)"
+        },
+        {
+          "operationId": "M_GRP_SUM_CATEG_1_N",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_1"
+            },
+            {
+              "groupingId": "AG_SEX",
+              "groupId": "AG_SEX_2"
+            }
+          ],
+          "rawValue": "53",
+          "formattedValue": "53"
+        },
+        {
+          "operationId": "M_GRP_SUM_CATEG_2_PCT",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_1"
+            },
+            {
+              "groupingId": "AG_SEX",
+              "groupId": "AG_SEX_2"
+            }
+          ],
+          "rawValue": "61.6279",
+          "formattedValue": "(61.6)"
+        },
+        {
+          "operationId": "M_GRP_SUM_CATEG_1_N",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_2"
+            },
+            {
+              "groupingId": "AG_SEX",
+              "groupId": "AG_SEX_1"
+            }
+          ],
+          "rawValue": "34",
+          "formattedValue": "34"
+        },
+        {
+          "operationId": "M_GRP_SUM_CATEG_2_PCT",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_2"
+            },
+            {
+              "groupingId": "AG_SEX",
+              "groupId": "AG_SEX_1"
+            }
+          ],
+          "rawValue": "40.4762",
+          "formattedValue": "(40.5)"
+        },
+        {
+          "operationId": "M_GRP_SUM_CATEG_1_N",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_2"
+            },
+            {
+              "groupingId": "AG_SEX",
+              "groupId": "AG_SEX_2"
+            }
+          ],
+          "rawValue": "50",
+          "formattedValue": "50"
+        },
+        {
+          "operationId": "M_GRP_SUM_CATEG_2_PCT",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_2"
+            },
+            {
+              "groupingId": "AG_SEX",
+              "groupId": "AG_SEX_2"
+            }
+          ],
+          "rawValue": "59.5238",
+          "formattedValue": "(59.5)"
+        },
+        {
+          "operationId": "M_GRP_SUM_CATEG_1_N",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_3"
+            },
+            {
+              "groupingId": "AG_SEX",
+              "groupId": "AG_SEX_1"
+            }
+          ],
+          "rawValue": "44",
+          "formattedValue": "44"
+        },
+        {
+          "operationId": "M_GRP_SUM_CATEG_2_PCT",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_3"
+            },
+            {
+              "groupingId": "AG_SEX",
+              "groupId": "AG_SEX_1"
+            }
+          ],
+          "rawValue": "52.381",
+          "formattedValue": "(52.4)"
+        },
+        {
+          "operationId": "M_GRP_SUM_CATEG_1_N",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_3"
+            },
+            {
+              "groupingId": "AG_SEX",
+              "groupId": "AG_SEX_2"
+            }
+          ],
+          "rawValue": "40",
+          "formattedValue": "40"
+        },
+        {
+          "operationId": "M_GRP_SUM_CATEG_2_PCT",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_3"
+            },
+            {
+              "groupingId": "AG_SEX",
+              "groupId": "AG_SEX_2"
+            }
+          ],
+          "rawValue": "47.619",
+          "formattedValue": "(47.6)"
+        }
+      ]
+    },
+    {
+      "name": "Summary of Age by Treatment",
+      "id": "A_SAF_SUM_AGE_TRT",
+      "reason": {
+        "controlledTerm": "SPECIFIED IN SAP"
+      },
+      "purpose": {
+        "controlledTerm": "PRIMARY OUTCOME MEASURE"
+      },
+      "methodId": "M_GRP_SUM_CONTIN",
+      "version": 1,
+      "documentRefs": [
+        {
+          "referenceDocumentId": "CDISCPILOT01_SAP",
+          "pageRefs": [
+            {
+              "refType": "PhysicalRef",
+              "label": "9.2. Demographic and Baseline Characteristics",
+              "pageNumbers": [
+                13
+              ]
+            }
+          ]
+        }
+      ],
+      "analysisSetId": "AS_SAF",
+      "orderedGroupings": [
+        {
+          "order": 1,
+          "resultsByGroup": true,
+          "groupingId": "AG_TRT"
+        }
+      ],
+      "dataset": "ADSL",
+      "variable": "AGE",
+      "results": [
+        {
+          "operationId": "M_GRP_SUM_CONTIN_1_MEAN",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_1"
+            }
+          ],
+          "rawValue": "75.2093",
+          "formattedValue": "75.2"
+        },
+        {
+          "operationId": "M_GRP_SUM_CONTIN_2_SD",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_1"
+            }
+          ],
+          "rawValue": "8.5902",
+          "formattedValue": "(8.6)"
+        },
+        {
+          "operationId": "M_GRP_SUM_CONTIN_3_MEDIAN",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_1"
+            }
+          ],
+          "rawValue": "76",
+          "formattedValue": "76.0"
+        },
+        {
+          "operationId": "M_GRP_SUM_CONTIN_4_MIN",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_1"
+            }
+          ],
+          "rawValue": "52",
+          "formattedValue": "52.0"
+        },
+        {
+          "operationId": "M_GRP_SUM_CONTIN_5_MAX",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_1"
+            }
+          ],
+          "rawValue": "89",
+          "formattedValue": "89.0"
+        },
+        {
+          "operationId": "M_GRP_SUM_CONTIN_1_MEAN",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_2"
+            }
+          ],
+          "rawValue": "75.6667",
+          "formattedValue": "75.7"
+        },
+        {
+          "operationId": "M_GRP_SUM_CONTIN_2_SD",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_2"
+            }
+          ],
+          "rawValue": "8.2861",
+          "formattedValue": "(8.3)"
+        },
+        {
+          "operationId": "M_GRP_SUM_CONTIN_3_MEDIAN",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_2"
+            }
+          ],
+          "rawValue": "77.5",
+          "formattedValue": "77.5"
+        },
+        {
+          "operationId": "M_GRP_SUM_CONTIN_4_MIN",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_2"
+            }
+          ],
+          "rawValue": "51",
+          "formattedValue": "51.0"
+        },
+        {
+          "operationId": "M_GRP_SUM_CONTIN_5_MAX",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_2"
+            }
+          ],
+          "rawValue": "88",
+          "formattedValue": "88.0"
+        },
+        {
+          "operationId": "M_GRP_SUM_CONTIN_1_MEAN",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_3"
+            }
+          ],
+          "rawValue": "74.381",
+          "formattedValue": "74.4"
+        },
+        {
+          "operationId": "M_GRP_SUM_CONTIN_2_SD",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_3"
+            }
+          ],
+          "rawValue": "7.8861",
+          "formattedValue": "(7.9)"
+        },
+        {
+          "operationId": "M_GRP_SUM_CONTIN_3_MEDIAN",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_3"
+            }
+          ],
+          "rawValue": "76",
+          "formattedValue": "76.0"
+        },
+        {
+          "operationId": "M_GRP_SUM_CONTIN_4_MIN",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_3"
+            }
+          ],
+          "rawValue": "56",
+          "formattedValue": "56.0"
+        },
+        {
+          "operationId": "M_GRP_SUM_CONTIN_5_MAX",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_3"
+            }
+          ],
+          "rawValue": "88",
+          "formattedValue": "88.0"
+        }
+      ]
+    },
+    {
+      "name": "Summary of Subjects by Treatment and Age Group",
+      "id": "A_SAF_SUM_USUBJID_TRT_AGEGRP",
+      "reason": {
+        "controlledTerm": "SPECIFIED IN SAP"
+      },
+      "purpose": {
+        "controlledTerm": "PRIMARY OUTCOME MEASURE"
+      },
+      "methodId": "M_GRP_SUM_CATEG",
+      "version": 1,
+      "documentRefs": [
+        {
+          "referenceDocumentId": "CDISCPILOT01_SAP",
+          "pageRefs": [
+            {
+              "refType": "PhysicalRef",
+              "label": "9.2. Demographic and Baseline Characteristics",
+              "pageNumbers": [
+                13
+              ]
+            }
+          ]
+        }
+      ],
+      "analysisSetId": "AS_SAF",
+      "orderedGroupings": [
+        {
+          "order": 1,
+          "resultsByGroup": true,
+          "groupingId": "AG_TRT"
+        },
+        {
+          "order": 2,
+          "resultsByGroup": true,
+          "groupingId": "AG_AGEGRP1"
+        },
+        {
+          "order": 3,
+          "resultsByGroup": true,
+          "groupingId": "AG_AGEGRP2"
+        }
+      ],
+      "dataset": "ADSL",
+      "variable": "USUBJID",
+      "referencedAnalysisOperations": [
+        {
+          "referencedOperationRelationshipId": "M_GRP_SUM_CATEG_2_PCT_NUM",
+          "analysisId": "A_SAF_SUM_USUBJID_TRT_AGEGRP"
+        },
+        {
+          "referencedOperationRelationshipId": "M_GRP_SUM_CATEG_2_PCT_DEN",
+          "analysisId": "A_SAF_SUM_USUBJID_TRT"
+        }
+      ],
+      "results": [
+        {
+          "operationId": "M_GRP_SUM_CATEG_1_N",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_1"
+            },
+            {
+              "groupingId": "AG_AGEGR2",
+              "groupId": "AG_AGEGR2_1"
+            },
+            {
+              "groupingId": "AG_AGEGR3",
+              "groupId": "AG_AGEGR3_1"
+            }
+          ],
+          "rawValue": "14",
+          "formattedValue": "14"
+        },
+        {
+          "operationId": "M_GRP_SUM_CATEG_2_PCT",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_1"
+            },
+            {
+              "groupingId": "AG_AGEGR2",
+              "groupId": "AG_AGEGR2_1"
+            },
+            {
+              "groupingId": "AG_AGEGR3",
+              "groupId": "AG_AGEGR3_1"
+            }
+          ],
+          "rawValue": "16.2791",
+          "formattedValue": "(16.3)"
+        },
+        {
+          "operationId": "M_GRP_SUM_CATEG_1_N",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_1"
+            },
+            {
+              "groupingId": "AG_AGEGR2",
+              "groupId": "AG_AGEGR2_2"
+            },
+            {
+              "groupingId": "AG_AGEGR3",
+              "groupId": "AG_AGEGR3_2"
+            }
+          ],
+          "rawValue": "24",
+          "formattedValue": "24"
+        },
+        {
+          "operationId": "M_GRP_SUM_CATEG_2_PCT",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_1"
+            },
+            {
+              "groupingId": "AG_AGEGR2",
+              "groupId": "AG_AGEGR2_2"
+            },
+            {
+              "groupingId": "AG_AGEGR3",
+              "groupId": "AG_AGEGR3_2"
+            }
+          ],
+          "rawValue": "27.907",
+          "formattedValue": "(27.9)"
+        },
+        {
+          "operationId": "M_GRP_SUM_CATEG_1_N",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_1"
+            },
+            {
+              "groupingId": "AG_AGEGR2",
+              "groupId": "AG_AGEGR2_2"
+            },
+            {
+              "groupingId": "AG_AGEGR3",
+              "groupId": "AG_AGEGR3_3"
+            }
+          ],
+          "rawValue": "48",
+          "formattedValue": "48"
+        },
+        {
+          "operationId": "M_GRP_SUM_CATEG_2_PCT",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_1"
+            },
+            {
+              "groupingId": "AG_AGEGR2",
+              "groupId": "AG_AGEGR2_2"
+            },
+            {
+              "groupingId": "AG_AGEGR3",
+              "groupId": "AG_AGEGR3_3"
+            }
+          ],
+          "rawValue": "55.814",
+          "formattedValue": "(55.8)"
+        },
+        {
+          "operationId": "M_GRP_SUM_CATEG_1_N",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_2"
+            },
+            {
+              "groupingId": "AG_AGEGR2",
+              "groupId": "AG_AGEGR2_1"
+            },
+            {
+              "groupingId": "AG_AGEGR3",
+              "groupId": "AG_AGEGR3_1"
+            }
+          ],
+          "rawValue": "8",
+          "formattedValue": "8"
+        },
+        {
+          "operationId": "M_GRP_SUM_CATEG_2_PCT",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_2"
+            },
+            {
+              "groupingId": "AG_AGEGR2",
+              "groupId": "AG_AGEGR2_1"
+            },
+            {
+              "groupingId": "AG_AGEGR3",
+              "groupId": "AG_AGEGR3_1"
+            }
+          ],
+          "rawValue": "9.5238",
+          "formattedValue": "(9.5)"
+        },
+        {
+          "operationId": "M_GRP_SUM_CATEG_1_N",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_2"
+            },
+            {
+              "groupingId": "AG_AGEGR2",
+              "groupId": "AG_AGEGR2_2"
+            },
+            {
+              "groupingId": "AG_AGEGR3",
+              "groupId": "AG_AGEGR3_2"
+            }
+          ],
+          "rawValue": "23",
+          "formattedValue": "23"
+        },
+        {
+          "operationId": "M_GRP_SUM_CATEG_2_PCT",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_2"
+            },
+            {
+              "groupingId": "AG_AGEGR2",
+              "groupId": "AG_AGEGR2_2"
+            },
+            {
+              "groupingId": "AG_AGEGR3",
+              "groupId": "AG_AGEGR3_2"
+            }
+          ],
+          "rawValue": "27.381",
+          "formattedValue": "(27.4)"
+        },
+        {
+          "operationId": "M_GRP_SUM_CATEG_1_N",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_2"
+            },
+            {
+              "groupingId": "AG_AGEGR2",
+              "groupId": "AG_AGEGR2_2"
+            },
+            {
+              "groupingId": "AG_AGEGR3",
+              "groupId": "AG_AGEGR3_3"
+            }
+          ],
+          "rawValue": "53",
+          "formattedValue": "53"
+        },
+        {
+          "operationId": "M_GRP_SUM_CATEG_2_PCT",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_2"
+            },
+            {
+              "groupingId": "AG_AGEGR2",
+              "groupId": "AG_AGEGR2_2"
+            },
+            {
+              "groupingId": "AG_AGEGR3",
+              "groupId": "AG_AGEGR3_3"
+            }
+          ],
+          "rawValue": "63.0952",
+          "formattedValue": "(63.1)"
+        },
+        {
+          "operationId": "M_GRP_SUM_CATEG_1_N",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_3"
+            },
+            {
+              "groupingId": "AG_AGEGR2",
+              "groupId": "AG_AGEGR2_1"
+            },
+            {
+              "groupingId": "AG_AGEGR3",
+              "groupId": "AG_AGEGR3_1"
+            }
+          ],
+          "rawValue": "11",
+          "formattedValue": "11"
+        },
+        {
+          "operationId": "M_GRP_SUM_CATEG_2_PCT",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_3"
+            },
+            {
+              "groupingId": "AG_AGEGR2",
+              "groupId": "AG_AGEGR2_1"
+            },
+            {
+              "groupingId": "AG_AGEGR3",
+              "groupId": "AG_AGEGR3_1"
+            }
+          ],
+          "rawValue": "13.0952",
+          "formattedValue": "(13.1)"
+        },
+        {
+          "operationId": "M_GRP_SUM_CATEG_1_N",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_3"
+            },
+            {
+              "groupingId": "AG_AGEGR2",
+              "groupId": "AG_AGEGR2_2"
+            },
+            {
+              "groupingId": "AG_AGEGR3",
+              "groupId": "AG_AGEGR3_2"
+            }
+          ],
+          "rawValue": "25",
+          "formattedValue": "25"
+        },
+        {
+          "operationId": "M_GRP_SUM_CATEG_2_PCT",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_3"
+            },
+            {
+              "groupingId": "AG_AGEGR2",
+              "groupId": "AG_AGEGR2_2"
+            },
+            {
+              "groupingId": "AG_AGEGR3",
+              "groupId": "AG_AGEGR3_2"
+            }
+          ],
+          "rawValue": "29.7619",
+          "formattedValue": "(29.8)"
+        },
+        {
+          "operationId": "M_GRP_SUM_CATEG_1_N",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_3"
+            },
+            {
+              "groupingId": "AG_AGEGR2",
+              "groupId": "AG_AGEGR2_2"
+            },
+            {
+              "groupingId": "AG_AGEGR3",
+              "groupId": "AG_AGEGR3_3"
+            }
+          ],
+          "rawValue": "48",
+          "formattedValue": "48"
+        },
+        {
+          "operationId": "M_GRP_SUM_CATEG_2_PCT",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_3"
+            },
+            {
+              "groupingId": "AG_AGEGR2",
+              "groupId": "AG_AGEGR2_2"
+            },
+            {
+              "groupingId": "AG_AGEGR3",
+              "groupId": "AG_AGEGR3_3"
+            }
+          ],
+          "rawValue": "57.1429",
+          "formattedValue": "(57.1)"
+        }
+      ]
+    },
+    {
+      "name": "Summary of Subjects by Treatment and Race",
+      "id": "A_SAF_SUM_USUBJID_TRT_RACE",
+      "reason": {
+        "controlledTerm": "SPECIFIED IN SAP"
+      },
+      "purpose": {
+        "controlledTerm": "PRIMARY OUTCOME MEASURE"
+      },
+      "methodId": "M_GRP_SUM_CATEG",
+      "version": 1,
+      "documentRefs": [
+        {
+          "referenceDocumentId": "CDISCPILOT01_SAP",
+          "pageRefs": [
+            {
+              "refType": "PhysicalRef",
+              "label": "9.2. Demographic and Baseline Characteristics",
+              "pageNumbers": [
+                13
+              ]
+            }
+          ]
+        }
+      ],
+      "analysisSetId": "AS_SAF",
+      "orderedGroupings": [
+        {
+          "order": 1,
+          "resultsByGroup": true,
+          "groupingId": "AG_TRT"
+        },
+        {
+          "order": 2,
+          "resultsByGroup": true,
+          "groupingId": "AG_RACE"
+        }
+      ],
+      "dataset": "ADSL",
+      "variable": "USUBJID",
+      "referencedAnalysisOperations": [
+        {
+          "referencedOperationRelationshipId": "M_GRP_SUM_CATEG_2_PCT_NUM",
+          "analysisId": "A_SAF_SUM_USUBJID_TRT_RACE"
+        },
+        {
+          "referencedOperationRelationshipId": "M_GRP_SUM_CATEG_2_PCT_DEN",
+          "analysisId": "A_SAF_SUM_USUBJID_TRT"
+        }
+      ],
+      "results": [
+        {
+          "operationId": "M_GRP_SUM_CATEG_1_N",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_1"
+            },
+            {
+              "groupingId": "AG_RACE",
+              "groupId": "AG_RACE_2"
+            }
+          ],
+          "rawValue": "8",
+          "formattedValue": "8"
+        },
+        {
+          "operationId": "M_GRP_SUM_CATEG_2_PCT",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_1"
+            },
+            {
+              "groupingId": "AG_RACE",
+              "groupId": "AG_RACE_2"
+            }
+          ],
+          "rawValue": "9.3023",
+          "formattedValue": "(9.3)"
+        },
+        {
+          "operationId": "M_GRP_SUM_CATEG_1_N",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_1"
+            },
+            {
+              "groupingId": "AG_RACE",
+              "groupId": "AG_RACE_4"
+            }
+          ],
+          "rawValue": "78",
+          "formattedValue": "78"
+        },
+        {
+          "operationId": "M_GRP_SUM_CATEG_2_PCT",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_1"
+            },
+            {
+              "groupingId": "AG_RACE",
+              "groupId": "AG_RACE_4"
+            }
+          ],
+          "rawValue": "90.6977",
+          "formattedValue": "(90.7)"
+        },
+        {
+          "operationId": "M_GRP_SUM_CATEG_1_N",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_2"
+            },
+            {
+              "groupingId": "AG_RACE",
+              "groupId": "AG_RACE_2"
+            }
+          ],
+          "rawValue": "6",
+          "formattedValue": "6"
+        },
+        {
+          "operationId": "M_GRP_SUM_CATEG_2_PCT",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_2"
+            },
+            {
+              "groupingId": "AG_RACE",
+              "groupId": "AG_RACE_2"
+            }
+          ],
+          "rawValue": "7.1429",
+          "formattedValue": "(7.1)"
+        },
+        {
+          "operationId": "M_GRP_SUM_CATEG_1_N",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_2"
+            },
+            {
+              "groupingId": "AG_RACE",
+              "groupId": "AG_RACE_4"
+            }
+          ],
+          "rawValue": "78",
+          "formattedValue": "78"
+        },
+        {
+          "operationId": "M_GRP_SUM_CATEG_2_PCT",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_2"
+            },
+            {
+              "groupingId": "AG_RACE",
+              "groupId": "AG_RACE_4"
+            }
+          ],
+          "rawValue": "92.8571",
+          "formattedValue": "(92.9)"
+        },
+        {
+          "operationId": "M_GRP_SUM_CATEG_1_N",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_3"
+            },
+            {
+              "groupingId": "AG_RACE",
+              "groupId": "AG_RACE_1"
+            }
+          ],
+          "rawValue": "1",
+          "formattedValue": "1"
+        },
+        {
+          "operationId": "M_GRP_SUM_CATEG_2_PCT",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_3"
+            },
+            {
+              "groupingId": "AG_RACE",
+              "groupId": "AG_RACE_1"
+            }
+          ],
+          "rawValue": "1.1905",
+          "formattedValue": "(1.2)"
+        },
+        {
+          "operationId": "M_GRP_SUM_CATEG_1_N",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_3"
+            },
+            {
+              "groupingId": "AG_RACE",
+              "groupId": "AG_RACE_2"
+            }
+          ],
+          "rawValue": "9",
+          "formattedValue": "9"
+        },
+        {
+          "operationId": "M_GRP_SUM_CATEG_2_PCT",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_3"
+            },
+            {
+              "groupingId": "AG_RACE",
+              "groupId": "AG_RACE_2"
+            }
+          ],
+          "rawValue": "10.7143",
+          "formattedValue": "(10.7)"
+        },
+        {
+          "operationId": "M_GRP_SUM_CATEG_1_N",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_3"
+            },
+            {
+              "groupingId": "AG_RACE",
+              "groupId": "AG_RACE_4"
+            }
+          ],
+          "rawValue": "74",
+          "formattedValue": "74"
+        },
+        {
+          "operationId": "M_GRP_SUM_CATEG_2_PCT",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_3"
+            },
+            {
+              "groupingId": "AG_RACE",
+              "groupId": "AG_RACE_4"
+            }
+          ],
+          "rawValue": "88.0952",
+          "formattedValue": "(88.1)"
+        }
+      ]
+    },
+    {
+      "name": "Summary of Subjects by Treatment and Ethnicity",
+      "id": "A_SAF_SUM_USUBJID_TRT_ETHNIC",
+      "reason": {
+        "controlledTerm": "SPECIFIED IN SAP"
+      },
+      "purpose": {
+        "controlledTerm": "PRIMARY OUTCOME MEASURE"
+      },
+      "methodId": "M_GRP_SUM_CATEG",
+      "version": 1,
+      "documentRefs": [
+        {
+          "referenceDocumentId": "CDISCPILOT01_SAP",
+          "pageRefs": [
+            {
+              "refType": "PhysicalRef",
+              "label": "9.2. Demographic and Baseline Characteristics",
+              "pageNumbers": [
+                13
+              ]
+            }
+          ]
+        }
+      ],
+      "analysisSetId": "AS_SAF",
+      "orderedGroupings": [
+        {
+          "order": 1,
+          "resultsByGroup": true,
+          "groupingId": "AG_TRT"
+        },
+        {
+          "order": 2,
+          "resultsByGroup": true,
+          "groupingId": "AG_ETHNIC"
+        }
+      ],
+      "dataset": "ADSL",
+      "variable": "USUBJID",
+      "referencedAnalysisOperations": [
+        {
+          "referencedOperationRelationshipId": "M_GRP_SUM_CATEG_2_PCT_NUM",
+          "analysisId": "A_SAF_SUM_USUBJID_TRT_ETHNIC"
+        },
+        {
+          "referencedOperationRelationshipId": "M_GRP_SUM_CATEG_2_PCT_DEN",
+          "analysisId": "A_SAF_SUM_USUBJID_TRT"
+        }
+      ],
+      "results": [
+        {
+          "operationId": "M_GRP_SUM_CATEG_1_N",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_1"
+            },
+            {
+              "groupingId": "AG_ETHNIC",
+              "groupId": "AG_ETHNIC_1"
+            }
+          ],
+          "rawValue": "3",
+          "formattedValue": "3"
+        },
+        {
+          "operationId": "M_GRP_SUM_CATEG_2_PCT",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_1"
+            },
+            {
+              "groupingId": "AG_ETHNIC",
+              "groupId": "AG_ETHNIC_1"
+            }
+          ],
+          "rawValue": "3.4884",
+          "formattedValue": "(3.5)"
+        },
+        {
+          "operationId": "M_GRP_SUM_CATEG_1_N",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_1"
+            },
+            {
+              "groupingId": "AG_ETHNIC",
+              "groupId": "AG_ETHNIC_2"
+            }
+          ],
+          "rawValue": "83",
+          "formattedValue": "83"
+        },
+        {
+          "operationId": "M_GRP_SUM_CATEG_2_PCT",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_1"
+            },
+            {
+              "groupingId": "AG_ETHNIC",
+              "groupId": "AG_ETHNIC_2"
+            }
+          ],
+          "rawValue": "96.5116",
+          "formattedValue": "(96.5)"
+        },
+        {
+          "operationId": "M_GRP_SUM_CATEG_1_N",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_2"
+            },
+            {
+              "groupingId": "AG_ETHNIC",
+              "groupId": "AG_ETHNIC_1"
+            }
+          ],
+          "rawValue": "6",
+          "formattedValue": "6"
+        },
+        {
+          "operationId": "M_GRP_SUM_CATEG_2_PCT",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_2"
+            },
+            {
+              "groupingId": "AG_ETHNIC",
+              "groupId": "AG_ETHNIC_1"
+            }
+          ],
+          "rawValue": "7.1429",
+          "formattedValue": "(7.1)"
+        },
+        {
+          "operationId": "M_GRP_SUM_CATEG_1_N",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_2"
+            },
+            {
+              "groupingId": "AG_ETHNIC",
+              "groupId": "AG_ETHNIC_2"
+            }
+          ],
+          "rawValue": "78",
+          "formattedValue": "78"
+        },
+        {
+          "operationId": "M_GRP_SUM_CATEG_2_PCT",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_2"
+            },
+            {
+              "groupingId": "AG_ETHNIC",
+              "groupId": "AG_ETHNIC_2"
+            }
+          ],
+          "rawValue": "92.8571",
+          "formattedValue": "(92.9)"
+        },
+        {
+          "operationId": "M_GRP_SUM_CATEG_1_N",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_3"
+            },
+            {
+              "groupingId": "AG_ETHNIC",
+              "groupId": "AG_ETHNIC_1"
+            }
+          ],
+          "rawValue": "3",
+          "formattedValue": "3"
+        },
+        {
+          "operationId": "M_GRP_SUM_CATEG_2_PCT",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_3"
+            },
+            {
+              "groupingId": "AG_ETHNIC",
+              "groupId": "AG_ETHNIC_1"
+            }
+          ],
+          "rawValue": "3.5714",
+          "formattedValue": "(3.6)"
+        },
+        {
+          "operationId": "M_GRP_SUM_CATEG_1_N",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_3"
+            },
+            {
+              "groupingId": "AG_ETHNIC",
+              "groupId": "AG_ETHNIC_2"
+            }
+          ],
+          "rawValue": "81",
+          "formattedValue": "81"
+        },
+        {
+          "operationId": "M_GRP_SUM_CATEG_2_PCT",
+          "resultGroups": [
+            {
+              "groupingId": "AG_TRT",
+              "groupId": "AG_TRT_3"
+            },
+            {
+              "groupingId": "AG_ETHNIC",
+              "groupId": "AG_ETHNIC_2"
+            }
+          ],
+          "rawValue": "96.4286",
+          "formattedValue": "(96.4)"
+        }
+      ]
+    }
+  ],
+  "methods": [
+    {
+      "name": "Count by group for a categorical variable",
+      "id": "M_GRP_CNT",
+      "operations": [
+        {
+          "name": "Count of subjects",
+          "id": "M_GRP_CNT_1_N",
+          "label": "n",
+          "resultPattern": "N = XXX"
+        }
+      ],
+      "label": "Grouped count for categorical variable",
+      "description": "Count across groups for a categorical variable, based on subject occurrence"
+    },
+    {
+      "name": "Summary by group of a categorical variable",
+      "id": "M_GRP_SUM_CATEG",
+      "operations": [
+        {
+          "name": "Count of subjects",
+          "id": "M_GRP_SUM_CATEG_1_N",
+          "label": "n",
+          "resultPattern": "n"
+        },
+        {
+          "name": "Percent of subjects",
+          "id": "M_GRP_SUM_CATEG_2_PCT",
+          "label": "%",
+          "referencedOperationRelationships": [
+            {
+              "id": "M_GRP_SUM_CATEG_2_PCT_NUM",
+              "referencedOperationRole": {
+                "controlledTerm": "NUMERATOR"
+              },
+              "operationId": "M_GRP_SUM_CATEG_1_N",
+              "description": "The count operation whose result provides the numerator for calculation of the percentage. The referenced analysis should be the analysis that contains this percent operation."
+            },
+            {
+              "id": "M_GRP_SUM_CATEG_2_PCT_DEN",
+              "referencedOperationRole": {
+                "controlledTerm": "DENOMINATOR"
+              },
+              "operationId": "M_GRP_CNT_1_N",
+              "description": "The count operation whose result provides the denominator for calculation of the percentage. The referenced analysis should have the same analysis set and subject grouping(s) as the analysis containing this percent operation."
+            }
+          ],
+          "resultPattern": "(%)"
+        }
+      ],
+      "label": "Grouped summary of categorical variable",
+      "description": "Descriptive summary statistics across groups for a categorical variable, based on subject occurrence",
+      "documentRefs": [
+        {
+          "referenceDocumentId": "CDISCPILOT01_SAP",
+          "pageRefs": [
+            {
+              "refType": "PhysicalRef",
+              "label": "7. GENERAL CONSIDERATIONS FOR DATA ANALYSES",
+              "pageNumbers": [
+                9
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Summary by group of a continuous variable",
+      "id": "M_GRP_SUM_CONTIN",
+      "operations": [
+        {
+          "name": "Mean",
+          "id": "M_GRP_SUM_CONTIN_1_MEAN",
+          "label": "Mean",
+          "resultPattern": "X.X"
+        },
+        {
+          "name": "Standard deviation",
+          "id": "M_GRP_SUM_CONTIN_2_SD",
+          "label": "SD",
+          "resultPattern": "(Y.Y)"
+        },
+        {
+          "name": "Median",
+          "id": "M_GRP_SUM_CONTIN_3_MEDIAN",
+          "label": "Median",
+          "resultPattern": "X.X"
+        },
+        {
+          "name": "Minimum",
+          "id": "M_GRP_SUM_CONTIN_4_MIN",
+          "label": "min",
+          "resultPattern": "Y.Y"
+        },
+        {
+          "name": "Maximum",
+          "id": "M_GRP_SUM_CONTIN_5_MAX",
+          "label": "max",
+          "resultPattern": "Z.Z"
+        }
+      ],
+      "label": "Grouped summary of continuous variable",
+      "description": "Descriptive summary statistics across groups for a continuous variable",
+      "documentRefs": [
+        {
+          "referenceDocumentId": "CDISCPILOT01_SAP",
+          "pageRefs": [
+            {
+              "refType": "PhysicalRef",
+              "label": "7. GENERAL CONSIDERATIONS FOR DATA ANALYSES",
+              "pageNumbers": [
+                9
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "outputs": [
+    {
+      "name": "Table 2. Baseline Demographic and Clinical Characteristics, Safety Population, Trial CDISCPILOT01",
+      "id": "O_T2",
+      "version": 1,
+      "fileSpecifications": [
+        {
+          "name": "t2-demog",
+          "fileType": {
+            "controlledTerm": "rtf"
+          },
+          "location": "."
+        },
+        {
+          "name": "t2-demog",
+          "fileType": {
+            "controlledTerm": "pdf"
+          },
+          "location": "."
+        }
+      ],
+      "displays": [
+        {
+          "order": 1,
+          "display": {
+            "name": "Table 2",
+            "id": "D_T2",
+            "version": 1,
+            "displayTitle": "Table 2. Baseline Demographic and Clinical Characteristics, Safety Population, Trial CDISCPILOT01",
+            "displaySections": [
+              {
+                "sectionType": "Title",
+                "orderedSubSections": [
+                  {
+                    "order": 1,
+                    "subSection": {
+                      "id": "D_T2_Title_1",
+                      "text": "Table 2. Baseline Demographic and Clinical Characteristics, Safety Population, Trial CDISCPILOT01"
+                    }
+                  }
+                ]
+              },
+              {
+                "sectionType": "Footnote",
+                "orderedSubSections": [
+                  {
+                    "order": 1,
+                    "subSection": {
+                      "id": "D_T2_Fnote_1",
+                      "text": "Source dataset: adsl, Generated on: DDMONYYYY:HH:MM"
+                    }
+                  }
+                ]
+              },
+              {
+                "sectionType": "Rowlabel Header",
+                "orderedSubSections": [
+                  {
+                    "order": 1,
+                    "subSection": {
+                      "id": "D_T2_RLbHd_1",
+                      "text": "Characteristic"
+                    }
+                  }
+                ]
+              },
+              {
+                "sectionType": "Abbreviation",
+                "orderedSubSections": [
+                  {
+                    "order": 1,
+                    "subSection": {
+                      "id": "D_T2_Abbrv_1",
+                      "text": "N, number of patients in treatment arm"
+                    }
+                  },
+                  {
+                    "order": 2,
+                    "subSection": {
+                      "id": "D_T2_Abbrv_2",
+                      "text": "n, number of patients with given characteristic"
+                    }
+                  },
+                  {
+                    "order": 3,
+                    "subSection": {
+                      "id": "D_T2_Abbrv_3",
+                      "text": "SD, standard deviation"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "documentRefs": [
+        {
+          "referenceDocumentId": "FDA-2022-N-1961-0046",
+          "pageRefs": [
+            {
+              "refType": "PhysicalRef",
+              "label": "Table 2",
+              "firstPage": 12,
+              "lastPage": 13
+            }
+          ]
+        }
+      ],
+      "programmingCode": {
+        "context": "SAS Version 9.4",
+        "documentRef": {
+          "referenceDocumentId": "TABLE2_SAS"
+        }
+      }
+    }
+  ],
+  "referenceDocuments": [
+    {
+      "name": "Statistical Analysis Plan",
+      "id": "CDISCPILOT01_SAP",
+      "location": "./sap.pdf"
+    },
+    {
+      "name": "Standard Safety Tables and Figures: Integrated Guide",
+      "id": "FDA-2022-N-1961-0046",
+      "location": "https://downloads.regulations.gov/FDA-2022-N-1961-0046/attachment_1.pdf"
+    },
+    {
+      "name": "table2.sas",
+      "id": "TABLE2_SAS",
+      "location": "./table2.sas"
+    }
+  ],
+  "@type": "ReportingEvent"
+}
