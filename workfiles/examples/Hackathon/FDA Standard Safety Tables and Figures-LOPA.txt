@@ -86,7 +86,7 @@
              2. ≥ 65 [ADSL.AGEGR2 EQ '65+']
           3. Age sub-groups [Results per group: Y]:
              1. ≥17 to <65 [ADSL.AGEGR3 EQ '17-<65']
-             2. ≥ 65 to < 75 [ADSL.AGEGR3 EQ '65-<75']
+             2. ≥ 65 to <75 [ADSL.AGEGR3 EQ '65-<75']
              3. ≥ 75 [ADSL.AGEGR3 EQ '75+']
         Analysis Variable: ADSL.USUBJID
         Method: Summary by group of a categorical variable
