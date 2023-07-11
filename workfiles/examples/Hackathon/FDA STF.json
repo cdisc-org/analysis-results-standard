@@ -26,12 +26,6 @@
                     "level": 3,
                     "order": 1,
                     "analysisId": "A_SAF_SUM_USUBJID_TRT_SEX"
-                  },
-                  {
-                    "name": "Comparison of Subjects by Treatment",
-                    "level": 3,
-                    "order": 2,
-                    "analysisId": "An03_03_Sex_Comp_ByTrt"
                   }
                 ]
               }
@@ -43,16 +37,10 @@
               "sublist": {
                 "listItems": [
                   {
-                    "name": "Summary by Treatment",
+                    "name": "Summary of Age by Treatment",
                     "level": 3,
                     "order": 1,
                     "analysisId": "A_SAF_SUM_AGE_TRT"
-                  },
-                  {
-                    "name": "Comparison by Treatment",
-                    "level": 3,
-                    "order": 2,
-                    "analysisId": "An03_01_Age_Comp_ByTrt"
                   }
                 ]
               }
@@ -68,12 +56,6 @@
                     "level": 3,
                     "order": 1,
                     "analysisId": "A_SAF_SUM_USUBJID_TRT_AGEGRP"
-                  },
-                  {
-                    "name": "Comparison of Subjects by Treatment",
-                    "level": 3,
-                    "order": 2,
-                    "analysisId": "An03_02_AgeGrp_Comp_ByTrt"
                   }
                 ]
               }
@@ -89,12 +71,6 @@
                     "level": 3,
                     "order": 1,
                     "analysisId": "A_SAF_SUM_USUBJID_TRT_RACE"
-                  },
-                  {
-                    "name": "Comparison of Subjects by Treatment",
-                    "level": 3,
-                    "order": 2,
-                    "analysisId": "An03_05_Race_Comp_ByTrt"
                   }
                 ]
               }
@@ -110,12 +86,6 @@
                     "level": 3,
                     "order": 1,
                     "analysisId": "A_SAF_SUM_USUBJID_TRT_ETHNIC"
-                  },
-                  {
-                    "name": "Comparison of Subjects by Treatment",
-                    "level": 3,
-                    "order": 2,
-                    "analysisId": "An03_04_Ethnic_Comp_ByTrt"
                   }
                 ]
               }
@@ -987,12 +957,12 @@
         {
           "order": 2,
           "resultsByGroup": true,
-          "groupingId": "AG_AGEGRP1"
+          "groupingId": "AG_AGEGR2"
         },
         {
           "order": 3,
           "resultsByGroup": true,
-          "groupingId": "AG_AGEGRP2"
+          "groupingId": "AG_AGEGR3"
         }
       ],
       "dataset": "ADSL",
