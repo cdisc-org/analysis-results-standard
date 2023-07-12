@@ -40,11 +40,11 @@ filename in url "http://127.0.0.1:8000/mdr/ars/reportingevents/FDASTF/" encoding
 *   - API running remotely with x-token authorization needed. The x-token must be   *
 *     in a text file in the format x-token:<token value>, with the text file being  *
 *     referenced via a fileref in a PROC HTTP call:                                 *
-filename headin "C:\CDISC\ars\ars-x-token.txt";
+filename headerin "C:\CDISC\ars\headerin.txt";
 filename in temp;
 proc http url="https://ars-hackathon-dev.azurewebsites.net/mdr/ars/reportingevents/CSD/"
 	method = "GET"
-	headerin=headin
+	headerin=headerin
 	out=in;
 run;
 *                                                                                   *
@@ -54,11 +54,11 @@ filename in "[CHANGE TO: Path to .json file]" encoding="utf-8";
 /**OR**/
 filename in url "[CHANGE TO: API reporting event request address]" encoding="utf-8" debug;
 /**OR**/
-filename headin "[CHANGE TO: Path to file containing x-token]";
+filename headerin "[CHANGE TO: Path to file containing x-token]";
 filename in temp encoding="utf-8";
 proc http url="https://ars-hackathon-dev.azurewebsites.net/mdr/ars/reportingevents/[CHANGE TO: Id of example reporting event (CSD or FDASTF)]/"
 	method = "GET"
-	headerin=headin
+	headerin=headerin
 	out=in;
 run;
 
