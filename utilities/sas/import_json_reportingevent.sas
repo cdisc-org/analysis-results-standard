@@ -26,18 +26,41 @@
 
 /***********************************************************************************\
 *  JSON content may be read using the JSON libname engine either from a file        *
-*  or directly from an API call.  In either case, this program expects the JSON     *
-*  content to represent a full, single reporting event.                             *
+*  or directly from an API call, where the API may be running remotely or locally.  *
+*  In either case, this program expects the JSON content to represent a full,       *
+*  single reporting event.                                                          *
 *  Examples:                                                                        *
 *                                                                                   *
+*   - File:                                                                         *
 filename in "C:\CDISC\analysis-results-standard-api\workfiles\examples\Hackathon\Common Safety Displays.json" encoding="utf-8";
-filename in url "http://127.0.0.1:8000/mdr/ars/reportingevents/0/" encoding="utf-8" debug;
+*                                                                                   *
+*   - API running locally (no authorization needed):                                *
+filename in url "http://127.0.0.1:8000/mdr/ars/reportingevents/FDASTF/" encoding="utf-8" debug;
+*                                                                                   *
+*   - API running remotely with x-token authorization needed. The x-token must be   *
+*     in a text file in the format x-token:<token value>, with the text file being  *
+*     referenced via a fileref in a PROC HTTP call:                                 *
+filename headin "C:\CDISC\ars\ars-x-token.txt";
+filename in temp;
+proc http url="https://ars-hackathon-dev.azurewebsites.net/mdr/ars/reportingevents/CSD/"
+	method = "GET"
+	headerin=headin
+	out=in;
+run;
 *                                                                                   *
 \***********************************************************************************/
 
 filename in "[CHANGE TO: Path to .json file]" encoding="utf-8";
 /**OR**/
 filename in url "[CHANGE TO: API reporting event request address]" encoding="utf-8" debug;
+/**OR**/
+filename headin "[CHANGE TO: Path to file containing x-token]";
+filename in temp encoding="utf-8";
+proc http url="https://ars-hackathon-dev.azurewebsites.net/mdr/ars/reportingevents/[CHANGE TO: Id of example reporting event (CSD or FDASTF)]/"
+	method = "GET"
+	headerin=headin
+	out=in;
+run;
 
 /***********************************************************************************\
 *  The JSON libname engine can use a configurable MAP file to locate dataset and    *
@@ -604,74 +627,86 @@ quit;
 
 %macro get_wc(wctype /* Where clause type: should be dataSubsets or analysisSets */);
 
-	data _tmp_&wctype.1 ;
-	set in.alldata (where = (p1 eq "&wctype"));
-	length _name_ $ 20;
-	retain dummydone 0;
-	array pvars {*} &pvars;
-	array ordvars {*} &ordvars;
-	do _i_ = p+1 to dim(ordvars);
-		ordvars{_i_} = .;
-	end;
-	select (pvars{p});
-		when("&wctype")
-			/* Create a set of dummy records to prespecify the transposed variable order */
-			do;
-				if not dummydone then
+	proc sql noprint;
+		select count(p) into : nwc
+		from in.alldata
+		where p1 eq "&wctype";
+	quit;
+
+	%if &nwc gt 0 %then
+		%do;
+
+			data _tmp_&wctype.1 ;
+			set in.alldata (where = (p1 eq "&wctype"));
+			length _name_ $ 20;
+			retain dummydone 0;
+			array pvars {*} &pvars;
+			array ordvars {*} &ordvars;
+			do _i_ = p+1 to dim(ordvars);
+				ordvars{_i_} = .;
+			end;
+			select (pvars{p});
+				when("&wctype")
+					/* Create a set of dummy records to prespecify the transposed variable order */
 					do;
-						dummydone+1;
-						do _name_ = 'id', 'label', 'level', 'order', 'logicalOperator', 'dataset',
-                                    'variable', 'comparator', 'value1', 'value2', 'value3';
-							output;
-						end;
+						if not dummydone then
+							do;
+								dummydone+1;
+								do _name_ = 'id', 'label', 'level', 'order', 'logicalOperator', 'dataset',
+		                                    'variable', 'comparator', 'value1', 'value2', 'value3';
+									output;
+								end;
+							end;
+						ordvars{p}+1;
 					end;
-				ordvars{p}+1;
+				when("condition", "compoundExpression", "value");
+				when("whereClauses") ordvars{p}+1;
+				otherwise
+					do;
+						_name_ = pvars{p};
+						output;
+					end;
 			end;
-		when("condition", "compoundExpression", "value");
-		when("whereClauses") ordvars{p}+1;
-		otherwise
-			do;
-				_name_ = pvars{p};
-				output;
-			end;
-	end;
-	run;
+			run;
+			
+			proc sort data = _tmp_&wctype.1;
+			by &ordvars;
+			run;
 
-	proc sort data = _tmp_&wctype.1;
-	by &ordvars;
-	run;
+			proc transpose data = _tmp_&wctype.1
+		                   out = _tmp_&wctype.2 (where = (level is not missing)
+		                                         drop = &ordvars _name_);
+			by &ordvars;
+			id _name_;
+			var Value;
+			run;
 
-	proc transpose data = _tmp_&wctype.1
-                   out = _tmp_&wctype.2 (where = (level is not missing)
-                                         drop = &ordvars _name_);
-	by &ordvars;
-	id _name_;
-	var Value;
-	run;
+			/* Add id and label to all records for the same WhereClause and create a concatenated list of values */
 
-	/* Add id and label to all records for the same WhereClause and create a concatenated list of values */
+			data &wctype (rename = (logicalOperator = compndExpression_logicalOperator
+		                            dataset = condition_dataset
+		                            variable = condition_variable
+									comparator = condition_comparator
+		                            vlist = condition_value));
+			set _tmp_&wctype.2;
+			retain ret_id ret_lbl;
+			array vals {*} value:;
+			vlist = catx(" | ",of vals{*});
+			if id ne '' then
+				do;
+					ret_id = id;
+					ret_lbl = label;
+				end;
+			else
+				do;
+					id = ret_id;
+					label = ret_lbl;
+				end;
+			drop value: ret_:;
+			run;
+		%end;
 
-	data &wctype (rename = (logicalOperator = compndExpression_logicalOperator
-                            dataset = condition_dataset
-                            variable = condition_variable
-							comparator = condition_comparator
-                            vlist = condition_value));
-	set _tmp_&wctype.2;
-	retain ret_id ret_lbl;
-	array vals {*} value:;
-	vlist = catx(" | ",of vals{*});
-	if id ne '' then
-		do;
-			ret_id = id;
-			ret_lbl = label;
-		end;
-	else
-		do;
-			id = ret_id;
-			label = ret_lbl;
-		end;
-	drop value: ret_:;
-	run;
+	%else %PUT NOTE: No &wctype records found.;
 
 %mend get_wc;
 
@@ -700,99 +735,111 @@ quit;
 * is copied onto every row for the grouping.                                        *
 \***********************************************************************************/
 
-/* The GET_WC macro flattens and transposes grouping, group and where clause
+/* The GET_GROUPING macro flattens and transposes grouping, group and where clause
    information from the ALLDATA dataset and then copies id, label, groupingVariable
    and dataDriven to all rows for the grouping, and group_id and group_label to all
    rows for the group */
 
 %macro get_grouping(grptype /* Groupings type: should be analysisGroupings or dataGroupings */);
 
-	data _tmp_&grptype.1 ;
-	set in.alldata (where = (p1 eq "&grptype"));
-	length _name_ $ 20;
-	retain dummydone 0;
-	array pvars {*} &pvars;
-	array ordvars {*} &ordvars;
-	do _i_ = p+1 to dim(ordvars);
-		ordvars{_i_} = .;
-	end;
-	select (pvars{p});
-		when("&grptype")
-			/* Create a set of dummy records to prespecify the transposed variable order */
-			do;
-				if not dummydone then
+	proc sql noprint;
+		select count(p) into : ngrp
+		from in.alldata
+		where p1 eq "&grptype";
+	quit;
+
+	%if &ngrp gt 0 %then
+		%do;
+
+			data _tmp_&grptype.1 ;
+			set in.alldata (where = (p1 eq "&grptype"));
+			length _name_ $ 20;
+			retain dummydone 0;
+			array pvars {*} &pvars;
+			array ordvars {*} &ordvars;
+			do _i_ = p+1 to dim(ordvars);
+				ordvars{_i_} = .;
+			end;
+			select (pvars{p});
+				when("&grptype")
+					/* Create a set of dummy records to prespecify the transposed variable order */
 					do;
-						dummydone = 1;
-						do _name_ = 'id', 'label', 'level', 'order', 'logicalOperator', 'dataset',
-                                    'variable', 'comparator', 'value1', 'value2', 'value3';
-							output;
-						end;
+						if not dummydone then
+							do;
+								dummydone = 1;
+								do _name_ = 'id', 'label', 'level', 'order', 'logicalOperator', 'dataset',
+		                                    'variable', 'comparator', 'value1', 'value2', 'value3';
+									output;
+								end;
+							end;
+						ordvars{p}+1;
 					end;
-				ordvars{p}+1;
+				when("condition", "compoundExpression", "value");
+				when("groups", "whereClauses") ordvars{p}+1;
+				otherwise
+					do;
+						_name_ = pvars{p};
+						output;
+					end;
 			end;
-		when("condition", "compoundExpression", "value");
-		when("groups", "whereClauses") ordvars{p}+1;
-		otherwise
-			do;
-				_name_ = pvars{p};
-				output;
-			end;
-	end;
-	run;
+			run;
 
-	proc sort data = _tmp_&grptype.1;
-	by &ordvars;
-	run;
+			proc sort data = _tmp_&grptype.1;
+			by &ordvars;
+			run;
 
-	proc transpose data = _tmp_&grptype.1
-                   out = _tmp_&grptype.2 (where = (n(%sysfunc(translate(&ordvars,%str(,),%str( )))) gt 0)
-                                         drop = _name_);
-	by &ordvars;
-	id _name_;
-	var Value;
-	run;
+			proc transpose data = _tmp_&grptype.1
+		                   out = _tmp_&grptype.2 (where = (n(%sysfunc(translate(&ordvars,%str(,),%str( )))) gt 0)
+		                                         drop = _name_);
+			by &ordvars;
+			id _name_;
+			var Value;
+			run;
 
-	/* Add id, label, groupingVariable and dataDriven to all records for the same grouping,
-	   add group_id and group_label to all reacords for the same group and create a concatenated
-	   list of values */
+			/* Add id, label, groupingVariable and dataDriven to all records for the same grouping,
+			   add group_id and group_label to all reacords for the same group and create a concatenated
+			   list of values */
 
-	data _tmp_&grptype.3 (rename = (vlist = condition_value));
-	retain id label groupingVariable dataDriven ret_id ret_lbl;
-	set _tmp_&grptype.2 (rename = (groupingVariable = gv
-                                  dataDriven = dd
-                                  id = group_id
-                                  label = group_label
-                                  level = group_level
-                                  logicalOperator = group_logicalOperator
-                                  dataset = group_condition_dataset
-                                  variable = group_condition_variable
-                                  comparator = group_condition_comparator));
-	by &ordvars;
-	array vals {*} value:;
-	vlist = catx(" | ",of vals{*});
-	if first.op1 then
-		do;
-			id = group_id;
-			label = group_label;
-			groupingVariable = gv;
-			dataDriven = upcase(dd);
-			if not last.op1 then delete; /* Delete the grouping record unless it's the only */
-		end;                             /* record for the grouping (data-driven groupings  */
-	else                                 /* have no prespecified groups)                    */
-		do;
-			if id ne '' then
+			data _tmp_&grptype.3 (rename = (vlist = condition_value));
+			retain id label groupingVariable dataDriven ret_id ret_lbl;
+			set _tmp_&grptype.2 (rename = (groupingVariable = gv
+		                                  dataDriven = dd
+		                                  id = group_id
+		                                  label = group_label
+		                                  level = group_level
+		                                  logicalOperator = group_logicalOperator
+		                                  dataset = group_condition_dataset
+		                                  variable = group_condition_variable
+		                                  comparator = group_condition_comparator));
+			by &ordvars;
+			array vals {*} value:;
+			vlist = catx(" | ",of vals{*});
+			if first.op1 then
 				do;
-					ret_id = id;
-					ret_lbl = label;
-				end;
-			else
+					id = group_id;
+					label = group_label;
+					groupingVariable = gv;
+					dataDriven = upcase(dd);
+					if not last.op1 then delete; /* Delete the grouping record unless it's the only */
+				end;                             /* record for the grouping (data-driven groupings  */
+			else                                 /* have no prespecified groups)                    */
 				do;
-					id = ret_id;
-					label = ret_lbl;
+					if id ne '' then
+						do;
+							ret_id = id;
+							ret_lbl = label;
+						end;
+					else
+						do;
+							id = ret_id;
+							label = ret_lbl;
+						end;
 				end;
-		end;
-	drop &ordvars value: ret_: gv dd;
-	run;
+			drop &ordvars value: ret_: gv dd;
+			run;
+		%end;
+
+	%else %PUT NOTE: No &grptype records found.;
 
 %mend get_grouping;
 
@@ -802,13 +849,50 @@ quit;
 /* Combine subject-based analysisGroupings and records-based dataGroupings to create
    a single dataset and assign grouping_type */
 
-data AnalysisGroupings;
-length grouping_type $ 7;
-set _tmp_analysisGroupings3 (in = ina)
-	_tmp_dataGroupings3;
-if ina then grouping_type = 'Subject';
-else grouping_type = 'Data';
-run;
+%macro make_agds;
+
+	%if %sysfunc(exist(_tmp_analysisGroupings3)) or %sysfunc(exist(_tmp_dataGroupings3)) %then
+		%do;
+
+			%if %sysfunc(exist(_tmp_analysisGroupings3)) and %sysfunc(exist(_tmp_dataGroupings3)) %then
+				%do;
+
+					data AnalysisGroupings;
+					length grouping_type $ 7;
+					set _tmp_analysisGroupings3 (in = ina)
+						_tmp_dataGroupings3;
+					if ina then grouping_type = 'Subject';
+					else grouping_type = 'Data';
+					run;
+
+				%end;
+			%else %if %sysfunc(exist(_tmp_analysisGroupings3)) %then
+				%do;
+
+					data AnalysisGroupings;
+					length grouping_type $ 7;
+					set _tmp_analysisGroupings3 ;
+					grouping_type = 'Subject';
+					run;
+
+				%end;
+			%else
+				%do;
+
+					data AnalysisGroupings;
+					length grouping_type $ 7;
+					set _tmp_dataGroupings3;
+					grouping_type = 'Data';
+					run;
+
+				%end;
+
+		%end;
+	%else %put NOTE: No groupings were specified in the reporting event so the AnalysisGroupings dataset has not been created.;
+
+%mend make_agds;
+
+%make_agds
 
 /***********************************************************************************\
 * Dataset/sheet: Analyses                                                           *
