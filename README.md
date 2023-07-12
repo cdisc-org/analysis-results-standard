@@ -46,6 +46,10 @@ The goals of CDISC Analysis Results Standards team is to develop:
 
 The documentation of the model is made available at: https://cdisc-org.github.io/analysis-results-standard/
 
+## Reference CDISC Pilot Study Material
+
+The study documents and datasets referenced/utilized by the ARS development team is available at: https://github.com/cdisc-org/sdtm-adam-pilot-project 
+
 ## Contribution
 
 Project Contact: 
