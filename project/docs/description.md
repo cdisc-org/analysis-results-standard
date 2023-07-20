@@ -18,13 +18,13 @@ URI: [ars:description](https://www.cdisc.org/ars/1-0/description)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-[Analysis](Analysis.md) | An analysis that is designed to meet a requirement of the reporting event |  no  |
+[SponsorTerm](SponsorTerm.md) | A sponsor-defined term that is included in an extensible set of controlled te... |  no  |
 [AnalysisMethod](AnalysisMethod.md) | A set of one or more statistical operations |  no  |
 [ReferencedOperationRelationship](ReferencedOperationRelationship.md) | A reference to a statistical operation whose results are used in the calculat... |  no  |
 [CodeParameter](CodeParameter.md) | A replacement parameter whose value is substituted in template programming co... |  no  |
-[SponsorTerm](SponsorTerm.md) | A sponsor-defined term that is included in an extensible set of controlled te... |  no  |
-[AnalysisOutputCodeParameter](AnalysisOutputCodeParameter.md) | A parameter whose value is used in programming code for a specific analysis o... |  no  |
+[Analysis](Analysis.md) | An analysis that is designed to meet a requirement of the reporting event |  no  |
 [TemplateCodeParameter](TemplateCodeParameter.md) | A replacement parameter whose value is substituted in template programming co... |  no  |
+[AnalysisOutputCodeParameter](AnalysisOutputCodeParameter.md) | A parameter whose value is used in programming code for a specific analysis o... |  no  |
 
 
 
@@ -66,11 +66,11 @@ from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 alias: description
 domain_of:
-- Analysis
+- SponsorTerm
 - AnalysisMethod
 - ReferencedOperationRelationship
 - CodeParameter
-- SponsorTerm
+- Analysis
 range: string
 
 ```

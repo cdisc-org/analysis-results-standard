@@ -1,8 +1,6 @@
 # Class: WhereClauseCompoundExpression
 
-
 _A compound expression consisting of either two or more where clauses combined with the `AND` or `OR` logical operator, or a single where clause negated with the `NOT` logical operator._
-
 
 
 
@@ -16,18 +14,13 @@ URI: [ars:WhereClauseCompoundExpression](https://www.cdisc.org/ars/1-0/WhereClau
  classDiagram
     class WhereClauseCompoundExpression
       WhereClauseCompoundExpression <|-- CompoundSetExpression
-      WhereClauseCompoundExpression <|-- CompoundGroupExpression
       WhereClauseCompoundExpression <|-- CompoundSubsetExpression
-      
-      WhereClauseCompoundExpression : logicalOperator
+      WhereClauseCompoundExpression <|-- CompoundGroupExpression
+      WhereClauseCompoundExpression : logicalOperator        
+        WhereClauseCompoundExpression --|> ExpressionLogicalOperatorEnum : logicalOperator
+        WhereClauseCompoundExpression : whereClauses        
+        WhereClauseCompoundExpression --|> WhereClause : whereClauses
         
-          WhereClauseCompoundExpression --|> ExpressionLogicalOperatorEnum : logicalOperator
-        
-      WhereClauseCompoundExpression : whereClauses
-        
-          WhereClauseCompoundExpression --|> WhereClause : whereClauses
-        
-      
 ```
 
 
@@ -36,18 +29,19 @@ URI: [ars:WhereClauseCompoundExpression](https://www.cdisc.org/ars/1-0/WhereClau
 ## Inheritance
 * **WhereClauseCompoundExpression**
     * [CompoundSetExpression](CompoundSetExpression.md)
-    * [CompoundGroupExpression](CompoundGroupExpression.md)
     * [CompoundSubsetExpression](CompoundSubsetExpression.md)
+    * [CompoundGroupExpression](CompoundGroupExpression.md)
 
 
 
 ## Slots
 
-| Name | Cardinality and Range | Description | Inheritance |
+| Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [logicalOperator](logicalOperator.md) | 1..1 <br/> [ExpressionLogicalOperatorEnum](ExpressionLogicalOperatorEnum.md) | The boolean operator that is used to combine (AND, OR) or negate (NOT) the wh... | direct |
 | [whereClauses](whereClauses.md) | 0..* <br/> [WhereClause](WhereClause.md) | A list of one or more where clauses (selection criteria) to be combined or ne... | direct |
 
+_* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
 
 

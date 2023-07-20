@@ -1,8 +1,6 @@
 # Class: OutputFile
 
-
 _A file containing analysis output displays._
-
 
 
 
@@ -16,18 +14,13 @@ URI: [ars:OutputFile](https://www.cdisc.org/ars/1-0/OutputFile)
  classDiagram
     class OutputFile
       NamedObject <|-- OutputFile
-      
+
       OutputFile : fileType
+        OutputFile --|> ExtensibleTerminologyTerm : fileType
+        OutputFile : location
+        OutputFile : style
+        OutputFile : name
         
-          OutputFile --|> ExtensibleTerminologyTerm : fileType
-        
-      OutputFile : location
-        
-      OutputFile : name
-        
-      OutputFile : style
-        
-      
 ```
 
 
@@ -41,13 +34,14 @@ URI: [ars:OutputFile](https://www.cdisc.org/ars/1-0/OutputFile)
 
 ## Slots
 
-| Name | Cardinality and Range | Description | Inheritance |
+| Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [fileType](fileType.md) | 0..1 <br/> [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) | The format of the output file | direct |
 | [location](location.md) | 0..1 <br/> [Uri](Uri.md) | A path (relative or absolute) indicating the location of the file | direct |
 | [style](style.md) | 0..1 <br/> [String](String.md) | Reference to the specification of the style used for the output | direct |
 | [name](name.md) | 1..1 <br/> [String](String.md) | The name for the instance of the class | [NamedObject](NamedObject.md) |
 
+_* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
 
 
@@ -143,8 +137,8 @@ attributes:
     alias: location
     owner: OutputFile
     domain_of:
-    - OutputFile
     - ReferenceDocument
+    - OutputFile
     range: uri
   style:
     name: style

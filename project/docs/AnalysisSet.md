@@ -1,8 +1,6 @@
 # Class: AnalysisSet
 
-
 _A set of subjects whose data are to be included in the main analyses. This should be defined in the statistical section of the protocol. NOTE: There are a number of potential analysis sets, including, for example, the set based upon the intent-to-treat principle. [ICH E9]_
-
 
 
 
@@ -16,24 +14,16 @@ URI: [ars:AnalysisSet](https://www.cdisc.org/ars/1-0/AnalysisSet)
  classDiagram
     class AnalysisSet
       WhereClause <|-- AnalysisSet
-      
-      AnalysisSet : compoundExpression
-        
-          AnalysisSet --|> CompoundSetExpression : compoundExpression
-        
-      AnalysisSet : condition
-        
-          AnalysisSet --|> WhereClauseCondition : condition
-        
+
       AnalysisSet : id
+        AnalysisSet : label
+        AnalysisSet : level
+        AnalysisSet : order
+        AnalysisSet : condition
+        AnalysisSet --|> WhereClauseCondition : condition
+        AnalysisSet : compoundExpression
+        AnalysisSet --|> CompoundSetExpression : compoundExpression
         
-      AnalysisSet : label
-        
-      AnalysisSet : level
-        
-      AnalysisSet : order
-        
-      
 ```
 
 
@@ -47,7 +37,7 @@ URI: [ars:AnalysisSet](https://www.cdisc.org/ars/1-0/AnalysisSet)
 
 ## Slots
 
-| Name | Cardinality and Range | Description | Inheritance |
+| Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [id](id.md) | 1..1 <br/> [String](String.md) | The assigned identifying value for the instance of the class | direct |
 | [label](label.md) | 0..1 <br/> [String](String.md) | A short informative description that may be used for display | direct |
@@ -56,6 +46,7 @@ URI: [ars:AnalysisSet](https://www.cdisc.org/ars/1-0/AnalysisSet)
 | [condition](condition.md) | 0..1 <br/> [WhereClauseCondition](WhereClauseCondition.md) | A simple selection criterion exressed as [dataset] | [WhereClause](WhereClause.md) |
 | [compoundExpression](compoundExpression.md) | 0..1 <br/> [CompoundSetExpression](CompoundSetExpression.md) | A compound expression that combines or negates where clauses | [WhereClause](WhereClause.md) |
 
+_* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
 
 
@@ -65,8 +56,8 @@ URI: [ars:AnalysisSet](https://www.cdisc.org/ars/1-0/AnalysisSet)
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
 | [ReportingEvent](ReportingEvent.md) | [analysisSets](analysisSets.md) | range | [AnalysisSet](AnalysisSet.md) |
-| [Analysis](Analysis.md) | [analysisSetId](analysisSetId.md) | range | [AnalysisSet](AnalysisSet.md) |
 | [CompoundSetExpression](CompoundSetExpression.md) | [whereClauses](whereClauses.md) | range | [AnalysisSet](AnalysisSet.md) |
+| [Analysis](Analysis.md) | [analysisSetId](analysisSetId.md) | range | [AnalysisSet](AnalysisSet.md) |
 
 
 
@@ -159,22 +150,22 @@ attributes:
     owner: AnalysisSet
     domain_of:
     - ReportingEvent
-    - AnalysisCategorization
-    - AnalysisCategory
-    - Analysis
-    - AnalysisMethod
-    - Operation
-    - ReferencedOperationRelationship
-    - Output
-    - OutputDisplay
-    - DisplaySubSection
-    - AnalysisSet
-    - GroupingFactor
-    - Group
-    - DataSubset
     - ReferenceDocument
     - TerminologyExtension
     - SponsorTerm
+    - AnalysisCategorization
+    - AnalysisCategory
+    - AnalysisSet
+    - DataSubset
+    - GroupingFactor
+    - Group
+    - AnalysisMethod
+    - Operation
+    - ReferencedOperationRelationship
+    - Analysis
+    - DisplaySubSection
+    - Output
+    - OutputDisplay
     range: string
     required: true
   label:
@@ -187,13 +178,13 @@ attributes:
     domain_of:
     - AnalysisCategorization
     - AnalysisCategory
-    - AnalysisMethod
-    - Operation
     - AnalysisSet
+    - DataSubset
     - GroupingFactor
     - Group
-    - DataSubset
+    - AnalysisMethod
     - PageRef
+    - Operation
     range: string
   level:
     name: level
@@ -217,10 +208,10 @@ attributes:
     owner: AnalysisSet
     domain_of:
     - OrderedListItem
+    - WhereClause
     - OrderedGroupingFactor
     - OrderedDisplay
     - OrderedDisplaySubSection
-    - WhereClause
     range: integer
   condition:
     name: condition

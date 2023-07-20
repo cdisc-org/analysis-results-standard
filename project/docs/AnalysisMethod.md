@@ -1,8 +1,6 @@
 # Class: AnalysisMethod
 
-
 _A set of one or more statistical operations._
-
 
 
 
@@ -16,28 +14,18 @@ URI: [ars:AnalysisMethod](https://www.cdisc.org/ars/1-0/AnalysisMethod)
  classDiagram
     class AnalysisMethod
       NamedObject <|-- AnalysisMethod
-      
-      AnalysisMethod : codeTemplate
-        
-          AnalysisMethod --|> AnalysisProgrammingCodeTemplate : codeTemplate
-        
-      AnalysisMethod : description
-        
-      AnalysisMethod : documentRefs
-        
-          AnalysisMethod --|> DocumentReference : documentRefs
-        
+
       AnalysisMethod : id
+        AnalysisMethod : label
+        AnalysisMethod : description
+        AnalysisMethod : documentRefs
+        AnalysisMethod --|> DocumentReference : documentRefs
+        AnalysisMethod : operations
+        AnalysisMethod --|> Operation : operations
+        AnalysisMethod : codeTemplate
+        AnalysisMethod --|> AnalysisProgrammingCodeTemplate : codeTemplate
+        AnalysisMethod : name
         
-      AnalysisMethod : label
-        
-      AnalysisMethod : name
-        
-      AnalysisMethod : operations
-        
-          AnalysisMethod --|> Operation : operations
-        
-      
 ```
 
 
@@ -51,16 +39,17 @@ URI: [ars:AnalysisMethod](https://www.cdisc.org/ars/1-0/AnalysisMethod)
 
 ## Slots
 
-| Name | Cardinality and Range | Description | Inheritance |
+| Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [id](id.md) | 1..1 <br/> [String](String.md) | The assigned identifying value for the instance of the class | direct |
 | [label](label.md) | 0..1 <br/> [String](String.md) | A short informative description that may be used for display | direct |
 | [description](description.md) | 0..1 <br/> [String](String.md) | A textual description of the instance of the class | direct |
-| [operations](operations.md) | 1..* <br/> [Operation](Operation.md) | The calculations performed for the method | direct |
 | [documentRefs](documentRefs.md) | 0..* <br/> [DocumentReference](DocumentReference.md) | References to external documents containing additional information | direct |
+| [operations](operations.md) | 1..* <br/> [Operation](Operation.md) | The calculations performed for the method | direct |
 | [codeTemplate](codeTemplate.md) | 0..1 <br/> [AnalysisProgrammingCodeTemplate](AnalysisProgrammingCodeTemplate.md) | Template programming statements used to perform the statistical operations fo... | direct |
 | [name](name.md) | 1..1 <br/> [String](String.md) | The name for the instance of the class | [NamedObject](NamedObject.md) |
 
+_* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
 
 
@@ -122,8 +111,8 @@ slots:
 - id
 - label
 - description
-- operations
 - documentRefs
+- operations
 - codeTemplate
 
 ```
@@ -149,22 +138,22 @@ attributes:
     owner: AnalysisMethod
     domain_of:
     - ReportingEvent
-    - AnalysisCategorization
-    - AnalysisCategory
-    - Analysis
-    - AnalysisMethod
-    - Operation
-    - ReferencedOperationRelationship
-    - Output
-    - OutputDisplay
-    - DisplaySubSection
-    - AnalysisSet
-    - GroupingFactor
-    - Group
-    - DataSubset
     - ReferenceDocument
     - TerminologyExtension
     - SponsorTerm
+    - AnalysisCategorization
+    - AnalysisCategory
+    - AnalysisSet
+    - DataSubset
+    - GroupingFactor
+    - Group
+    - AnalysisMethod
+    - Operation
+    - ReferencedOperationRelationship
+    - Analysis
+    - DisplaySubSection
+    - Output
+    - OutputDisplay
     range: string
     required: true
   label:
@@ -177,13 +166,13 @@ attributes:
     domain_of:
     - AnalysisCategorization
     - AnalysisCategory
-    - AnalysisMethod
-    - Operation
     - AnalysisSet
+    - DataSubset
     - GroupingFactor
     - Group
-    - DataSubset
+    - AnalysisMethod
     - PageRef
+    - Operation
     range: string
   description:
     name: description
@@ -193,12 +182,27 @@ attributes:
     alias: description
     owner: AnalysisMethod
     domain_of:
-    - Analysis
+    - SponsorTerm
     - AnalysisMethod
     - ReferencedOperationRelationship
     - CodeParameter
-    - SponsorTerm
+    - Analysis
     range: string
+  documentRefs:
+    name: documentRefs
+    description: References to external documents containing additional information.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    multivalued: true
+    alias: documentRefs
+    owner: AnalysisMethod
+    domain_of:
+    - AnalysisMethod
+    - Analysis
+    - Output
+    range: DocumentReference
+    inlined: true
+    inlined_as_list: true
   operations:
     name: operations
     description: The calculations performed for the method. Each operation generates
@@ -212,21 +216,6 @@ attributes:
     - AnalysisMethod
     range: Operation
     required: true
-    inlined: true
-    inlined_as_list: true
-  documentRefs:
-    name: documentRefs
-    description: References to external documents containing additional information.
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    multivalued: true
-    alias: documentRefs
-    owner: AnalysisMethod
-    domain_of:
-    - Analysis
-    - AnalysisMethod
-    - Output
-    range: DocumentReference
     inlined: true
     inlined_as_list: true
   codeTemplate:

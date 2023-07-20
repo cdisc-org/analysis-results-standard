@@ -1,13 +1,9 @@
 # Class: PageRef
 
-
 _A reference to a specific part of a document as indicated by a list of one or more page numbers, a range of page numbers, or a list of named destinations in the document (e.g. bookmarks)._
 
 
-
-
 * __NOTE__: this is an abstract class and should not be instantiated directly
-
 
 URI: [ars:PageRef](https://www.cdisc.org/ars/1-0/PageRef)
 
@@ -20,22 +16,14 @@ URI: [ars:PageRef](https://www.cdisc.org/ars/1-0/PageRef)
       PageRef <|-- PageNumberListRef
       PageRef <|-- PageNumberRangeRef
       PageRef <|-- PageNameRef
-      
-      PageRef : firstPage
+      PageRef : refType        
+        PageRef --|> PageRefTypeEnum : refType
+        PageRef : label        
+        PageRef : pageNames        
+        PageRef : pageNumbers        
+        PageRef : firstPage        
+        PageRef : lastPage        
         
-      PageRef : label
-        
-      PageRef : lastPage
-        
-      PageRef : pageNames
-        
-      PageRef : pageNumbers
-        
-      PageRef : refType
-        
-          PageRef --|> PageRefTypeEnum : refType
-        
-      
 ```
 
 
@@ -51,7 +39,7 @@ URI: [ars:PageRef](https://www.cdisc.org/ars/1-0/PageRef)
 
 ## Slots
 
-| Name | Cardinality and Range | Description | Inheritance |
+| Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [refType](refType.md) | 1..1 <br/> [PageRefTypeEnum](PageRefTypeEnum.md) | The type of reference for page references | direct |
 | [label](label.md) | 0..1 <br/> [String](String.md) | Alternative label to provide a more specific and description to a page link | direct |
@@ -60,6 +48,7 @@ URI: [ars:PageRef](https://www.cdisc.org/ars/1-0/PageRef)
 | [firstPage](firstPage.md) | 0..1 <br/> [Integer](Integer.md) | The page number of the first page in a range of pages | direct |
 | [lastPage](lastPage.md) | 0..1 <br/> [Integer](Integer.md) | The page number of the last page in a range of pages | direct |
 
+_* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
 
 
@@ -144,13 +133,13 @@ slot_usage:
     domain_of:
     - AnalysisCategorization
     - AnalysisCategory
-    - AnalysisMethod
-    - Operation
     - AnalysisSet
+    - DataSubset
     - GroupingFactor
     - Group
-    - DataSubset
+    - AnalysisMethod
     - PageRef
+    - Operation
 
 ```
 </details>
@@ -177,13 +166,13 @@ slot_usage:
     domain_of:
     - AnalysisCategorization
     - AnalysisCategory
-    - AnalysisMethod
-    - Operation
     - AnalysisSet
+    - DataSubset
     - GroupingFactor
     - Group
-    - DataSubset
+    - AnalysisMethod
     - PageRef
+    - Operation
 attributes:
   refType:
     name: refType
@@ -207,13 +196,13 @@ attributes:
     domain_of:
     - AnalysisCategorization
     - AnalysisCategory
-    - AnalysisMethod
-    - Operation
     - AnalysisSet
+    - DataSubset
     - GroupingFactor
     - Group
-    - DataSubset
+    - AnalysisMethod
     - PageRef
+    - Operation
     range: string
   pageNames:
     name: pageNames

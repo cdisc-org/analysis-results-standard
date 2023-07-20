@@ -1,8 +1,6 @@
 # Class: SponsorOutputFileType
 
-
 _The sponsor-defined file format of the file containing output from analyses._
-
 
 
 
@@ -16,14 +14,11 @@ URI: [ars:SponsorOutputFileType](https://www.cdisc.org/ars/1-0/SponsorOutputFile
  classDiagram
     class SponsorOutputFileType
       ExtensibleTerminologyTerm <|-- SponsorOutputFileType
-      
+
       SponsorOutputFileType : controlledTerm
+        SponsorOutputFileType : sponsorTermId
+        SponsorOutputFileType --|> SponsorTerm : sponsorTermId
         
-      SponsorOutputFileType : sponsorTermId
-        
-          SponsorOutputFileType --|> SponsorTerm : sponsorTermId
-        
-      
 ```
 
 
@@ -37,11 +32,12 @@ URI: [ars:SponsorOutputFileType](https://www.cdisc.org/ars/1-0/SponsorOutputFile
 
 ## Slots
 
-| Name | Cardinality and Range | Description | Inheritance |
+| Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [controlledTerm](controlledTerm.md) | 0..1 <br/> [String](String.md) | NOT USED | [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) |
 | [sponsorTermId](sponsorTermId.md) | 1..1 <br/> [SponsorTerm](SponsorTerm.md) | A reference to a sponsor term in the TerminologyExtension with enumeration=Ou... | [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) |
 
+_* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
 
 

@@ -1,8 +1,6 @@
 # Class: AnalysisProgrammingCodeTemplate
 
-
 _Programming statements and/or a reference to a used as a template for creation of a program to perform method operations for a specific analysis._
-
 
 
 
@@ -16,20 +14,13 @@ URI: [ars:AnalysisProgrammingCodeTemplate](https://www.cdisc.org/ars/1-0/Analysi
  classDiagram
     class AnalysisProgrammingCodeTemplate
       AnalysisProgrammingCodeTemplate : code
+        AnalysisProgrammingCodeTemplate : context
+        AnalysisProgrammingCodeTemplate : documentRef
+        AnalysisProgrammingCodeTemplate --|> DocumentReference : documentRef
+        AnalysisProgrammingCodeTemplate : parameters
+        AnalysisProgrammingCodeTemplate --|> TemplateCodeParameter : parameters
         
-      AnalysisProgrammingCodeTemplate : context
-        
-      AnalysisProgrammingCodeTemplate : documentRef
-        
-          AnalysisProgrammingCodeTemplate --|> DocumentReference : documentRef
-        
-      AnalysisProgrammingCodeTemplate : parameters
-        
-          AnalysisProgrammingCodeTemplate --|> TemplateCodeParameter : parameters
-        
-      
 ```
-
 
 
 <!-- no inheritance hierarchy -->
@@ -37,13 +28,14 @@ URI: [ars:AnalysisProgrammingCodeTemplate](https://www.cdisc.org/ars/1-0/Analysi
 
 ## Slots
 
-| Name | Cardinality and Range | Description | Inheritance |
+| Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [context](context.md) | 1..1 <br/> [String](String.md) | The name and version of the computer language used for the actual programming... | direct |
 | [code](code.md) | 0..1 <br/> [String](String.md) | Programming statements used to perform the specific analysis | direct |
 | [documentRef](documentRef.md) | 0..1 <br/> [DocumentReference](DocumentReference.md) | A reference to the document containing programming code | direct |
 | [parameters](parameters.md) | 0..* <br/> [TemplateCodeParameter](TemplateCodeParameter.md) | Parameters whose values will be used to generate or execute the programming c... | direct |
 
+_* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
 
 
@@ -111,8 +103,8 @@ slot_usage:
     description: Parameters whose values will be used to generate or execute the programming
       code for a specific analysis.
     domain_of:
-    - AnalysisOutputProgrammingCode
     - AnalysisProgrammingCodeTemplate
+    - AnalysisOutputProgrammingCode
     range: TemplateCodeParameter
 
 ```
@@ -133,8 +125,8 @@ slot_usage:
     description: Parameters whose values will be used to generate or execute the programming
       code for a specific analysis.
     domain_of:
-    - AnalysisOutputProgrammingCode
     - AnalysisProgrammingCodeTemplate
+    - AnalysisOutputProgrammingCode
     range: TemplateCodeParameter
 attributes:
   context:
@@ -148,8 +140,8 @@ attributes:
     alias: context
     owner: AnalysisProgrammingCodeTemplate
     domain_of:
-    - AnalysisOutputProgrammingCode
     - AnalysisProgrammingCodeTemplate
+    - AnalysisOutputProgrammingCode
     range: string
     required: true
   code:
@@ -160,8 +152,8 @@ attributes:
     alias: code
     owner: AnalysisProgrammingCodeTemplate
     domain_of:
-    - AnalysisOutputProgrammingCode
     - AnalysisProgrammingCodeTemplate
+    - AnalysisOutputProgrammingCode
     range: string
   documentRef:
     name: documentRef
@@ -172,8 +164,8 @@ attributes:
     alias: documentRef
     owner: AnalysisProgrammingCodeTemplate
     domain_of:
-    - AnalysisOutputProgrammingCode
     - AnalysisProgrammingCodeTemplate
+    - AnalysisOutputProgrammingCode
     range: DocumentReference
     inlined: true
     inlined_as_list: true
@@ -187,8 +179,8 @@ attributes:
     alias: parameters
     owner: AnalysisProgrammingCodeTemplate
     domain_of:
-    - AnalysisOutputProgrammingCode
     - AnalysisProgrammingCodeTemplate
+    - AnalysisOutputProgrammingCode
     range: TemplateCodeParameter
     inlined: true
     inlined_as_list: true

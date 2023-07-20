@@ -18,8 +18,8 @@ URI: [ars:location](https://www.cdisc.org/ars/1-0/location)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-[OutputFile](OutputFile.md) | A file containing analysis output displays |  no  |
 [ReferenceDocument](ReferenceDocument.md) | An external document containing supporting documentation or programming code |  no  |
+[OutputFile](OutputFile.md) | A file containing analysis output displays |  no  |
 
 
 
@@ -61,8 +61,8 @@ from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 alias: location
 domain_of:
-- OutputFile
 - ReferenceDocument
+- OutputFile
 range: uri
 
 ```

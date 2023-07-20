@@ -18,8 +18,8 @@ URI: [ars:documentRef](https://www.cdisc.org/ars/1-0/documentRef)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-[AnalysisOutputProgrammingCode](AnalysisOutputProgrammingCode.md) | Programming statements and/or a reference to the program used to perform a sp... |  no  |
 [AnalysisProgrammingCodeTemplate](AnalysisProgrammingCodeTemplate.md) | Programming statements and/or a reference to a used as a template for creatio... |  no  |
+[AnalysisOutputProgrammingCode](AnalysisOutputProgrammingCode.md) | Programming statements and/or a reference to the program used to perform a sp... |  no  |
 
 
 
@@ -62,8 +62,8 @@ rank: 1000
 multivalued: false
 alias: documentRef
 domain_of:
-- AnalysisOutputProgrammingCode
 - AnalysisProgrammingCodeTemplate
+- AnalysisOutputProgrammingCode
 range: DocumentReference
 inlined: true
 inlined_as_list: true

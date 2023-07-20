@@ -1,8 +1,6 @@
 # Class: TemplateCodeParameter
 
-
 _A replacement parameter whose value is substituted in template programming code to create statements required for a specific analysis._
-
 
 
 
@@ -16,16 +14,12 @@ URI: [ars:TemplateCodeParameter](https://www.cdisc.org/ars/1-0/TemplateCodeParam
  classDiagram
     class TemplateCodeParameter
       CodeParameter <|-- TemplateCodeParameter
-      
-      TemplateCodeParameter : description
-        
-      TemplateCodeParameter : name
-        
-      TemplateCodeParameter : value
-        
+
       TemplateCodeParameter : valueSource
+        TemplateCodeParameter : value
+        TemplateCodeParameter : description
+        TemplateCodeParameter : name
         
-      
 ```
 
 
@@ -40,13 +34,14 @@ URI: [ars:TemplateCodeParameter](https://www.cdisc.org/ars/1-0/TemplateCodeParam
 
 ## Slots
 
-| Name | Cardinality and Range | Description | Inheritance |
+| Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [valueSource](valueSource.md) | 0..1 <br/> [String](String.md) | A reference to the prespecified source of the value for the parameter | direct |
 | [value](value.md) | 0..* <br/> [String](String.md) | The value to be used for the parameter when the method is used in an analysis | direct |
 | [description](description.md) | 0..1 <br/> [String](String.md) | A textual description of the instance of the class | [CodeParameter](CodeParameter.md) |
 | [name](name.md) | 1..1 <br/> [String](String.md) | The name for the instance of the class | [NamedObject](NamedObject.md) |
 
+_* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
 
 
@@ -113,9 +108,9 @@ slot_usage:
     description: The value to be used for the parameter when the method is used in
       an analysis. Multiple values may be specified to indicate a choice.
     domain_of:
-    - AnalysisOutputCodeParameter
-    - TemplateCodeParameter
     - WhereClauseCondition
+    - TemplateCodeParameter
+    - AnalysisOutputCodeParameter
     required: false
 
 ```
@@ -137,9 +132,9 @@ slot_usage:
     description: The value to be used for the parameter when the method is used in
       an analysis. Multiple values may be specified to indicate a choice.
     domain_of:
-    - AnalysisOutputCodeParameter
-    - TemplateCodeParameter
     - WhereClauseCondition
+    - TemplateCodeParameter
+    - AnalysisOutputCodeParameter
     required: false
 attributes:
   valueSource:
@@ -162,9 +157,9 @@ attributes:
     alias: value
     owner: TemplateCodeParameter
     domain_of:
-    - AnalysisOutputCodeParameter
-    - TemplateCodeParameter
     - WhereClauseCondition
+    - TemplateCodeParameter
+    - AnalysisOutputCodeParameter
     range: string
     required: false
   description:
@@ -175,11 +170,11 @@ attributes:
     alias: description
     owner: TemplateCodeParameter
     domain_of:
-    - Analysis
+    - SponsorTerm
     - AnalysisMethod
     - ReferencedOperationRelationship
     - CodeParameter
-    - SponsorTerm
+    - Analysis
     range: string
   name:
     name: name

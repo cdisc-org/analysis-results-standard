@@ -1,8 +1,6 @@
 # Class: OperationRole
 
-
 _The role that the referenced operation's result plays in the calculation of the result of this operation._
-
 
 
 
@@ -16,16 +14,12 @@ URI: [ars:OperationRole](https://www.cdisc.org/ars/1-0/OperationRole)
  classDiagram
     class OperationRole
       ExtensibleTerminologyTerm <|-- OperationRole
-      
+
       OperationRole : controlledTerm
+        OperationRole --|> OperationRoleEnum : controlledTerm
+        OperationRole : sponsorTermId
+        OperationRole --|> SponsorTerm : sponsorTermId
         
-          OperationRole --|> OperationRoleEnum : controlledTerm
-        
-      OperationRole : sponsorTermId
-        
-          OperationRole --|> SponsorTerm : sponsorTermId
-        
-      
 ```
 
 
@@ -39,11 +33,12 @@ URI: [ars:OperationRole](https://www.cdisc.org/ars/1-0/OperationRole)
 
 ## Slots
 
-| Name | Cardinality and Range | Description | Inheritance |
+| Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [controlledTerm](controlledTerm.md) | 1..1 <br/> [OperationRoleEnum](OperationRoleEnum.md) | One of the permissible values from the referenced enumeration | [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) |
 | [sponsorTermId](sponsorTermId.md) | 0..1 <br/> [SponsorTerm](SponsorTerm.md) | NOT USED | [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) |
 
+_* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
 
 

@@ -87,31 +87,27 @@
 <p>URI: <a href="https://www.cdisc.org/ars/1-0/ExtensibleTerminologyTerm">ars:ExtensibleTerminologyTerm</a></p>
 <pre class="mermaid"><code> classDiagram
     class ExtensibleTerminologyTerm
+      ExtensibleTerminologyTerm &lt;|-- OperationRole
+      ExtensibleTerminologyTerm &lt;|-- SponsorOperationRole
       ExtensibleTerminologyTerm &lt;|-- AnalysisReason
       ExtensibleTerminologyTerm &lt;|-- SponsorAnalysisReason
       ExtensibleTerminologyTerm &lt;|-- AnalysisPurpose
       ExtensibleTerminologyTerm &lt;|-- SponsorAnalysisPurpose
-      ExtensibleTerminologyTerm &lt;|-- OperationRole
-      ExtensibleTerminologyTerm &lt;|-- SponsorOperationRole
       ExtensibleTerminologyTerm &lt;|-- OutputFileType
       ExtensibleTerminologyTerm &lt;|-- SponsorOutputFileType
-      
-      ExtensibleTerminologyTerm : controlledTerm
-        
-      ExtensibleTerminologyTerm : sponsorTermId
-        
-          ExtensibleTerminologyTerm --|&gt; SponsorTerm : sponsorTermId
-        
-      </code></pre>
+      ExtensibleTerminologyTerm : controlledTerm        
+        ExtensibleTerminologyTerm : sponsorTermId        
+        ExtensibleTerminologyTerm --|&gt; SponsorTerm : sponsorTermId
+        </code></pre>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><strong>ExtensibleTerminologyTerm</strong><ul>
+<li><a href="../OperationRole/">OperationRole</a></li>
+<li><a href="../SponsorOperationRole/">SponsorOperationRole</a></li>
 <li><a href="../AnalysisReason/">AnalysisReason</a></li>
 <li><a href="../SponsorAnalysisReason/">SponsorAnalysisReason</a></li>
 <li><a href="../AnalysisPurpose/">AnalysisPurpose</a></li>
 <li><a href="../SponsorAnalysisPurpose/">SponsorAnalysisPurpose</a></li>
-<li><a href="../OperationRole/">OperationRole</a></li>
-<li><a href="../SponsorOperationRole/">SponsorOperationRole</a></li>
 <li><a href="../OutputFileType/">OutputFileType</a></li>
 <li><a href="../SponsorOutputFileType/">SponsorOutputFileType</a></li>
 </ul>
@@ -122,7 +118,7 @@
 <thead>
 <tr>
 <th>Name</th>
-<th>Cardinality and Range</th>
+<th>Cardinality* and Range</th>
 <th>Description</th>
 <th>Inheritance</th>
 </tr>
@@ -142,6 +138,7 @@
 </tr>
 </tbody>
 </table>
+<p><em>* See <a href="https://linkml.io/linkml/schemas/slots.html#slot-cardinality">LinkML documentation</a> for cardinality definitions.</em></p>
 <h2 id="usages">Usages</h2>
 <table>
 <thead>
@@ -154,6 +151,12 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../ReferencedOperationRelationship/">ReferencedOperationRelationship</a></td>
+<td><a href="../referencedOperationRole/">referencedOperationRole</a></td>
+<td>range</td>
+<td><a href="./">ExtensibleTerminologyTerm</a></td>
+</tr>
+<tr>
 <td><a href="../Analysis/">Analysis</a></td>
 <td><a href="../reason/">reason</a></td>
 <td>range</td>
@@ -162,12 +165,6 @@
 <tr>
 <td><a href="../Analysis/">Analysis</a></td>
 <td><a href="../purpose/">purpose</a></td>
-<td>range</td>
-<td><a href="./">ExtensibleTerminologyTerm</a></td>
-</tr>
-<tr>
-<td><a href="../ReferencedOperationRelationship/">ReferencedOperationRelationship</a></td>
-<td><a href="../referencedOperationRole/">referencedOperationRole</a></td>
 <td>range</td>
 <td><a href="./">ExtensibleTerminologyTerm</a></td>
 </tr>

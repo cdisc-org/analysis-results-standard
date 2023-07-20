@@ -1,8 +1,6 @@
 # Class: OrderedSubSectionRef
 
-
 _A reference to a subsection defined either globally or in another display section, ordered with respect to other subsections of the same type._
-
 
 
 
@@ -16,18 +14,13 @@ URI: [ars:OrderedSubSectionRef](https://www.cdisc.org/ars/1-0/OrderedSubSectionR
  classDiagram
     class OrderedSubSectionRef
       OrderedDisplaySubSection <|-- OrderedSubSectionRef
-      
+
       OrderedSubSectionRef : order
+        OrderedSubSectionRef : subSection
+        OrderedSubSectionRef --|> DisplaySubSection : subSection
+        OrderedSubSectionRef : subSectionId
+        OrderedSubSectionRef --|> DisplaySubSection : subSectionId
         
-      OrderedSubSectionRef : subSection
-        
-          OrderedSubSectionRef --|> DisplaySubSection : subSection
-        
-      OrderedSubSectionRef : subSectionId
-        
-          OrderedSubSectionRef --|> DisplaySubSection : subSectionId
-        
-      
 ```
 
 
@@ -41,12 +34,13 @@ URI: [ars:OrderedSubSectionRef](https://www.cdisc.org/ars/1-0/OrderedSubSectionR
 
 ## Slots
 
-| Name | Cardinality and Range | Description | Inheritance |
+| Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [order](order.md) | 1..1 <br/> [Integer](Integer.md) | The ordinal of the instance with respect to other instances | [OrderedDisplaySubSection](OrderedDisplaySubSection.md) |
 | [subSection](subSection.md) | 0..1 <br/> [DisplaySubSection](DisplaySubSection.md) | NOT USED | [OrderedDisplaySubSection](OrderedDisplaySubSection.md) |
 | [subSectionId](subSectionId.md) | 1..1 <br/> [DisplaySubSection](DisplaySubSection.md) | The identifier of the referenced subsection | [OrderedDisplaySubSection](OrderedDisplaySubSection.md) |
 
+_* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
 
 
@@ -149,10 +143,10 @@ attributes:
     owner: OrderedSubSectionRef
     domain_of:
     - OrderedListItem
+    - WhereClause
     - OrderedGroupingFactor
     - OrderedDisplay
     - OrderedDisplaySubSection
-    - WhereClause
     range: integer
     required: true
   subSection:

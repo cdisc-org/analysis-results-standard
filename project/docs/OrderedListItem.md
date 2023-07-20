@@ -1,8 +1,6 @@
 # Class: OrderedListItem
 
-
 _An item (analysis, output or sub-list) ordered relative to other items within a list or sub-list._
-
 
 
 
@@ -16,26 +14,17 @@ URI: [ars:OrderedListItem](https://www.cdisc.org/ars/1-0/OrderedListItem)
  classDiagram
     class OrderedListItem
       NamedObject <|-- OrderedListItem
-      
-      OrderedListItem : analysisId
-        
-          OrderedListItem --|> Analysis : analysisId
-        
+
       OrderedListItem : level
+        OrderedListItem : order
+        OrderedListItem : sublist
+        OrderedListItem --|> NestedList : sublist
+        OrderedListItem : analysisId
+        OrderedListItem --|> Analysis : analysisId
+        OrderedListItem : outputId
+        OrderedListItem --|> Output : outputId
+        OrderedListItem : name
         
-      OrderedListItem : name
-        
-      OrderedListItem : order
-        
-      OrderedListItem : outputId
-        
-          OrderedListItem --|> Output : outputId
-        
-      OrderedListItem : sublist
-        
-          OrderedListItem --|> NestedList : sublist
-        
-      
 ```
 
 
@@ -49,7 +38,7 @@ URI: [ars:OrderedListItem](https://www.cdisc.org/ars/1-0/OrderedListItem)
 
 ## Slots
 
-| Name | Cardinality and Range | Description | Inheritance |
+| Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [level](level.md) | 1..1 <br/> [Integer](Integer.md) | The level of the entry within a hierarchical structure | direct |
 | [order](order.md) | 1..1 <br/> [Integer](Integer.md) | The ordinal of the instance with respect to other instances | direct |
@@ -58,6 +47,7 @@ URI: [ars:OrderedListItem](https://www.cdisc.org/ars/1-0/OrderedListItem)
 | [outputId](outputId.md) | 0..1 <br/> [Output](Output.md) | The identifier of the referenced output | direct |
 | [name](name.md) | 1..1 <br/> [String](String.md) | The name for the instance of the class | [NamedObject](NamedObject.md) |
 
+_* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
 
 
@@ -132,10 +122,10 @@ slot_usage:
     name: order
     domain_of:
     - OrderedListItem
+    - WhereClause
     - OrderedGroupingFactor
     - OrderedDisplay
     - OrderedDisplaySubSection
-    - WhereClause
     required: true
 
 ```
@@ -162,10 +152,10 @@ slot_usage:
     name: order
     domain_of:
     - OrderedListItem
+    - WhereClause
     - OrderedGroupingFactor
     - OrderedDisplay
     - OrderedDisplaySubSection
-    - WhereClause
     required: true
 attributes:
   level:
@@ -189,10 +179,10 @@ attributes:
     owner: OrderedListItem
     domain_of:
     - OrderedListItem
+    - WhereClause
     - OrderedGroupingFactor
     - OrderedDisplay
     - OrderedDisplaySubSection
-    - WhereClause
     range: integer
     required: true
   sublist:
@@ -218,8 +208,8 @@ attributes:
     owner: OrderedListItem
     domain_of:
     - OrderedListItem
-    - ReferencedAnalysisOperation
     - ReferencedOperationRelationship
+    - ReferencedAnalysisOperation
     range: Analysis
     inlined: false
   outputId:

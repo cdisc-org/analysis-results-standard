@@ -46,16 +46,16 @@ linkml:Sparqlpath xsd:string
     (  $<Analysis_tes> (  &<NamedObject_tes> ;
           rdf:type [ <NamedObject> ] ? ;
           <version> @linkml:Integer ? ;
-          <categoryIds> @<AnalysisCategory> * ;
           <description> @linkml:String ? ;
           <reason> @<ExtensibleTerminologyTerm> ;
           <purpose> @<ExtensibleTerminologyTerm> ;
           <documentRefs> @<DocumentReference> * ;
-          <analysisSetId> @<AnalysisSet> ? ;
-          <orderedGroupings> @<OrderedGroupingFactor> * ;
-          <dataSubsetId> @<DataSubset> ? ;
+          <categoryIds> @<AnalysisCategory> * ;
           <dataset> @linkml:String ? ;
           <variable> @linkml:String ? ;
+          <analysisSetId> @<AnalysisSet> ? ;
+          <dataSubsetId> @<DataSubset> ? ;
+          <orderedGroupings> @<OrderedGroupingFactor> * ;
           <methodId> @<AnalysisMethod> ;
           <referencedAnalysisOperations> @<ReferencedAnalysisOperation> * ;
           <programmingCode> @<AnalysisOutputProgrammingCode> ? ;
@@ -94,8 +94,8 @@ linkml:Sparqlpath xsd:string
           rdf:type [ <NamedObject> ] ? ;
           <label> @linkml:String ? ;
           <description> @linkml:String ? ;
-          <operations> @<Operation> + ;
           <documentRefs> @<DocumentReference> * ;
+          <operations> @<Operation> + ;
           <codeTemplate> @<AnalysisProgrammingCodeTemplate> ?
        ) ;
        rdf:type [ <AnalysisMethod> ]
@@ -542,17 +542,17 @@ linkml:Sparqlpath xsd:string
           <version> @linkml:Integer ? ;
           <listOfPlannedAnalyses> @<NestedList> ;
           <listOfPlannedOutputs> @<NestedList> ? ;
+          <referenceDocuments> @<ReferenceDocument> * ;
+          <terminologyExtensions> @<TerminologyExtension> * ;
+          <analysisCategorizations> @<AnalysisCategorization> * ;
           <analysisSets> @<AnalysisSet> * ;
           <analysisGroupings> @<SubjectGroupingFactor> * ;
           <dataSubsets> @<DataSubset> * ;
           <dataGroupings> @<DataGroupingFactor> * ;
-          <globalDisplaySections> @<GlobalDisplaySection> * ;
-          <analysisCategorizations> @<AnalysisCategorization> * ;
-          <analyses> @<Analysis> * ;
           <methods> @<AnalysisMethod> * ;
-          <outputs> @<Output> * ;
-          <referenceDocuments> @<ReferenceDocument> * ;
-          <terminologyExtensions> @<TerminologyExtension> *
+          <analyses> @<Analysis> * ;
+          <globalDisplaySections> @<GlobalDisplaySection> * ;
+          <outputs> @<Output> *
        ) ;
        rdf:type [ <ReportingEvent> ]
     )

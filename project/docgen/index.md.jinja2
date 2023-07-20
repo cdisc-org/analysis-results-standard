@@ -14,6 +14,7 @@ Name: {{ schema.name }}
 {% endif %}
 
 ## Classes
+_Classes provide templates for organizing data. Data objects instantiate classes in the schema. Each class has a set of slots (aka fields, attributes) that are applicable to it. See [LinkML documentation](https://linkml.io/linkml/schemas/models.html#classes) for more information._
 
 | Class | Description |
 | --- | --- |
@@ -22,7 +23,8 @@ Name: {{ schema.name }}
 {% endfor %}
 
 ## Slots
-
+_Slots (aka attributes, fields, columns, properties) can be associated with classes to specify what fields instances of that class can have. Slots operate the same way as “fields” in traditional object languages and the same ways as “columns” in spreadsheets and relational databases. See LinkML documentation [here](https://linkml.io/linkml/schemas/models.html#slots) and [here](https://linkml.io/linkml/schemas/slots.html) for more information._
+ 
 | Slot | Description |
 | --- | --- |
 {% for s in gen.all_slot_objects()|sort(attribute=sort_by) -%}
@@ -30,6 +32,7 @@ Name: {{ schema.name }}
 {% endfor %}
 
 ## Enumerations
+_Enumerations are common features in modeling frameworks. These can be thought of as a “drop-down” of permissible values for a field/slot. See [LinkML documentation](https://linkml.io/linkml/schemas/enums.html) for more information._
 
 | Enumeration | Description |
 | --- | --- |
@@ -38,6 +41,7 @@ Name: {{ schema.name }}
 {% endfor %}
 
 ## Types
+_Types in LinkML are scalar data values such as strings, integers, floats, and so on. See [LinkML documentation](https://linkml.io/linkml/schemas/models.html#types) for more information._
 
 | Type | Description |
 | --- | --- |
@@ -46,6 +50,7 @@ Name: {{ schema.name }}
 {% endfor %}
 
 ## Subsets
+_Elements of a schema can be partitioned into named subsets. These have no semantic meaning, but they can be useful for tagging parts of a schema for different purposes. See [LinkML documentation](https://linkml.io/linkml/schemas/models.html#subsets) for more information._
 
 | Subset | Description |
 | --- | --- |

@@ -87,6 +87,21 @@
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../ReferenceDocument/">ReferenceDocument</a></td>
+<td>An external document containing supporting documentation or programming code</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../TerminologyExtension/">TerminologyExtension</a></td>
+<td>An extensible set of controlled terminology that has been extended with at le...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SponsorTerm/">SponsorTerm</a></td>
+<td>A sponsor-defined term that is included in an extensible set of controlled te...</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../AnalysisCategorization/">AnalysisCategorization</a></td>
 <td>A set of related implementer-defined categories that can be used to categoriz...</td>
 <td>no</td>
@@ -97,8 +112,23 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Analysis/">Analysis</a></td>
-<td>An analysis that is designed to meet a requirement of the reporting event</td>
+<td><a href="../AnalysisSet/">AnalysisSet</a></td>
+<td>A set of subjects whose data are to be included in the main analyses</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../DataSubset/">DataSubset</a></td>
+<td>A subset of data identified by selection criteria for inclusion in the analys...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../GroupingFactor/">GroupingFactor</a></td>
+<td>A factor used to subdivide either the subject population or data records in a...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Group/">Group</a></td>
+<td>A subdivision of the subject population or analysis dataset record set based ...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -117,6 +147,16 @@
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../Analysis/">Analysis</a></td>
+<td>An analysis that is designed to meet a requirement of the reporting event</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../DisplaySubSection/">DisplaySubSection</a></td>
+<td>An occurrence of a display section containing text</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../Output/">Output</a></td>
 <td>A report of results and their evaluation based on planned analyses performed ...</td>
 <td>no</td>
@@ -127,58 +167,18 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../DisplaySubSection/">DisplaySubSection</a></td>
-<td>An occurrence of a display section containing text</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../AnalysisSet/">AnalysisSet</a></td>
-<td>A set of subjects whose data are to be included in the main analyses</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../GroupingFactor/">GroupingFactor</a></td>
-<td>A factor used to subdivide either the subject population or data records in a...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Group/">Group</a></td>
-<td>A subdivision of the subject population or analysis dataset record set based ...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../DataSubset/">DataSubset</a></td>
-<td>A subset of data identified by selection criteria for inclusion in the analys...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ReferenceDocument/">ReferenceDocument</a></td>
-<td>An external document containing supporting documentation or programming code</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../TerminologyExtension/">TerminologyExtension</a></td>
-<td>An extensible set of controlled terminology that has been extended with at le...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../SponsorTerm/">SponsorTerm</a></td>
-<td>A sponsor-defined term that is included in an extensible set of controlled te...</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../SubjectGroupingFactor/">SubjectGroupingFactor</a></td>
 <td>A factor used to subdivide the subject population for comparative analysis (e</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../DataGroupingFactor/">DataGroupingFactor</a></td>
-<td>A factor used to subdivide data records in an analysis dataset for analysis</td>
+<td><a href="../AnalysisGroup/">AnalysisGroup</a></td>
+<td>A subdivision of the subject population based on a defined factor (e</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../AnalysisGroup/">AnalysisGroup</a></td>
-<td>A subdivision of the subject population based on a defined factor (e</td>
+<td><a href="../DataGroupingFactor/">DataGroupingFactor</a></td>
+<td>A factor used to subdivide data records in an analysis dataset for analysis</td>
 <td>no</td>
 </tr>
 <tr>
@@ -212,22 +212,22 @@
 <span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">id</span>
 <span class="nt">domain_of</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReportingEvent</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AnalysisCategorization</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AnalysisCategory</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Analysis</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AnalysisMethod</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Operation</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReferencedOperationRelationship</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Output</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OutputDisplay</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DisplaySubSection</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AnalysisSet</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GroupingFactor</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Group</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DataSubset</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReferenceDocument</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TerminologyExtension</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SponsorTerm</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AnalysisCategorization</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AnalysisCategory</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AnalysisSet</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DataSubset</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GroupingFactor</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Group</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AnalysisMethod</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Operation</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReferencedOperationRelationship</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Analysis</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DisplaySubSection</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Output</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OutputDisplay</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 <span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>

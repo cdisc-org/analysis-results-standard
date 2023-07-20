@@ -1,8 +1,6 @@
 # Class: AnalysisReason
 
-
 _The rationale for performing this analysis._
-
 
 
 
@@ -16,16 +14,12 @@ URI: [ars:AnalysisReason](https://www.cdisc.org/ars/1-0/AnalysisReason)
  classDiagram
     class AnalysisReason
       ExtensibleTerminologyTerm <|-- AnalysisReason
-      
+
       AnalysisReason : controlledTerm
+        AnalysisReason --|> AnalysisReasonEnum : controlledTerm
+        AnalysisReason : sponsorTermId
+        AnalysisReason --|> SponsorTerm : sponsorTermId
         
-          AnalysisReason --|> AnalysisReasonEnum : controlledTerm
-        
-      AnalysisReason : sponsorTermId
-        
-          AnalysisReason --|> SponsorTerm : sponsorTermId
-        
-      
 ```
 
 
@@ -39,11 +33,12 @@ URI: [ars:AnalysisReason](https://www.cdisc.org/ars/1-0/AnalysisReason)
 
 ## Slots
 
-| Name | Cardinality and Range | Description | Inheritance |
+| Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [controlledTerm](controlledTerm.md) | 1..1 <br/> [AnalysisReasonEnum](AnalysisReasonEnum.md) | One of the permissible values from the referenced enumeration | [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) |
 | [sponsorTermId](sponsorTermId.md) | 0..1 <br/> [SponsorTerm](SponsorTerm.md) | NOT USED | [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) |
 
+_* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
 
 

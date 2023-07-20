@@ -1,8 +1,6 @@
 # Class: PageNumberListRef
 
-
 _One or more individual pages in the reference document, referenced by page number._
-
 
 
 
@@ -16,22 +14,15 @@ URI: [ars:PageNumberListRef](https://www.cdisc.org/ars/1-0/PageNumberListRef)
  classDiagram
     class PageNumberListRef
       PageRef <|-- PageNumberListRef
-      
-      PageNumberListRef : firstPage
-        
-      PageNumberListRef : label
-        
-      PageNumberListRef : lastPage
-        
-      PageNumberListRef : pageNames
-        
-      PageNumberListRef : pageNumbers
-        
+
       PageNumberListRef : refType
+        PageNumberListRef --|> PageRefTypeEnum : refType
+        PageNumberListRef : label
+        PageNumberListRef : pageNames
+        PageNumberListRef : pageNumbers
+        PageNumberListRef : firstPage
+        PageNumberListRef : lastPage
         
-          PageNumberListRef --|> PageRefTypeEnum : refType
-        
-      
 ```
 
 
@@ -45,7 +36,7 @@ URI: [ars:PageNumberListRef](https://www.cdisc.org/ars/1-0/PageNumberListRef)
 
 ## Slots
 
-| Name | Cardinality and Range | Description | Inheritance |
+| Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [refType](refType.md) | 1..1 <br/> [PageRefTypeEnum](PageRefTypeEnum.md) | The type of reference for page references | [PageRef](PageRef.md) |
 | [label](label.md) | 0..1 <br/> [String](String.md) | Alternative label to provide a more specific and description to a page link | [PageRef](PageRef.md) |
@@ -54,6 +45,7 @@ URI: [ars:PageNumberListRef](https://www.cdisc.org/ars/1-0/PageNumberListRef)
 | [firstPage](firstPage.md) | 0..1 <br/> [Integer](Integer.md) | NOT USED | [PageRef](PageRef.md) |
 | [lastPage](lastPage.md) | 0..1 <br/> [Integer](Integer.md) | NOT USED | [PageRef](PageRef.md) |
 
+_* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
 
 
@@ -204,13 +196,13 @@ attributes:
     domain_of:
     - AnalysisCategorization
     - AnalysisCategory
-    - AnalysisMethod
-    - Operation
     - AnalysisSet
+    - DataSubset
     - GroupingFactor
     - Group
-    - DataSubset
+    - AnalysisMethod
     - PageRef
+    - Operation
     range: string
   pageNames:
     name: pageNames

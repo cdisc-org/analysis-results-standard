@@ -1,8 +1,6 @@
 # Class: PageNameRef
 
-
 _One or more pages in the reference document, referenced by named destination._
-
 
 
 
@@ -16,22 +14,15 @@ URI: [ars:PageNameRef](https://www.cdisc.org/ars/1-0/PageNameRef)
  classDiagram
     class PageNameRef
       PageRef <|-- PageNameRef
-      
-      PageNameRef : firstPage
-        
-      PageNameRef : label
-        
-      PageNameRef : lastPage
-        
-      PageNameRef : pageNames
-        
-      PageNameRef : pageNumbers
-        
+
       PageNameRef : refType
+        PageNameRef --|> PageRefTypeEnum : refType
+        PageNameRef : label
+        PageNameRef : pageNames
+        PageNameRef : pageNumbers
+        PageNameRef : firstPage
+        PageNameRef : lastPage
         
-          PageNameRef --|> PageRefTypeEnum : refType
-        
-      
 ```
 
 
@@ -45,7 +36,7 @@ URI: [ars:PageNameRef](https://www.cdisc.org/ars/1-0/PageNameRef)
 
 ## Slots
 
-| Name | Cardinality and Range | Description | Inheritance |
+| Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [refType](refType.md) | 1..1 <br/> [PageRefTypeEnum](PageRefTypeEnum.md) | The type of reference for page references | [PageRef](PageRef.md) |
 | [label](label.md) | 0..1 <br/> [String](String.md) | Alternative label to provide a more specific and description to a page link | [PageRef](PageRef.md) |
@@ -54,6 +45,7 @@ URI: [ars:PageNameRef](https://www.cdisc.org/ars/1-0/PageNameRef)
 | [firstPage](firstPage.md) | 0..1 <br/> [Integer](Integer.md) | NOT USED | [PageRef](PageRef.md) |
 | [lastPage](lastPage.md) | 0..1 <br/> [Integer](Integer.md) | NOT USED | [PageRef](PageRef.md) |
 
+_* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
 
 
@@ -202,13 +194,13 @@ attributes:
     domain_of:
     - AnalysisCategorization
     - AnalysisCategory
-    - AnalysisMethod
-    - Operation
     - AnalysisSet
+    - DataSubset
     - GroupingFactor
     - Group
-    - DataSubset
+    - AnalysisMethod
     - PageRef
+    - Operation
     range: string
   pageNames:
     name: pageNames

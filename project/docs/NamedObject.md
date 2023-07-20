@@ -1,13 +1,9 @@
 # Class: NamedObject
 
-
 _An object with a name._
 
 
-
-
 * __NOTE__: this is an abstract class and should not be instantiated directly
-
 
 URI: [ars:NamedObject](https://www.cdisc.org/ars/1-0/NamedObject)
 
@@ -19,18 +15,16 @@ URI: [ars:NamedObject](https://www.cdisc.org/ars/1-0/NamedObject)
     class NamedObject
       NamedObject <|-- ReportingEvent
       NamedObject <|-- OrderedListItem
-      NamedObject <|-- Analysis
+      NamedObject <|-- ReferenceDocument
       NamedObject <|-- AnalysisMethod
       NamedObject <|-- Operation
       NamedObject <|-- CodeParameter
+      NamedObject <|-- Analysis
       NamedObject <|-- Output
       NamedObject <|-- OutputFile
       NamedObject <|-- OutputDisplay
-      NamedObject <|-- ReferenceDocument
-      
-      NamedObject : name
+      NamedObject : name        
         
-      
 ```
 
 
@@ -40,23 +34,24 @@ URI: [ars:NamedObject](https://www.cdisc.org/ars/1-0/NamedObject)
 * **NamedObject**
     * [ReportingEvent](ReportingEvent.md)
     * [OrderedListItem](OrderedListItem.md)
-    * [Analysis](Analysis.md)
+    * [ReferenceDocument](ReferenceDocument.md)
     * [AnalysisMethod](AnalysisMethod.md)
     * [Operation](Operation.md)
     * [CodeParameter](CodeParameter.md)
+    * [Analysis](Analysis.md)
     * [Output](Output.md)
     * [OutputFile](OutputFile.md)
     * [OutputDisplay](OutputDisplay.md)
-    * [ReferenceDocument](ReferenceDocument.md)
 
 
 
 ## Slots
 
-| Name | Cardinality and Range | Description | Inheritance |
+| Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [name](name.md) | 1..1 <br/> [String](String.md) | The name for the instance of the class | direct |
 
+_* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
 
 

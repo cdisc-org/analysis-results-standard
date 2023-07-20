@@ -89,28 +89,21 @@
 <pre class="mermaid"><code> classDiagram
     class WhereClause
       WhereClause &lt;|-- AnalysisSet
-      WhereClause &lt;|-- Group
       WhereClause &lt;|-- DataSubset
-      
-      WhereClause : compoundExpression
-        
-          WhereClause --|&gt; WhereClauseCompoundExpression : compoundExpression
-        
-      WhereClause : condition
-        
-          WhereClause --|&gt; WhereClauseCondition : condition
-        
-      WhereClause : level
-        
-      WhereClause : order
-        
-      </code></pre>
+      WhereClause &lt;|-- Group
+      WhereClause : level        
+        WhereClause : order        
+        WhereClause : condition        
+        WhereClause --|&gt; WhereClauseCondition : condition
+        WhereClause : compoundExpression        
+        WhereClause --|&gt; WhereClauseCompoundExpression : compoundExpression
+        </code></pre>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><strong>WhereClause</strong><ul>
 <li><a href="../AnalysisSet/">AnalysisSet</a></li>
-<li><a href="../Group/">Group</a></li>
 <li><a href="../DataSubset/">DataSubset</a></li>
+<li><a href="../Group/">Group</a></li>
 </ul>
 </li>
 </ul>
@@ -119,7 +112,7 @@
 <thead>
 <tr>
 <th>Name</th>
-<th>Cardinality and Range</th>
+<th>Cardinality* and Range</th>
 <th>Description</th>
 <th>Inheritance</th>
 </tr>
@@ -151,6 +144,7 @@
 </tr>
 </tbody>
 </table>
+<p><em>* See <a href="https://linkml.io/linkml/schemas/slots.html#slot-cardinality">LinkML documentation</a> for cardinality definitions.</em></p>
 <h2 id="usages">Usages</h2>
 <table>
 <thead>
@@ -318,10 +312,10 @@
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WhereClause</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OrderedListItem</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WhereClause</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OrderedGroupingFactor</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OrderedDisplay</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OrderedDisplaySubSection</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WhereClause</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
 <span class="w">  </span><span class="nt">condition</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">condition</span>

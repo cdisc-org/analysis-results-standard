@@ -1,8 +1,6 @@
 # Class: SponsorOperationRole
 
-
 _The sponsor-defined role that the referenced operation's result plays in the calculation of the result of this operation._
-
 
 
 
@@ -16,14 +14,11 @@ URI: [ars:SponsorOperationRole](https://www.cdisc.org/ars/1-0/SponsorOperationRo
  classDiagram
     class SponsorOperationRole
       ExtensibleTerminologyTerm <|-- SponsorOperationRole
-      
+
       SponsorOperationRole : controlledTerm
+        SponsorOperationRole : sponsorTermId
+        SponsorOperationRole --|> SponsorTerm : sponsorTermId
         
-      SponsorOperationRole : sponsorTermId
-        
-          SponsorOperationRole --|> SponsorTerm : sponsorTermId
-        
-      
 ```
 
 
@@ -37,11 +32,12 @@ URI: [ars:SponsorOperationRole](https://www.cdisc.org/ars/1-0/SponsorOperationRo
 
 ## Slots
 
-| Name | Cardinality and Range | Description | Inheritance |
+| Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [controlledTerm](controlledTerm.md) | 0..1 <br/> [String](String.md) | NOT USED | [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) |
 | [sponsorTermId](sponsorTermId.md) | 1..1 <br/> [SponsorTerm](SponsorTerm.md) | A reference to a sponsor term in the TerminologyExtension with enumeration=Op... | [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) |
 
+_* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
 
 

@@ -1,8 +1,6 @@
 # Class: SubjectGroupingFactor
 
-
 _A factor used to subdivide the subject population for comparative analysis (e.g., treatment, sex, race, age)._
-
 
 
 
@@ -16,20 +14,14 @@ URI: [ars:SubjectGroupingFactor](https://www.cdisc.org/ars/1-0/SubjectGroupingFa
  classDiagram
     class SubjectGroupingFactor
       GroupingFactor <|-- SubjectGroupingFactor
-      
-      SubjectGroupingFactor : dataDriven
-        
-      SubjectGroupingFactor : groupingVariable
-        
-      SubjectGroupingFactor : groups
-        
-          SubjectGroupingFactor --|> AnalysisGroup : groups
-        
+
       SubjectGroupingFactor : id
+        SubjectGroupingFactor : label
+        SubjectGroupingFactor : groupingVariable
+        SubjectGroupingFactor : dataDriven
+        SubjectGroupingFactor : groups
+        SubjectGroupingFactor --|> AnalysisGroup : groups
         
-      SubjectGroupingFactor : label
-        
-      
 ```
 
 
@@ -43,7 +35,7 @@ URI: [ars:SubjectGroupingFactor](https://www.cdisc.org/ars/1-0/SubjectGroupingFa
 
 ## Slots
 
-| Name | Cardinality and Range | Description | Inheritance |
+| Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [id](id.md) | 1..1 <br/> [String](String.md) | The assigned identifying value for the instance of the class | [GroupingFactor](GroupingFactor.md) |
 | [label](label.md) | 0..1 <br/> [String](String.md) | A short informative description that may be used for display | [GroupingFactor](GroupingFactor.md) |
@@ -51,6 +43,7 @@ URI: [ars:SubjectGroupingFactor](https://www.cdisc.org/ars/1-0/SubjectGroupingFa
 | [dataDriven](dataDriven.md) | 1..1 <br/> [Boolean](Boolean.md) | Indicates whether the groups defined by the grouping are prespecified (false)... | [GroupingFactor](GroupingFactor.md) |
 | [groups](groups.md) | 0..* <br/> [AnalysisGroup](AnalysisGroup.md) | The pre-specified groups within the grouping | [GroupingFactor](GroupingFactor.md) |
 
+_* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
 
 
@@ -145,22 +138,22 @@ attributes:
     owner: SubjectGroupingFactor
     domain_of:
     - ReportingEvent
-    - AnalysisCategorization
-    - AnalysisCategory
-    - Analysis
-    - AnalysisMethod
-    - Operation
-    - ReferencedOperationRelationship
-    - Output
-    - OutputDisplay
-    - DisplaySubSection
-    - AnalysisSet
-    - GroupingFactor
-    - Group
-    - DataSubset
     - ReferenceDocument
     - TerminologyExtension
     - SponsorTerm
+    - AnalysisCategorization
+    - AnalysisCategory
+    - AnalysisSet
+    - DataSubset
+    - GroupingFactor
+    - Group
+    - AnalysisMethod
+    - Operation
+    - ReferencedOperationRelationship
+    - Analysis
+    - DisplaySubSection
+    - Output
+    - OutputDisplay
     range: string
     required: true
   label:
@@ -173,13 +166,13 @@ attributes:
     domain_of:
     - AnalysisCategorization
     - AnalysisCategory
-    - AnalysisMethod
-    - Operation
     - AnalysisSet
+    - DataSubset
     - GroupingFactor
     - Group
-    - DataSubset
+    - AnalysisMethod
     - PageRef
+    - Operation
     range: string
   groupingVariable:
     name: groupingVariable

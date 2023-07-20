@@ -5,20 +5,6 @@ ReportingEvent {
     integer version  
     string name  
 }
-TerminologyExtension {
-    string id  
-    ExtensibleTerminologyEnum enumeration  
-}
-SponsorTerm {
-    string id  
-    string submissionValue  
-    string description  
-}
-ReferenceDocument {
-    string id  
-    uri location  
-    string name  
-}
 Output {
     string id  
     integer version  
@@ -43,6 +29,11 @@ PageRef {
     integerList pageNumbers  
     integer firstPage  
     integer lastPage  
+}
+ReferenceDocument {
+    string id  
+    uri location  
+    string name  
 }
 AnalysisCategory {
     string id  
@@ -79,31 +70,13 @@ OutputFile {
 ExtensibleTerminologyTerm {
     string controlledTerm  
 }
-AnalysisMethod {
+SponsorTerm {
     string id  
-    string label  
+    string submissionValue  
     string description  
-    string name  
 }
-AnalysisProgrammingCodeTemplate {
-    string context  
-    string code  
-}
-TemplateCodeParameter {
-    string valueSource  
-    stringList value  
-    string description  
-    string name  
-}
-Operation {
-    string id  
-    string label  
-    string resultPattern  
-    string name  
-}
-ReferencedOperationRelationship {
-    string id  
-    string description  
+GlobalDisplaySection {
+    DisplaySectionTypeEnum sectionType  
 }
 Analysis {
     string id  
@@ -141,8 +114,38 @@ GroupingFactor {
     string groupingVariable  
     boolean dataDriven  
 }
+Operation {
+    string id  
+    string label  
+    string resultPattern  
+    string name  
+}
+ReferencedOperationRelationship {
+    string id  
+    string description  
+}
 ReferencedAnalysisOperation {
 
+}
+AnalysisMethod {
+    string id  
+    string label  
+    string description  
+    string name  
+}
+AnalysisProgrammingCodeTemplate {
+    string context  
+    string code  
+}
+TemplateCodeParameter {
+    string valueSource  
+    stringList value  
+    string description  
+    string name  
+}
+OrderedGroupingFactor {
+    integer order  
+    boolean resultsByGroup  
 }
 DataSubset {
     string id  
@@ -160,10 +163,6 @@ WhereClause {
 WhereClauseCompoundExpression {
     ExpressionLogicalOperatorEnum logicalOperator  
 }
-OrderedGroupingFactor {
-    integer order  
-    boolean resultsByGroup  
-}
 AnalysisSet {
     string id  
     string label  
@@ -172,9 +171,6 @@ AnalysisSet {
 }
 CompoundSetExpression {
     ExpressionLogicalOperatorEnum logicalOperator  
-}
-GlobalDisplaySection {
-    DisplaySectionTypeEnum sectionType  
 }
 DataGroupingFactor {
     string id  
@@ -200,6 +196,10 @@ AnalysisGroup {
     integer level  
     integer order  
 }
+TerminologyExtension {
+    string id  
+    ExtensibleTerminologyEnum enumeration  
+}
 NestedList {
 
 }
@@ -211,18 +211,17 @@ OrderedListItem {
 
 ReportingEvent ||--|| NestedList : "listOfPlannedAnalyses"
 ReportingEvent ||--|o NestedList : "listOfPlannedOutputs"
+ReportingEvent ||--}o ReferenceDocument : "referenceDocuments"
+ReportingEvent ||--}o TerminologyExtension : "terminologyExtensions"
+ReportingEvent ||--}o AnalysisCategorization : "analysisCategorizations"
 ReportingEvent ||--}o AnalysisSet : "analysisSets"
 ReportingEvent ||--}o SubjectGroupingFactor : "analysisGroupings"
 ReportingEvent ||--}o DataSubset : "dataSubsets"
 ReportingEvent ||--}o DataGroupingFactor : "dataGroupings"
-ReportingEvent ||--}o GlobalDisplaySection : "globalDisplaySections"
-ReportingEvent ||--}o AnalysisCategorization : "analysisCategorizations"
-ReportingEvent ||--}o Analysis : "analyses"
 ReportingEvent ||--}o AnalysisMethod : "methods"
+ReportingEvent ||--}o Analysis : "analyses"
+ReportingEvent ||--}o GlobalDisplaySection : "globalDisplaySections"
 ReportingEvent ||--}o Output : "outputs"
-ReportingEvent ||--}o ReferenceDocument : "referenceDocuments"
-ReportingEvent ||--}o TerminologyExtension : "terminologyExtensions"
-TerminologyExtension ||--}| SponsorTerm : "sponsorTerms"
 Output ||--}o OutputFile : "fileSpecifications"
 Output ||--}o OrderedDisplay : "displays"
 Output ||--}o AnalysisCategory : "categoryIds"
@@ -241,22 +240,14 @@ OrderedDisplaySubSection ||--|o DisplaySubSection : "subSection"
 OrderedDisplaySubSection ||--|o DisplaySubSection : "subSectionId"
 OutputFile ||--|o ExtensibleTerminologyTerm : "fileType"
 ExtensibleTerminologyTerm ||--|o SponsorTerm : "sponsorTermId"
-AnalysisMethod ||--}| Operation : "operations"
-AnalysisMethod ||--}o DocumentReference : "documentRefs"
-AnalysisMethod ||--|o AnalysisProgrammingCodeTemplate : "codeTemplate"
-AnalysisProgrammingCodeTemplate ||--|o DocumentReference : "documentRef"
-AnalysisProgrammingCodeTemplate ||--}o TemplateCodeParameter : "parameters"
-Operation ||--}o ReferencedOperationRelationship : "referencedOperationRelationships"
-ReferencedOperationRelationship ||--|| ExtensibleTerminologyTerm : "referencedOperationRole"
-ReferencedOperationRelationship ||--|| Operation : "operationId"
-ReferencedOperationRelationship ||--|o Analysis : "analysisId"
-Analysis ||--}o AnalysisCategory : "categoryIds"
+GlobalDisplaySection ||--}o DisplaySubSection : "subSections"
 Analysis ||--|| ExtensibleTerminologyTerm : "reason"
 Analysis ||--|| ExtensibleTerminologyTerm : "purpose"
 Analysis ||--}o DocumentReference : "documentRefs"
+Analysis ||--}o AnalysisCategory : "categoryIds"
 Analysis ||--|o AnalysisSet : "analysisSetId"
-Analysis ||--}o OrderedGroupingFactor : "orderedGroupings"
 Analysis ||--|o DataSubset : "dataSubsetId"
+Analysis ||--}o OrderedGroupingFactor : "orderedGroupings"
 Analysis ||--|| AnalysisMethod : "methodId"
 Analysis ||--}o ReferencedAnalysisOperation : "referencedAnalysisOperations"
 Analysis ||--|o AnalysisOutputProgrammingCode : "programmingCode"
@@ -269,25 +260,34 @@ Group ||--|o WhereClauseCondition : "condition"
 Group ||--|o CompoundGroupExpression : "compoundExpression"
 CompoundGroupExpression ||--}o Group : "whereClauses"
 GroupingFactor ||--}o Group : "groups"
+Operation ||--}o ReferencedOperationRelationship : "referencedOperationRelationships"
+ReferencedOperationRelationship ||--|| ExtensibleTerminologyTerm : "referencedOperationRole"
+ReferencedOperationRelationship ||--|| Operation : "operationId"
+ReferencedOperationRelationship ||--|o Analysis : "analysisId"
 ReferencedAnalysisOperation ||--|| ReferencedOperationRelationship : "referencedOperationRelationshipId"
 ReferencedAnalysisOperation ||--|| Analysis : "analysisId"
+AnalysisMethod ||--}o DocumentReference : "documentRefs"
+AnalysisMethod ||--}| Operation : "operations"
+AnalysisMethod ||--|o AnalysisProgrammingCodeTemplate : "codeTemplate"
+AnalysisProgrammingCodeTemplate ||--|o DocumentReference : "documentRef"
+AnalysisProgrammingCodeTemplate ||--}o TemplateCodeParameter : "parameters"
+OrderedGroupingFactor ||--|o GroupingFactor : "groupingId"
 DataSubset ||--|o WhereClauseCondition : "condition"
 DataSubset ||--|o CompoundSubsetExpression : "compoundExpression"
 CompoundSubsetExpression ||--}o WhereClause : "whereClauses"
 WhereClause ||--|o WhereClauseCondition : "condition"
 WhereClause ||--|o WhereClauseCompoundExpression : "compoundExpression"
 WhereClauseCompoundExpression ||--}o WhereClause : "whereClauses"
-OrderedGroupingFactor ||--|o GroupingFactor : "groupingId"
 AnalysisSet ||--|o WhereClauseCondition : "condition"
 AnalysisSet ||--|o CompoundSetExpression : "compoundExpression"
 CompoundSetExpression ||--}o AnalysisSet : "whereClauses"
-GlobalDisplaySection ||--}o DisplaySubSection : "subSections"
 DataGroupingFactor ||--}o DataGroup : "groups"
 DataGroup ||--|o WhereClauseCondition : "condition"
 DataGroup ||--|o CompoundGroupExpression : "compoundExpression"
 SubjectGroupingFactor ||--}o AnalysisGroup : "groups"
 AnalysisGroup ||--|o WhereClauseCondition : "condition"
 AnalysisGroup ||--|o CompoundGroupExpression : "compoundExpression"
+TerminologyExtension ||--}| SponsorTerm : "sponsorTerms"
 NestedList ||--}o OrderedListItem : "listItems"
 OrderedListItem ||--|o NestedList : "sublist"
 OrderedListItem ||--|o Analysis : "analysisId"

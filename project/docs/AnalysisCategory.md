@@ -1,8 +1,6 @@
 # Class: AnalysisCategory
 
-
 _An implementer-defined category of analyses/outputs, which may include one or more sub-categorization._
-
 
 
 
@@ -16,16 +14,11 @@ URI: [ars:AnalysisCategory](https://www.cdisc.org/ars/1-0/AnalysisCategory)
  classDiagram
     class AnalysisCategory
       AnalysisCategory : id
+        AnalysisCategory : label
+        AnalysisCategory : subCategorizations
+        AnalysisCategory --|> AnalysisCategorization : subCategorizations
         
-      AnalysisCategory : label
-        
-      AnalysisCategory : subCategorizations
-        
-          AnalysisCategory --|> AnalysisCategorization : subCategorizations
-        
-      
 ```
-
 
 
 <!-- no inheritance hierarchy -->
@@ -33,12 +26,13 @@ URI: [ars:AnalysisCategory](https://www.cdisc.org/ars/1-0/AnalysisCategory)
 
 ## Slots
 
-| Name | Cardinality and Range | Description | Inheritance |
+| Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [id](id.md) | 1..1 <br/> [String](String.md) | The assigned identifying value for the instance of the class | direct |
 | [label](label.md) | 0..1 <br/> [String](String.md) | A short informative description that may be used for display | direct |
 | [subCategorizations](subCategorizations.md) | 0..* <br/> [AnalysisCategorization](AnalysisCategorization.md) | Sets of related implementer-defined sub-categories that can be used to catego... | direct |
 
+_* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
 
 
@@ -125,22 +119,22 @@ attributes:
     owner: AnalysisCategory
     domain_of:
     - ReportingEvent
-    - AnalysisCategorization
-    - AnalysisCategory
-    - Analysis
-    - AnalysisMethod
-    - Operation
-    - ReferencedOperationRelationship
-    - Output
-    - OutputDisplay
-    - DisplaySubSection
-    - AnalysisSet
-    - GroupingFactor
-    - Group
-    - DataSubset
     - ReferenceDocument
     - TerminologyExtension
     - SponsorTerm
+    - AnalysisCategorization
+    - AnalysisCategory
+    - AnalysisSet
+    - DataSubset
+    - GroupingFactor
+    - Group
+    - AnalysisMethod
+    - Operation
+    - ReferencedOperationRelationship
+    - Analysis
+    - DisplaySubSection
+    - Output
+    - OutputDisplay
     range: string
     required: true
   label:
@@ -153,13 +147,13 @@ attributes:
     domain_of:
     - AnalysisCategorization
     - AnalysisCategory
-    - AnalysisMethod
-    - Operation
     - AnalysisSet
+    - DataSubset
     - GroupingFactor
     - Group
-    - DataSubset
+    - AnalysisMethod
     - PageRef
+    - Operation
     range: string
   subCategorizations:
     name: subCategorizations

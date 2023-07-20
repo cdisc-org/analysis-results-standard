@@ -1,8 +1,6 @@
 # Class: DataGroupingFactor
 
-
 _A factor used to subdivide data records in an analysis dataset for analysis._
-
 
 
 
@@ -16,20 +14,14 @@ URI: [ars:DataGroupingFactor](https://www.cdisc.org/ars/1-0/DataGroupingFactor)
  classDiagram
     class DataGroupingFactor
       GroupingFactor <|-- DataGroupingFactor
-      
-      DataGroupingFactor : dataDriven
-        
-      DataGroupingFactor : groupingVariable
-        
-      DataGroupingFactor : groups
-        
-          DataGroupingFactor --|> DataGroup : groups
-        
+
       DataGroupingFactor : id
+        DataGroupingFactor : label
+        DataGroupingFactor : groupingVariable
+        DataGroupingFactor : dataDriven
+        DataGroupingFactor : groups
+        DataGroupingFactor --|> DataGroup : groups
         
-      DataGroupingFactor : label
-        
-      
 ```
 
 
@@ -43,7 +35,7 @@ URI: [ars:DataGroupingFactor](https://www.cdisc.org/ars/1-0/DataGroupingFactor)
 
 ## Slots
 
-| Name | Cardinality and Range | Description | Inheritance |
+| Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [id](id.md) | 1..1 <br/> [String](String.md) | The assigned identifying value for the instance of the class | [GroupingFactor](GroupingFactor.md) |
 | [label](label.md) | 0..1 <br/> [String](String.md) | A short informative description that may be used for display | [GroupingFactor](GroupingFactor.md) |
@@ -51,6 +43,7 @@ URI: [ars:DataGroupingFactor](https://www.cdisc.org/ars/1-0/DataGroupingFactor)
 | [dataDriven](dataDriven.md) | 1..1 <br/> [Boolean](Boolean.md) | Indicates whether the groups defined by the grouping are prespecified (false)... | [GroupingFactor](GroupingFactor.md) |
 | [groups](groups.md) | 0..* <br/> [DataGroup](DataGroup.md) | The pre-specified groups within the grouping | [GroupingFactor](GroupingFactor.md) |
 
+_* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
 
 
@@ -143,22 +136,22 @@ attributes:
     owner: DataGroupingFactor
     domain_of:
     - ReportingEvent
-    - AnalysisCategorization
-    - AnalysisCategory
-    - Analysis
-    - AnalysisMethod
-    - Operation
-    - ReferencedOperationRelationship
-    - Output
-    - OutputDisplay
-    - DisplaySubSection
-    - AnalysisSet
-    - GroupingFactor
-    - Group
-    - DataSubset
     - ReferenceDocument
     - TerminologyExtension
     - SponsorTerm
+    - AnalysisCategorization
+    - AnalysisCategory
+    - AnalysisSet
+    - DataSubset
+    - GroupingFactor
+    - Group
+    - AnalysisMethod
+    - Operation
+    - ReferencedOperationRelationship
+    - Analysis
+    - DisplaySubSection
+    - Output
+    - OutputDisplay
     range: string
     required: true
   label:
@@ -171,13 +164,13 @@ attributes:
     domain_of:
     - AnalysisCategorization
     - AnalysisCategory
-    - AnalysisMethod
-    - Operation
     - AnalysisSet
+    - DataSubset
     - GroupingFactor
     - Group
-    - DataSubset
+    - AnalysisMethod
     - PageRef
+    - Operation
     range: string
   groupingVariable:
     name: groupingVariable

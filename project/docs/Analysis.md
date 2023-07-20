@@ -1,20 +1,11 @@
 # Class: Analysis
 
-
 _An analysis that is designed to meet a requirement of the reporting event. Each analysis is defined as a set of specifications, including:_
-
-_* The analysis variable that is the subject of the analysis._
-
-_* The analysis method (set of statistical operations) that is performed for the analysis variable._
-
-_* The analysis set (subject population) for which the analysis is performed._
-
-_* The subset of data records on which the analysis is performed (optional)._
-
-_* One or more factors by which either subjects or data records are grouped for analysis (optional)._
-
-__
-
+* _The analysis variable that is the subject of the analysis._
+* _The analysis method (set of statistical operations) that is performed for the analysis variable._
+* _The analysis set (subject population) for which the analysis is performed._
+* _The subset of data records on which the analysis is performed (optional)._
+* _One or more factors by which either subjects or data records are grouped for analysis (optional)._
 
 
 
@@ -28,64 +19,36 @@ URI: [ars:Analysis](https://www.cdisc.org/ars/1-0/Analysis)
  classDiagram
     class Analysis
       NamedObject <|-- Analysis
-      
-      Analysis : analysisSetId
-        
-          Analysis --|> AnalysisSet : analysisSetId
-        
-      Analysis : categoryIds
-        
-          Analysis --|> AnalysisCategory : categoryIds
-        
-      Analysis : dataset
-        
-      Analysis : dataSubsetId
-        
-          Analysis --|> DataSubset : dataSubsetId
-        
-      Analysis : description
-        
-      Analysis : documentRefs
-        
-          Analysis --|> DocumentReference : documentRefs
-        
+
       Analysis : id
+        Analysis : version
+        Analysis : description
+        Analysis : reason
+        Analysis --|> ExtensibleTerminologyTerm : reason
+        Analysis : purpose
+        Analysis --|> ExtensibleTerminologyTerm : purpose
+        Analysis : documentRefs
+        Analysis --|> DocumentReference : documentRefs
+        Analysis : categoryIds
+        Analysis --|> AnalysisCategory : categoryIds
+        Analysis : dataset
+        Analysis : variable
+        Analysis : analysisSetId
+        Analysis --|> AnalysisSet : analysisSetId
+        Analysis : dataSubsetId
+        Analysis --|> DataSubset : dataSubsetId
+        Analysis : orderedGroupings
+        Analysis --|> OrderedGroupingFactor : orderedGroupings
+        Analysis : methodId
+        Analysis --|> AnalysisMethod : methodId
+        Analysis : referencedAnalysisOperations
+        Analysis --|> ReferencedAnalysisOperation : referencedAnalysisOperations
+        Analysis : programmingCode
+        Analysis --|> AnalysisOutputProgrammingCode : programmingCode
+        Analysis : results
+        Analysis --|> OperationResult : results
+        Analysis : name
         
-      Analysis : methodId
-        
-          Analysis --|> AnalysisMethod : methodId
-        
-      Analysis : name
-        
-      Analysis : orderedGroupings
-        
-          Analysis --|> OrderedGroupingFactor : orderedGroupings
-        
-      Analysis : programmingCode
-        
-          Analysis --|> AnalysisOutputProgrammingCode : programmingCode
-        
-      Analysis : purpose
-        
-          Analysis --|> ExtensibleTerminologyTerm : purpose
-        
-      Analysis : reason
-        
-          Analysis --|> ExtensibleTerminologyTerm : reason
-        
-      Analysis : referencedAnalysisOperations
-        
-          Analysis --|> ReferencedAnalysisOperation : referencedAnalysisOperations
-        
-      Analysis : results
-        
-          Analysis --|> OperationResult : results
-        
-      Analysis : variable
-        
-      Analysis : version
-        
-      
 ```
 
 
@@ -99,26 +62,27 @@ URI: [ars:Analysis](https://www.cdisc.org/ars/1-0/Analysis)
 
 ## Slots
 
-| Name | Cardinality and Range | Description | Inheritance |
+| Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [id](id.md) | 1..1 <br/> [String](String.md) | The assigned identifying value for the instance of the class | direct |
 | [version](version.md) | 0..1 <br/> [Integer](Integer.md) | An ordinal indicating the version of the identified instance of the class | direct |
-| [categoryIds](categoryIds.md) | 0..* <br/> [AnalysisCategory](AnalysisCategory.md) | References to any implementer-defined categories that apply to the analysis | direct |
 | [description](description.md) | 0..1 <br/> [String](String.md) | A textual description of the instance of the class | direct |
 | [reason](reason.md) | 1..1 <br/> [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) | The rationale for performing this analysis | direct |
 | [purpose](purpose.md) | 1..1 <br/> [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) | The purpose of the analysis within the body of evidence (e | direct |
 | [documentRefs](documentRefs.md) | 0..* <br/> [DocumentReference](DocumentReference.md) | References to external documents containing additional information | direct |
-| [analysisSetId](analysisSetId.md) | 0..1 <br/> [AnalysisSet](AnalysisSet.md) | The identifier of the referenced analysis set | direct |
-| [orderedGroupings](orderedGroupings.md) | 0..* <br/> [OrderedGroupingFactor](OrderedGroupingFactor.md) | An ordered list of grouping factors used in the analysis | direct |
-| [dataSubsetId](dataSubsetId.md) | 0..1 <br/> [DataSubset](DataSubset.md) | The identifier of the referenced data subset | direct |
+| [categoryIds](categoryIds.md) | 0..* <br/> [AnalysisCategory](AnalysisCategory.md) | References to any implementer-defined categories that apply to the analysis | direct |
 | [dataset](dataset.md) | 0..1 <br/> [String](String.md) | The name of the analysis dataset | direct |
 | [variable](variable.md) | 0..1 <br/> [String](String.md) | The name of the variable | direct |
+| [analysisSetId](analysisSetId.md) | 0..1 <br/> [AnalysisSet](AnalysisSet.md) | The identifier of the referenced analysis set | direct |
+| [dataSubsetId](dataSubsetId.md) | 0..1 <br/> [DataSubset](DataSubset.md) | The identifier of the referenced data subset | direct |
+| [orderedGroupings](orderedGroupings.md) | 0..* <br/> [OrderedGroupingFactor](OrderedGroupingFactor.md) | An ordered list of grouping factors used in the analysis | direct |
 | [methodId](methodId.md) | 1..1 <br/> [AnalysisMethod](AnalysisMethod.md) | A reference to the set of one or more statistical operations performed for th... | direct |
 | [referencedAnalysisOperations](referencedAnalysisOperations.md) | 0..* <br/> [ReferencedAnalysisOperation](ReferencedAnalysisOperation.md) | Indications of which analysis contains the results for each referenced operat... | direct |
 | [programmingCode](programmingCode.md) | 0..1 <br/> [AnalysisOutputProgrammingCode](AnalysisOutputProgrammingCode.md) | Programming statements and/or a reference to the program used to perform the ... | direct |
 | [results](results.md) | 0..* <br/> [OperationResult](OperationResult.md) | The results of the analysis | direct |
 | [name](name.md) | 1..1 <br/> [String](String.md) | The name for the instance of the class | [NamedObject](NamedObject.md) |
 
+_* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
 
 
@@ -129,8 +93,8 @@ URI: [ars:Analysis](https://www.cdisc.org/ars/1-0/Analysis)
 | ---  | --- | --- | --- |
 | [ReportingEvent](ReportingEvent.md) | [analyses](analyses.md) | range | [Analysis](Analysis.md) |
 | [OrderedListItem](OrderedListItem.md) | [analysisId](analysisId.md) | range | [Analysis](Analysis.md) |
-| [ReferencedAnalysisOperation](ReferencedAnalysisOperation.md) | [analysisId](analysisId.md) | range | [Analysis](Analysis.md) |
 | [ReferencedOperationRelationship](ReferencedOperationRelationship.md) | [analysisId](analysisId.md) | range | [Analysis](Analysis.md) |
+| [ReferencedAnalysisOperation](ReferencedAnalysisOperation.md) | [analysisId](analysisId.md) | range | [Analysis](Analysis.md) |
 
 
 
@@ -187,25 +151,23 @@ description: 'An analysis that is designed to meet a requirement of the reportin
   * The subset of data records on which the analysis is performed (optional).
 
   * One or more factors by which either subjects or data records are grouped for analysis
-  (optional).
-
-  '
+  (optional).'
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 is_a: NamedObject
 slots:
 - id
 - version
-- categoryIds
 - description
 - reason
 - purpose
 - documentRefs
-- analysisSetId
-- orderedGroupings
-- dataSubsetId
+- categoryIds
 - dataset
 - variable
+- analysisSetId
+- dataSubsetId
+- orderedGroupings
 - methodId
 - referencedAnalysisOperations
 - programmingCode
@@ -247,9 +209,7 @@ description: 'An analysis that is designed to meet a requirement of the reportin
   * The subset of data records on which the analysis is performed (optional).
 
   * One or more factors by which either subjects or data records are grouped for analysis
-  (optional).
-
-  '
+  (optional).'
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 is_a: NamedObject
@@ -279,22 +239,22 @@ attributes:
     owner: Analysis
     domain_of:
     - ReportingEvent
-    - AnalysisCategorization
-    - AnalysisCategory
-    - Analysis
-    - AnalysisMethod
-    - Operation
-    - ReferencedOperationRelationship
-    - Output
-    - OutputDisplay
-    - DisplaySubSection
-    - AnalysisSet
-    - GroupingFactor
-    - Group
-    - DataSubset
     - ReferenceDocument
     - TerminologyExtension
     - SponsorTerm
+    - AnalysisCategorization
+    - AnalysisCategory
+    - AnalysisSet
+    - DataSubset
+    - GroupingFactor
+    - Group
+    - AnalysisMethod
+    - Operation
+    - ReferencedOperationRelationship
+    - Analysis
+    - DisplaySubSection
+    - Output
+    - OutputDisplay
     range: string
     required: true
   version:
@@ -311,21 +271,6 @@ attributes:
     - Output
     - OutputDisplay
     range: integer
-  categoryIds:
-    name: categoryIds
-    description: References to any implementer-defined categories that apply to the
-      analysis.
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    multivalued: true
-    alias: categoryIds
-    owner: Analysis
-    domain_of:
-    - Analysis
-    - Output
-    range: AnalysisCategory
-    required: false
-    inlined: false
   description:
     name: description
     description: A textual description of the instance of the class.
@@ -334,11 +279,11 @@ attributes:
     alias: description
     owner: Analysis
     domain_of:
-    - Analysis
+    - SponsorTerm
     - AnalysisMethod
     - ReferencedOperationRelationship
     - CodeParameter
-    - SponsorTerm
+    - Analysis
     range: string
   reason:
     name: reason
@@ -379,12 +324,49 @@ attributes:
     alias: documentRefs
     owner: Analysis
     domain_of:
-    - Analysis
     - AnalysisMethod
+    - Analysis
     - Output
     range: DocumentReference
     inlined: true
     inlined_as_list: true
+  categoryIds:
+    name: categoryIds
+    description: References to any implementer-defined categories that apply to the
+      analysis.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    multivalued: true
+    alias: categoryIds
+    owner: Analysis
+    domain_of:
+    - Analysis
+    - Output
+    range: AnalysisCategory
+    required: false
+    inlined: false
+  dataset:
+    name: dataset
+    description: The name of the analysis dataset.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: dataset
+    owner: Analysis
+    domain_of:
+    - WhereClauseCondition
+    - Analysis
+    range: string
+  variable:
+    name: variable
+    description: The name of the variable.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: variable
+    owner: Analysis
+    domain_of:
+    - WhereClauseCondition
+    - Analysis
+    range: string
   analysisSetId:
     name: analysisSetId
     description: The identifier of the referenced analysis set.
@@ -396,6 +378,17 @@ attributes:
     domain_of:
     - Analysis
     range: AnalysisSet
+    inlined: false
+  dataSubsetId:
+    name: dataSubsetId
+    description: The identifier of the referenced data subset.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: dataSubsetId
+    owner: Analysis
+    domain_of:
+    - Analysis
+    range: DataSubset
     inlined: false
   orderedGroupings:
     name: orderedGroupings
@@ -411,39 +404,6 @@ attributes:
     range: OrderedGroupingFactor
     inlined: true
     inlined_as_list: true
-  dataSubsetId:
-    name: dataSubsetId
-    description: The identifier of the referenced data subset.
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    alias: dataSubsetId
-    owner: Analysis
-    domain_of:
-    - Analysis
-    range: DataSubset
-    inlined: false
-  dataset:
-    name: dataset
-    description: The name of the analysis dataset.
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    alias: dataset
-    owner: Analysis
-    domain_of:
-    - Analysis
-    - WhereClauseCondition
-    range: string
-  variable:
-    name: variable
-    description: The name of the variable.
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    alias: variable
-    owner: Analysis
-    domain_of:
-    - Analysis
-    - WhereClauseCondition
-    range: string
   methodId:
     name: methodId
     description: A reference to the set of one or more statistical operations performed

@@ -1,8 +1,6 @@
 # Class: Output
 
-
 _A report of results and their evaluation based on planned analyses performed during the course of a trial._
-
 
 
 
@@ -16,34 +14,21 @@ URI: [ars:Output](https://www.cdisc.org/ars/1-0/Output)
  classDiagram
     class Output
       NamedObject <|-- Output
-      
-      Output : categoryIds
-        
-          Output --|> AnalysisCategory : categoryIds
-        
-      Output : displays
-        
-          Output --|> OrderedDisplay : displays
-        
-      Output : documentRefs
-        
-          Output --|> DocumentReference : documentRefs
-        
-      Output : fileSpecifications
-        
-          Output --|> OutputFile : fileSpecifications
-        
+
       Output : id
+        Output : version
+        Output : fileSpecifications
+        Output --|> OutputFile : fileSpecifications
+        Output : displays
+        Output --|> OrderedDisplay : displays
+        Output : categoryIds
+        Output --|> AnalysisCategory : categoryIds
+        Output : documentRefs
+        Output --|> DocumentReference : documentRefs
+        Output : programmingCode
+        Output --|> AnalysisOutputProgrammingCode : programmingCode
+        Output : name
         
-      Output : name
-        
-      Output : programmingCode
-        
-          Output --|> AnalysisOutputProgrammingCode : programmingCode
-        
-      Output : version
-        
-      
 ```
 
 
@@ -57,7 +42,7 @@ URI: [ars:Output](https://www.cdisc.org/ars/1-0/Output)
 
 ## Slots
 
-| Name | Cardinality and Range | Description | Inheritance |
+| Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [id](id.md) | 1..1 <br/> [String](String.md) | The assigned identifying value for the instance of the class | direct |
 | [version](version.md) | 0..1 <br/> [Integer](Integer.md) | An ordinal indicating the version of the identified instance of the class | direct |
@@ -68,6 +53,7 @@ URI: [ars:Output](https://www.cdisc.org/ars/1-0/Output)
 | [programmingCode](programmingCode.md) | 0..1 <br/> [AnalysisOutputProgrammingCode](AnalysisOutputProgrammingCode.md) | Programming statements and/or a reference to the program used to perform the ... | direct |
 | [name](name.md) | 1..1 <br/> [String](String.md) | The name for the instance of the class | [NamedObject](NamedObject.md) |
 
+_* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
 
 
@@ -189,22 +175,22 @@ attributes:
     owner: Output
     domain_of:
     - ReportingEvent
-    - AnalysisCategorization
-    - AnalysisCategory
-    - Analysis
-    - AnalysisMethod
-    - Operation
-    - ReferencedOperationRelationship
-    - Output
-    - OutputDisplay
-    - DisplaySubSection
-    - AnalysisSet
-    - GroupingFactor
-    - Group
-    - DataSubset
     - ReferenceDocument
     - TerminologyExtension
     - SponsorTerm
+    - AnalysisCategorization
+    - AnalysisCategory
+    - AnalysisSet
+    - DataSubset
+    - GroupingFactor
+    - Group
+    - AnalysisMethod
+    - Operation
+    - ReferencedOperationRelationship
+    - Analysis
+    - DisplaySubSection
+    - Output
+    - OutputDisplay
     range: string
     required: true
   version:
@@ -272,8 +258,8 @@ attributes:
     alias: documentRefs
     owner: Output
     domain_of:
-    - Analysis
     - AnalysisMethod
+    - Analysis
     - Output
     range: DocumentReference
     inlined: true

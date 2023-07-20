@@ -1,8 +1,6 @@
 # Class: ReportingEvent
 
-
 _A set of analyses and outputs created to meet a specific reporting requirement, such as a CSR or interim analysis._
-
 
 
 
@@ -16,66 +14,37 @@ URI: [ars:ReportingEvent](https://www.cdisc.org/ars/1-0/ReportingEvent)
  classDiagram
     class ReportingEvent
       NamedObject <|-- ReportingEvent
-      
-      ReportingEvent : analyses
-        
-          ReportingEvent --|> Analysis : analyses
-        
-      ReportingEvent : analysisCategorizations
-        
-          ReportingEvent --|> AnalysisCategorization : analysisCategorizations
-        
-      ReportingEvent : analysisGroupings
-        
-          ReportingEvent --|> SubjectGroupingFactor : analysisGroupings
-        
-      ReportingEvent : analysisSets
-        
-          ReportingEvent --|> AnalysisSet : analysisSets
-        
-      ReportingEvent : dataGroupings
-        
-          ReportingEvent --|> DataGroupingFactor : dataGroupings
-        
-      ReportingEvent : dataSubsets
-        
-          ReportingEvent --|> DataSubset : dataSubsets
-        
-      ReportingEvent : globalDisplaySections
-        
-          ReportingEvent --|> GlobalDisplaySection : globalDisplaySections
-        
+
       ReportingEvent : id
+        ReportingEvent : version
+        ReportingEvent : listOfPlannedAnalyses
+        ReportingEvent --|> NestedList : listOfPlannedAnalyses
+        ReportingEvent : listOfPlannedOutputs
+        ReportingEvent --|> NestedList : listOfPlannedOutputs
+        ReportingEvent : referenceDocuments
+        ReportingEvent --|> ReferenceDocument : referenceDocuments
+        ReportingEvent : terminologyExtensions
+        ReportingEvent --|> TerminologyExtension : terminologyExtensions
+        ReportingEvent : analysisCategorizations
+        ReportingEvent --|> AnalysisCategorization : analysisCategorizations
+        ReportingEvent : analysisSets
+        ReportingEvent --|> AnalysisSet : analysisSets
+        ReportingEvent : analysisGroupings
+        ReportingEvent --|> SubjectGroupingFactor : analysisGroupings
+        ReportingEvent : dataSubsets
+        ReportingEvent --|> DataSubset : dataSubsets
+        ReportingEvent : dataGroupings
+        ReportingEvent --|> DataGroupingFactor : dataGroupings
+        ReportingEvent : methods
+        ReportingEvent --|> AnalysisMethod : methods
+        ReportingEvent : analyses
+        ReportingEvent --|> Analysis : analyses
+        ReportingEvent : globalDisplaySections
+        ReportingEvent --|> GlobalDisplaySection : globalDisplaySections
+        ReportingEvent : outputs
+        ReportingEvent --|> Output : outputs
+        ReportingEvent : name
         
-      ReportingEvent : listOfPlannedAnalyses
-        
-          ReportingEvent --|> NestedList : listOfPlannedAnalyses
-        
-      ReportingEvent : listOfPlannedOutputs
-        
-          ReportingEvent --|> NestedList : listOfPlannedOutputs
-        
-      ReportingEvent : methods
-        
-          ReportingEvent --|> AnalysisMethod : methods
-        
-      ReportingEvent : name
-        
-      ReportingEvent : outputs
-        
-          ReportingEvent --|> Output : outputs
-        
-      ReportingEvent : referenceDocuments
-        
-          ReportingEvent --|> ReferenceDocument : referenceDocuments
-        
-      ReportingEvent : terminologyExtensions
-        
-          ReportingEvent --|> TerminologyExtension : terminologyExtensions
-        
-      ReportingEvent : version
-        
-      
 ```
 
 
@@ -89,25 +58,26 @@ URI: [ars:ReportingEvent](https://www.cdisc.org/ars/1-0/ReportingEvent)
 
 ## Slots
 
-| Name | Cardinality and Range | Description | Inheritance |
+| Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [id](id.md) | 1..1 <br/> [String](String.md) | The assigned identifying value for the instance of the class | direct |
 | [version](version.md) | 0..1 <br/> [Integer](Integer.md) | An ordinal indicating the version of the identified instance of the class | direct |
 | [listOfPlannedAnalyses](listOfPlannedAnalyses.md) | 1..1 <br/> [NestedList](NestedList.md) | A structured list of the analyses defined for the reporting event | direct |
 | [listOfPlannedOutputs](listOfPlannedOutputs.md) | 0..1 <br/> [NestedList](NestedList.md) | An optional structured list of the outputs defined for the reporting event | direct |
+| [referenceDocuments](referenceDocuments.md) | 0..* <br/> [ReferenceDocument](ReferenceDocument.md) | External documents containing information referenced for the reporting event | direct |
+| [terminologyExtensions](terminologyExtensions.md) | 0..* <br/> [TerminologyExtension](TerminologyExtension.md) | Any sponsor-defined extensions to extensible terminology | direct |
+| [analysisCategorizations](analysisCategorizations.md) | 0..* <br/> [AnalysisCategorization](AnalysisCategorization.md) | Sets of related implementer-defined categories that can be used to categorize... | direct |
 | [analysisSets](analysisSets.md) | 0..* <br/> [AnalysisSet](AnalysisSet.md) | The analysis sets (subject populations) defined for the reporting event | direct |
 | [analysisGroupings](analysisGroupings.md) | 0..* <br/> [SubjectGroupingFactor](SubjectGroupingFactor.md) | Characteristics used to subdivide the subject population (e | direct |
 | [dataSubsets](dataSubsets.md) | 0..* <br/> [DataSubset](DataSubset.md) | Subsets of data identified by selection criteria for inclusion in analysis de... | direct |
 | [dataGroupings](dataGroupings.md) | 0..* <br/> [DataGroupingFactor](DataGroupingFactor.md) | Characteristics used to subdivide data records in analysis datasets (e | direct |
-| [globalDisplaySections](globalDisplaySections.md) | 0..* <br/> [GlobalDisplaySection](GlobalDisplaySection.md) | Display section specifications that may be applied to any display | direct |
-| [analysisCategorizations](analysisCategorizations.md) | 0..* <br/> [AnalysisCategorization](AnalysisCategorization.md) | Sets of related implementer-defined categories that can be used to categorize... | direct |
-| [analyses](analyses.md) | 0..* <br/> [Analysis](Analysis.md) | The analyses defined for the reporting event | direct |
 | [methods](methods.md) | 0..* <br/> [AnalysisMethod](AnalysisMethod.md) | The defined methods used to analyze any analysis variable | direct |
+| [analyses](analyses.md) | 0..* <br/> [Analysis](Analysis.md) | The analyses defined for the reporting event | direct |
+| [globalDisplaySections](globalDisplaySections.md) | 0..* <br/> [GlobalDisplaySection](GlobalDisplaySection.md) | Display section specifications that may be applied to any display | direct |
 | [outputs](outputs.md) | 0..* <br/> [Output](Output.md) | The outputs defined for the reporting event | direct |
-| [referenceDocuments](referenceDocuments.md) | 0..* <br/> [ReferenceDocument](ReferenceDocument.md) | External documents containing information referenced for the reporting event | direct |
-| [terminologyExtensions](terminologyExtensions.md) | 0..* <br/> [TerminologyExtension](TerminologyExtension.md) | Any sponsor-defined extensions to extensible terminology | direct |
 | [name](name.md) | 1..1 <br/> [String](String.md) | The name for the instance of the class | [NamedObject](NamedObject.md) |
 
+_* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
 
 
@@ -163,17 +133,17 @@ slots:
 - version
 - listOfPlannedAnalyses
 - listOfPlannedOutputs
+- referenceDocuments
+- terminologyExtensions
+- analysisCategorizations
 - analysisSets
 - analysisGroupings
 - dataSubsets
 - dataGroupings
-- globalDisplaySections
-- analysisCategorizations
-- analyses
 - methods
+- analyses
+- globalDisplaySections
 - outputs
-- referenceDocuments
-- terminologyExtensions
 tree_root: true
 
 ```
@@ -200,22 +170,22 @@ attributes:
     owner: ReportingEvent
     domain_of:
     - ReportingEvent
-    - AnalysisCategorization
-    - AnalysisCategory
-    - Analysis
-    - AnalysisMethod
-    - Operation
-    - ReferencedOperationRelationship
-    - Output
-    - OutputDisplay
-    - DisplaySubSection
-    - AnalysisSet
-    - GroupingFactor
-    - Group
-    - DataSubset
     - ReferenceDocument
     - TerminologyExtension
     - SponsorTerm
+    - AnalysisCategorization
+    - AnalysisCategory
+    - AnalysisSet
+    - DataSubset
+    - GroupingFactor
+    - Group
+    - AnalysisMethod
+    - Operation
+    - ReferencedOperationRelationship
+    - Analysis
+    - DisplaySubSection
+    - Output
+    - OutputDisplay
     range: string
     required: true
   version:
@@ -255,6 +225,50 @@ attributes:
     - ReportingEvent
     range: NestedList
     required: false
+  referenceDocuments:
+    name: referenceDocuments
+    description: External documents containing information referenced for the reporting
+      event.
+    comments:
+    - May include specification or report documents (e.g. the SAP or CSR) and program
+      files.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    multivalued: true
+    alias: referenceDocuments
+    owner: ReportingEvent
+    domain_of:
+    - ReportingEvent
+    range: ReferenceDocument
+    inlined: true
+    inlined_as_list: true
+  terminologyExtensions:
+    name: terminologyExtensions
+    description: Any sponsor-defined extensions to extensible terminology.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    multivalued: true
+    alias: terminologyExtensions
+    owner: ReportingEvent
+    domain_of:
+    - ReportingEvent
+    range: TerminologyExtension
+    inlined: true
+    inlined_as_list: true
+  analysisCategorizations:
+    name: analysisCategorizations
+    description: Sets of related implementer-defined categories that can be used to
+      categorize analyses or outputs.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    multivalued: true
+    alias: analysisCategorizations
+    owner: ReportingEvent
+    domain_of:
+    - ReportingEvent
+    range: AnalysisCategorization
+    inlined: true
+    inlined_as_list: true
   analysisSets:
     name: analysisSets
     description: The analysis sets (subject populations) defined for the reporting
@@ -311,31 +325,17 @@ attributes:
     range: DataGroupingFactor
     inlined: true
     inlined_as_list: true
-  globalDisplaySections:
-    name: globalDisplaySections
-    description: Display section specifications that may be applied to any display.
+  methods:
+    name: methods
+    description: The defined methods used to analyze any analysis variable.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     multivalued: true
-    alias: globalDisplaySections
+    alias: methods
     owner: ReportingEvent
     domain_of:
     - ReportingEvent
-    range: GlobalDisplaySection
-    inlined: true
-    inlined_as_list: true
-  analysisCategorizations:
-    name: analysisCategorizations
-    description: Sets of related implementer-defined categories that can be used to
-      categorize analyses or outputs.
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    multivalued: true
-    alias: analysisCategorizations
-    owner: ReportingEvent
-    domain_of:
-    - ReportingEvent
-    range: AnalysisCategorization
+    range: AnalysisMethod
     inlined: true
     inlined_as_list: true
   analyses:
@@ -351,17 +351,17 @@ attributes:
     range: Analysis
     inlined: true
     inlined_as_list: true
-  methods:
-    name: methods
-    description: The defined methods used to analyze any analysis variable.
+  globalDisplaySections:
+    name: globalDisplaySections
+    description: Display section specifications that may be applied to any display.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     multivalued: true
-    alias: methods
+    alias: globalDisplaySections
     owner: ReportingEvent
     domain_of:
     - ReportingEvent
-    range: AnalysisMethod
+    range: GlobalDisplaySection
     inlined: true
     inlined_as_list: true
   outputs:
@@ -375,36 +375,6 @@ attributes:
     domain_of:
     - ReportingEvent
     range: Output
-    inlined: true
-    inlined_as_list: true
-  referenceDocuments:
-    name: referenceDocuments
-    description: External documents containing information referenced for the reporting
-      event.
-    comments:
-    - May include specification or report documents (e.g. the SAP or CSR) and program
-      files.
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    multivalued: true
-    alias: referenceDocuments
-    owner: ReportingEvent
-    domain_of:
-    - ReportingEvent
-    range: ReferenceDocument
-    inlined: true
-    inlined_as_list: true
-  terminologyExtensions:
-    name: terminologyExtensions
-    description: Any sponsor-defined extensions to extensible terminology.
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    multivalued: true
-    alias: terminologyExtensions
-    owner: ReportingEvent
-    domain_of:
-    - ReportingEvent
-    range: TerminologyExtension
     inlined: true
     inlined_as_list: true
   name:

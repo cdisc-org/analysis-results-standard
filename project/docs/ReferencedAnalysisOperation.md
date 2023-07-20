@@ -1,8 +1,6 @@
 # Class: ReferencedAnalysisOperation
 
-
 _An indication of the analysis that contains results of a referenced operation._
-
 
 
 
@@ -16,16 +14,11 @@ URI: [ars:ReferencedAnalysisOperation](https://www.cdisc.org/ars/1-0/ReferencedA
  classDiagram
     class ReferencedAnalysisOperation
       ReferencedAnalysisOperation : analysisId
+        ReferencedAnalysisOperation --|> Analysis : analysisId
+        ReferencedAnalysisOperation : referencedOperationRelationshipId
+        ReferencedAnalysisOperation --|> ReferencedOperationRelationship : referencedOperationRelationshipId
         
-          ReferencedAnalysisOperation --|> Analysis : analysisId
-        
-      ReferencedAnalysisOperation : referencedOperationRelationshipId
-        
-          ReferencedAnalysisOperation --|> ReferencedOperationRelationship : referencedOperationRelationshipId
-        
-      
 ```
-
 
 
 <!-- no inheritance hierarchy -->
@@ -33,11 +26,12 @@ URI: [ars:ReferencedAnalysisOperation](https://www.cdisc.org/ars/1-0/ReferencedA
 
 ## Slots
 
-| Name | Cardinality and Range | Description | Inheritance |
+| Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [referencedOperationRelationshipId](referencedOperationRelationshipId.md) | 1..1 <br/> [ReferencedOperationRelationship](ReferencedOperationRelationship.md) | The identifier of the defined referenced operation relationship | direct |
 | [analysisId](analysisId.md) | 1..1 <br/> [Analysis](Analysis.md) | The identifier of the referenced analysis | direct |
 
+_* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
 
 
@@ -101,8 +95,8 @@ slot_usage:
     name: analysisId
     domain_of:
     - OrderedListItem
-    - ReferencedAnalysisOperation
     - ReferencedOperationRelationship
+    - ReferencedAnalysisOperation
     required: true
 
 ```
@@ -121,8 +115,8 @@ slot_usage:
     name: analysisId
     domain_of:
     - OrderedListItem
-    - ReferencedAnalysisOperation
     - ReferencedOperationRelationship
+    - ReferencedAnalysisOperation
     required: true
 attributes:
   referencedOperationRelationshipId:
@@ -147,8 +141,8 @@ attributes:
     owner: ReferencedAnalysisOperation
     domain_of:
     - OrderedListItem
-    - ReferencedAnalysisOperation
     - ReferencedOperationRelationship
+    - ReferencedAnalysisOperation
     range: Analysis
     required: true
     inlined: false

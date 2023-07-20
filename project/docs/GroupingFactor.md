@@ -1,13 +1,9 @@
 # Class: GroupingFactor
 
-
 _A factor used to subdivide either the subject population or data records in an analysis dataset for analysis._
 
 
-
-
 * __NOTE__: this is an abstract class and should not be instantiated directly
-
 
 URI: [ars:GroupingFactor](https://www.cdisc.org/ars/1-0/GroupingFactor)
 
@@ -19,20 +15,13 @@ URI: [ars:GroupingFactor](https://www.cdisc.org/ars/1-0/GroupingFactor)
     class GroupingFactor
       GroupingFactor <|-- SubjectGroupingFactor
       GroupingFactor <|-- DataGroupingFactor
-      
-      GroupingFactor : dataDriven
+      GroupingFactor : id        
+        GroupingFactor : label        
+        GroupingFactor : groupingVariable        
+        GroupingFactor : dataDriven        
+        GroupingFactor : groups        
+        GroupingFactor --|> Group : groups
         
-      GroupingFactor : groupingVariable
-        
-      GroupingFactor : groups
-        
-          GroupingFactor --|> Group : groups
-        
-      GroupingFactor : id
-        
-      GroupingFactor : label
-        
-      
 ```
 
 
@@ -47,7 +36,7 @@ URI: [ars:GroupingFactor](https://www.cdisc.org/ars/1-0/GroupingFactor)
 
 ## Slots
 
-| Name | Cardinality and Range | Description | Inheritance |
+| Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [id](id.md) | 1..1 <br/> [String](String.md) | The assigned identifying value for the instance of the class | direct |
 | [label](label.md) | 0..1 <br/> [String](String.md) | A short informative description that may be used for display | direct |
@@ -55,6 +44,7 @@ URI: [ars:GroupingFactor](https://www.cdisc.org/ars/1-0/GroupingFactor)
 | [dataDriven](dataDriven.md) | 1..1 <br/> [Boolean](Boolean.md) | Indicates whether the groups defined by the grouping are prespecified (false)... | direct |
 | [groups](groups.md) | 0..* <br/> [Group](Group.md) | The pre-specified groups within the grouping | direct |
 
+_* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
 
 
@@ -144,22 +134,22 @@ attributes:
     owner: GroupingFactor
     domain_of:
     - ReportingEvent
-    - AnalysisCategorization
-    - AnalysisCategory
-    - Analysis
-    - AnalysisMethod
-    - Operation
-    - ReferencedOperationRelationship
-    - Output
-    - OutputDisplay
-    - DisplaySubSection
-    - AnalysisSet
-    - GroupingFactor
-    - Group
-    - DataSubset
     - ReferenceDocument
     - TerminologyExtension
     - SponsorTerm
+    - AnalysisCategorization
+    - AnalysisCategory
+    - AnalysisSet
+    - DataSubset
+    - GroupingFactor
+    - Group
+    - AnalysisMethod
+    - Operation
+    - ReferencedOperationRelationship
+    - Analysis
+    - DisplaySubSection
+    - Output
+    - OutputDisplay
     range: string
     required: true
   label:
@@ -172,13 +162,13 @@ attributes:
     domain_of:
     - AnalysisCategorization
     - AnalysisCategory
-    - AnalysisMethod
-    - Operation
     - AnalysisSet
+    - DataSubset
     - GroupingFactor
     - Group
-    - DataSubset
+    - AnalysisMethod
     - PageRef
+    - Operation
     range: string
   groupingVariable:
     name: groupingVariable

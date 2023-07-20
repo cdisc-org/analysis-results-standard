@@ -1,8 +1,6 @@
 # Class: Operation
 
-
 _A statistical operation that produces a single analysis result value as part of an analysis method._
-
 
 
 
@@ -16,20 +14,14 @@ URI: [ars:Operation](https://www.cdisc.org/ars/1-0/Operation)
  classDiagram
     class Operation
       NamedObject <|-- Operation
-      
+
       Operation : id
+        Operation : label
+        Operation : referencedOperationRelationships
+        Operation --|> ReferencedOperationRelationship : referencedOperationRelationships
+        Operation : resultPattern
+        Operation : name
         
-      Operation : label
-        
-      Operation : name
-        
-      Operation : referencedOperationRelationships
-        
-          Operation --|> ReferencedOperationRelationship : referencedOperationRelationships
-        
-      Operation : resultPattern
-        
-      
 ```
 
 
@@ -43,7 +35,7 @@ URI: [ars:Operation](https://www.cdisc.org/ars/1-0/Operation)
 
 ## Slots
 
-| Name | Cardinality and Range | Description | Inheritance |
+| Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [id](id.md) | 1..1 <br/> [String](String.md) | The assigned identifying value for the instance of the class | direct |
 | [label](label.md) | 0..1 <br/> [String](String.md) | A short informative description that may be used for display | direct |
@@ -51,6 +43,7 @@ URI: [ars:Operation](https://www.cdisc.org/ars/1-0/Operation)
 | [resultPattern](resultPattern.md) | 0..1 <br/> [String](String.md) | The default pattern or format to apply to the result for display | direct |
 | [name](name.md) | 1..1 <br/> [String](String.md) | The name for the instance of the class | [NamedObject](NamedObject.md) |
 
+_* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
 
 
@@ -59,9 +52,9 @@ URI: [ars:Operation](https://www.cdisc.org/ars/1-0/Operation)
 
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
-| [OperationResult](OperationResult.md) | [operationId](operationId.md) | range | [Operation](Operation.md) |
 | [AnalysisMethod](AnalysisMethod.md) | [operations](operations.md) | range | [Operation](Operation.md) |
 | [ReferencedOperationRelationship](ReferencedOperationRelationship.md) | [operationId](operationId.md) | range | [Operation](Operation.md) |
+| [OperationResult](OperationResult.md) | [operationId](operationId.md) | range | [Operation](Operation.md) |
 
 
 
@@ -140,22 +133,22 @@ attributes:
     owner: Operation
     domain_of:
     - ReportingEvent
-    - AnalysisCategorization
-    - AnalysisCategory
-    - Analysis
-    - AnalysisMethod
-    - Operation
-    - ReferencedOperationRelationship
-    - Output
-    - OutputDisplay
-    - DisplaySubSection
-    - AnalysisSet
-    - GroupingFactor
-    - Group
-    - DataSubset
     - ReferenceDocument
     - TerminologyExtension
     - SponsorTerm
+    - AnalysisCategorization
+    - AnalysisCategory
+    - AnalysisSet
+    - DataSubset
+    - GroupingFactor
+    - Group
+    - AnalysisMethod
+    - Operation
+    - ReferencedOperationRelationship
+    - Analysis
+    - DisplaySubSection
+    - Output
+    - OutputDisplay
     range: string
     required: true
   label:
@@ -168,13 +161,13 @@ attributes:
     domain_of:
     - AnalysisCategorization
     - AnalysisCategory
-    - AnalysisMethod
-    - Operation
     - AnalysisSet
+    - DataSubset
     - GroupingFactor
     - Group
-    - DataSubset
+    - AnalysisMethod
     - PageRef
+    - Operation
     range: string
   referencedOperationRelationships:
     name: referencedOperationRelationships

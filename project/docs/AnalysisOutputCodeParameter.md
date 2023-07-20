@@ -1,8 +1,6 @@
 # Class: AnalysisOutputCodeParameter
 
-
 _A parameter whose value is used in programming code for a specific analysis or output._
-
 
 
 
@@ -16,14 +14,11 @@ URI: [ars:AnalysisOutputCodeParameter](https://www.cdisc.org/ars/1-0/AnalysisOut
  classDiagram
     class AnalysisOutputCodeParameter
       CodeParameter <|-- AnalysisOutputCodeParameter
-      
-      AnalysisOutputCodeParameter : description
-        
-      AnalysisOutputCodeParameter : name
-        
+
       AnalysisOutputCodeParameter : value
+        AnalysisOutputCodeParameter : description
+        AnalysisOutputCodeParameter : name
         
-      
 ```
 
 
@@ -38,12 +33,13 @@ URI: [ars:AnalysisOutputCodeParameter](https://www.cdisc.org/ars/1-0/AnalysisOut
 
 ## Slots
 
-| Name | Cardinality and Range | Description | Inheritance |
+| Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [value](value.md) | 1..* <br/> [String](String.md) | The value of the parameter | direct |
 | [description](description.md) | 0..1 <br/> [String](String.md) | A textual description of the instance of the class | [CodeParameter](CodeParameter.md) |
 | [name](name.md) | 1..1 <br/> [String](String.md) | The name for the instance of the class | [NamedObject](NamedObject.md) |
 
+_* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
 
 
@@ -108,9 +104,9 @@ slot_usage:
     name: value
     description: The value of the parameter.
     domain_of:
-    - AnalysisOutputCodeParameter
-    - TemplateCodeParameter
     - WhereClauseCondition
+    - TemplateCodeParameter
+    - AnalysisOutputCodeParameter
     required: true
     maximum_cardinality: 1
 
@@ -132,9 +128,9 @@ slot_usage:
     name: value
     description: The value of the parameter.
     domain_of:
-    - AnalysisOutputCodeParameter
-    - TemplateCodeParameter
     - WhereClauseCondition
+    - TemplateCodeParameter
+    - AnalysisOutputCodeParameter
     required: true
     maximum_cardinality: 1
 attributes:
@@ -147,9 +143,9 @@ attributes:
     alias: value
     owner: AnalysisOutputCodeParameter
     domain_of:
-    - AnalysisOutputCodeParameter
-    - TemplateCodeParameter
     - WhereClauseCondition
+    - TemplateCodeParameter
+    - AnalysisOutputCodeParameter
     range: string
     required: true
     maximum_cardinality: 1
@@ -161,11 +157,11 @@ attributes:
     alias: description
     owner: AnalysisOutputCodeParameter
     domain_of:
-    - Analysis
+    - SponsorTerm
     - AnalysisMethod
     - ReferencedOperationRelationship
     - CodeParameter
-    - SponsorTerm
+    - Analysis
     range: string
   name:
     name: name

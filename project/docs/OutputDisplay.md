@@ -1,8 +1,6 @@
 # Class: OutputDisplay
 
-
 _A tabular representation of the results of one or more analyses._
-
 
 
 
@@ -16,20 +14,14 @@ URI: [ars:OutputDisplay](https://www.cdisc.org/ars/1-0/OutputDisplay)
  classDiagram
     class OutputDisplay
       NamedObject <|-- OutputDisplay
-      
-      OutputDisplay : displaySections
-        
-          OutputDisplay --|> DisplaySection : displaySections
-        
-      OutputDisplay : displayTitle
-        
+
       OutputDisplay : id
+        OutputDisplay : version
+        OutputDisplay : displayTitle
+        OutputDisplay : displaySections
+        OutputDisplay --|> DisplaySection : displaySections
+        OutputDisplay : name
         
-      OutputDisplay : name
-        
-      OutputDisplay : version
-        
-      
 ```
 
 
@@ -43,7 +35,7 @@ URI: [ars:OutputDisplay](https://www.cdisc.org/ars/1-0/OutputDisplay)
 
 ## Slots
 
-| Name | Cardinality and Range | Description | Inheritance |
+| Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [id](id.md) | 1..1 <br/> [String](String.md) | The assigned identifying value for the instance of the class | direct |
 | [version](version.md) | 0..1 <br/> [Integer](Integer.md) | An ordinal indicating the version of the identified instance of the class | direct |
@@ -51,6 +43,7 @@ URI: [ars:OutputDisplay](https://www.cdisc.org/ars/1-0/OutputDisplay)
 | [displaySections](displaySections.md) | 0..* <br/> [DisplaySection](DisplaySection.md) | The parts of the display containing one or more pieces of informational text ... | direct |
 | [name](name.md) | 1..1 <br/> [String](String.md) | The name for the instance of the class | [NamedObject](NamedObject.md) |
 
+_* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
 
 
@@ -136,22 +129,22 @@ attributes:
     owner: OutputDisplay
     domain_of:
     - ReportingEvent
-    - AnalysisCategorization
-    - AnalysisCategory
-    - Analysis
-    - AnalysisMethod
-    - Operation
-    - ReferencedOperationRelationship
-    - Output
-    - OutputDisplay
-    - DisplaySubSection
-    - AnalysisSet
-    - GroupingFactor
-    - Group
-    - DataSubset
     - ReferenceDocument
     - TerminologyExtension
     - SponsorTerm
+    - AnalysisCategorization
+    - AnalysisCategory
+    - AnalysisSet
+    - DataSubset
+    - GroupingFactor
+    - Group
+    - AnalysisMethod
+    - Operation
+    - ReferencedOperationRelationship
+    - Analysis
+    - DisplaySubSection
+    - Output
+    - OutputDisplay
     range: string
     required: true
   version:

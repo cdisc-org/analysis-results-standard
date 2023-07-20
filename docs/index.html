@@ -87,20 +87,6 @@ ReportingEvent {
     integer version  
     string name  
 }
-TerminologyExtension {
-    string id  
-    ExtensibleTerminologyEnum enumeration  
-}
-SponsorTerm {
-    string id  
-    string submissionValue  
-    string description  
-}
-ReferenceDocument {
-    string id  
-    uri location  
-    string name  
-}
 Output {
     string id  
     integer version  
@@ -125,6 +111,11 @@ PageRef {
     integerList pageNumbers  
     integer firstPage  
     integer lastPage  
+}
+ReferenceDocument {
+    string id  
+    uri location  
+    string name  
 }
 AnalysisCategory {
     string id  
@@ -161,31 +152,13 @@ OutputFile {
 ExtensibleTerminologyTerm {
     string controlledTerm  
 }
-AnalysisMethod {
+SponsorTerm {
     string id  
-    string label  
+    string submissionValue  
     string description  
-    string name  
 }
-AnalysisProgrammingCodeTemplate {
-    string context  
-    string code  
-}
-TemplateCodeParameter {
-    string valueSource  
-    stringList value  
-    string description  
-    string name  
-}
-Operation {
-    string id  
-    string label  
-    string resultPattern  
-    string name  
-}
-ReferencedOperationRelationship {
-    string id  
-    string description  
+GlobalDisplaySection {
+    DisplaySectionTypeEnum sectionType  
 }
 Analysis {
     string id  
@@ -223,8 +196,38 @@ GroupingFactor {
     string groupingVariable  
     boolean dataDriven  
 }
+Operation {
+    string id  
+    string label  
+    string resultPattern  
+    string name  
+}
+ReferencedOperationRelationship {
+    string id  
+    string description  
+}
 ReferencedAnalysisOperation {
 
+}
+AnalysisMethod {
+    string id  
+    string label  
+    string description  
+    string name  
+}
+AnalysisProgrammingCodeTemplate {
+    string context  
+    string code  
+}
+TemplateCodeParameter {
+    string valueSource  
+    stringList value  
+    string description  
+    string name  
+}
+OrderedGroupingFactor {
+    integer order  
+    boolean resultsByGroup  
 }
 DataSubset {
     string id  
@@ -242,10 +245,6 @@ WhereClause {
 WhereClauseCompoundExpression {
     ExpressionLogicalOperatorEnum logicalOperator  
 }
-OrderedGroupingFactor {
-    integer order  
-    boolean resultsByGroup  
-}
 AnalysisSet {
     string id  
     string label  
@@ -254,9 +253,6 @@ AnalysisSet {
 }
 CompoundSetExpression {
     ExpressionLogicalOperatorEnum logicalOperator  
-}
-GlobalDisplaySection {
-    DisplaySectionTypeEnum sectionType  
 }
 DataGroupingFactor {
     string id  
@@ -282,6 +278,10 @@ AnalysisGroup {
     integer level  
     integer order  
 }
+TerminologyExtension {
+    string id  
+    ExtensibleTerminologyEnum enumeration  
+}
 NestedList {
 
 }
@@ -293,18 +293,17 @@ OrderedListItem {
 
 ReportingEvent ||--|| NestedList : "listOfPlannedAnalyses"
 ReportingEvent ||--|o NestedList : "listOfPlannedOutputs"
+ReportingEvent ||--}o ReferenceDocument : "referenceDocuments"
+ReportingEvent ||--}o TerminologyExtension : "terminologyExtensions"
+ReportingEvent ||--}o AnalysisCategorization : "analysisCategorizations"
 ReportingEvent ||--}o AnalysisSet : "analysisSets"
 ReportingEvent ||--}o SubjectGroupingFactor : "analysisGroupings"
 ReportingEvent ||--}o DataSubset : "dataSubsets"
 ReportingEvent ||--}o DataGroupingFactor : "dataGroupings"
-ReportingEvent ||--}o GlobalDisplaySection : "globalDisplaySections"
-ReportingEvent ||--}o AnalysisCategorization : "analysisCategorizations"
-ReportingEvent ||--}o Analysis : "analyses"
 ReportingEvent ||--}o AnalysisMethod : "methods"
+ReportingEvent ||--}o Analysis : "analyses"
+ReportingEvent ||--}o GlobalDisplaySection : "globalDisplaySections"
 ReportingEvent ||--}o Output : "outputs"
-ReportingEvent ||--}o ReferenceDocument : "referenceDocuments"
-ReportingEvent ||--}o TerminologyExtension : "terminologyExtensions"
-TerminologyExtension ||--}| SponsorTerm : "sponsorTerms"
 Output ||--}o OutputFile : "fileSpecifications"
 Output ||--}o OrderedDisplay : "displays"
 Output ||--}o AnalysisCategory : "categoryIds"
@@ -323,22 +322,14 @@ OrderedDisplaySubSection ||--|o DisplaySubSection : "subSection"
 OrderedDisplaySubSection ||--|o DisplaySubSection : "subSectionId"
 OutputFile ||--|o ExtensibleTerminologyTerm : "fileType"
 ExtensibleTerminologyTerm ||--|o SponsorTerm : "sponsorTermId"
-AnalysisMethod ||--}| Operation : "operations"
-AnalysisMethod ||--}o DocumentReference : "documentRefs"
-AnalysisMethod ||--|o AnalysisProgrammingCodeTemplate : "codeTemplate"
-AnalysisProgrammingCodeTemplate ||--|o DocumentReference : "documentRef"
-AnalysisProgrammingCodeTemplate ||--}o TemplateCodeParameter : "parameters"
-Operation ||--}o ReferencedOperationRelationship : "referencedOperationRelationships"
-ReferencedOperationRelationship ||--|| ExtensibleTerminologyTerm : "referencedOperationRole"
-ReferencedOperationRelationship ||--|| Operation : "operationId"
-ReferencedOperationRelationship ||--|o Analysis : "analysisId"
-Analysis ||--}o AnalysisCategory : "categoryIds"
+GlobalDisplaySection ||--}o DisplaySubSection : "subSections"
 Analysis ||--|| ExtensibleTerminologyTerm : "reason"
 Analysis ||--|| ExtensibleTerminologyTerm : "purpose"
 Analysis ||--}o DocumentReference : "documentRefs"
+Analysis ||--}o AnalysisCategory : "categoryIds"
 Analysis ||--|o AnalysisSet : "analysisSetId"
-Analysis ||--}o OrderedGroupingFactor : "orderedGroupings"
 Analysis ||--|o DataSubset : "dataSubsetId"
+Analysis ||--}o OrderedGroupingFactor : "orderedGroupings"
 Analysis ||--|| AnalysisMethod : "methodId"
 Analysis ||--}o ReferencedAnalysisOperation : "referencedAnalysisOperations"
 Analysis ||--|o AnalysisOutputProgrammingCode : "programmingCode"
@@ -351,31 +342,41 @@ Group ||--|o WhereClauseCondition : "condition"
 Group ||--|o CompoundGroupExpression : "compoundExpression"
 CompoundGroupExpression ||--}o Group : "whereClauses"
 GroupingFactor ||--}o Group : "groups"
+Operation ||--}o ReferencedOperationRelationship : "referencedOperationRelationships"
+ReferencedOperationRelationship ||--|| ExtensibleTerminologyTerm : "referencedOperationRole"
+ReferencedOperationRelationship ||--|| Operation : "operationId"
+ReferencedOperationRelationship ||--|o Analysis : "analysisId"
 ReferencedAnalysisOperation ||--|| ReferencedOperationRelationship : "referencedOperationRelationshipId"
 ReferencedAnalysisOperation ||--|| Analysis : "analysisId"
+AnalysisMethod ||--}o DocumentReference : "documentRefs"
+AnalysisMethod ||--}| Operation : "operations"
+AnalysisMethod ||--|o AnalysisProgrammingCodeTemplate : "codeTemplate"
+AnalysisProgrammingCodeTemplate ||--|o DocumentReference : "documentRef"
+AnalysisProgrammingCodeTemplate ||--}o TemplateCodeParameter : "parameters"
+OrderedGroupingFactor ||--|o GroupingFactor : "groupingId"
 DataSubset ||--|o WhereClauseCondition : "condition"
 DataSubset ||--|o CompoundSubsetExpression : "compoundExpression"
 CompoundSubsetExpression ||--}o WhereClause : "whereClauses"
 WhereClause ||--|o WhereClauseCondition : "condition"
 WhereClause ||--|o WhereClauseCompoundExpression : "compoundExpression"
 WhereClauseCompoundExpression ||--}o WhereClause : "whereClauses"
-OrderedGroupingFactor ||--|o GroupingFactor : "groupingId"
 AnalysisSet ||--|o WhereClauseCondition : "condition"
 AnalysisSet ||--|o CompoundSetExpression : "compoundExpression"
 CompoundSetExpression ||--}o AnalysisSet : "whereClauses"
-GlobalDisplaySection ||--}o DisplaySubSection : "subSections"
 DataGroupingFactor ||--}o DataGroup : "groups"
 DataGroup ||--|o WhereClauseCondition : "condition"
 DataGroup ||--|o CompoundGroupExpression : "compoundExpression"
 SubjectGroupingFactor ||--}o AnalysisGroup : "groups"
 AnalysisGroup ||--|o WhereClauseCondition : "condition"
 AnalysisGroup ||--|o CompoundGroupExpression : "compoundExpression"
+TerminologyExtension ||--}| SponsorTerm : "sponsorTerms"
 NestedList ||--}o OrderedListItem : "listItems"
 OrderedListItem ||--|o NestedList : "sublist"
 OrderedListItem ||--|o Analysis : "analysisId"
 OrderedListItem ||--|o Output : "outputId"
 </code></pre>
 <h2 id="classes">Classes</h2>
+<p><em>Classes provide templates for organizing data. Data objects instantiate classes in the schema. Each class has a set of slots (aka fields, attributes) that are applicable to it. See <a href="https://linkml.io/linkml/schemas/models.html#classes">LinkML documentation</a> for more information.</em></p>
 <table>
 <thead>
 <tr>
@@ -385,8 +386,36 @@ OrderedListItem ||--|o Output : "outputId"
 </thead>
 <tbody>
 <tr>
-<td><a href="Analysis/">Analysis</a></td>
-<td>An analysis that is designed to meet a requirement of the reporting event</td>
+<td><a href="NamedObject/">NamedObject</a></td>
+<td>An object with a name</td>
+</tr>
+<tr>
+<td><a href="ReportingEvent/">ReportingEvent</a></td>
+<td>A set of analyses and outputs created to meet a specific reporting requiremen...</td>
+</tr>
+<tr>
+<td><a href="NestedList/">NestedList</a></td>
+<td>A list of items (analyses or outputs) that may be organized within sub-lists</td>
+</tr>
+<tr>
+<td><a href="OrderedListItem/">OrderedListItem</a></td>
+<td>An item (analysis, output or sub-list) ordered relative to other items within...</td>
+</tr>
+<tr>
+<td><a href="ReferenceDocument/">ReferenceDocument</a></td>
+<td>An external document containing supporting documentation or programming code</td>
+</tr>
+<tr>
+<td><a href="TerminologyExtension/">TerminologyExtension</a></td>
+<td>An extensible set of controlled terminology that has been extended with at le...</td>
+</tr>
+<tr>
+<td><a href="SponsorTerm/">SponsorTerm</a></td>
+<td>A sponsor-defined term that is included in an extensible set of controlled te...</td>
+</tr>
+<tr>
+<td><a href="ExtensibleTerminologyTerm/">ExtensibleTerminologyTerm</a></td>
+<td>The term used for an attribute whose terminology is extensible</td>
 </tr>
 <tr>
 <td><a href="AnalysisCategorization/">AnalysisCategorization</a></td>
@@ -397,156 +426,72 @@ OrderedListItem ||--|o Output : "outputId"
 <td>An implementer-defined category of analyses/outputs, which may include one or...</td>
 </tr>
 <tr>
-<td><a href="AnalysisGroup/">AnalysisGroup</a></td>
-<td>A subdivision of the subject population based on a defined factor (e</td>
+<td><a href="WhereClause/">WhereClause</a></td>
+<td>Selection criteria defined as either a simple condition ([variable] [comparat...</td>
 </tr>
 <tr>
-<td><a href="AnalysisMethod/">AnalysisMethod</a></td>
-<td>A set of one or more statistical operations</td>
+<td><a href="WhereClauseCondition/">WhereClauseCondition</a></td>
+<td>A simple selection criterion exressed as [dataset]</td>
 </tr>
 <tr>
-<td><a href="AnalysisOutputCodeParameter/">AnalysisOutputCodeParameter</a></td>
-<td>A parameter whose value is used in programming code for a specific analysis o...</td>
-</tr>
-<tr>
-<td><a href="AnalysisOutputProgrammingCode/">AnalysisOutputProgrammingCode</a></td>
-<td>Programming statements and/or a reference to the program used to perform a sp...</td>
-</tr>
-<tr>
-<td><a href="AnalysisProgrammingCodeTemplate/">AnalysisProgrammingCodeTemplate</a></td>
-<td>Programming statements and/or a reference to a used as a template for creatio...</td>
-</tr>
-<tr>
-<td><a href="AnalysisPurpose/">AnalysisPurpose</a></td>
-<td>The purpose of the analysis within the body of evidence (e</td>
-</tr>
-<tr>
-<td><a href="AnalysisReason/">AnalysisReason</a></td>
-<td>The rationale for performing this analysis</td>
+<td><a href="WhereClauseCompoundExpression/">WhereClauseCompoundExpression</a></td>
+<td>A compound expression consisting of either two or more where clauses combined...</td>
 </tr>
 <tr>
 <td><a href="AnalysisSet/">AnalysisSet</a></td>
 <td>A set of subjects whose data are to be included in the main analyses</td>
 </tr>
 <tr>
-<td><a href="CodeParameter/">CodeParameter</a></td>
-<td>A replacement parameter whose value is substituted in template programming co...</td>
-</tr>
-<tr>
-<td><a href="CompoundGroupExpression/">CompoundGroupExpression</a></td>
-<td>A compound expression consisting of either two or more identified group combi...</td>
-</tr>
-<tr>
 <td><a href="CompoundSetExpression/">CompoundSetExpression</a></td>
 <td>A compound expression consisting of either two or more identified analysis se...</td>
-</tr>
-<tr>
-<td><a href="CompoundSubsetExpression/">CompoundSubsetExpression</a></td>
-<td>A compound expression consisting of either two or more where clauses combined...</td>
-</tr>
-<tr>
-<td><a href="DataGroup/">DataGroup</a></td>
-<td>A subdivision of the analysis dataset records based on a defined factor</td>
-</tr>
-<tr>
-<td><a href="DataGroupingFactor/">DataGroupingFactor</a></td>
-<td>A factor used to subdivide data records in an analysis dataset for analysis</td>
 </tr>
 <tr>
 <td><a href="DataSubset/">DataSubset</a></td>
 <td>A subset of data identified by selection criteria for inclusion in the analys...</td>
 </tr>
 <tr>
-<td><a href="DisplaySection/">DisplaySection</a></td>
-<td>A part of a tabular display containing one or more pieces of informational te...</td>
-</tr>
-<tr>
-<td><a href="DisplaySubSection/">DisplaySubSection</a></td>
-<td>An occurrence of a display section containing text</td>
-</tr>
-<tr>
-<td><a href="DocumentReference/">DocumentReference</a></td>
-<td>A reference to an external document</td>
-</tr>
-<tr>
-<td><a href="ExtensibleTerminologyTerm/">ExtensibleTerminologyTerm</a></td>
-<td>The term used for an attribute whose terminology is extensible</td>
-</tr>
-<tr>
-<td><a href="GlobalDisplaySection/">GlobalDisplaySection</a></td>
-<td>A global definition for part of a tabular display containing one or more piec...</td>
-</tr>
-<tr>
-<td><a href="Group/">Group</a></td>
-<td>A subdivision of the subject population or analysis dataset record set based ...</td>
+<td><a href="CompoundSubsetExpression/">CompoundSubsetExpression</a></td>
+<td>A compound expression consisting of either two or more where clauses combined...</td>
 </tr>
 <tr>
 <td><a href="GroupingFactor/">GroupingFactor</a></td>
 <td>A factor used to subdivide either the subject population or data records in a...</td>
 </tr>
 <tr>
-<td><a href="NamedObject/">NamedObject</a></td>
-<td>An object with a name</td>
+<td><a href="Group/">Group</a></td>
+<td>A subdivision of the subject population or analysis dataset record set based ...</td>
 </tr>
 <tr>
-<td><a href="NestedList/">NestedList</a></td>
-<td>A list of items (analyses or outputs) that may be organized within sub-lists</td>
+<td><a href="CompoundGroupExpression/">CompoundGroupExpression</a></td>
+<td>A compound expression consisting of either two or more identified group combi...</td>
 </tr>
 <tr>
-<td><a href="Operation/">Operation</a></td>
-<td>A statistical operation that produces a single analysis result value as part ...</td>
+<td><a href="SubjectGroupingFactor/">SubjectGroupingFactor</a></td>
+<td>A factor used to subdivide the subject population for comparative analysis (e</td>
 </tr>
 <tr>
-<td><a href="OperationResult/">OperationResult</a></td>
-<td>The result of an analysis method operation performed on a subdivision of subj...</td>
+<td><a href="AnalysisGroup/">AnalysisGroup</a></td>
+<td>A subdivision of the subject population based on a defined factor (e</td>
 </tr>
 <tr>
-<td><a href="OperationRole/">OperationRole</a></td>
-<td>The role that the referenced operation's result plays in the calculation of t...</td>
+<td><a href="DataGroupingFactor/">DataGroupingFactor</a></td>
+<td>A factor used to subdivide data records in an analysis dataset for analysis</td>
 </tr>
 <tr>
-<td><a href="OrderedDisplay/">OrderedDisplay</a></td>
-<td>A display ordered with respect to other displays in an analysis output</td>
+<td><a href="DataGroup/">DataGroup</a></td>
+<td>A subdivision of the analysis dataset records based on a defined factor</td>
 </tr>
 <tr>
-<td><a href="OrderedDisplaySubSection/">OrderedDisplaySubSection</a></td>
-<td>A single subsection ordered with respect to other subsections in the same sec...</td>
+<td><a href="AnalysisMethod/">AnalysisMethod</a></td>
+<td>A set of one or more statistical operations</td>
 </tr>
 <tr>
-<td><a href="OrderedGroupingFactor/">OrderedGroupingFactor</a></td>
-<td>A reference to a defined factor by which subjects or data records are grouped...</td>
+<td><a href="DocumentReference/">DocumentReference</a></td>
+<td>A reference to an external document</td>
 </tr>
 <tr>
-<td><a href="OrderedListItem/">OrderedListItem</a></td>
-<td>An item (analysis, output or sub-list) ordered relative to other items within...</td>
-</tr>
-<tr>
-<td><a href="OrderedSubSection/">OrderedSubSection</a></td>
-<td>A subsection ordered with respect to other subsections of the same type</td>
-</tr>
-<tr>
-<td><a href="OrderedSubSectionRef/">OrderedSubSectionRef</a></td>
-<td>A reference to a subsection defined either globally or in another display sec...</td>
-</tr>
-<tr>
-<td><a href="Output/">Output</a></td>
-<td>A report of results and their evaluation based on planned analyses performed ...</td>
-</tr>
-<tr>
-<td><a href="OutputDisplay/">OutputDisplay</a></td>
-<td>A tabular representation of the results of one or more analyses</td>
-</tr>
-<tr>
-<td><a href="OutputFile/">OutputFile</a></td>
-<td>A file containing analysis output displays</td>
-</tr>
-<tr>
-<td><a href="OutputFileType/">OutputFileType</a></td>
-<td>The file format of the file containing output from analyses</td>
-</tr>
-<tr>
-<td><a href="PageNameRef/">PageNameRef</a></td>
-<td>One or more pages in the reference document, referenced by named destination</td>
+<td><a href="PageRef/">PageRef</a></td>
+<td>A reference to a specific part of a document as indicated by a list of one or...</td>
 </tr>
 <tr>
 <td><a href="PageNumberListRef/">PageNumberListRef</a></td>
@@ -557,76 +502,133 @@ OrderedListItem ||--|o Output : "outputId"
 <td>A range of pages in the reference document, indicated by the first and last p...</td>
 </tr>
 <tr>
-<td><a href="PageRef/">PageRef</a></td>
-<td>A reference to a specific part of a document as indicated by a list of one or...</td>
+<td><a href="PageNameRef/">PageNameRef</a></td>
+<td>One or more pages in the reference document, referenced by named destination</td>
 </tr>
 <tr>
-<td><a href="ReferencedAnalysisOperation/">ReferencedAnalysisOperation</a></td>
-<td>An indication of the analysis that contains results of a referenced operation</td>
-</tr>
-<tr>
-<td><a href="ReferenceDocument/">ReferenceDocument</a></td>
-<td>An external document containing supporting documentation or programming code</td>
+<td><a href="Operation/">Operation</a></td>
+<td>A statistical operation that produces a single analysis result value as part ...</td>
 </tr>
 <tr>
 <td><a href="ReferencedOperationRelationship/">ReferencedOperationRelationship</a></td>
 <td>A reference to a statistical operation whose results are used in the calculat...</td>
 </tr>
 <tr>
-<td><a href="ReportingEvent/">ReportingEvent</a></td>
-<td>A set of analyses and outputs created to meet a specific reporting requiremen...</td>
-</tr>
-<tr>
-<td><a href="ResultGroup/">ResultGroup</a></td>
-<td>For the specified grouping factor, an indication of the specific group of sub...</td>
-</tr>
-<tr>
-<td><a href="SponsorAnalysisPurpose/">SponsorAnalysisPurpose</a></td>
-<td>The sponsor-defined purpose of the analysis within the body of evidence (e</td>
-</tr>
-<tr>
-<td><a href="SponsorAnalysisReason/">SponsorAnalysisReason</a></td>
-<td>The sponsor-defined rationale for performing this analysis</td>
+<td><a href="OperationRole/">OperationRole</a></td>
+<td>The role that the referenced operation's result plays in the calculation of t...</td>
 </tr>
 <tr>
 <td><a href="SponsorOperationRole/">SponsorOperationRole</a></td>
 <td>The sponsor-defined role that the referenced operation's result plays in the ...</td>
 </tr>
 <tr>
-<td><a href="SponsorOutputFileType/">SponsorOutputFileType</a></td>
-<td>The sponsor-defined file format of the file containing output from analyses</td>
+<td><a href="AnalysisProgrammingCodeTemplate/">AnalysisProgrammingCodeTemplate</a></td>
+<td>Programming statements and/or a reference to a used as a template for creatio...</td>
 </tr>
 <tr>
-<td><a href="SponsorTerm/">SponsorTerm</a></td>
-<td>A sponsor-defined term that is included in an extensible set of controlled te...</td>
-</tr>
-<tr>
-<td><a href="SubjectGroupingFactor/">SubjectGroupingFactor</a></td>
-<td>A factor used to subdivide the subject population for comparative analysis (e</td>
+<td><a href="CodeParameter/">CodeParameter</a></td>
+<td>A replacement parameter whose value is substituted in template programming co...</td>
 </tr>
 <tr>
 <td><a href="TemplateCodeParameter/">TemplateCodeParameter</a></td>
 <td>A replacement parameter whose value is substituted in template programming co...</td>
 </tr>
 <tr>
-<td><a href="TerminologyExtension/">TerminologyExtension</a></td>
-<td>An extensible set of controlled terminology that has been extended with at le...</td>
+<td><a href="Analysis/">Analysis</a></td>
+<td>An analysis that is designed to meet a requirement of the reporting event</td>
 </tr>
 <tr>
-<td><a href="WhereClause/">WhereClause</a></td>
-<td>Selection criteria defined as either a simple condition ([variable] [comparat...</td>
+<td><a href="AnalysisReason/">AnalysisReason</a></td>
+<td>The rationale for performing this analysis</td>
 </tr>
 <tr>
-<td><a href="WhereClauseCompoundExpression/">WhereClauseCompoundExpression</a></td>
-<td>A compound expression consisting of either two or more where clauses combined...</td>
+<td><a href="SponsorAnalysisReason/">SponsorAnalysisReason</a></td>
+<td>The sponsor-defined rationale for performing this analysis</td>
 </tr>
 <tr>
-<td><a href="WhereClauseCondition/">WhereClauseCondition</a></td>
-<td>A simple selection criterion exressed as [dataset]</td>
+<td><a href="AnalysisPurpose/">AnalysisPurpose</a></td>
+<td>The purpose of the analysis within the body of evidence (e</td>
+</tr>
+<tr>
+<td><a href="SponsorAnalysisPurpose/">SponsorAnalysisPurpose</a></td>
+<td>The sponsor-defined purpose of the analysis within the body of evidence (e</td>
+</tr>
+<tr>
+<td><a href="OrderedGroupingFactor/">OrderedGroupingFactor</a></td>
+<td>A reference to a defined factor by which subjects or data records are grouped...</td>
+</tr>
+<tr>
+<td><a href="ReferencedAnalysisOperation/">ReferencedAnalysisOperation</a></td>
+<td>An indication of the analysis that contains results of a referenced operation</td>
+</tr>
+<tr>
+<td><a href="AnalysisOutputProgrammingCode/">AnalysisOutputProgrammingCode</a></td>
+<td>Programming statements and/or a reference to the program used to perform a sp...</td>
+</tr>
+<tr>
+<td><a href="AnalysisOutputCodeParameter/">AnalysisOutputCodeParameter</a></td>
+<td>A parameter whose value is used in programming code for a specific analysis o...</td>
+</tr>
+<tr>
+<td><a href="OperationResult/">OperationResult</a></td>
+<td>The result of an analysis method operation performed on a subdivision of subj...</td>
+</tr>
+<tr>
+<td><a href="ResultGroup/">ResultGroup</a></td>
+<td>For the specified grouping factor, an indication of the specific group of sub...</td>
+</tr>
+<tr>
+<td><a href="GlobalDisplaySection/">GlobalDisplaySection</a></td>
+<td>A global definition for part of a tabular display containing one or more piec...</td>
+</tr>
+<tr>
+<td><a href="DisplaySubSection/">DisplaySubSection</a></td>
+<td>An occurrence of a display section containing text</td>
+</tr>
+<tr>
+<td><a href="Output/">Output</a></td>
+<td>A report of results and their evaluation based on planned analyses performed ...</td>
+</tr>
+<tr>
+<td><a href="OutputFile/">OutputFile</a></td>
+<td>A file containing analysis output displays</td>
+</tr>
+<tr>
+<td><a href="OutputFileType/">OutputFileType</a></td>
+<td>The file format of the file containing output from analyses</td>
+</tr>
+<tr>
+<td><a href="SponsorOutputFileType/">SponsorOutputFileType</a></td>
+<td>The sponsor-defined file format of the file containing output from analyses</td>
+</tr>
+<tr>
+<td><a href="OrderedDisplay/">OrderedDisplay</a></td>
+<td>A display ordered with respect to other displays in an analysis output</td>
+</tr>
+<tr>
+<td><a href="OutputDisplay/">OutputDisplay</a></td>
+<td>A tabular representation of the results of one or more analyses</td>
+</tr>
+<tr>
+<td><a href="DisplaySection/">DisplaySection</a></td>
+<td>A part of a tabular display containing one or more pieces of informational te...</td>
+</tr>
+<tr>
+<td><a href="OrderedDisplaySubSection/">OrderedDisplaySubSection</a></td>
+<td>A single subsection ordered with respect to other subsections in the same sec...</td>
+</tr>
+<tr>
+<td><a href="OrderedSubSection/">OrderedSubSection</a></td>
+<td>A subsection ordered with respect to other subsections of the same type</td>
+</tr>
+<tr>
+<td><a href="OrderedSubSectionRef/">OrderedSubSectionRef</a></td>
+<td>A reference to a subsection defined either globally or in another display sec...</td>
 </tr>
 </tbody>
 </table>
 <h2 id="slots">Slots</h2>
+<p><em>Slots (aka attributes, fields, columns, properties) can be associated with classes to specify what fields instances of that class can have. Slots operate the same way as “fields” in traditional object languages and the same ways as “columns” in spreadsheets and relational databases. See LinkML documentation <a href="https://linkml.io/linkml/schemas/models.html#slots">here</a> and <a href="https://linkml.io/linkml/schemas/slots.html">here</a> for more information.</em></p>
 <table>
 <thead>
 <tr>
@@ -636,176 +638,16 @@ OrderedListItem ||--|o Output : "outputId"
 </thead>
 <tbody>
 <tr>
-<td><a href="analyses/">analyses</a></td>
-<td>The analyses defined for the reporting event</td>
-</tr>
-<tr>
-<td><a href="analysisCategorizations/">analysisCategorizations</a></td>
-<td>Sets of related implementer-defined categories that can be used to categorize...</td>
-</tr>
-<tr>
-<td><a href="analysisGroupings/">analysisGroupings</a></td>
-<td>Characteristics used to subdivide the subject population (e</td>
-</tr>
-<tr>
-<td><a href="analysisId/">analysisId</a></td>
-<td>The identifier of the referenced analysis</td>
-</tr>
-<tr>
-<td><a href="analysisSetId/">analysisSetId</a></td>
-<td>The identifier of the referenced analysis set</td>
-</tr>
-<tr>
-<td><a href="analysisSets/">analysisSets</a></td>
-<td>The analysis sets (subject populations) defined for the reporting event</td>
-</tr>
-<tr>
-<td><a href="categories/">categories</a></td>
-<td>Implementer-defined categories of analyses/outputs, each of which may include...</td>
-</tr>
-<tr>
-<td><a href="categoryIds/">categoryIds</a></td>
-<td>References to any implementer-defined categories that apply to the analysis o...</td>
-</tr>
-<tr>
-<td><a href="code/">code</a></td>
-<td>Programming statements used to perform the specific analysis</td>
-</tr>
-<tr>
-<td><a href="codeTemplate/">codeTemplate</a></td>
-<td>Template programming statements used to perform the statistical operations fo...</td>
-</tr>
-<tr>
-<td><a href="comparator/">comparator</a></td>
-<td>Comparison operator indicating how the variable is compared to the value(s)</td>
-</tr>
-<tr>
-<td><a href="compoundExpression/">compoundExpression</a></td>
-<td>A compound expression that combines or negates where clauses</td>
-</tr>
-<tr>
-<td><a href="condition/">condition</a></td>
-<td>A simple selection criterion exressed as [dataset]</td>
-</tr>
-<tr>
-<td><a href="context/">context</a></td>
-<td>The name and version of the computer language used for the actual programming...</td>
-</tr>
-<tr>
-<td><a href="controlledTerm/">controlledTerm</a></td>
-<td>One of the permissible values from the referenced enumeration</td>
-</tr>
-<tr>
-<td><a href="dataDriven/">dataDriven</a></td>
-<td>Indicates whether the groups defined by the grouping are prespecified (false)...</td>
-</tr>
-<tr>
-<td><a href="dataGroupings/">dataGroupings</a></td>
-<td>Characteristics used to subdivide data records in analysis datasets (e</td>
-</tr>
-<tr>
-<td><a href="dataset/">dataset</a></td>
-<td>The name of the analysis dataset</td>
-</tr>
-<tr>
-<td><a href="dataSubsetId/">dataSubsetId</a></td>
-<td>The identifier of the referenced data subset</td>
-</tr>
-<tr>
-<td><a href="dataSubsets/">dataSubsets</a></td>
-<td>Subsets of data identified by selection criteria for inclusion in analysis de...</td>
-</tr>
-<tr>
-<td><a href="description/">description</a></td>
-<td>A textual description of the instance of the class</td>
-</tr>
-<tr>
-<td><a href="display/">display</a></td>
-<td>A display contained in the output</td>
-</tr>
-<tr>
-<td><a href="displays/">displays</a></td>
-<td>An ordered list of the displays included in the output</td>
-</tr>
-<tr>
-<td><a href="displaySections/">displaySections</a></td>
-<td>The parts of the display containing one or more pieces of informational text ...</td>
-</tr>
-<tr>
-<td><a href="displayTitle/">displayTitle</a></td>
-<td>Display description which uniquely identifies the display in the report</td>
-</tr>
-<tr>
-<td><a href="documentRef/">documentRef</a></td>
-<td>A reference to the document containing programming code</td>
-</tr>
-<tr>
-<td><a href="documentRefs/">documentRefs</a></td>
-<td>References to external documents containing additional information</td>
-</tr>
-<tr>
-<td><a href="enumeration/">enumeration</a></td>
-<td>The name of the extensible enumeration</td>
-</tr>
-<tr>
-<td><a href="fileSpecifications/">fileSpecifications</a></td>
-<td>Specifications of output files</td>
-</tr>
-<tr>
-<td><a href="fileType/">fileType</a></td>
-<td>The format of the output file</td>
-</tr>
-<tr>
-<td><a href="firstPage/">firstPage</a></td>
-<td>The page number of the first page in a range of pages</td>
-</tr>
-<tr>
-<td><a href="formattedValue/">formattedValue</a></td>
-<td>The result value formatted for display according to the resultPattern</td>
-</tr>
-<tr>
-<td><a href="globalDisplaySections/">globalDisplaySections</a></td>
-<td>Display section specifications that may be applied to any display</td>
-</tr>
-<tr>
-<td><a href="groupId/">groupId</a></td>
-<td>The identifier of a referenced predefined group within a grouping</td>
-</tr>
-<tr>
-<td><a href="groupingId/">groupingId</a></td>
-<td>The identifier of the referenced subject or data grouping factor</td>
-</tr>
-<tr>
-<td><a href="groupingVariable/">groupingVariable</a></td>
-<td>For groupings based on a single variable, a reference to the dataset variable...</td>
-</tr>
-<tr>
-<td><a href="groups/">groups</a></td>
-<td>The pre-specified groups within the grouping</td>
-</tr>
-<tr>
-<td><a href="groupValue/">groupValue</a></td>
-<td>The data value used as a group within a data-driven grouping</td>
+<td><a href="name/">name</a></td>
+<td>The name for the instance of the class</td>
 </tr>
 <tr>
 <td><a href="id/">id</a></td>
 <td>The assigned identifying value for the instance of the class</td>
 </tr>
 <tr>
-<td><a href="label/">label</a></td>
-<td>A short informative description that may be used for display</td>
-</tr>
-<tr>
-<td><a href="lastPage/">lastPage</a></td>
-<td>The page number of the last page in a range of pages</td>
-</tr>
-<tr>
-<td><a href="level/">level</a></td>
-<td>The level of the entry within a hierarchical structure</td>
-</tr>
-<tr>
-<td><a href="listItems/">listItems</a></td>
-<td>Items in the list</td>
+<td><a href="version/">version</a></td>
+<td>An ordinal indicating the version of the identified instance of the class</td>
 </tr>
 <tr>
 <td><a href="listOfPlannedAnalyses/">listOfPlannedAnalyses</a></td>
@@ -816,52 +658,180 @@ OrderedListItem ||--|o Output : "outputId"
 <td>An optional structured list of the outputs defined for the reporting event</td>
 </tr>
 <tr>
-<td><a href="location/">location</a></td>
-<td>A path (relative or absolute) indicating the location of the file</td>
+<td><a href="referenceDocuments/">referenceDocuments</a></td>
+<td>External documents containing information referenced for the reporting event</td>
 </tr>
 <tr>
-<td><a href="logicalOperator/">logicalOperator</a></td>
-<td>The boolean operator that is used to combine (AND, OR) or negate (NOT) the wh...</td>
+<td><a href="terminologyExtensions/">terminologyExtensions</a></td>
+<td>Any sponsor-defined extensions to extensible terminology</td>
 </tr>
 <tr>
-<td><a href="methodId/">methodId</a></td>
-<td>A reference to the set of one or more statistical operations performed for th...</td>
+<td><a href="analysisCategorizations/">analysisCategorizations</a></td>
+<td>Sets of related implementer-defined categories that can be used to categorize...</td>
+</tr>
+<tr>
+<td><a href="analysisSets/">analysisSets</a></td>
+<td>The analysis sets (subject populations) defined for the reporting event</td>
+</tr>
+<tr>
+<td><a href="analysisGroupings/">analysisGroupings</a></td>
+<td>Characteristics used to subdivide the subject population (e</td>
+</tr>
+<tr>
+<td><a href="dataSubsets/">dataSubsets</a></td>
+<td>Subsets of data identified by selection criteria for inclusion in analysis de...</td>
+</tr>
+<tr>
+<td><a href="dataGroupings/">dataGroupings</a></td>
+<td>Characteristics used to subdivide data records in analysis datasets (e</td>
 </tr>
 <tr>
 <td><a href="methods/">methods</a></td>
 <td>The defined methods used to analyze any analysis variable</td>
 </tr>
 <tr>
-<td><a href="name/">name</a></td>
-<td>The name for the instance of the class</td>
+<td><a href="analyses/">analyses</a></td>
+<td>The analyses defined for the reporting event</td>
 </tr>
 <tr>
-<td><a href="operationId/">operationId</a></td>
-<td>The identifier of the referenced operation</td>
+<td><a href="globalDisplaySections/">globalDisplaySections</a></td>
+<td>Display section specifications that may be applied to any display</td>
 </tr>
 <tr>
-<td><a href="operations/">operations</a></td>
-<td>The calculations performed for the method</td>
+<td><a href="outputs/">outputs</a></td>
+<td>The outputs defined for the reporting event</td>
+</tr>
+<tr>
+<td><a href="listItems/">listItems</a></td>
+<td>Items in the list</td>
+</tr>
+<tr>
+<td><a href="level/">level</a></td>
+<td>The level of the entry within a hierarchical structure</td>
 </tr>
 <tr>
 <td><a href="order/">order</a></td>
 <td>The ordinal of the instance with respect to other instances</td>
 </tr>
 <tr>
-<td><a href="orderedGroupings/">orderedGroupings</a></td>
-<td>An ordered list of grouping factors used in the analysis</td>
+<td><a href="sublist/">sublist</a></td>
+<td>A sub-list of items (analyses or outputs) that may be further organized withi...</td>
 </tr>
 <tr>
-<td><a href="orderedSubSections/">orderedSubSections</a></td>
-<td>An ordered list of the informational text to display in the display section</td>
+<td><a href="analysisId/">analysisId</a></td>
+<td>The identifier of the referenced analysis</td>
 </tr>
 <tr>
 <td><a href="outputId/">outputId</a></td>
 <td>The identifier of the referenced output</td>
 </tr>
 <tr>
-<td><a href="outputs/">outputs</a></td>
-<td>The outputs defined for the reporting event</td>
+<td><a href="location/">location</a></td>
+<td>A path (relative or absolute) indicating the location of the file</td>
+</tr>
+<tr>
+<td><a href="enumeration/">enumeration</a></td>
+<td>The name of the extensible enumeration</td>
+</tr>
+<tr>
+<td><a href="sponsorTerms/">sponsorTerms</a></td>
+<td>The sponsor-defined terms added to the extensible terminology</td>
+</tr>
+<tr>
+<td><a href="submissionValue/">submissionValue</a></td>
+<td>The specific value expected for submissions</td>
+</tr>
+<tr>
+<td><a href="description/">description</a></td>
+<td>A textual description of the instance of the class</td>
+</tr>
+<tr>
+<td><a href="controlledTerm/">controlledTerm</a></td>
+<td>One of the permissible values from the referenced enumeration</td>
+</tr>
+<tr>
+<td><a href="sponsorTermId/">sponsorTermId</a></td>
+<td>The identifier of the referenced sponsor term</td>
+</tr>
+<tr>
+<td><a href="label/">label</a></td>
+<td>A short informative description that may be used for display</td>
+</tr>
+<tr>
+<td><a href="categories/">categories</a></td>
+<td>Implementer-defined categories of analyses/outputs, each of which may include...</td>
+</tr>
+<tr>
+<td><a href="subCategorizations/">subCategorizations</a></td>
+<td>Sets of related implementer-defined sub-categories that can be used to catego...</td>
+</tr>
+<tr>
+<td><a href="condition/">condition</a></td>
+<td>A simple selection criterion exressed as [dataset]</td>
+</tr>
+<tr>
+<td><a href="compoundExpression/">compoundExpression</a></td>
+<td>A compound expression that combines or negates where clauses</td>
+</tr>
+<tr>
+<td><a href="dataset/">dataset</a></td>
+<td>The name of the analysis dataset</td>
+</tr>
+<tr>
+<td><a href="variable/">variable</a></td>
+<td>The name of the variable</td>
+</tr>
+<tr>
+<td><a href="comparator/">comparator</a></td>
+<td>Comparison operator indicating how the variable is compared to the value(s)</td>
+</tr>
+<tr>
+<td><a href="value/">value</a></td>
+<td>The prespecified value or values</td>
+</tr>
+<tr>
+<td><a href="logicalOperator/">logicalOperator</a></td>
+<td>The boolean operator that is used to combine (AND, OR) or negate (NOT) the wh...</td>
+</tr>
+<tr>
+<td><a href="whereClauses/">whereClauses</a></td>
+<td>A list of one or more where clauses (selection criteria) to be combined or ne...</td>
+</tr>
+<tr>
+<td><a href="groupingVariable/">groupingVariable</a></td>
+<td>For groupings based on a single variable, a reference to the dataset variable...</td>
+</tr>
+<tr>
+<td><a href="dataDriven/">dataDriven</a></td>
+<td>Indicates whether the groups defined by the grouping are prespecified (false)...</td>
+</tr>
+<tr>
+<td><a href="groups/">groups</a></td>
+<td>The pre-specified groups within the grouping</td>
+</tr>
+<tr>
+<td><a href="documentRefs/">documentRefs</a></td>
+<td>References to external documents containing additional information</td>
+</tr>
+<tr>
+<td><a href="operations/">operations</a></td>
+<td>The calculations performed for the method</td>
+</tr>
+<tr>
+<td><a href="codeTemplate/">codeTemplate</a></td>
+<td>Template programming statements used to perform the statistical operations fo...</td>
+</tr>
+<tr>
+<td><a href="referenceDocumentId/">referenceDocumentId</a></td>
+<td>The identifier of the referenced document</td>
+</tr>
+<tr>
+<td><a href="pageRefs/">pageRefs</a></td>
+<td>A list of references to specific parts of a document, which may be referenced...</td>
+</tr>
+<tr>
+<td><a href="refType/">refType</a></td>
+<td>The type of reference for page references</td>
 </tr>
 <tr>
 <td><a href="pageNames/">pageNames</a></td>
@@ -872,100 +842,164 @@ OrderedListItem ||--|o Output : "outputId"
 <td>One or more page numbers</td>
 </tr>
 <tr>
-<td><a href="pageRefs/">pageRefs</a></td>
-<td>A list of references to specific parts of a document, which may be referenced...</td>
+<td><a href="firstPage/">firstPage</a></td>
+<td>The page number of the first page in a range of pages</td>
 </tr>
 <tr>
-<td><a href="parameters/">parameters</a></td>
-<td>Replacement parameters that are referenced in the programming code or program...</td>
-</tr>
-<tr>
-<td><a href="programmingCode/">programmingCode</a></td>
-<td>Programming statements used to perform the specific analysis or create the sp...</td>
-</tr>
-<tr>
-<td><a href="purpose/">purpose</a></td>
-<td>The purpose of the analysis within the body of evidence (e</td>
-</tr>
-<tr>
-<td><a href="rawValue/">rawValue</a></td>
-<td>The raw result value (e</td>
-</tr>
-<tr>
-<td><a href="reason/">reason</a></td>
-<td>The rationale for performing this analysis</td>
-</tr>
-<tr>
-<td><a href="referencedAnalysisOperations/">referencedAnalysisOperations</a></td>
-<td>Indications of which analysis contains the results for each referenced operat...</td>
-</tr>
-<tr>
-<td><a href="referenceDocumentId/">referenceDocumentId</a></td>
-<td>The identifier of the referenced document</td>
-</tr>
-<tr>
-<td><a href="referenceDocuments/">referenceDocuments</a></td>
-<td>External documents containing information referenced for the reporting event</td>
-</tr>
-<tr>
-<td><a href="referencedOperationRelationshipId/">referencedOperationRelationshipId</a></td>
-<td>The identifier of the defined referenced operation relationship</td>
+<td><a href="lastPage/">lastPage</a></td>
+<td>The page number of the last page in a range of pages</td>
 </tr>
 <tr>
 <td><a href="referencedOperationRelationships/">referencedOperationRelationships</a></td>
 <td>Relationships to other operations indicating how the result of the referenced...</td>
 </tr>
 <tr>
+<td><a href="resultPattern/">resultPattern</a></td>
+<td>The default pattern or format to apply to the result for display</td>
+</tr>
+<tr>
 <td><a href="referencedOperationRole/">referencedOperationRole</a></td>
 <td>The role that the referenced operation's result plays in the calculation of t...</td>
 </tr>
 <tr>
-<td><a href="refType/">refType</a></td>
-<td>The type of reference for page references</td>
+<td><a href="operationId/">operationId</a></td>
+<td>The identifier of the referenced operation</td>
 </tr>
 <tr>
-<td><a href="resultGroups/">resultGroups</a></td>
-<td>The group values associated with the result</td>
+<td><a href="context/">context</a></td>
+<td>The name and version of the computer language used for the actual programming...</td>
 </tr>
 <tr>
-<td><a href="resultPattern/">resultPattern</a></td>
-<td>The default pattern or format to apply to the result for display</td>
+<td><a href="code/">code</a></td>
+<td>Programming statements used to perform the specific analysis</td>
+</tr>
+<tr>
+<td><a href="documentRef/">documentRef</a></td>
+<td>A reference to the document containing programming code</td>
+</tr>
+<tr>
+<td><a href="parameters/">parameters</a></td>
+<td>Replacement parameters that are referenced in the programming code or program...</td>
+</tr>
+<tr>
+<td><a href="valueSource/">valueSource</a></td>
+<td>A reference to the prespecified source of the value for the parameter</td>
+</tr>
+<tr>
+<td><a href="reason/">reason</a></td>
+<td>The rationale for performing this analysis</td>
+</tr>
+<tr>
+<td><a href="purpose/">purpose</a></td>
+<td>The purpose of the analysis within the body of evidence (e</td>
+</tr>
+<tr>
+<td><a href="categoryIds/">categoryIds</a></td>
+<td>References to any implementer-defined categories that apply to the analysis o...</td>
+</tr>
+<tr>
+<td><a href="analysisSetId/">analysisSetId</a></td>
+<td>The identifier of the referenced analysis set</td>
+</tr>
+<tr>
+<td><a href="dataSubsetId/">dataSubsetId</a></td>
+<td>The identifier of the referenced data subset</td>
+</tr>
+<tr>
+<td><a href="orderedGroupings/">orderedGroupings</a></td>
+<td>An ordered list of grouping factors used in the analysis</td>
+</tr>
+<tr>
+<td><a href="methodId/">methodId</a></td>
+<td>A reference to the set of one or more statistical operations performed for th...</td>
+</tr>
+<tr>
+<td><a href="referencedAnalysisOperations/">referencedAnalysisOperations</a></td>
+<td>Indications of which analysis contains the results for each referenced operat...</td>
+</tr>
+<tr>
+<td><a href="programmingCode/">programmingCode</a></td>
+<td>Programming statements used to perform the specific analysis or create the sp...</td>
 </tr>
 <tr>
 <td><a href="results/">results</a></td>
 <td>The results of the analysis</td>
 </tr>
 <tr>
+<td><a href="groupingId/">groupingId</a></td>
+<td>The identifier of the referenced subject or data grouping factor</td>
+</tr>
+<tr>
 <td><a href="resultsByGroup/">resultsByGroup</a></td>
 <td>Indicates whether a result is expected for each group in the grouping</td>
+</tr>
+<tr>
+<td><a href="referencedOperationRelationshipId/">referencedOperationRelationshipId</a></td>
+<td>The identifier of the defined referenced operation relationship</td>
+</tr>
+<tr>
+<td><a href="resultGroups/">resultGroups</a></td>
+<td>The group values associated with the result</td>
+</tr>
+<tr>
+<td><a href="rawValue/">rawValue</a></td>
+<td>The raw result value (e</td>
+</tr>
+<tr>
+<td><a href="formattedValue/">formattedValue</a></td>
+<td>The result value formatted for display according to the resultPattern</td>
+</tr>
+<tr>
+<td><a href="groupId/">groupId</a></td>
+<td>The identifier of a referenced predefined group within a grouping</td>
+</tr>
+<tr>
+<td><a href="groupValue/">groupValue</a></td>
+<td>The data value used as a group within a data-driven grouping</td>
 </tr>
 <tr>
 <td><a href="sectionType/">sectionType</a></td>
 <td>The type of display section that contains one or more pieces of informational...</td>
 </tr>
 <tr>
-<td><a href="sponsorTermId/">sponsorTermId</a></td>
-<td>The identifier of the referenced sponsor term</td>
+<td><a href="subSections/">subSections</a></td>
+<td>A list of defined pieces of information text that may be displayed in display...</td>
 </tr>
 <tr>
-<td><a href="sponsorTerms/">sponsorTerms</a></td>
-<td>The sponsor-defined terms added to the extensible terminology</td>
+<td><a href="text/">text</a></td>
+<td>The text to be displayed in the display section</td>
+</tr>
+<tr>
+<td><a href="fileSpecifications/">fileSpecifications</a></td>
+<td>Specifications of output files</td>
+</tr>
+<tr>
+<td><a href="displays/">displays</a></td>
+<td>An ordered list of the displays included in the output</td>
+</tr>
+<tr>
+<td><a href="fileType/">fileType</a></td>
+<td>The format of the output file</td>
 </tr>
 <tr>
 <td><a href="style/">style</a></td>
 <td>Reference to the specification of the style used for the output</td>
 </tr>
 <tr>
-<td><a href="subCategorizations/">subCategorizations</a></td>
-<td>Sets of related implementer-defined sub-categories that can be used to catego...</td>
+<td><a href="display/">display</a></td>
+<td>A display contained in the output</td>
 </tr>
 <tr>
-<td><a href="sublist/">sublist</a></td>
-<td>A sub-list of items (analyses or outputs) that may be further organized withi...</td>
+<td><a href="displayTitle/">displayTitle</a></td>
+<td>Display description which uniquely identifies the display in the report</td>
 </tr>
 <tr>
-<td><a href="submissionValue/">submissionValue</a></td>
-<td>The specific value expected for submissions</td>
+<td><a href="displaySections/">displaySections</a></td>
+<td>The parts of the display containing one or more pieces of informational text ...</td>
+</tr>
+<tr>
+<td><a href="orderedSubSections/">orderedSubSections</a></td>
+<td>An ordered list of the informational text to display in the display section</td>
 </tr>
 <tr>
 <td><a href="subSection/">subSection</a></td>
@@ -975,41 +1009,10 @@ OrderedListItem ||--|o Output : "outputId"
 <td><a href="subSectionId/">subSectionId</a></td>
 <td>The identifier of the referenced subsection</td>
 </tr>
-<tr>
-<td><a href="subSections/">subSections</a></td>
-<td>A list of defined pieces of information text that may be displayed in display...</td>
-</tr>
-<tr>
-<td><a href="terminologyExtensions/">terminologyExtensions</a></td>
-<td>Any sponsor-defined extensions to extensible terminology</td>
-</tr>
-<tr>
-<td><a href="text/">text</a></td>
-<td>The text to be displayed in the display section</td>
-</tr>
-<tr>
-<td><a href="value/">value</a></td>
-<td>The prespecified value or values</td>
-</tr>
-<tr>
-<td><a href="valueSource/">valueSource</a></td>
-<td>A reference to the prespecified source of the value for the parameter</td>
-</tr>
-<tr>
-<td><a href="variable/">variable</a></td>
-<td>The name of the variable</td>
-</tr>
-<tr>
-<td><a href="version/">version</a></td>
-<td>An ordinal indicating the version of the identified instance of the class</td>
-</tr>
-<tr>
-<td><a href="whereClauses/">whereClauses</a></td>
-<td>A list of one or more where clauses (selection criteria) to be combined or ne...</td>
-</tr>
 </tbody>
 </table>
 <h2 id="enumerations">Enumerations</h2>
+<p><em>Enumerations are common features in modeling frameworks. These can be thought of as a “drop-down” of permissible values for a field/slot. See <a href="https://linkml.io/linkml/schemas/enums.html">LinkML documentation</a> for more information.</em></p>
 <table>
 <thead>
 <tr>
@@ -1019,12 +1022,12 @@ OrderedListItem ||--|o Output : "outputId"
 </thead>
 <tbody>
 <tr>
-<td><a href="AnalysisPurposeEnum/">AnalysisPurposeEnum</a></td>
-<td>The purpose of the analysis within the body of evidence (e</td>
+<td><a href="OutputFileTypeEnum/">OutputFileTypeEnum</a></td>
+<td>The file format of the file containing output from analyses</td>
 </tr>
 <tr>
-<td><a href="AnalysisReasonEnum/">AnalysisReasonEnum</a></td>
-<td>The rationale for performing this analysis</td>
+<td><a href="ExpressionLogicalOperatorEnum/">ExpressionLogicalOperatorEnum</a></td>
+<td>Boolean operators denoting a logical operation (e</td>
 </tr>
 <tr>
 <td><a href="ConditionComparatorEnum/">ConditionComparatorEnum</a></td>
@@ -1035,20 +1038,20 @@ OrderedListItem ||--|o Output : "outputId"
 <td>Types of display section that contain one or more pieces of informational tex...</td>
 </tr>
 <tr>
-<td><a href="ExpressionLogicalOperatorEnum/">ExpressionLogicalOperatorEnum</a></td>
-<td>Boolean operators denoting a logical operation (e</td>
-</tr>
-<tr>
-<td><a href="ExtensibleTerminologyEnum/">ExtensibleTerminologyEnum</a></td>
-<td>Extensible ARS enumerations</td>
-</tr>
-<tr>
 <td><a href="OperationRoleEnum/">OperationRoleEnum</a></td>
 <td>The role that the referenced operation's result plays in the calculation of t...</td>
 </tr>
 <tr>
-<td><a href="OutputFileTypeEnum/">OutputFileTypeEnum</a></td>
-<td>The file format of the file containing output from analyses</td>
+<td><a href="AnalysisReasonEnum/">AnalysisReasonEnum</a></td>
+<td>The rationale for performing this analysis</td>
+</tr>
+<tr>
+<td><a href="AnalysisPurposeEnum/">AnalysisPurposeEnum</a></td>
+<td>The purpose of the analysis within the body of evidence (e</td>
+</tr>
+<tr>
+<td><a href="ExtensibleTerminologyEnum/">ExtensibleTerminologyEnum</a></td>
+<td>Extensible ARS enumerations</td>
 </tr>
 <tr>
 <td><a href="PageRefTypeEnum/">PageRefTypeEnum</a></td>
@@ -1057,6 +1060,7 @@ OrderedListItem ||--|o Output : "outputId"
 </tbody>
 </table>
 <h2 id="types">Types</h2>
+<p><em>Types in LinkML are scalar data values such as strings, integers, floats, and so on. See <a href="https://linkml.io/linkml/schemas/models.html#types">LinkML documentation</a> for more information.</em></p>
 <table>
 <thead>
 <tr>
@@ -1066,72 +1070,73 @@ OrderedListItem ||--|o Output : "outputId"
 </thead>
 <tbody>
 <tr>
-<td><a href="Boolean/">Boolean</a></td>
-<td>A binary (true or false) value</td>
-</tr>
-<tr>
-<td><a href="Curie/">Curie</a></td>
-<td>a compact URI</td>
-</tr>
-<tr>
-<td><a href="Date/">Date</a></td>
-<td>a date (year, month and day) in an idealized calendar</td>
-</tr>
-<tr>
-<td><a href="DateOrDatetime/">DateOrDatetime</a></td>
-<td>Either a date or a datetime</td>
-</tr>
-<tr>
-<td><a href="Datetime/">Datetime</a></td>
-<td>The combination of a date and time</td>
-</tr>
-<tr>
-<td><a href="Decimal/">Decimal</a></td>
-<td>A real number with arbitrary precision that conforms to the xsd:decimal speci...</td>
-</tr>
-<tr>
-<td><a href="Double/">Double</a></td>
-<td>A real number that conforms to the xsd:double specification</td>
-</tr>
-<tr>
-<td><a href="Float/">Float</a></td>
-<td>A real number that conforms to the xsd:float specification</td>
+<td><a href="String/">String</a></td>
+<td>A character string</td>
 </tr>
 <tr>
 <td><a href="Integer/">Integer</a></td>
 <td>An integer</td>
 </tr>
 <tr>
-<td><a href="Ncname/">Ncname</a></td>
-<td>Prefix part of CURIE</td>
+<td><a href="Boolean/">Boolean</a></td>
+<td>A binary (true or false) value</td>
 </tr>
 <tr>
-<td><a href="Nodeidentifier/">Nodeidentifier</a></td>
-<td>A URI, CURIE or BNODE that represents a node in a model</td>
+<td><a href="Float/">Float</a></td>
+<td>A real number that conforms to the xsd:float specification</td>
 </tr>
 <tr>
-<td><a href="Objectidentifier/">Objectidentifier</a></td>
-<td>A URI or CURIE that represents an object in the model</td>
+<td><a href="Double/">Double</a></td>
+<td>A real number that conforms to the xsd:double specification</td>
 </tr>
 <tr>
-<td><a href="String/">String</a></td>
-<td>A character string</td>
+<td><a href="Decimal/">Decimal</a></td>
+<td>A real number with arbitrary precision that conforms to the xsd:decimal speci...</td>
 </tr>
 <tr>
 <td><a href="Time/">Time</a></td>
 <td>A time object represents a (local) time of day, independent of any particular...</td>
 </tr>
 <tr>
-<td><a href="Uri/">Uri</a></td>
-<td>a complete URI</td>
+<td><a href="Date/">Date</a></td>
+<td>a date (year, month and day) in an idealized calendar</td>
+</tr>
+<tr>
+<td><a href="Datetime/">Datetime</a></td>
+<td>The combination of a date and time</td>
+</tr>
+<tr>
+<td><a href="DateOrDatetime/">DateOrDatetime</a></td>
+<td>Either a date or a datetime</td>
 </tr>
 <tr>
 <td><a href="Uriorcurie/">Uriorcurie</a></td>
 <td>a URI or a CURIE</td>
 </tr>
+<tr>
+<td><a href="Curie/">Curie</a></td>
+<td>a compact URI</td>
+</tr>
+<tr>
+<td><a href="Uri/">Uri</a></td>
+<td>a complete URI</td>
+</tr>
+<tr>
+<td><a href="Ncname/">Ncname</a></td>
+<td>Prefix part of CURIE</td>
+</tr>
+<tr>
+<td><a href="Objectidentifier/">Objectidentifier</a></td>
+<td>A URI or CURIE that represents an object in the model</td>
+</tr>
+<tr>
+<td><a href="Nodeidentifier/">Nodeidentifier</a></td>
+<td>A URI, CURIE or BNODE that represents a node in a model</td>
+</tr>
 </tbody>
 </table>
 <h2 id="subsets">Subsets</h2>
+<p><em>Elements of a schema can be partitioned into named subsets. These have no semantic meaning, but they can be useful for tagging parts of a schema for different purposes. See <a href="https://linkml.io/linkml/schemas/models.html#subsets">LinkML documentation</a> for more information.</em></p>
 <table>
 <thead>
 <tr>
@@ -1225,5 +1230,5 @@ OrderedListItem ||--|o Output : "outputId"
 </html>
 <!--
 MkDocs version : 1.4.3
-Build Date UTC : 2023-07-02 01:02:04.596554+00:00
+Build Date UTC : 2023-07-20 17:55:28.267350+00:00
 -->

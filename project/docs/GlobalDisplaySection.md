@@ -1,8 +1,6 @@
 # Class: GlobalDisplaySection
 
-
 _A global definition for part of a tabular display containing one or more pieces of informational text that may be used in multiple displays._
-
 
 
 
@@ -16,16 +14,11 @@ URI: [ars:GlobalDisplaySection](https://www.cdisc.org/ars/1-0/GlobalDisplaySecti
  classDiagram
     class GlobalDisplaySection
       GlobalDisplaySection : sectionType
+        GlobalDisplaySection --|> DisplaySectionTypeEnum : sectionType
+        GlobalDisplaySection : subSections
+        GlobalDisplaySection --|> DisplaySubSection : subSections
         
-          GlobalDisplaySection --|> DisplaySectionTypeEnum : sectionType
-        
-      GlobalDisplaySection : subSections
-        
-          GlobalDisplaySection --|> DisplaySubSection : subSections
-        
-      
 ```
-
 
 
 <!-- no inheritance hierarchy -->
@@ -33,11 +26,12 @@ URI: [ars:GlobalDisplaySection](https://www.cdisc.org/ars/1-0/GlobalDisplaySecti
 
 ## Slots
 
-| Name | Cardinality and Range | Description | Inheritance |
+| Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [sectionType](sectionType.md) | 0..1 <br/> [DisplaySectionTypeEnum](DisplaySectionTypeEnum.md) | The type of display section that contains one or more pieces of informational... | direct |
 | [subSections](subSections.md) | 0..* <br/> [DisplaySubSection](DisplaySubSection.md) | A list of defined pieces of information text that may be displayed in display... | direct |
 
+_* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
 
 
@@ -125,8 +119,8 @@ attributes:
     alias: sectionType
     owner: GlobalDisplaySection
     domain_of:
-    - DisplaySection
     - GlobalDisplaySection
+    - DisplaySection
     range: DisplaySectionTypeEnum
   subSections:
     name: subSections

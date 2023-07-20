@@ -1,8 +1,6 @@
 # Class: DisplaySection
 
-
 _A part of a tabular display containing one or more pieces of informational text (e.g., title, footnote)._
-
 
 
 
@@ -16,16 +14,11 @@ URI: [ars:DisplaySection](https://www.cdisc.org/ars/1-0/DisplaySection)
  classDiagram
     class DisplaySection
       DisplaySection : orderedSubSections
+        DisplaySection --|> OrderedDisplaySubSection : orderedSubSections
+        DisplaySection : sectionType
+        DisplaySection --|> DisplaySectionTypeEnum : sectionType
         
-          DisplaySection --|> OrderedDisplaySubSection : orderedSubSections
-        
-      DisplaySection : sectionType
-        
-          DisplaySection --|> DisplaySectionTypeEnum : sectionType
-        
-      
 ```
-
 
 
 <!-- no inheritance hierarchy -->
@@ -33,11 +26,12 @@ URI: [ars:DisplaySection](https://www.cdisc.org/ars/1-0/DisplaySection)
 
 ## Slots
 
-| Name | Cardinality and Range | Description | Inheritance |
+| Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [sectionType](sectionType.md) | 0..1 <br/> [DisplaySectionTypeEnum](DisplaySectionTypeEnum.md) | The type of display section that contains one or more pieces of informational... | direct |
 | [orderedSubSections](orderedSubSections.md) | 0..* <br/> [OrderedDisplaySubSection](OrderedDisplaySubSection.md) | An ordered list of the informational text to display in the display section | direct |
 
+_* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
 
 
@@ -125,8 +119,8 @@ attributes:
     alias: sectionType
     owner: DisplaySection
     domain_of:
-    - DisplaySection
     - GlobalDisplaySection
+    - DisplaySection
     range: DisplaySectionTypeEnum
   orderedSubSections:
     name: orderedSubSections

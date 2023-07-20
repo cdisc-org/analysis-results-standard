@@ -1,8 +1,6 @@
 # Class: CompoundSetExpression
 
-
 _A compound expression consisting of either two or more identified analysis sets combined with the `AND` or `OR` logical operator, or a single identified analysis set negated with the `NOT` logical operator._
-
 
 
 
@@ -16,16 +14,12 @@ URI: [ars:CompoundSetExpression](https://www.cdisc.org/ars/1-0/CompoundSetExpres
  classDiagram
     class CompoundSetExpression
       WhereClauseCompoundExpression <|-- CompoundSetExpression
-      
+
       CompoundSetExpression : logicalOperator
+        CompoundSetExpression --|> ExpressionLogicalOperatorEnum : logicalOperator
+        CompoundSetExpression : whereClauses
+        CompoundSetExpression --|> AnalysisSet : whereClauses
         
-          CompoundSetExpression --|> ExpressionLogicalOperatorEnum : logicalOperator
-        
-      CompoundSetExpression : whereClauses
-        
-          CompoundSetExpression --|> AnalysisSet : whereClauses
-        
-      
 ```
 
 
@@ -39,11 +33,12 @@ URI: [ars:CompoundSetExpression](https://www.cdisc.org/ars/1-0/CompoundSetExpres
 
 ## Slots
 
-| Name | Cardinality and Range | Description | Inheritance |
+| Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [logicalOperator](logicalOperator.md) | 1..1 <br/> [ExpressionLogicalOperatorEnum](ExpressionLogicalOperatorEnum.md) | The boolean operator that is used to combine (AND, OR) or negate (NOT) the wh... | [WhereClauseCompoundExpression](WhereClauseCompoundExpression.md) |
 | [whereClauses](whereClauses.md) | 0..* <br/> [AnalysisSet](AnalysisSet.md) | A list of one or more where clauses (selection criteria) to be combined or ne... | [WhereClauseCompoundExpression](WhereClauseCompoundExpression.md) |
 
+_* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
 
 

@@ -18,8 +18,8 @@ URI: [ars:documentRefs](https://www.cdisc.org/ars/1-0/documentRefs)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-[Analysis](Analysis.md) | An analysis that is designed to meet a requirement of the reporting event |  no  |
 [AnalysisMethod](AnalysisMethod.md) | A set of one or more statistical operations |  no  |
+[Analysis](Analysis.md) | An analysis that is designed to meet a requirement of the reporting event |  no  |
 [Output](Output.md) | A report of results and their evaluation based on planned analyses performed ... |  no  |
 
 
@@ -65,8 +65,8 @@ rank: 1000
 multivalued: true
 alias: documentRefs
 domain_of:
-- Analysis
 - AnalysisMethod
+- Analysis
 - Output
 range: DocumentReference
 inlined: true

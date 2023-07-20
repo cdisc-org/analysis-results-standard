@@ -5,16 +5,21 @@
 {%- endif -%}
 
 
-{% if element.description %}
+{% if element.description -%}
 {% set element_description_lines = element.description.split('\n') %}
-{% for element_description_line in element_description_lines %}
-_{{ element_description_line }}_
-{% endfor %}
-{% endif %}
+{% for element_description_line in element_description_lines -%}
 
-{% if element.abstract %}
+{% if element_description_line[0] == "*" -%}
+* _{{ element_description_line|replace("* ","") }}_
+{% else %}
+_{{ element_description_line }}_
+{% endif -%}
+{%- endfor %}
+{%- endif %}
+
+{% if element.abstract -%}
 * __NOTE__: this is an abstract class and should not be instantiated directly
-{% endif %}
+{%- endif %}
 
 URI: {{ gen.uri_link(element) }}
 
@@ -30,7 +35,7 @@ URI: {{ gen.uri_link(element) }}
 
 ## Slots
 
-| Name | Cardinality and Range | Description | Inheritance |
+| Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 {% if gen.get_direct_slots(element)|length > 0 %}
 {%- for slot in gen.get_direct_slots(element) -%}
@@ -42,6 +47,7 @@ URI: {{ gen.uri_link(element) }}
 | {{ gen.link(slot) }} | {{ gen.cardinality(slot) }} <br/> {{ gen.link(slot.range) }} | {{ slot.description|enshorten }} | {{ gen.links(gen.get_slot_inherited_from(element.name, slot.name))|join(', ') }} |
 {% endfor -%}
 {% endif %}
+_* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
 {% if schemaview.is_mixin(element.name) %}
 ## Mixin Usage

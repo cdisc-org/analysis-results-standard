@@ -77,18 +77,13 @@
 <pre class="mermaid"><code> classDiagram
     class OrderedSubSection
       OrderedDisplaySubSection &lt;|-- OrderedSubSection
-      
+
       OrderedSubSection : order
-        
-      OrderedSubSection : subSection
-        
-          OrderedSubSection --|&gt; DisplaySubSection : subSection
-        
-      OrderedSubSection : subSectionId
-        
-          OrderedSubSection --|&gt; DisplaySubSection : subSectionId
-        
-      </code></pre>
+        OrderedSubSection : subSection
+        OrderedSubSection --|&gt; DisplaySubSection : subSection
+        OrderedSubSection : subSectionId
+        OrderedSubSection --|&gt; DisplaySubSection : subSectionId
+        </code></pre>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../OrderedDisplaySubSection/">OrderedDisplaySubSection</a><ul>
@@ -101,7 +96,7 @@
 <thead>
 <tr>
 <th>Name</th>
-<th>Cardinality and Range</th>
+<th>Cardinality* and Range</th>
 <th>Description</th>
 <th>Inheritance</th>
 </tr>
@@ -127,6 +122,7 @@
 </tr>
 </tbody>
 </table>
+<p><em>* See <a href="https://linkml.io/linkml/schemas/slots.html#slot-cardinality">LinkML documentation</a> for cardinality definitions.</em></p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -207,10 +203,10 @@
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OrderedSubSection</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OrderedListItem</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WhereClause</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OrderedGroupingFactor</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OrderedDisplay</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OrderedDisplaySubSection</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WhereClause</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
 <span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">  </span><span class="nt">subSection</span><span class="p">:</span>

@@ -18,8 +18,8 @@ URI: [ars:dataset](https://www.cdisc.org/ars/1-0/dataset)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-[Analysis](Analysis.md) | An analysis that is designed to meet a requirement of the reporting event |  no  |
 [WhereClauseCondition](WhereClauseCondition.md) | A simple selection criterion exressed as [dataset] |  no  |
+[Analysis](Analysis.md) | An analysis that is designed to meet a requirement of the reporting event |  no  |
 
 
 
@@ -61,8 +61,8 @@ from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 alias: dataset
 domain_of:
-- Analysis
 - WhereClauseCondition
+- Analysis
 range: string
 
 ```

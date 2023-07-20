@@ -1,16 +1,11 @@
 # Class: CodeParameter
 
-
 _A replacement parameter whose value is substituted in template programming code to create statements required for a specific analysis._
-
-
 
 
 * __NOTE__: this is an abstract class and should not be instantiated directly
 
-
 URI: [ars:CodeParameter](https://www.cdisc.org/ars/1-0/CodeParameter)
-
 
 
 
@@ -18,12 +13,9 @@ URI: [ars:CodeParameter](https://www.cdisc.org/ars/1-0/CodeParameter)
  classDiagram
     class CodeParameter
       NamedObject <|-- CodeParameter
-      
-
-      CodeParameter <|-- AnalysisOutputCodeParameter
       CodeParameter <|-- TemplateCodeParameter
-      
-      
+      CodeParameter <|-- AnalysisOutputCodeParameter
+            
       CodeParameter : description
         
       CodeParameter : name
@@ -37,18 +29,19 @@ URI: [ars:CodeParameter](https://www.cdisc.org/ars/1-0/CodeParameter)
 ## Inheritance
 * [NamedObject](NamedObject.md)
     * **CodeParameter**
-        * [AnalysisOutputCodeParameter](AnalysisOutputCodeParameter.md)
         * [TemplateCodeParameter](TemplateCodeParameter.md)
+        * [AnalysisOutputCodeParameter](AnalysisOutputCodeParameter.md)
 
 
 
 ## Slots
 
-| Name | Cardinality and Range | Description | Inheritance |
+| Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [description](description.md) | 0..1 <br/> [String](String.md) | A textual description of the instance of the class | direct |
 | [name](name.md) | 1..1 <br/> [String](String.md) | The name for the instance of the class | [NamedObject](NamedObject.md) |
 
+_* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
 
 
@@ -126,11 +119,11 @@ attributes:
     alias: description
     owner: CodeParameter
     domain_of:
-    - Analysis
+    - SponsorTerm
     - AnalysisMethod
     - ReferencedOperationRelationship
     - CodeParameter
-    - SponsorTerm
+    - Analysis
     range: string
   name:
     name: name

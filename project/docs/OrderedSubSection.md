@@ -1,8 +1,6 @@
 # Class: OrderedSubSection
 
-
 _A subsection ordered with respect to other subsections of the same type._
-
 
 
 
@@ -16,18 +14,13 @@ URI: [ars:OrderedSubSection](https://www.cdisc.org/ars/1-0/OrderedSubSection)
  classDiagram
     class OrderedSubSection
       OrderedDisplaySubSection <|-- OrderedSubSection
-      
+
       OrderedSubSection : order
+        OrderedSubSection : subSection
+        OrderedSubSection --|> DisplaySubSection : subSection
+        OrderedSubSection : subSectionId
+        OrderedSubSection --|> DisplaySubSection : subSectionId
         
-      OrderedSubSection : subSection
-        
-          OrderedSubSection --|> DisplaySubSection : subSection
-        
-      OrderedSubSection : subSectionId
-        
-          OrderedSubSection --|> DisplaySubSection : subSectionId
-        
-      
 ```
 
 
@@ -41,12 +34,13 @@ URI: [ars:OrderedSubSection](https://www.cdisc.org/ars/1-0/OrderedSubSection)
 
 ## Slots
 
-| Name | Cardinality and Range | Description | Inheritance |
+| Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [order](order.md) | 1..1 <br/> [Integer](Integer.md) | The ordinal of the instance with respect to other instances | [OrderedDisplaySubSection](OrderedDisplaySubSection.md) |
 | [subSection](subSection.md) | 1..1 <br/> [DisplaySubSection](DisplaySubSection.md) | A defined piece of information text to display in a display section | [OrderedDisplaySubSection](OrderedDisplaySubSection.md) |
 | [subSectionId](subSectionId.md) | 0..1 <br/> [DisplaySubSection](DisplaySubSection.md) | NOT USED | [OrderedDisplaySubSection](OrderedDisplaySubSection.md) |
 
+_* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
 
 
@@ -147,10 +141,10 @@ attributes:
     owner: OrderedSubSection
     domain_of:
     - OrderedListItem
+    - WhereClause
     - OrderedGroupingFactor
     - OrderedDisplay
     - OrderedDisplaySubSection
-    - WhereClause
     range: integer
     required: true
   subSection:

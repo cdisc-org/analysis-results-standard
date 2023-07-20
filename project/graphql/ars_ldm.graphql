@@ -3,16 +3,16 @@ type Analysis
     name: String!
     id: String!
     version: Integer
-    categoryIds: [AnalysisCategory]
     description: String
     reason: ExtensibleTerminologyTerm!
     purpose: ExtensibleTerminologyTerm!
     documentRefs: [DocumentReference]
-    analysisSetId: AnalysisSet
-    orderedGroupings: [OrderedGroupingFactor]
-    dataSubsetId: DataSubset
+    categoryIds: [AnalysisCategory]
     dataset: String
     variable: String
+    analysisSetId: AnalysisSet
+    dataSubsetId: DataSubset
+    orderedGroupings: [OrderedGroupingFactor]
     methodId: AnalysisMethod!
     referencedAnalysisOperations: [ReferencedAnalysisOperation]
     programmingCode: AnalysisOutputProgrammingCode
@@ -49,8 +49,8 @@ type AnalysisMethod
     id: String!
     label: String
     description: String
-    operations: [Operation]!
     documentRefs: [DocumentReference]
+    operations: [Operation]!
     codeTemplate: AnalysisProgrammingCodeTemplate
   }
 
@@ -382,17 +382,17 @@ type ReportingEvent
     version: Integer
     listOfPlannedAnalyses: NestedList!
     listOfPlannedOutputs: NestedList
+    referenceDocuments: [ReferenceDocument]
+    terminologyExtensions: [TerminologyExtension]
+    analysisCategorizations: [AnalysisCategorization]
     analysisSets: [AnalysisSet]
     analysisGroupings: [SubjectGroupingFactor]
     dataSubsets: [DataSubset]
     dataGroupings: [DataGroupingFactor]
-    globalDisplaySections: [GlobalDisplaySection]
-    analysisCategorizations: [AnalysisCategorization]
-    analyses: [Analysis]
     methods: [AnalysisMethod]
+    analyses: [Analysis]
+    globalDisplaySections: [GlobalDisplaySection]
     outputs: [Output]
-    referenceDocuments: [ReferenceDocument]
-    terminologyExtensions: [TerminologyExtension]
   }
 
 type ResultGroup

@@ -1,8 +1,6 @@
 # Class: WhereClause
 
-
 _Selection criteria defined as either a simple condition ([variable] [comparator] [value(s)]) or a compound expression that may combine simple conditions or compound expressions._
-
 
 
 
@@ -16,22 +14,15 @@ URI: [ars:WhereClause](https://www.cdisc.org/ars/1-0/WhereClause)
  classDiagram
     class WhereClause
       WhereClause <|-- AnalysisSet
-      WhereClause <|-- Group
       WhereClause <|-- DataSubset
-      
-      WhereClause : compoundExpression
+      WhereClause <|-- Group
+      WhereClause : level        
+        WhereClause : order        
+        WhereClause : condition        
+        WhereClause --|> WhereClauseCondition : condition
+        WhereClause : compoundExpression        
+        WhereClause --|> WhereClauseCompoundExpression : compoundExpression
         
-          WhereClause --|> WhereClauseCompoundExpression : compoundExpression
-        
-      WhereClause : condition
-        
-          WhereClause --|> WhereClauseCondition : condition
-        
-      WhereClause : level
-        
-      WhereClause : order
-        
-      
 ```
 
 
@@ -40,20 +31,21 @@ URI: [ars:WhereClause](https://www.cdisc.org/ars/1-0/WhereClause)
 ## Inheritance
 * **WhereClause**
     * [AnalysisSet](AnalysisSet.md)
-    * [Group](Group.md)
     * [DataSubset](DataSubset.md)
+    * [Group](Group.md)
 
 
 
 ## Slots
 
-| Name | Cardinality and Range | Description | Inheritance |
+| Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [level](level.md) | 0..1 <br/> [Integer](Integer.md) | The level of the entry within a hierarchical structure | direct |
 | [order](order.md) | 0..1 <br/> [Integer](Integer.md) | The ordinal of the instance with respect to other instances | direct |
 | [condition](condition.md) | 0..1 <br/> [WhereClauseCondition](WhereClauseCondition.md) | A simple selection criterion exressed as [dataset] | direct |
 | [compoundExpression](compoundExpression.md) | 0..1 <br/> [WhereClauseCompoundExpression](WhereClauseCompoundExpression.md) | A compound expression that combines or negates where clauses | direct |
 
+_* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
 
 
@@ -229,10 +221,10 @@ attributes:
     owner: WhereClause
     domain_of:
     - OrderedListItem
+    - WhereClause
     - OrderedGroupingFactor
     - OrderedDisplay
     - OrderedDisplaySubSection
-    - WhereClause
     range: integer
   condition:
     name: condition

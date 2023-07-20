@@ -1,8 +1,6 @@
 # Class: PageNumberRangeRef
 
-
 _A range of pages in the reference document, indicated by the first and last page number in the range._
-
 
 
 
@@ -16,22 +14,15 @@ URI: [ars:PageNumberRangeRef](https://www.cdisc.org/ars/1-0/PageNumberRangeRef)
  classDiagram
     class PageNumberRangeRef
       PageRef <|-- PageNumberRangeRef
-      
-      PageNumberRangeRef : firstPage
-        
-      PageNumberRangeRef : label
-        
-      PageNumberRangeRef : lastPage
-        
-      PageNumberRangeRef : pageNames
-        
-      PageNumberRangeRef : pageNumbers
-        
+
       PageNumberRangeRef : refType
+        PageNumberRangeRef --|> PageRefTypeEnum : refType
+        PageNumberRangeRef : label
+        PageNumberRangeRef : pageNames
+        PageNumberRangeRef : pageNumbers
+        PageNumberRangeRef : firstPage
+        PageNumberRangeRef : lastPage
         
-          PageNumberRangeRef --|> PageRefTypeEnum : refType
-        
-      
 ```
 
 
@@ -45,7 +36,7 @@ URI: [ars:PageNumberRangeRef](https://www.cdisc.org/ars/1-0/PageNumberRangeRef)
 
 ## Slots
 
-| Name | Cardinality and Range | Description | Inheritance |
+| Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [refType](refType.md) | 1..1 <br/> [PageRefTypeEnum](PageRefTypeEnum.md) | The type of reference for page references | [PageRef](PageRef.md) |
 | [label](label.md) | 0..1 <br/> [String](String.md) | Alternative label to provide a more specific and description to a page link | [PageRef](PageRef.md) |
@@ -54,6 +45,7 @@ URI: [ars:PageNumberRangeRef](https://www.cdisc.org/ars/1-0/PageNumberRangeRef)
 | [firstPage](firstPage.md) | 1..1 <br/> [Integer](Integer.md) | The page number of the first page in a range of pages | [PageRef](PageRef.md) |
 | [lastPage](lastPage.md) | 1..1 <br/> [Integer](Integer.md) | The page number of the last page in a range of pages | [PageRef](PageRef.md) |
 
+_* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
 
 
@@ -205,13 +197,13 @@ attributes:
     domain_of:
     - AnalysisCategorization
     - AnalysisCategory
-    - AnalysisMethod
-    - Operation
     - AnalysisSet
+    - DataSubset
     - GroupingFactor
     - Group
-    - DataSubset
+    - AnalysisMethod
     - PageRef
+    - Operation
     range: string
   pageNames:
     name: pageNames

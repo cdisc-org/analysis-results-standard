@@ -1,8 +1,6 @@
 # Class: OperationResult
 
-
 _The result of an analysis method operation performed on a subdivision of subjects or data records._
-
 
 
 
@@ -16,20 +14,13 @@ URI: [ars:OperationResult](https://www.cdisc.org/ars/1-0/OperationResult)
  classDiagram
     class OperationResult
       OperationResult : formattedValue
+        OperationResult : operationId
+        OperationResult --|> Operation : operationId
+        OperationResult : rawValue
+        OperationResult : resultGroups
+        OperationResult --|> ResultGroup : resultGroups
         
-      OperationResult : operationId
-        
-          OperationResult --|> Operation : operationId
-        
-      OperationResult : rawValue
-        
-      OperationResult : resultGroups
-        
-          OperationResult --|> ResultGroup : resultGroups
-        
-      
 ```
-
 
 
 <!-- no inheritance hierarchy -->
@@ -37,13 +28,14 @@ URI: [ars:OperationResult](https://www.cdisc.org/ars/1-0/OperationResult)
 
 ## Slots
 
-| Name | Cardinality and Range | Description | Inheritance |
+| Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [operationId](operationId.md) | 1..1 <br/> [Operation](Operation.md) | The identifier of the referenced operation | direct |
 | [resultGroups](resultGroups.md) | 0..* <br/> [ResultGroup](ResultGroup.md) | The group values associated with the result | direct |
 | [rawValue](rawValue.md) | 0..1 <br/> [String](String.md) | The raw result value (e | direct |
 | [formattedValue](formattedValue.md) | 0..1 <br/> [String](String.md) | The result value formatted for display according to the resultPattern | direct |
 
+_* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
 
 
@@ -127,8 +119,8 @@ attributes:
     alias: operationId
     owner: OperationResult
     domain_of:
-    - OperationResult
     - ReferencedOperationRelationship
+    - OperationResult
     range: Operation
     required: true
     inlined: false

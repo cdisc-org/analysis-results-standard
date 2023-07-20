@@ -1,8 +1,6 @@
 # Class: ResultGroup
 
-
 _For the specified grouping factor, an indication of the specific group of subjects or data records associated with the analysis result._
-
 
 
 
@@ -16,18 +14,12 @@ URI: [ars:ResultGroup](https://www.cdisc.org/ars/1-0/ResultGroup)
  classDiagram
     class ResultGroup
       ResultGroup : groupId
+        ResultGroup --|> Group : groupId
+        ResultGroup : groupingId
+        ResultGroup --|> GroupingFactor : groupingId
+        ResultGroup : groupValue
         
-          ResultGroup --|> Group : groupId
-        
-      ResultGroup : groupingId
-        
-          ResultGroup --|> GroupingFactor : groupingId
-        
-      ResultGroup : groupValue
-        
-      
 ```
-
 
 
 <!-- no inheritance hierarchy -->
@@ -35,12 +27,13 @@ URI: [ars:ResultGroup](https://www.cdisc.org/ars/1-0/ResultGroup)
 
 ## Slots
 
-| Name | Cardinality and Range | Description | Inheritance |
+| Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [groupingId](groupingId.md) | 0..1 <br/> [GroupingFactor](GroupingFactor.md) | The identifier of the referenced subject or data grouping factor | direct |
 | [groupId](groupId.md) | 0..1 <br/> [Group](Group.md) | The identifier of a referenced predefined group within a grouping | direct |
 | [groupValue](groupValue.md) | 0..1 <br/> [String](String.md) | The data value used as a group within a data-driven grouping | direct |
 
+_* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
 
 

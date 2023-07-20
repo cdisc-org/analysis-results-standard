@@ -1,13 +1,9 @@
 # Class: ExtensibleTerminologyTerm
 
-
 _The term used for an attribute whose terminology is extensible._
 
 
-
-
 * __NOTE__: this is an abstract class and should not be instantiated directly
-
 
 URI: [ars:ExtensibleTerminologyTerm](https://www.cdisc.org/ars/1-0/ExtensibleTerminologyTerm)
 
@@ -17,22 +13,18 @@ URI: [ars:ExtensibleTerminologyTerm](https://www.cdisc.org/ars/1-0/ExtensibleTer
 ```mermaid
  classDiagram
     class ExtensibleTerminologyTerm
+      ExtensibleTerminologyTerm <|-- OperationRole
+      ExtensibleTerminologyTerm <|-- SponsorOperationRole
       ExtensibleTerminologyTerm <|-- AnalysisReason
       ExtensibleTerminologyTerm <|-- SponsorAnalysisReason
       ExtensibleTerminologyTerm <|-- AnalysisPurpose
       ExtensibleTerminologyTerm <|-- SponsorAnalysisPurpose
-      ExtensibleTerminologyTerm <|-- OperationRole
-      ExtensibleTerminologyTerm <|-- SponsorOperationRole
       ExtensibleTerminologyTerm <|-- OutputFileType
       ExtensibleTerminologyTerm <|-- SponsorOutputFileType
-      
-      ExtensibleTerminologyTerm : controlledTerm
+      ExtensibleTerminologyTerm : controlledTerm        
+        ExtensibleTerminologyTerm : sponsorTermId        
+        ExtensibleTerminologyTerm --|> SponsorTerm : sponsorTermId
         
-      ExtensibleTerminologyTerm : sponsorTermId
-        
-          ExtensibleTerminologyTerm --|> SponsorTerm : sponsorTermId
-        
-      
 ```
 
 
@@ -40,12 +32,12 @@ URI: [ars:ExtensibleTerminologyTerm](https://www.cdisc.org/ars/1-0/ExtensibleTer
 
 ## Inheritance
 * **ExtensibleTerminologyTerm**
+    * [OperationRole](OperationRole.md)
+    * [SponsorOperationRole](SponsorOperationRole.md)
     * [AnalysisReason](AnalysisReason.md)
     * [SponsorAnalysisReason](SponsorAnalysisReason.md)
     * [AnalysisPurpose](AnalysisPurpose.md)
     * [SponsorAnalysisPurpose](SponsorAnalysisPurpose.md)
-    * [OperationRole](OperationRole.md)
-    * [SponsorOperationRole](SponsorOperationRole.md)
     * [OutputFileType](OutputFileType.md)
     * [SponsorOutputFileType](SponsorOutputFileType.md)
 
@@ -53,11 +45,12 @@ URI: [ars:ExtensibleTerminologyTerm](https://www.cdisc.org/ars/1-0/ExtensibleTer
 
 ## Slots
 
-| Name | Cardinality and Range | Description | Inheritance |
+| Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [controlledTerm](controlledTerm.md) | 0..1 <br/> [String](String.md) | One of the permissible values from the referenced enumeration | direct |
 | [sponsorTermId](sponsorTermId.md) | 0..1 <br/> [SponsorTerm](SponsorTerm.md) | The identifier of the referenced sponsor term | direct |
 
+_* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
 
 
@@ -66,9 +59,9 @@ URI: [ars:ExtensibleTerminologyTerm](https://www.cdisc.org/ars/1-0/ExtensibleTer
 
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
+| [ReferencedOperationRelationship](ReferencedOperationRelationship.md) | [referencedOperationRole](referencedOperationRole.md) | range | [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) |
 | [Analysis](Analysis.md) | [reason](reason.md) | range | [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) |
 | [Analysis](Analysis.md) | [purpose](purpose.md) | range | [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) |
-| [ReferencedOperationRelationship](ReferencedOperationRelationship.md) | [referencedOperationRole](referencedOperationRole.md) | range | [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) |
 | [OutputFile](OutputFile.md) | [fileType](fileType.md) | range | [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) |
 
 

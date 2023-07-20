@@ -20,8 +20,8 @@ URI: [ars:parameters](https://www.cdisc.org/ars/1-0/parameters)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-[AnalysisOutputProgrammingCode](AnalysisOutputProgrammingCode.md) | Programming statements and/or a reference to the program used to perform a sp... |  yes  |
 [AnalysisProgrammingCodeTemplate](AnalysisProgrammingCodeTemplate.md) | Programming statements and/or a reference to a used as a template for creatio... |  yes  |
+[AnalysisOutputProgrammingCode](AnalysisOutputProgrammingCode.md) | Programming statements and/or a reference to the program used to perform a sp... |  yes  |
 
 
 
@@ -69,8 +69,8 @@ rank: 1000
 multivalued: true
 alias: parameters
 domain_of:
-- AnalysisOutputProgrammingCode
 - AnalysisProgrammingCodeTemplate
+- AnalysisOutputProgrammingCode
 range: CodeParameter
 inlined: true
 inlined_as_list: true

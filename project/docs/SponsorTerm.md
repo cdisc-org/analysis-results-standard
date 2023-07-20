@@ -1,8 +1,6 @@
 # Class: SponsorTerm
 
-
 _A sponsor-defined term that is included in an extensible set of controlled terminology._
-
 
 
 
@@ -16,14 +14,10 @@ URI: [ars:SponsorTerm](https://www.cdisc.org/ars/1-0/SponsorTerm)
  classDiagram
     class SponsorTerm
       SponsorTerm : description
+        SponsorTerm : id
+        SponsorTerm : submissionValue
         
-      SponsorTerm : id
-        
-      SponsorTerm : submissionValue
-        
-      
 ```
-
 
 
 <!-- no inheritance hierarchy -->
@@ -31,12 +25,13 @@ URI: [ars:SponsorTerm](https://www.cdisc.org/ars/1-0/SponsorTerm)
 
 ## Slots
 
-| Name | Cardinality and Range | Description | Inheritance |
+| Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [id](id.md) | 1..1 <br/> [String](String.md) | The assigned identifying value for the instance of the class | direct |
 | [submissionValue](submissionValue.md) | 1..1 <br/> [String](String.md) | The specific value expected for submissions | direct |
 | [description](description.md) | 0..1 <br/> [String](String.md) | A textual description of the instance of the class | direct |
 
+_* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
 
 
@@ -47,12 +42,12 @@ URI: [ars:SponsorTerm](https://www.cdisc.org/ars/1-0/SponsorTerm)
 | ---  | --- | --- | --- |
 | [TerminologyExtension](TerminologyExtension.md) | [sponsorTerms](sponsorTerms.md) | range | [SponsorTerm](SponsorTerm.md) |
 | [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) | [sponsorTermId](sponsorTermId.md) | range | [SponsorTerm](SponsorTerm.md) |
+| [OperationRole](OperationRole.md) | [sponsorTermId](sponsorTermId.md) | range | [SponsorTerm](SponsorTerm.md) |
+| [SponsorOperationRole](SponsorOperationRole.md) | [sponsorTermId](sponsorTermId.md) | range | [SponsorTerm](SponsorTerm.md) |
 | [AnalysisReason](AnalysisReason.md) | [sponsorTermId](sponsorTermId.md) | range | [SponsorTerm](SponsorTerm.md) |
 | [SponsorAnalysisReason](SponsorAnalysisReason.md) | [sponsorTermId](sponsorTermId.md) | range | [SponsorTerm](SponsorTerm.md) |
 | [AnalysisPurpose](AnalysisPurpose.md) | [sponsorTermId](sponsorTermId.md) | range | [SponsorTerm](SponsorTerm.md) |
 | [SponsorAnalysisPurpose](SponsorAnalysisPurpose.md) | [sponsorTermId](sponsorTermId.md) | range | [SponsorTerm](SponsorTerm.md) |
-| [OperationRole](OperationRole.md) | [sponsorTermId](sponsorTermId.md) | range | [SponsorTerm](SponsorTerm.md) |
-| [SponsorOperationRole](SponsorOperationRole.md) | [sponsorTermId](sponsorTermId.md) | range | [SponsorTerm](SponsorTerm.md) |
 | [OutputFileType](OutputFileType.md) | [sponsorTermId](sponsorTermId.md) | range | [SponsorTerm](SponsorTerm.md) |
 | [SponsorOutputFileType](SponsorOutputFileType.md) | [sponsorTermId](sponsorTermId.md) | range | [SponsorTerm](SponsorTerm.md) |
 
@@ -130,22 +125,22 @@ attributes:
     owner: SponsorTerm
     domain_of:
     - ReportingEvent
-    - AnalysisCategorization
-    - AnalysisCategory
-    - Analysis
-    - AnalysisMethod
-    - Operation
-    - ReferencedOperationRelationship
-    - Output
-    - OutputDisplay
-    - DisplaySubSection
-    - AnalysisSet
-    - GroupingFactor
-    - Group
-    - DataSubset
     - ReferenceDocument
     - TerminologyExtension
     - SponsorTerm
+    - AnalysisCategorization
+    - AnalysisCategory
+    - AnalysisSet
+    - DataSubset
+    - GroupingFactor
+    - Group
+    - AnalysisMethod
+    - Operation
+    - ReferencedOperationRelationship
+    - Analysis
+    - DisplaySubSection
+    - Output
+    - OutputDisplay
     range: string
     required: true
   submissionValue:
@@ -167,11 +162,11 @@ attributes:
     alias: description
     owner: SponsorTerm
     domain_of:
-    - Analysis
+    - SponsorTerm
     - AnalysisMethod
     - ReferencedOperationRelationship
     - CodeParameter
-    - SponsorTerm
+    - Analysis
     range: string
 
 ```

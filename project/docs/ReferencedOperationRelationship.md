@@ -1,8 +1,6 @@
 # Class: ReferencedOperationRelationship
 
-
 _A reference to a statistical operation whose results are used in the calculation of the result for this operation._
-
 
 
 
@@ -16,24 +14,15 @@ URI: [ars:ReferencedOperationRelationship](https://www.cdisc.org/ars/1-0/Referen
  classDiagram
     class ReferencedOperationRelationship
       ReferencedOperationRelationship : analysisId
+        ReferencedOperationRelationship --|> Analysis : analysisId
+        ReferencedOperationRelationship : description
+        ReferencedOperationRelationship : id
+        ReferencedOperationRelationship : operationId
+        ReferencedOperationRelationship --|> Operation : operationId
+        ReferencedOperationRelationship : referencedOperationRole
+        ReferencedOperationRelationship --|> ExtensibleTerminologyTerm : referencedOperationRole
         
-          ReferencedOperationRelationship --|> Analysis : analysisId
-        
-      ReferencedOperationRelationship : description
-        
-      ReferencedOperationRelationship : id
-        
-      ReferencedOperationRelationship : operationId
-        
-          ReferencedOperationRelationship --|> Operation : operationId
-        
-      ReferencedOperationRelationship : referencedOperationRole
-        
-          ReferencedOperationRelationship --|> ExtensibleTerminologyTerm : referencedOperationRole
-        
-      
 ```
-
 
 
 <!-- no inheritance hierarchy -->
@@ -41,7 +30,7 @@ URI: [ars:ReferencedOperationRelationship](https://www.cdisc.org/ars/1-0/Referen
 
 ## Slots
 
-| Name | Cardinality and Range | Description | Inheritance |
+| Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [id](id.md) | 1..1 <br/> [String](String.md) | The assigned identifying value for the instance of the class | direct |
 | [referencedOperationRole](referencedOperationRole.md) | 1..1 <br/> [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) | The role that the referenced operation's result plays in the calculation of t... | direct |
@@ -49,6 +38,7 @@ URI: [ars:ReferencedOperationRelationship](https://www.cdisc.org/ars/1-0/Referen
 | [analysisId](analysisId.md) | 0..1 <br/> [Analysis](Analysis.md) | The identifier of the referenced analysis | direct |
 | [description](description.md) | 0..1 <br/> [String](String.md) | A textual description of the instance of the class | direct |
 
+_* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
 
 
@@ -57,8 +47,8 @@ URI: [ars:ReferencedOperationRelationship](https://www.cdisc.org/ars/1-0/Referen
 
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
-| [ReferencedAnalysisOperation](ReferencedAnalysisOperation.md) | [referencedOperationRelationshipId](referencedOperationRelationshipId.md) | range | [ReferencedOperationRelationship](ReferencedOperationRelationship.md) |
 | [Operation](Operation.md) | [referencedOperationRelationships](referencedOperationRelationships.md) | range | [ReferencedOperationRelationship](ReferencedOperationRelationship.md) |
+| [ReferencedAnalysisOperation](ReferencedAnalysisOperation.md) | [referencedOperationRelationshipId](referencedOperationRelationshipId.md) | range | [ReferencedOperationRelationship](ReferencedOperationRelationship.md) |
 
 
 
@@ -136,22 +126,22 @@ attributes:
     owner: ReferencedOperationRelationship
     domain_of:
     - ReportingEvent
-    - AnalysisCategorization
-    - AnalysisCategory
-    - Analysis
-    - AnalysisMethod
-    - Operation
-    - ReferencedOperationRelationship
-    - Output
-    - OutputDisplay
-    - DisplaySubSection
-    - AnalysisSet
-    - GroupingFactor
-    - Group
-    - DataSubset
     - ReferenceDocument
     - TerminologyExtension
     - SponsorTerm
+    - AnalysisCategorization
+    - AnalysisCategory
+    - AnalysisSet
+    - DataSubset
+    - GroupingFactor
+    - Group
+    - AnalysisMethod
+    - Operation
+    - ReferencedOperationRelationship
+    - Analysis
+    - DisplaySubSection
+    - Output
+    - OutputDisplay
     range: string
     required: true
   referencedOperationRole:
@@ -177,8 +167,8 @@ attributes:
     alias: operationId
     owner: ReferencedOperationRelationship
     domain_of:
-    - OperationResult
     - ReferencedOperationRelationship
+    - OperationResult
     range: Operation
     required: true
     inlined: false
@@ -192,8 +182,8 @@ attributes:
     owner: ReferencedOperationRelationship
     domain_of:
     - OrderedListItem
-    - ReferencedAnalysisOperation
     - ReferencedOperationRelationship
+    - ReferencedAnalysisOperation
     range: Analysis
     inlined: false
   description:
@@ -204,11 +194,11 @@ attributes:
     alias: description
     owner: ReferencedOperationRelationship
     domain_of:
-    - Analysis
+    - SponsorTerm
     - AnalysisMethod
     - ReferencedOperationRelationship
     - CodeParameter
-    - SponsorTerm
+    - Analysis
     range: string
 
 ```

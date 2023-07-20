@@ -1,20 +1,18 @@
 {# REMOVED if diagram_type == "er_diagram" LOGIC TO PREVENT ER DIAGRAMS FOR CLASSES #}
 
-{% if schemaview.class_parents(element.name) and schemaview.class_children(element.name) %}
+{% if schemaview.class_parents(element.name) and schemaview.class_children(element.name) -%}
 ```{{ gen.mermaid_directive() }}
  classDiagram
     class {{ gen.name(element) }}
       {% for s in schemaview.class_parents(element.name)|sort(attribute='name') -%}
         {{ gen.name(schemaview.get_element(s)) }} <|-- {{ gen.name(element) }}
-      {% endfor %}
-
+      {% endfor -%}
       {% for s in schemaview.class_children(element.name)|sort(attribute='name') -%}
         {{ gen.name(element) }} <|-- {{ gen.name(schemaview.get_element(s)) }}
-      {% endfor %}
-      
-      {% for s in schemaview.class_induced_slots(element.name)|sort(attribute='name') -%}
+      {% endfor %}      
+      {% for s in schemaview.class_induced_slots(element.name) -%}
         {{ gen.name(element) }} : {{gen.name(s)}}
-        {% if s.range not in gen.all_type_object_names() %}
+        {% if s.range not in gen.all_type_object_names() -%}
           {{ gen.name(element) }} --|> {{ s.range }} : {{ gen.name(s) }}
         {% endif %}
       {% endfor %}
@@ -24,14 +22,15 @@
  classDiagram
     class {{ gen.name(element) }}
       {% for s in schemaview.class_parents(element.name)|sort(attribute='name') -%}
-        {{ gen.name(schemaview.get_element(s)) }} <|-- {{ gen.name(element) }}
-      {% endfor %}
-      {% for s in schemaview.class_induced_slots(element.name)|sort(attribute='name') -%}
+        {{ gen.name(schemaview.get_element(s)) }} <|-- {{ gen.name(element) }}        
+      {%- endfor %}
+
+      {% for s in schemaview.class_induced_slots(element.name) -%}
         {{ gen.name(element) }} : {{gen.name(s)}}
-        {% if s.range not in gen.all_type_object_names() %}
+        {% if s.range not in gen.all_type_object_names() -%}
           {{ gen.name(element) }} --|> {{ s.range }} : {{ gen.name(s) }}
         {% endif %}
-      {% endfor %}
+      {%- endfor %}
 ```
 {% elif schemaview.class_children(element.name)  %}
 ```{{ gen.mermaid_directive() }}
@@ -39,13 +38,13 @@
     class {{ gen.name(element) }}
       {% for s in schemaview.class_children(element.name)|sort(attribute='name') -%}
         {{ gen.name(element) }} <|-- {{ gen.name(schemaview.get_element(s)) }}
-      {% endfor %}
-      {% for s in schemaview.class_induced_slots(element.name)|sort(attribute='name') -%}
-        {{ gen.name(element) }} : {{gen.name(s)}}
-        {% if s.range not in gen.all_type_object_names() %}
+      {% endfor -%}
+      {% for s in schemaview.class_induced_slots(element.name) -%}      
+        {{ gen.name(element) }} : {{gen.name(s)}}        
+        {% if s.range not in gen.all_type_object_names() -%}
           {{ gen.name(element) }} --|> {{ s.range }} : {{ gen.name(s) }}
         {% endif %}
-      {% endfor %}
+      {%- endfor %}
 ```
 {% else %}
 ```{{ gen.mermaid_directive() }}
@@ -53,9 +52,9 @@
     class {{ gen.name(element) }}
       {% for s in schemaview.class_induced_slots(element.name)|sort(attribute='name') -%}
         {{ gen.name(element) }} : {{gen.name(s)}}
-        {% if s.range not in gen.all_type_object_names() %}
+        {% if s.range not in gen.all_type_object_names() -%}
           {{ gen.name(element) }} --|> {{ s.range }} : {{ gen.name(s) }}
         {% endif %}
-      {% endfor %}
+      {%- endfor %}
 ```
-{% endif %}
+{%- endif %}

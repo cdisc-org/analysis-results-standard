@@ -1,8 +1,6 @@
 # Class: ReferenceDocument
 
-
 _An external document containing supporting documentation or programming code._
-
 
 
 
@@ -16,14 +14,11 @@ URI: [ars:ReferenceDocument](https://www.cdisc.org/ars/1-0/ReferenceDocument)
  classDiagram
     class ReferenceDocument
       NamedObject <|-- ReferenceDocument
-      
+
       ReferenceDocument : id
+        ReferenceDocument : location
+        ReferenceDocument : name
         
-      ReferenceDocument : location
-        
-      ReferenceDocument : name
-        
-      
 ```
 
 
@@ -37,12 +32,13 @@ URI: [ars:ReferenceDocument](https://www.cdisc.org/ars/1-0/ReferenceDocument)
 
 ## Slots
 
-| Name | Cardinality and Range | Description | Inheritance |
+| Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [id](id.md) | 1..1 <br/> [String](String.md) | The assigned identifying value for the instance of the class | direct |
 | [location](location.md) | 0..1 <br/> [Uri](Uri.md) | A path (relative or absolute) indicating the location of the file | direct |
 | [name](name.md) | 1..1 <br/> [String](String.md) | The name for the instance of the class | [NamedObject](NamedObject.md) |
 
+_* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
 
 
@@ -129,22 +125,22 @@ attributes:
     owner: ReferenceDocument
     domain_of:
     - ReportingEvent
-    - AnalysisCategorization
-    - AnalysisCategory
-    - Analysis
-    - AnalysisMethod
-    - Operation
-    - ReferencedOperationRelationship
-    - Output
-    - OutputDisplay
-    - DisplaySubSection
-    - AnalysisSet
-    - GroupingFactor
-    - Group
-    - DataSubset
     - ReferenceDocument
     - TerminologyExtension
     - SponsorTerm
+    - AnalysisCategorization
+    - AnalysisCategory
+    - AnalysisSet
+    - DataSubset
+    - GroupingFactor
+    - Group
+    - AnalysisMethod
+    - Operation
+    - ReferencedOperationRelationship
+    - Analysis
+    - DisplaySubSection
+    - Output
+    - OutputDisplay
     range: string
     required: true
   location:
@@ -155,8 +151,8 @@ attributes:
     alias: location
     owner: ReferenceDocument
     domain_of:
-    - OutputFile
     - ReferenceDocument
+    - OutputFile
     range: uri
   name:
     name: name

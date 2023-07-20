@@ -1,8 +1,6 @@
 # Class: DisplaySubSection
 
-
 _An occurrence of a display section containing text._
-
 
 
 
@@ -16,12 +14,9 @@ URI: [ars:DisplaySubSection](https://www.cdisc.org/ars/1-0/DisplaySubSection)
  classDiagram
     class DisplaySubSection
       DisplaySubSection : id
+        DisplaySubSection : text
         
-      DisplaySubSection : text
-        
-      
 ```
-
 
 
 <!-- no inheritance hierarchy -->
@@ -29,11 +24,12 @@ URI: [ars:DisplaySubSection](https://www.cdisc.org/ars/1-0/DisplaySubSection)
 
 ## Slots
 
-| Name | Cardinality and Range | Description | Inheritance |
+| Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [id](id.md) | 1..1 <br/> [String](String.md) | The assigned identifying value for the instance of the class | direct |
 | [text](text.md) | 1..1 <br/> [String](String.md) | The text to be displayed in the display section | direct |
 
+_* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
 
 
@@ -42,13 +38,13 @@ URI: [ars:DisplaySubSection](https://www.cdisc.org/ars/1-0/DisplaySubSection)
 
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
+| [GlobalDisplaySection](GlobalDisplaySection.md) | [subSections](subSections.md) | range | [DisplaySubSection](DisplaySubSection.md) |
 | [OrderedDisplaySubSection](OrderedDisplaySubSection.md) | [subSection](subSection.md) | range | [DisplaySubSection](DisplaySubSection.md) |
 | [OrderedDisplaySubSection](OrderedDisplaySubSection.md) | [subSectionId](subSectionId.md) | range | [DisplaySubSection](DisplaySubSection.md) |
 | [OrderedSubSection](OrderedSubSection.md) | [subSection](subSection.md) | range | [DisplaySubSection](DisplaySubSection.md) |
 | [OrderedSubSection](OrderedSubSection.md) | [subSectionId](subSectionId.md) | range | [DisplaySubSection](DisplaySubSection.md) |
 | [OrderedSubSectionRef](OrderedSubSectionRef.md) | [subSection](subSection.md) | range | [DisplaySubSection](DisplaySubSection.md) |
 | [OrderedSubSectionRef](OrderedSubSectionRef.md) | [subSectionId](subSectionId.md) | range | [DisplaySubSection](DisplaySubSection.md) |
-| [GlobalDisplaySection](GlobalDisplaySection.md) | [subSections](subSections.md) | range | [DisplaySubSection](DisplaySubSection.md) |
 
 
 
@@ -133,22 +129,22 @@ attributes:
     owner: DisplaySubSection
     domain_of:
     - ReportingEvent
-    - AnalysisCategorization
-    - AnalysisCategory
-    - Analysis
-    - AnalysisMethod
-    - Operation
-    - ReferencedOperationRelationship
-    - Output
-    - OutputDisplay
-    - DisplaySubSection
-    - AnalysisSet
-    - GroupingFactor
-    - Group
-    - DataSubset
     - ReferenceDocument
     - TerminologyExtension
     - SponsorTerm
+    - AnalysisCategorization
+    - AnalysisCategory
+    - AnalysisSet
+    - DataSubset
+    - GroupingFactor
+    - Group
+    - AnalysisMethod
+    - Operation
+    - ReferencedOperationRelationship
+    - Analysis
+    - DisplaySubSection
+    - Output
+    - OutputDisplay
     range: string
     required: true
   text:

@@ -1,8 +1,6 @@
 # Class: SponsorAnalysisReason
 
-
 _The sponsor-defined rationale for performing this analysis._
-
 
 
 
@@ -16,14 +14,11 @@ URI: [ars:SponsorAnalysisReason](https://www.cdisc.org/ars/1-0/SponsorAnalysisRe
  classDiagram
     class SponsorAnalysisReason
       ExtensibleTerminologyTerm <|-- SponsorAnalysisReason
-      
+
       SponsorAnalysisReason : controlledTerm
+        SponsorAnalysisReason : sponsorTermId
+        SponsorAnalysisReason --|> SponsorTerm : sponsorTermId
         
-      SponsorAnalysisReason : sponsorTermId
-        
-          SponsorAnalysisReason --|> SponsorTerm : sponsorTermId
-        
-      
 ```
 
 
@@ -37,11 +32,12 @@ URI: [ars:SponsorAnalysisReason](https://www.cdisc.org/ars/1-0/SponsorAnalysisRe
 
 ## Slots
 
-| Name | Cardinality and Range | Description | Inheritance |
+| Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [controlledTerm](controlledTerm.md) | 0..1 <br/> [String](String.md) | NOT USED | [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) |
 | [sponsorTermId](sponsorTermId.md) | 1..1 <br/> [SponsorTerm](SponsorTerm.md) | A reference to a sponsor term in the TerminologyExtension with enumeration=An... | [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) |
 
+_* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
 
 

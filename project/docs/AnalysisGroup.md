@@ -1,8 +1,6 @@
 # Class: AnalysisGroup
 
-
 _A subdivision of the subject population based on a defined factor (e.g., subjects whose treatment is Drug A, subjects whose gender is male)._
-
 
 
 
@@ -16,24 +14,16 @@ URI: [ars:AnalysisGroup](https://www.cdisc.org/ars/1-0/AnalysisGroup)
  classDiagram
     class AnalysisGroup
       Group <|-- AnalysisGroup
-      
-      AnalysisGroup : compoundExpression
-        
-          AnalysisGroup --|> CompoundGroupExpression : compoundExpression
-        
-      AnalysisGroup : condition
-        
-          AnalysisGroup --|> WhereClauseCondition : condition
-        
+
       AnalysisGroup : id
+        AnalysisGroup : label
+        AnalysisGroup : level
+        AnalysisGroup : order
+        AnalysisGroup : condition
+        AnalysisGroup --|> WhereClauseCondition : condition
+        AnalysisGroup : compoundExpression
+        AnalysisGroup --|> CompoundGroupExpression : compoundExpression
         
-      AnalysisGroup : label
-        
-      AnalysisGroup : level
-        
-      AnalysisGroup : order
-        
-      
 ```
 
 
@@ -48,7 +38,7 @@ URI: [ars:AnalysisGroup](https://www.cdisc.org/ars/1-0/AnalysisGroup)
 
 ## Slots
 
-| Name | Cardinality and Range | Description | Inheritance |
+| Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [id](id.md) | 1..1 <br/> [String](String.md) | The assigned identifying value for the instance of the class | [Group](Group.md) |
 | [label](label.md) | 0..1 <br/> [String](String.md) | A short informative description that may be used for display | [Group](Group.md) |
@@ -57,6 +47,7 @@ URI: [ars:AnalysisGroup](https://www.cdisc.org/ars/1-0/AnalysisGroup)
 | [condition](condition.md) | 0..1 <br/> [WhereClauseCondition](WhereClauseCondition.md) | A simple selection criterion exressed as [dataset] | [WhereClause](WhereClause.md) |
 | [compoundExpression](compoundExpression.md) | 0..1 <br/> [CompoundGroupExpression](CompoundGroupExpression.md) | A compound expression that combines or negates where clauses | [WhereClause](WhereClause.md) |
 
+_* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
 
 
@@ -139,22 +130,22 @@ attributes:
     owner: AnalysisGroup
     domain_of:
     - ReportingEvent
-    - AnalysisCategorization
-    - AnalysisCategory
-    - Analysis
-    - AnalysisMethod
-    - Operation
-    - ReferencedOperationRelationship
-    - Output
-    - OutputDisplay
-    - DisplaySubSection
-    - AnalysisSet
-    - GroupingFactor
-    - Group
-    - DataSubset
     - ReferenceDocument
     - TerminologyExtension
     - SponsorTerm
+    - AnalysisCategorization
+    - AnalysisCategory
+    - AnalysisSet
+    - DataSubset
+    - GroupingFactor
+    - Group
+    - AnalysisMethod
+    - Operation
+    - ReferencedOperationRelationship
+    - Analysis
+    - DisplaySubSection
+    - Output
+    - OutputDisplay
     range: string
     required: true
   label:
@@ -167,13 +158,13 @@ attributes:
     domain_of:
     - AnalysisCategorization
     - AnalysisCategory
-    - AnalysisMethod
-    - Operation
     - AnalysisSet
+    - DataSubset
     - GroupingFactor
     - Group
-    - DataSubset
+    - AnalysisMethod
     - PageRef
+    - Operation
     range: string
   level:
     name: level
@@ -197,10 +188,10 @@ attributes:
     owner: AnalysisGroup
     domain_of:
     - OrderedListItem
+    - WhereClause
     - OrderedGroupingFactor
     - OrderedDisplay
     - OrderedDisplaySubSection
-    - WhereClause
     range: integer
   condition:
     name: condition

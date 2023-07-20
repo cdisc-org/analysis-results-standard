@@ -1,8 +1,6 @@
 # Class: SponsorAnalysisPurpose
 
-
 _The sponsor-defined purpose of the analysis within the body of evidence (e.g., section in the clinical study report)._
-
 
 
 
@@ -16,14 +14,11 @@ URI: [ars:SponsorAnalysisPurpose](https://www.cdisc.org/ars/1-0/SponsorAnalysisP
  classDiagram
     class SponsorAnalysisPurpose
       ExtensibleTerminologyTerm <|-- SponsorAnalysisPurpose
-      
+
       SponsorAnalysisPurpose : controlledTerm
+        SponsorAnalysisPurpose : sponsorTermId
+        SponsorAnalysisPurpose --|> SponsorTerm : sponsorTermId
         
-      SponsorAnalysisPurpose : sponsorTermId
-        
-          SponsorAnalysisPurpose --|> SponsorTerm : sponsorTermId
-        
-      
 ```
 
 
@@ -37,11 +32,12 @@ URI: [ars:SponsorAnalysisPurpose](https://www.cdisc.org/ars/1-0/SponsorAnalysisP
 
 ## Slots
 
-| Name | Cardinality and Range | Description | Inheritance |
+| Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [controlledTerm](controlledTerm.md) | 0..1 <br/> [String](String.md) | NOT USED | [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) |
 | [sponsorTermId](sponsorTermId.md) | 1..1 <br/> [SponsorTerm](SponsorTerm.md) | A reference to a sponsor term in the TerminologyExtension with enumeration=An... | [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) |
 
+_* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
 
 

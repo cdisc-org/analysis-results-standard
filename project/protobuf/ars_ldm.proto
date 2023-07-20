@@ -4,22 +4,21 @@
 // * The analysis set (subject population) for which the analysis is performed.
 // * The subset of data records on which the analysis is performed (optional).
 // * One or more factors by which either subjects or data records are grouped for analysis (optional).
-// 
 message Analysis
  {
   string name = 0
   string id = 0
   integer version = 0
- repeated  analysisCategory categoryIds = 0
   string description = 0
   extensibleTerminologyTerm reason = 0
   extensibleTerminologyTerm purpose = 0
  repeated  documentReference documentRefs = 0
-  analysisSet analysisSetId = 0
- repeated  orderedGroupingFactor orderedGroupings = 0
-  dataSubset dataSubsetId = 0
+ repeated  analysisCategory categoryIds = 0
   string dataset = 0
   string variable = 0
+  analysisSet analysisSetId = 0
+  dataSubset dataSubsetId = 0
+ repeated  orderedGroupingFactor orderedGroupings = 0
   analysisMethod methodId = 0
  repeated  referencedAnalysisOperation referencedAnalysisOperations = 0
   analysisOutputProgrammingCode programmingCode = 0
@@ -56,8 +55,8 @@ message AnalysisMethod
   string id = 0
   string label = 0
   string description = 0
- repeated  operation operations = 0
  repeated  documentReference documentRefs = 0
+ repeated  operation operations = 0
   analysisProgrammingCodeTemplate codeTemplate = 0
  }
 // A parameter whose value is used in programming code for a specific analysis or output.
@@ -346,17 +345,17 @@ message ReportingEvent
   integer version = 0
   nestedList listOfPlannedAnalyses = 0
   nestedList listOfPlannedOutputs = 0
+ repeated  referenceDocument referenceDocuments = 0
+ repeated  terminologyExtension terminologyExtensions = 0
+ repeated  analysisCategorization analysisCategorizations = 0
  repeated  analysisSet analysisSets = 0
  repeated  subjectGroupingFactor analysisGroupings = 0
  repeated  dataSubset dataSubsets = 0
  repeated  dataGroupingFactor dataGroupings = 0
- repeated  globalDisplaySection globalDisplaySections = 0
- repeated  analysisCategorization analysisCategorizations = 0
- repeated  analysis analyses = 0
  repeated  analysisMethod methods = 0
+ repeated  analysis analyses = 0
+ repeated  globalDisplaySection globalDisplaySections = 0
  repeated  output outputs = 0
- repeated  referenceDocument referenceDocuments = 0
- repeated  terminologyExtension terminologyExtensions = 0
  }
 // For the specified grouping factor, an indication of the specific group of subjects or data records associated with the analysis result.
 message ResultGroup

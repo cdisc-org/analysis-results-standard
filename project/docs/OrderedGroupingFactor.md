@@ -1,8 +1,6 @@
 # Class: OrderedGroupingFactor
 
-
 _A reference to a defined factor by which subjects or data records are grouped for the analysis, ordered with respect to other grouping factors._
-
 
 
 
@@ -16,16 +14,11 @@ URI: [ars:OrderedGroupingFactor](https://www.cdisc.org/ars/1-0/OrderedGroupingFa
  classDiagram
     class OrderedGroupingFactor
       OrderedGroupingFactor : groupingId
+        OrderedGroupingFactor --|> GroupingFactor : groupingId
+        OrderedGroupingFactor : order
+        OrderedGroupingFactor : resultsByGroup
         
-          OrderedGroupingFactor --|> GroupingFactor : groupingId
-        
-      OrderedGroupingFactor : order
-        
-      OrderedGroupingFactor : resultsByGroup
-        
-      
 ```
-
 
 
 <!-- no inheritance hierarchy -->
@@ -33,12 +26,13 @@ URI: [ars:OrderedGroupingFactor](https://www.cdisc.org/ars/1-0/OrderedGroupingFa
 
 ## Slots
 
-| Name | Cardinality and Range | Description | Inheritance |
+| Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [order](order.md) | 1..1 <br/> [Integer](Integer.md) | The ordinal of the instance with respect to other instances | direct |
 | [groupingId](groupingId.md) | 0..1 <br/> [GroupingFactor](GroupingFactor.md) | The identifier of the referenced subject or data grouping factor | direct |
 | [resultsByGroup](resultsByGroup.md) | 1..1 <br/> [Boolean](Boolean.md) | Indicates whether a result is expected for each group in the grouping | direct |
 
+_* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
 
 
@@ -104,10 +98,10 @@ slot_usage:
     name: order
     domain_of:
     - OrderedListItem
+    - WhereClause
     - OrderedGroupingFactor
     - OrderedDisplay
     - OrderedDisplaySubSection
-    - WhereClause
     required: true
 
 ```
@@ -127,10 +121,10 @@ slot_usage:
     name: order
     domain_of:
     - OrderedListItem
+    - WhereClause
     - OrderedGroupingFactor
     - OrderedDisplay
     - OrderedDisplaySubSection
-    - WhereClause
     required: true
 attributes:
   order:
@@ -142,10 +136,10 @@ attributes:
     owner: OrderedGroupingFactor
     domain_of:
     - OrderedListItem
+    - WhereClause
     - OrderedGroupingFactor
     - OrderedDisplay
     - OrderedDisplaySubSection
-    - WhereClause
     range: integer
     required: true
   groupingId:

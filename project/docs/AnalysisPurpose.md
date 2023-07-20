@@ -1,8 +1,6 @@
 # Class: AnalysisPurpose
 
-
 _The purpose of the analysis within the body of evidence (e.g., section in the clinical study report)._
-
 
 
 
@@ -16,16 +14,12 @@ URI: [ars:AnalysisPurpose](https://www.cdisc.org/ars/1-0/AnalysisPurpose)
  classDiagram
     class AnalysisPurpose
       ExtensibleTerminologyTerm <|-- AnalysisPurpose
-      
+
       AnalysisPurpose : controlledTerm
+        AnalysisPurpose --|> AnalysisPurposeEnum : controlledTerm
+        AnalysisPurpose : sponsorTermId
+        AnalysisPurpose --|> SponsorTerm : sponsorTermId
         
-          AnalysisPurpose --|> AnalysisPurposeEnum : controlledTerm
-        
-      AnalysisPurpose : sponsorTermId
-        
-          AnalysisPurpose --|> SponsorTerm : sponsorTermId
-        
-      
 ```
 
 
@@ -39,11 +33,12 @@ URI: [ars:AnalysisPurpose](https://www.cdisc.org/ars/1-0/AnalysisPurpose)
 
 ## Slots
 
-| Name | Cardinality and Range | Description | Inheritance |
+| Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [controlledTerm](controlledTerm.md) | 1..1 <br/> [AnalysisPurposeEnum](AnalysisPurposeEnum.md) | One of the permissible values from the referenced enumeration | [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) |
 | [sponsorTermId](sponsorTermId.md) | 0..1 <br/> [SponsorTerm](SponsorTerm.md) | NOT USED | [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) |
 
+_* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
 
 

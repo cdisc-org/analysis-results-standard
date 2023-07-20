@@ -77,16 +77,12 @@
 <pre class="mermaid"><code> classDiagram
     class OutputFileType
       ExtensibleTerminologyTerm &lt;|-- OutputFileType
-      
+
       OutputFileType : controlledTerm
-        
-          OutputFileType --|&gt; OutputFileTypeEnum : controlledTerm
-        
-      OutputFileType : sponsorTermId
-        
-          OutputFileType --|&gt; SponsorTerm : sponsorTermId
-        
-      </code></pre>
+        OutputFileType --|&gt; OutputFileTypeEnum : controlledTerm
+        OutputFileType : sponsorTermId
+        OutputFileType --|&gt; SponsorTerm : sponsorTermId
+        </code></pre>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../ExtensibleTerminologyTerm/">ExtensibleTerminologyTerm</a><ul>
@@ -99,7 +95,7 @@
 <thead>
 <tr>
 <th>Name</th>
-<th>Cardinality and Range</th>
+<th>Cardinality* and Range</th>
 <th>Description</th>
 <th>Inheritance</th>
 </tr>
@@ -119,6 +115,7 @@
 </tr>
 </tbody>
 </table>
+<p><em>* See <a href="https://linkml.io/linkml/schemas/slots.html#slot-cardinality">LinkML documentation</a> for cardinality definitions.</em></p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>

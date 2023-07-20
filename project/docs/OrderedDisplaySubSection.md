@@ -1,13 +1,9 @@
 # Class: OrderedDisplaySubSection
 
-
 _A single subsection ordered with respect to other subsections in the same section of a display._
 
 
-
-
 * __NOTE__: this is an abstract class and should not be instantiated directly
-
 
 URI: [ars:OrderedDisplaySubSection](https://www.cdisc.org/ars/1-0/OrderedDisplaySubSection)
 
@@ -19,18 +15,12 @@ URI: [ars:OrderedDisplaySubSection](https://www.cdisc.org/ars/1-0/OrderedDisplay
     class OrderedDisplaySubSection
       OrderedDisplaySubSection <|-- OrderedSubSection
       OrderedDisplaySubSection <|-- OrderedSubSectionRef
-      
-      OrderedDisplaySubSection : order
+      OrderedDisplaySubSection : order        
+        OrderedDisplaySubSection : subSection        
+        OrderedDisplaySubSection --|> DisplaySubSection : subSection
+        OrderedDisplaySubSection : subSectionId        
+        OrderedDisplaySubSection --|> DisplaySubSection : subSectionId
         
-      OrderedDisplaySubSection : subSection
-        
-          OrderedDisplaySubSection --|> DisplaySubSection : subSection
-        
-      OrderedDisplaySubSection : subSectionId
-        
-          OrderedDisplaySubSection --|> DisplaySubSection : subSectionId
-        
-      
 ```
 
 
@@ -45,12 +35,13 @@ URI: [ars:OrderedDisplaySubSection](https://www.cdisc.org/ars/1-0/OrderedDisplay
 
 ## Slots
 
-| Name | Cardinality and Range | Description | Inheritance |
+| Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [order](order.md) | 1..1 <br/> [Integer](Integer.md) | The ordinal of the instance with respect to other instances | direct |
 | [subSection](subSection.md) | 0..1 <br/> [DisplaySubSection](DisplaySubSection.md) | A defined piece of information text to display in a display section | direct |
 | [subSectionId](subSectionId.md) | 0..1 <br/> [DisplaySubSection](DisplaySubSection.md) | The identifier of the referenced subsection | direct |
 
+_* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
 
 
@@ -124,10 +115,10 @@ slot_usage:
     name: order
     domain_of:
     - OrderedListItem
+    - WhereClause
     - OrderedGroupingFactor
     - OrderedDisplay
     - OrderedDisplaySubSection
-    - WhereClause
     required: true
 
 ```
@@ -151,10 +142,10 @@ slot_usage:
     name: order
     domain_of:
     - OrderedListItem
+    - WhereClause
     - OrderedGroupingFactor
     - OrderedDisplay
     - OrderedDisplaySubSection
-    - WhereClause
     required: true
 attributes:
   order:
@@ -166,10 +157,10 @@ attributes:
     owner: OrderedDisplaySubSection
     domain_of:
     - OrderedListItem
+    - WhereClause
     - OrderedGroupingFactor
     - OrderedDisplay
     - OrderedDisplaySubSection
-    - WhereClause
     range: integer
     required: true
   subSection:

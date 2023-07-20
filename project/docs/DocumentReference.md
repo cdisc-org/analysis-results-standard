@@ -1,8 +1,6 @@
 # Class: DocumentReference
 
-
 _A reference to an external document._
-
 
 
 
@@ -16,16 +14,11 @@ URI: [ars:DocumentReference](https://www.cdisc.org/ars/1-0/DocumentReference)
  classDiagram
     class DocumentReference
       DocumentReference : pageRefs
+        DocumentReference --|> PageRef : pageRefs
+        DocumentReference : referenceDocumentId
+        DocumentReference --|> ReferenceDocument : referenceDocumentId
         
-          DocumentReference --|> PageRef : pageRefs
-        
-      DocumentReference : referenceDocumentId
-        
-          DocumentReference --|> ReferenceDocument : referenceDocumentId
-        
-      
 ```
-
 
 
 <!-- no inheritance hierarchy -->
@@ -33,11 +26,12 @@ URI: [ars:DocumentReference](https://www.cdisc.org/ars/1-0/DocumentReference)
 
 ## Slots
 
-| Name | Cardinality and Range | Description | Inheritance |
+| Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [referenceDocumentId](referenceDocumentId.md) | 1..1 <br/> [ReferenceDocument](ReferenceDocument.md) | The identifier of the referenced document | direct |
 | [pageRefs](pageRefs.md) | 0..* <br/> [PageRef](PageRef.md) | A list of references to specific parts of a document, which may be referenced... | direct |
 
+_* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
 
 
@@ -46,10 +40,10 @@ URI: [ars:DocumentReference](https://www.cdisc.org/ars/1-0/DocumentReference)
 
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
-| [Analysis](Analysis.md) | [documentRefs](documentRefs.md) | range | [DocumentReference](DocumentReference.md) |
 | [AnalysisMethod](AnalysisMethod.md) | [documentRefs](documentRefs.md) | range | [DocumentReference](DocumentReference.md) |
-| [AnalysisOutputProgrammingCode](AnalysisOutputProgrammingCode.md) | [documentRef](documentRef.md) | range | [DocumentReference](DocumentReference.md) |
 | [AnalysisProgrammingCodeTemplate](AnalysisProgrammingCodeTemplate.md) | [documentRef](documentRef.md) | range | [DocumentReference](DocumentReference.md) |
+| [Analysis](Analysis.md) | [documentRefs](documentRefs.md) | range | [DocumentReference](DocumentReference.md) |
+| [AnalysisOutputProgrammingCode](AnalysisOutputProgrammingCode.md) | [documentRef](documentRef.md) | range | [DocumentReference](DocumentReference.md) |
 | [Output](Output.md) | [documentRefs](documentRefs.md) | range | [DocumentReference](DocumentReference.md) |
 
 

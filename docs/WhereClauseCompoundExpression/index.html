@@ -85,24 +85,19 @@
 <pre class="mermaid"><code> classDiagram
     class WhereClauseCompoundExpression
       WhereClauseCompoundExpression &lt;|-- CompoundSetExpression
-      WhereClauseCompoundExpression &lt;|-- CompoundGroupExpression
       WhereClauseCompoundExpression &lt;|-- CompoundSubsetExpression
-      
-      WhereClauseCompoundExpression : logicalOperator
-        
-          WhereClauseCompoundExpression --|&gt; ExpressionLogicalOperatorEnum : logicalOperator
-        
-      WhereClauseCompoundExpression : whereClauses
-        
-          WhereClauseCompoundExpression --|&gt; WhereClause : whereClauses
-        
-      </code></pre>
+      WhereClauseCompoundExpression &lt;|-- CompoundGroupExpression
+      WhereClauseCompoundExpression : logicalOperator        
+        WhereClauseCompoundExpression --|&gt; ExpressionLogicalOperatorEnum : logicalOperator
+        WhereClauseCompoundExpression : whereClauses        
+        WhereClauseCompoundExpression --|&gt; WhereClause : whereClauses
+        </code></pre>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><strong>WhereClauseCompoundExpression</strong><ul>
 <li><a href="../CompoundSetExpression/">CompoundSetExpression</a></li>
-<li><a href="../CompoundGroupExpression/">CompoundGroupExpression</a></li>
 <li><a href="../CompoundSubsetExpression/">CompoundSubsetExpression</a></li>
+<li><a href="../CompoundGroupExpression/">CompoundGroupExpression</a></li>
 </ul>
 </li>
 </ul>
@@ -111,7 +106,7 @@
 <thead>
 <tr>
 <th>Name</th>
-<th>Cardinality and Range</th>
+<th>Cardinality* and Range</th>
 <th>Description</th>
 <th>Inheritance</th>
 </tr>
@@ -131,6 +126,7 @@
 </tr>
 </tbody>
 </table>
+<p><em>* See <a href="https://linkml.io/linkml/schemas/slots.html#slot-cardinality">LinkML documentation</a> for cardinality definitions.</em></p>
 <h2 id="usages">Usages</h2>
 <table>
 <thead>

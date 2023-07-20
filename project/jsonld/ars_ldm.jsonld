@@ -507,6 +507,53 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "id",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/id",
+      "description": "The assigned identifying value for the instance of the class.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/id",
+      "identifier": true,
+      "owner": "OutputDisplay",
+      "domain_of": [
+        "ReportingEvent",
+        "ReferenceDocument",
+        "TerminologyExtension",
+        "SponsorTerm",
+        "AnalysisCategorization",
+        "AnalysisCategory",
+        "AnalysisSet",
+        "DataSubset",
+        "GroupingFactor",
+        "Group",
+        "AnalysisMethod",
+        "Operation",
+        "ReferencedOperationRelationship",
+        "Analysis",
+        "DisplaySubSection",
+        "Output",
+        "OutputDisplay"
+      ],
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "version",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/version",
+      "description": "An ordinal indicating the version of the identified instance of the class.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/version",
+      "owner": "OutputDisplay",
+      "domain_of": [
+        "ReportingEvent",
+        "Analysis",
+        "Output",
+        "OutputDisplay"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "listOfPlannedAnalyses",
       "definition_uri": "https://www.cdisc.org/ars/1-0/listOfPlannedAnalyses",
       "description": "A structured list of the analyses defined for the reporting event.",
@@ -533,6 +580,57 @@
       ],
       "range": "NestedList",
       "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "referenceDocuments",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/referenceDocuments",
+      "description": "External documents containing information referenced for the reporting event.",
+      "comments": [
+        "May include specification or report documents (e.g. the SAP or CSR) and program files."
+      ],
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/referenceDocuments",
+      "multivalued": true,
+      "owner": "ReportingEvent",
+      "domain_of": [
+        "ReportingEvent"
+      ],
+      "range": "ReferenceDocument",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "terminologyExtensions",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/terminologyExtensions",
+      "description": "Any sponsor-defined extensions to extensible terminology.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/terminologyExtensions",
+      "multivalued": true,
+      "owner": "ReportingEvent",
+      "domain_of": [
+        "ReportingEvent"
+      ],
+      "range": "TerminologyExtension",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "analysisCategorizations",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/analysisCategorizations",
+      "description": "Sets of related implementer-defined categories that can be used to categorize analyses or outputs.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/analysisCategorizations",
+      "multivalued": true,
+      "owner": "ReportingEvent",
+      "domain_of": [
+        "ReportingEvent"
+      ],
+      "range": "AnalysisCategorization",
+      "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -563,60 +661,6 @@
         "ReportingEvent"
       ],
       "range": "SubjectGroupingFactor",
-      "inlined": true,
-      "inlined_as_list": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "groupingVariable",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/groupingVariable",
-      "description": "For groupings based on a single variable, a reference to the dataset variable upon which grouping is based.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/groupingVariable",
-      "owner": "GroupingFactor",
-      "domain_of": [
-        "GroupingFactor"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "dataDriven",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/dataDriven",
-      "description": "Indicates whether the groups defined by the grouping are prespecified (false) or obtained from distinct data values of the groupingVariable (true).",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/dataDriven",
-      "owner": "GroupingFactor",
-      "domain_of": [
-        "GroupingFactor"
-      ],
-      "range": "boolean",
-      "required": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "groups",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/groups",
-      "description": "The pre-specified groups within the grouping.",
-      "examples": [
-        {
-          "value": "'Male' and 'Female' might be groups within a sex grouping.",
-          "@type": "Example"
-        },
-        {
-          "value": "'Treatment A', 'Treatment B', 'Placebo' might be groups within a treatment grouping.",
-          "@type": "Example"
-        }
-      ],
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/groups",
-      "multivalued": true,
-      "list_elements_ordered": true,
-      "owner": "GroupingFactor",
-      "domain_of": [
-        "GroupingFactor"
-      ],
-      "range": "Group",
       "inlined": true,
       "inlined_as_list": true,
       "@type": "SlotDefinition"
@@ -654,72 +698,6 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "analyses",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/analyses",
-      "description": "The analyses defined for the reporting event.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/analyses",
-      "multivalued": true,
-      "owner": "ReportingEvent",
-      "domain_of": [
-        "ReportingEvent"
-      ],
-      "range": "Analysis",
-      "inlined": true,
-      "inlined_as_list": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "reason",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/reason",
-      "description": "The rationale for performing this analysis. It indicates when the analysis was planned.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/reason",
-      "owner": "Analysis",
-      "domain_of": [
-        "Analysis"
-      ],
-      "range": "ExtensibleTerminologyTerm",
-      "required": true,
-      "inlined": true,
-      "any_of": [
-        {
-          "range": "AnalysisReason",
-          "@type": "AnonymousSlotExpression"
-        },
-        {
-          "range": "SponsorAnalysisReason",
-          "@type": "AnonymousSlotExpression"
-        }
-      ],
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "purpose",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/purpose",
-      "description": "The purpose of the analysis within the body of evidence (e.g., section in the clinical study report).",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/purpose",
-      "owner": "Analysis",
-      "domain_of": [
-        "Analysis"
-      ],
-      "range": "ExtensibleTerminologyTerm",
-      "required": true,
-      "inlined": true,
-      "any_of": [
-        {
-          "range": "AnalysisPurpose",
-          "@type": "AnonymousSlotExpression"
-        },
-        {
-          "range": "SponsorAnalysisPurpose",
-          "@type": "AnonymousSlotExpression"
-        }
-      ],
-      "@type": "SlotDefinition"
-    },
-    {
       "name": "methods",
       "definition_uri": "https://www.cdisc.org/ars/1-0/methods",
       "description": "The defined methods used to analyze any analysis variable.",
@@ -736,96 +714,33 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "operations",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/operations",
-      "description": "The calculations performed for the method. Each operation generates a statistical result.",
+      "name": "analyses",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/analyses",
+      "description": "The analyses defined for the reporting event.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/operations",
-      "multivalued": true,
-      "owner": "AnalysisMethod",
-      "domain_of": [
-        "AnalysisMethod"
-      ],
-      "range": "Operation",
-      "required": true,
-      "inlined": true,
-      "inlined_as_list": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "referencedOperationRelationshipId",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/referencedOperationRelationshipId",
-      "description": "The identifier of the defined referenced operation relationship.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/referencedOperationRelationshipId",
-      "owner": "ReferencedAnalysisOperation",
-      "domain_of": [
-        "ReferencedAnalysisOperation"
-      ],
-      "range": "ReferencedOperationRelationship",
-      "required": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "analysisCategorizations",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/analysisCategorizations",
-      "description": "Sets of related implementer-defined categories that can be used to categorize analyses or outputs.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/analysisCategorizations",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/analyses",
       "multivalued": true,
       "owner": "ReportingEvent",
       "domain_of": [
         "ReportingEvent"
       ],
-      "range": "AnalysisCategorization",
+      "range": "Analysis",
       "inlined": true,
       "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
-      "name": "categories",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/categories",
-      "description": "Implementer-defined categories of analyses/outputs, each of which may include one or more sub-categorization.",
+      "name": "globalDisplaySections",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/globalDisplaySections",
+      "description": "Display section specifications that may be applied to any display.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/categories",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/globalDisplaySections",
       "multivalued": true,
-      "owner": "AnalysisCategorization",
+      "owner": "ReportingEvent",
       "domain_of": [
-        "AnalysisCategorization"
+        "ReportingEvent"
       ],
-      "range": "AnalysisCategory",
-      "required": true,
-      "inlined": true,
-      "inlined_as_list": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "categoryIds",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/categoryIds",
-      "description": "References to any implementer-defined categories that apply to the analysis or output.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/categoryIds",
-      "multivalued": true,
-      "owner": "Output",
-      "domain_of": [
-        "Analysis",
-        "Output"
-      ],
-      "range": "AnalysisCategory",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "subCategorizations",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/subCategorizations",
-      "description": "Sets of related implementer-defined sub-categories that can be used to categorize analyses or outputs.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/subCategorizations",
-      "multivalued": true,
-      "owner": "AnalysisCategory",
-      "domain_of": [
-        "AnalysisCategory"
-      ],
-      "range": "AnalysisCategorization",
+      "range": "GlobalDisplaySection",
       "inlined": true,
       "inlined_as_list": true,
       "@type": "SlotDefinition"
@@ -886,13 +801,13 @@
       "description": "The ordinal of the instance with respect to other instances.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "slot_uri": "https://www.cdisc.org/ars/1-0/order",
-      "owner": "WhereClause",
+      "owner": "OrderedDisplaySubSection",
       "domain_of": [
         "OrderedListItem",
+        "WhereClause",
         "OrderedGroupingFactor",
         "OrderedDisplay",
-        "OrderedDisplaySubSection",
-        "WhereClause"
+        "OrderedDisplaySubSection"
       ],
       "range": "integer",
       "@type": "SlotDefinition"
@@ -917,390 +832,13 @@
       "description": "The identifier of the referenced analysis.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "slot_uri": "https://www.cdisc.org/ars/1-0/analysisId",
-      "owner": "ReferencedOperationRelationship",
+      "owner": "ReferencedAnalysisOperation",
       "domain_of": [
         "OrderedListItem",
-        "ReferencedAnalysisOperation",
-        "ReferencedOperationRelationship"
+        "ReferencedOperationRelationship",
+        "ReferencedAnalysisOperation"
       ],
       "range": "Analysis",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "analysisSetId",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/analysisSetId",
-      "description": "The identifier of the referenced analysis set.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/analysisSetId",
-      "owner": "Analysis",
-      "domain_of": [
-        "Analysis"
-      ],
-      "range": "AnalysisSet",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "orderedGroupings",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/orderedGroupings",
-      "description": "An ordered list of grouping factors used in the analysis.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/orderedGroupings",
-      "multivalued": true,
-      "list_elements_ordered": true,
-      "owner": "Analysis",
-      "domain_of": [
-        "Analysis"
-      ],
-      "range": "OrderedGroupingFactor",
-      "inlined": true,
-      "inlined_as_list": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "groupingId",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/groupingId",
-      "description": "The identifier of the referenced subject or data grouping factor.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/groupingId",
-      "owner": "ResultGroup",
-      "domain_of": [
-        "OrderedGroupingFactor",
-        "ResultGroup"
-      ],
-      "range": "GroupingFactor",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "resultsByGroup",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/resultsByGroup",
-      "description": "Indicates whether a result is expected for each group in the grouping.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/resultsByGroup",
-      "owner": "OrderedGroupingFactor",
-      "domain_of": [
-        "OrderedGroupingFactor"
-      ],
-      "range": "boolean",
-      "required": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "dataSubsetId",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/dataSubsetId",
-      "description": "The identifier of the referenced data subset.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/dataSubsetId",
-      "owner": "Analysis",
-      "domain_of": [
-        "Analysis"
-      ],
-      "range": "DataSubset",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "methodId",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/methodId",
-      "description": "A reference to the set of one or more statistical operations performed for the analysis.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/methodId",
-      "owner": "Analysis",
-      "domain_of": [
-        "Analysis"
-      ],
-      "range": "AnalysisMethod",
-      "required": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "description",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/description",
-      "description": "A textual description of the instance of the class.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/description",
-      "owner": "SponsorTerm",
-      "domain_of": [
-        "Analysis",
-        "AnalysisMethod",
-        "ReferencedOperationRelationship",
-        "CodeParameter",
-        "SponsorTerm"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "referencedAnalysisOperations",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/referencedAnalysisOperations",
-      "description": "Indications of which analysis contains the results for each referenced operation.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/referencedAnalysisOperations",
-      "multivalued": true,
-      "owner": "Analysis",
-      "domain_of": [
-        "Analysis"
-      ],
-      "range": "ReferencedAnalysisOperation",
-      "inlined": true,
-      "inlined_as_list": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "resultPattern",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/resultPattern",
-      "description": "The default pattern or format to apply to the result for display.",
-      "comments": [
-        "May be a textual representation of a generic result to be displayed in a table shell (e.g. XX.X) or a machine readable formatting instruction."
-      ],
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/resultPattern",
-      "owner": "Operation",
-      "domain_of": [
-        "Operation"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "results",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/results",
-      "description": "The results of the analysis.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/results",
-      "multivalued": true,
-      "owner": "Analysis",
-      "domain_of": [
-        "Analysis"
-      ],
-      "range": "OperationResult",
-      "inlined": true,
-      "inlined_as_list": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "resultGroups",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/resultGroups",
-      "description": "The group values associated with the result.",
-      "comments": [
-        "There should be a result group value for each grouping that is indicated as being associated with a separate result (resultsByGroup = True)"
-      ],
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/resultGroups",
-      "multivalued": true,
-      "owner": "OperationResult",
-      "domain_of": [
-        "OperationResult"
-      ],
-      "range": "ResultGroup",
-      "inlined": true,
-      "inlined_as_list": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "groupId",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/groupId",
-      "description": "The identifier of a referenced predefined group within a grouping.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/groupId",
-      "owner": "ResultGroup",
-      "domain_of": [
-        "ResultGroup"
-      ],
-      "range": "Group",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "groupValue",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/groupValue",
-      "description": "The data value used as a group within a data-driven grouping.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/groupValue",
-      "owner": "ResultGroup",
-      "domain_of": [
-        "ResultGroup"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "rawValue",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/rawValue",
-      "description": "The raw result value (e.g., with no rounding applied).",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/rawValue",
-      "owner": "OperationResult",
-      "domain_of": [
-        "OperationResult"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "formattedValue",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/formattedValue",
-      "description": "The result value formatted for display according to the resultPattern.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/formattedValue",
-      "owner": "OperationResult",
-      "domain_of": [
-        "OperationResult"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "referencedOperationRelationships",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/referencedOperationRelationships",
-      "description": "Relationships to other operations indicating how the result of the referenced operation are used in the calculation of the result for this operation.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/referencedOperationRelationships",
-      "multivalued": true,
-      "owner": "Operation",
-      "domain_of": [
-        "Operation"
-      ],
-      "range": "ReferencedOperationRelationship",
-      "inlined": true,
-      "inlined_as_list": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "referencedOperationRole",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/referencedOperationRole",
-      "description": "The role that the referenced operation's result plays in the calculation of the result of the parent operation.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/referencedOperationRole",
-      "owner": "ReferencedOperationRelationship",
-      "domain_of": [
-        "ReferencedOperationRelationship"
-      ],
-      "range": "ExtensibleTerminologyTerm",
-      "required": true,
-      "inlined": true,
-      "any_of": [
-        {
-          "range": "OperationRole",
-          "@type": "AnonymousSlotExpression"
-        },
-        {
-          "range": "SponsorOperationRole",
-          "@type": "AnonymousSlotExpression"
-        }
-      ],
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "operationId",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/operationId",
-      "description": "The identifier of the referenced operation.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/operationId",
-      "owner": "ReferencedOperationRelationship",
-      "domain_of": [
-        "OperationResult",
-        "ReferencedOperationRelationship"
-      ],
-      "range": "Operation",
-      "required": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "programmingCode",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/programmingCode",
-      "description": "Programming statements used to perform the specific analysis or create the specific output.",
-      "comments": [
-        "Programming statements may be represented as code or as a reference to the program file."
-      ],
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/programmingCode",
-      "owner": "Output",
-      "domain_of": [
-        "Analysis",
-        "Output"
-      ],
-      "range": "AnalysisOutputProgrammingCode",
-      "inlined": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "codeTemplate",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/codeTemplate",
-      "description": "Template programming statements used to perform the statistical operations for any analysis that uses this method.",
-      "comments": [
-        "Template programming statements may be represented as code or as a reference to the program file."
-      ],
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/codeTemplate",
-      "owner": "AnalysisMethod",
-      "domain_of": [
-        "AnalysisMethod"
-      ],
-      "range": "AnalysisProgrammingCodeTemplate",
-      "inlined": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "context",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/context",
-      "description": "The name and version of the computer language used for the actual programming statements provided.",
-      "examples": [
-        {
-          "value": "SAS Version 9.4",
-          "@type": "Example"
-        }
-      ],
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/context",
-      "owner": "AnalysisProgrammingCodeTemplate",
-      "domain_of": [
-        "AnalysisOutputProgrammingCode",
-        "AnalysisProgrammingCodeTemplate"
-      ],
-      "range": "string",
-      "required": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "parameters",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/parameters",
-      "description": "Replacement parameters that are referenced in the programming code or programming code template and are used to generate or execute the programming code.\n",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/parameters",
-      "multivalued": true,
-      "owner": "AnalysisProgrammingCodeTemplate",
-      "domain_of": [
-        "AnalysisOutputProgrammingCode",
-        "AnalysisProgrammingCodeTemplate"
-      ],
-      "range": "CodeParameter",
-      "inlined": true,
-      "inlined_as_list": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "code",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/code",
-      "description": "Programming statements used to perform the specific analysis.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/code",
-      "owner": "AnalysisProgrammingCodeTemplate",
-      "domain_of": [
-        "AnalysisOutputProgrammingCode",
-        "AnalysisProgrammingCodeTemplate"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "valueSource",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/valueSource",
-      "description": "A reference to the prespecified source of the value for the parameter.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/valueSource",
-      "owner": "TemplateCodeParameter",
-      "domain_of": [
-        "TemplateCodeParameter"
-      ],
-      "range": "string",
       "@type": "SlotDefinition"
     },
     {
@@ -1317,30 +855,57 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "id",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/id",
-      "description": "The assigned identifying value for the instance of the class.",
+      "name": "location",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/location",
+      "description": "A path (relative or absolute) indicating the location of the file.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/id",
-      "identifier": true,
+      "slot_uri": "https://www.cdisc.org/ars/1-0/location",
+      "owner": "OutputFile",
+      "domain_of": [
+        "ReferenceDocument",
+        "OutputFile"
+      ],
+      "range": "uri",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "enumeration",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/enumeration",
+      "description": "The name of the extensible enumeration.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/enumeration",
+      "owner": "TerminologyExtension",
+      "domain_of": [
+        "TerminologyExtension"
+      ],
+      "range": "ExtensibleTerminologyEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sponsorTerms",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/sponsorTerms",
+      "description": "The sponsor-defined terms added to the extensible terminology.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/sponsorTerms",
+      "multivalued": true,
+      "owner": "TerminologyExtension",
+      "domain_of": [
+        "TerminologyExtension"
+      ],
+      "range": "SponsorTerm",
+      "required": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "submissionValue",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/submissionValue",
+      "description": "The specific value expected for submissions.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/submissionValue",
       "owner": "SponsorTerm",
       "domain_of": [
-        "ReportingEvent",
-        "AnalysisCategorization",
-        "AnalysisCategory",
-        "Analysis",
-        "AnalysisMethod",
-        "Operation",
-        "ReferencedOperationRelationship",
-        "Output",
-        "OutputDisplay",
-        "DisplaySubSection",
-        "AnalysisSet",
-        "GroupingFactor",
-        "Group",
-        "DataSubset",
-        "ReferenceDocument",
-        "TerminologyExtension",
         "SponsorTerm"
       ],
       "range": "string",
@@ -1348,294 +913,118 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "version",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/version",
-      "description": "An ordinal indicating the version of the identified instance of the class.",
+      "name": "description",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/description",
+      "description": "A textual description of the instance of the class.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/version",
-      "owner": "OutputDisplay",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/description",
+      "owner": "Analysis",
       "domain_of": [
-        "ReportingEvent",
-        "Analysis",
-        "Output",
-        "OutputDisplay"
-      ],
-      "range": "integer",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "displayTitle",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/displayTitle",
-      "description": "Display description which uniquely identifies the display in the report.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/displayTitle",
-      "owner": "OutputDisplay",
-      "domain_of": [
-        "OutputDisplay"
+        "SponsorTerm",
+        "AnalysisMethod",
+        "ReferencedOperationRelationship",
+        "CodeParameter",
+        "Analysis"
       ],
       "range": "string",
       "@type": "SlotDefinition"
     },
     {
-      "name": "fileSpecifications",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/fileSpecifications",
-      "description": "Specifications of output files.",
+      "name": "controlledTerm",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/controlledTerm",
+      "description": "One of the permissible values from the referenced enumeration.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/fileSpecifications",
-      "multivalued": true,
-      "owner": "Output",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/controlledTerm",
+      "owner": "ExtensibleTerminologyTerm",
       "domain_of": [
-        "Output"
+        "ExtensibleTerminologyTerm"
       ],
-      "range": "OutputFile",
-      "inlined": true,
-      "inlined_as_list": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "fileType",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/fileType",
-      "description": "The format of the output file.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/fileType",
-      "owner": "OutputFile",
-      "domain_of": [
-        "OutputFile"
-      ],
-      "range": "ExtensibleTerminologyTerm",
-      "inlined": true,
+      "range": "string",
       "any_of": [
         {
-          "range": "OutputFileType",
+          "range": "AnalysisReasonEnum",
           "@type": "AnonymousSlotExpression"
         },
         {
-          "range": "SponsorOutputFileType",
+          "range": "AnalysisPurposeEnum",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "OperationRoleEnum",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "OutputFileTypeEnum",
           "@type": "AnonymousSlotExpression"
         }
       ],
       "@type": "SlotDefinition"
     },
     {
-      "name": "location",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/location",
-      "description": "A path (relative or absolute) indicating the location of the file.",
+      "name": "sponsorTermId",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/sponsorTermId",
+      "description": "The identifier of the referenced sponsor term.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/location",
-      "owner": "ReferenceDocument",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/sponsorTermId",
+      "owner": "ExtensibleTerminologyTerm",
       "domain_of": [
-        "OutputFile",
-        "ReferenceDocument"
+        "ExtensibleTerminologyTerm"
       ],
-      "range": "uri",
+      "range": "SponsorTerm",
       "@type": "SlotDefinition"
     },
     {
-      "name": "style",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/style",
-      "description": "Reference to the specification of the style used for the output.",
-      "comments": [
-        "This is a placeholder attribute. Style specifications are not yet included in the model."
-      ],
+      "name": "label",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/label",
+      "description": "A short informative description that may be used for display.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/style",
-      "owner": "OutputFile",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/label",
+      "owner": "Operation",
       "domain_of": [
-        "OutputFile"
+        "AnalysisCategorization",
+        "AnalysisCategory",
+        "AnalysisSet",
+        "DataSubset",
+        "GroupingFactor",
+        "Group",
+        "AnalysisMethod",
+        "PageRef",
+        "Operation"
       ],
       "range": "string",
       "@type": "SlotDefinition"
     },
     {
-      "name": "displays",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/displays",
-      "description": "An ordered list of the displays included in the output.",
+      "name": "categories",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/categories",
+      "description": "Implementer-defined categories of analyses/outputs, each of which may include one or more sub-categorization.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/displays",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/categories",
       "multivalued": true,
-      "list_elements_ordered": true,
-      "owner": "Output",
+      "owner": "AnalysisCategorization",
       "domain_of": [
-        "Output"
+        "AnalysisCategorization"
       ],
-      "range": "OrderedDisplay",
-      "inlined": true,
-      "inlined_as_list": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "display",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/display",
-      "description": "A display contained in the output.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/display",
-      "owner": "OrderedDisplay",
-      "domain_of": [
-        "OrderedDisplay"
-      ],
-      "range": "OutputDisplay",
-      "inlined": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "globalDisplaySections",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/globalDisplaySections",
-      "description": "Display section specifications that may be applied to any display.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/globalDisplaySections",
-      "multivalued": true,
-      "owner": "ReportingEvent",
-      "domain_of": [
-        "ReportingEvent"
-      ],
-      "range": "GlobalDisplaySection",
-      "inlined": true,
-      "inlined_as_list": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "displaySections",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/displaySections",
-      "description": "The parts of the display containing one or more pieces of informational text (e.g. title, footnote).",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/displaySections",
-      "multivalued": true,
-      "owner": "OutputDisplay",
-      "domain_of": [
-        "OutputDisplay"
-      ],
-      "range": "DisplaySection",
-      "inlined": true,
-      "inlined_as_list": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "sectionType",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/sectionType",
-      "description": "The type of display section that contains one or more pieces of informational text.",
-      "examples": [
-        {
-          "value": "Title",
-          "@type": "Example"
-        },
-        {
-          "value": "Footnote",
-          "@type": "Example"
-        },
-        {
-          "value": "Legend",
-          "@type": "Example"
-        },
-        {
-          "value": "Abbreviation",
-          "@type": "Example"
-        }
-      ],
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/sectionType",
-      "owner": "GlobalDisplaySection",
-      "domain_of": [
-        "DisplaySection",
-        "GlobalDisplaySection"
-      ],
-      "range": "DisplaySectionTypeEnum",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "orderedSubSections",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/orderedSubSections",
-      "description": "An ordered list of the informational text to display in the display section.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/orderedSubSections",
-      "multivalued": true,
-      "list_elements_ordered": true,
-      "owner": "DisplaySection",
-      "domain_of": [
-        "DisplaySection"
-      ],
-      "range": "OrderedDisplaySubSection",
-      "inlined": true,
-      "inlined_as_list": true,
-      "any_of": [
-        {
-          "range": "OrderedSubSection",
-          "@type": "AnonymousSlotExpression"
-        },
-        {
-          "range": "OrderedSubSectionRef",
-          "@type": "AnonymousSlotExpression"
-        }
-      ],
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "subSection",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/subSection",
-      "description": "A defined piece of information text to display in a display section.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/subSection",
-      "owner": "OrderedDisplaySubSection",
-      "domain_of": [
-        "OrderedDisplaySubSection"
-      ],
-      "range": "DisplaySubSection",
-      "inlined": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "subSectionId",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/subSectionId",
-      "description": "The identifier of the referenced subsection.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/subSectionId",
-      "owner": "OrderedDisplaySubSection",
-      "domain_of": [
-        "OrderedDisplaySubSection"
-      ],
-      "range": "DisplaySubSection",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "subSections",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/subSections",
-      "description": "A list of defined pieces of information text that may be displayed in display sections of the same type.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/subSections",
-      "multivalued": true,
-      "owner": "GlobalDisplaySection",
-      "domain_of": [
-        "GlobalDisplaySection"
-      ],
-      "range": "DisplaySubSection",
-      "inlined": true,
-      "inlined_as_list": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "text",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/text",
-      "description": "The text to be displayed in the display section.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/text",
-      "owner": "DisplaySubSection",
-      "domain_of": [
-        "DisplaySubSection"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "logicalOperator",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/logicalOperator",
-      "description": "The boolean operator that is used to combine (AND, OR) or negate (NOT) the where claus(s) in the compound expression.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/logicalOperator",
-      "owner": "WhereClauseCompoundExpression",
-      "domain_of": [
-        "WhereClauseCompoundExpression"
-      ],
-      "range": "ExpressionLogicalOperatorEnum",
+      "range": "AnalysisCategory",
       "required": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "subCategorizations",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/subCategorizations",
+      "description": "Sets of related implementer-defined sub-categories that can be used to categorize analyses or outputs.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/subCategorizations",
+      "multivalued": true,
+      "owner": "AnalysisCategory",
+      "domain_of": [
+        "AnalysisCategory"
+      ],
+      "range": "AnalysisCategorization",
+      "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -1667,36 +1056,15 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "whereClauses",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/whereClauses",
-      "description": "A list of one or more where clauses (selection criteria) to be combined or negated.",
-      "comments": [
-        "Each where clause may be defined as either a simple condition ([variable] [comparator] [value(s)]) or a compound expression that may combine additional simple conditions or compound expressions.",
-        "Two or more where clauses should be specified when the logical operator is AND or OR.",
-        "Only one where clause should be specfied when the logical operator is NOT. This where clause will usually be a compound expression."
-      ],
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/whereClauses",
-      "multivalued": true,
-      "list_elements_ordered": true,
-      "owner": "WhereClauseCompoundExpression",
-      "domain_of": [
-        "WhereClauseCompoundExpression"
-      ],
-      "range": "WhereClause",
-      "inlined": true,
-      "@type": "SlotDefinition"
-    },
-    {
       "name": "dataset",
       "definition_uri": "https://www.cdisc.org/ars/1-0/dataset",
       "description": "The name of the analysis dataset.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "slot_uri": "https://www.cdisc.org/ars/1-0/dataset",
-      "owner": "WhereClauseCondition",
+      "owner": "Analysis",
       "domain_of": [
-        "Analysis",
-        "WhereClauseCondition"
+        "WhereClauseCondition",
+        "Analysis"
       ],
       "range": "string",
       "@type": "SlotDefinition"
@@ -1707,10 +1075,10 @@
       "description": "The name of the variable.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "slot_uri": "https://www.cdisc.org/ars/1-0/variable",
-      "owner": "WhereClauseCondition",
+      "owner": "Analysis",
       "domain_of": [
-        "Analysis",
-        "WhereClauseCondition"
+        "WhereClauseCondition",
+        "Analysis"
       ],
       "range": "string",
       "@type": "SlotDefinition"
@@ -1735,51 +1103,100 @@
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "slot_uri": "https://www.cdisc.org/ars/1-0/value",
       "multivalued": true,
-      "owner": "WhereClauseCondition",
+      "owner": "AnalysisOutputCodeParameter",
       "domain_of": [
-        "AnalysisOutputCodeParameter",
+        "WhereClauseCondition",
         "TemplateCodeParameter",
-        "WhereClauseCondition"
+        "AnalysisOutputCodeParameter"
       ],
       "range": "string",
       "@type": "SlotDefinition"
     },
     {
-      "name": "label",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/label",
-      "description": "A short informative description that may be used for display.",
+      "name": "logicalOperator",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/logicalOperator",
+      "description": "The boolean operator that is used to combine (AND, OR) or negate (NOT) the where claus(s) in the compound expression.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/label",
-      "owner": "PageRef",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/logicalOperator",
+      "owner": "WhereClauseCompoundExpression",
       "domain_of": [
-        "AnalysisCategorization",
-        "AnalysisCategory",
-        "AnalysisMethod",
-        "Operation",
-        "AnalysisSet",
-        "GroupingFactor",
-        "Group",
-        "DataSubset",
-        "PageRef"
+        "WhereClauseCompoundExpression"
       ],
-      "range": "string",
+      "range": "ExpressionLogicalOperatorEnum",
+      "required": true,
       "@type": "SlotDefinition"
     },
     {
-      "name": "referenceDocuments",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/referenceDocuments",
-      "description": "External documents containing information referenced for the reporting event.",
+      "name": "whereClauses",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/whereClauses",
+      "description": "A list of one or more where clauses (selection criteria) to be combined or negated.",
       "comments": [
-        "May include specification or report documents (e.g. the SAP or CSR) and program files."
+        "Each where clause may be defined as either a simple condition ([variable] [comparator] [value(s)]) or a compound expression that may combine additional simple conditions or compound expressions.",
+        "Two or more where clauses should be specified when the logical operator is AND or OR.",
+        "Only one where clause should be specfied when the logical operator is NOT. This where clause will usually be a compound expression."
       ],
       "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/referenceDocuments",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/whereClauses",
       "multivalued": true,
-      "owner": "ReportingEvent",
+      "list_elements_ordered": true,
+      "owner": "WhereClauseCompoundExpression",
       "domain_of": [
-        "ReportingEvent"
+        "WhereClauseCompoundExpression"
       ],
-      "range": "ReferenceDocument",
+      "range": "WhereClause",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "groupingVariable",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/groupingVariable",
+      "description": "For groupings based on a single variable, a reference to the dataset variable upon which grouping is based.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/groupingVariable",
+      "owner": "GroupingFactor",
+      "domain_of": [
+        "GroupingFactor"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dataDriven",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/dataDriven",
+      "description": "Indicates whether the groups defined by the grouping are prespecified (false) or obtained from distinct data values of the groupingVariable (true).",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/dataDriven",
+      "owner": "GroupingFactor",
+      "domain_of": [
+        "GroupingFactor"
+      ],
+      "range": "boolean",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "groups",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/groups",
+      "description": "The pre-specified groups within the grouping.",
+      "examples": [
+        {
+          "value": "'Male' and 'Female' might be groups within a sex grouping.",
+          "@type": "Example"
+        },
+        {
+          "value": "'Treatment A', 'Treatment B', 'Placebo' might be groups within a treatment grouping.",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/groups",
+      "multivalued": true,
+      "list_elements_ordered": true,
+      "owner": "GroupingFactor",
+      "domain_of": [
+        "GroupingFactor"
+      ],
+      "range": "Group",
       "inlined": true,
       "inlined_as_list": true,
       "@type": "SlotDefinition"
@@ -1793,8 +1210,8 @@
       "multivalued": true,
       "owner": "Output",
       "domain_of": [
-        "Analysis",
         "AnalysisMethod",
+        "Analysis",
         "Output"
       ],
       "range": "DocumentReference",
@@ -1803,19 +1220,37 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "documentRef",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/documentRef",
-      "description": "A reference to the document containing programming code.",
+      "name": "operations",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/operations",
+      "description": "The calculations performed for the method. Each operation generates a statistical result.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/documentRef",
-      "owner": "AnalysisProgrammingCodeTemplate",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/operations",
+      "multivalued": true,
+      "owner": "AnalysisMethod",
       "domain_of": [
-        "AnalysisOutputProgrammingCode",
-        "AnalysisProgrammingCodeTemplate"
+        "AnalysisMethod"
       ],
-      "range": "DocumentReference",
+      "range": "Operation",
+      "required": true,
       "inlined": true,
       "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "codeTemplate",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/codeTemplate",
+      "description": "Template programming statements used to perform the statistical operations for any analysis that uses this method.",
+      "comments": [
+        "Template programming statements may be represented as code or as a reference to the program file."
+      ],
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/codeTemplate",
+      "owner": "AnalysisMethod",
+      "domain_of": [
+        "AnalysisMethod"
+      ],
+      "range": "AnalysisProgrammingCodeTemplate",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -1877,20 +1312,6 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "pageNumbers",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/pageNumbers",
-      "description": "One or more page numbers.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/pageNumbers",
-      "multivalued": true,
-      "owner": "PageRef",
-      "domain_of": [
-        "PageRef"
-      ],
-      "range": "integer",
-      "@type": "SlotDefinition"
-    },
-    {
       "name": "pageNames",
       "definition_uri": "https://www.cdisc.org/ars/1-0/pageNames",
       "description": "One or more named document references which each correspond with a page.",
@@ -1902,6 +1323,20 @@
         "PageRef"
       ],
       "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "pageNumbers",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/pageNumbers",
+      "description": "One or more page numbers.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/pageNumbers",
+      "multivalued": true,
+      "owner": "PageRef",
+      "domain_of": [
+        "PageRef"
+      ],
+      "range": "integer",
       "@type": "SlotDefinition"
     },
     {
@@ -1931,107 +1366,672 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "terminologyExtensions",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/terminologyExtensions",
-      "description": "Any sponsor-defined extensions to extensible terminology.",
+      "name": "referencedOperationRelationships",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/referencedOperationRelationships",
+      "description": "Relationships to other operations indicating how the result of the referenced operation are used in the calculation of the result for this operation.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/terminologyExtensions",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/referencedOperationRelationships",
       "multivalued": true,
-      "owner": "ReportingEvent",
+      "owner": "Operation",
       "domain_of": [
-        "ReportingEvent"
+        "Operation"
       ],
-      "range": "TerminologyExtension",
+      "range": "ReferencedOperationRelationship",
       "inlined": true,
       "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
-      "name": "enumeration",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/enumeration",
-      "description": "The name of the extensible enumeration.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/enumeration",
-      "owner": "TerminologyExtension",
-      "domain_of": [
-        "TerminologyExtension"
+      "name": "resultPattern",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/resultPattern",
+      "description": "The default pattern or format to apply to the result for display.",
+      "comments": [
+        "May be a textual representation of a generic result to be displayed in a table shell (e.g. XX.X) or a machine readable formatting instruction."
       ],
-      "range": "ExtensibleTerminologyEnum",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/resultPattern",
+      "owner": "Operation",
+      "domain_of": [
+        "Operation"
+      ],
+      "range": "string",
       "@type": "SlotDefinition"
     },
     {
-      "name": "sponsorTerms",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/sponsorTerms",
-      "description": "The sponsor-defined terms added to the extensible terminology.",
+      "name": "referencedOperationRole",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/referencedOperationRole",
+      "description": "The role that the referenced operation's result plays in the calculation of the result of the parent operation.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/sponsorTerms",
-      "multivalued": true,
-      "owner": "TerminologyExtension",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/referencedOperationRole",
+      "owner": "ReferencedOperationRelationship",
       "domain_of": [
-        "TerminologyExtension"
+        "ReferencedOperationRelationship"
       ],
-      "range": "SponsorTerm",
+      "range": "ExtensibleTerminologyTerm",
       "required": true,
       "inlined": true,
-      "inlined_as_list": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "submissionValue",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/submissionValue",
-      "description": "The specific value expected for submissions.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/submissionValue",
-      "owner": "SponsorTerm",
-      "domain_of": [
-        "SponsorTerm"
-      ],
-      "range": "string",
-      "required": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "controlledTerm",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/controlledTerm",
-      "description": "One of the permissible values from the referenced enumeration.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/controlledTerm",
-      "owner": "ExtensibleTerminologyTerm",
-      "domain_of": [
-        "ExtensibleTerminologyTerm"
-      ],
-      "range": "string",
       "any_of": [
         {
-          "range": "AnalysisReasonEnum",
+          "range": "OperationRole",
           "@type": "AnonymousSlotExpression"
         },
         {
-          "range": "AnalysisPurposeEnum",
-          "@type": "AnonymousSlotExpression"
-        },
-        {
-          "range": "OperationRoleEnum",
-          "@type": "AnonymousSlotExpression"
-        },
-        {
-          "range": "OutputFileTypeEnum",
+          "range": "SponsorOperationRole",
           "@type": "AnonymousSlotExpression"
         }
       ],
       "@type": "SlotDefinition"
     },
     {
-      "name": "sponsorTermId",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/sponsorTermId",
-      "description": "The identifier of the referenced sponsor term.",
+      "name": "operationId",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/operationId",
+      "description": "The identifier of the referenced operation.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/sponsorTermId",
-      "owner": "ExtensibleTerminologyTerm",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/operationId",
+      "owner": "OperationResult",
       "domain_of": [
-        "ExtensibleTerminologyTerm"
+        "ReferencedOperationRelationship",
+        "OperationResult"
       ],
-      "range": "SponsorTerm",
+      "range": "Operation",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "context",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/context",
+      "description": "The name and version of the computer language used for the actual programming statements provided.",
+      "examples": [
+        {
+          "value": "SAS Version 9.4",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/context",
+      "owner": "AnalysisOutputProgrammingCode",
+      "domain_of": [
+        "AnalysisProgrammingCodeTemplate",
+        "AnalysisOutputProgrammingCode"
+      ],
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "code",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/code",
+      "description": "Programming statements used to perform the specific analysis.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/code",
+      "owner": "AnalysisOutputProgrammingCode",
+      "domain_of": [
+        "AnalysisProgrammingCodeTemplate",
+        "AnalysisOutputProgrammingCode"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "documentRef",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/documentRef",
+      "description": "A reference to the document containing programming code.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/documentRef",
+      "owner": "AnalysisOutputProgrammingCode",
+      "domain_of": [
+        "AnalysisProgrammingCodeTemplate",
+        "AnalysisOutputProgrammingCode"
+      ],
+      "range": "DocumentReference",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "parameters",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/parameters",
+      "description": "Replacement parameters that are referenced in the programming code or programming code template and are used to generate or execute the programming code.\n",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/parameters",
+      "multivalued": true,
+      "owner": "AnalysisOutputProgrammingCode",
+      "domain_of": [
+        "AnalysisProgrammingCodeTemplate",
+        "AnalysisOutputProgrammingCode"
+      ],
+      "range": "CodeParameter",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "valueSource",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/valueSource",
+      "description": "A reference to the prespecified source of the value for the parameter.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/valueSource",
+      "owner": "TemplateCodeParameter",
+      "domain_of": [
+        "TemplateCodeParameter"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "reason",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/reason",
+      "description": "The rationale for performing this analysis. It indicates when the analysis was planned.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/reason",
+      "owner": "Analysis",
+      "domain_of": [
+        "Analysis"
+      ],
+      "range": "ExtensibleTerminologyTerm",
+      "required": true,
+      "inlined": true,
+      "any_of": [
+        {
+          "range": "AnalysisReason",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "SponsorAnalysisReason",
+          "@type": "AnonymousSlotExpression"
+        }
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "purpose",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/purpose",
+      "description": "The purpose of the analysis within the body of evidence (e.g., section in the clinical study report).",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/purpose",
+      "owner": "Analysis",
+      "domain_of": [
+        "Analysis"
+      ],
+      "range": "ExtensibleTerminologyTerm",
+      "required": true,
+      "inlined": true,
+      "any_of": [
+        {
+          "range": "AnalysisPurpose",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "SponsorAnalysisPurpose",
+          "@type": "AnonymousSlotExpression"
+        }
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "categoryIds",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/categoryIds",
+      "description": "References to any implementer-defined categories that apply to the analysis or output.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/categoryIds",
+      "multivalued": true,
+      "owner": "Output",
+      "domain_of": [
+        "Analysis",
+        "Output"
+      ],
+      "range": "AnalysisCategory",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "analysisSetId",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/analysisSetId",
+      "description": "The identifier of the referenced analysis set.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/analysisSetId",
+      "owner": "Analysis",
+      "domain_of": [
+        "Analysis"
+      ],
+      "range": "AnalysisSet",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dataSubsetId",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/dataSubsetId",
+      "description": "The identifier of the referenced data subset.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/dataSubsetId",
+      "owner": "Analysis",
+      "domain_of": [
+        "Analysis"
+      ],
+      "range": "DataSubset",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "orderedGroupings",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/orderedGroupings",
+      "description": "An ordered list of grouping factors used in the analysis.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/orderedGroupings",
+      "multivalued": true,
+      "list_elements_ordered": true,
+      "owner": "Analysis",
+      "domain_of": [
+        "Analysis"
+      ],
+      "range": "OrderedGroupingFactor",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "methodId",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/methodId",
+      "description": "A reference to the set of one or more statistical operations performed for the analysis.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/methodId",
+      "owner": "Analysis",
+      "domain_of": [
+        "Analysis"
+      ],
+      "range": "AnalysisMethod",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "referencedAnalysisOperations",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/referencedAnalysisOperations",
+      "description": "Indications of which analysis contains the results for each referenced operation.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/referencedAnalysisOperations",
+      "multivalued": true,
+      "owner": "Analysis",
+      "domain_of": [
+        "Analysis"
+      ],
+      "range": "ReferencedAnalysisOperation",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "programmingCode",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/programmingCode",
+      "description": "Programming statements used to perform the specific analysis or create the specific output.",
+      "comments": [
+        "Programming statements may be represented as code or as a reference to the program file."
+      ],
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/programmingCode",
+      "owner": "Output",
+      "domain_of": [
+        "Analysis",
+        "Output"
+      ],
+      "range": "AnalysisOutputProgrammingCode",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "results",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/results",
+      "description": "The results of the analysis.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/results",
+      "multivalued": true,
+      "owner": "Analysis",
+      "domain_of": [
+        "Analysis"
+      ],
+      "range": "OperationResult",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "groupingId",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/groupingId",
+      "description": "The identifier of the referenced subject or data grouping factor.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/groupingId",
+      "owner": "ResultGroup",
+      "domain_of": [
+        "OrderedGroupingFactor",
+        "ResultGroup"
+      ],
+      "range": "GroupingFactor",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "resultsByGroup",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/resultsByGroup",
+      "description": "Indicates whether a result is expected for each group in the grouping.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/resultsByGroup",
+      "owner": "OrderedGroupingFactor",
+      "domain_of": [
+        "OrderedGroupingFactor"
+      ],
+      "range": "boolean",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "referencedOperationRelationshipId",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/referencedOperationRelationshipId",
+      "description": "The identifier of the defined referenced operation relationship.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/referencedOperationRelationshipId",
+      "owner": "ReferencedAnalysisOperation",
+      "domain_of": [
+        "ReferencedAnalysisOperation"
+      ],
+      "range": "ReferencedOperationRelationship",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "resultGroups",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/resultGroups",
+      "description": "The group values associated with the result.",
+      "comments": [
+        "There should be a result group value for each grouping that is indicated as being associated with a separate result (resultsByGroup = True)"
+      ],
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/resultGroups",
+      "multivalued": true,
+      "owner": "OperationResult",
+      "domain_of": [
+        "OperationResult"
+      ],
+      "range": "ResultGroup",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "rawValue",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/rawValue",
+      "description": "The raw result value (e.g., with no rounding applied).",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/rawValue",
+      "owner": "OperationResult",
+      "domain_of": [
+        "OperationResult"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "formattedValue",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/formattedValue",
+      "description": "The result value formatted for display according to the resultPattern.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/formattedValue",
+      "owner": "OperationResult",
+      "domain_of": [
+        "OperationResult"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "groupId",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/groupId",
+      "description": "The identifier of a referenced predefined group within a grouping.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/groupId",
+      "owner": "ResultGroup",
+      "domain_of": [
+        "ResultGroup"
+      ],
+      "range": "Group",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "groupValue",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/groupValue",
+      "description": "The data value used as a group within a data-driven grouping.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/groupValue",
+      "owner": "ResultGroup",
+      "domain_of": [
+        "ResultGroup"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sectionType",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/sectionType",
+      "description": "The type of display section that contains one or more pieces of informational text.",
+      "examples": [
+        {
+          "value": "Title",
+          "@type": "Example"
+        },
+        {
+          "value": "Footnote",
+          "@type": "Example"
+        },
+        {
+          "value": "Legend",
+          "@type": "Example"
+        },
+        {
+          "value": "Abbreviation",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/sectionType",
+      "owner": "DisplaySection",
+      "domain_of": [
+        "GlobalDisplaySection",
+        "DisplaySection"
+      ],
+      "range": "DisplaySectionTypeEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "subSections",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/subSections",
+      "description": "A list of defined pieces of information text that may be displayed in display sections of the same type.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/subSections",
+      "multivalued": true,
+      "owner": "GlobalDisplaySection",
+      "domain_of": [
+        "GlobalDisplaySection"
+      ],
+      "range": "DisplaySubSection",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "text",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/text",
+      "description": "The text to be displayed in the display section.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/text",
+      "owner": "DisplaySubSection",
+      "domain_of": [
+        "DisplaySubSection"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "fileSpecifications",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/fileSpecifications",
+      "description": "Specifications of output files.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/fileSpecifications",
+      "multivalued": true,
+      "owner": "Output",
+      "domain_of": [
+        "Output"
+      ],
+      "range": "OutputFile",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "displays",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/displays",
+      "description": "An ordered list of the displays included in the output.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/displays",
+      "multivalued": true,
+      "list_elements_ordered": true,
+      "owner": "Output",
+      "domain_of": [
+        "Output"
+      ],
+      "range": "OrderedDisplay",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "fileType",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/fileType",
+      "description": "The format of the output file.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/fileType",
+      "owner": "OutputFile",
+      "domain_of": [
+        "OutputFile"
+      ],
+      "range": "ExtensibleTerminologyTerm",
+      "inlined": true,
+      "any_of": [
+        {
+          "range": "OutputFileType",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "SponsorOutputFileType",
+          "@type": "AnonymousSlotExpression"
+        }
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "style",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/style",
+      "description": "Reference to the specification of the style used for the output.",
+      "comments": [
+        "This is a placeholder attribute. Style specifications are not yet included in the model."
+      ],
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/style",
+      "owner": "OutputFile",
+      "domain_of": [
+        "OutputFile"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "display",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/display",
+      "description": "A display contained in the output.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/display",
+      "owner": "OrderedDisplay",
+      "domain_of": [
+        "OrderedDisplay"
+      ],
+      "range": "OutputDisplay",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "displayTitle",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/displayTitle",
+      "description": "Display description which uniquely identifies the display in the report.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/displayTitle",
+      "owner": "OutputDisplay",
+      "domain_of": [
+        "OutputDisplay"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "displaySections",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/displaySections",
+      "description": "The parts of the display containing one or more pieces of informational text (e.g. title, footnote).",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/displaySections",
+      "multivalued": true,
+      "owner": "OutputDisplay",
+      "domain_of": [
+        "OutputDisplay"
+      ],
+      "range": "DisplaySection",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "orderedSubSections",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/orderedSubSections",
+      "description": "An ordered list of the informational text to display in the display section.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/orderedSubSections",
+      "multivalued": true,
+      "list_elements_ordered": true,
+      "owner": "DisplaySection",
+      "domain_of": [
+        "DisplaySection"
+      ],
+      "range": "OrderedDisplaySubSection",
+      "inlined": true,
+      "inlined_as_list": true,
+      "any_of": [
+        {
+          "range": "OrderedSubSection",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "OrderedSubSectionRef",
+          "@type": "AnonymousSlotExpression"
+        }
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "subSection",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/subSection",
+      "description": "A defined piece of information text to display in a display section.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/subSection",
+      "owner": "OrderedDisplaySubSection",
+      "domain_of": [
+        "OrderedDisplaySubSection"
+      ],
+      "range": "DisplaySubSection",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "subSectionId",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/subSectionId",
+      "description": "The identifier of the referenced subsection.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/subSectionId",
+      "owner": "OrderedDisplaySubSection",
+      "domain_of": [
+        "OrderedDisplaySubSection"
+      ],
+      "range": "DisplaySubSection",
       "@type": "SlotDefinition"
     },
     {
@@ -2076,357 +2076,6 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "Analysis_categoryIds",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/categoryIds",
-      "description": "References to any implementer-defined categories that apply to the analysis.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "categoryIds",
-      "domain": "Analysis",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/categoryIds",
-      "multivalued": true,
-      "alias": "categoryIds",
-      "owner": "Analysis",
-      "domain_of": [
-        "Analysis"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "categoryIds",
-      "range": "AnalysisCategory",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "Analysis_programmingCode",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/programmingCode",
-      "description": "Programming statements and/or a reference to the program used to perform the specific analysis.",
-      "comments": [
-        "Programming statements may be represented as code or as a reference to the program file."
-      ],
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "programmingCode",
-      "domain": "Analysis",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/programmingCode",
-      "alias": "programmingCode",
-      "owner": "Analysis",
-      "domain_of": [
-        "Analysis"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "programmingCode",
-      "range": "AnalysisOutputProgrammingCode",
-      "inlined": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "OrderedGroupingFactor_order",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/order",
-      "description": "The ordinal of the instance with respect to other instances.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "order",
-      "domain": "OrderedGroupingFactor",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/order",
-      "alias": "order",
-      "owner": "OrderedGroupingFactor",
-      "domain_of": [
-        "OrderedGroupingFactor"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "order",
-      "range": "integer",
-      "required": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "ReferencedAnalysisOperation_analysisId",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/analysisId",
-      "description": "The identifier of the referenced analysis.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "analysisId",
-      "domain": "ReferencedAnalysisOperation",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/analysisId",
-      "alias": "analysisId",
-      "owner": "ReferencedAnalysisOperation",
-      "domain_of": [
-        "ReferencedAnalysisOperation"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "analysisId",
-      "range": "Analysis",
-      "required": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "AnalysisOutputProgrammingCode_parameters",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/parameters",
-      "description": "Parameter values used to generate or execute the programming code.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "parameters",
-      "domain": "AnalysisOutputProgrammingCode",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/parameters",
-      "multivalued": true,
-      "alias": "parameters",
-      "owner": "AnalysisOutputProgrammingCode",
-      "domain_of": [
-        "AnalysisOutputProgrammingCode"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "parameters",
-      "range": "AnalysisOutputCodeParameter",
-      "inlined": true,
-      "inlined_as_list": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "AnalysisProgrammingCodeTemplate_parameters",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/parameters",
-      "description": "Parameters whose values will be used to generate or execute the programming code for a specific analysis.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "parameters",
-      "domain": "AnalysisProgrammingCodeTemplate",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/parameters",
-      "multivalued": true,
-      "alias": "parameters",
-      "owner": "AnalysisProgrammingCodeTemplate",
-      "domain_of": [
-        "AnalysisProgrammingCodeTemplate"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "parameters",
-      "range": "TemplateCodeParameter",
-      "inlined": true,
-      "inlined_as_list": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "AnalysisOutputCodeParameter_value",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/value",
-      "description": "The value of the parameter.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "value",
-      "domain": "AnalysisOutputCodeParameter",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/value",
-      "multivalued": true,
-      "alias": "value",
-      "owner": "AnalysisOutputCodeParameter",
-      "domain_of": [
-        "AnalysisOutputCodeParameter"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "value",
-      "range": "string",
-      "required": true,
-      "maximum_cardinality": 1,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "TemplateCodeParameter_value",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/value",
-      "description": "The value to be used for the parameter when the method is used in an analysis. Multiple values may be specified to indicate a choice.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "value",
-      "domain": "TemplateCodeParameter",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/value",
-      "multivalued": true,
-      "alias": "value",
-      "owner": "TemplateCodeParameter",
-      "domain_of": [
-        "TemplateCodeParameter"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "value",
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "Output_categoryIds",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/categoryIds",
-      "description": "References to any implementer-defined categories that apply to the output.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "categoryIds",
-      "domain": "Output",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/categoryIds",
-      "multivalued": true,
-      "alias": "categoryIds",
-      "owner": "Output",
-      "domain_of": [
-        "Output"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "categoryIds",
-      "range": "AnalysisCategory",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "Output_programmingCode",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/programmingCode",
-      "description": "Programming statements and/or a reference to the program used to perform the specific output.",
-      "comments": [
-        "Programming statements may be represented as code or as a reference to the program file."
-      ],
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "programmingCode",
-      "domain": "Output",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/programmingCode",
-      "alias": "programmingCode",
-      "owner": "Output",
-      "domain_of": [
-        "Output"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "programmingCode",
-      "range": "AnalysisOutputProgrammingCode",
-      "inlined": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "OrderedDisplay_order",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/order",
-      "description": "The ordinal of the instance with respect to other instances.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "order",
-      "domain": "OrderedDisplay",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/order",
-      "alias": "order",
-      "owner": "OrderedDisplay",
-      "domain_of": [
-        "OrderedDisplay"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "order",
-      "range": "integer",
-      "required": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "OrderedDisplaySubSection_order",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/order",
-      "description": "The ordinal of the instance with respect to other instances.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "order",
-      "domain": "OrderedDisplaySubSection",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/order",
-      "alias": "order",
-      "owner": "OrderedDisplaySubSection",
-      "domain_of": [
-        "OrderedDisplaySubSection"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "order",
-      "range": "integer",
-      "required": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "OrderedSubSection_subSection",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/subSection",
-      "description": "A defined piece of information text to display in a display section.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "subSection",
-      "domain": "OrderedSubSection",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/subSection",
-      "alias": "subSection",
-      "owner": "OrderedSubSection",
-      "domain_of": [
-        "OrderedSubSection"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "subSection",
-      "range": "DisplaySubSection",
-      "required": true,
-      "inlined": true,
-      "value_presence": {
-        "text": "PRESENT",
-        "@type": "PermissibleValue"
-      },
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "OrderedSubSection_subSectionId",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/subSectionId",
-      "description": "NOT USED",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "subSectionId",
-      "domain": "OrderedSubSection",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/subSectionId",
-      "alias": "subSectionId",
-      "owner": "OrderedSubSection",
-      "domain_of": [
-        "OrderedSubSection"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "subSectionId",
-      "range": "DisplaySubSection",
-      "value_presence": {
-        "text": "ABSENT",
-        "@type": "PermissibleValue"
-      },
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "OrderedSubSectionRef_subSection",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/subSection",
-      "description": "NOT USED",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "subSection",
-      "domain": "OrderedSubSectionRef",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/subSection",
-      "alias": "subSection",
-      "owner": "OrderedSubSectionRef",
-      "domain_of": [
-        "OrderedSubSectionRef"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "subSection",
-      "range": "DisplaySubSection",
-      "inlined": true,
-      "value_presence": {
-        "text": "ABSENT",
-        "@type": "PermissibleValue"
-      },
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "OrderedSubSectionRef_subSectionId",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/subSectionId",
-      "description": "The identifier of the referenced subsection.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "subSectionId",
-      "domain": "OrderedSubSectionRef",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/subSectionId",
-      "alias": "subSectionId",
-      "owner": "OrderedSubSectionRef",
-      "domain_of": [
-        "OrderedSubSectionRef"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "subSectionId",
-      "range": "DisplaySubSection",
-      "required": true,
-      "value_presence": {
-        "text": "PRESENT",
-        "@type": "PermissibleValue"
-      },
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "DisplaySubSection_text",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/text",
-      "description": "The text to be displayed in the display section.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "text",
-      "domain": "DisplaySubSection",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/text",
-      "alias": "text",
-      "owner": "DisplaySubSection",
-      "domain_of": [
-        "DisplaySubSection"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "text",
-      "range": "string",
-      "required": true,
-      "@type": "SlotDefinition"
-    },
-    {
       "name": "WhereClauseCondition_value",
       "definition_uri": "https://www.cdisc.org/ars/1-0/value",
       "description": "The value(s) for comparison with the variable.",
@@ -2443,6 +2092,25 @@
       "is_usage_slot": true,
       "usage_slot_name": "value",
       "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "AnalysisSet_compoundExpression",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/compoundExpression",
+      "description": "A compound expression that combines or negates where clauses.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "is_a": "compoundExpression",
+      "domain": "AnalysisSet",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/compoundExpression",
+      "alias": "compoundExpression",
+      "owner": "AnalysisSet",
+      "domain_of": [
+        "AnalysisSet"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "compoundExpression",
+      "range": "CompoundSetExpression",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -2471,28 +2139,22 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "CompoundGroupExpression_whereClauses",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/whereClauses",
-      "description": "A list of one or more where clauses (selection criteria) to be combined or negated.",
-      "comments": [
-        "Each where clause may be defined as either a simple condition ([variable] [comparator] [value(s)]) or a compound expression that may combine additional simple conditions or compound expressions.",
-        "Two or more where clauses should be specified when the logical operator is AND or OR.",
-        "Only one where clause should be specfied when the logical operator is NOT. This where clause will usually be a compound expression."
-      ],
+      "name": "DataSubset_compoundExpression",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/compoundExpression",
+      "description": "A compound expression that combines or negates where clauses.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "whereClauses",
-      "domain": "CompoundGroupExpression",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/whereClauses",
-      "multivalued": true,
-      "list_elements_ordered": true,
-      "alias": "whereClauses",
-      "owner": "CompoundGroupExpression",
+      "is_a": "compoundExpression",
+      "domain": "DataSubset",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/compoundExpression",
+      "alias": "compoundExpression",
+      "owner": "DataSubset",
       "domain_of": [
-        "CompoundGroupExpression"
+        "DataSubset"
       ],
       "is_usage_slot": true,
-      "usage_slot_name": "whereClauses",
-      "range": "Group",
+      "usage_slot_name": "compoundExpression",
+      "range": "CompoundSubsetExpression",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -2523,22 +2185,47 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "AnalysisSet_compoundExpression",
+      "name": "Group_compoundExpression",
       "definition_uri": "https://www.cdisc.org/ars/1-0/compoundExpression",
       "description": "A compound expression that combines or negates where clauses.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "compoundExpression",
-      "domain": "AnalysisSet",
+      "domain": "Group",
       "slot_uri": "https://www.cdisc.org/ars/1-0/compoundExpression",
       "alias": "compoundExpression",
-      "owner": "AnalysisSet",
+      "owner": "Group",
       "domain_of": [
-        "AnalysisSet"
+        "Group"
       ],
       "is_usage_slot": true,
       "usage_slot_name": "compoundExpression",
-      "range": "CompoundSetExpression",
+      "range": "CompoundGroupExpression",
       "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "CompoundGroupExpression_whereClauses",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/whereClauses",
+      "description": "A list of one or more where clauses (selection criteria) to be combined or negated.",
+      "comments": [
+        "Each where clause may be defined as either a simple condition ([variable] [comparator] [value(s)]) or a compound expression that may combine additional simple conditions or compound expressions.",
+        "Two or more where clauses should be specified when the logical operator is AND or OR.",
+        "Only one where clause should be specfied when the logical operator is NOT. This where clause will usually be a compound expression."
+      ],
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "is_a": "whereClauses",
+      "domain": "CompoundGroupExpression",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/whereClauses",
+      "multivalued": true,
+      "list_elements_ordered": true,
+      "alias": "whereClauses",
+      "owner": "CompoundGroupExpression",
+      "domain_of": [
+        "CompoundGroupExpression"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "whereClauses",
+      "range": "Group",
       "@type": "SlotDefinition"
     },
     {
@@ -2603,44 +2290,6 @@
       "range": "DataGroup",
       "inlined": true,
       "inlined_as_list": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "Group_compoundExpression",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/compoundExpression",
-      "description": "A compound expression that combines or negates where clauses.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "compoundExpression",
-      "domain": "Group",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/compoundExpression",
-      "alias": "compoundExpression",
-      "owner": "Group",
-      "domain_of": [
-        "Group"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "compoundExpression",
-      "range": "CompoundGroupExpression",
-      "inlined": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "DataSubset_compoundExpression",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/compoundExpression",
-      "description": "A compound expression that combines or negates where clauses.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "compoundExpression",
-      "domain": "DataSubset",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/compoundExpression",
-      "alias": "compoundExpression",
-      "owner": "DataSubset",
-      "domain_of": [
-        "DataSubset"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "compoundExpression",
-      "range": "CompoundSubsetExpression",
-      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -2996,6 +2645,213 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "OperationRole_controlledTerm",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/controlledTerm",
+      "description": "One of the permissible values from the referenced enumeration.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "is_a": "controlledTerm",
+      "domain": "OperationRole",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/controlledTerm",
+      "alias": "controlledTerm",
+      "owner": "OperationRole",
+      "domain_of": [
+        "OperationRole"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "controlledTerm",
+      "range": "OperationRoleEnum",
+      "required": true,
+      "value_presence": {
+        "text": "PRESENT",
+        "@type": "PermissibleValue"
+      },
+      "any_of": [
+        {
+          "range": "AnalysisReasonEnum",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "AnalysisPurposeEnum",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "OperationRoleEnum",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "OutputFileTypeEnum",
+          "@type": "AnonymousSlotExpression"
+        }
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "OperationRole_sponsorTermId",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/sponsorTermId",
+      "description": "NOT USED",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "is_a": "sponsorTermId",
+      "domain": "OperationRole",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/sponsorTermId",
+      "alias": "sponsorTermId",
+      "owner": "OperationRole",
+      "domain_of": [
+        "OperationRole"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "sponsorTermId",
+      "range": "SponsorTerm",
+      "value_presence": {
+        "text": "ABSENT",
+        "@type": "PermissibleValue"
+      },
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "SponsorOperationRole_controlledTerm",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/controlledTerm",
+      "description": "NOT USED",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "is_a": "controlledTerm",
+      "domain": "SponsorOperationRole",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/controlledTerm",
+      "alias": "controlledTerm",
+      "owner": "SponsorOperationRole",
+      "domain_of": [
+        "SponsorOperationRole"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "controlledTerm",
+      "range": "string",
+      "value_presence": {
+        "text": "ABSENT",
+        "@type": "PermissibleValue"
+      },
+      "any_of": [
+        {
+          "range": "AnalysisReasonEnum",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "AnalysisPurposeEnum",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "OperationRoleEnum",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "OutputFileTypeEnum",
+          "@type": "AnonymousSlotExpression"
+        }
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "SponsorOperationRole_sponsorTermId",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/sponsorTermId",
+      "description": "A reference to a sponsor term in the TerminologyExtension with enumeration=OperationRoleEnum",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "is_a": "sponsorTermId",
+      "domain": "SponsorOperationRole",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/sponsorTermId",
+      "alias": "sponsorTermId",
+      "owner": "SponsorOperationRole",
+      "domain_of": [
+        "SponsorOperationRole"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "sponsorTermId",
+      "range": "SponsorTerm",
+      "required": true,
+      "value_presence": {
+        "text": "PRESENT",
+        "@type": "PermissibleValue"
+      },
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "AnalysisProgrammingCodeTemplate_parameters",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/parameters",
+      "description": "Parameters whose values will be used to generate or execute the programming code for a specific analysis.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "is_a": "parameters",
+      "domain": "AnalysisProgrammingCodeTemplate",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/parameters",
+      "multivalued": true,
+      "alias": "parameters",
+      "owner": "AnalysisProgrammingCodeTemplate",
+      "domain_of": [
+        "AnalysisProgrammingCodeTemplate"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "parameters",
+      "range": "TemplateCodeParameter",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "TemplateCodeParameter_value",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/value",
+      "description": "The value to be used for the parameter when the method is used in an analysis. Multiple values may be specified to indicate a choice.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "is_a": "value",
+      "domain": "TemplateCodeParameter",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/value",
+      "multivalued": true,
+      "alias": "value",
+      "owner": "TemplateCodeParameter",
+      "domain_of": [
+        "TemplateCodeParameter"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "value",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Analysis_categoryIds",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/categoryIds",
+      "description": "References to any implementer-defined categories that apply to the analysis.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "is_a": "categoryIds",
+      "domain": "Analysis",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/categoryIds",
+      "multivalued": true,
+      "alias": "categoryIds",
+      "owner": "Analysis",
+      "domain_of": [
+        "Analysis"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "categoryIds",
+      "range": "AnalysisCategory",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Analysis_programmingCode",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/programmingCode",
+      "description": "Programming statements and/or a reference to the program used to perform the specific analysis.",
+      "comments": [
+        "Programming statements may be represented as code or as a reference to the program file."
+      ],
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "is_a": "programmingCode",
+      "domain": "Analysis",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/programmingCode",
+      "alias": "programmingCode",
+      "owner": "Analysis",
+      "domain_of": [
+        "Analysis"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "programmingCode",
+      "range": "AnalysisOutputProgrammingCode",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "AnalysisReason_controlledTerm",
       "definition_uri": "https://www.cdisc.org/ars/1-0/controlledTerm",
       "description": "One of the permissible values from the referenced enumeration.",
@@ -3248,129 +3104,143 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "OperationRole_controlledTerm",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/controlledTerm",
-      "description": "One of the permissible values from the referenced enumeration.",
+      "name": "OrderedGroupingFactor_order",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/order",
+      "description": "The ordinal of the instance with respect to other instances.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "controlledTerm",
-      "domain": "OperationRole",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/controlledTerm",
-      "alias": "controlledTerm",
-      "owner": "OperationRole",
+      "is_a": "order",
+      "domain": "OrderedGroupingFactor",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/order",
+      "alias": "order",
+      "owner": "OrderedGroupingFactor",
       "domain_of": [
-        "OperationRole"
+        "OrderedGroupingFactor"
       ],
       "is_usage_slot": true,
-      "usage_slot_name": "controlledTerm",
-      "range": "OperationRoleEnum",
+      "usage_slot_name": "order",
+      "range": "integer",
       "required": true,
-      "value_presence": {
-        "text": "PRESENT",
-        "@type": "PermissibleValue"
-      },
-      "any_of": [
-        {
-          "range": "AnalysisReasonEnum",
-          "@type": "AnonymousSlotExpression"
-        },
-        {
-          "range": "AnalysisPurposeEnum",
-          "@type": "AnonymousSlotExpression"
-        },
-        {
-          "range": "OperationRoleEnum",
-          "@type": "AnonymousSlotExpression"
-        },
-        {
-          "range": "OutputFileTypeEnum",
-          "@type": "AnonymousSlotExpression"
-        }
-      ],
       "@type": "SlotDefinition"
     },
     {
-      "name": "OperationRole_sponsorTermId",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/sponsorTermId",
-      "description": "NOT USED",
+      "name": "ReferencedAnalysisOperation_analysisId",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/analysisId",
+      "description": "The identifier of the referenced analysis.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "sponsorTermId",
-      "domain": "OperationRole",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/sponsorTermId",
-      "alias": "sponsorTermId",
-      "owner": "OperationRole",
+      "is_a": "analysisId",
+      "domain": "ReferencedAnalysisOperation",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/analysisId",
+      "alias": "analysisId",
+      "owner": "ReferencedAnalysisOperation",
       "domain_of": [
-        "OperationRole"
+        "ReferencedAnalysisOperation"
       ],
       "is_usage_slot": true,
-      "usage_slot_name": "sponsorTermId",
-      "range": "SponsorTerm",
-      "value_presence": {
-        "text": "ABSENT",
-        "@type": "PermissibleValue"
-      },
+      "usage_slot_name": "analysisId",
+      "range": "Analysis",
+      "required": true,
       "@type": "SlotDefinition"
     },
     {
-      "name": "SponsorOperationRole_controlledTerm",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/controlledTerm",
-      "description": "NOT USED",
+      "name": "AnalysisOutputProgrammingCode_parameters",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/parameters",
+      "description": "Parameter values used to generate or execute the programming code.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "controlledTerm",
-      "domain": "SponsorOperationRole",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/controlledTerm",
-      "alias": "controlledTerm",
-      "owner": "SponsorOperationRole",
+      "is_a": "parameters",
+      "domain": "AnalysisOutputProgrammingCode",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/parameters",
+      "multivalued": true,
+      "alias": "parameters",
+      "owner": "AnalysisOutputProgrammingCode",
       "domain_of": [
-        "SponsorOperationRole"
+        "AnalysisOutputProgrammingCode"
       ],
       "is_usage_slot": true,
-      "usage_slot_name": "controlledTerm",
+      "usage_slot_name": "parameters",
+      "range": "AnalysisOutputCodeParameter",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "AnalysisOutputCodeParameter_value",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/value",
+      "description": "The value of the parameter.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "is_a": "value",
+      "domain": "AnalysisOutputCodeParameter",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/value",
+      "multivalued": true,
+      "alias": "value",
+      "owner": "AnalysisOutputCodeParameter",
+      "domain_of": [
+        "AnalysisOutputCodeParameter"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "value",
       "range": "string",
-      "value_presence": {
-        "text": "ABSENT",
-        "@type": "PermissibleValue"
-      },
-      "any_of": [
-        {
-          "range": "AnalysisReasonEnum",
-          "@type": "AnonymousSlotExpression"
-        },
-        {
-          "range": "AnalysisPurposeEnum",
-          "@type": "AnonymousSlotExpression"
-        },
-        {
-          "range": "OperationRoleEnum",
-          "@type": "AnonymousSlotExpression"
-        },
-        {
-          "range": "OutputFileTypeEnum",
-          "@type": "AnonymousSlotExpression"
-        }
-      ],
+      "required": true,
+      "maximum_cardinality": 1,
       "@type": "SlotDefinition"
     },
     {
-      "name": "SponsorOperationRole_sponsorTermId",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/sponsorTermId",
-      "description": "A reference to a sponsor term in the TerminologyExtension with enumeration=OperationRoleEnum",
+      "name": "DisplaySubSection_text",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/text",
+      "description": "The text to be displayed in the display section.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "sponsorTermId",
-      "domain": "SponsorOperationRole",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/sponsorTermId",
-      "alias": "sponsorTermId",
-      "owner": "SponsorOperationRole",
+      "is_a": "text",
+      "domain": "DisplaySubSection",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/text",
+      "alias": "text",
+      "owner": "DisplaySubSection",
       "domain_of": [
-        "SponsorOperationRole"
+        "DisplaySubSection"
       ],
       "is_usage_slot": true,
-      "usage_slot_name": "sponsorTermId",
-      "range": "SponsorTerm",
+      "usage_slot_name": "text",
+      "range": "string",
       "required": true,
-      "value_presence": {
-        "text": "PRESENT",
-        "@type": "PermissibleValue"
-      },
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Output_categoryIds",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/categoryIds",
+      "description": "References to any implementer-defined categories that apply to the output.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "is_a": "categoryIds",
+      "domain": "Output",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/categoryIds",
+      "multivalued": true,
+      "alias": "categoryIds",
+      "owner": "Output",
+      "domain_of": [
+        "Output"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "categoryIds",
+      "range": "AnalysisCategory",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Output_programmingCode",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/programmingCode",
+      "description": "Programming statements and/or a reference to the program used to perform the specific output.",
+      "comments": [
+        "Programming statements may be represented as code or as a reference to the program file."
+      ],
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "is_a": "programmingCode",
+      "domain": "Output",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/programmingCode",
+      "alias": "programmingCode",
+      "owner": "Output",
+      "domain_of": [
+        "Output"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "programmingCode",
+      "range": "AnalysisOutputProgrammingCode",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -3498,6 +3368,136 @@
         "@type": "PermissibleValue"
       },
       "@type": "SlotDefinition"
+    },
+    {
+      "name": "OrderedDisplay_order",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/order",
+      "description": "The ordinal of the instance with respect to other instances.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "is_a": "order",
+      "domain": "OrderedDisplay",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/order",
+      "alias": "order",
+      "owner": "OrderedDisplay",
+      "domain_of": [
+        "OrderedDisplay"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "order",
+      "range": "integer",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "OrderedDisplaySubSection_order",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/order",
+      "description": "The ordinal of the instance with respect to other instances.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "is_a": "order",
+      "domain": "OrderedDisplaySubSection",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/order",
+      "alias": "order",
+      "owner": "OrderedDisplaySubSection",
+      "domain_of": [
+        "OrderedDisplaySubSection"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "order",
+      "range": "integer",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "OrderedSubSection_subSection",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/subSection",
+      "description": "A defined piece of information text to display in a display section.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "is_a": "subSection",
+      "domain": "OrderedSubSection",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/subSection",
+      "alias": "subSection",
+      "owner": "OrderedSubSection",
+      "domain_of": [
+        "OrderedSubSection"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "subSection",
+      "range": "DisplaySubSection",
+      "required": true,
+      "inlined": true,
+      "value_presence": {
+        "text": "PRESENT",
+        "@type": "PermissibleValue"
+      },
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "OrderedSubSection_subSectionId",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/subSectionId",
+      "description": "NOT USED",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "is_a": "subSectionId",
+      "domain": "OrderedSubSection",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/subSectionId",
+      "alias": "subSectionId",
+      "owner": "OrderedSubSection",
+      "domain_of": [
+        "OrderedSubSection"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "subSectionId",
+      "range": "DisplaySubSection",
+      "value_presence": {
+        "text": "ABSENT",
+        "@type": "PermissibleValue"
+      },
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "OrderedSubSectionRef_subSection",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/subSection",
+      "description": "NOT USED",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "is_a": "subSection",
+      "domain": "OrderedSubSectionRef",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/subSection",
+      "alias": "subSection",
+      "owner": "OrderedSubSectionRef",
+      "domain_of": [
+        "OrderedSubSectionRef"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "subSection",
+      "range": "DisplaySubSection",
+      "inlined": true,
+      "value_presence": {
+        "text": "ABSENT",
+        "@type": "PermissibleValue"
+      },
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "OrderedSubSectionRef_subSectionId",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/subSectionId",
+      "description": "The identifier of the referenced subsection.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "is_a": "subSectionId",
+      "domain": "OrderedSubSectionRef",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/subSectionId",
+      "alias": "subSectionId",
+      "owner": "OrderedSubSectionRef",
+      "domain_of": [
+        "OrderedSubSectionRef"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "subSectionId",
+      "range": "DisplaySubSection",
+      "required": true,
+      "value_presence": {
+        "text": "PRESENT",
+        "@type": "PermissibleValue"
+      },
+      "@type": "SlotDefinition"
     }
   ],
   "classes": [
@@ -3526,17 +3526,17 @@
         "version",
         "listOfPlannedAnalyses",
         "listOfPlannedOutputs",
+        "referenceDocuments",
+        "terminologyExtensions",
+        "analysisCategorizations",
         "analysisSets",
         "analysisGroupings",
         "dataSubsets",
         "dataGroupings",
-        "globalDisplaySections",
-        "analysisCategorizations",
-        "analyses",
         "methods",
-        "outputs",
-        "referenceDocuments",
-        "terminologyExtensions"
+        "analyses",
+        "globalDisplaySections",
+        "outputs"
       ],
       "slot_usage": {},
       "class_uri": "https://www.cdisc.org/ars/1-0/ReportingEvent",
@@ -3574,6 +3574,66 @@
       "@type": "ClassDefinition"
     },
     {
+      "name": "ReferenceDocument",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/ReferenceDocument",
+      "description": "An external document containing supporting documentation or programming code.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "is_a": "NamedObject",
+      "slots": [
+        "name",
+        "id",
+        "location"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://www.cdisc.org/ars/1-0/ReferenceDocument",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "TerminologyExtension",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/TerminologyExtension",
+      "description": "An extensible set of controlled terminology that has been extended with at least one sponsor-defined term.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slots": [
+        "id",
+        "enumeration",
+        "sponsorTerms"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://www.cdisc.org/ars/1-0/TerminologyExtension",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "SponsorTerm",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/SponsorTerm",
+      "description": "A sponsor-defined term that is included in an extensible set of controlled terminology.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slots": [
+        "id",
+        "submissionValue",
+        "description"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://www.cdisc.org/ars/1-0/SponsorTerm",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ExtensibleTerminologyTerm",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/ExtensibleTerminologyTerm",
+      "description": "The term used for an attribute whose terminology is extensible.",
+      "comments": [
+        "Each instance of this class should contain either a controlled term or a sponsor term id, not both."
+      ],
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "abstract": true,
+      "slots": [
+        "controlledTerm",
+        "sponsorTermId"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://www.cdisc.org/ars/1-0/ExtensibleTerminologyTerm",
+      "@type": "ClassDefinition"
+    },
+    {
       "name": "AnalysisCategorization",
       "definition_uri": "https://www.cdisc.org/ars/1-0/AnalysisCategorization",
       "description": "A set of related implementer-defined categories that can be used to categorize analyses or outputs.",
@@ -3599,378 +3659,6 @@
       ],
       "slot_usage": {},
       "class_uri": "https://www.cdisc.org/ars/1-0/AnalysisCategory",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "Analysis",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/Analysis",
-      "description": "An analysis that is designed to meet a requirement of the reporting event. Each analysis is defined as a set of specifications, including:\n* The analysis variable that is the subject of the analysis.\n* The analysis method (set of statistical operations) that is performed for the analysis variable.\n* The analysis set (subject population) for which the analysis is performed.\n* The subset of data records on which the analysis is performed (optional).\n* One or more factors by which either subjects or data records are grouped for analysis (optional).\n",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "NamedObject",
-      "slots": [
-        "name",
-        "id",
-        "version",
-        "Analysis_categoryIds",
-        "description",
-        "reason",
-        "purpose",
-        "documentRefs",
-        "analysisSetId",
-        "orderedGroupings",
-        "dataSubsetId",
-        "dataset",
-        "variable",
-        "methodId",
-        "referencedAnalysisOperations",
-        "Analysis_programmingCode",
-        "results"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://www.cdisc.org/ars/1-0/Analysis",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "OrderedGroupingFactor",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/OrderedGroupingFactor",
-      "description": "A reference to a defined factor by which subjects or data records are grouped for the analysis, ordered with respect to other grouping factors.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slots": [
-        "OrderedGroupingFactor_order",
-        "groupingId",
-        "resultsByGroup"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://www.cdisc.org/ars/1-0/OrderedGroupingFactor",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "ReferencedAnalysisOperation",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/ReferencedAnalysisOperation",
-      "description": "An indication of the analysis that contains results of a referenced operation.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slots": [
-        "referencedOperationRelationshipId",
-        "ReferencedAnalysisOperation_analysisId"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://www.cdisc.org/ars/1-0/ReferencedAnalysisOperation",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "OperationResult",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/OperationResult",
-      "description": "The result of an analysis method operation performed on a subdivision of subjects or data records.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slots": [
-        "operationId",
-        "resultGroups",
-        "rawValue",
-        "formattedValue"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://www.cdisc.org/ars/1-0/OperationResult",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "ResultGroup",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/ResultGroup",
-      "description": "For the specified grouping factor, an indication of the specific group of subjects or data records associated with the analysis result.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slots": [
-        "groupingId",
-        "groupId",
-        "groupValue"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://www.cdisc.org/ars/1-0/ResultGroup",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "AnalysisMethod",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/AnalysisMethod",
-      "description": "A set of one or more statistical operations.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "NamedObject",
-      "slots": [
-        "name",
-        "id",
-        "label",
-        "description",
-        "operations",
-        "documentRefs",
-        "codeTemplate"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://www.cdisc.org/ars/1-0/AnalysisMethod",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "Operation",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/Operation",
-      "description": "A statistical operation that produces a single analysis result value as part of an analysis method.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "NamedObject",
-      "slots": [
-        "name",
-        "id",
-        "label",
-        "referencedOperationRelationships",
-        "resultPattern"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://www.cdisc.org/ars/1-0/Operation",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "ReferencedOperationRelationship",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/ReferencedOperationRelationship",
-      "description": "A reference to a statistical operation whose results are used in the calculation of the result for this operation.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slots": [
-        "id",
-        "referencedOperationRole",
-        "operationId",
-        "analysisId",
-        "description"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://www.cdisc.org/ars/1-0/ReferencedOperationRelationship",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "AnalysisOutputProgrammingCode",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/AnalysisOutputProgrammingCode",
-      "description": "Programming statements and/or a reference to the program used to perform a specific analysis or create a specific output.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slots": [
-        "context",
-        "code",
-        "documentRef",
-        "AnalysisOutputProgrammingCode_parameters"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://www.cdisc.org/ars/1-0/AnalysisOutputProgrammingCode",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "AnalysisProgrammingCodeTemplate",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/AnalysisProgrammingCodeTemplate",
-      "description": "Programming statements and/or a reference to a used as a template for creation of a program to perform method operations for a specific analysis.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slots": [
-        "context",
-        "code",
-        "documentRef",
-        "AnalysisProgrammingCodeTemplate_parameters"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://www.cdisc.org/ars/1-0/AnalysisProgrammingCodeTemplate",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "CodeParameter",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/CodeParameter",
-      "description": "A replacement parameter whose value is substituted in template programming code to create statements required for a specific analysis.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "NamedObject",
-      "abstract": true,
-      "slots": [
-        "name",
-        "description"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://www.cdisc.org/ars/1-0/CodeParameter",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "AnalysisOutputCodeParameter",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/AnalysisOutputCodeParameter",
-      "description": "A parameter whose value is used in programming code for a specific analysis or output.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "CodeParameter",
-      "slots": [
-        "name",
-        "description",
-        "AnalysisOutputCodeParameter_value"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://www.cdisc.org/ars/1-0/AnalysisOutputCodeParameter",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "TemplateCodeParameter",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/TemplateCodeParameter",
-      "description": "A replacement parameter whose value is substituted in template programming code to create statements required for a specific analysis.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "CodeParameter",
-      "slots": [
-        "name",
-        "description",
-        "valueSource",
-        "TemplateCodeParameter_value"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://www.cdisc.org/ars/1-0/TemplateCodeParameter",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "Output",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/Output",
-      "description": "A report of results and their evaluation based on planned analyses performed during the course of a trial.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "NamedObject",
-      "slots": [
-        "name",
-        "id",
-        "version",
-        "fileSpecifications",
-        "displays",
-        "Output_categoryIds",
-        "documentRefs",
-        "Output_programmingCode"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://www.cdisc.org/ars/1-0/Output",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "OutputFile",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/OutputFile",
-      "description": "A file containing analysis output displays.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "NamedObject",
-      "slots": [
-        "name",
-        "fileType",
-        "location",
-        "style"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://www.cdisc.org/ars/1-0/OutputFile",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "OrderedDisplay",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/OrderedDisplay",
-      "description": "A display ordered with respect to other displays in an analysis output.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slots": [
-        "OrderedDisplay_order",
-        "display"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://www.cdisc.org/ars/1-0/OrderedDisplay",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "OutputDisplay",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/OutputDisplay",
-      "description": "A tabular representation of the results of one or more analyses.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "NamedObject",
-      "slots": [
-        "name",
-        "id",
-        "version",
-        "displayTitle",
-        "displaySections"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://www.cdisc.org/ars/1-0/OutputDisplay",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "DisplaySection",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/DisplaySection",
-      "description": "A part of a tabular display containing one or more pieces of informational text (e.g., title, footnote).",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slots": [
-        "sectionType",
-        "orderedSubSections"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://www.cdisc.org/ars/1-0/DisplaySection",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "OrderedDisplaySubSection",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/OrderedDisplaySubSection",
-      "description": "A single subsection ordered with respect to other subsections in the same section of a display.",
-      "comments": [
-        "A single subsection should be either defined using subSection or referenced using subSectionId (not both)."
-      ],
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "abstract": true,
-      "slots": [
-        "OrderedDisplaySubSection_order",
-        "subSection",
-        "subSectionId"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://www.cdisc.org/ars/1-0/OrderedDisplaySubSection",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "OrderedSubSection",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/OrderedSubSection",
-      "description": "A subsection ordered with respect to other subsections of the same type.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "OrderedDisplaySubSection",
-      "slots": [
-        "OrderedDisplaySubSection_order",
-        "OrderedSubSection_subSection",
-        "OrderedSubSection_subSectionId"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://www.cdisc.org/ars/1-0/OrderedSubSection",
-      "defining_slots": [
-        "subSection"
-      ],
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "OrderedSubSectionRef",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/OrderedSubSectionRef",
-      "description": "A reference to a subsection defined either globally or in another display section, ordered with respect to other subsections of the same type.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "OrderedDisplaySubSection",
-      "slots": [
-        "OrderedDisplaySubSection_order",
-        "OrderedSubSectionRef_subSection",
-        "OrderedSubSectionRef_subSectionId"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://www.cdisc.org/ars/1-0/OrderedSubSectionRef",
-      "defining_slots": [
-        "subSectionId"
-      ],
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "DisplaySubSection",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/DisplaySubSection",
-      "description": "An occurrence of a display section containing text.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slots": [
-        "id",
-        "DisplaySubSection_text"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://www.cdisc.org/ars/1-0/DisplaySubSection",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "GlobalDisplaySection",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/GlobalDisplaySection",
-      "description": "A global definition for part of a tabular display containing one or more pieces of informational text that may be used in multiple displays.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slots": [
-        "sectionType",
-        "subSections"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://www.cdisc.org/ars/1-0/GlobalDisplaySection",
       "@type": "ClassDefinition"
     },
     {
@@ -4169,48 +3857,6 @@
       "@type": "ClassDefinition"
     },
     {
-      "name": "CompoundSetExpression",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/CompoundSetExpression",
-      "description": "A compound expression consisting of either two or more identified analysis sets combined with the `AND` or `OR` logical operator, or a single identified analysis set negated with the `NOT` logical operator.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "WhereClauseCompoundExpression",
-      "slots": [
-        "logicalOperator",
-        "CompoundSetExpression_whereClauses"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://www.cdisc.org/ars/1-0/CompoundSetExpression",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "CompoundGroupExpression",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/CompoundGroupExpression",
-      "description": "A compound expression consisting of either two or more identified group combined with the `AND` or `OR` logical operator, or a single identified group negated with the `NOT` logical operator.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "WhereClauseCompoundExpression",
-      "slots": [
-        "logicalOperator",
-        "CompoundGroupExpression_whereClauses"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://www.cdisc.org/ars/1-0/CompoundGroupExpression",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "CompoundSubsetExpression",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/CompoundSubsetExpression",
-      "description": "A compound expression consisting of either two or more where clauses combined with the `AND` or `OR` logical operator, or a single where clause negated with the `NOT` logical operator.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "WhereClauseCompoundExpression",
-      "slots": [
-        "logicalOperator",
-        "CompoundSubsetExpression_whereClauses"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://www.cdisc.org/ars/1-0/CompoundSubsetExpression",
-      "@type": "ClassDefinition"
-    },
-    {
       "name": "AnalysisSet",
       "definition_uri": "https://www.cdisc.org/ars/1-0/AnalysisSet",
       "description": "A set of subjects whose data are to be included in the main analyses. This should be defined in the statistical section of the protocol. NOTE: There are a number of potential analysis sets, including, for example, the set based upon the intent-to-treat principle. [ICH E9]",
@@ -4229,108 +3875,17 @@
       "@type": "ClassDefinition"
     },
     {
-      "name": "GroupingFactor",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/GroupingFactor",
-      "description": "A factor used to subdivide either the subject population or data records in an analysis dataset for analysis.",
+      "name": "CompoundSetExpression",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/CompoundSetExpression",
+      "description": "A compound expression consisting of either two or more identified analysis sets combined with the `AND` or `OR` logical operator, or a single identified analysis set negated with the `NOT` logical operator.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
-      "abstract": true,
+      "is_a": "WhereClauseCompoundExpression",
       "slots": [
-        "id",
-        "label",
-        "groupingVariable",
-        "dataDriven",
-        "groups"
+        "logicalOperator",
+        "CompoundSetExpression_whereClauses"
       ],
       "slot_usage": {},
-      "class_uri": "https://www.cdisc.org/ars/1-0/GroupingFactor",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "SubjectGroupingFactor",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/SubjectGroupingFactor",
-      "description": "A factor used to subdivide the subject population for comparative analysis (e.g., treatment, sex, race, age).",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "GroupingFactor",
-      "slots": [
-        "id",
-        "label",
-        "groupingVariable",
-        "dataDriven",
-        "SubjectGroupingFactor_groups"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://www.cdisc.org/ars/1-0/SubjectGroupingFactor",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "DataGroupingFactor",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/DataGroupingFactor",
-      "description": "A factor used to subdivide data records in an analysis dataset for analysis.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "GroupingFactor",
-      "slots": [
-        "id",
-        "label",
-        "groupingVariable",
-        "dataDriven",
-        "DataGroupingFactor_groups"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://www.cdisc.org/ars/1-0/DataGroupingFactor",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "Group",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/Group",
-      "description": "A subdivision of the subject population or analysis dataset record set based on a defined factor.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "WhereClause",
-      "slots": [
-        "level",
-        "order",
-        "condition",
-        "id",
-        "label",
-        "Group_compoundExpression"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://www.cdisc.org/ars/1-0/Group",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "AnalysisGroup",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/AnalysisGroup",
-      "description": "A subdivision of the subject population based on a defined factor (e.g., subjects whose treatment is Drug A, subjects whose gender is male).",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "Group",
-      "slots": [
-        "level",
-        "order",
-        "condition",
-        "id",
-        "label",
-        "Group_compoundExpression"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://www.cdisc.org/ars/1-0/AnalysisGroup",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "DataGroup",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/DataGroup",
-      "description": "A subdivision of the analysis dataset records based on a defined factor.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "Group",
-      "slots": [
-        "level",
-        "order",
-        "condition",
-        "id",
-        "label",
-        "Group_compoundExpression"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://www.cdisc.org/ars/1-0/DataGroup",
+      "class_uri": "https://www.cdisc.org/ars/1-0/CompoundSetExpression",
       "@type": "ClassDefinition"
     },
     {
@@ -4352,18 +3907,155 @@
       "@type": "ClassDefinition"
     },
     {
-      "name": "ReferenceDocument",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/ReferenceDocument",
-      "description": "An external document containing supporting documentation or programming code.",
+      "name": "CompoundSubsetExpression",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/CompoundSubsetExpression",
+      "description": "A compound expression consisting of either two or more where clauses combined with the `AND` or `OR` logical operator, or a single where clause negated with the `NOT` logical operator.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "is_a": "WhereClauseCompoundExpression",
+      "slots": [
+        "logicalOperator",
+        "CompoundSubsetExpression_whereClauses"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://www.cdisc.org/ars/1-0/CompoundSubsetExpression",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "GroupingFactor",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/GroupingFactor",
+      "description": "A factor used to subdivide either the subject population or data records in an analysis dataset for analysis.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "abstract": true,
+      "slots": [
+        "id",
+        "label",
+        "groupingVariable",
+        "dataDriven",
+        "groups"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://www.cdisc.org/ars/1-0/GroupingFactor",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Group",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/Group",
+      "description": "A subdivision of the subject population or analysis dataset record set based on a defined factor.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "is_a": "WhereClause",
+      "slots": [
+        "level",
+        "order",
+        "condition",
+        "id",
+        "label",
+        "Group_compoundExpression"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://www.cdisc.org/ars/1-0/Group",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "CompoundGroupExpression",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/CompoundGroupExpression",
+      "description": "A compound expression consisting of either two or more identified group combined with the `AND` or `OR` logical operator, or a single identified group negated with the `NOT` logical operator.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "is_a": "WhereClauseCompoundExpression",
+      "slots": [
+        "logicalOperator",
+        "CompoundGroupExpression_whereClauses"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://www.cdisc.org/ars/1-0/CompoundGroupExpression",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "SubjectGroupingFactor",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/SubjectGroupingFactor",
+      "description": "A factor used to subdivide the subject population for comparative analysis (e.g., treatment, sex, race, age).",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "is_a": "GroupingFactor",
+      "slots": [
+        "id",
+        "label",
+        "groupingVariable",
+        "dataDriven",
+        "SubjectGroupingFactor_groups"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://www.cdisc.org/ars/1-0/SubjectGroupingFactor",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "AnalysisGroup",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/AnalysisGroup",
+      "description": "A subdivision of the subject population based on a defined factor (e.g., subjects whose treatment is Drug A, subjects whose gender is male).",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "is_a": "Group",
+      "slots": [
+        "level",
+        "order",
+        "condition",
+        "id",
+        "label",
+        "Group_compoundExpression"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://www.cdisc.org/ars/1-0/AnalysisGroup",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "DataGroupingFactor",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/DataGroupingFactor",
+      "description": "A factor used to subdivide data records in an analysis dataset for analysis.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "is_a": "GroupingFactor",
+      "slots": [
+        "id",
+        "label",
+        "groupingVariable",
+        "dataDriven",
+        "DataGroupingFactor_groups"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://www.cdisc.org/ars/1-0/DataGroupingFactor",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "DataGroup",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/DataGroup",
+      "description": "A subdivision of the analysis dataset records based on a defined factor.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "is_a": "Group",
+      "slots": [
+        "level",
+        "order",
+        "condition",
+        "id",
+        "label",
+        "Group_compoundExpression"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://www.cdisc.org/ars/1-0/DataGroup",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "AnalysisMethod",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/AnalysisMethod",
+      "description": "A set of one or more statistical operations.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "NamedObject",
       "slots": [
         "name",
         "id",
-        "location"
+        "label",
+        "description",
+        "documentRefs",
+        "operations",
+        "codeTemplate"
       ],
       "slot_usage": {},
-      "class_uri": "https://www.cdisc.org/ars/1-0/ReferenceDocument",
+      "class_uri": "https://www.cdisc.org/ars/1-0/AnalysisMethod",
       "@type": "ClassDefinition"
     },
     {
@@ -4468,48 +4160,139 @@
       "@type": "ClassDefinition"
     },
     {
-      "name": "TerminologyExtension",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/TerminologyExtension",
-      "description": "An extensible set of controlled terminology that has been extended with at least one sponsor-defined term.",
+      "name": "Operation",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/Operation",
+      "description": "A statistical operation that produces a single analysis result value as part of an analysis method.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
+      "is_a": "NamedObject",
       "slots": [
+        "name",
         "id",
-        "enumeration",
-        "sponsorTerms"
+        "label",
+        "referencedOperationRelationships",
+        "resultPattern"
       ],
       "slot_usage": {},
-      "class_uri": "https://www.cdisc.org/ars/1-0/TerminologyExtension",
+      "class_uri": "https://www.cdisc.org/ars/1-0/Operation",
       "@type": "ClassDefinition"
     },
     {
-      "name": "SponsorTerm",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/SponsorTerm",
-      "description": "A sponsor-defined term that is included in an extensible set of controlled terminology.",
+      "name": "ReferencedOperationRelationship",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/ReferencedOperationRelationship",
+      "description": "A reference to a statistical operation whose results are used in the calculation of the result for this operation.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "slots": [
         "id",
-        "submissionValue",
+        "referencedOperationRole",
+        "operationId",
+        "analysisId",
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://www.cdisc.org/ars/1-0/SponsorTerm",
+      "class_uri": "https://www.cdisc.org/ars/1-0/ReferencedOperationRelationship",
       "@type": "ClassDefinition"
     },
     {
-      "name": "ExtensibleTerminologyTerm",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/ExtensibleTerminologyTerm",
-      "description": "The term used for an attribute whose terminology is extensible.",
-      "comments": [
-        "Each instance of this class should contain either a controlled term or a sponsor term id, not both."
-      ],
+      "name": "OperationRole",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/OperationRole",
+      "description": "The role that the referenced operation's result plays in the calculation of the result of this operation.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
-      "abstract": true,
+      "is_a": "ExtensibleTerminologyTerm",
       "slots": [
-        "controlledTerm",
-        "sponsorTermId"
+        "OperationRole_controlledTerm",
+        "OperationRole_sponsorTermId"
       ],
       "slot_usage": {},
-      "class_uri": "https://www.cdisc.org/ars/1-0/ExtensibleTerminologyTerm",
+      "class_uri": "https://www.cdisc.org/ars/1-0/OperationRole",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "SponsorOperationRole",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/SponsorOperationRole",
+      "description": "The sponsor-defined role that the referenced operation's result plays in the calculation of the result of this operation.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "is_a": "ExtensibleTerminologyTerm",
+      "slots": [
+        "SponsorOperationRole_controlledTerm",
+        "SponsorOperationRole_sponsorTermId"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://www.cdisc.org/ars/1-0/SponsorOperationRole",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "AnalysisProgrammingCodeTemplate",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/AnalysisProgrammingCodeTemplate",
+      "description": "Programming statements and/or a reference to a used as a template for creation of a program to perform method operations for a specific analysis.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slots": [
+        "context",
+        "code",
+        "documentRef",
+        "AnalysisProgrammingCodeTemplate_parameters"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://www.cdisc.org/ars/1-0/AnalysisProgrammingCodeTemplate",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "CodeParameter",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/CodeParameter",
+      "description": "A replacement parameter whose value is substituted in template programming code to create statements required for a specific analysis.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "is_a": "NamedObject",
+      "abstract": true,
+      "slots": [
+        "name",
+        "description"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://www.cdisc.org/ars/1-0/CodeParameter",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "TemplateCodeParameter",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/TemplateCodeParameter",
+      "description": "A replacement parameter whose value is substituted in template programming code to create statements required for a specific analysis.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "is_a": "CodeParameter",
+      "slots": [
+        "name",
+        "description",
+        "valueSource",
+        "TemplateCodeParameter_value"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://www.cdisc.org/ars/1-0/TemplateCodeParameter",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Analysis",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/Analysis",
+      "description": "An analysis that is designed to meet a requirement of the reporting event. Each analysis is defined as a set of specifications, including:\n* The analysis variable that is the subject of the analysis.\n* The analysis method (set of statistical operations) that is performed for the analysis variable.\n* The analysis set (subject population) for which the analysis is performed.\n* The subset of data records on which the analysis is performed (optional).\n* One or more factors by which either subjects or data records are grouped for analysis (optional).",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "is_a": "NamedObject",
+      "slots": [
+        "name",
+        "id",
+        "version",
+        "description",
+        "reason",
+        "purpose",
+        "documentRefs",
+        "Analysis_categoryIds",
+        "dataset",
+        "variable",
+        "analysisSetId",
+        "dataSubsetId",
+        "orderedGroupings",
+        "methodId",
+        "referencedAnalysisOperations",
+        "Analysis_programmingCode",
+        "results"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://www.cdisc.org/ars/1-0/Analysis",
       "@type": "ClassDefinition"
     },
     {
@@ -4569,31 +4352,151 @@
       "@type": "ClassDefinition"
     },
     {
-      "name": "OperationRole",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/OperationRole",
-      "description": "The role that the referenced operation's result plays in the calculation of the result of this operation.",
+      "name": "OrderedGroupingFactor",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/OrderedGroupingFactor",
+      "description": "A reference to a defined factor by which subjects or data records are grouped for the analysis, ordered with respect to other grouping factors.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "ExtensibleTerminologyTerm",
       "slots": [
-        "OperationRole_controlledTerm",
-        "OperationRole_sponsorTermId"
+        "OrderedGroupingFactor_order",
+        "groupingId",
+        "resultsByGroup"
       ],
       "slot_usage": {},
-      "class_uri": "https://www.cdisc.org/ars/1-0/OperationRole",
+      "class_uri": "https://www.cdisc.org/ars/1-0/OrderedGroupingFactor",
       "@type": "ClassDefinition"
     },
     {
-      "name": "SponsorOperationRole",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/SponsorOperationRole",
-      "description": "The sponsor-defined role that the referenced operation's result plays in the calculation of the result of this operation.",
+      "name": "ReferencedAnalysisOperation",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/ReferencedAnalysisOperation",
+      "description": "An indication of the analysis that contains results of a referenced operation.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "ExtensibleTerminologyTerm",
       "slots": [
-        "SponsorOperationRole_controlledTerm",
-        "SponsorOperationRole_sponsorTermId"
+        "referencedOperationRelationshipId",
+        "ReferencedAnalysisOperation_analysisId"
       ],
       "slot_usage": {},
-      "class_uri": "https://www.cdisc.org/ars/1-0/SponsorOperationRole",
+      "class_uri": "https://www.cdisc.org/ars/1-0/ReferencedAnalysisOperation",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "AnalysisOutputProgrammingCode",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/AnalysisOutputProgrammingCode",
+      "description": "Programming statements and/or a reference to the program used to perform a specific analysis or create a specific output.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slots": [
+        "context",
+        "code",
+        "documentRef",
+        "AnalysisOutputProgrammingCode_parameters"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://www.cdisc.org/ars/1-0/AnalysisOutputProgrammingCode",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "AnalysisOutputCodeParameter",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/AnalysisOutputCodeParameter",
+      "description": "A parameter whose value is used in programming code for a specific analysis or output.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "is_a": "CodeParameter",
+      "slots": [
+        "name",
+        "description",
+        "AnalysisOutputCodeParameter_value"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://www.cdisc.org/ars/1-0/AnalysisOutputCodeParameter",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "OperationResult",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/OperationResult",
+      "description": "The result of an analysis method operation performed on a subdivision of subjects or data records.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slots": [
+        "operationId",
+        "resultGroups",
+        "rawValue",
+        "formattedValue"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://www.cdisc.org/ars/1-0/OperationResult",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ResultGroup",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/ResultGroup",
+      "description": "For the specified grouping factor, an indication of the specific group of subjects or data records associated with the analysis result.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slots": [
+        "groupingId",
+        "groupId",
+        "groupValue"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://www.cdisc.org/ars/1-0/ResultGroup",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "GlobalDisplaySection",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/GlobalDisplaySection",
+      "description": "A global definition for part of a tabular display containing one or more pieces of informational text that may be used in multiple displays.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slots": [
+        "sectionType",
+        "subSections"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://www.cdisc.org/ars/1-0/GlobalDisplaySection",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "DisplaySubSection",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/DisplaySubSection",
+      "description": "An occurrence of a display section containing text.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slots": [
+        "id",
+        "DisplaySubSection_text"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://www.cdisc.org/ars/1-0/DisplaySubSection",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Output",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/Output",
+      "description": "A report of results and their evaluation based on planned analyses performed during the course of a trial.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "is_a": "NamedObject",
+      "slots": [
+        "name",
+        "id",
+        "version",
+        "fileSpecifications",
+        "displays",
+        "Output_categoryIds",
+        "documentRefs",
+        "Output_programmingCode"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://www.cdisc.org/ars/1-0/Output",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "OutputFile",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/OutputFile",
+      "description": "A file containing analysis output displays.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "is_a": "NamedObject",
+      "slots": [
+        "name",
+        "fileType",
+        "location",
+        "style"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://www.cdisc.org/ars/1-0/OutputFile",
       "@type": "ClassDefinition"
     },
     {
@@ -4623,13 +4526,110 @@
       "slot_usage": {},
       "class_uri": "https://www.cdisc.org/ars/1-0/SponsorOutputFileType",
       "@type": "ClassDefinition"
+    },
+    {
+      "name": "OrderedDisplay",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/OrderedDisplay",
+      "description": "A display ordered with respect to other displays in an analysis output.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slots": [
+        "OrderedDisplay_order",
+        "display"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://www.cdisc.org/ars/1-0/OrderedDisplay",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "OutputDisplay",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/OutputDisplay",
+      "description": "A tabular representation of the results of one or more analyses.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "is_a": "NamedObject",
+      "slots": [
+        "name",
+        "id",
+        "version",
+        "displayTitle",
+        "displaySections"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://www.cdisc.org/ars/1-0/OutputDisplay",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "DisplaySection",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/DisplaySection",
+      "description": "A part of a tabular display containing one or more pieces of informational text (e.g., title, footnote).",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slots": [
+        "sectionType",
+        "orderedSubSections"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://www.cdisc.org/ars/1-0/DisplaySection",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "OrderedDisplaySubSection",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/OrderedDisplaySubSection",
+      "description": "A single subsection ordered with respect to other subsections in the same section of a display.",
+      "comments": [
+        "A single subsection should be either defined using subSection or referenced using subSectionId (not both)."
+      ],
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "abstract": true,
+      "slots": [
+        "OrderedDisplaySubSection_order",
+        "subSection",
+        "subSectionId"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://www.cdisc.org/ars/1-0/OrderedDisplaySubSection",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "OrderedSubSection",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/OrderedSubSection",
+      "description": "A subsection ordered with respect to other subsections of the same type.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "is_a": "OrderedDisplaySubSection",
+      "slots": [
+        "OrderedDisplaySubSection_order",
+        "OrderedSubSection_subSection",
+        "OrderedSubSection_subSectionId"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://www.cdisc.org/ars/1-0/OrderedSubSection",
+      "defining_slots": [
+        "subSection"
+      ],
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "OrderedSubSectionRef",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/OrderedSubSectionRef",
+      "description": "A reference to a subsection defined either globally or in another display section, ordered with respect to other subsections of the same type.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "is_a": "OrderedDisplaySubSection",
+      "slots": [
+        "OrderedDisplaySubSection_order",
+        "OrderedSubSectionRef_subSection",
+        "OrderedSubSectionRef_subSectionId"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://www.cdisc.org/ars/1-0/OrderedSubSectionRef",
+      "defining_slots": [
+        "subSectionId"
+      ],
+      "@type": "ClassDefinition"
     }
   ],
   "metamodel_version": "1.7.0",
   "source_file": "ars_ldm.yaml",
-  "source_file_date": "2023-06-23T14:04:29",
-  "source_file_size": 45986,
-  "generation_date": "2023-07-02T01:59:09",
+  "source_file_date": "2023-07-20T18:24:49",
+  "source_file_size": 45987,
+  "generation_date": "2023-07-20T18:53:53",
   "@type": "SchemaDefinition",
   "@context": [
     ".\\analysis-results-standard\\project\\/jsonld/ars_ldm.context.jsonld",

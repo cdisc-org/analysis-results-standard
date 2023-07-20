@@ -1,8 +1,6 @@
 # Class: NestedList
 
-
 _A list of items (analyses or outputs) that may be organized within sub-lists._
-
 
 
 
@@ -16,12 +14,9 @@ URI: [ars:NestedList](https://www.cdisc.org/ars/1-0/NestedList)
  classDiagram
     class NestedList
       NestedList : listItems
+        NestedList --|> OrderedListItem : listItems
         
-          NestedList --|> OrderedListItem : listItems
-        
-      
 ```
-
 
 
 <!-- no inheritance hierarchy -->
@@ -29,10 +24,11 @@ URI: [ars:NestedList](https://www.cdisc.org/ars/1-0/NestedList)
 
 ## Slots
 
-| Name | Cardinality and Range | Description | Inheritance |
+| Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [listItems](listItems.md) | 0..* <br/> [OrderedListItem](OrderedListItem.md) | Items in the list | direct |
 
+_* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
 
 
