@@ -1,10 +1,15 @@
 # Class: Analysis
 
 _An analysis that is designed to meet a requirement of the reporting event. Each analysis is defined as a set of specifications, including:_
+
 * _The analysis variable that is the subject of the analysis._
+
 * _The analysis method (set of statistical operations) that is performed for the analysis variable._
+
 * _The analysis set (subject population) for which the analysis is performed._
+
 * _The subset of data records on which the analysis is performed (optional)._
+
 * _One or more factors by which either subjects or data records are grouped for analysis (optional)._
 
 
