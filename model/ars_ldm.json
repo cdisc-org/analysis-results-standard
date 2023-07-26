@@ -112,59 +112,6 @@
             "title": "Analysis",
             "type": "object"
         },
-        "AnalysisCategorization": {
-            "additionalProperties": false,
-            "description": "A set of related implementer-defined categories that can be used to categorize analyses or outputs.",
-            "properties": {
-                "categories": {
-                    "description": "Implementer-defined categories of analyses/outputs, each of which may include one or more sub-categorization.",
-                    "items": {
-                        "$ref": "#/$defs/AnalysisCategory"
-                    },
-                    "type": "array"
-                },
-                "id": {
-                    "description": "The assigned identifying value for the instance of the class.",
-                    "type": "string"
-                },
-                "label": {
-                    "description": "A short informative description that may be used for display.",
-                    "type": "string"
-                }
-            },
-            "required": [
-                "id",
-                "categories"
-            ],
-            "title": "AnalysisCategorization",
-            "type": "object"
-        },
-        "AnalysisCategory": {
-            "additionalProperties": false,
-            "description": "An implementer-defined category of analyses/outputs, which may include one or more sub-categorization.",
-            "properties": {
-                "id": {
-                    "description": "The assigned identifying value for the instance of the class.",
-                    "type": "string"
-                },
-                "label": {
-                    "description": "A short informative description that may be used for display.",
-                    "type": "string"
-                },
-                "subCategorizations": {
-                    "description": "Sets of related implementer-defined sub-categories that can be used to categorize analyses or outputs.",
-                    "items": {
-                        "$ref": "#/$defs/AnalysisCategorization"
-                    },
-                    "type": "array"
-                }
-            },
-            "required": [
-                "id"
-            ],
-            "title": "AnalysisCategory",
-            "type": "object"
-        },
         "AnalysisGroup": {
             "additionalProperties": false,
             "description": "A subdivision of the subject population based on a defined factor (e.g., subjects whose treatment is Drug A, subjects whose gender is male).",
@@ -245,6 +192,59 @@
                 "name"
             ],
             "title": "AnalysisMethod",
+            "type": "object"
+        },
+        "AnalysisOutputCategorization": {
+            "additionalProperties": false,
+            "description": "A set of related implementer-defined categories that can be used to categorize analyses or outputs.",
+            "properties": {
+                "categories": {
+                    "description": "Implementer-defined categories of analyses/outputs, each of which may include one or more sub-categorization.",
+                    "items": {
+                        "$ref": "#/$defs/AnalysisOutputCategory"
+                    },
+                    "type": "array"
+                },
+                "id": {
+                    "description": "The assigned identifying value for the instance of the class.",
+                    "type": "string"
+                },
+                "label": {
+                    "description": "A short informative description that may be used for display.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "categories"
+            ],
+            "title": "AnalysisOutputCategorization",
+            "type": "object"
+        },
+        "AnalysisOutputCategory": {
+            "additionalProperties": false,
+            "description": "An implementer-defined category of analyses/outputs, which may include one or more sub-categorization.",
+            "properties": {
+                "id": {
+                    "description": "The assigned identifying value for the instance of the class.",
+                    "type": "string"
+                },
+                "label": {
+                    "description": "A short informative description that may be used for display.",
+                    "type": "string"
+                },
+                "subCategorizations": {
+                    "description": "Sets of related implementer-defined sub-categories that can be used to categorize analyses or outputs.",
+                    "items": {
+                        "$ref": "#/$defs/AnalysisOutputCategorization"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "AnalysisOutputCategory",
             "type": "object"
         },
         "AnalysisOutputCodeParameter": {
@@ -1404,17 +1404,17 @@
                     },
                     "type": "array"
                 },
-                "analysisCategorizations": {
-                    "description": "Sets of related implementer-defined categories that can be used to categorize analyses or outputs.",
-                    "items": {
-                        "$ref": "#/$defs/AnalysisCategorization"
-                    },
-                    "type": "array"
-                },
                 "analysisGroupings": {
                     "description": "Characteristics used to subdivide the subject population (e.g., treatment, sex, age group).",
                     "items": {
                         "$ref": "#/$defs/SubjectGroupingFactor"
+                    },
+                    "type": "array"
+                },
+                "analysisOutputCategorizations": {
+                    "description": "Sets of related implementer-defined categories that can be used to categorize analyses or outputs.",
+                    "items": {
+                        "$ref": "#/$defs/AnalysisOutputCategorization"
                     },
                     "type": "array"
                 },
@@ -1919,17 +1919,17 @@
             },
             "type": "array"
         },
-        "analysisCategorizations": {
-            "description": "Sets of related implementer-defined categories that can be used to categorize analyses or outputs.",
-            "items": {
-                "$ref": "#/$defs/AnalysisCategorization"
-            },
-            "type": "array"
-        },
         "analysisGroupings": {
             "description": "Characteristics used to subdivide the subject population (e.g., treatment, sex, age group).",
             "items": {
                 "$ref": "#/$defs/SubjectGroupingFactor"
+            },
+            "type": "array"
+        },
+        "analysisOutputCategorizations": {
+            "description": "Sets of related implementer-defined categories that can be used to categorize analyses or outputs.",
+            "items": {
+                "$ref": "#/$defs/AnalysisOutputCategorization"
             },
             "type": "array"
         },

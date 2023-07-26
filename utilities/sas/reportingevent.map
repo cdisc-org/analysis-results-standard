@@ -875,8 +875,8 @@
       ]
     },
     {
-      "DSNAME": "analysisCategorizations",
-      "TABLEPATH": "/root/analysisCategorizations",
+      "DSNAME": "analysisOutputCategorizations",
+      "TABLEPATH": "/root/analysisOutputCategorizations",
       "VARIABLES": [
         {
           "NAME": "ordinal_root",
@@ -884,104 +884,104 @@
           "PATH": "/root"
         },
         {
-          "NAME": "ordinal_analysisCategorizations",
+          "NAME": "ordinal_analysisOutputCategoriza",
           "TYPE": "ORDINAL",
-          "PATH": "/root/analysisCategorizations"
+          "PATH": "/root/analysisOutputCategorizations"
         },
         {
           "NAME": "id",
           "TYPE": "CHARACTER",
-          "PATH": "/root/analysisCategorizations/id",
+          "PATH": "/root/analysisOutputCategorizations/id",
           "CURRENT_LENGTH": 14
         },
         {
           "NAME": "label",
           "TYPE": "CHARACTER",
-          "PATH": "/root/analysisCategorizations/label",
+          "PATH": "/root/analysisOutputCategorizations/label",
           "CURRENT_LENGTH": 19
         }
       ]
     },
     {
-      "DSNAME": "analysisCategorizat_categories",
-      "TABLEPATH": "/root/analysisCategorizations/categories",
+      "DSNAME": "analysisOutputCateg_categories",
+      "TABLEPATH": "/root/analysisOutputCategorizations/categories",
       "VARIABLES": [
         {
-          "NAME": "ordinal_analysisCategorizations",
+          "NAME": "ordinal_analysisOutputCategoriza",
           "TYPE": "ORDINAL",
-          "PATH": "/root/analysisCategorizations"
+          "PATH": "/root/analysisOutputCategorizations"
         },
         {
           "NAME": "ordinal_categories",
           "TYPE": "ORDINAL",
-          "PATH": "/root/analysisCategorizations/categories"
+          "PATH": "/root/analysisOutputCategorizations/categories"
         },
         {
           "NAME": "id",
           "TYPE": "CHARACTER",
-          "PATH": "/root/analysisCategorizations/categories/id",
+          "PATH": "/root/analysisOutputCategorizations/categories/id",
           "CURRENT_LENGTH": 20
         },
         {
           "NAME": "label",
           "TYPE": "CHARACTER",
-          "PATH": "/root/analysisCategorizations/categories/label",
+          "PATH": "/root/analysisOutputCategorizations/categories/label",
           "CURRENT_LENGTH": 22
         }
       ]
     },
     {
       "DSNAME": "categories_subCategorizations",
-      "TABLEPATH": "/root/analysisCategorizations/categories/subCategorizations",
+      "TABLEPATH": "/root/analysisOutputCategorizations/categories/subCategorizations",
       "VARIABLES": [
         {
           "NAME": "ordinal_categories",
           "TYPE": "ORDINAL",
-          "PATH": "/root/analysisCategorizations/categories"
+          "PATH": "/root/analysisOutputCategorizations/categories"
         },
         {
           "NAME": "ordinal_subCategorizations",
           "TYPE": "ORDINAL",
-          "PATH": "/root/analysisCategorizations/categories/subCategorizations"
+          "PATH": "/root/analysisOutputCategorizations/categories/subCategorizations"
         },
         {
           "NAME": "id",
           "TYPE": "CHARACTER",
-          "PATH": "/root/analysisCategorizations/categories/subCategorizations/id",
+          "PATH": "/root/analysisOutputCategorizations/categories/subCategorizations/id",
           "CURRENT_LENGTH": 16
         },
         {
           "NAME": "label",
           "TYPE": "CHARACTER",
-          "PATH": "/root/analysisCategorizations/categories/subCategorizations/label",
+          "PATH": "/root/analysisOutputCategorizations/categories/subCategorizations/label",
           "CURRENT_LENGTH": 23
         }
       ]
     },
     {
       "DSNAME": "subCategorizations_categories",
-      "TABLEPATH": "/root/analysisCategorizations/categories/subCategorizations/categories",
+      "TABLEPATH": "/root/analysisOutputCategorizations/categories/subCategorizations/categories",
       "VARIABLES": [
         {
           "NAME": "ordinal_subCategorizations",
           "TYPE": "ORDINAL",
-          "PATH": "/root/analysisCategorizations/categories/subCategorizations"
+          "PATH": "/root/analysisOutputCategorizations/categories/subCategorizations"
         },
         {
           "NAME": "ordinal_categories",
           "TYPE": "ORDINAL",
-          "PATH": "/root/analysisCategorizations/categories/subCategorizations/categories"
+          "PATH": "/root/analysisOutputCategorizations/categories/subCategorizations/categories"
         },
         {
           "NAME": "id",
           "TYPE": "CHARACTER",
-          "PATH": "/root/analysisCategorizations/categories/subCategorizations/categories/id",
+          "PATH": "/root/analysisOutputCategorizations/categories/subCategorizations/categories/id",
           "CURRENT_LENGTH": 22
         },
         {
           "NAME": "label",
           "TYPE": "CHARACTER",
-          "PATH": "/root/analysisCategorizations/categories/subCategorizations/categories/label",
+          "PATH": "/root/analysisOutputCategorizations/categories/subCategorizations/categories/label",
           "CURRENT_LENGTH": 20
         }
       ]

@@ -35,11 +35,11 @@ ReferenceDocument {
     uri location  
     string name  
 }
-AnalysisCategory {
+AnalysisOutputCategory {
     string id  
     string label  
 }
-AnalysisCategorization {
+AnalysisOutputCategorization {
     string id  
     string label  
 }
@@ -213,7 +213,7 @@ ReportingEvent ||--|| NestedList : "listOfPlannedAnalyses"
 ReportingEvent ||--|o NestedList : "listOfPlannedOutputs"
 ReportingEvent ||--}o ReferenceDocument : "referenceDocuments"
 ReportingEvent ||--}o TerminologyExtension : "terminologyExtensions"
-ReportingEvent ||--}o AnalysisCategorization : "analysisCategorizations"
+ReportingEvent ||--}o AnalysisOutputCategorization : "analysisOutputCategorizations"
 ReportingEvent ||--}o AnalysisSet : "analysisSets"
 ReportingEvent ||--}o SubjectGroupingFactor : "analysisGroupings"
 ReportingEvent ||--}o DataSubset : "dataSubsets"
@@ -224,15 +224,15 @@ ReportingEvent ||--}o GlobalDisplaySection : "globalDisplaySections"
 ReportingEvent ||--}o Output : "outputs"
 Output ||--}o OutputFile : "fileSpecifications"
 Output ||--}o OrderedDisplay : "displays"
-Output ||--}o AnalysisCategory : "categoryIds"
+Output ||--}o AnalysisOutputCategory : "categoryIds"
 Output ||--}o DocumentReference : "documentRefs"
 Output ||--|o AnalysisOutputProgrammingCode : "programmingCode"
 AnalysisOutputProgrammingCode ||--|o DocumentReference : "documentRef"
 AnalysisOutputProgrammingCode ||--}o AnalysisOutputCodeParameter : "parameters"
 DocumentReference ||--|| ReferenceDocument : "referenceDocumentId"
 DocumentReference ||--}o PageRef : "pageRefs"
-AnalysisCategory ||--}o AnalysisCategorization : "subCategorizations"
-AnalysisCategorization ||--}| AnalysisCategory : "categories"
+AnalysisOutputCategory ||--}o AnalysisOutputCategorization : "subCategorizations"
+AnalysisOutputCategorization ||--}| AnalysisOutputCategory : "categories"
 OrderedDisplay ||--|o OutputDisplay : "display"
 OutputDisplay ||--}o DisplaySection : "displaySections"
 DisplaySection ||--}o OrderedDisplaySubSection : "orderedSubSections"
@@ -244,7 +244,7 @@ GlobalDisplaySection ||--}o DisplaySubSection : "subSections"
 Analysis ||--|| ExtensibleTerminologyTerm : "reason"
 Analysis ||--|| ExtensibleTerminologyTerm : "purpose"
 Analysis ||--}o DocumentReference : "documentRefs"
-Analysis ||--}o AnalysisCategory : "categoryIds"
+Analysis ||--}o AnalysisOutputCategory : "categoryIds"
 Analysis ||--|o AnalysisSet : "analysisSetId"
 Analysis ||--|o DataSubset : "dataSubsetId"
 Analysis ||--}o OrderedGroupingFactor : "orderedGroupings"
@@ -289,9 +289,9 @@ AnalysisGroup ||--|o WhereClauseCondition : "condition"
 AnalysisGroup ||--|o CompoundGroupExpression : "compoundExpression"
 TerminologyExtension ||--}| SponsorTerm : "sponsorTerms"
 NestedList ||--}o OrderedListItem : "listItems"
-OrderedListItem ||--|o NestedList : "sublist"
 OrderedListItem ||--|o Analysis : "analysisId"
 OrderedListItem ||--|o Output : "outputId"
+OrderedListItem ||--|o NestedList : "sublist"
 
 ```
 

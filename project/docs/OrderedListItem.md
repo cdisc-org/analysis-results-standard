@@ -17,12 +17,12 @@ URI: [ars:OrderedListItem](https://www.cdisc.org/ars/1-0/OrderedListItem)
 
       OrderedListItem : level
         OrderedListItem : order
-        OrderedListItem : sublist
-        OrderedListItem --|> NestedList : sublist
         OrderedListItem : analysisId
         OrderedListItem --|> Analysis : analysisId
         OrderedListItem : outputId
         OrderedListItem --|> Output : outputId
+        OrderedListItem : sublist
+        OrderedListItem --|> NestedList : sublist
         OrderedListItem : name
         
 ```
@@ -42,9 +42,9 @@ URI: [ars:OrderedListItem](https://www.cdisc.org/ars/1-0/OrderedListItem)
 | ---  | --- | --- | --- |
 | [level](level.md) | 1..1 <br/> [Integer](Integer.md) | The level of the entry within a hierarchical structure | direct |
 | [order](order.md) | 1..1 <br/> [Integer](Integer.md) | The ordinal of the instance with respect to other instances | direct |
-| [sublist](sublist.md) | 0..1 <br/> [NestedList](NestedList.md) | A sub-list of items (analyses or outputs) that may be further organized withi... | direct |
 | [analysisId](analysisId.md) | 0..1 <br/> [Analysis](Analysis.md) | The identifier of the referenced analysis | direct |
 | [outputId](outputId.md) | 0..1 <br/> [Output](Output.md) | The identifier of the referenced output | direct |
+| [sublist](sublist.md) | 0..1 <br/> [NestedList](NestedList.md) | A sub-list of items (analyses or outputs) that may be further organized withi... | direct |
 | [name](name.md) | 1..1 <br/> [String](String.md) | The name for the instance of the class | [NamedObject](NamedObject.md) |
 
 _* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
@@ -108,9 +108,9 @@ is_a: NamedObject
 slots:
 - level
 - order
-- sublist
 - analysisId
 - outputId
+- sublist
 slot_usage:
   level:
     name: level
@@ -185,19 +185,6 @@ attributes:
     - OrderedDisplaySubSection
     range: integer
     required: true
-  sublist:
-    name: sublist
-    description: A sub-list of items (analyses or outputs) that may be further organized
-      within sub-lists.
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    multivalued: false
-    alias: sublist
-    owner: OrderedListItem
-    domain_of:
-    - OrderedListItem
-    range: NestedList
-    inlined: true
   analysisId:
     name: analysisId
     description: The identifier of the referenced analysis.
@@ -224,6 +211,19 @@ attributes:
     - OrderedListItem
     range: Output
     inlined: false
+  sublist:
+    name: sublist
+    description: A sub-list of items (analyses or outputs) that may be further organized
+      within sub-lists.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    multivalued: false
+    alias: sublist
+    owner: OrderedListItem
+    domain_of:
+    - OrderedListItem
+    range: NestedList
+    inlined: true
   name:
     name: name
     description: The name for the instance of the class.

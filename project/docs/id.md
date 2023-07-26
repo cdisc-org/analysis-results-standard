@@ -22,8 +22,8 @@ URI: [ars:id](https://www.cdisc.org/ars/1-0/id)
 [ReferenceDocument](ReferenceDocument.md) | An external document containing supporting documentation or programming code |  no  |
 [TerminologyExtension](TerminologyExtension.md) | An extensible set of controlled terminology that has been extended with at le... |  no  |
 [SponsorTerm](SponsorTerm.md) | A sponsor-defined term that is included in an extensible set of controlled te... |  no  |
-[AnalysisCategorization](AnalysisCategorization.md) | A set of related implementer-defined categories that can be used to categoriz... |  no  |
-[AnalysisCategory](AnalysisCategory.md) | An implementer-defined category of analyses/outputs, which may include one or... |  no  |
+[AnalysisOutputCategorization](AnalysisOutputCategorization.md) | A set of related implementer-defined categories that can be used to categoriz... |  no  |
+[AnalysisOutputCategory](AnalysisOutputCategory.md) | An implementer-defined category of analyses/outputs, which may include one or... |  no  |
 [AnalysisSet](AnalysisSet.md) | A set of subjects whose data are to be included in the main analyses |  no  |
 [DataSubset](DataSubset.md) | A subset of data identified by selection criteria for inclusion in the analys... |  no  |
 [GroupingFactor](GroupingFactor.md) | A factor used to subdivide either the subject population or data records in a... |  no  |
@@ -87,8 +87,8 @@ domain_of:
 - ReferenceDocument
 - TerminologyExtension
 - SponsorTerm
-- AnalysisCategorization
-- AnalysisCategory
+- AnalysisOutputCategorization
+- AnalysisOutputCategory
 - AnalysisSet
 - DataSubset
 - GroupingFactor

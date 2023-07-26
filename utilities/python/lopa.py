@@ -104,7 +104,7 @@ def get_sponsorterm(enum: str,id: SponsorTermId) -> SponsorTerm:
         print(f"No terminology extensions defined for the {enum} enumeration, so sponsor term {id} is invalid")
         return None
     
-def get_category(id: AnalysisCategoryId, element: YAMLRoot = rptevt,attribute: str = 'analysisCategorizations') -> AnalysisCategory:
+def get_category(id: AnalysisOutputCategoryId, element: YAMLRoot = rptevt,attribute: str = 'analysisOutputCategorizations') -> AnalysisOutputCategory:
 
     catns = engine._yield_path(path=f'/{attribute}/*',element=element)
 

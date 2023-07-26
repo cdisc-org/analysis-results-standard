@@ -22,7 +22,7 @@ URI: [ars:Output](https://www.cdisc.org/ars/1-0/Output)
         Output : displays
         Output --|> OrderedDisplay : displays
         Output : categoryIds
-        Output --|> AnalysisCategory : categoryIds
+        Output --|> AnalysisOutputCategory : categoryIds
         Output : documentRefs
         Output --|> DocumentReference : documentRefs
         Output : programmingCode
@@ -48,7 +48,7 @@ URI: [ars:Output](https://www.cdisc.org/ars/1-0/Output)
 | [version](version.md) | 0..1 <br/> [Integer](Integer.md) | An ordinal indicating the version of the identified instance of the class | direct |
 | [fileSpecifications](fileSpecifications.md) | 0..* <br/> [OutputFile](OutputFile.md) | Specifications of output files | direct |
 | [displays](displays.md) | 0..* <br/> [OrderedDisplay](OrderedDisplay.md) | An ordered list of the displays included in the output | direct |
-| [categoryIds](categoryIds.md) | 0..* <br/> [AnalysisCategory](AnalysisCategory.md) | References to any implementer-defined categories that apply to the output | direct |
+| [categoryIds](categoryIds.md) | 0..* <br/> [AnalysisOutputCategory](AnalysisOutputCategory.md) | References to any implementer-defined categories that apply to the output | direct |
 | [documentRefs](documentRefs.md) | 0..* <br/> [DocumentReference](DocumentReference.md) | References to external documents containing additional information | direct |
 | [programmingCode](programmingCode.md) | 0..1 <br/> [AnalysisOutputProgrammingCode](AnalysisOutputProgrammingCode.md) | Programming statements and/or a reference to the program used to perform the ... | direct |
 | [name](name.md) | 1..1 <br/> [String](String.md) | The name for the instance of the class | [NamedObject](NamedObject.md) |
@@ -178,8 +178,8 @@ attributes:
     - ReferenceDocument
     - TerminologyExtension
     - SponsorTerm
-    - AnalysisCategorization
-    - AnalysisCategory
+    - AnalysisOutputCategorization
+    - AnalysisOutputCategory
     - AnalysisSet
     - DataSubset
     - GroupingFactor
@@ -246,7 +246,7 @@ attributes:
     domain_of:
     - Analysis
     - Output
-    range: AnalysisCategory
+    range: AnalysisOutputCategory
     required: false
     inlined: false
   documentRefs:

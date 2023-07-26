@@ -36,7 +36,7 @@ classes:
       - listOfPlannedOutputs
       - referenceDocuments
       - terminologyExtensions
-      - analysisCategorizations
+      - analysisOutputCategorizations
       - analysisSets
       - analysisGroupings
       - dataSubsets
@@ -57,9 +57,9 @@ classes:
     slots:
       - level
       - order
-      - sublist
       - analysisId
       - outputId
+      - sublist
     slot_usage:
       level:
         required: true
@@ -96,14 +96,14 @@ classes:
       - controlledTerm
       - sponsorTermId
 
-  AnalysisCategorization:
+  AnalysisOutputCategorization:
     description: A set of related implementer-defined categories that can be used to categorize analyses or outputs.
     slots:
       - id
       - label
       - categories
 
-  AnalysisCategory:
+  AnalysisOutputCategory:
     description: An implementer-defined category of analyses/outputs, which may include one or more sub-categorization.
     slots:
       - id
@@ -770,10 +770,10 @@ slots:
     inlined: true
     inlined_as_list: true
 
-  analysisCategorizations:
+  analysisOutputCategorizations:
     description: Sets of related implementer-defined categories that can be used to categorize analyses or outputs.
     multivalued: true
-    range: AnalysisCategorization
+    range: AnalysisOutputCategorization
     inlined: true
     inlined_as_list: true
 
@@ -914,7 +914,7 @@ slots:
   categories:
     description: Implementer-defined categories of analyses/outputs, each of which may include one or more sub-categorization.
     multivalued: true
-    range: AnalysisCategory
+    range: AnalysisOutputCategory
     inlined: true
     inlined_as_list: true
     required: true
@@ -922,7 +922,7 @@ slots:
   subCategorizations:
     description: Sets of related implementer-defined sub-categories that can be used to categorize analyses or outputs.
     multivalued: true
-    range: AnalysisCategorization
+    range: AnalysisOutputCategorization
     inlined: true
     inlined_as_list: true
 
@@ -1127,7 +1127,7 @@ slots:
   categoryIds:
     description: References to any implementer-defined categories that apply to the analysis or output.
     multivalued: true
-    range: AnalysisCategory
+    range: AnalysisOutputCategory
     inlined: false
     required: false
 

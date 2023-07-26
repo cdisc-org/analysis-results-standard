@@ -1,5 +1,5 @@
 # Auto generated from ars_ldm.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-07-20T18:54:02
+# Generation date: 2023-07-26T08:59:35
 # Schema: ars_ldm
 #
 # id: https://www.cdisc.org/ars/1-0
@@ -57,11 +57,11 @@ class SponsorTermId(extended_str):
     pass
 
 
-class AnalysisCategorizationId(extended_str):
+class AnalysisOutputCategorizationId(extended_str):
     pass
 
 
-class AnalysisCategoryId(extended_str):
+class AnalysisOutputCategoryId(extended_str):
     pass
 
 
@@ -167,7 +167,7 @@ class ReportingEvent(NamedObject):
     listOfPlannedOutputs: Optional[Union[dict, "NestedList"]] = None
     referenceDocuments: Optional[Union[Dict[Union[str, ReferenceDocumentId], Union[dict, "ReferenceDocument"]], List[Union[dict, "ReferenceDocument"]]]] = empty_dict()
     terminologyExtensions: Optional[Union[Dict[Union[str, TerminologyExtensionId], Union[dict, "TerminologyExtension"]], List[Union[dict, "TerminologyExtension"]]]] = empty_dict()
-    analysisCategorizations: Optional[Union[Dict[Union[str, AnalysisCategorizationId], Union[dict, "AnalysisCategorization"]], List[Union[dict, "AnalysisCategorization"]]]] = empty_dict()
+    analysisOutputCategorizations: Optional[Union[Dict[Union[str, AnalysisOutputCategorizationId], Union[dict, "AnalysisOutputCategorization"]], List[Union[dict, "AnalysisOutputCategorization"]]]] = empty_dict()
     analysisSets: Optional[Union[Dict[Union[str, AnalysisSetId], Union[dict, "AnalysisSet"]], List[Union[dict, "AnalysisSet"]]]] = empty_dict()
     analysisGroupings: Optional[Union[Dict[Union[str, SubjectGroupingFactorId], Union[dict, "SubjectGroupingFactor"]], List[Union[dict, "SubjectGroupingFactor"]]]] = empty_dict()
     dataSubsets: Optional[Union[Dict[Union[str, DataSubsetId], Union[dict, "DataSubset"]], List[Union[dict, "DataSubset"]]]] = empty_dict()
@@ -198,7 +198,7 @@ class ReportingEvent(NamedObject):
 
         self._normalize_inlined_as_list(slot_name="terminologyExtensions", slot_type=TerminologyExtension, key_name="id", keyed=True)
 
-        self._normalize_inlined_as_list(slot_name="analysisCategorizations", slot_type=AnalysisCategorization, key_name="id", keyed=True)
+        self._normalize_inlined_as_list(slot_name="analysisOutputCategorizations", slot_type=AnalysisOutputCategorization, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="analysisSets", slot_type=AnalysisSet, key_name="id", keyed=True)
 
@@ -258,9 +258,9 @@ class OrderedListItem(NamedObject):
     name: str = None
     level: int = None
     order: int = None
-    sublist: Optional[Union[dict, NestedList]] = None
     analysisId: Optional[Union[str, AnalysisId]] = None
     outputId: Optional[Union[str, OutputId]] = None
+    sublist: Optional[Union[dict, NestedList]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.level):
@@ -273,14 +273,14 @@ class OrderedListItem(NamedObject):
         if not isinstance(self.order, int):
             self.order = int(self.order)
 
-        if self.sublist is not None and not isinstance(self.sublist, NestedList):
-            self.sublist = NestedList(**as_dict(self.sublist))
-
         if self.analysisId is not None and not isinstance(self.analysisId, AnalysisId):
             self.analysisId = AnalysisId(self.analysisId)
 
         if self.outputId is not None and not isinstance(self.outputId, OutputId):
             self.outputId = OutputId(self.outputId)
+
+        if self.sublist is not None and not isinstance(self.sublist, NestedList):
+            self.sublist = NestedList(**as_dict(self.sublist))
 
         super().__post_init__(**kwargs)
 
@@ -404,30 +404,30 @@ class ExtensibleTerminologyTerm(YAMLRoot):
 
 
 @dataclass
-class AnalysisCategorization(YAMLRoot):
+class AnalysisOutputCategorization(YAMLRoot):
     """
     A set of related implementer-defined categories that can be used to categorize analyses or outputs.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ARS.AnalysisCategorization
-    class_class_curie: ClassVar[str] = "ars:AnalysisCategorization"
-    class_name: ClassVar[str] = "AnalysisCategorization"
-    class_model_uri: ClassVar[URIRef] = ARS.AnalysisCategorization
+    class_class_uri: ClassVar[URIRef] = ARS.AnalysisOutputCategorization
+    class_class_curie: ClassVar[str] = "ars:AnalysisOutputCategorization"
+    class_name: ClassVar[str] = "AnalysisOutputCategorization"
+    class_model_uri: ClassVar[URIRef] = ARS.AnalysisOutputCategorization
 
-    id: Union[str, AnalysisCategorizationId] = None
-    categories: Union[Dict[Union[str, AnalysisCategoryId], Union[dict, "AnalysisCategory"]], List[Union[dict, "AnalysisCategory"]]] = empty_dict()
+    id: Union[str, AnalysisOutputCategorizationId] = None
+    categories: Union[Dict[Union[str, AnalysisOutputCategoryId], Union[dict, "AnalysisOutputCategory"]], List[Union[dict, "AnalysisOutputCategory"]]] = empty_dict()
     label: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
-        if not isinstance(self.id, AnalysisCategorizationId):
-            self.id = AnalysisCategorizationId(self.id)
+        if not isinstance(self.id, AnalysisOutputCategorizationId):
+            self.id = AnalysisOutputCategorizationId(self.id)
 
         if self._is_empty(self.categories):
             self.MissingRequiredField("categories")
-        self._normalize_inlined_as_list(slot_name="categories", slot_type=AnalysisCategory, key_name="id", keyed=True)
+        self._normalize_inlined_as_list(slot_name="categories", slot_type=AnalysisOutputCategory, key_name="id", keyed=True)
 
         if self.label is not None and not isinstance(self.label, str):
             self.label = str(self.label)
@@ -436,31 +436,31 @@ class AnalysisCategorization(YAMLRoot):
 
 
 @dataclass
-class AnalysisCategory(YAMLRoot):
+class AnalysisOutputCategory(YAMLRoot):
     """
     An implementer-defined category of analyses/outputs, which may include one or more sub-categorization.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ARS.AnalysisCategory
-    class_class_curie: ClassVar[str] = "ars:AnalysisCategory"
-    class_name: ClassVar[str] = "AnalysisCategory"
-    class_model_uri: ClassVar[URIRef] = ARS.AnalysisCategory
+    class_class_uri: ClassVar[URIRef] = ARS.AnalysisOutputCategory
+    class_class_curie: ClassVar[str] = "ars:AnalysisOutputCategory"
+    class_name: ClassVar[str] = "AnalysisOutputCategory"
+    class_model_uri: ClassVar[URIRef] = ARS.AnalysisOutputCategory
 
-    id: Union[str, AnalysisCategoryId] = None
+    id: Union[str, AnalysisOutputCategoryId] = None
     label: Optional[str] = None
-    subCategorizations: Optional[Union[Dict[Union[str, AnalysisCategorizationId], Union[dict, AnalysisCategorization]], List[Union[dict, AnalysisCategorization]]]] = empty_dict()
+    subCategorizations: Optional[Union[Dict[Union[str, AnalysisOutputCategorizationId], Union[dict, AnalysisOutputCategorization]], List[Union[dict, AnalysisOutputCategorization]]]] = empty_dict()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
-        if not isinstance(self.id, AnalysisCategoryId):
-            self.id = AnalysisCategoryId(self.id)
+        if not isinstance(self.id, AnalysisOutputCategoryId):
+            self.id = AnalysisOutputCategoryId(self.id)
 
         if self.label is not None and not isinstance(self.label, str):
             self.label = str(self.label)
 
-        self._normalize_inlined_as_list(slot_name="subCategorizations", slot_type=AnalysisCategorization, key_name="id", keyed=True)
+        self._normalize_inlined_as_list(slot_name="subCategorizations", slot_type=AnalysisOutputCategorization, key_name="id", keyed=True)
 
         super().__post_init__(**kwargs)
 
@@ -1368,7 +1368,7 @@ class Analysis(NamedObject):
     version: Optional[int] = None
     description: Optional[str] = None
     documentRefs: Optional[Union[Union[dict, DocumentReference], List[Union[dict, DocumentReference]]]] = empty_list()
-    categoryIds: Optional[Union[Union[str, AnalysisCategoryId], List[Union[str, AnalysisCategoryId]]]] = empty_list()
+    categoryIds: Optional[Union[Union[str, AnalysisOutputCategoryId], List[Union[str, AnalysisOutputCategoryId]]]] = empty_list()
     dataset: Optional[str] = None
     variable: Optional[str] = None
     analysisSetId: Optional[Union[str, AnalysisSetId]] = None
@@ -1411,7 +1411,7 @@ class Analysis(NamedObject):
 
         if not isinstance(self.categoryIds, list):
             self.categoryIds = [self.categoryIds] if self.categoryIds is not None else []
-        self.categoryIds = [v if isinstance(v, AnalysisCategoryId) else AnalysisCategoryId(v) for v in self.categoryIds]
+        self.categoryIds = [v if isinstance(v, AnalysisOutputCategoryId) else AnalysisOutputCategoryId(v) for v in self.categoryIds]
 
         if self.dataset is not None and not isinstance(self.dataset, str):
             self.dataset = str(self.dataset)
@@ -1814,7 +1814,7 @@ class Output(NamedObject):
     version: Optional[int] = None
     fileSpecifications: Optional[Union[Union[dict, "OutputFile"], List[Union[dict, "OutputFile"]]]] = empty_list()
     displays: Optional[Union[Union[dict, "OrderedDisplay"], List[Union[dict, "OrderedDisplay"]]]] = empty_list()
-    categoryIds: Optional[Union[Union[str, AnalysisCategoryId], List[Union[str, AnalysisCategoryId]]]] = empty_list()
+    categoryIds: Optional[Union[Union[str, AnalysisOutputCategoryId], List[Union[str, AnalysisOutputCategoryId]]]] = empty_list()
     documentRefs: Optional[Union[Union[dict, DocumentReference], List[Union[dict, DocumentReference]]]] = empty_list()
     programmingCode: Optional[Union[dict, AnalysisOutputProgrammingCode]] = None
 
@@ -1837,7 +1837,7 @@ class Output(NamedObject):
 
         if not isinstance(self.categoryIds, list):
             self.categoryIds = [self.categoryIds] if self.categoryIds is not None else []
-        self.categoryIds = [v if isinstance(v, AnalysisCategoryId) else AnalysisCategoryId(v) for v in self.categoryIds]
+        self.categoryIds = [v if isinstance(v, AnalysisOutputCategoryId) else AnalysisOutputCategoryId(v) for v in self.categoryIds]
 
         if not isinstance(self.documentRefs, list):
             self.documentRefs = [self.documentRefs] if self.documentRefs is not None else []
@@ -2335,8 +2335,8 @@ slots.referenceDocuments = Slot(uri=ARS.referenceDocuments, name="referenceDocum
 slots.terminologyExtensions = Slot(uri=ARS.terminologyExtensions, name="terminologyExtensions", curie=ARS.curie('terminologyExtensions'),
                    model_uri=ARS.terminologyExtensions, domain=None, range=Optional[Union[Dict[Union[str, TerminologyExtensionId], Union[dict, TerminologyExtension]], List[Union[dict, TerminologyExtension]]]])
 
-slots.analysisCategorizations = Slot(uri=ARS.analysisCategorizations, name="analysisCategorizations", curie=ARS.curie('analysisCategorizations'),
-                   model_uri=ARS.analysisCategorizations, domain=None, range=Optional[Union[Dict[Union[str, AnalysisCategorizationId], Union[dict, AnalysisCategorization]], List[Union[dict, AnalysisCategorization]]]])
+slots.analysisOutputCategorizations = Slot(uri=ARS.analysisOutputCategorizations, name="analysisOutputCategorizations", curie=ARS.curie('analysisOutputCategorizations'),
+                   model_uri=ARS.analysisOutputCategorizations, domain=None, range=Optional[Union[Dict[Union[str, AnalysisOutputCategorizationId], Union[dict, AnalysisOutputCategorization]], List[Union[dict, AnalysisOutputCategorization]]]])
 
 slots.analysisSets = Slot(uri=ARS.analysisSets, name="analysisSets", curie=ARS.curie('analysisSets'),
                    model_uri=ARS.analysisSets, domain=None, range=Optional[Union[Dict[Union[str, AnalysisSetId], Union[dict, AnalysisSet]], List[Union[dict, AnalysisSet]]]])
@@ -2405,10 +2405,10 @@ slots.label = Slot(uri=ARS.label, name="label", curie=ARS.curie('label'),
                    model_uri=ARS.label, domain=None, range=Optional[str])
 
 slots.categories = Slot(uri=ARS.categories, name="categories", curie=ARS.curie('categories'),
-                   model_uri=ARS.categories, domain=None, range=Union[Dict[Union[str, AnalysisCategoryId], Union[dict, AnalysisCategory]], List[Union[dict, AnalysisCategory]]])
+                   model_uri=ARS.categories, domain=None, range=Union[Dict[Union[str, AnalysisOutputCategoryId], Union[dict, AnalysisOutputCategory]], List[Union[dict, AnalysisOutputCategory]]])
 
 slots.subCategorizations = Slot(uri=ARS.subCategorizations, name="subCategorizations", curie=ARS.curie('subCategorizations'),
-                   model_uri=ARS.subCategorizations, domain=None, range=Optional[Union[Dict[Union[str, AnalysisCategorizationId], Union[dict, AnalysisCategorization]], List[Union[dict, AnalysisCategorization]]]])
+                   model_uri=ARS.subCategorizations, domain=None, range=Optional[Union[Dict[Union[str, AnalysisOutputCategorizationId], Union[dict, AnalysisOutputCategorization]], List[Union[dict, AnalysisOutputCategorization]]]])
 
 slots.condition = Slot(uri=ARS.condition, name="condition", curie=ARS.curie('condition'),
                    model_uri=ARS.condition, domain=None, range=Optional[Union[dict, WhereClauseCondition]])
@@ -2507,7 +2507,7 @@ slots.purpose = Slot(uri=ARS.purpose, name="purpose", curie=ARS.curie('purpose')
                    model_uri=ARS.purpose, domain=None, range=Union[dict, ExtensibleTerminologyTerm])
 
 slots.categoryIds = Slot(uri=ARS.categoryIds, name="categoryIds", curie=ARS.curie('categoryIds'),
-                   model_uri=ARS.categoryIds, domain=None, range=Optional[Union[Union[str, AnalysisCategoryId], List[Union[str, AnalysisCategoryId]]]])
+                   model_uri=ARS.categoryIds, domain=None, range=Optional[Union[Union[str, AnalysisOutputCategoryId], List[Union[str, AnalysisOutputCategoryId]]]])
 
 slots.analysisSetId = Slot(uri=ARS.analysisSetId, name="analysisSetId", curie=ARS.curie('analysisSetId'),
                    model_uri=ARS.analysisSetId, domain=None, range=Optional[Union[str, AnalysisSetId]])
@@ -2693,7 +2693,7 @@ slots.TemplateCodeParameter_value = Slot(uri=ARS.value, name="TemplateCodeParame
                    model_uri=ARS.TemplateCodeParameter_value, domain=TemplateCodeParameter, range=Optional[Union[str, List[str]]])
 
 slots.Analysis_categoryIds = Slot(uri=ARS.categoryIds, name="Analysis_categoryIds", curie=ARS.curie('categoryIds'),
-                   model_uri=ARS.Analysis_categoryIds, domain=Analysis, range=Optional[Union[Union[str, AnalysisCategoryId], List[Union[str, AnalysisCategoryId]]]])
+                   model_uri=ARS.Analysis_categoryIds, domain=Analysis, range=Optional[Union[Union[str, AnalysisOutputCategoryId], List[Union[str, AnalysisOutputCategoryId]]]])
 
 slots.Analysis_programmingCode = Slot(uri=ARS.programmingCode, name="Analysis_programmingCode", curie=ARS.curie('programmingCode'),
                    model_uri=ARS.Analysis_programmingCode, domain=Analysis, range=Optional[Union[dict, "AnalysisOutputProgrammingCode"]])
@@ -2738,7 +2738,7 @@ slots.DisplaySubSection_text = Slot(uri=ARS.text, name="DisplaySubSection_text",
                    model_uri=ARS.DisplaySubSection_text, domain=DisplaySubSection, range=str)
 
 slots.Output_categoryIds = Slot(uri=ARS.categoryIds, name="Output_categoryIds", curie=ARS.curie('categoryIds'),
-                   model_uri=ARS.Output_categoryIds, domain=Output, range=Optional[Union[Union[str, AnalysisCategoryId], List[Union[str, AnalysisCategoryId]]]])
+                   model_uri=ARS.Output_categoryIds, domain=Output, range=Optional[Union[Union[str, AnalysisOutputCategoryId], List[Union[str, AnalysisOutputCategoryId]]]])
 
 slots.Output_programmingCode = Slot(uri=ARS.programmingCode, name="Output_programmingCode", curie=ARS.curie('programmingCode'),
                    model_uri=ARS.Output_programmingCode, domain=Output, range=Optional[Union[dict, AnalysisOutputProgrammingCode]])

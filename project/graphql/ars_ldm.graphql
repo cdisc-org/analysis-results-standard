@@ -7,7 +7,7 @@ type Analysis
     reason: ExtensibleTerminologyTerm!
     purpose: ExtensibleTerminologyTerm!
     documentRefs: [DocumentReference]
-    categoryIds: [AnalysisCategory]
+    categoryIds: [AnalysisOutputCategory]
     dataset: String
     variable: String
     analysisSetId: AnalysisSet
@@ -17,20 +17,6 @@ type Analysis
     referencedAnalysisOperations: [ReferencedAnalysisOperation]
     programmingCode: AnalysisOutputProgrammingCode
     results: [OperationResult]
-  }
-
-type AnalysisCategorization
-  {
-    id: String!
-    label: String
-    categories: [AnalysisCategory]!
-  }
-
-type AnalysisCategory
-  {
-    id: String!
-    label: String
-    subCategorizations: [AnalysisCategorization]
   }
 
 type AnalysisGroup
@@ -52,6 +38,20 @@ type AnalysisMethod
     documentRefs: [DocumentReference]
     operations: [Operation]!
     codeTemplate: AnalysisProgrammingCodeTemplate
+  }
+
+type AnalysisOutputCategorization
+  {
+    id: String!
+    label: String
+    categories: [AnalysisOutputCategory]!
+  }
+
+type AnalysisOutputCategory
+  {
+    id: String!
+    label: String
+    subCategorizations: [AnalysisOutputCategorization]
   }
 
 type AnalysisOutputCodeParameter
@@ -259,9 +259,9 @@ type OrderedListItem
     name: String!
     level: Integer!
     order: Integer!
-    sublist: NestedList
     analysisId: Analysis
     outputId: Output
+    sublist: NestedList
   }
 
 type OrderedSubSection
@@ -285,7 +285,7 @@ type Output
     version: Integer
     fileSpecifications: [OutputFile]
     displays: [OrderedDisplay]
-    categoryIds: [AnalysisCategory]
+    categoryIds: [AnalysisOutputCategory]
     documentRefs: [DocumentReference]
     programmingCode: AnalysisOutputProgrammingCode
   }
@@ -384,7 +384,7 @@ type ReportingEvent
     listOfPlannedOutputs: NestedList
     referenceDocuments: [ReferenceDocument]
     terminologyExtensions: [TerminologyExtension]
-    analysisCategorizations: [AnalysisCategorization]
+    analysisOutputCategorizations: [AnalysisOutputCategorization]
     analysisSets: [AnalysisSet]
     analysisGroupings: [SubjectGroupingFactor]
     dataSubsets: [DataSubset]

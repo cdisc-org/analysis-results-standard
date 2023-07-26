@@ -50,7 +50,7 @@ linkml:Sparqlpath xsd:string
           <reason> @<ExtensibleTerminologyTerm> ;
           <purpose> @<ExtensibleTerminologyTerm> ;
           <documentRefs> @<DocumentReference> * ;
-          <categoryIds> @<AnalysisCategory> * ;
+          <categoryIds> @<AnalysisOutputCategory> * ;
           <dataset> @linkml:String ? ;
           <variable> @linkml:String ? ;
           <analysisSetId> @<AnalysisSet> ? ;
@@ -62,22 +62,6 @@ linkml:Sparqlpath xsd:string
           <results> @<OperationResult> *
        ) ;
        rdf:type [ <Analysis> ]
-    )
-}
-
-<AnalysisCategorization> CLOSED {
-    (  $<AnalysisCategorization_tes> (  <label> @linkml:String ? ;
-          <categories> @<AnalysisCategory> +
-       ) ;
-       rdf:type [ <AnalysisCategorization> ]
-    )
-}
-
-<AnalysisCategory> CLOSED {
-    (  $<AnalysisCategory_tes> (  <label> @linkml:String ? ;
-          <subCategorizations> @<AnalysisCategorization> *
-       ) ;
-       rdf:type [ <AnalysisCategory> ]
     )
 }
 
@@ -99,6 +83,22 @@ linkml:Sparqlpath xsd:string
           <codeTemplate> @<AnalysisProgrammingCodeTemplate> ?
        ) ;
        rdf:type [ <AnalysisMethod> ]
+    )
+}
+
+<AnalysisOutputCategorization> CLOSED {
+    (  $<AnalysisOutputCategorization_tes> (  <label> @linkml:String ? ;
+          <categories> @<AnalysisOutputCategory> +
+       ) ;
+       rdf:type [ <AnalysisOutputCategorization> ]
+    )
+}
+
+<AnalysisOutputCategory> CLOSED {
+    (  $<AnalysisOutputCategory_tes> (  <label> @linkml:String ? ;
+          <subCategorizations> @<AnalysisOutputCategorization> *
+       ) ;
+       rdf:type [ <AnalysisOutputCategory> ]
     )
 }
 
@@ -380,9 +380,9 @@ linkml:Sparqlpath xsd:string
           rdf:type [ <NamedObject> ] ? ;
           <level> @linkml:Integer ;
           <order> @linkml:Integer ;
-          <sublist> @<NestedList> ? ;
           <analysisId> @<Analysis> ? ;
-          <outputId> @<Output> ?
+          <outputId> @<Output> ? ;
+          <sublist> @<NestedList> ?
        ) ;
        rdf:type [ <OrderedListItem> ] ?
     )
@@ -414,7 +414,7 @@ linkml:Sparqlpath xsd:string
           <version> @linkml:Integer ? ;
           <fileSpecifications> @<OutputFile> * ;
           <displays> @<OrderedDisplay> * ;
-          <categoryIds> @<AnalysisCategory> * ;
+          <categoryIds> @<AnalysisOutputCategory> * ;
           <documentRefs> @<DocumentReference> * ;
           <programmingCode> @<AnalysisOutputProgrammingCode> ?
        ) ;
@@ -544,7 +544,7 @@ linkml:Sparqlpath xsd:string
           <listOfPlannedOutputs> @<NestedList> ? ;
           <referenceDocuments> @<ReferenceDocument> * ;
           <terminologyExtensions> @<TerminologyExtension> * ;
-          <analysisCategorizations> @<AnalysisCategorization> * ;
+          <analysisOutputCategorizations> @<AnalysisOutputCategorization> * ;
           <analysisSets> @<AnalysisSet> * ;
           <analysisGroupings> @<SubjectGroupingFactor> * ;
           <dataSubsets> @<DataSubset> * ;

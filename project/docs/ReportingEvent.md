@@ -25,8 +25,8 @@ URI: [ars:ReportingEvent](https://www.cdisc.org/ars/1-0/ReportingEvent)
         ReportingEvent --|> ReferenceDocument : referenceDocuments
         ReportingEvent : terminologyExtensions
         ReportingEvent --|> TerminologyExtension : terminologyExtensions
-        ReportingEvent : analysisCategorizations
-        ReportingEvent --|> AnalysisCategorization : analysisCategorizations
+        ReportingEvent : analysisOutputCategorizations
+        ReportingEvent --|> AnalysisOutputCategorization : analysisOutputCategorizations
         ReportingEvent : analysisSets
         ReportingEvent --|> AnalysisSet : analysisSets
         ReportingEvent : analysisGroupings
@@ -66,7 +66,7 @@ URI: [ars:ReportingEvent](https://www.cdisc.org/ars/1-0/ReportingEvent)
 | [listOfPlannedOutputs](listOfPlannedOutputs.md) | 0..1 <br/> [NestedList](NestedList.md) | An optional structured list of the outputs defined for the reporting event | direct |
 | [referenceDocuments](referenceDocuments.md) | 0..* <br/> [ReferenceDocument](ReferenceDocument.md) | External documents containing information referenced for the reporting event | direct |
 | [terminologyExtensions](terminologyExtensions.md) | 0..* <br/> [TerminologyExtension](TerminologyExtension.md) | Any sponsor-defined extensions to extensible terminology | direct |
-| [analysisCategorizations](analysisCategorizations.md) | 0..* <br/> [AnalysisCategorization](AnalysisCategorization.md) | Sets of related implementer-defined categories that can be used to categorize... | direct |
+| [analysisOutputCategorizations](analysisOutputCategorizations.md) | 0..* <br/> [AnalysisOutputCategorization](AnalysisOutputCategorization.md) | Sets of related implementer-defined categories that can be used to categorize... | direct |
 | [analysisSets](analysisSets.md) | 0..* <br/> [AnalysisSet](AnalysisSet.md) | The analysis sets (subject populations) defined for the reporting event | direct |
 | [analysisGroupings](analysisGroupings.md) | 0..* <br/> [SubjectGroupingFactor](SubjectGroupingFactor.md) | Characteristics used to subdivide the subject population (e | direct |
 | [dataSubsets](dataSubsets.md) | 0..* <br/> [DataSubset](DataSubset.md) | Subsets of data identified by selection criteria for inclusion in analysis de... | direct |
@@ -135,7 +135,7 @@ slots:
 - listOfPlannedOutputs
 - referenceDocuments
 - terminologyExtensions
-- analysisCategorizations
+- analysisOutputCategorizations
 - analysisSets
 - analysisGroupings
 - dataSubsets
@@ -173,8 +173,8 @@ attributes:
     - ReferenceDocument
     - TerminologyExtension
     - SponsorTerm
-    - AnalysisCategorization
-    - AnalysisCategory
+    - AnalysisOutputCategorization
+    - AnalysisOutputCategory
     - AnalysisSet
     - DataSubset
     - GroupingFactor
@@ -255,18 +255,18 @@ attributes:
     range: TerminologyExtension
     inlined: true
     inlined_as_list: true
-  analysisCategorizations:
-    name: analysisCategorizations
+  analysisOutputCategorizations:
+    name: analysisOutputCategorizations
     description: Sets of related implementer-defined categories that can be used to
       categorize analyses or outputs.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     multivalued: true
-    alias: analysisCategorizations
+    alias: analysisOutputCategorizations
     owner: ReportingEvent
     domain_of:
     - ReportingEvent
-    range: AnalysisCategorization
+    range: AnalysisOutputCategorization
     inlined: true
     inlined_as_list: true
   analysisSets:

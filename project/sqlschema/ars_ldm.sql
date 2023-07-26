@@ -1,19 +1,5 @@
 
 
-CREATE TABLE "AnalysisCategorization" (
-	id TEXT NOT NULL, 
-	label TEXT, 
-	categories TEXT NOT NULL, 
-	PRIMARY KEY (id)
-);
-
-CREATE TABLE "AnalysisCategory" (
-	id TEXT NOT NULL, 
-	label TEXT, 
-	"subCategorizations" TEXT, 
-	PRIMARY KEY (id)
-);
-
 CREATE TABLE "AnalysisMethod" (
 	name TEXT NOT NULL, 
 	id TEXT NOT NULL, 
@@ -22,6 +8,20 @@ CREATE TABLE "AnalysisMethod" (
 	"documentRefs" TEXT, 
 	operations TEXT NOT NULL, 
 	"codeTemplate" TEXT, 
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE "AnalysisOutputCategorization" (
+	id TEXT NOT NULL, 
+	label TEXT, 
+	categories TEXT NOT NULL, 
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE "AnalysisOutputCategory" (
+	id TEXT NOT NULL, 
+	label TEXT, 
+	"subCategorizations" TEXT, 
 	PRIMARY KEY (id)
 );
 
@@ -178,7 +178,7 @@ CREATE TABLE "ReportingEvent" (
 	"listOfPlannedAnalyses" TEXT NOT NULL, 
 	"listOfPlannedOutputs" TEXT, 
 	"referenceDocuments" TEXT, 
-	"analysisCategorizations" TEXT, 
+	"analysisOutputCategorizations" TEXT, 
 	"analysisSets" TEXT, 
 	"dataSubsets" TEXT, 
 	methods TEXT, 
@@ -446,10 +446,10 @@ CREATE TABLE "OrderedListItem" (
 	name TEXT NOT NULL, 
 	level INTEGER NOT NULL, 
 	"order" INTEGER NOT NULL, 
-	sublist TEXT, 
 	"analysisId" TEXT, 
 	"outputId" TEXT, 
-	PRIMARY KEY (name, level, "order", sublist, "analysisId", "outputId"), 
+	sublist TEXT, 
+	PRIMARY KEY (name, level, "order", "analysisId", "outputId", sublist), 
 	FOREIGN KEY("analysisId") REFERENCES "Analysis" (id), 
 	FOREIGN KEY("outputId") REFERENCES "Output" (id)
 );

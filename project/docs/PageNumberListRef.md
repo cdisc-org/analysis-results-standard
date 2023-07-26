@@ -194,8 +194,8 @@ attributes:
     alias: label
     owner: PageNumberListRef
     domain_of:
-    - AnalysisCategorization
-    - AnalysisCategory
+    - AnalysisOutputCategorization
+    - AnalysisOutputCategory
     - AnalysisSet
     - DataSubset
     - GroupingFactor

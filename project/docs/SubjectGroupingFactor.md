@@ -141,8 +141,8 @@ attributes:
     - ReferenceDocument
     - TerminologyExtension
     - SponsorTerm
-    - AnalysisCategorization
-    - AnalysisCategory
+    - AnalysisOutputCategorization
+    - AnalysisOutputCategory
     - AnalysisSet
     - DataSubset
     - GroupingFactor
@@ -164,8 +164,8 @@ attributes:
     alias: label
     owner: SubjectGroupingFactor
     domain_of:
-    - AnalysisCategorization
-    - AnalysisCategory
+    - AnalysisOutputCategorization
+    - AnalysisOutputCategory
     - AnalysisSet
     - DataSubset
     - GroupingFactor

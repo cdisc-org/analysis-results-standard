@@ -13,7 +13,7 @@ message Analysis
   extensibleTerminologyTerm reason = 0
   extensibleTerminologyTerm purpose = 0
  repeated  documentReference documentRefs = 0
- repeated  analysisCategory categoryIds = 0
+ repeated  analysisOutputCategory categoryIds = 0
   string dataset = 0
   string variable = 0
   analysisSet analysisSetId = 0
@@ -23,20 +23,6 @@ message Analysis
  repeated  referencedAnalysisOperation referencedAnalysisOperations = 0
   analysisOutputProgrammingCode programmingCode = 0
  repeated  operationResult results = 0
- }
-// A set of related implementer-defined categories that can be used to categorize analyses or outputs.
-message AnalysisCategorization
- {
-  string id = 0
-  string label = 0
- repeated  analysisCategory categories = 0
- }
-// An implementer-defined category of analyses/outputs, which may include one or more sub-categorization.
-message AnalysisCategory
- {
-  string id = 0
-  string label = 0
- repeated  analysisCategorization subCategorizations = 0
  }
 // A subdivision of the subject population based on a defined factor (e.g., subjects whose treatment is Drug A, subjects whose gender is male).
 message AnalysisGroup
@@ -58,6 +44,20 @@ message AnalysisMethod
  repeated  documentReference documentRefs = 0
  repeated  operation operations = 0
   analysisProgrammingCodeTemplate codeTemplate = 0
+ }
+// A set of related implementer-defined categories that can be used to categorize analyses or outputs.
+message AnalysisOutputCategorization
+ {
+  string id = 0
+  string label = 0
+ repeated  analysisOutputCategory categories = 0
+ }
+// An implementer-defined category of analyses/outputs, which may include one or more sub-categorization.
+message AnalysisOutputCategory
+ {
+  string id = 0
+  string label = 0
+ repeated  analysisOutputCategorization subCategorizations = 0
  }
 // A parameter whose value is used in programming code for a specific analysis or output.
 message AnalysisOutputCodeParameter
@@ -232,9 +232,9 @@ message OrderedListItem
   string name = 0
   integer level = 0
   integer order = 0
-  nestedList sublist = 0
   analysis analysisId = 0
   output outputId = 0
+  nestedList sublist = 0
  }
 // A subsection ordered with respect to other subsections of the same type.
 message OrderedSubSection
@@ -258,7 +258,7 @@ message Output
   integer version = 0
  repeated  outputFile fileSpecifications = 0
  repeated  orderedDisplay displays = 0
- repeated  analysisCategory categoryIds = 0
+ repeated  analysisOutputCategory categoryIds = 0
  repeated  documentReference documentRefs = 0
   analysisOutputProgrammingCode programmingCode = 0
  }
@@ -347,7 +347,7 @@ message ReportingEvent
   nestedList listOfPlannedOutputs = 0
  repeated  referenceDocument referenceDocuments = 0
  repeated  terminologyExtension terminologyExtensions = 0
- repeated  analysisCategorization analysisCategorizations = 0
+ repeated  analysisOutputCategorization analysisOutputCategorizations = 0
  repeated  analysisSet analysisSets = 0
  repeated  subjectGroupingFactor analysisGroupings = 0
  repeated  dataSubset dataSubsets = 0

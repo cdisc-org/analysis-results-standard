@@ -519,8 +519,8 @@
         "ReferenceDocument",
         "TerminologyExtension",
         "SponsorTerm",
-        "AnalysisCategorization",
-        "AnalysisCategory",
+        "AnalysisOutputCategorization",
+        "AnalysisOutputCategory",
         "AnalysisSet",
         "DataSubset",
         "GroupingFactor",
@@ -618,17 +618,17 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "analysisCategorizations",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/analysisCategorizations",
+      "name": "analysisOutputCategorizations",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/analysisOutputCategorizations",
       "description": "Sets of related implementer-defined categories that can be used to categorize analyses or outputs.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/analysisCategorizations",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/analysisOutputCategorizations",
       "multivalued": true,
       "owner": "ReportingEvent",
       "domain_of": [
         "ReportingEvent"
       ],
-      "range": "AnalysisCategorization",
+      "range": "AnalysisOutputCategorization",
       "inlined": true,
       "inlined_as_list": true,
       "@type": "SlotDefinition"
@@ -981,8 +981,8 @@
       "slot_uri": "https://www.cdisc.org/ars/1-0/label",
       "owner": "Operation",
       "domain_of": [
-        "AnalysisCategorization",
-        "AnalysisCategory",
+        "AnalysisOutputCategorization",
+        "AnalysisOutputCategory",
         "AnalysisSet",
         "DataSubset",
         "GroupingFactor",
@@ -1001,11 +1001,11 @@
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "slot_uri": "https://www.cdisc.org/ars/1-0/categories",
       "multivalued": true,
-      "owner": "AnalysisCategorization",
+      "owner": "AnalysisOutputCategorization",
       "domain_of": [
-        "AnalysisCategorization"
+        "AnalysisOutputCategorization"
       ],
-      "range": "AnalysisCategory",
+      "range": "AnalysisOutputCategory",
       "required": true,
       "inlined": true,
       "inlined_as_list": true,
@@ -1018,11 +1018,11 @@
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "slot_uri": "https://www.cdisc.org/ars/1-0/subCategorizations",
       "multivalued": true,
-      "owner": "AnalysisCategory",
+      "owner": "AnalysisOutputCategory",
       "domain_of": [
-        "AnalysisCategory"
+        "AnalysisOutputCategory"
       ],
-      "range": "AnalysisCategorization",
+      "range": "AnalysisOutputCategorization",
       "inlined": true,
       "inlined_as_list": true,
       "@type": "SlotDefinition"
@@ -1580,7 +1580,7 @@
         "Analysis",
         "Output"
       ],
-      "range": "AnalysisCategory",
+      "range": "AnalysisOutputCategory",
       "@type": "SlotDefinition"
     },
     {
@@ -2826,7 +2826,7 @@
       ],
       "is_usage_slot": true,
       "usage_slot_name": "categoryIds",
-      "range": "AnalysisCategory",
+      "range": "AnalysisOutputCategory",
       "@type": "SlotDefinition"
     },
     {
@@ -3218,7 +3218,7 @@
       ],
       "is_usage_slot": true,
       "usage_slot_name": "categoryIds",
-      "range": "AnalysisCategory",
+      "range": "AnalysisOutputCategory",
       "@type": "SlotDefinition"
     },
     {
@@ -3528,7 +3528,7 @@
         "listOfPlannedOutputs",
         "referenceDocuments",
         "terminologyExtensions",
-        "analysisCategorizations",
+        "analysisOutputCategorizations",
         "analysisSets",
         "analysisGroupings",
         "dataSubsets",
@@ -3565,9 +3565,9 @@
         "name",
         "OrderedListItem_level",
         "OrderedListItem_order",
-        "sublist",
         "analysisId",
-        "outputId"
+        "outputId",
+        "sublist"
       ],
       "slot_usage": {},
       "class_uri": "https://www.cdisc.org/ars/1-0/OrderedListItem",
@@ -3634,8 +3634,8 @@
       "@type": "ClassDefinition"
     },
     {
-      "name": "AnalysisCategorization",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/AnalysisCategorization",
+      "name": "AnalysisOutputCategorization",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/AnalysisOutputCategorization",
       "description": "A set of related implementer-defined categories that can be used to categorize analyses or outputs.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "slots": [
@@ -3644,12 +3644,12 @@
         "categories"
       ],
       "slot_usage": {},
-      "class_uri": "https://www.cdisc.org/ars/1-0/AnalysisCategorization",
+      "class_uri": "https://www.cdisc.org/ars/1-0/AnalysisOutputCategorization",
       "@type": "ClassDefinition"
     },
     {
-      "name": "AnalysisCategory",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/AnalysisCategory",
+      "name": "AnalysisOutputCategory",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/AnalysisOutputCategory",
       "description": "An implementer-defined category of analyses/outputs, which may include one or more sub-categorization.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "slots": [
@@ -3658,7 +3658,7 @@
         "subCategorizations"
       ],
       "slot_usage": {},
-      "class_uri": "https://www.cdisc.org/ars/1-0/AnalysisCategory",
+      "class_uri": "https://www.cdisc.org/ars/1-0/AnalysisOutputCategory",
       "@type": "ClassDefinition"
     },
     {
@@ -4627,9 +4627,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "ars_ldm.yaml",
-  "source_file_date": "2023-07-20T18:24:49",
-  "source_file_size": 45987,
-  "generation_date": "2023-07-20T18:53:53",
+  "source_file_date": "2023-07-26T08:58:10",
+  "source_file_size": 46035,
+  "generation_date": "2023-07-26T08:59:28",
   "@type": "SchemaDefinition",
   "@context": [
     ".\\analysis-results-standard\\project\\/jsonld/ars_ldm.context.jsonld",

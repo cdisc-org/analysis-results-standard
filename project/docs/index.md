@@ -46,11 +46,11 @@ ReferenceDocument {
     uri location  
     string name  
 }
-AnalysisCategory {
+AnalysisOutputCategory {
     string id  
     string label  
 }
-AnalysisCategorization {
+AnalysisOutputCategorization {
     string id  
     string label  
 }
@@ -224,7 +224,7 @@ ReportingEvent ||--|| NestedList : "listOfPlannedAnalyses"
 ReportingEvent ||--|o NestedList : "listOfPlannedOutputs"
 ReportingEvent ||--}o ReferenceDocument : "referenceDocuments"
 ReportingEvent ||--}o TerminologyExtension : "terminologyExtensions"
-ReportingEvent ||--}o AnalysisCategorization : "analysisCategorizations"
+ReportingEvent ||--}o AnalysisOutputCategorization : "analysisOutputCategorizations"
 ReportingEvent ||--}o AnalysisSet : "analysisSets"
 ReportingEvent ||--}o SubjectGroupingFactor : "analysisGroupings"
 ReportingEvent ||--}o DataSubset : "dataSubsets"
@@ -235,15 +235,15 @@ ReportingEvent ||--}o GlobalDisplaySection : "globalDisplaySections"
 ReportingEvent ||--}o Output : "outputs"
 Output ||--}o OutputFile : "fileSpecifications"
 Output ||--}o OrderedDisplay : "displays"
-Output ||--}o AnalysisCategory : "categoryIds"
+Output ||--}o AnalysisOutputCategory : "categoryIds"
 Output ||--}o DocumentReference : "documentRefs"
 Output ||--|o AnalysisOutputProgrammingCode : "programmingCode"
 AnalysisOutputProgrammingCode ||--|o DocumentReference : "documentRef"
 AnalysisOutputProgrammingCode ||--}o AnalysisOutputCodeParameter : "parameters"
 DocumentReference ||--|| ReferenceDocument : "referenceDocumentId"
 DocumentReference ||--}o PageRef : "pageRefs"
-AnalysisCategory ||--}o AnalysisCategorization : "subCategorizations"
-AnalysisCategorization ||--}| AnalysisCategory : "categories"
+AnalysisOutputCategory ||--}o AnalysisOutputCategorization : "subCategorizations"
+AnalysisOutputCategorization ||--}| AnalysisOutputCategory : "categories"
 OrderedDisplay ||--|o OutputDisplay : "display"
 OutputDisplay ||--}o DisplaySection : "displaySections"
 DisplaySection ||--}o OrderedDisplaySubSection : "orderedSubSections"
@@ -255,7 +255,7 @@ GlobalDisplaySection ||--}o DisplaySubSection : "subSections"
 Analysis ||--|| ExtensibleTerminologyTerm : "reason"
 Analysis ||--|| ExtensibleTerminologyTerm : "purpose"
 Analysis ||--}o DocumentReference : "documentRefs"
-Analysis ||--}o AnalysisCategory : "categoryIds"
+Analysis ||--}o AnalysisOutputCategory : "categoryIds"
 Analysis ||--|o AnalysisSet : "analysisSetId"
 Analysis ||--|o DataSubset : "dataSubsetId"
 Analysis ||--}o OrderedGroupingFactor : "orderedGroupings"
@@ -300,9 +300,9 @@ AnalysisGroup ||--|o WhereClauseCondition : "condition"
 AnalysisGroup ||--|o CompoundGroupExpression : "compoundExpression"
 TerminologyExtension ||--}| SponsorTerm : "sponsorTerms"
 NestedList ||--}o OrderedListItem : "listItems"
-OrderedListItem ||--|o NestedList : "sublist"
 OrderedListItem ||--|o Analysis : "analysisId"
 OrderedListItem ||--|o Output : "outputId"
+OrderedListItem ||--|o NestedList : "sublist"
 
 ``` 
 
@@ -320,8 +320,8 @@ _Classes provide templates for organizing data. Data objects instantiate classes
 | [TerminologyExtension](TerminologyExtension.md) | An extensible set of controlled terminology that has been extended with at le... |
 | [SponsorTerm](SponsorTerm.md) | A sponsor-defined term that is included in an extensible set of controlled te... |
 | [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) | The term used for an attribute whose terminology is extensible |
-| [AnalysisCategorization](AnalysisCategorization.md) | A set of related implementer-defined categories that can be used to categoriz... |
-| [AnalysisCategory](AnalysisCategory.md) | An implementer-defined category of analyses/outputs, which may include one or... |
+| [AnalysisOutputCategorization](AnalysisOutputCategorization.md) | A set of related implementer-defined categories that can be used to categoriz... |
+| [AnalysisOutputCategory](AnalysisOutputCategory.md) | An implementer-defined category of analyses/outputs, which may include one or... |
 | [WhereClause](WhereClause.md) | Selection criteria defined as either a simple condition ([variable] [comparat... |
 | [WhereClauseCondition](WhereClauseCondition.md) | A simple selection criterion exressed as [dataset] |
 | [WhereClauseCompoundExpression](WhereClauseCompoundExpression.md) | A compound expression consisting of either two or more where clauses combined... |
@@ -386,7 +386,7 @@ _Slots (aka attributes, fields, columns, properties) can be associated with clas
 | [listOfPlannedOutputs](listOfPlannedOutputs.md) | An optional structured list of the outputs defined for the reporting event |
 | [referenceDocuments](referenceDocuments.md) | External documents containing information referenced for the reporting event |
 | [terminologyExtensions](terminologyExtensions.md) | Any sponsor-defined extensions to extensible terminology |
-| [analysisCategorizations](analysisCategorizations.md) | Sets of related implementer-defined categories that can be used to categorize... |
+| [analysisOutputCategorizations](analysisOutputCategorizations.md) | Sets of related implementer-defined categories that can be used to categorize... |
 | [analysisSets](analysisSets.md) | The analysis sets (subject populations) defined for the reporting event |
 | [analysisGroupings](analysisGroupings.md) | Characteristics used to subdivide the subject population (e |
 | [dataSubsets](dataSubsets.md) | Subsets of data identified by selection criteria for inclusion in analysis de... |

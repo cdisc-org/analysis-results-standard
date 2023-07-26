@@ -100,13 +100,13 @@ for value in wsCat.iter_rows(
 
     if value[0] != catnid:
         if value[2] == None:
-            rptevt.analysisCategorizations.append(AnalysisCategorization(id=value[0],label=value[1],
-                                categories=[AnalysisCategory(id=value[3],label=value[4])]))
-            catns[value[0]] = rptevt.analysisCategorizations[-1]                
+            rptevt.analysisOutputCategorizations.append(AnalysisOutputCategorization(id=value[0],label=value[1],
+                                categories=[AnalysisOutputCategory(id=value[3],label=value[4])]))
+            catns[value[0]] = rptevt.analysisOutputCategorizations[-1]                
         else:                
             if value[2] in cats:
-                cats[value[2]].subCategorizations.append(AnalysisCategorization(id=value[0],label=value[1],
-                                categories=[AnalysisCategory(id=value[3],label=value[4])]))
+                cats[value[2]].subCategorizations.append(AnalysisOutputCategorization(id=value[0],label=value[1],
+                                categories=[AnalysisOutputCategory(id=value[3],label=value[4])]))
                 catns[value[0]] = cats[value[2]].subCategorizations[-1]
             else:
                 print(f"Unknown parent_category_id: {value[2]}")
@@ -116,7 +116,7 @@ for value in wsCat.iter_rows(
 
     else:
 
-        catns[value[0]].categories.append(AnalysisCategory(id=value[3],label=value[4]))
+        catns[value[0]].categories.append(AnalysisOutputCategory(id=value[3],label=value[4]))
         if value[2] != pcatid:
             print(f"Inconsistent parent_category_id values defined for categorization {value[0]}: {pcatid} / {value[2]}")
     

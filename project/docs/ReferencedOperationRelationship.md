@@ -129,8 +129,8 @@ attributes:
     - ReferenceDocument
     - TerminologyExtension
     - SponsorTerm
-    - AnalysisCategorization
-    - AnalysisCategory
+    - AnalysisOutputCategorization
+    - AnalysisOutputCategory
     - AnalysisSet
     - DataSubset
     - GroupingFactor

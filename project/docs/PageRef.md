@@ -131,8 +131,8 @@ slot_usage:
     description: Alternative label to provide a more specific and description to a
       page link.
     domain_of:
-    - AnalysisCategorization
-    - AnalysisCategory
+    - AnalysisOutputCategorization
+    - AnalysisOutputCategory
     - AnalysisSet
     - DataSubset
     - GroupingFactor
@@ -164,8 +164,8 @@ slot_usage:
     description: Alternative label to provide a more specific and description to a
       page link.
     domain_of:
-    - AnalysisCategorization
-    - AnalysisCategory
+    - AnalysisOutputCategorization
+    - AnalysisOutputCategory
     - AnalysisSet
     - DataSubset
     - GroupingFactor
@@ -194,8 +194,8 @@ attributes:
     alias: label
     owner: PageRef
     domain_of:
-    - AnalysisCategorization
-    - AnalysisCategory
+    - AnalysisOutputCategorization
+    - AnalysisOutputCategory
     - AnalysisSet
     - DataSubset
     - GroupingFactor

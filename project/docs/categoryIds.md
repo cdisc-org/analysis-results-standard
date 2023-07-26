@@ -29,7 +29,7 @@ URI: [ars:categoryIds](https://www.cdisc.org/ars/1-0/categoryIds)
 
 ## Properties
 
-* Range: [AnalysisCategory](AnalysisCategory.md)
+* Range: [AnalysisOutputCategory](AnalysisOutputCategory.md)
 
 * Multivalued: True
 
@@ -67,7 +67,7 @@ alias: categoryIds
 domain_of:
 - Analysis
 - Output
-range: AnalysisCategory
+range: AnalysisOutputCategory
 required: false
 inlined: false
 

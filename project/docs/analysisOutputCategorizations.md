@@ -1,11 +1,11 @@
-# Slot: analysisCategorizations
+# Slot: analysisOutputCategorizations
 
 
 _Sets of related implementer-defined categories that can be used to categorize analyses or outputs._
 
 
 
-URI: [ars:analysisCategorizations](https://www.cdisc.org/ars/1-0/analysisCategorizations)
+URI: [ars:analysisOutputCategorizations](https://www.cdisc.org/ars/1-0/analysisOutputCategorizations)
 
 
 
@@ -28,7 +28,7 @@ URI: [ars:analysisCategorizations](https://www.cdisc.org/ars/1-0/analysisCategor
 
 ## Properties
 
-* Range: [AnalysisCategorization](AnalysisCategorization.md)
+* Range: [AnalysisOutputCategorization](AnalysisOutputCategorization.md)
 
 * Multivalued: True
 
@@ -56,16 +56,16 @@ URI: [ars:analysisCategorizations](https://www.cdisc.org/ars/1-0/analysisCategor
 
 <details>
 ```yaml
-name: analysisCategorizations
+name: analysisOutputCategorizations
 description: Sets of related implementer-defined categories that can be used to categorize
   analyses or outputs.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 multivalued: true
-alias: analysisCategorizations
+alias: analysisOutputCategorizations
 domain_of:
 - ReportingEvent
-range: AnalysisCategorization
+range: AnalysisOutputCategorization
 inlined: true
 inlined_as_list: true
 

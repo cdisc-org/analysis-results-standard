@@ -35,7 +35,7 @@ URI: [ars:Analysis](https://www.cdisc.org/ars/1-0/Analysis)
         Analysis : documentRefs
         Analysis --|> DocumentReference : documentRefs
         Analysis : categoryIds
-        Analysis --|> AnalysisCategory : categoryIds
+        Analysis --|> AnalysisOutputCategory : categoryIds
         Analysis : dataset
         Analysis : variable
         Analysis : analysisSetId
@@ -75,7 +75,7 @@ URI: [ars:Analysis](https://www.cdisc.org/ars/1-0/Analysis)
 | [reason](reason.md) | 1..1 <br/> [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) | The rationale for performing this analysis | direct |
 | [purpose](purpose.md) | 1..1 <br/> [ExtensibleTerminologyTerm](ExtensibleTerminologyTerm.md) | The purpose of the analysis within the body of evidence (e | direct |
 | [documentRefs](documentRefs.md) | 0..* <br/> [DocumentReference](DocumentReference.md) | References to external documents containing additional information | direct |
-| [categoryIds](categoryIds.md) | 0..* <br/> [AnalysisCategory](AnalysisCategory.md) | References to any implementer-defined categories that apply to the analysis | direct |
+| [categoryIds](categoryIds.md) | 0..* <br/> [AnalysisOutputCategory](AnalysisOutputCategory.md) | References to any implementer-defined categories that apply to the analysis | direct |
 | [dataset](dataset.md) | 0..1 <br/> [String](String.md) | The name of the analysis dataset | direct |
 | [variable](variable.md) | 0..1 <br/> [String](String.md) | The name of the variable | direct |
 | [analysisSetId](analysisSetId.md) | 0..1 <br/> [AnalysisSet](AnalysisSet.md) | The identifier of the referenced analysis set | direct |
@@ -247,8 +247,8 @@ attributes:
     - ReferenceDocument
     - TerminologyExtension
     - SponsorTerm
-    - AnalysisCategorization
-    - AnalysisCategory
+    - AnalysisOutputCategorization
+    - AnalysisOutputCategory
     - AnalysisSet
     - DataSubset
     - GroupingFactor
@@ -347,7 +347,7 @@ attributes:
     domain_of:
     - Analysis
     - Output
-    range: AnalysisCategory
+    range: AnalysisOutputCategory
     required: false
     inlined: false
   dataset:

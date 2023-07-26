@@ -1,22 +1,22 @@
-# Class: AnalysisCategorization
+# Class: AnalysisOutputCategory
 
-_A set of related implementer-defined categories that can be used to categorize analyses or outputs._
-
-
+_An implementer-defined category of analyses/outputs, which may include one or more sub-categorization._
 
 
-URI: [ars:AnalysisCategorization](https://www.cdisc.org/ars/1-0/AnalysisCategorization)
+
+
+URI: [ars:AnalysisOutputCategory](https://www.cdisc.org/ars/1-0/AnalysisOutputCategory)
 
 
 
 
 ```mermaid
  classDiagram
-    class AnalysisCategorization
-      AnalysisCategorization : categories
-        AnalysisCategorization --|> AnalysisCategory : categories
-        AnalysisCategorization : id
-        AnalysisCategorization : label
+    class AnalysisOutputCategory
+      AnalysisOutputCategory : id
+        AnalysisOutputCategory : label
+        AnalysisOutputCategory : subCategorizations
+        AnalysisOutputCategory --|> AnalysisOutputCategorization : subCategorizations
         
 ```
 
@@ -30,7 +30,7 @@ URI: [ars:AnalysisCategorization](https://www.cdisc.org/ars/1-0/AnalysisCategori
 | ---  | --- | --- | --- |
 | [id](id.md) | 1..1 <br/> [String](String.md) | The assigned identifying value for the instance of the class | direct |
 | [label](label.md) | 0..1 <br/> [String](String.md) | A short informative description that may be used for display | direct |
-| [categories](categories.md) | 1..* <br/> [AnalysisCategory](AnalysisCategory.md) | Implementer-defined categories of analyses/outputs, each of which may include... | direct |
+| [subCategorizations](subCategorizations.md) | 0..* <br/> [AnalysisOutputCategorization](AnalysisOutputCategorization.md) | Sets of related implementer-defined sub-categories that can be used to catego... | direct |
 
 _* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
@@ -41,8 +41,9 @@ _* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-c
 
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
-| [ReportingEvent](ReportingEvent.md) | [analysisCategorizations](analysisCategorizations.md) | range | [AnalysisCategorization](AnalysisCategorization.md) |
-| [AnalysisCategory](AnalysisCategory.md) | [subCategorizations](subCategorizations.md) | range | [AnalysisCategorization](AnalysisCategorization.md) |
+| [AnalysisOutputCategorization](AnalysisOutputCategorization.md) | [categories](categories.md) | range | [AnalysisOutputCategory](AnalysisOutputCategory.md) |
+| [Analysis](Analysis.md) | [categoryIds](categoryIds.md) | range | [AnalysisOutputCategory](AnalysisOutputCategory.md) |
+| [Output](Output.md) | [categoryIds](categoryIds.md) | range | [AnalysisOutputCategory](AnalysisOutputCategory.md) |
 
 
 
@@ -70,8 +71,8 @@ _* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-c
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | ars:AnalysisCategorization |
-| native | ars:AnalysisCategorization |
+| self | ars:AnalysisOutputCategory |
+| native | ars:AnalysisOutputCategory |
 
 
 
@@ -85,15 +86,15 @@ _* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-c
 
 <details>
 ```yaml
-name: AnalysisCategorization
-description: A set of related implementer-defined categories that can be used to categorize
-  analyses or outputs.
+name: AnalysisOutputCategory
+description: An implementer-defined category of analyses/outputs, which may include
+  one or more sub-categorization.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 slots:
 - id
 - label
-- categories
+- subCategorizations
 
 ```
 </details>
@@ -102,9 +103,9 @@ slots:
 
 <details>
 ```yaml
-name: AnalysisCategorization
-description: A set of related implementer-defined categories that can be used to categorize
-  analyses or outputs.
+name: AnalysisOutputCategory
+description: An implementer-defined category of analyses/outputs, which may include
+  one or more sub-categorization.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 attributes:
@@ -115,14 +116,14 @@ attributes:
     rank: 1000
     identifier: true
     alias: id
-    owner: AnalysisCategorization
+    owner: AnalysisOutputCategory
     domain_of:
     - ReportingEvent
     - ReferenceDocument
     - TerminologyExtension
     - SponsorTerm
-    - AnalysisCategorization
-    - AnalysisCategory
+    - AnalysisOutputCategorization
+    - AnalysisOutputCategory
     - AnalysisSet
     - DataSubset
     - GroupingFactor
@@ -142,10 +143,10 @@ attributes:
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: label
-    owner: AnalysisCategorization
+    owner: AnalysisOutputCategory
     domain_of:
-    - AnalysisCategorization
-    - AnalysisCategory
+    - AnalysisOutputCategorization
+    - AnalysisOutputCategory
     - AnalysisSet
     - DataSubset
     - GroupingFactor
@@ -154,19 +155,18 @@ attributes:
     - PageRef
     - Operation
     range: string
-  categories:
-    name: categories
-    description: Implementer-defined categories of analyses/outputs, each of which
-      may include one or more sub-categorization.
+  subCategorizations:
+    name: subCategorizations
+    description: Sets of related implementer-defined sub-categories that can be used
+      to categorize analyses or outputs.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     multivalued: true
-    alias: categories
-    owner: AnalysisCategorization
+    alias: subCategorizations
+    owner: AnalysisOutputCategory
     domain_of:
-    - AnalysisCategorization
-    range: AnalysisCategory
-    required: true
+    - AnalysisOutputCategory
+    range: AnalysisOutputCategorization
     inlined: true
     inlined_as_list: true
 

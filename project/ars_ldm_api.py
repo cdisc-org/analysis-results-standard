@@ -67,7 +67,7 @@ class ArsLdmAPI:
              listOfPlannedOutputs: Union[str, MatchExpression] = None,
              referenceDocuments: Union[str, MatchExpression] = None,
              terminologyExtensions: Union[str, MatchExpression] = None,
-             analysisCategorizations: Union[str, MatchExpression] = None,
+             analysisOutputCategorizations: Union[str, MatchExpression] = None,
              analysisSets: Union[str, MatchExpression] = None,
              analysisGroupings: Union[str, MatchExpression] = None,
              dataSubsets: Union[str, MatchExpression] = None,
@@ -88,7 +88,7 @@ class ArsLdmAPI:
         :param listOfPlannedOutputs: An optional structured list of the outputs defined for the reporting event.
         :param referenceDocuments: External documents containing information referenced for the reporting event.
         :param terminologyExtensions: Any sponsor-defined extensions to extensible terminology.
-        :param analysisCategorizations: Sets of related implementer-defined categories that can be used to categorize analyses or outputs.
+        :param analysisOutputCategorizations: Sets of related implementer-defined categories that can be used to categorize analyses or outputs.
         :param analysisSets: The analysis sets (subject populations) defined for the reporting event.
         :param analysisGroupings: Characteristics used to subdivide the subject population (e.g., treatment, sex, age group).
         :param dataSubsets: Subsets of data identified by selection criteria for inclusion in analysis definitions.
@@ -115,7 +115,7 @@ class ArsLdmAPI:
                                                  
                                                  terminologyExtensions=terminologyExtensions,
                                                  
-                                                 analysisCategorizations=analysisCategorizations,
+                                                 analysisOutputCategorizations=analysisOutputCategorizations,
                                                  
                                                  analysisSets=analysisSets,
                                                  
@@ -187,9 +187,9 @@ class ArsLdmAPI:
     def query_OrderedListItem(self,
              level: Union[str, MatchExpression] = None,
              order: Union[str, MatchExpression] = None,
-             sublist: Union[str, MatchExpression] = None,
              analysisId: Union[str, MatchExpression] = None,
              outputId: Union[str, MatchExpression] = None,
+             sublist: Union[str, MatchExpression] = None,
              name: Union[str, MatchExpression] = None,
              
              _extra: Any = None) -> List[OrderedListItem]:
@@ -198,9 +198,9 @@ class ArsLdmAPI:
 
         :param level: The level of the entry within a hierarchical structure.
         :param order: The ordinal of the instance with respect to other instances.
-        :param sublist: A sub-list of items (analyses or outputs) that may be further organized within sub-lists.
         :param analysisId: The identifier of the referenced analysis.
         :param outputId: The identifier of the referenced output.
+        :param sublist: A sub-list of items (analyses or outputs) that may be further organized within sub-lists.
         :param name: The name for the instance of the class.
         
         :return: Person list matching constraints
@@ -211,11 +211,11 @@ class ArsLdmAPI:
                                                  
                                                  order=order,
                                                  
-                                                 sublist=sublist,
-                                                 
                                                  analysisId=analysisId,
                                                  
                                                  outputId=outputId,
+                                                 
+                                                 sublist=sublist,
                                                  
                                                  name=name,
                                                  
@@ -379,27 +379,27 @@ class ArsLdmAPI:
         return results
     
     # --
-    # AnalysisCategorization methods
+    # AnalysisOutputCategorization methods
     # --
-    def fetch_AnalysisCategorization(self, id_value: str) -> AnalysisCategorization:
+    def fetch_AnalysisOutputCategorization(self, id_value: str) -> AnalysisOutputCategorization:
         """
-        Retrieves an instance of `AnalysisCategorization` via a primary key
+        Retrieves an instance of `AnalysisOutputCategorization` via a primary key
 
         :param id_value:
-        :return: AnalysisCategorization with matching ID
+        :return: AnalysisOutputCategorization with matching ID
         """
-        q = FetchById(id=id_value, target_class=AnalysisCategorization.class_name)
+        q = FetchById(id=id_value, target_class=AnalysisOutputCategorization.class_name)
         results = self.query_engine.fetch_by_id(q)
         return results[0] if results else None
 
-    def query_AnalysisCategorization(self,
+    def query_AnalysisOutputCategorization(self,
              id: Union[str, MatchExpression] = None,
              label: Union[str, MatchExpression] = None,
              categories: Union[str, MatchExpression] = None,
              
-             _extra: Any = None) -> List[AnalysisCategorization]:
+             _extra: Any = None) -> List[AnalysisOutputCategorization]:
         """
-        Queries for instances of `AnalysisCategorization`
+        Queries for instances of `AnalysisOutputCategorization`
 
         :param id: The assigned identifying value for the instance of the class.
         :param label: A short informative description that may be used for display.
@@ -407,7 +407,7 @@ class ArsLdmAPI:
         
         :return: Person list matching constraints
         """
-        results = self.query_engine.simple_query(AnalysisCategorization.class_name,
+        results = self.query_engine.simple_query(AnalysisOutputCategorization.class_name,
                                                  
                                                  id=id,
                                                  
@@ -419,27 +419,27 @@ class ArsLdmAPI:
         return results
     
     # --
-    # AnalysisCategory methods
+    # AnalysisOutputCategory methods
     # --
-    def fetch_AnalysisCategory(self, id_value: str) -> AnalysisCategory:
+    def fetch_AnalysisOutputCategory(self, id_value: str) -> AnalysisOutputCategory:
         """
-        Retrieves an instance of `AnalysisCategory` via a primary key
+        Retrieves an instance of `AnalysisOutputCategory` via a primary key
 
         :param id_value:
-        :return: AnalysisCategory with matching ID
+        :return: AnalysisOutputCategory with matching ID
         """
-        q = FetchById(id=id_value, target_class=AnalysisCategory.class_name)
+        q = FetchById(id=id_value, target_class=AnalysisOutputCategory.class_name)
         results = self.query_engine.fetch_by_id(q)
         return results[0] if results else None
 
-    def query_AnalysisCategory(self,
+    def query_AnalysisOutputCategory(self,
              id: Union[str, MatchExpression] = None,
              label: Union[str, MatchExpression] = None,
              subCategorizations: Union[str, MatchExpression] = None,
              
-             _extra: Any = None) -> List[AnalysisCategory]:
+             _extra: Any = None) -> List[AnalysisOutputCategory]:
         """
-        Queries for instances of `AnalysisCategory`
+        Queries for instances of `AnalysisOutputCategory`
 
         :param id: The assigned identifying value for the instance of the class.
         :param label: A short informative description that may be used for display.
@@ -447,7 +447,7 @@ class ArsLdmAPI:
         
         :return: Person list matching constraints
         """
-        results = self.query_engine.simple_query(AnalysisCategory.class_name,
+        results = self.query_engine.simple_query(AnalysisOutputCategory.class_name,
                                                  
                                                  id=id,
                                                  

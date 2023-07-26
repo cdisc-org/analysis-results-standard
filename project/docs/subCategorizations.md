@@ -18,7 +18,7 @@ URI: [ars:subCategorizations](https://www.cdisc.org/ars/1-0/subCategorizations)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-[AnalysisCategory](AnalysisCategory.md) | An implementer-defined category of analyses/outputs, which may include one or... |  no  |
+[AnalysisOutputCategory](AnalysisOutputCategory.md) | An implementer-defined category of analyses/outputs, which may include one or... |  no  |
 
 
 
@@ -28,7 +28,7 @@ URI: [ars:subCategorizations](https://www.cdisc.org/ars/1-0/subCategorizations)
 
 ## Properties
 
-* Range: [AnalysisCategorization](AnalysisCategorization.md)
+* Range: [AnalysisOutputCategorization](AnalysisOutputCategorization.md)
 
 * Multivalued: True
 
@@ -64,8 +64,8 @@ rank: 1000
 multivalued: true
 alias: subCategorizations
 domain_of:
-- AnalysisCategory
-range: AnalysisCategorization
+- AnalysisOutputCategory
+range: AnalysisOutputCategorization
 inlined: true
 inlined_as_list: true
 

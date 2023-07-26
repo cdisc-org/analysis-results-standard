@@ -18,7 +18,7 @@ URI: [ars:categories](https://www.cdisc.org/ars/1-0/categories)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-[AnalysisCategorization](AnalysisCategorization.md) | A set of related implementer-defined categories that can be used to categoriz... |  no  |
+[AnalysisOutputCategorization](AnalysisOutputCategorization.md) | A set of related implementer-defined categories that can be used to categoriz... |  no  |
 
 
 
@@ -28,7 +28,7 @@ URI: [ars:categories](https://www.cdisc.org/ars/1-0/categories)
 
 ## Properties
 
-* Range: [AnalysisCategory](AnalysisCategory.md)
+* Range: [AnalysisOutputCategory](AnalysisOutputCategory.md)
 
 * Multivalued: True
 
@@ -66,8 +66,8 @@ rank: 1000
 multivalued: true
 alias: categories
 domain_of:
-- AnalysisCategorization
-range: AnalysisCategory
+- AnalysisOutputCategorization
+range: AnalysisOutputCategory
 required: true
 inlined: true
 inlined_as_list: true

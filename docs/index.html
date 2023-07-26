@@ -117,11 +117,11 @@ ReferenceDocument {
     uri location  
     string name  
 }
-AnalysisCategory {
+AnalysisOutputCategory {
     string id  
     string label  
 }
-AnalysisCategorization {
+AnalysisOutputCategorization {
     string id  
     string label  
 }
@@ -295,7 +295,7 @@ ReportingEvent ||--|| NestedList : "listOfPlannedAnalyses"
 ReportingEvent ||--|o NestedList : "listOfPlannedOutputs"
 ReportingEvent ||--}o ReferenceDocument : "referenceDocuments"
 ReportingEvent ||--}o TerminologyExtension : "terminologyExtensions"
-ReportingEvent ||--}o AnalysisCategorization : "analysisCategorizations"
+ReportingEvent ||--}o AnalysisOutputCategorization : "analysisOutputCategorizations"
 ReportingEvent ||--}o AnalysisSet : "analysisSets"
 ReportingEvent ||--}o SubjectGroupingFactor : "analysisGroupings"
 ReportingEvent ||--}o DataSubset : "dataSubsets"
@@ -306,15 +306,15 @@ ReportingEvent ||--}o GlobalDisplaySection : "globalDisplaySections"
 ReportingEvent ||--}o Output : "outputs"
 Output ||--}o OutputFile : "fileSpecifications"
 Output ||--}o OrderedDisplay : "displays"
-Output ||--}o AnalysisCategory : "categoryIds"
+Output ||--}o AnalysisOutputCategory : "categoryIds"
 Output ||--}o DocumentReference : "documentRefs"
 Output ||--|o AnalysisOutputProgrammingCode : "programmingCode"
 AnalysisOutputProgrammingCode ||--|o DocumentReference : "documentRef"
 AnalysisOutputProgrammingCode ||--}o AnalysisOutputCodeParameter : "parameters"
 DocumentReference ||--|| ReferenceDocument : "referenceDocumentId"
 DocumentReference ||--}o PageRef : "pageRefs"
-AnalysisCategory ||--}o AnalysisCategorization : "subCategorizations"
-AnalysisCategorization ||--}| AnalysisCategory : "categories"
+AnalysisOutputCategory ||--}o AnalysisOutputCategorization : "subCategorizations"
+AnalysisOutputCategorization ||--}| AnalysisOutputCategory : "categories"
 OrderedDisplay ||--|o OutputDisplay : "display"
 OutputDisplay ||--}o DisplaySection : "displaySections"
 DisplaySection ||--}o OrderedDisplaySubSection : "orderedSubSections"
@@ -326,7 +326,7 @@ GlobalDisplaySection ||--}o DisplaySubSection : "subSections"
 Analysis ||--|| ExtensibleTerminologyTerm : "reason"
 Analysis ||--|| ExtensibleTerminologyTerm : "purpose"
 Analysis ||--}o DocumentReference : "documentRefs"
-Analysis ||--}o AnalysisCategory : "categoryIds"
+Analysis ||--}o AnalysisOutputCategory : "categoryIds"
 Analysis ||--|o AnalysisSet : "analysisSetId"
 Analysis ||--|o DataSubset : "dataSubsetId"
 Analysis ||--}o OrderedGroupingFactor : "orderedGroupings"
@@ -371,9 +371,9 @@ AnalysisGroup ||--|o WhereClauseCondition : "condition"
 AnalysisGroup ||--|o CompoundGroupExpression : "compoundExpression"
 TerminologyExtension ||--}| SponsorTerm : "sponsorTerms"
 NestedList ||--}o OrderedListItem : "listItems"
-OrderedListItem ||--|o NestedList : "sublist"
 OrderedListItem ||--|o Analysis : "analysisId"
 OrderedListItem ||--|o Output : "outputId"
+OrderedListItem ||--|o NestedList : "sublist"
 </code></pre>
 <h2 id="classes">Classes</h2>
 <p><em>Classes provide templates for organizing data. Data objects instantiate classes in the schema. Each class has a set of slots (aka fields, attributes) that are applicable to it. See <a href="https://linkml.io/linkml/schemas/models.html#classes">LinkML documentation</a> for more information.</em></p>
@@ -418,11 +418,11 @@ OrderedListItem ||--|o Output : "outputId"
 <td>The term used for an attribute whose terminology is extensible</td>
 </tr>
 <tr>
-<td><a href="AnalysisCategorization/">AnalysisCategorization</a></td>
+<td><a href="AnalysisOutputCategorization/">AnalysisOutputCategorization</a></td>
 <td>A set of related implementer-defined categories that can be used to categoriz...</td>
 </tr>
 <tr>
-<td><a href="AnalysisCategory/">AnalysisCategory</a></td>
+<td><a href="AnalysisOutputCategory/">AnalysisOutputCategory</a></td>
 <td>An implementer-defined category of analyses/outputs, which may include one or...</td>
 </tr>
 <tr>
@@ -666,7 +666,7 @@ OrderedListItem ||--|o Output : "outputId"
 <td>Any sponsor-defined extensions to extensible terminology</td>
 </tr>
 <tr>
-<td><a href="analysisCategorizations/">analysisCategorizations</a></td>
+<td><a href="analysisOutputCategorizations/">analysisOutputCategorizations</a></td>
 <td>Sets of related implementer-defined categories that can be used to categorize...</td>
 </tr>
 <tr>
@@ -1230,5 +1230,5 @@ OrderedListItem ||--|o Output : "outputId"
 </html>
 <!--
 MkDocs version : 1.4.3
-Build Date UTC : 2023-07-20 18:19:01.647665+00:00
+Build Date UTC : 2023-07-26 08:00:50.574878+00:00
 -->

@@ -5,6 +5,7 @@ listOfPlannedAnalyses:
   - name: Summary of Demographics
     level: 1
     order: 1
+    outputId: Out14-1-1
     sublist:
       listItems:
       - name: Summary of Subjects by Treatment
@@ -89,10 +90,10 @@ listOfPlannedAnalyses:
             level: 3
             order: 2
             analysisId: An03_06_Height_Comp_ByTrt
-    outputId: Out14-1-1
   - name: Overall Summary of Treatment-Emergent Adverse Events
     level: 1
     order: 2
+    outputId: Out14-3-1-1
     sublist:
       listItems:
       - name: Summary of Subjects by Treatment
@@ -136,10 +137,10 @@ listOfPlannedAnalyses:
             level: 3
             order: 8
             analysisId: An07_08_TEAELd2TrtDsc_Summ_ByTrt
-    outputId: Out14-3-1-1
   - name: Summary of TEAE by System Organ Class and Preferred Term
     level: 1
     order: 3
+    outputId: Out14-3-2-1
     sublist:
       listItems:
       - name: Summary of Subjects by Treatment
@@ -202,11 +203,11 @@ listOfPlannedAnalyses:
             level: 3
             order: 3
             analysisId: An07_10_SocPt_Comp_ByTrt_PlacHigh
-    outputId: Out14-3-2-1
   - name: Summary of Observed and Change from Baseline by Scheduled Visits - Vital
       Signs (Horizontal)
     level: 1
     order: 4
+    outputId: Out14-3-3-1a
     sublist:
       listItems:
       - name: Summary of Subjects by Treatment
@@ -221,11 +222,11 @@ listOfPlannedAnalyses:
         level: 2
         order: 3
         analysisId: An08_02_ChgBl_Summ_ByTrt
-    outputId: Out14-3-3-1a
   - name: Summary of Observed and Change from Baseline by Scheduled Visits - Vital
       Signs (Vertical)
     level: 1
     order: 5
+    outputId: Out14-3-3-1b
     sublist:
       listItems:
       - name: Summary of Subjects by Treatment
@@ -240,7 +241,6 @@ listOfPlannedAnalyses:
         level: 2
         order: 3
         analysisId: An08_02_ChgBl_Summ_ByTrt
-    outputId: Out14-3-3-1b
 version: 1
 listOfPlannedOutputs:
   listItems:
@@ -266,6 +266,85 @@ listOfPlannedOutputs:
     level: 1
     order: 5
     outputId: Out14-3-3-1b
+referenceDocuments:
+- name: Statistical Analysis Plan
+  id: CDISCPILOT01_SAP
+  location: ./sap.pdf
+- name: Clinical Study Report
+  id: CDISCPILOT01_CSR
+  location: ./csr-cdiscpilot01.pdf
+- name: at14-5-01.sas
+  id: at14-5-01_sas
+  location: ./at14-5-01.sas
+- name: AE Summary Table Shell
+  id: AE_Summary_Table_Shell
+  location: ./AE_Summary_Table_Shell.pdf
+terminologyExtensions:
+- id: TermEx1
+  sponsorTerms:
+  - id: TermEx1_1
+    submissionValue: ADDITIONAL EXAMPLE
+    description: The analysis was included in the set as an additional example to
+      demonstrate both a different type of analysis and sponsor terminology for analysis
+      reason.
+  enumeration: AnalysisReasonEnum
+analysisOutputCategorizations:
+- id: Catn_01_Grp
+  categories:
+  - id: Catn_01_Grp_1_Pop
+    label: Population Description
+  - id: Catn_01_Grp_2_Saf
+    label: Safety
+  - id: Catn_01_Grp_3_Eff
+    label: Efficacy
+  label: Group of Analyses
+- id: Catn_02_DClass
+  categories:
+  - id: Catn_02_Dclass_1_Sbj
+    label: Subject-level
+    subCategorizations:
+    - id: Catn_03_SbjDType
+      categories:
+      - id: Catn_03_SbjDType_1_Dm
+        label: Demographics
+      label: Subject-level Data Type
+  - id: Catn_02_Dclass_2_Evt
+    label: Events
+    subCategorizations:
+    - id: Catn_04_EvtDType
+      categories:
+      - id: Catn_04_EvtDType_1_Ae
+        label: Adverse Events
+      - id: Catn_04_EvtDType_2_Ce
+        label: Clinical Events
+      - id: Catn_04_EvtDType_3_Ds
+        label: Disposition
+      label: Events Data Type
+    - id: Catn_05_EvtAType
+      categories:
+      - id: Catn_05_EvtAType_1_Occ
+        label: Occurrence
+      - id: Catn_05_EvtAType_2_Tte
+        label: Time-to-Event
+      label: Events Analysis Type
+  - id: Catn_02_Dclass_3_Fnd
+    label: Findings
+    subCategorizations:
+    - id: Catn_06_FndDType
+      categories:
+      - id: Catn_06_FndDType_1_Vs
+        label: Vital Signs
+      - id: Catn_06_FndDType_2_Lb
+        label: Laboratory Tests
+      label: Findings Data Type
+    - id: Catn_07_FndAType
+      categories:
+      - id: Catn_07_FndAType_1_Chg
+        label: Change from Baseline
+      - id: Catn_07_FndAType_2_Sft
+        label: Shift Table
+      label: Findings Analysis Type
+  label: Analysis Data Class
 analysisSets:
 - level: 1
   order: 1
@@ -484,16 +563,6 @@ analysisGroupings:
       - HISPANIC OR LATINO
     id: AnlsGrouping_05_Ethnic_1
     label: Hispanic or Latino
-  - level: 1
-    order: 2
-    condition:
-      dataset: ADSL
-      variable: ETHNIC
-      comparator: EQ
-      value:
-      - NOT HISPANIC OR LATINO
-    id: AnlsGrouping_05_Ethnic_2
-    label: Not Hispanic or Latino
 dataSubsets:
 - level: 1
   order: 1
@@ -948,72 +1017,166 @@ dataGroupings:
       - End of Treatment
     id: AnlsGrouping_09_Visit_11
     label: End of Treatment
-globalDisplaySections:
-- sectionType: Title
-  subSections:
-  - id: GlobalDisp_Title_1
-    text: Safety Population
-- sectionType: Footnote
-  subSections:
-  - id: GlobalDisp_Footnote_1
-    text: 'Program: <pid>.sas, Output: <pid><oid>.rtf, Generated on: DDMONYYYY:HH:MM'
-analysisCategorizations:
-- id: Catn_01_Grp
-  categories:
-  - id: Catn_01_Grp_1_Pop
-    label: Population Description
-  - id: Catn_01_Grp_2_Saf
-    label: Safety
-  - id: Catn_01_Grp_3_Eff
-    label: Efficacy
-  label: Group of Analyses
-- id: Catn_02_DClass
-  categories:
-  - id: Catn_02_Dclass_1_Sbj
-    label: Subject-level
-    subCategorizations:
-    - id: Catn_03_SbjDType
-      categories:
-      - id: Catn_03_SbjDType_1_Dm
-        label: Demographics
-      label: Subject-level Data Type
-  - id: Catn_02_Dclass_2_Evt
-    label: Events
-    subCategorizations:
-    - id: Catn_04_EvtDType
-      categories:
-      - id: Catn_04_EvtDType_1_Ae
-        label: Adverse Events
-      - id: Catn_04_EvtDType_2_Ce
-        label: Clinical Events
-      - id: Catn_04_EvtDType_3_Ds
-        label: Disposition
-      label: Events Data Type
-    - id: Catn_05_EvtAType
-      categories:
-      - id: Catn_05_EvtAType_1_Occ
-        label: Occurrence
-      - id: Catn_05_EvtAType_2_Tte
-        label: Time-to-Event
-      label: Events Analysis Type
-  - id: Catn_02_Dclass_3_Fnd
-    label: Findings
-    subCategorizations:
-    - id: Catn_06_FndDType
-      categories:
-      - id: Catn_06_FndDType_1_Vs
-        label: Vital Signs
-      - id: Catn_06_FndDType_2_Lb
-        label: Laboratory Tests
-      label: Findings Data Type
-    - id: Catn_07_FndAType
-      categories:
-      - id: Catn_07_FndAType_1_Chg
-        label: Change from Baseline
-      - id: Catn_07_FndAType_2_Sft
-        label: Shift Table
-      label: Findings Analysis Type
-  label: Analysis Data Class
+methods:
+- name: Count by group for a categorical variable
+  id: Mth01_CatVar_Count_ByGrp
+  operations:
+  - name: Count of subjects
+    id: Mth01_CatVar_Count_ByGrp_1_n
+    label: n
+    resultPattern: (N=XX)
+  label: Grouped count for categorical variable
+  description: Count across groups for a categorical variable, based on subject occurrence
+- name: Summary by group of a categorical variable
+  id: Mth01_CatVar_Summ_ByGrp
+  operations:
+  - name: Count of subjects
+    id: Mth01_CatVar_Summ_ByGrp_1_n
+    label: n
+    resultPattern: XXX
+  - name: Percent of subjects
+    id: Mth01_CatVar_Summ_ByGrp_2_pct
+    label: '%'
+    referencedOperationRelationships:
+    - id: Mth01_CatVar_Summ_ByGrp_2_pct_NUM
+      referencedOperationRole:
+        controlledTerm: NUMERATOR
+      operationId: Mth01_CatVar_Summ_ByGrp_1_n
+      description: The count operation whose result provides the numerator for calculation
+        of the percentage. The referenced analysis should be the analysis that contains
+        this percent operation.
+    - id: Mth01_CatVar_Summ_ByGrp_2_pct_DEN
+      referencedOperationRole:
+        controlledTerm: DENOMINATOR
+      operationId: Mth01_CatVar_Count_ByGrp_1_n
+      description: The count operation whose result provides the denominator for calculation
+        of the percentage. The referenced analysis should have the same analysis set
+        and subject grouping(s) as the analysis containing this percent operation.
+    resultPattern: ( XX.X)
+  label: Grouped summary of categorical variable
+  description: Descriptive summary statistics across groups for a categorical variable,
+    based on subject occurrence
+  documentRefs:
+  - referenceDocumentId: CDISCPILOT01_SAP
+    pageRefs:
+    - refType: PhysicalRef
+      label: 7. GENERAL CONSIDERATIONS FOR DATA ANALYSES
+      pageNumbers:
+      - 9
+- name: Summary by group of a continuous variable
+  id: Mth02_ContVar_Summ_ByGrp
+  operations:
+  - name: Count of non-missing values
+    id: Mth02_ContVar_Summ_ByGrp_1_n
+    label: n
+    resultPattern: XX
+  - name: Mean
+    id: Mth02_ContVar_Summ_ByGrp_2_Mean
+    label: Mean
+    resultPattern: XX.X
+  - name: Standard deviation
+    id: Mth02_ContVar_Summ_ByGrp_3_SD
+    label: SD
+    resultPattern: (XX.XX)
+  - name: Median
+    id: Mth02_ContVar_Summ_ByGrp_4_Median
+    label: Median
+    resultPattern: XX.X
+  - name: First quartile
+    id: Mth02_ContVar_Summ_ByGrp_5_Q1
+    label: Q1
+    resultPattern: XX.X
+  - name: Third quartile
+    id: Mth02_ContVar_Summ_ByGrp_6_Q3
+    label: Q3
+    resultPattern: XX.X
+  - name: Minimum
+    id: Mth02_ContVar_Summ_ByGrp_7_Min
+    label: Min
+    resultPattern: XX
+  - name: Maximum
+    id: Mth02_ContVar_Summ_ByGrp_8_Max
+    label: Max
+    resultPattern: XX
+  label: Grouped summary of continuous variable
+  description: Descriptive summary statistics across groups for a continuous variable
+  documentRefs:
+  - referenceDocumentId: CDISCPILOT01_SAP
+    pageRefs:
+    - refType: PhysicalRef
+      label: 7. GENERAL CONSIDERATIONS FOR DATA ANALYSES
+      pageNumbers:
+      - 9
+- name: Pearson's chi-square test group comparison for a categorical variable
+  id: Mth03_CatVar_Comp_PChiSq
+  operations:
+  - name: P-value
+    id: Mth03_CatVar_Comp_PChiSq_1_pval
+    label: p-value
+    resultPattern: X.XXXX
+  label: Pearson's chi-square test group comparison for categorical variable
+  description: Comparison of groups by Peason's chi-square test for a categorical
+    variable
+  codeTemplate:
+    context: SAS Version 9.4
+    code: "proc freq data={dataset};\ntable {grp1var}*{grp2var}/chisq;\nexact pchi;\
+      \ \nods output PearsonChiSq=results.PCHI{outdssfx};\nrun;"
+    parameters:
+    - name: dataset
+      description: Input dataset
+      valueSource: dataset
+    - name: grp1var
+      description: First grouping variable
+      valueSource: orderedGroupings[1].groupingVariable
+    - name: grp2var
+      description: Second grouping variable
+      valueSource: orderedGroupings[2].groupingVariable
+    - name: outdssfx
+      description: Output dataset suffix
+      valueSource: orderedGroupings[2].groupingVariable
+- name: Analysis of variance group comparison for a continuous variable
+  id: Mth04_ContVar_Comp_Anova
+  operations:
+  - name: P-value
+    id: Mth04_ContVar_Comp_Anova_1_pval
+    label: p-value
+    resultPattern: X.XXXX
+  label: ANOVA group comparison for continuous variable
+  description: Comparison of groups by analysis of variance (ANOVA) for a continuous
+    variable
+  codeTemplate:
+    context: SAS Version 9.4
+    code: 'proc glm data={dataset};
+
+      class {grp1var};
+
+      model {grp2var}={gpr1var};
+
+      ods output OverallANOVA=results.ANOV{outdssfx} (where=(source = ''Model''));
+
+      run;'
+    parameters:
+    - name: dataset
+      description: Input dataset
+      valueSource: dataset
+    - name: grp1var
+      description: First grouping variable
+      valueSource: orderedGroupings[1].groupingVariable
+    - name: grp2var
+      description: Second grouping variable
+      valueSource: variable
+    - name: outdssfx
+      description: Output dataset suffix
+      valueSource: variable
+- name: Fisher's exact test group comparison for a categorical variable
+  id: Mth05_CatVar_Comp_FishEx
+  operations:
+  - name: P-value
+    id: Mth03_CatVar_Comp_FishEx_1_pval
+    label: p-value
+    resultPattern: X.XXXX
+  label: Fisher's exact test group comparison for categorical variable
+  description: Comparison of groups by Fisher's exact test for a categorical variable
 analyses:
 - name: Summary of Subjects by Treatment
   id: An01_05_SAF_Summ_ByTrt
@@ -1023,10 +1186,6 @@ analyses:
     controlledTerm: PRIMARY OUTCOME MEASURE
   methodId: Mth01_CatVar_Count_ByGrp
   version: 1
-  categoryIds:
-  - Catn_01_Grp_1_Pop
-  - Catn_02_Dclass_1_Sbj
-  - Catn_03_SbjDType_1_Dm
   documentRefs:
   - referenceDocumentId: CDISCPILOT01_SAP
     pageRefs:
@@ -1034,13 +1193,17 @@ analyses:
       label: 6. ANALYSIS POPULATIONS
       pageNumbers:
       - 9
+  categoryIds:
+  - Catn_01_Grp_1_Pop
+  - Catn_02_Dclass_1_Sbj
+  - Catn_03_SbjDType_1_Dm
+  dataset: ADSL
+  variable: USUBJID
   analysisSetId: AnalysisSet_02_SAF
   orderedGroupings:
   - order: 1
     resultsByGroup: true
     groupingId: AnlsGrouping_01_Trt
-  dataset: ADSL
-  variable: USUBJID
   results:
   - operationId: Mth01_CatVar_Count_ByGrp_1_n
     resultGroups:
@@ -1068,10 +1231,6 @@ analyses:
     controlledTerm: PRIMARY OUTCOME MEASURE
   methodId: Mth02_ContVar_Summ_ByGrp
   version: 1
-  categoryIds:
-  - Catn_01_Grp_1_Pop
-  - Catn_02_Dclass_1_Sbj
-  - Catn_03_SbjDType_1_Dm
   documentRefs:
   - referenceDocumentId: CDISCPILOT01_SAP
     pageRefs:
@@ -1079,13 +1238,17 @@ analyses:
       label: 9.2. Demographic and Baseline Characteristics
       pageNumbers:
       - 13
+  categoryIds:
+  - Catn_01_Grp_1_Pop
+  - Catn_02_Dclass_1_Sbj
+  - Catn_03_SbjDType_1_Dm
+  dataset: ADSL
+  variable: AGE
   analysisSetId: AnalysisSet_02_SAF
   orderedGroupings:
   - order: 1
     resultsByGroup: true
     groupingId: AnlsGrouping_01_Trt
-  dataset: ADSL
-  variable: AGE
   results:
   - operationId: Mth02_ContVar_Summ_ByGrp_1_n
     resultGroups:
@@ -1239,10 +1402,6 @@ analyses:
     controlledTerm: PRIMARY OUTCOME MEASURE
   methodId: Mth04_ContVar_Comp_Anova
   version: 1
-  categoryIds:
-  - Catn_01_Grp_1_Pop
-  - Catn_02_Dclass_1_Sbj
-  - Catn_03_SbjDType_1_Dm
   documentRefs:
   - referenceDocumentId: CDISCPILOT01_SAP
     pageRefs:
@@ -1250,13 +1409,17 @@ analyses:
       label: 9.2. Demographic and Baseline Characteristics
       pageNumbers:
       - 13
+  categoryIds:
+  - Catn_01_Grp_1_Pop
+  - Catn_02_Dclass_1_Sbj
+  - Catn_03_SbjDType_1_Dm
+  dataset: ADSL
+  variable: AGE
   analysisSetId: AnalysisSet_02_SAF
   orderedGroupings:
   - order: 1
     resultsByGroup: false
     groupingId: AnlsGrouping_01_Trt
-  dataset: ADSL
-  variable: AGE
   programmingCode:
     context: SAS Version 9.4
     code: 'proc glm data=ADSL;
@@ -1282,10 +1445,6 @@ analyses:
     controlledTerm: PRIMARY OUTCOME MEASURE
   methodId: Mth01_CatVar_Summ_ByGrp
   version: 1
-  categoryIds:
-  - Catn_01_Grp_1_Pop
-  - Catn_02_Dclass_1_Sbj
-  - Catn_03_SbjDType_1_Dm
   documentRefs:
   - referenceDocumentId: CDISCPILOT01_SAP
     pageRefs:
@@ -1293,6 +1452,12 @@ analyses:
       label: 9.2. Demographic and Baseline Characteristics
       pageNumbers:
       - 13
+  categoryIds:
+  - Catn_01_Grp_1_Pop
+  - Catn_02_Dclass_1_Sbj
+  - Catn_03_SbjDType_1_Dm
+  dataset: ADSL
+  variable: USUBJID
   analysisSetId: AnalysisSet_02_SAF
   orderedGroupings:
   - order: 1
@@ -1301,8 +1466,6 @@ analyses:
   - order: 2
     resultsByGroup: true
     groupingId: AnlsGrouping_03_AgeGp
-  dataset: ADSL
-  variable: USUBJID
   referencedAnalysisOperations:
   - referencedOperationRelationshipId: Mth01_CatVar_Summ_ByGrp_2_pct_NUM
     analysisId: An03_02_AgeGrp_Summ_ByTrt
@@ -1413,10 +1576,6 @@ analyses:
     controlledTerm: PRIMARY OUTCOME MEASURE
   methodId: Mth03_CatVar_Comp_PChiSq
   version: 1
-  categoryIds:
-  - Catn_01_Grp_1_Pop
-  - Catn_02_Dclass_1_Sbj
-  - Catn_03_SbjDType_1_Dm
   documentRefs:
   - referenceDocumentId: CDISCPILOT01_SAP
     pageRefs:
@@ -1424,6 +1583,12 @@ analyses:
       label: 9.2. Demographic and Baseline Characteristics
       pageNumbers:
       - 13
+  categoryIds:
+  - Catn_01_Grp_1_Pop
+  - Catn_02_Dclass_1_Sbj
+  - Catn_03_SbjDType_1_Dm
+  dataset: ADSL
+  variable: USUBJID
   analysisSetId: AnalysisSet_02_SAF
   orderedGroupings:
   - order: 1
@@ -1432,8 +1597,6 @@ analyses:
   - order: 2
     resultsByGroup: false
     groupingId: AnlsGrouping_03_AgeGp
-  dataset: ADSL
-  variable: USUBJID
   programmingCode:
     context: SAS Version 9.4
     code: "proc freq data=ADSL;\ntable TRT01A*AGEGR1/chisq;\nexact pchi; \nods output\
@@ -1453,10 +1616,6 @@ analyses:
     controlledTerm: PRIMARY OUTCOME MEASURE
   methodId: Mth01_CatVar_Summ_ByGrp
   version: 1
-  categoryIds:
-  - Catn_01_Grp_1_Pop
-  - Catn_02_Dclass_1_Sbj
-  - Catn_03_SbjDType_1_Dm
   documentRefs:
   - referenceDocumentId: CDISCPILOT01_SAP
     pageRefs:
@@ -1464,6 +1623,12 @@ analyses:
       label: 9.2. Demographic and Baseline Characteristics
       pageNumbers:
       - 13
+  categoryIds:
+  - Catn_01_Grp_1_Pop
+  - Catn_02_Dclass_1_Sbj
+  - Catn_03_SbjDType_1_Dm
+  dataset: ADSL
+  variable: USUBJID
   analysisSetId: AnalysisSet_02_SAF
   orderedGroupings:
   - order: 1
@@ -1472,8 +1637,6 @@ analyses:
   - order: 2
     resultsByGroup: true
     groupingId: AnlsGrouping_02_Sex
-  dataset: ADSL
-  variable: USUBJID
   referencedAnalysisOperations:
   - referencedOperationRelationshipId: Mth01_CatVar_Summ_ByGrp_2_pct_NUM
     analysisId: An03_03_Sex_Summ_ByTrt
@@ -1584,10 +1747,6 @@ analyses:
     controlledTerm: PRIMARY OUTCOME MEASURE
   methodId: Mth03_CatVar_Comp_PChiSq
   version: 1
-  categoryIds:
-  - Catn_01_Grp_1_Pop
-  - Catn_02_Dclass_1_Sbj
-  - Catn_03_SbjDType_1_Dm
   documentRefs:
   - referenceDocumentId: CDISCPILOT01_SAP
     pageRefs:
@@ -1595,6 +1754,12 @@ analyses:
       label: 9.2. Demographic and Baseline Characteristics
       pageNumbers:
       - 13
+  categoryIds:
+  - Catn_01_Grp_1_Pop
+  - Catn_02_Dclass_1_Sbj
+  - Catn_03_SbjDType_1_Dm
+  dataset: ADSL
+  variable: USUBJID
   analysisSetId: AnalysisSet_02_SAF
   orderedGroupings:
   - order: 1
@@ -1603,8 +1768,6 @@ analyses:
   - order: 2
     resultsByGroup: false
     groupingId: AnlsGrouping_02_Sex
-  dataset: ADSL
-  variable: USUBJID
   programmingCode:
     context: SAS Version 9.4
     code: "proc freq data=ADSL;\ntable TRT01A*SEX/chisq;\nexact pchi; \nods output\
@@ -1624,10 +1787,6 @@ analyses:
     controlledTerm: PRIMARY OUTCOME MEASURE
   methodId: Mth01_CatVar_Summ_ByGrp
   version: 1
-  categoryIds:
-  - Catn_01_Grp_1_Pop
-  - Catn_02_Dclass_1_Sbj
-  - Catn_03_SbjDType_1_Dm
   documentRefs:
   - referenceDocumentId: CDISCPILOT01_SAP
     pageRefs:
@@ -1635,6 +1794,12 @@ analyses:
       label: 9.2. Demographic and Baseline Characteristics
       pageNumbers:
       - 13
+  categoryIds:
+  - Catn_01_Grp_1_Pop
+  - Catn_02_Dclass_1_Sbj
+  - Catn_03_SbjDType_1_Dm
+  dataset: ADSL
+  variable: USUBJID
   analysisSetId: AnalysisSet_02_SAF
   orderedGroupings:
   - order: 1
@@ -1643,8 +1808,6 @@ analyses:
   - order: 2
     resultsByGroup: true
     groupingId: AnlsGrouping_05_Ethnic
-  dataset: ADSL
-  variable: USUBJID
   referencedAnalysisOperations:
   - referencedOperationRelationshipId: Mth01_CatVar_Summ_ByGrp_2_pct_NUM
     analysisId: An03_04_Ethnic_Summ_ByTrt
@@ -1755,10 +1918,6 @@ analyses:
     controlledTerm: PRIMARY OUTCOME MEASURE
   methodId: Mth03_CatVar_Comp_PChiSq
   version: 1
-  categoryIds:
-  - Catn_01_Grp_1_Pop
-  - Catn_02_Dclass_1_Sbj
-  - Catn_03_SbjDType_1_Dm
   documentRefs:
   - referenceDocumentId: CDISCPILOT01_SAP
     pageRefs:
@@ -1766,6 +1925,12 @@ analyses:
       label: 9.2. Demographic and Baseline Characteristics
       pageNumbers:
       - 13
+  categoryIds:
+  - Catn_01_Grp_1_Pop
+  - Catn_02_Dclass_1_Sbj
+  - Catn_03_SbjDType_1_Dm
+  dataset: ADSL
+  variable: USUBJID
   analysisSetId: AnalysisSet_02_SAF
   orderedGroupings:
   - order: 1
@@ -1774,8 +1939,6 @@ analyses:
   - order: 2
     resultsByGroup: false
     groupingId: AnlsGrouping_05_Ethnic
-  dataset: ADSL
-  variable: USUBJID
   programmingCode:
     context: SAS Version 9.4
     code: "proc freq data=ADSL;\ntable TRT01A*ETHNIC/chisq;\nexact pchi; \nods output\
@@ -1795,10 +1958,6 @@ analyses:
     controlledTerm: PRIMARY OUTCOME MEASURE
   methodId: Mth01_CatVar_Summ_ByGrp
   version: 1
-  categoryIds:
-  - Catn_01_Grp_1_Pop
-  - Catn_02_Dclass_1_Sbj
-  - Catn_03_SbjDType_1_Dm
   documentRefs:
   - referenceDocumentId: CDISCPILOT01_SAP
     pageRefs:
@@ -1806,6 +1965,12 @@ analyses:
       label: 9.2. Demographic and Baseline Characteristics
       pageNumbers:
       - 13
+  categoryIds:
+  - Catn_01_Grp_1_Pop
+  - Catn_02_Dclass_1_Sbj
+  - Catn_03_SbjDType_1_Dm
+  dataset: ADSL
+  variable: USUBJID
   analysisSetId: AnalysisSet_02_SAF
   orderedGroupings:
   - order: 1
@@ -1814,8 +1979,6 @@ analyses:
   - order: 2
     resultsByGroup: true
     groupingId: AnlsGrouping_04_Race
-  dataset: ADSL
-  variable: USUBJID
   referencedAnalysisOperations:
   - referencedOperationRelationshipId: Mth01_CatVar_Summ_ByGrp_2_pct_NUM
     analysisId: An03_05_Race_Summ_ByTrt
@@ -2262,10 +2425,6 @@ analyses:
     controlledTerm: PRIMARY OUTCOME MEASURE
   methodId: Mth03_CatVar_Comp_PChiSq
   version: 1
-  categoryIds:
-  - Catn_01_Grp_1_Pop
-  - Catn_02_Dclass_1_Sbj
-  - Catn_03_SbjDType_1_Dm
   documentRefs:
   - referenceDocumentId: CDISCPILOT01_SAP
     pageRefs:
@@ -2273,6 +2432,12 @@ analyses:
       label: 9.2. Demographic and Baseline Characteristics
       pageNumbers:
       - 13
+  categoryIds:
+  - Catn_01_Grp_1_Pop
+  - Catn_02_Dclass_1_Sbj
+  - Catn_03_SbjDType_1_Dm
+  dataset: ADSL
+  variable: USUBJID
   analysisSetId: AnalysisSet_02_SAF
   orderedGroupings:
   - order: 1
@@ -2281,8 +2446,6 @@ analyses:
   - order: 2
     resultsByGroup: false
     groupingId: AnlsGrouping_04_Race
-  dataset: ADSL
-  variable: USUBJID
   programmingCode:
     context: SAS Version 9.4
     code: "proc freq data=ADSL;\ntable TRT01A*RACE/chisq;\nexact pchi; \nods output\
@@ -2302,10 +2465,6 @@ analyses:
     controlledTerm: PRIMARY OUTCOME MEASURE
   methodId: Mth02_ContVar_Summ_ByGrp
   version: 1
-  categoryIds:
-  - Catn_01_Grp_1_Pop
-  - Catn_02_Dclass_1_Sbj
-  - Catn_03_SbjDType_1_Dm
   documentRefs:
   - referenceDocumentId: CDISCPILOT01_SAP
     pageRefs:
@@ -2313,13 +2472,17 @@ analyses:
       label: 9.2. Demographic and Baseline Characteristics
       pageNumbers:
       - 13
+  categoryIds:
+  - Catn_01_Grp_1_Pop
+  - Catn_02_Dclass_1_Sbj
+  - Catn_03_SbjDType_1_Dm
+  dataset: ADSL
+  variable: HEIGHTBL
   analysisSetId: AnalysisSet_02_SAF
   orderedGroupings:
   - order: 1
     resultsByGroup: true
     groupingId: AnlsGrouping_01_Trt
-  dataset: ADSL
-  variable: HEIGHTBL
   results:
   - operationId: Mth02_ContVar_Summ_ByGrp_1_n
     resultGroups:
@@ -2473,10 +2636,6 @@ analyses:
     controlledTerm: PRIMARY OUTCOME MEASURE
   methodId: Mth04_ContVar_Comp_Anova
   version: 1
-  categoryIds:
-  - Catn_01_Grp_1_Pop
-  - Catn_02_Dclass_1_Sbj
-  - Catn_03_SbjDType_1_Dm
   documentRefs:
   - referenceDocumentId: CDISCPILOT01_SAP
     pageRefs:
@@ -2484,13 +2643,17 @@ analyses:
       label: 9.2. Demographic and Baseline Characteristics
       pageNumbers:
       - 13
+  categoryIds:
+  - Catn_01_Grp_1_Pop
+  - Catn_02_Dclass_1_Sbj
+  - Catn_03_SbjDType_1_Dm
+  dataset: ADSL
+  variable: HEIGHTBL
   analysisSetId: AnalysisSet_02_SAF
   orderedGroupings:
   - order: 1
     resultsByGroup: false
     groupingId: AnlsGrouping_01_Trt
-  dataset: ADSL
-  variable: HEIGHTBL
   programmingCode:
     context: SAS Version 9.4
     code: 'proc glm data=ADSL;
@@ -2516,11 +2679,6 @@ analyses:
     controlledTerm: PRIMARY OUTCOME MEASURE
   methodId: Mth01_CatVar_Summ_ByGrp
   version: 1
-  categoryIds:
-  - Catn_01_Grp_2_Saf
-  - Catn_02_Dclass_2_Evt
-  - Catn_04_EvtDType_1_Ae
-  - Catn_05_EvtAType_1_Occ
   documentRefs:
   - referenceDocumentId: CDISCPILOT01_SAP
     pageRefs:
@@ -2528,14 +2686,19 @@ analyses:
       label: 11.2. Adverse Events
       firstPage: 15
       lastPage: 16
+  categoryIds:
+  - Catn_01_Grp_2_Saf
+  - Catn_02_Dclass_2_Evt
+  - Catn_04_EvtDType_1_Ae
+  - Catn_05_EvtAType_1_Occ
+  dataset: ADAE
+  variable: USUBJID
   analysisSetId: AnalysisSet_02_SAF
+  dataSubsetId: Dss01_TEAE
   orderedGroupings:
   - order: 1
     resultsByGroup: true
     groupingId: AnlsGrouping_01_Trt
-  dataSubsetId: Dss01_TEAE
-  dataset: ADAE
-  variable: USUBJID
   referencedAnalysisOperations:
   - referencedOperationRelationshipId: Mth01_CatVar_Summ_ByGrp_2_pct_NUM
     analysisId: An07_01_TEAE_Summ_ByTrt
@@ -2586,11 +2749,6 @@ analyses:
     controlledTerm: SECONDARY OUTCOME MEASURE
   methodId: Mth05_CatVar_Comp_FishEx
   version: 1
-  categoryIds:
-  - Catn_01_Grp_2_Saf
-  - Catn_02_Dclass_2_Evt
-  - Catn_04_EvtDType_1_Ae
-  - Catn_05_EvtAType_1_Occ
   documentRefs:
   - referenceDocumentId: CDISCPILOT01_SAP
     pageRefs:
@@ -2598,14 +2756,19 @@ analyses:
       label: 11.2. Adverse Events
       firstPage: 15
       lastPage: 16
+  categoryIds:
+  - Catn_01_Grp_2_Saf
+  - Catn_02_Dclass_2_Evt
+  - Catn_04_EvtDType_1_Ae
+  - Catn_05_EvtAType_1_Occ
+  dataset: ADAE
+  variable: USUBJID
   analysisSetId: AnalysisSet_02_SAF
+  dataSubsetId: Dss11_TEAE_PlacLow
   orderedGroupings:
   - order: 1
     resultsByGroup: false
     groupingId: AnlsGrouping_01_Trt
-  dataSubsetId: Dss11_TEAE_PlacLow
-  dataset: ADAE
-  variable: USUBJID
   results:
   - operationId: Mth03_CatVar_Comp_FishEx_1_pval
     resultGroups:
@@ -2620,11 +2783,6 @@ analyses:
     controlledTerm: SECONDARY OUTCOME MEASURE
   methodId: Mth05_CatVar_Comp_FishEx
   version: 1
-  categoryIds:
-  - Catn_01_Grp_2_Saf
-  - Catn_02_Dclass_2_Evt
-  - Catn_04_EvtDType_1_Ae
-  - Catn_05_EvtAType_1_Occ
   documentRefs:
   - referenceDocumentId: CDISCPILOT01_SAP
     pageRefs:
@@ -2632,14 +2790,19 @@ analyses:
       label: 11.2. Adverse Events
       firstPage: 15
       lastPage: 16
+  categoryIds:
+  - Catn_01_Grp_2_Saf
+  - Catn_02_Dclass_2_Evt
+  - Catn_04_EvtDType_1_Ae
+  - Catn_05_EvtAType_1_Occ
+  dataset: ADAE
+  variable: USUBJID
   analysisSetId: AnalysisSet_02_SAF
+  dataSubsetId: Dss12_TEAE_PlacHigh
   orderedGroupings:
   - order: 1
     resultsByGroup: false
     groupingId: AnlsGrouping_01_Trt
-  dataSubsetId: Dss12_TEAE_PlacHigh
-  dataset: ADAE
-  variable: USUBJID
   results:
   - operationId: Mth03_CatVar_Comp_FishEx_1_pval
     resultGroups:
@@ -2659,14 +2822,14 @@ analyses:
   - Catn_02_Dclass_2_Evt
   - Catn_04_EvtDType_1_Ae
   - Catn_05_EvtAType_1_Occ
+  dataset: ADAE
+  variable: USUBJID
   analysisSetId: AnalysisSet_02_SAF
+  dataSubsetId: Dss02_Related_TEAE
   orderedGroupings:
   - order: 1
     resultsByGroup: true
     groupingId: AnlsGrouping_01_Trt
-  dataSubsetId: Dss02_Related_TEAE
-  dataset: ADAE
-  variable: USUBJID
   referencedAnalysisOperations:
   - referencedOperationRelationshipId: Mth01_CatVar_Summ_ByGrp_2_pct_NUM
     analysisId: An07_02_RelTEAE_Summ_ByTrt
@@ -2722,14 +2885,14 @@ analyses:
   - Catn_02_Dclass_2_Evt
   - Catn_04_EvtDType_1_Ae
   - Catn_05_EvtAType_1_Occ
+  dataset: ADAE
+  variable: USUBJID
   analysisSetId: AnalysisSet_02_SAF
+  dataSubsetId: Dss03_Serious_TEAE
   orderedGroupings:
   - order: 1
     resultsByGroup: true
     groupingId: AnlsGrouping_01_Trt
-  dataSubsetId: Dss03_Serious_TEAE
-  dataset: ADAE
-  variable: USUBJID
   referencedAnalysisOperations:
   - referencedOperationRelationshipId: Mth01_CatVar_Summ_ByGrp_2_pct_NUM
     analysisId: An07_03_SerTEAE_Summ_ByTrt
@@ -2785,14 +2948,14 @@ analyses:
   - Catn_02_Dclass_2_Evt
   - Catn_04_EvtDType_1_Ae
   - Catn_05_EvtAType_1_Occ
+  dataset: ADAE
+  variable: USUBJID
   analysisSetId: AnalysisSet_02_SAF
+  dataSubsetId: Dss04_RelSer_TEAE
   orderedGroupings:
   - order: 1
     resultsByGroup: true
     groupingId: AnlsGrouping_01_Trt
-  dataSubsetId: Dss04_RelSer_TEAE
-  dataset: ADAE
-  variable: USUBJID
   referencedAnalysisOperations:
   - referencedOperationRelationshipId: Mth01_CatVar_Summ_ByGrp_2_pct_NUM
     analysisId: An07_04_RelSerTEAE_Summ_ByTrt
@@ -2848,14 +3011,14 @@ analyses:
   - Catn_02_Dclass_2_Evt
   - Catn_04_EvtDType_1_Ae
   - Catn_05_EvtAType_1_Occ
+  dataset: ADAE
+  variable: USUBJID
   analysisSetId: AnalysisSet_02_SAF
+  dataSubsetId: Dss05_TEAE_Ld2Dth
   orderedGroupings:
   - order: 1
     resultsByGroup: true
     groupingId: AnlsGrouping_01_Trt
-  dataSubsetId: Dss05_TEAE_Ld2Dth
-  dataset: ADAE
-  variable: USUBJID
   referencedAnalysisOperations:
   - referencedOperationRelationshipId: Mth01_CatVar_Summ_ByGrp_2_pct_NUM
     analysisId: An07_05_TEAELd2Dth_Summ_ByTrt
@@ -2911,14 +3074,14 @@ analyses:
   - Catn_02_Dclass_2_Evt
   - Catn_04_EvtDType_1_Ae
   - Catn_05_EvtAType_1_Occ
+  dataset: ADAE
+  variable: USUBJID
   analysisSetId: AnalysisSet_02_SAF
+  dataSubsetId: Dss06_Rel_TEAE_Ld2Dth
   orderedGroupings:
   - order: 1
     resultsByGroup: true
     groupingId: AnlsGrouping_01_Trt
-  dataSubsetId: Dss06_Rel_TEAE_Ld2Dth
-  dataset: ADAE
-  variable: USUBJID
   referencedAnalysisOperations:
   - referencedOperationRelationshipId: Mth01_CatVar_Summ_ByGrp_2_pct_NUM
     analysisId: An07_06_RelTEAELd2Dth_Summ_ByTrt
@@ -2975,14 +3138,14 @@ analyses:
   - Catn_02_Dclass_2_Evt
   - Catn_04_EvtDType_1_Ae
   - Catn_05_EvtAType_1_Occ
+  dataset: ADAE
+  variable: USUBJID
   analysisSetId: AnalysisSet_02_SAF
+  dataSubsetId: Dss07_TEAE_Ld2DoseMod
   orderedGroupings:
   - order: 1
     resultsByGroup: true
     groupingId: AnlsGrouping_01_Trt
-  dataSubsetId: Dss07_TEAE_Ld2DoseMod
-  dataset: ADAE
-  variable: USUBJID
   referencedAnalysisOperations:
   - referencedOperationRelationshipId: Mth01_CatVar_Summ_ByGrp_2_pct_NUM
     analysisId: An07_07_TEAELd2DoseMod_Summ_ByTrt
@@ -3039,14 +3202,14 @@ analyses:
   - Catn_02_Dclass_2_Evt
   - Catn_04_EvtDType_1_Ae
   - Catn_05_EvtAType_1_Occ
+  dataset: ADAE
+  variable: USUBJID
   analysisSetId: AnalysisSet_02_SAF
+  dataSubsetId: Dss08_AE_Ld2TrtDsc
   orderedGroupings:
   - order: 1
     resultsByGroup: true
     groupingId: AnlsGrouping_01_Trt
-  dataSubsetId: Dss08_AE_Ld2TrtDsc
-  dataset: ADAE
-  variable: USUBJID
   referencedAnalysisOperations:
   - referencedOperationRelationshipId: Mth01_CatVar_Summ_ByGrp_2_pct_NUM
     analysisId: An07_08_TEAELd2TrtDsc_Summ_ByTrt
@@ -3097,11 +3260,6 @@ analyses:
     controlledTerm: PRIMARY OUTCOME MEASURE
   methodId: Mth01_CatVar_Summ_ByGrp
   version: 1
-  categoryIds:
-  - Catn_01_Grp_2_Saf
-  - Catn_02_Dclass_2_Evt
-  - Catn_04_EvtDType_1_Ae
-  - Catn_05_EvtAType_1_Occ
   documentRefs:
   - referenceDocumentId: CDISCPILOT01_SAP
     pageRefs:
@@ -3109,7 +3267,15 @@ analyses:
       label: 11.2. Adverse Events
       firstPage: 15
       lastPage: 16
+  categoryIds:
+  - Catn_01_Grp_2_Saf
+  - Catn_02_Dclass_2_Evt
+  - Catn_04_EvtDType_1_Ae
+  - Catn_05_EvtAType_1_Occ
+  dataset: ADAE
+  variable: USUBJID
   analysisSetId: AnalysisSet_02_SAF
+  dataSubsetId: Dss01_TEAE
   orderedGroupings:
   - order: 1
     resultsByGroup: true
@@ -3117,9 +3283,6 @@ analyses:
   - order: 2
     resultsByGroup: true
     groupingId: AnlsGrouping_06_Soc
-  dataSubsetId: Dss01_TEAE
-  dataset: ADAE
-  variable: USUBJID
   referencedAnalysisOperations:
   - referencedOperationRelationshipId: Mth01_CatVar_Summ_ByGrp_2_pct_NUM
     analysisId: An07_09_Soc_Summ_ByTrt
@@ -4239,11 +4402,6 @@ analyses:
     controlledTerm: PRIMARY OUTCOME MEASURE
   methodId: Mth05_CatVar_Comp_FishEx
   version: 1
-  categoryIds:
-  - Catn_01_Grp_2_Saf
-  - Catn_02_Dclass_2_Evt
-  - Catn_04_EvtDType_1_Ae
-  - Catn_05_EvtAType_1_Occ
   documentRefs:
   - referenceDocumentId: CDISCPILOT01_SAP
     pageRefs:
@@ -4251,7 +4409,15 @@ analyses:
       label: 11.2. Adverse Events
       firstPage: 15
       lastPage: 16
+  categoryIds:
+  - Catn_01_Grp_2_Saf
+  - Catn_02_Dclass_2_Evt
+  - Catn_04_EvtDType_1_Ae
+  - Catn_05_EvtAType_1_Occ
+  dataset: ADAE
+  variable: USUBJID
   analysisSetId: AnalysisSet_02_SAF
+  dataSubsetId: Dss11_TEAE_PlacLow
   orderedGroupings:
   - order: 1
     resultsByGroup: false
@@ -4259,9 +4425,6 @@ analyses:
   - order: 2
     resultsByGroup: true
     groupingId: AnlsGrouping_06_Soc
-  dataSubsetId: Dss11_TEAE_PlacLow
-  dataset: ADAE
-  variable: USUBJID
   results:
   - operationId: Mth03_CatVar_Comp_FishEx_1_pval
     resultGroups:
@@ -4279,11 +4442,6 @@ analyses:
     controlledTerm: PRIMARY OUTCOME MEASURE
   methodId: Mth05_CatVar_Comp_FishEx
   version: 1
-  categoryIds:
-  - Catn_01_Grp_2_Saf
-  - Catn_02_Dclass_2_Evt
-  - Catn_04_EvtDType_1_Ae
-  - Catn_05_EvtAType_1_Occ
   documentRefs:
   - referenceDocumentId: CDISCPILOT01_SAP
     pageRefs:
@@ -4291,7 +4449,15 @@ analyses:
       label: 11.2. Adverse Events
       firstPage: 15
       lastPage: 16
+  categoryIds:
+  - Catn_01_Grp_2_Saf
+  - Catn_02_Dclass_2_Evt
+  - Catn_04_EvtDType_1_Ae
+  - Catn_05_EvtAType_1_Occ
+  dataset: ADAE
+  variable: USUBJID
   analysisSetId: AnalysisSet_02_SAF
+  dataSubsetId: Dss12_TEAE_PlacHigh
   orderedGroupings:
   - order: 1
     resultsByGroup: false
@@ -4299,9 +4465,6 @@ analyses:
   - order: 2
     resultsByGroup: true
     groupingId: AnlsGrouping_06_Soc
-  dataSubsetId: Dss12_TEAE_PlacHigh
-  dataset: ADAE
-  variable: USUBJID
   results:
   - operationId: Mth03_CatVar_Comp_FishEx_1_pval
     resultGroups:
@@ -4319,11 +4482,6 @@ analyses:
     controlledTerm: PRIMARY OUTCOME MEASURE
   methodId: Mth01_CatVar_Summ_ByGrp
   version: 1
-  categoryIds:
-  - Catn_01_Grp_2_Saf
-  - Catn_02_Dclass_2_Evt
-  - Catn_04_EvtDType_1_Ae
-  - Catn_05_EvtAType_1_Occ
   documentRefs:
   - referenceDocumentId: CDISCPILOT01_SAP
     pageRefs:
@@ -4331,7 +4489,15 @@ analyses:
       label: 11.2. Adverse Events
       firstPage: 15
       lastPage: 16
+  categoryIds:
+  - Catn_01_Grp_2_Saf
+  - Catn_02_Dclass_2_Evt
+  - Catn_04_EvtDType_1_Ae
+  - Catn_05_EvtAType_1_Occ
+  dataset: ADAE
+  variable: USUBJID
   analysisSetId: AnalysisSet_02_SAF
+  dataSubsetId: Dss01_TEAE
   orderedGroupings:
   - order: 1
     resultsByGroup: true
@@ -4342,9 +4508,6 @@ analyses:
   - order: 3
     resultsByGroup: true
     groupingId: AnlsGrouping_07_Pt
-  dataSubsetId: Dss01_TEAE
-  dataset: ADAE
-  variable: USUBJID
   referencedAnalysisOperations:
   - referencedOperationRelationshipId: Mth01_CatVar_Summ_ByGrp_2_pct_NUM
     analysisId: An07_10_SocPt_Summ_ByTrt
@@ -18160,11 +18323,6 @@ analyses:
     controlledTerm: PRIMARY OUTCOME MEASURE
   methodId: Mth05_CatVar_Comp_FishEx
   version: 1
-  categoryIds:
-  - Catn_01_Grp_2_Saf
-  - Catn_02_Dclass_2_Evt
-  - Catn_04_EvtDType_1_Ae
-  - Catn_05_EvtAType_1_Occ
   documentRefs:
   - referenceDocumentId: CDISCPILOT01_SAP
     pageRefs:
@@ -18172,7 +18330,15 @@ analyses:
       label: 11.2. Adverse Events
       firstPage: 15
       lastPage: 16
+  categoryIds:
+  - Catn_01_Grp_2_Saf
+  - Catn_02_Dclass_2_Evt
+  - Catn_04_EvtDType_1_Ae
+  - Catn_05_EvtAType_1_Occ
+  dataset: ADAE
+  variable: USUBJID
   analysisSetId: AnalysisSet_02_SAF
+  dataSubsetId: Dss11_TEAE_PlacLow
   orderedGroupings:
   - order: 1
     resultsByGroup: false
@@ -18183,9 +18349,6 @@ analyses:
   - order: 3
     resultsByGroup: true
     groupingId: AnlsGrouping_07_Pt
-  dataSubsetId: Dss11_TEAE_PlacLow
-  dataset: ADAE
-  variable: USUBJID
   results:
   - operationId: Mth03_CatVar_Comp_FishEx_1_pval
     resultGroups:
@@ -18204,11 +18367,6 @@ analyses:
     controlledTerm: PRIMARY OUTCOME MEASURE
   methodId: Mth05_CatVar_Comp_FishEx
   version: 1
-  categoryIds:
-  - Catn_01_Grp_2_Saf
-  - Catn_02_Dclass_2_Evt
-  - Catn_04_EvtDType_1_Ae
-  - Catn_05_EvtAType_1_Occ
   documentRefs:
   - referenceDocumentId: CDISCPILOT01_SAP
     pageRefs:
@@ -18216,7 +18374,15 @@ analyses:
       label: 11.2. Adverse Events
       firstPage: 15
       lastPage: 16
+  categoryIds:
+  - Catn_01_Grp_2_Saf
+  - Catn_02_Dclass_2_Evt
+  - Catn_04_EvtDType_1_Ae
+  - Catn_05_EvtAType_1_Occ
+  dataset: ADAE
+  variable: USUBJID
   analysisSetId: AnalysisSet_02_SAF
+  dataSubsetId: Dss12_TEAE_PlacHigh
   orderedGroupings:
   - order: 1
     resultsByGroup: false
@@ -18227,9 +18393,6 @@ analyses:
   - order: 3
     resultsByGroup: true
     groupingId: AnlsGrouping_07_Pt
-  dataSubsetId: Dss12_TEAE_PlacHigh
-  dataset: ADAE
-  variable: USUBJID
   results:
   - operationId: Mth03_CatVar_Comp_FishEx_1_pval
     resultGroups:
@@ -18248,11 +18411,6 @@ analyses:
     controlledTerm: PRIMARY OUTCOME MEASURE
   methodId: Mth02_ContVar_Summ_ByGrp
   version: 1
-  categoryIds:
-  - Catn_01_Grp_2_Saf
-  - Catn_02_Dclass_3_Fnd
-  - Catn_06_FndDType_1_Vs
-  - Catn_07_FndAType_1_Chg
   documentRefs:
   - referenceDocumentId: CDISCPILOT01_SAP
     pageRefs:
@@ -18261,7 +18419,15 @@ analyses:
       pageNumbers:
       - 9
       - 17
+  categoryIds:
+  - Catn_01_Grp_2_Saf
+  - Catn_02_Dclass_3_Fnd
+  - Catn_06_FndDType_1_Vs
+  - Catn_07_FndAType_1_Chg
+  dataset: ADVS
+  variable: AVAL
   analysisSetId: AnalysisSet_02_SAF
+  dataSubsetId: Dss09_VS_AnRec
   orderedGroupings:
   - order: 1
     resultsByGroup: true
@@ -18272,9 +18438,6 @@ analyses:
   - order: 3
     resultsByGroup: true
     groupingId: AnlsGrouping_09_Visit
-  dataSubsetId: Dss09_VS_AnRec
-  dataset: ADVS
-  variable: AVAL
   results:
   - operationId: Mth02_ContVar_Summ_ByGrp_1_n
     resultGroups:
@@ -28844,11 +29007,6 @@ analyses:
     controlledTerm: PRIMARY OUTCOME MEASURE
   methodId: Mth02_ContVar_Summ_ByGrp
   version: 1
-  categoryIds:
-  - Catn_01_Grp_2_Saf
-  - Catn_02_Dclass_3_Fnd
-  - Catn_06_FndDType_1_Vs
-  - Catn_07_FndAType_1_Chg
   documentRefs:
   - referenceDocumentId: CDISCPILOT01_SAP
     pageRefs:
@@ -28865,7 +29023,15 @@ analyses:
     - refType: NamedDestination
       pageNames:
       - Table 14-7.02
+  categoryIds:
+  - Catn_01_Grp_2_Saf
+  - Catn_02_Dclass_3_Fnd
+  - Catn_06_FndDType_1_Vs
+  - Catn_07_FndAType_1_Chg
+  dataset: ADVS
+  variable: CHG
   analysisSetId: AnalysisSet_02_SAF
+  dataSubsetId: Dss10_VS_NonBl_AnRec
   orderedGroupings:
   - order: 1
     resultsByGroup: true
@@ -28876,9 +29042,6 @@ analyses:
   - order: 3
     resultsByGroup: true
     groupingId: AnlsGrouping_09_Visit
-  dataSubsetId: Dss10_VS_NonBl_AnRec
-  dataset: ADVS
-  variable: CHG
   results:
   - operationId: Mth02_ContVar_Summ_ByGrp_1_n
     resultGroups:
@@ -38480,166 +38643,15 @@ analyses:
       groupId: AnlsGrouping_09_Visit_11
     rawValue: '0.89'
     formattedValue: '0.89'
-methods:
-- name: Count by group for a categorical variable
-  id: Mth01_CatVar_Count_ByGrp
-  operations:
-  - name: Count of subjects
-    id: Mth01_CatVar_Count_ByGrp_1_n
-    label: n
-    resultPattern: (N=XX)
-  label: Grouped count for categorical variable
-  description: Count across groups for a categorical variable, based on subject occurrence
-- name: Summary by group of a categorical variable
-  id: Mth01_CatVar_Summ_ByGrp
-  operations:
-  - name: Count of subjects
-    id: Mth01_CatVar_Summ_ByGrp_1_n
-    label: n
-    resultPattern: XXX
-  - name: Percent of subjects
-    id: Mth01_CatVar_Summ_ByGrp_2_pct
-    label: '%'
-    referencedOperationRelationships:
-    - id: Mth01_CatVar_Summ_ByGrp_2_pct_NUM
-      referencedOperationRole:
-        controlledTerm: NUMERATOR
-      operationId: Mth01_CatVar_Summ_ByGrp_1_n
-      description: The count operation whose result provides the numerator for calculation
-        of the percentage. The referenced analysis should be the analysis that contains
-        this percent operation.
-    - id: Mth01_CatVar_Summ_ByGrp_2_pct_DEN
-      referencedOperationRole:
-        controlledTerm: DENOMINATOR
-      operationId: Mth01_CatVar_Count_ByGrp_1_n
-      description: The count operation whose result provides the denominator for calculation
-        of the percentage. The referenced analysis should have the same analysis set
-        and subject grouping(s) as the analysis containing this percent operation.
-    resultPattern: ( XX.X)
-  label: Grouped summary of categorical variable
-  description: Descriptive summary statistics across groups for a categorical variable,
-    based on subject occurrence
-  documentRefs:
-  - referenceDocumentId: CDISCPILOT01_SAP
-    pageRefs:
-    - refType: PhysicalRef
-      label: 7. GENERAL CONSIDERATIONS FOR DATA ANALYSES
-      pageNumbers:
-      - 9
-- name: Summary by group of a continuous variable
-  id: Mth02_ContVar_Summ_ByGrp
-  operations:
-  - name: Count of non-missing values
-    id: Mth02_ContVar_Summ_ByGrp_1_n
-    label: n
-    resultPattern: XX
-  - name: Mean
-    id: Mth02_ContVar_Summ_ByGrp_2_Mean
-    label: Mean
-    resultPattern: XX.X
-  - name: Standard deviation
-    id: Mth02_ContVar_Summ_ByGrp_3_SD
-    label: SD
-    resultPattern: (XX.XX)
-  - name: Median
-    id: Mth02_ContVar_Summ_ByGrp_4_Median
-    label: Median
-    resultPattern: XX.X
-  - name: First quartile
-    id: Mth02_ContVar_Summ_ByGrp_5_Q1
-    label: Q1
-    resultPattern: XX.X
-  - name: Third quartile
-    id: Mth02_ContVar_Summ_ByGrp_6_Q3
-    label: Q3
-    resultPattern: XX.X
-  - name: Minimum
-    id: Mth02_ContVar_Summ_ByGrp_7_Min
-    label: Min
-    resultPattern: XX
-  - name: Maximum
-    id: Mth02_ContVar_Summ_ByGrp_8_Max
-    label: Max
-    resultPattern: XX
-  label: Grouped summary of continuous variable
-  description: Descriptive summary statistics across groups for a continuous variable
-  documentRefs:
-  - referenceDocumentId: CDISCPILOT01_SAP
-    pageRefs:
-    - refType: PhysicalRef
-      label: 7. GENERAL CONSIDERATIONS FOR DATA ANALYSES
-      pageNumbers:
-      - 9
-- name: Pearson's chi-square test group comparison for a categorical variable
-  id: Mth03_CatVar_Comp_PChiSq
-  operations:
-  - name: P-value
-    id: Mth03_CatVar_Comp_PChiSq_1_pval
-    label: p-value
-    resultPattern: X.XXXX
-  label: Pearson's chi-square test group comparison for categorical variable
-  description: Comparison of groups by Peason's chi-square test for a categorical
-    variable
-  codeTemplate:
-    context: SAS Version 9.4
-    code: "proc freq data={dataset};\ntable {grp1var}*{grp2var}/chisq;\nexact pchi;\
-      \ \nods output PearsonChiSq=results.PCHI{outdssfx};\nrun;"
-    parameters:
-    - name: dataset
-      description: Input dataset
-      valueSource: dataset
-    - name: grp1var
-      description: First grouping variable
-      valueSource: orderedGroupings[1].groupingVariable
-    - name: grp2var
-      description: Second grouping variable
-      valueSource: orderedGroupings[2].groupingVariable
-    - name: outdssfx
-      description: Output dataset suffix
-      valueSource: orderedGroupings[2].groupingVariable
-- name: Analysis of variance group comparison for a continuous variable
-  id: Mth04_ContVar_Comp_Anova
-  operations:
-  - name: P-value
-    id: Mth04_ContVar_Comp_Anova_1_pval
-    label: p-value
-    resultPattern: X.XXXX
-  label: ANOVA group comparison for continuous variable
-  description: Comparison of groups by analysis of variance (ANOVA) for a continuous
-    variable
-  codeTemplate:
-    context: SAS Version 9.4
-    code: 'proc glm data={dataset};
-
-      class {grp1var};
-
-      model {grp2var}={gpr1var};
-
-      ods output OverallANOVA=results.ANOV{outdssfx} (where=(source = ''Model''));
-
-      run;'
-    parameters:
-    - name: dataset
-      description: Input dataset
-      valueSource: dataset
-    - name: grp1var
-      description: First grouping variable
-      valueSource: orderedGroupings[1].groupingVariable
-    - name: grp2var
-      description: Second grouping variable
-      valueSource: variable
-    - name: outdssfx
-      description: Output dataset suffix
-      valueSource: variable
-- name: Fisher's exact test group comparison for a categorical variable
-  id: Mth05_CatVar_Comp_FishEx
-  operations:
-  - name: P-value
-    id: Mth03_CatVar_Comp_FishEx_1_pval
-    label: p-value
-    resultPattern: X.XXXX
-  label: Fisher's exact test group comparison for categorical variable
-  description: Comparison of groups by Fisher's exact test for a categorical variable
+globalDisplaySections:
+- sectionType: Title
+  subSections:
+  - id: GlobalDisp_Title_1
+    text: Safety Population
+- sectionType: Footnote
+  subSections:
+  - id: GlobalDisp_Footnote_1
+    text: 'Program: <pid>.sas, Output: <pid><oid>.rtf, Generated on: DDMONYYYY:HH:MM'
 outputs:
 - name: Summary of Demographics
   id: Out14-1-1
@@ -38975,25 +38987,3 @@ outputs:
   categoryIds:
   - Catn_01_Grp_2_Saf
   - Catn_06_FndDType_1_Vs
-referenceDocuments:
-- name: Statistical Analysis Plan
-  id: CDISCPILOT01_SAP
-  location: ./sap.pdf
-- name: Clinical Study Report
-  id: CDISCPILOT01_CSR
-  location: ./csr-cdiscpilot01.pdf
-- name: at14-5-01.sas
-  id: at14-5-01_sas
-  location: ./at14-5-01.sas
-- name: AE Summary Table Shell
-  id: AE_Summary_Table_Shell
-  location: ./AE_Summary_Table_Shell.pdf
-terminologyExtensions:
-- id: TermEx1
-  sponsorTerms:
-  - id: TermEx1_1
-    submissionValue: ADDITIONAL EXAMPLE
-    description: The analysis was included in the set as an additional example to
-      demonstrate both a different type of analysis and sponsor terminology for analysis
-      reason.
-  enumeration: AnalysisReasonEnum
