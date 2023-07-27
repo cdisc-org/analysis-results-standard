@@ -1,5 +1,5 @@
 # Auto generated from ars_ldm.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-07-26T08:59:03
+# Generation date: 2023-07-27T11:43:00
 # Schema: ars_ldm
 #
 # id: https://www.cdisc.org/ars/1-0
@@ -2286,8 +2286,12 @@ class ExtensibleTerminologyEnum(EnumDefinitionImpl):
         text="AnalysisPurposeEnum",
         description="""The purpose of the analysis within the body of evidence (e.g., section in the clinical study report).""",
         meaning=NCIT.C117745)
-    OperationRoleEnum = PermissibleValue(text="OperationRoleEnum")
-    OutputFileTypeEnum = PermissibleValue(text="OutputFileTypeEnum")
+    OperationRoleEnum = PermissibleValue(
+        text="OperationRoleEnum",
+        description="""The role that the referenced operation's result plays in the calculation of the result of this operation.""")
+    OutputFileTypeEnum = PermissibleValue(
+        text="OutputFileTypeEnum",
+        description="The file format of the file containing output from analyses.")
 
     _defn = EnumDefinition(
         name="ExtensibleTerminologyEnum",

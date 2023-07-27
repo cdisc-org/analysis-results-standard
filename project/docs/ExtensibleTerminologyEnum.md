@@ -15,8 +15,8 @@ URI: [ExtensibleTerminologyEnum](ExtensibleTerminologyEnum)
 | --- | --- | --- |
 | AnalysisReasonEnum | NCIT:C117744 | The rationale for performing this analysis |
 | AnalysisPurposeEnum | NCIT:C117745 | The purpose of the analysis within the body of evidence (e |
-| OperationRoleEnum | None |  |
-| OutputFileTypeEnum | None |  |
+| OperationRoleEnum | None | The role that the referenced operation's result plays in the calculation of t... |
+| OutputFileTypeEnum | None | The file format of the file containing output from analyses |
 
 
 
@@ -69,8 +69,11 @@ permissible_values:
     meaning: NCIT:C117745
   OperationRoleEnum:
     text: OperationRoleEnum
+    description: The role that the referenced operation's result plays in the calculation
+      of the result of this operation.
   OutputFileTypeEnum:
     text: OutputFileTypeEnum
+    description: The file format of the file containing output from analyses.
 
 ```
 </details>

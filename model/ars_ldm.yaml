@@ -1405,7 +1405,9 @@ enums:
         description: The purpose of the analysis within the body of evidence (e.g., section in the clinical study report).
         meaning: NCIT:C117745
       OperationRoleEnum:
+        description: The role that the referenced operation's result plays in the calculation of the result of this operation.
       OutputFileTypeEnum:
+        description: The file format of the file containing output from analyses.
 
   PageRefTypeEnum:
     description: Type of reference for page references.
