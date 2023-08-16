@@ -218,6 +218,8 @@ for value in wsAnGrp.iter_rows(
         else:
             wcs[value[7]-1].compoundExpression.whereClauses.extend([wc])
     else:
+        if grpid != "":
+            grpng.groups.append(grp)
         wc = None
         grpid = ""        
     

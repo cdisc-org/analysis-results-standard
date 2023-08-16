@@ -122,6 +122,22 @@ def get_category(id: AnalysisOutputCategoryId, element: YAMLRoot = rptevt,attrib
             print(f"A category with id '{id}' was not found in any categorization or subcategorization")
         return None
     
+def get_subsection(id: DisplaySubSectionId, element: YAMLRoot = rptevt) -> DisplaySubSection:
+    glbsscts = engine._yield_path(path='/globalDisplaySections/*/subSections/*', element=element)
+
+    for glbssct in glbsscts:
+        if glbssct.id == id:
+            return glbssct
+    else:
+        dspsscts = engine._yield_path(path='/outputs/*/displays/*/display/displaySections/*/orderedSubSections/*/subSection', element=element)
+        for dspssct in dspsscts:
+            if dspssct:
+                if dspssct.id == id:
+                    return dspssct
+        else:
+            print(f"A display sub-section with id '{id}' was not found in any display section.")
+            return None
+    
 def get_pagerefs(docref: DocumentReference,level: int) -> str:
 
     preftxt = ''
@@ -153,10 +169,39 @@ def print_list(nlist: NestedList, fileref: TextIOWrapper,level: int = 1, pfx:str
     for litm in nlist.listItems:
         inum = delim.join([pfx,str(itmn)]) if pfx else str(itmn)
         fileref.write(f"{'  '*(level-1)}{inum}. {litm.name}\n")
+        if litm.outputId:
+            output = ars_api.fetch_Output(litm.outputId)
+            fileref.write(f"{'  '*level}Output: {litm.outputId} ({output.name if output else '**INVALID OUTPUT ID**'})\n")
+            if output:
+                if output.documentRefs:
+                    fileref.write(f"{'  '*(level+1)}Documentation:\n")
+                    for docref in output.documentRefs:
+                        refdoc = ars_api.fetch_ReferenceDocument(docref.referenceDocumentId)                        
+                        fileref.write(f"{'  '*(level+2)}> {refdoc.name} ({refdoc.location}){get_pagerefs(docref,level)}\n")
+                if output.categoryIds:
+                    fileref.write(f"{'  '*(level+1)}Categories:\n")
+                    for catid in output.categoryIds:
+                        fileref.write(f"{'  '*(level+2)}> {get_category(id=catid).label}\n")
+                if output.fileSpecifications:
+                    fileref.write(f"{'  '*(level+1)}Output File(s):\n")
+                    for filespec in output.fileSpecifications:
+                        fileref.write(f"{'  '*(level+2)}> {str(filespec.fileType.controlledTerm if filespec.fileType.controlledTerm else get_sponsorterm(enum='OutputFileTypeEnum',id=filespec.fileType.sponsorTermId).submissionValue).upper()} Format: {filespec.name} ({filespec.location})\n")
+                if output.displays:
+                    fileref.write(f"{'  '*(level+1)}Displays:\n")
+                    for ordisp in output.displays:
+                        fileref.write(f"{'  '*(level+2)}{ordisp.order}. {ordisp.display.id} ({ordisp.display.name})\n")
+                        fileref.write(f"{'  '*(level+3)}Display Title: {ordisp.display.displayTitle}\n")
+                        fileref.write(f"{'  '*(level+3)}Sections:\n")
+                        for dspsct in ordisp.display.displaySections:
+                            fileref.write(f"{'  '*(level+4)}> {dspsct.sectionType}:\n")
+                            for dspssct in dspsct.orderedSubSections:
+                                fileref.write(f"{'  '*(level+5)}{dspssct.order}. {dspssct.subSection.text if dspssct.subSection else get_subsection(dspssct.subSectionId).text}\n")
         if litm.analysisId:
-            fileref.write(f"{'  '*level}Analysis: {litm.analysisId}\n")
             analysis = ars_api.fetch_Analysis(litm.analysisId)
+            fileref.write(f"{'  '*level}Analysis: {litm.analysisId} ({analysis.name if analysis else '**INVALID ANALYSIS ID**'})\n")
             if analysis:                
+                if analysis.description:
+                    fileref.write(f"{'  '*(level+1)}Description: {analysis.description}\n")
                 fileref.write(f"{'  '*(level+1)}Documentation:\n")
                 fileref.write(f"{'  '*(level+2)}Reason: {analysis.reason.controlledTerm if analysis.reason.controlledTerm else get_sponsorterm(enum='AnalysisReasonEnum',id=analysis.reason.sponsorTermId).submissionValue}\n")
                 fileref.write(f"{'  '*(level+2)}Purpose: {analysis.purpose.controlledTerm if analysis.purpose.controlledTerm else get_sponsorterm(enum='AnalysisPurposeEnum',id=analysis.purpose.sponsorTermId).submissionValue}\n")
@@ -167,8 +212,8 @@ def print_list(nlist: NestedList, fileref: TextIOWrapper,level: int = 1, pfx:str
                         fileref.write(f"{'  '*(level+3)}> {refdoc.name} ({refdoc.location}){get_pagerefs(docref,level)}\n")
                 if analysis.categoryIds:
                     fileref.write(f"{'  '*(level+1)}Categories:\n")
-                    for acatid in analysis.categoryIds:
-                        fileref.write(f"{'  '*(level+2)}> {get_category(id=acatid).label}\n")
+                    for catid in analysis.categoryIds:
+                        fileref.write(f"{'  '*(level+2)}> {get_category(id=catid).label}\n")
                 if analysis.analysisSetId:
                     anset = ars_api.fetch_AnalysisSet(analysis.analysisSetId)
                     if anset: fileref.write(f"{'  '*(level+1)}Population: {anset.label} [{where_clause(anset)}]\n")
@@ -199,7 +244,6 @@ def print_list(nlist: NestedList, fileref: TextIOWrapper,level: int = 1, pfx:str
                             for refop in op.referencedOperationRelationships:
                                 refanid = ''.join([refanop.analysisId for refanop in analysis.referencedAnalysisOperations if refanop.referencedOperationRelationshipId == refop.id])
                                 fileref.write(f"{'  '*(level+4)}- {str(refop.referencedOperationRole.controlledTerm if refop.referencedOperationRole.controlledTerm else get_sponsorterm(enum='OperationRoleEnum',id=refop.referencedOperationRole.sponsorTermId).submissionValue).capitalize()}: result of operation {refop.operationId} for {'this analysis' if refanid == analysis.id else 'analysis '+refanid}\n")
-        if litm.outputId:  fileref.write(f"{'  '*level}Output: {litm.outputId}\n")
         if litm.sublist: print_list(litm.sublist,fileref,level+1,inum)
         itmn += 1
 
