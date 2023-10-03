@@ -864,6 +864,20 @@
           },
           "id": "AnlsGrouping_05_Ethnic_1",
           "label": "Hispanic or Latino"
+        },
+        {
+          "level": 1,
+          "order": 2,
+          "condition": {
+            "dataset": "ADSL",
+            "variable": "ETHNIC",
+            "comparator": "EQ",
+            "value": [
+              "NOT HISPANIC OR LATINO"
+            ]
+          },
+          "id": "AnlsGrouping_05_Ethnic_2",
+          "label": "Not Hispanic or Latino"
         }
       ]
     }
@@ -1687,7 +1701,7 @@
         }
       ],
       "label": "Pearson's chi-square test group comparison for categorical variable",
-      "description": "Comparison of groups by Peason's chi-square test for a categorical variable",
+      "description": "Comparison of groups by Pearson's chi-square test for a categorical variable",
       "codeTemplate": {
         "context": "SAS Version 9.4",
         "code": "proc freq data={dataset};\ntable {grp1var}*{grp2var}/chisq;\nexact pchi; \nods output PearsonChiSq=results.PCHI{outdssfx};\nrun;",
@@ -72839,10 +72853,7 @@
                 "orderedSubSections": [
                   {
                     "order": 1,
-                    "subSection": {
-                      "id": "Disp14-3-2-1_Fnote_1",
-                      "text": "Source dataset: adae, Generated on: DDMONYYYY:HH:MM"
-                    }
+                    "subSectionId": "Disp14-3-1-1_Fnote_1"
                   },
                   {
                     "order": 2,
@@ -73053,15 +73064,12 @@
                     "order": 1,
                     "subSection": {
                       "id": "Disp14-3-3-1b_Title_1",
-                      "text": "Table 14.3.3.1a"
+                      "text": "Table 14.3.3.1b"
                     }
                   },
                   {
                     "order": 2,
-                    "subSection": {
-                      "id": "Disp14-3-3-1b_Title_2",
-                      "text": "Summary of Observed and Change from Baseline by Scheduled Visits – Vital Signs"
-                    }
+                    "subSectionId": "Disp14-3-3-1a_Title_2"
                   },
                   {
                     "order": 3,
@@ -73074,10 +73082,7 @@
                 "orderedSubSections": [
                   {
                     "order": 1,
-                    "subSection": {
-                      "id": "Disp14-3-3-1b_Legnd_1",
-                      "text": "Note: Baseline is defined as the last assessment that is non-missing prior to first dose of investigational product."
-                    }
+                    "subSectionId": "Disp14-3-3-1a_Legnd_1"
                   }
                 ]
               },
@@ -73086,10 +73091,7 @@
                 "orderedSubSections": [
                   {
                     "order": 1,
-                    "subSection": {
-                      "id": "Disp14-3-3-1b_Fnote_1",
-                      "text": "Source dataset: advs, Generated on: DDMONYYYY:HH:MM"
-                    }
+                    "subSectionId": "Disp14-3-3-1a_Fnote_1"
                   },
                   {
                     "order": 2,
@@ -73102,17 +73104,11 @@
                 "orderedSubSections": [
                   {
                     "order": 1,
-                    "subSection": {
-                      "id": "Disp14-3-3-1b_RLbHd_1",
-                      "text": "Parameter (Units)"
-                    }
+                    "subSectionId": "Disp14-3-3-1a_RLbHd_1"
                   },
                   {
                     "order": 2,
-                    "subSection": {
-                      "id": "Disp14-3-3-1b_RLbHd_2",
-                      "text": "Visit"
-                    }
+                    "subSectionId": "Disp14-3-3-1a_RLbHd_2"
                   }
                 ]
               }
