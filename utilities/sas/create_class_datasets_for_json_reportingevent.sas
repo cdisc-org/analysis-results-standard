@@ -84,7 +84,7 @@
 *           be converted to SAS datasets.                                           *
 *                                                                                   *
 \*.................................................................................*/
-%let rejsonfl = %str(C:\CDISC\ars\analysis-results-standard\workfiles\examples\Hackathon\Common Safety Displays.json);
+%let rejsonfl = %str(C:\CDISC\ars\analysis-results-standard\workfiles\examples\ARS v1\Common Safety Displays.json);
 /*.................................................................................*\
 *                                                                                   *
 * MAPLIB: The fileref to be used for the temporary JSON mapping that is generated   *

@@ -7,6 +7,7 @@
         "name": "Table 2. Baseline Demographic and Clinical Characteristics, Safety Population, Trial CDISCPILOT01",
         "level": 1,
         "order": 1,
+        "outputId": "O_T2",
         "sublist": {
           "listItems": [
             {
@@ -91,8 +92,7 @@
               }
             }
           ]
-        },
-        "outputId": "O_T2"
+        }
       }
     ]
   },
@@ -107,6 +107,23 @@
       }
     ]
   },
+  "referenceDocuments": [
+    {
+      "name": "Statistical Analysis Plan",
+      "id": "CDISCPILOT01_SAP",
+      "location": "./sap.pdf"
+    },
+    {
+      "name": "Standard Safety Tables and Figures: Integrated Guide",
+      "id": "FDA-2022-N-1961-0046",
+      "location": "https://downloads.regulations.gov/FDA-2022-N-1961-0046/attachment_1.pdf"
+    },
+    {
+      "name": "table2.sas",
+      "id": "TABLE2_SAS",
+      "location": "./table2.sas"
+    }
+  ],
   "analysisSets": [
     {
       "level": 1,
@@ -414,6 +431,126 @@
       ]
     }
   ],
+  "methods": [
+    {
+      "name": "Count by group for a categorical variable",
+      "id": "M_GRP_CNT",
+      "operations": [
+        {
+          "name": "Count of subjects",
+          "id": "M_GRP_CNT_1_N",
+          "label": "n",
+          "resultPattern": "N = XXX"
+        }
+      ],
+      "label": "Grouped count for categorical variable",
+      "description": "Count across groups for a categorical variable, based on subject occurrence"
+    },
+    {
+      "name": "Summary by group of a categorical variable",
+      "id": "M_GRP_SUM_CATEG",
+      "operations": [
+        {
+          "name": "Count of subjects",
+          "id": "M_GRP_SUM_CATEG_1_N",
+          "label": "n",
+          "resultPattern": "n"
+        },
+        {
+          "name": "Percent of subjects",
+          "id": "M_GRP_SUM_CATEG_2_PCT",
+          "label": "%",
+          "referencedOperationRelationships": [
+            {
+              "id": "M_GRP_SUM_CATEG_2_PCT_NUM",
+              "referencedOperationRole": {
+                "controlledTerm": "NUMERATOR"
+              },
+              "operationId": "M_GRP_SUM_CATEG_1_N",
+              "description": "The count operation whose result provides the numerator for calculation of the percentage. The referenced analysis should be the analysis that contains this percent operation."
+            },
+            {
+              "id": "M_GRP_SUM_CATEG_2_PCT_DEN",
+              "referencedOperationRole": {
+                "controlledTerm": "DENOMINATOR"
+              },
+              "operationId": "M_GRP_CNT_1_N",
+              "description": "The count operation whose result provides the denominator for calculation of the percentage. The referenced analysis should have the same analysis set and subject grouping(s) as the analysis containing this percent operation."
+            }
+          ],
+          "resultPattern": "(%)"
+        }
+      ],
+      "label": "Grouped summary of categorical variable",
+      "description": "Descriptive summary statistics across groups for a categorical variable, based on subject occurrence",
+      "documentRefs": [
+        {
+          "referenceDocumentId": "CDISCPILOT01_SAP",
+          "pageRefs": [
+            {
+              "refType": "PhysicalRef",
+              "label": "7. GENERAL CONSIDERATIONS FOR DATA ANALYSES",
+              "pageNumbers": [
+                9
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Summary by group of a continuous variable",
+      "id": "M_GRP_SUM_CONTIN",
+      "operations": [
+        {
+          "name": "Mean",
+          "id": "M_GRP_SUM_CONTIN_1_MEAN",
+          "label": "Mean",
+          "resultPattern": "X.X"
+        },
+        {
+          "name": "Standard deviation",
+          "id": "M_GRP_SUM_CONTIN_2_SD",
+          "label": "SD",
+          "resultPattern": "(Y.Y)"
+        },
+        {
+          "name": "Median",
+          "id": "M_GRP_SUM_CONTIN_3_MEDIAN",
+          "label": "Median",
+          "resultPattern": "X.X"
+        },
+        {
+          "name": "Minimum",
+          "id": "M_GRP_SUM_CONTIN_4_MIN",
+          "label": "min",
+          "resultPattern": "Y.Y"
+        },
+        {
+          "name": "Maximum",
+          "id": "M_GRP_SUM_CONTIN_5_MAX",
+          "label": "max",
+          "resultPattern": "Z.Z"
+        }
+      ],
+      "label": "Grouped summary of continuous variable",
+      "description": "Descriptive summary statistics across groups for a continuous variable",
+      "documentRefs": [
+        {
+          "referenceDocumentId": "CDISCPILOT01_SAP",
+          "pageRefs": [
+            {
+              "refType": "PhysicalRef",
+              "label": "7. GENERAL CONSIDERATIONS FOR DATA ANALYSES",
+              "pageNumbers": [
+                9
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "analyses": [
     {
       "name": "Summary of Subjects by Treatment",
@@ -440,6 +577,8 @@
           ]
         }
       ],
+      "dataset": "ADSL",
+      "variable": "USUBJID",
       "analysisSetId": "AS_SAF",
       "orderedGroupings": [
         {
@@ -448,8 +587,6 @@
           "groupingId": "AG_TRT"
         }
       ],
-      "dataset": "ADSL",
-      "variable": "USUBJID",
       "results": [
         {
           "operationId": "M_GRP_CNT_1_N",
@@ -511,6 +648,8 @@
           ]
         }
       ],
+      "dataset": "ADSL",
+      "variable": "USUBJID",
       "analysisSetId": "AS_SAF",
       "orderedGroupings": [
         {
@@ -524,8 +663,6 @@
           "groupingId": "AG_SEX"
         }
       ],
-      "dataset": "ADSL",
-      "variable": "USUBJID",
       "referencedAnalysisOperations": [
         {
           "referencedOperationRelationshipId": "M_GRP_SUM_CATEG_2_PCT_NUM",
@@ -744,6 +881,8 @@
           ]
         }
       ],
+      "dataset": "ADSL",
+      "variable": "AGE",
       "analysisSetId": "AS_SAF",
       "orderedGroupings": [
         {
@@ -752,8 +891,6 @@
           "groupingId": "AG_TRT"
         }
       ],
-      "dataset": "ADSL",
-      "variable": "AGE",
       "results": [
         {
           "operationId": "M_GRP_SUM_CONTIN_1_MEAN",
@@ -947,6 +1084,8 @@
           ]
         }
       ],
+      "dataset": "ADSL",
+      "variable": "USUBJID",
       "analysisSetId": "AS_SAF",
       "orderedGroupings": [
         {
@@ -965,8 +1104,6 @@
           "groupingId": "AG_AGEGR3"
         }
       ],
-      "dataset": "ADSL",
-      "variable": "USUBJID",
       "referencedAnalysisOperations": [
         {
           "referencedOperationRelationshipId": "M_GRP_SUM_CATEG_2_PCT_NUM",
@@ -1347,6 +1484,8 @@
           ]
         }
       ],
+      "dataset": "ADSL",
+      "variable": "USUBJID",
       "analysisSetId": "AS_SAF",
       "orderedGroupings": [
         {
@@ -1360,8 +1499,6 @@
           "groupingId": "AG_RACE"
         }
       ],
-      "dataset": "ADSL",
-      "variable": "USUBJID",
       "referencedAnalysisOperations": [
         {
           "referencedOperationRelationshipId": "M_GRP_SUM_CATEG_2_PCT_NUM",
@@ -1610,6 +1747,8 @@
           ]
         }
       ],
+      "dataset": "ADSL",
+      "variable": "USUBJID",
       "analysisSetId": "AS_SAF",
       "orderedGroupings": [
         {
@@ -1623,8 +1762,6 @@
           "groupingId": "AG_ETHNIC"
         }
       ],
-      "dataset": "ADSL",
-      "variable": "USUBJID",
       "referencedAnalysisOperations": [
         {
           "referencedOperationRelationshipId": "M_GRP_SUM_CATEG_2_PCT_NUM",
@@ -1819,126 +1956,6 @@
       ]
     }
   ],
-  "methods": [
-    {
-      "name": "Count by group for a categorical variable",
-      "id": "M_GRP_CNT",
-      "operations": [
-        {
-          "name": "Count of subjects",
-          "id": "M_GRP_CNT_1_N",
-          "label": "n",
-          "resultPattern": "N = XXX"
-        }
-      ],
-      "label": "Grouped count for categorical variable",
-      "description": "Count across groups for a categorical variable, based on subject occurrence"
-    },
-    {
-      "name": "Summary by group of a categorical variable",
-      "id": "M_GRP_SUM_CATEG",
-      "operations": [
-        {
-          "name": "Count of subjects",
-          "id": "M_GRP_SUM_CATEG_1_N",
-          "label": "n",
-          "resultPattern": "n"
-        },
-        {
-          "name": "Percent of subjects",
-          "id": "M_GRP_SUM_CATEG_2_PCT",
-          "label": "%",
-          "referencedOperationRelationships": [
-            {
-              "id": "M_GRP_SUM_CATEG_2_PCT_NUM",
-              "referencedOperationRole": {
-                "controlledTerm": "NUMERATOR"
-              },
-              "operationId": "M_GRP_SUM_CATEG_1_N",
-              "description": "The count operation whose result provides the numerator for calculation of the percentage. The referenced analysis should be the analysis that contains this percent operation."
-            },
-            {
-              "id": "M_GRP_SUM_CATEG_2_PCT_DEN",
-              "referencedOperationRole": {
-                "controlledTerm": "DENOMINATOR"
-              },
-              "operationId": "M_GRP_CNT_1_N",
-              "description": "The count operation whose result provides the denominator for calculation of the percentage. The referenced analysis should have the same analysis set and subject grouping(s) as the analysis containing this percent operation."
-            }
-          ],
-          "resultPattern": "(%)"
-        }
-      ],
-      "label": "Grouped summary of categorical variable",
-      "description": "Descriptive summary statistics across groups for a categorical variable, based on subject occurrence",
-      "documentRefs": [
-        {
-          "referenceDocumentId": "CDISCPILOT01_SAP",
-          "pageRefs": [
-            {
-              "refType": "PhysicalRef",
-              "label": "7. GENERAL CONSIDERATIONS FOR DATA ANALYSES",
-              "pageNumbers": [
-                9
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Summary by group of a continuous variable",
-      "id": "M_GRP_SUM_CONTIN",
-      "operations": [
-        {
-          "name": "Mean",
-          "id": "M_GRP_SUM_CONTIN_1_MEAN",
-          "label": "Mean",
-          "resultPattern": "X.X"
-        },
-        {
-          "name": "Standard deviation",
-          "id": "M_GRP_SUM_CONTIN_2_SD",
-          "label": "SD",
-          "resultPattern": "(Y.Y)"
-        },
-        {
-          "name": "Median",
-          "id": "M_GRP_SUM_CONTIN_3_MEDIAN",
-          "label": "Median",
-          "resultPattern": "X.X"
-        },
-        {
-          "name": "Minimum",
-          "id": "M_GRP_SUM_CONTIN_4_MIN",
-          "label": "min",
-          "resultPattern": "Y.Y"
-        },
-        {
-          "name": "Maximum",
-          "id": "M_GRP_SUM_CONTIN_5_MAX",
-          "label": "max",
-          "resultPattern": "Z.Z"
-        }
-      ],
-      "label": "Grouped summary of continuous variable",
-      "description": "Descriptive summary statistics across groups for a continuous variable",
-      "documentRefs": [
-        {
-          "referenceDocumentId": "CDISCPILOT01_SAP",
-          "pageRefs": [
-            {
-              "refType": "PhysicalRef",
-              "label": "7. GENERAL CONSIDERATIONS FOR DATA ANALYSES",
-              "pageNumbers": [
-                9
-              ]
-            }
-          ]
-        }
-      ]
-    }
-  ],
   "outputs": [
     {
       "name": "Table 2. Baseline Demographic and Clinical Characteristics, Safety Population, Trial CDISCPILOT01",
@@ -2054,23 +2071,6 @@
           "referenceDocumentId": "TABLE2_SAS"
         }
       }
-    }
-  ],
-  "referenceDocuments": [
-    {
-      "name": "Statistical Analysis Plan",
-      "id": "CDISCPILOT01_SAP",
-      "location": "./sap.pdf"
-    },
-    {
-      "name": "Standard Safety Tables and Figures: Integrated Guide",
-      "id": "FDA-2022-N-1961-0046",
-      "location": "https://downloads.regulations.gov/FDA-2022-N-1961-0046/attachment_1.pdf"
-    },
-    {
-      "name": "table2.sas",
-      "id": "TABLE2_SAS",
-      "location": "./table2.sas"
     }
   ],
   "@type": "ReportingEvent"

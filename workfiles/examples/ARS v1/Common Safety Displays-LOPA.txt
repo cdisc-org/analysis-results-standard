@@ -1,7 +1,29 @@
 1. Summary of Demographics
-  Output: Out14-1-1
+  Output: Out14-1-1 (Summary of Demographics)
+    Documentation:
+      > Clinical Study Report (./csr-cdiscpilot01.pdf)
+          - Pages 46-48 [Table 14-2.01]
+    Categories:
+      > Population Description
+      > Demographics
+    Output File(s):
+      > RTF Format: t14-1-1-demog (.)
+      > PDF Format: t14-1-1-demog (.)
+    Displays:
+      1. Disp14-1-1 (Demog)
+        Display Title: Summary of Demographics
+        Sections:
+          > Title:
+            1. Table 14.1.1
+            2. Summary of Demographics
+            3. Safety Population
+          > Footnote:
+            1. Source dataset: adsl, Generated on: DDMONYYYY:HH:MM
+            2. Program: <pid>.sas, Output: <pid><oid>.rtf, Generated on: DDMONYYYY:HH:MM
+          > Rowlabel Header:
+            1. Characteristics
   1.1. Summary of Subjects by Treatment
-    Analysis: An01_05_SAF_Summ_ByTrt
+    Analysis: An01_05_SAF_Summ_ByTrt (Summary of Subjects by Treatment)
       Documentation:
         Reason: SPECIFIED IN SAP
         Purpose: PRIMARY OUTCOME MEASURE
@@ -24,7 +46,7 @@
           > Mth01_CatVar_Count_ByGrp_1_n: Count of subjects (n)
   1.2. Age
     1.2.1. Summary by Treatment
-      Analysis: An03_01_Age_Summ_ByTrt
+      Analysis: An03_01_Age_Summ_ByTrt (Summary of Age by Treatment)
         Documentation:
           Reason: SPECIFIED IN SAP
           Purpose: PRIMARY OUTCOME MEASURE
@@ -53,7 +75,7 @@
             > Mth02_ContVar_Summ_ByGrp_7_Min: Minimum (Min)
             > Mth02_ContVar_Summ_ByGrp_8_Max: Maximum (Max)
     1.2.2. Comparison by Treatment
-      Analysis: An03_01_Age_Comp_ByTrt
+      Analysis: An03_01_Age_Comp_ByTrt (Comparison of Age by Treatment)
         Documentation:
           Reason: SPECIFIED IN SAP
           Purpose: PRIMARY OUTCOME MEASURE
@@ -76,7 +98,7 @@
             > Mth04_ContVar_Comp_Anova_1_pval: P-value (p-value)
   1.3. Age Group
     1.3.1. Summary of Subjects by Treatment
-      Analysis: An03_02_AgeGrp_Summ_ByTrt
+      Analysis: An03_02_AgeGrp_Summ_ByTrt (Summary of Subjects by Treatment and Age Group)
         Documentation:
           Reason: SPECIFIED IN SAP
           Purpose: PRIMARY OUTCOME MEASURE
@@ -104,7 +126,7 @@
               - Numerator: result of operation Mth01_CatVar_Summ_ByGrp_1_n for this analysis
               - Denominator: result of operation Mth01_CatVar_Count_ByGrp_1_n for analysis An01_05_SAF_Summ_ByTrt
     1.3.2. Comparison of Subjects by Treatment
-      Analysis: An03_02_AgeGrp_Comp_ByTrt
+      Analysis: An03_02_AgeGrp_Comp_ByTrt (Comparison of Age Group by Treatment)
         Documentation:
           Reason: SPECIFIED IN SAP
           Purpose: PRIMARY OUTCOME MEASURE
@@ -130,7 +152,7 @@
             > Mth03_CatVar_Comp_PChiSq_1_pval: P-value (p-value)
   1.4. Sex
     1.4.1. Summary of Subjects by Treatment
-      Analysis: An03_03_Sex_Summ_ByTrt
+      Analysis: An03_03_Sex_Summ_ByTrt (Summary of Subjects by Treatment and Sex)
         Documentation:
           Reason: SPECIFIED IN SAP
           Purpose: PRIMARY OUTCOME MEASURE
@@ -158,7 +180,7 @@
               - Numerator: result of operation Mth01_CatVar_Summ_ByGrp_1_n for this analysis
               - Denominator: result of operation Mth01_CatVar_Count_ByGrp_1_n for analysis An01_05_SAF_Summ_ByTrt
     1.4.2. Comparison of Subjects by Treatment
-      Analysis: An03_03_Sex_Comp_ByTrt
+      Analysis: An03_03_Sex_Comp_ByTrt (Comparison of Sex by Treatment)
         Documentation:
           Reason: SPECIFIED IN SAP
           Purpose: PRIMARY OUTCOME MEASURE
@@ -184,7 +206,7 @@
             > Mth03_CatVar_Comp_PChiSq_1_pval: P-value (p-value)
   1.5. Ethnicity
     1.5.1. Summary of Subjects by Treatment
-      Analysis: An03_04_Ethnic_Summ_ByTrt
+      Analysis: An03_04_Ethnic_Summ_ByTrt (Summary of Subjects by Treatment and Ethnicity)
         Documentation:
           Reason: SPECIFIED IN SAP
           Purpose: PRIMARY OUTCOME MEASURE
@@ -212,7 +234,7 @@
               - Numerator: result of operation Mth01_CatVar_Summ_ByGrp_1_n for this analysis
               - Denominator: result of operation Mth01_CatVar_Count_ByGrp_1_n for analysis An01_05_SAF_Summ_ByTrt
     1.5.2. Comparison of Subjects by Treatment
-      Analysis: An03_04_Ethnic_Comp_ByTrt
+      Analysis: An03_04_Ethnic_Comp_ByTrt (Comparison of Ethnicity by Treatment)
         Documentation:
           Reason: SPECIFIED IN SAP
           Purpose: PRIMARY OUTCOME MEASURE
@@ -238,7 +260,7 @@
             > Mth03_CatVar_Comp_PChiSq_1_pval: P-value (p-value)
   1.6. Race
     1.6.1. Summary of Subjects by Treatment
-      Analysis: An03_05_Race_Summ_ByTrt
+      Analysis: An03_05_Race_Summ_ByTrt (Summary of Subjects by Treatment and Race)
         Documentation:
           Reason: SPECIFIED IN SAP
           Purpose: PRIMARY OUTCOME MEASURE
@@ -273,7 +295,7 @@
               - Numerator: result of operation Mth01_CatVar_Summ_ByGrp_1_n for this analysis
               - Denominator: result of operation Mth01_CatVar_Count_ByGrp_1_n for analysis An01_05_SAF_Summ_ByTrt
     1.6.2. Comparison of Subjects by Treatment
-      Analysis: An03_05_Race_Comp_ByTrt
+      Analysis: An03_05_Race_Comp_ByTrt (Comparison of Race by Treatment)
         Documentation:
           Reason: SPECIFIED IN SAP
           Purpose: PRIMARY OUTCOME MEASURE
@@ -306,7 +328,7 @@
             > Mth03_CatVar_Comp_PChiSq_1_pval: P-value (p-value)
   1.7. Height
     1.7.1. Summary by Treatment
-      Analysis: An03_06_Height_Summ_ByTrt
+      Analysis: An03_06_Height_Summ_ByTrt (Summary of Height by Treatment)
         Documentation:
           Reason: SPECIFIED IN SAP
           Purpose: PRIMARY OUTCOME MEASURE
@@ -335,7 +357,7 @@
             > Mth02_ContVar_Summ_ByGrp_7_Min: Minimum (Min)
             > Mth02_ContVar_Summ_ByGrp_8_Max: Maximum (Max)
     1.7.2. Comparison by Treatment
-      Analysis: An03_06_Height_Comp_ByTrt
+      Analysis: An03_06_Height_Comp_ByTrt (Comparison of Height by Treatment)
         Documentation:
           Reason: SPECIFIED IN SAP
           Purpose: PRIMARY OUTCOME MEASURE
@@ -357,9 +379,34 @@
           Operations:
             > Mth04_ContVar_Comp_Anova_1_pval: P-value (p-value)
 2. Overall Summary of Treatment-Emergent Adverse Events
-  Output: Out14-3-1-1
+  Output: Out14-3-1-1 (Overall Summary of Treatment-Emergent Adverse Events)
+    Documentation:
+      > AE Summary Table Shell (./AE_Summary_Table_Shell.pdf)
+    Categories:
+      > Safety
+      > Adverse Events
+    Output File(s):
+      > RTF Format: t14-3-1-1-teae-summ (.)
+      > PDF Format: t14-3-1-1-teae-summ (.)
+    Displays:
+      1. Disp14-3-1-1 (AE_Summ)
+        Display Title: Overall Summary of Treatment-Emergent Adverse Events
+        Sections:
+          > Title:
+            1. Table 14.3.1.<x>.<y>
+            2. Overall Summary of Treatment-Emergent Adverse Events
+            3. Safety Population
+          > Abbreviation:
+            1. Note: TEAE=Treatment-Emergent Adverse Events.
+          > Legend:
+            1. [a] Dose Modification includes Dose Reduced; Drug Interrupted in the AE action taken with study treatment.
+          > Footnote:
+            1. Source dataset: adae, Generated on: DDMONYYYY:HH:MM
+            2. Program: <pid>.sas, Output: <pid><oid>.rtf, Generated on: DDMONYYYY:HH:MM
+          > Rowlabel Header:
+            1. Categories, n (%)
   2.1. Summary of Subjects by Treatment
-    Analysis: An01_05_SAF_Summ_ByTrt
+    Analysis: An01_05_SAF_Summ_ByTrt (Summary of Subjects by Treatment)
       Documentation:
         Reason: SPECIFIED IN SAP
         Purpose: PRIMARY OUTCOME MEASURE
@@ -382,7 +429,7 @@
           > Mth01_CatVar_Count_ByGrp_1_n: Count of subjects (n)
   2.2. Number of subjects with at least one event
     2.2.1. TEAE
-      Analysis: An07_01_TEAE_Summ_ByTrt
+      Analysis: An07_01_TEAE_Summ_ByTrt (Summary of Subjects with At Least One TEAE, by Treatment)
         Documentation:
           Reason: SPECIFIED IN SAP
           Purpose: PRIMARY OUTCOME MEASURE
@@ -409,7 +456,7 @@
               - Numerator: result of operation Mth01_CatVar_Summ_ByGrp_1_n for this analysis
               - Denominator: result of operation Mth01_CatVar_Count_ByGrp_1_n for analysis An01_05_SAF_Summ_ByTrt
     2.2.2. Related TEAE
-      Analysis: An07_02_RelTEAE_Summ_ByTrt
+      Analysis: An07_02_RelTEAE_Summ_ByTrt (Summary of Subjects with At Least One Related TEAE, by Treatment)
         Documentation:
           Reason: ADDITIONAL EXAMPLE
           Purpose: SECONDARY OUTCOME MEASURE
@@ -433,7 +480,7 @@
               - Numerator: result of operation Mth01_CatVar_Summ_ByGrp_1_n for this analysis
               - Denominator: result of operation Mth01_CatVar_Count_ByGrp_1_n for analysis An01_05_SAF_Summ_ByTrt
     2.2.3. Serious TEAE
-      Analysis: An07_03_SerTEAE_Summ_ByTrt
+      Analysis: An07_03_SerTEAE_Summ_ByTrt (Summary of Subjects with At Least One Serious TEAE, by Treatment)
         Documentation:
           Reason: ADDITIONAL EXAMPLE
           Purpose: SECONDARY OUTCOME MEASURE
@@ -457,7 +504,7 @@
               - Numerator: result of operation Mth01_CatVar_Summ_ByGrp_1_n for this analysis
               - Denominator: result of operation Mth01_CatVar_Count_ByGrp_1_n for analysis An01_05_SAF_Summ_ByTrt
     2.2.4. Related Serious TEAE
-      Analysis: An07_04_RelSerTEAE_Summ_ByTrt
+      Analysis: An07_04_RelSerTEAE_Summ_ByTrt (Summary of Subjects with At Least One Related Serious TEAE, by Treatment)
         Documentation:
           Reason: ADDITIONAL EXAMPLE
           Purpose: SECONDARY OUTCOME MEASURE
@@ -481,7 +528,7 @@
               - Numerator: result of operation Mth01_CatVar_Summ_ByGrp_1_n for this analysis
               - Denominator: result of operation Mth01_CatVar_Count_ByGrp_1_n for analysis An01_05_SAF_Summ_ByTrt
     2.2.5. TEAE Leading to Death
-      Analysis: An07_05_TEAELd2Dth_Summ_ByTrt
+      Analysis: An07_05_TEAELd2Dth_Summ_ByTrt (Summary of Subjects with At Least One TEAE Leading to Death, by Treatment)
         Documentation:
           Reason: ADDITIONAL EXAMPLE
           Purpose: SECONDARY OUTCOME MEASURE
@@ -505,7 +552,7 @@
               - Numerator: result of operation Mth01_CatVar_Summ_ByGrp_1_n for this analysis
               - Denominator: result of operation Mth01_CatVar_Count_ByGrp_1_n for analysis An01_05_SAF_Summ_ByTrt
     2.2.6. Related TEAE Leading to Death
-      Analysis: An07_06_RelTEAELd2Dth_Summ_ByTrt
+      Analysis: An07_06_RelTEAELd2Dth_Summ_ByTrt (Summary of Subjects with At Least One Related TEAE Leading to Death, by Treatment)
         Documentation:
           Reason: ADDITIONAL EXAMPLE
           Purpose: SECONDARY OUTCOME MEASURE
@@ -529,7 +576,7 @@
               - Numerator: result of operation Mth01_CatVar_Summ_ByGrp_1_n for this analysis
               - Denominator: result of operation Mth01_CatVar_Count_ByGrp_1_n for analysis An01_05_SAF_Summ_ByTrt
     2.2.7. TEAE Leading to Dose Modification
-      Analysis: An07_07_TEAELd2DoseMod_Summ_ByTrt
+      Analysis: An07_07_TEAELd2DoseMod_Summ_ByTrt (Summary of Subjects with At Least One TEAE Leading to Dose Modification, by Treatment)
         Documentation:
           Reason: ADDITIONAL EXAMPLE
           Purpose: SECONDARY OUTCOME MEASURE
@@ -553,7 +600,7 @@
               - Numerator: result of operation Mth01_CatVar_Summ_ByGrp_1_n for this analysis
               - Denominator: result of operation Mth01_CatVar_Count_ByGrp_1_n for analysis An01_05_SAF_Summ_ByTrt
     2.2.8. TEAE Leading to Treatment Discontinuation
-      Analysis: An07_08_TEAELd2TrtDsc_Summ_ByTrt
+      Analysis: An07_08_TEAELd2TrtDsc_Summ_ByTrt (Summary of Subjects with At Least One TEAE Leading to Treatment Discontinuation, by Treatment)
         Documentation:
           Reason: ADDITIONAL EXAMPLE
           Purpose: SECONDARY OUTCOME MEASURE
@@ -577,9 +624,39 @@
               - Numerator: result of operation Mth01_CatVar_Summ_ByGrp_1_n for this analysis
               - Denominator: result of operation Mth01_CatVar_Count_ByGrp_1_n for analysis An01_05_SAF_Summ_ByTrt
 3. Summary of TEAE by System Organ Class and Preferred Term
-  Output: Out14-3-2-1
+  Output: Out14-3-2-1 (Summary of TEAE by System Organ Class and Preferred Term)
+    Documentation:
+      > Statistical Analysis Plan (./sap.pdf)
+          - Page 32 [Template 13]
+      > Clinical Study Report (./csr-cdiscpilot01.pdf)
+          - Pages 63-78 [Table 14-5.01]
+    Categories:
+      > Safety
+      > Adverse Events
+    Output File(s):
+      > RTF Format: t14-3-2-1-teae-socpt (.)
+      > PDF Format: t14-3-2-1-teae-socpt (.)
+    Displays:
+      1. Disp14-3-2-1 (AE_SOC_PT)
+        Display Title: Summary of TEAE by System Organ Class and Preferred Term
+        Sections:
+          > Title:
+            1. Table 14.3.1.1
+            2. Summary of TEAE by System Organ Class and Preferred Term
+            3. Safety Population
+          > Abbreviation:
+            1. Notes: TEAE=Treatment-Emergent Adverse Events.
+          > Legend:
+            1.        Subjects are counted once within each system organ class and preferred term.
+            2. [a] All investigators adverse events were coded using MedDRA version xx.x.
+          > Footnote:
+            1. Source dataset: adae, Generated on: DDMONYYYY:HH:MM
+            2. Program: <pid>.sas, Output: <pid><oid>.rtf, Generated on: DDMONYYYY:HH:MM
+          > Rowlabel Header:
+            1. System Organ Class
+            2.     Preferred Term [a], n (%)
   3.1. Summary of Subjects by Treatment
-    Analysis: An01_05_SAF_Summ_ByTrt
+    Analysis: An01_05_SAF_Summ_ByTrt (Summary of Subjects by Treatment)
       Documentation:
         Reason: SPECIFIED IN SAP
         Purpose: PRIMARY OUTCOME MEASURE
@@ -602,7 +679,7 @@
           > Mth01_CatVar_Count_ByGrp_1_n: Count of subjects (n)
   3.2. Number of subjects with at least one event
     3.2.1. Summary of Subjects by Treatment
-      Analysis: An07_01_TEAE_Summ_ByTrt
+      Analysis: An07_01_TEAE_Summ_ByTrt (Summary of Subjects with At Least One TEAE, by Treatment)
         Documentation:
           Reason: SPECIFIED IN SAP
           Purpose: PRIMARY OUTCOME MEASURE
@@ -629,7 +706,7 @@
               - Numerator: result of operation Mth01_CatVar_Summ_ByGrp_1_n for this analysis
               - Denominator: result of operation Mth01_CatVar_Count_ByGrp_1_n for analysis An01_05_SAF_Summ_ByTrt
     3.2.2. Comparison of Subjects by Treatment - Placebo vs Low Dose
-      Analysis: An07_01_TEAE_Comp_ByTrt_PlacLow
+      Analysis: An07_01_TEAE_Comp_ByTrt_PlacLow (Comparison of Subjects with TEAEs by Treatment - Placebo vs Low Dose)
         Documentation:
           Reason: ADDITIONAL EXAMPLE
           Purpose: SECONDARY OUTCOME MEASURE
@@ -653,7 +730,7 @@
           Operations:
             > Mth03_CatVar_Comp_FishEx_1_pval: P-value (p-value)
     3.2.3. Comparison of Subjects by Treatment - Placebo vs High Dose
-      Analysis: An07_01_TEAE_Comp_ByTrt_PlacHigh
+      Analysis: An07_01_TEAE_Comp_ByTrt_PlacHigh (Comparison of Subjects with TEAEs by Treatment - Placebo vs High Dose)
         Documentation:
           Reason: ADDITIONAL EXAMPLE
           Purpose: SECONDARY OUTCOME MEASURE
@@ -678,7 +755,7 @@
             > Mth03_CatVar_Comp_FishEx_1_pval: P-value (p-value)
   3.3. System Organ Class
     3.3.1. Summary of Subjects by Treatment and System Organ Class
-      Analysis: An07_09_Soc_Summ_ByTrt
+      Analysis: An07_09_Soc_Summ_ByTrt (Summary of Subjects with TEAEs by Treatment and System Organ Class)
         Documentation:
           Reason: SPECIFIED IN SAP
           Purpose: PRIMARY OUTCOME MEASURE
@@ -706,7 +783,7 @@
               - Numerator: result of operation Mth01_CatVar_Summ_ByGrp_1_n for this analysis
               - Denominator: result of operation Mth01_CatVar_Count_ByGrp_1_n for analysis An01_05_SAF_Summ_ByTrt
     3.3.2. Comparison of Subjects with TEAEs by Treatment and System Organ Class - Placebo vs Low Dose
-      Analysis: An07_09_Soc_Comp_ByTrt_PlacLow
+      Analysis: An07_09_Soc_Comp_ByTrt_PlacLow (Comparison of Subjects with TEAEs by Treatment and System Organ Class - Placebo vs Low Dose)
         Documentation:
           Reason: SPECIFIED IN SAP
           Purpose: PRIMARY OUTCOME MEASURE
@@ -731,7 +808,7 @@
           Operations:
             > Mth03_CatVar_Comp_FishEx_1_pval: P-value (p-value)
     3.3.3. Comparison of Subjects with TEAEs by Treatment and System Organ Class - Placebo vs High Dose
-      Analysis: An07_09_Soc_Comp_ByTrt_PlacHigh
+      Analysis: An07_09_Soc_Comp_ByTrt_PlacHigh (Comparison of Subjects with TEAEs by Treatment and System Organ Class - Placebo vs High Dose)
         Documentation:
           Reason: SPECIFIED IN SAP
           Purpose: PRIMARY OUTCOME MEASURE
@@ -757,7 +834,7 @@
             > Mth03_CatVar_Comp_FishEx_1_pval: P-value (p-value)
   3.4. Preferred Term
     3.4.1. Summary of Subjects by Treatment, System Organ Class and Preferred Term
-      Analysis: An07_10_SocPt_Summ_ByTrt
+      Analysis: An07_10_SocPt_Summ_ByTrt (Summary of Subjects with TEAEs by Treatment, System Organ Class and Preferred Term)
         Documentation:
           Reason: SPECIFIED IN SAP
           Purpose: PRIMARY OUTCOME MEASURE
@@ -786,7 +863,7 @@
               - Numerator: result of operation Mth01_CatVar_Summ_ByGrp_1_n for this analysis
               - Denominator: result of operation Mth01_CatVar_Count_ByGrp_1_n for analysis An01_05_SAF_Summ_ByTrt
     3.4.2. Comparison of Subjects with TEAEs by Treatment, System Organ Class and Preferred Term - Placebo vs Low Dose
-      Analysis: An07_10_SocPt_Comp_ByTrt_PlacLow
+      Analysis: An07_10_SocPt_Comp_ByTrt_PlacLow (Comparison of Subjects with TEAEs by Treatment, System Organ Class and Preferred Term - Placebo vs Low Dose)
         Documentation:
           Reason: SPECIFIED IN SAP
           Purpose: PRIMARY OUTCOME MEASURE
@@ -812,7 +889,7 @@
           Operations:
             > Mth03_CatVar_Comp_FishEx_1_pval: P-value (p-value)
     3.4.3. Comparison of Subjects with TEAEs by Treatment, System Organ Class and Preferred Term - Placebo vs High Dose
-      Analysis: An07_10_SocPt_Comp_ByTrt_PlacHigh
+      Analysis: An07_10_SocPt_Comp_ByTrt_PlacHigh (Comparison of Subjects with TEAEs by Treatment, System Organ Class and Preferred Term - Placebo vs High Dose)
         Documentation:
           Reason: SPECIFIED IN SAP
           Purpose: PRIMARY OUTCOME MEASURE
@@ -838,9 +915,31 @@
           Operations:
             > Mth03_CatVar_Comp_FishEx_1_pval: P-value (p-value)
 4. Summary of Observed and Change from Baseline by Scheduled Visits - Vital Signs (Horizontal)
-  Output: Out14-3-3-1a
+  Output: Out14-3-3-1a (Summary of Observed and Change from Baseline by Scheduled Visits - Vital Signs Horizontal)
+    Categories:
+      > Safety
+      > Vital Signs
+    Output File(s):
+      > RTF Format: t14-3-3-1-vitals-chgbl (.)
+      > PDF Format: t14-3-3-1-vitals-chgbl (.)
+    Displays:
+      1. Disp14-3-3-1a (Vitals_ChgBl)
+        Display Title: Summary of Observed and Change from Baseline by Scheduled Visits - Vital Signs
+        Sections:
+          > Title:
+            1. Table 14.3.3.1a
+            2. Summary of Observed and Change from Baseline by Scheduled Visits – Vital Signs
+            3. Safety Population
+          > Legend:
+            1. Note: Baseline is defined as the last assessment that is non-missing prior to first dose of investigational product.
+          > Footnote:
+            1. Source dataset: advs, Generated on: DDMONYYYY:HH:MM
+            2. Program: <pid>.sas, Output: <pid><oid>.rtf, Generated on: DDMONYYYY:HH:MM
+          > Rowlabel Header:
+            1. Parameter (Units)
+            2. Visit
   4.1. Summary of Subjects by Treatment
-    Analysis: An01_05_SAF_Summ_ByTrt
+    Analysis: An01_05_SAF_Summ_ByTrt (Summary of Subjects by Treatment)
       Documentation:
         Reason: SPECIFIED IN SAP
         Purpose: PRIMARY OUTCOME MEASURE
@@ -862,7 +961,7 @@
         Operations:
           > Mth01_CatVar_Count_ByGrp_1_n: Count of subjects (n)
   4.2. Summary of Observed Value by Treatment, Parameter and Visit
-    Analysis: An08_01_Obs_Summ_ByTrt
+    Analysis: An08_01_Obs_Summ_ByTrt (Summary of Observed Value by Treatment, Parameter and Visit)
       Documentation:
         Reason: SPECIFIED IN SAP
         Purpose: PRIMARY OUTCOME MEASURE
@@ -910,7 +1009,7 @@
           > Mth02_ContVar_Summ_ByGrp_7_Min: Minimum (Min)
           > Mth02_ContVar_Summ_ByGrp_8_Max: Maximum (Max)
   4.3. Summary of Change from Baseline by Treatment, Parameter and Visit
-    Analysis: An08_02_ChgBl_Summ_ByTrt
+    Analysis: An08_02_ChgBl_Summ_ByTrt (Summary of Change from Baseline by Treatment, Parameter and Visit)
       Documentation:
         Reason: SPECIFIED IN SAP
         Purpose: PRIMARY OUTCOME MEASURE
@@ -961,9 +1060,31 @@
           > Mth02_ContVar_Summ_ByGrp_7_Min: Minimum (Min)
           > Mth02_ContVar_Summ_ByGrp_8_Max: Maximum (Max)
 5. Summary of Observed and Change from Baseline by Scheduled Visits - Vital Signs (Vertical)
-  Output: Out14-3-3-1b
+  Output: Out14-3-3-1b (Summary of Observed and Change from Baseline by Scheduled Visits - Vital Signs Vertical)
+    Categories:
+      > Safety
+      > Vital Signs
+    Output File(s):
+      > RTF Format: t14-3-3-1-vitals-chgbl-vert (.)
+      > PDF Format: t14-3-3-1-vitals-chgbl-vert (.)
+    Displays:
+      1. Disp14-3-3-1b (Vitals_ChgBl_Vert)
+        Display Title: Summary of Observed and Change from Baseline by Scheduled Visits - Vital Signs <Vertical Layout>
+        Sections:
+          > Title:
+            1. Table 14.3.3.1b
+            2. Summary of Observed and Change from Baseline by Scheduled Visits – Vital Signs
+            3. Safety Population
+          > Legend:
+            1. Note: Baseline is defined as the last assessment that is non-missing prior to first dose of investigational product.
+          > Footnote:
+            1. Source dataset: advs, Generated on: DDMONYYYY:HH:MM
+            2. Program: <pid>.sas, Output: <pid><oid>.rtf, Generated on: DDMONYYYY:HH:MM
+          > Rowlabel Header:
+            1. Parameter (Units)
+            2. Visit
   5.1. Summary of Subjects by Treatment
-    Analysis: An01_05_SAF_Summ_ByTrt
+    Analysis: An01_05_SAF_Summ_ByTrt (Summary of Subjects by Treatment)
       Documentation:
         Reason: SPECIFIED IN SAP
         Purpose: PRIMARY OUTCOME MEASURE
@@ -985,7 +1106,7 @@
         Operations:
           > Mth01_CatVar_Count_ByGrp_1_n: Count of subjects (n)
   5.2. Summary of Observed Value by Treatment, Parameter and Visit
-    Analysis: An08_01_Obs_Summ_ByTrt
+    Analysis: An08_01_Obs_Summ_ByTrt (Summary of Observed Value by Treatment, Parameter and Visit)
       Documentation:
         Reason: SPECIFIED IN SAP
         Purpose: PRIMARY OUTCOME MEASURE
@@ -1033,7 +1154,7 @@
           > Mth02_ContVar_Summ_ByGrp_7_Min: Minimum (Min)
           > Mth02_ContVar_Summ_ByGrp_8_Max: Maximum (Max)
   5.3. Summary of Change from Baseline by Treatment, Parameter and Visit
-    Analysis: An08_02_ChgBl_Summ_ByTrt
+    Analysis: An08_02_ChgBl_Summ_ByTrt (Summary of Change from Baseline by Treatment, Parameter and Visit)
       Documentation:
         Reason: SPECIFIED IN SAP
         Purpose: PRIMARY OUTCOME MEASURE

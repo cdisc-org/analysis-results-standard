@@ -1,7 +1,27 @@
 1. Table 2. Baseline Demographic and Clinical Characteristics, Safety Population, Trial CDISCPILOT01
-  Output: O_T2
+  Output: O_T2 (Table 2. Baseline Demographic and Clinical Characteristics, Safety Population, Trial CDISCPILOT01)
+    Documentation:
+      > Standard Safety Tables and Figures: Integrated Guide (https://downloads.regulations.gov/FDA-2022-N-1961-0046/attachment_1.pdf)
+          - Pages 12-13 [Table 2]
+    Output File(s):
+      > RTF Format: t2-demog (.)
+      > PDF Format: t2-demog (.)
+    Displays:
+      1. D_T2 (Table 2)
+        Display Title: Table 2. Baseline Demographic and Clinical Characteristics, Safety Population, Trial CDISCPILOT01
+        Sections:
+          > Title:
+            1. Table 2. Baseline Demographic and Clinical Characteristics, Safety Population, Trial CDISCPILOT01
+          > Footnote:
+            1. Source dataset: adsl, Generated on: DDMONYYYY:HH:MM
+          > Rowlabel Header:
+            1. Characteristic
+          > Abbreviation:
+            1. N, number of patients in treatment arm
+            2. n, number of patients with given characteristic
+            3. SD, standard deviation
   1.1. Summary of Subjects by Treatment
-    Analysis: A_SAF_SUM_USUBJID_TRT
+    Analysis: A_SAF_SUM_USUBJID_TRT (Summary of Subjects by Treatment)
       Documentation:
         Reason: SPECIFIED IN SAP
         Purpose: PRIMARY OUTCOME MEASURE
@@ -20,7 +40,7 @@
           > M_GRP_CNT_1_N: Count of subjects (n)
   1.2. Sex
     1.2.1. Summary of Subjects by Treatment
-      Analysis: A_SAF_SUM_USUBJID_TRT_SEX
+      Analysis: A_SAF_SUM_USUBJID_TRT_SEX (Summary of Subjects by Treatment and Sex)
         Documentation:
           Reason: SPECIFIED IN SAP
           Purpose: PRIMARY OUTCOME MEASURE
@@ -45,7 +65,7 @@
               - Denominator: result of operation M_GRP_CNT_1_N for analysis A_SAF_SUM_USUBJID_TRT
   1.3. Age
     1.3.1. Summary of Age by Treatment
-      Analysis: A_SAF_SUM_AGE_TRT
+      Analysis: A_SAF_SUM_AGE_TRT (Summary of Age by Treatment)
         Documentation:
           Reason: SPECIFIED IN SAP
           Purpose: PRIMARY OUTCOME MEASURE
@@ -68,7 +88,7 @@
             > M_GRP_SUM_CONTIN_5_MAX: Maximum (max)
   1.4. Age groups
     1.4.1. Summary of Subjects by Treatment
-      Analysis: A_SAF_SUM_USUBJID_TRT_AGEGRP
+      Analysis: A_SAF_SUM_USUBJID_TRT_AGEGRP (Summary of Subjects by Treatment and Age Group)
         Documentation:
           Reason: SPECIFIED IN SAP
           Purpose: PRIMARY OUTCOME MEASURE
@@ -97,7 +117,7 @@
               - Denominator: result of operation M_GRP_CNT_1_N for analysis A_SAF_SUM_USUBJID_TRT
   1.5. Race
     1.5.1. Summary of Subjects by Treatment
-      Analysis: A_SAF_SUM_USUBJID_TRT_RACE
+      Analysis: A_SAF_SUM_USUBJID_TRT_RACE (Summary of Subjects by Treatment and Race)
         Documentation:
           Reason: SPECIFIED IN SAP
           Purpose: PRIMARY OUTCOME MEASURE
@@ -125,7 +145,7 @@
               - Denominator: result of operation M_GRP_CNT_1_N for analysis A_SAF_SUM_USUBJID_TRT
   1.6. Ethnicity
     1.6.1. Summary of Subjects by Treatment
-      Analysis: A_SAF_SUM_USUBJID_TRT_ETHNIC
+      Analysis: A_SAF_SUM_USUBJID_TRT_ETHNIC (Summary of Subjects by Treatment and Ethnicity)
         Documentation:
           Reason: SPECIFIED IN SAP
           Purpose: PRIMARY OUTCOME MEASURE

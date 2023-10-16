@@ -118,38 +118,7 @@ slot_usage:
     - WhereClauseCondition
     - TemplateCodeParameter
     - AnalysisOutputCodeParameter
-rules:
-- preconditions:
-    slot_conditions:
-      comparator:
-        name: comparator
-        any_of:
-        - equals_string: EQ
-        - equals_string: NE
-        - equals_string: LT
-        - equals_string: LE
-        - equals_string: GT
-        - equals_string: GE
-  postconditions:
-    slot_conditions:
-      value:
-        name: value
-        maximum_cardinality: 1
-  description: Only a single value is allowed when comparator is EQ, NE, LT, LE, GT,
-    or GE.
-- preconditions:
-    slot_conditions:
-      comparator:
-        name: comparator
-        any_of:
-        - equals_string: IN
-        - equals_string: NOTIN
-  postconditions:
-    slot_conditions:
-      value:
-        name: value
-        minimum_cardinality: 2
-  description: At least 2 values are required when comparator is IN or NOTIN.
+    required: false
 
 ```
 </details>
@@ -173,6 +142,7 @@ slot_usage:
     - WhereClauseCondition
     - TemplateCodeParameter
     - AnalysisOutputCodeParameter
+    required: false
 attributes:
   dataset:
     name: dataset
@@ -220,38 +190,7 @@ attributes:
     - TemplateCodeParameter
     - AnalysisOutputCodeParameter
     range: string
-rules:
-- preconditions:
-    slot_conditions:
-      comparator:
-        name: comparator
-        any_of:
-        - equals_string: EQ
-        - equals_string: NE
-        - equals_string: LT
-        - equals_string: LE
-        - equals_string: GT
-        - equals_string: GE
-  postconditions:
-    slot_conditions:
-      value:
-        name: value
-        maximum_cardinality: 1
-  description: Only a single value is allowed when comparator is EQ, NE, LT, LE, GT,
-    or GE.
-- preconditions:
-    slot_conditions:
-      comparator:
-        name: comparator
-        any_of:
-        - equals_string: IN
-        - equals_string: NOTIN
-  postconditions:
-    slot_conditions:
-      value:
-        name: value
-        minimum_cardinality: 2
-  description: At least 2 values are required when comparator is IN or NOTIN.
+    required: false
 
 ```
 </details>
