@@ -287,6 +287,58 @@ run;
 proc format cntlin=cntlin;
 run;
 
+%macro make_data_index();
+
+  proc sql noprint;
+
+    select memname into : dss separated by ' '
+    from sashelp.vtable
+    where libname = 'CLASSDS';
+
+    %let nds = &sqlobs;
+
+    create table dataindex as
+    %do i = 1 %to &nds;
+    %let ds = %scan(&dss,&i);
+    %if &i gt 1 %then union;
+    select datapath,"&ds" as classds length = 32
+    from classds.&ds
+    %end;;
+
+  quit;
+
+%mend;
+
+%make_data_index;
+
+proc sql;
+
+  create table parmvs as
+  select distinct e.*,f.classds,
+         substr(scan(e.kcond,1,'','ka'),1,min(32,findc(e.kcond,'','ka'))) as kcndvar,
+         scan(e.kcond,2,'=') as kcndval
+  from (select d.*,
+         case
+            when d.allinst then tranwrd(d.vpath,catx('/',ifc(d.allinst,scan(d.vpath,2,'/','b'),''),scan(d.vpath,1,'/','b')),'%')
+            else tranwrd(d.vpath,'/'||catx('/',scan(d.vpath,1,'/','b')),'')
+         end as kpath,
+         case
+            when d.allinst then compress(scan(d.vpath,2,'/','b'),'[*]')
+            else ''
+         end as kcond
+  from (select a.id as analysisId,a.datapath,c.name,transtrn(c.valuesource,'#',trim(a.datapath)) as vpath,
+               upcase(scan(c.valuesource,1,'/','b')) as pattr,(scan(c.valuesource,2,'/','b') like '[%]') as allinst
+        from classds.analysis as a
+        inner join classds.analysismethod as b
+        on a.methodId = b.id
+        inner join classds.templatecodeparameter as c
+        on substr(c.datapath,1,length(b.datapath)+1) = cats(b.datapath,'/')) as d) as e
+  left join dataindex as f on
+  (e.allinst = 0 and f.datapath = e.kpath)
+  or (e.allinst = 1 and f.datapath like e.kpath);
+
+quit;
+
 %macro make_macro(mthid=);
 
   proc sql noprint;
@@ -300,17 +352,56 @@ run;
 
 %mend;
 
+%macro getparmv(anid=,pname=);
+
+  %let anpdsid = %sysfunc(open(work.parmvs (where = (analysisId eq "&anid" and name eq "&pname")),i));
+  %syscall set(anpdsid);
+  %let anprc = %sysfunc(fetch(&anpdsid));
+  %let anprc = %sysfunc(close(&anpdsid));
+
+  %let prmval = %str();
+
+  %if &allinst %then %let cond = %str(datapath like "%trim(&kpath)");
+  %else %let cond = %str(datapath eq "&kpath");
+  %if &kcndvar ne %str() %then %let cond = %str(&cond and &kcndvar eq &kcndval);
+  %let pvdsid = %sysfunc(open(classds.&classds (where = (&cond)),i));
+  %let pvrc = %sysfunc(fetch(&pvdsid));
+  %if &pvrc eq 0 %then
+    %do;
+    %let prmval = %sysfunc(getvarc(&pvdsid,%sysfunc(varnum(&pvdsid,&pattr))));
+    %if &allinst eq 1 %then
+      %do;
+          %let pvrc = %sysfunc(fetch(&pvdsid));
+          %do %while(&pvrc eq 0);
+            %let prmval = &prmval %sysfunc(getvarc(&pvdsid,%sysfunc(varnum(&pvdsid,&pattr))));
+            %let pvrc = %sysfunc(fetch(&pvdsid));
+          %end;
+      %end;
+    %end;
+  %let pvrc = %sysfunc(close(&pvdsid));
+
+  &prmval
+
+%mend getparmv;
+
 %macro run_analysis(anid=,mthid=);
 
   proc sql noprint;
-    select catx('=',b.name,b.value1) into : mparms separated by ','
-    from classds.analysis (where = (id = "&anid")) as a
-    inner join classds.analysisoutputcodeparameter as b
+    select b.name into : mparms separated by ' '
+    from classds.analysismethod (where = (id = "&mthid")) as a
+    inner join classds.templatecodeparameter as b
       on substr(b.datapath,1,length(a.datapath)+1) = cats(a.datapath,'/');
+    %let nparms = &sqlobs;
   quit;
 
+  %do pidx = 1 %to &nparms;
+    %let pname = %scan(&mparms,&pidx,%str( ));
+    %if &pidx eq 1 %then %let aparms = %str(&pname=)%getparmv(anid=&anid,pname=&pname);
+    %else %let aparms = %str(&aparms,&pname=)%getparmv(anid=&anid,pname=&pname);
+  %end;
+
   data _null_;
-  mcall = cats('%',"&mthid",'(',"&mparms",')');
+  mcall = cats('%',"&mthid",'(',"&aparms",')');
   call symput('mcall',mcall);
   run;
 
