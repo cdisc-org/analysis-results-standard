@@ -142,6 +142,7 @@ attributes:
     domain_of:
     - OrderedListItem
     - WhereClause
+    - Operation
     - OrderedGroupingFactor
     - OrderedDisplay
     - OrderedDisplaySubSection

@@ -30,18 +30,26 @@ class ArsLdmAPI:
 
     def query_NamedObject(self,
              name: Union[str, MatchExpression] = None,
+             description: Union[str, MatchExpression] = None,
+             label: Union[str, MatchExpression] = None,
              
              _extra: Any = None) -> List[NamedObject]:
         """
         Queries for instances of `NamedObject`
 
         :param name: The name for the instance of the class.
+        :param description: A textual description of the instance of the class.
+        :param label: A short informative description that may be used for display.
         
         :return: Person list matching constraints
         """
         results = self.query_engine.simple_query(NamedObject.class_name,
                                                  
                                                  name=name,
+                                                 
+                                                 description=description,
+                                                 
+                                                 label=label,
                                                  
                                                  _extra=_extra)
         return results
@@ -63,8 +71,8 @@ class ArsLdmAPI:
     def query_ReportingEvent(self,
              id: Union[str, MatchExpression] = None,
              version: Union[str, MatchExpression] = None,
-             listOfPlannedAnalyses: Union[str, MatchExpression] = None,
-             listOfPlannedOutputs: Union[str, MatchExpression] = None,
+             mainListOfContents: Union[str, MatchExpression] = None,
+             otherListsOfContents: Union[str, MatchExpression] = None,
              referenceDocuments: Union[str, MatchExpression] = None,
              terminologyExtensions: Union[str, MatchExpression] = None,
              analysisOutputCategorizations: Union[str, MatchExpression] = None,
@@ -77,6 +85,8 @@ class ArsLdmAPI:
              globalDisplaySections: Union[str, MatchExpression] = None,
              outputs: Union[str, MatchExpression] = None,
              name: Union[str, MatchExpression] = None,
+             description: Union[str, MatchExpression] = None,
+             label: Union[str, MatchExpression] = None,
              
              _extra: Any = None) -> List[ReportingEvent]:
         """
@@ -84,8 +94,8 @@ class ArsLdmAPI:
 
         :param id: The assigned identifying value for the instance of the class.
         :param version: An ordinal indicating the version of the identified instance of the class.
-        :param listOfPlannedAnalyses: A structured list of the analyses defined for the reporting event.
-        :param listOfPlannedOutputs: An optional structured list of the outputs defined for the reporting event.
+        :param mainListOfContents: The main list of the analyses and outputs defined for the reporting event.
+        :param otherListsOfContents: Other lists of the analyses and outputs defined for the reporting event.
         :param referenceDocuments: External documents containing information referenced for the reporting event.
         :param terminologyExtensions: Any sponsor-defined extensions to extensible terminology.
         :param analysisOutputCategorizations: Sets of related implementer-defined categories that can be used to categorize analyses or outputs.
@@ -98,6 +108,8 @@ class ArsLdmAPI:
         :param globalDisplaySections: Display section specifications that may be applied to any display.
         :param outputs: The outputs defined for the reporting event.
         :param name: The name for the instance of the class.
+        :param description: A textual description of the instance of the class.
+        :param label: A short informative description that may be used for display.
         
         :return: Person list matching constraints
         """
@@ -107,9 +119,9 @@ class ArsLdmAPI:
                                                  
                                                  version=version,
                                                  
-                                                 listOfPlannedAnalyses=listOfPlannedAnalyses,
+                                                 mainListOfContents=mainListOfContents,
                                                  
-                                                 listOfPlannedOutputs=listOfPlannedOutputs,
+                                                 otherListsOfContents=otherListsOfContents,
                                                  
                                                  referenceDocuments=referenceDocuments,
                                                  
@@ -134,6 +146,54 @@ class ArsLdmAPI:
                                                  outputs=outputs,
                                                  
                                                  name=name,
+                                                 
+                                                 description=description,
+                                                 
+                                                 label=label,
+                                                 
+                                                 _extra=_extra)
+        return results
+    
+    # --
+    # ListOfContents methods
+    # --
+    def fetch_ListOfContents(self, id_value: str) -> ListOfContents:
+        """
+        Retrieves an instance of `ListOfContents` via a primary key
+
+        :param id_value:
+        :return: ListOfContents with matching ID
+        """
+        q = FetchById(id=id_value, target_class=ListOfContents.class_name)
+        results = self.query_engine.fetch_by_id(q)
+        return results[0] if results else None
+
+    def query_ListOfContents(self,
+             contentsList: Union[str, MatchExpression] = None,
+             name: Union[str, MatchExpression] = None,
+             description: Union[str, MatchExpression] = None,
+             label: Union[str, MatchExpression] = None,
+             
+             _extra: Any = None) -> List[ListOfContents]:
+        """
+        Queries for instances of `ListOfContents`
+
+        :param contentsList: A structured list of the analyses and outputs defined for the reporting event.
+        :param name: The name for the instance of the class.
+        :param description: A textual description of the instance of the class.
+        :param label: A short informative description that may be used for display.
+        
+        :return: Person list matching constraints
+        """
+        results = self.query_engine.simple_query(ListOfContents.class_name,
+                                                 
+                                                 contentsList=contentsList,
+                                                 
+                                                 name=name,
+                                                 
+                                                 description=description,
+                                                 
+                                                 label=label,
                                                  
                                                  _extra=_extra)
         return results
@@ -191,6 +251,8 @@ class ArsLdmAPI:
              outputId: Union[str, MatchExpression] = None,
              sublist: Union[str, MatchExpression] = None,
              name: Union[str, MatchExpression] = None,
+             description: Union[str, MatchExpression] = None,
+             label: Union[str, MatchExpression] = None,
              
              _extra: Any = None) -> List[OrderedListItem]:
         """
@@ -202,6 +264,8 @@ class ArsLdmAPI:
         :param outputId: The identifier of the referenced output.
         :param sublist: A sub-list of items (analyses or outputs) that may be further organized within sub-lists.
         :param name: The name for the instance of the class.
+        :param description: A textual description of the instance of the class.
+        :param label: A short informative description that may be used for display.
         
         :return: Person list matching constraints
         """
@@ -218,6 +282,10 @@ class ArsLdmAPI:
                                                  sublist=sublist,
                                                  
                                                  name=name,
+                                                 
+                                                 description=description,
+                                                 
+                                                 label=label,
                                                  
                                                  _extra=_extra)
         return results
@@ -240,6 +308,8 @@ class ArsLdmAPI:
              id: Union[str, MatchExpression] = None,
              location: Union[str, MatchExpression] = None,
              name: Union[str, MatchExpression] = None,
+             description: Union[str, MatchExpression] = None,
+             label: Union[str, MatchExpression] = None,
              
              _extra: Any = None) -> List[ReferenceDocument]:
         """
@@ -248,6 +318,8 @@ class ArsLdmAPI:
         :param id: The assigned identifying value for the instance of the class.
         :param location: A path (relative or absolute) indicating the location of the file.
         :param name: The name for the instance of the class.
+        :param description: A textual description of the instance of the class.
+        :param label: A short informative description that may be used for display.
         
         :return: Person list matching constraints
         """
@@ -258,6 +330,10 @@ class ArsLdmAPI:
                                                  location=location,
                                                  
                                                  name=name,
+                                                 
+                                                 description=description,
+                                                 
+                                                 label=label,
                                                  
                                                  _extra=_extra)
         return results
@@ -775,6 +851,7 @@ class ArsLdmAPI:
     def query_GroupingFactor(self,
              id: Union[str, MatchExpression] = None,
              label: Union[str, MatchExpression] = None,
+             groupingDataset: Union[str, MatchExpression] = None,
              groupingVariable: Union[str, MatchExpression] = None,
              dataDriven: Union[str, MatchExpression] = None,
              groups: Union[str, MatchExpression] = None,
@@ -785,6 +862,7 @@ class ArsLdmAPI:
 
         :param id: The assigned identifying value for the instance of the class.
         :param label: A short informative description that may be used for display.
+        :param groupingDataset: For groupings based on a single variable, a reference to the dataset containing the variable upon which grouping is based.
         :param groupingVariable: For groupings based on a single variable, a reference to the dataset variable upon which grouping is based.
         :param dataDriven: Indicates whether the groups defined by the grouping are prespecified (false) or obtained from distinct data values of the groupingVariable (true).
         :param groups: The pre-specified groups within the grouping.
@@ -796,6 +874,8 @@ class ArsLdmAPI:
                                                  id=id,
                                                  
                                                  label=label,
+                                                 
+                                                 groupingDataset=groupingDataset,
                                                  
                                                  groupingVariable=groupingVariable,
                                                  
@@ -911,6 +991,7 @@ class ArsLdmAPI:
     def query_SubjectGroupingFactor(self,
              id: Union[str, MatchExpression] = None,
              label: Union[str, MatchExpression] = None,
+             groupingDataset: Union[str, MatchExpression] = None,
              groupingVariable: Union[str, MatchExpression] = None,
              dataDriven: Union[str, MatchExpression] = None,
              groups: Union[str, MatchExpression] = None,
@@ -921,6 +1002,7 @@ class ArsLdmAPI:
 
         :param id: The assigned identifying value for the instance of the class.
         :param label: A short informative description that may be used for display.
+        :param groupingDataset: For groupings based on a single variable, a reference to the dataset containing the variable upon which grouping is based.
         :param groupingVariable: For groupings based on a single variable, a reference to the dataset variable upon which grouping is based.
         :param dataDriven: Indicates whether the groups defined by the grouping are prespecified (false) or obtained from distinct data values of the groupingVariable (true).
         :param groups: The pre-specified groups within the grouping.
@@ -932,6 +1014,8 @@ class ArsLdmAPI:
                                                  id=id,
                                                  
                                                  label=label,
+                                                 
+                                                 groupingDataset=groupingDataset,
                                                  
                                                  groupingVariable=groupingVariable,
                                                  
@@ -1011,6 +1095,7 @@ class ArsLdmAPI:
     def query_DataGroupingFactor(self,
              id: Union[str, MatchExpression] = None,
              label: Union[str, MatchExpression] = None,
+             groupingDataset: Union[str, MatchExpression] = None,
              groupingVariable: Union[str, MatchExpression] = None,
              dataDriven: Union[str, MatchExpression] = None,
              groups: Union[str, MatchExpression] = None,
@@ -1021,6 +1106,7 @@ class ArsLdmAPI:
 
         :param id: The assigned identifying value for the instance of the class.
         :param label: A short informative description that may be used for display.
+        :param groupingDataset: For groupings based on a single variable, a reference to the dataset containing the variable upon which grouping is based.
         :param groupingVariable: For groupings based on a single variable, a reference to the dataset variable upon which grouping is based.
         :param dataDriven: Indicates whether the groups defined by the grouping are prespecified (false) or obtained from distinct data values of the groupingVariable (true).
         :param groups: The pre-specified groups within the grouping.
@@ -1032,6 +1118,8 @@ class ArsLdmAPI:
                                                  id=id,
                                                  
                                                  label=label,
+                                                 
+                                                 groupingDataset=groupingDataset,
                                                  
                                                  groupingVariable=groupingVariable,
                                                  
@@ -1110,34 +1198,30 @@ class ArsLdmAPI:
 
     def query_AnalysisMethod(self,
              id: Union[str, MatchExpression] = None,
-             label: Union[str, MatchExpression] = None,
-             description: Union[str, MatchExpression] = None,
              documentRefs: Union[str, MatchExpression] = None,
              operations: Union[str, MatchExpression] = None,
              codeTemplate: Union[str, MatchExpression] = None,
              name: Union[str, MatchExpression] = None,
+             description: Union[str, MatchExpression] = None,
+             label: Union[str, MatchExpression] = None,
              
              _extra: Any = None) -> List[AnalysisMethod]:
         """
         Queries for instances of `AnalysisMethod`
 
         :param id: The assigned identifying value for the instance of the class.
-        :param label: A short informative description that may be used for display.
-        :param description: A textual description of the instance of the class.
         :param documentRefs: References to external documents containing additional information.
         :param operations: The calculations performed for the method. Each operation generates a statistical result.
         :param codeTemplate: Template programming statements used to perform the statistical operations for any analysis that uses this method.
         :param name: The name for the instance of the class.
+        :param description: A textual description of the instance of the class.
+        :param label: A short informative description that may be used for display.
         
         :return: Person list matching constraints
         """
         results = self.query_engine.simple_query(AnalysisMethod.class_name,
                                                  
                                                  id=id,
-                                                 
-                                                 label=label,
-                                                 
-                                                 description=description,
                                                  
                                                  documentRefs=documentRefs,
                                                  
@@ -1146,6 +1230,10 @@ class ArsLdmAPI:
                                                  codeTemplate=codeTemplate,
                                                  
                                                  name=name,
+                                                 
+                                                 description=description,
+                                                 
+                                                 label=label,
                                                  
                                                  _extra=_extra)
         return results
@@ -1410,20 +1498,24 @@ class ArsLdmAPI:
 
     def query_Operation(self,
              id: Union[str, MatchExpression] = None,
-             label: Union[str, MatchExpression] = None,
+             order: Union[str, MatchExpression] = None,
              referencedOperationRelationships: Union[str, MatchExpression] = None,
              resultPattern: Union[str, MatchExpression] = None,
              name: Union[str, MatchExpression] = None,
+             description: Union[str, MatchExpression] = None,
+             label: Union[str, MatchExpression] = None,
              
              _extra: Any = None) -> List[Operation]:
         """
         Queries for instances of `Operation`
 
         :param id: The assigned identifying value for the instance of the class.
-        :param label: A short informative description that may be used for display.
+        :param order: The ordinal of the instance with respect to other instances.
         :param referencedOperationRelationships: Relationships to other operations indicating how the result of the referenced operation are used in the calculation of the result for this operation.
         :param resultPattern: The default pattern or format to apply to the result for display.
         :param name: The name for the instance of the class.
+        :param description: A textual description of the instance of the class.
+        :param label: A short informative description that may be used for display.
         
         :return: Person list matching constraints
         """
@@ -1431,13 +1523,17 @@ class ArsLdmAPI:
                                                  
                                                  id=id,
                                                  
-                                                 label=label,
+                                                 order=order,
                                                  
                                                  referencedOperationRelationships=referencedOperationRelationships,
                                                  
                                                  resultPattern=resultPattern,
                                                  
                                                  name=name,
+                                                 
+                                                 description=description,
+                                                 
+                                                 label=label,
                                                  
                                                  _extra=_extra)
         return results
@@ -1621,23 +1717,27 @@ class ArsLdmAPI:
         return results[0] if results else None
 
     def query_CodeParameter(self,
-             description: Union[str, MatchExpression] = None,
              name: Union[str, MatchExpression] = None,
+             description: Union[str, MatchExpression] = None,
+             label: Union[str, MatchExpression] = None,
              
              _extra: Any = None) -> List[CodeParameter]:
         """
         Queries for instances of `CodeParameter`
 
-        :param description: A textual description of the instance of the class.
         :param name: The name for the instance of the class.
+        :param description: A textual description of the instance of the class.
+        :param label: A short informative description that may be used for display.
         
         :return: Person list matching constraints
         """
         results = self.query_engine.simple_query(CodeParameter.class_name,
                                                  
+                                                 name=name,
+                                                 
                                                  description=description,
                                                  
-                                                 name=name,
+                                                 label=label,
                                                  
                                                  _extra=_extra)
         return results
@@ -1659,8 +1759,9 @@ class ArsLdmAPI:
     def query_TemplateCodeParameter(self,
              valueSource: Union[str, MatchExpression] = None,
              value: Union[str, MatchExpression] = None,
-             description: Union[str, MatchExpression] = None,
              name: Union[str, MatchExpression] = None,
+             description: Union[str, MatchExpression] = None,
+             label: Union[str, MatchExpression] = None,
              
              _extra: Any = None) -> List[TemplateCodeParameter]:
         """
@@ -1668,8 +1769,9 @@ class ArsLdmAPI:
 
         :param valueSource: A reference to the prespecified source of the value for the parameter.
         :param value: The value to be used for the parameter when the method is used in an analysis. Multiple values may be specified to indicate a choice.
-        :param description: A textual description of the instance of the class.
         :param name: The name for the instance of the class.
+        :param description: A textual description of the instance of the class.
+        :param label: A short informative description that may be used for display.
         
         :return: Person list matching constraints
         """
@@ -1679,9 +1781,11 @@ class ArsLdmAPI:
                                                  
                                                  value=value,
                                                  
+                                                 name=name,
+                                                 
                                                  description=description,
                                                  
-                                                 name=name,
+                                                 label=label,
                                                  
                                                  _extra=_extra)
         return results
@@ -1703,7 +1807,6 @@ class ArsLdmAPI:
     def query_Analysis(self,
              id: Union[str, MatchExpression] = None,
              version: Union[str, MatchExpression] = None,
-             description: Union[str, MatchExpression] = None,
              reason: Union[str, MatchExpression] = None,
              purpose: Union[str, MatchExpression] = None,
              documentRefs: Union[str, MatchExpression] = None,
@@ -1718,6 +1821,8 @@ class ArsLdmAPI:
              programmingCode: Union[str, MatchExpression] = None,
              results: Union[str, MatchExpression] = None,
              name: Union[str, MatchExpression] = None,
+             description: Union[str, MatchExpression] = None,
+             label: Union[str, MatchExpression] = None,
              
              _extra: Any = None) -> List[Analysis]:
         """
@@ -1725,7 +1830,6 @@ class ArsLdmAPI:
 
         :param id: The assigned identifying value for the instance of the class.
         :param version: An ordinal indicating the version of the identified instance of the class.
-        :param description: A textual description of the instance of the class.
         :param reason: The rationale for performing this analysis. It indicates when the analysis was planned.
         :param purpose: The purpose of the analysis within the body of evidence (e.g., section in the clinical study report).
         :param documentRefs: References to external documents containing additional information.
@@ -1740,6 +1844,8 @@ class ArsLdmAPI:
         :param programmingCode: Programming statements and/or a reference to the program used to perform the specific analysis.
         :param results: The results of the analysis.
         :param name: The name for the instance of the class.
+        :param description: A textual description of the instance of the class.
+        :param label: A short informative description that may be used for display.
         
         :return: Person list matching constraints
         """
@@ -1748,8 +1854,6 @@ class ArsLdmAPI:
                                                  id=id,
                                                  
                                                  version=version,
-                                                 
-                                                 description=description,
                                                  
                                                  reason=reason,
                                                  
@@ -1778,6 +1882,10 @@ class ArsLdmAPI:
                                                  results=results,
                                                  
                                                  name=name,
+                                                 
+                                                 description=description,
+                                                 
+                                                 label=label,
                                                  
                                                  _extra=_extra)
         return results
@@ -2062,16 +2170,18 @@ class ArsLdmAPI:
 
     def query_AnalysisOutputCodeParameter(self,
              value: Union[str, MatchExpression] = None,
-             description: Union[str, MatchExpression] = None,
              name: Union[str, MatchExpression] = None,
+             description: Union[str, MatchExpression] = None,
+             label: Union[str, MatchExpression] = None,
              
              _extra: Any = None) -> List[AnalysisOutputCodeParameter]:
         """
         Queries for instances of `AnalysisOutputCodeParameter`
 
         :param value: The value of the parameter.
-        :param description: A textual description of the instance of the class.
         :param name: The name for the instance of the class.
+        :param description: A textual description of the instance of the class.
+        :param label: A short informative description that may be used for display.
         
         :return: Person list matching constraints
         """
@@ -2079,9 +2189,11 @@ class ArsLdmAPI:
                                                  
                                                  value=value,
                                                  
+                                                 name=name,
+                                                 
                                                  description=description,
                                                  
-                                                 name=name,
+                                                 label=label,
                                                  
                                                  _extra=_extra)
         return results
@@ -2265,6 +2377,8 @@ class ArsLdmAPI:
              documentRefs: Union[str, MatchExpression] = None,
              programmingCode: Union[str, MatchExpression] = None,
              name: Union[str, MatchExpression] = None,
+             description: Union[str, MatchExpression] = None,
+             label: Union[str, MatchExpression] = None,
              
              _extra: Any = None) -> List[Output]:
         """
@@ -2278,6 +2392,8 @@ class ArsLdmAPI:
         :param documentRefs: References to external documents containing additional information.
         :param programmingCode: Programming statements and/or a reference to the program used to perform the specific output.
         :param name: The name for the instance of the class.
+        :param description: A textual description of the instance of the class.
+        :param label: A short informative description that may be used for display.
         
         :return: Person list matching constraints
         """
@@ -2298,6 +2414,10 @@ class ArsLdmAPI:
                                                  programmingCode=programmingCode,
                                                  
                                                  name=name,
+                                                 
+                                                 description=description,
+                                                 
+                                                 label=label,
                                                  
                                                  _extra=_extra)
         return results
@@ -2321,6 +2441,8 @@ class ArsLdmAPI:
              location: Union[str, MatchExpression] = None,
              style: Union[str, MatchExpression] = None,
              name: Union[str, MatchExpression] = None,
+             description: Union[str, MatchExpression] = None,
+             label: Union[str, MatchExpression] = None,
              
              _extra: Any = None) -> List[OutputFile]:
         """
@@ -2330,6 +2452,8 @@ class ArsLdmAPI:
         :param location: A path (relative or absolute) indicating the location of the file.
         :param style: Reference to the specification of the style used for the output.
         :param name: The name for the instance of the class.
+        :param description: A textual description of the instance of the class.
+        :param label: A short informative description that may be used for display.
         
         :return: Person list matching constraints
         """
@@ -2342,6 +2466,10 @@ class ArsLdmAPI:
                                                  style=style,
                                                  
                                                  name=name,
+                                                 
+                                                 description=description,
+                                                 
+                                                 label=label,
                                                  
                                                  _extra=_extra)
         return results
@@ -2474,6 +2602,8 @@ class ArsLdmAPI:
              displayTitle: Union[str, MatchExpression] = None,
              displaySections: Union[str, MatchExpression] = None,
              name: Union[str, MatchExpression] = None,
+             description: Union[str, MatchExpression] = None,
+             label: Union[str, MatchExpression] = None,
              
              _extra: Any = None) -> List[OutputDisplay]:
         """
@@ -2484,6 +2614,8 @@ class ArsLdmAPI:
         :param displayTitle: Display description which uniquely identifies the display in the report.
         :param displaySections: The parts of the display containing one or more pieces of informational text (e.g. title, footnote).
         :param name: The name for the instance of the class.
+        :param description: A textual description of the instance of the class.
+        :param label: A short informative description that may be used for display.
         
         :return: Person list matching constraints
         """
@@ -2498,6 +2630,10 @@ class ArsLdmAPI:
                                                  displaySections=displaySections,
                                                  
                                                  name=name,
+                                                 
+                                                 description=description,
+                                                 
+                                                 label=label,
                                                  
                                                  _extra=_extra)
         return results

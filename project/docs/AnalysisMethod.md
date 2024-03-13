@@ -16,8 +16,6 @@ URI: [ars:AnalysisMethod](https://www.cdisc.org/ars/1-0/AnalysisMethod)
       NamedObject <|-- AnalysisMethod
 
       AnalysisMethod : id
-        AnalysisMethod : label
-        AnalysisMethod : description
         AnalysisMethod : documentRefs
         AnalysisMethod --|> DocumentReference : documentRefs
         AnalysisMethod : operations
@@ -25,6 +23,8 @@ URI: [ars:AnalysisMethod](https://www.cdisc.org/ars/1-0/AnalysisMethod)
         AnalysisMethod : codeTemplate
         AnalysisMethod --|> AnalysisProgrammingCodeTemplate : codeTemplate
         AnalysisMethod : name
+        AnalysisMethod : description
+        AnalysisMethod : label
         
 ```
 
@@ -42,12 +42,12 @@ URI: [ars:AnalysisMethod](https://www.cdisc.org/ars/1-0/AnalysisMethod)
 | Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [id](id.md) | 1..1 <br/> [String](String.md) | The assigned identifying value for the instance of the class | direct |
-| [label](label.md) | 0..1 <br/> [String](String.md) | A short informative description that may be used for display | direct |
-| [description](description.md) | 0..1 <br/> [String](String.md) | A textual description of the instance of the class | direct |
 | [documentRefs](documentRefs.md) | 0..* <br/> [DocumentReference](DocumentReference.md) | References to external documents containing additional information | direct |
 | [operations](operations.md) | 1..* <br/> [Operation](Operation.md) | The calculations performed for the method | direct |
 | [codeTemplate](codeTemplate.md) | 0..1 <br/> [AnalysisProgrammingCodeTemplate](AnalysisProgrammingCodeTemplate.md) | Template programming statements used to perform the statistical operations fo... | direct |
 | [name](name.md) | 1..1 <br/> [String](String.md) | The name for the instance of the class | [NamedObject](NamedObject.md) |
+| [description](description.md) | 0..1 <br/> [String](String.md) | A textual description of the instance of the class | [NamedObject](NamedObject.md) |
+| [label](label.md) | 0..1 <br/> [String](String.md) | A short informative description that may be used for display | [NamedObject](NamedObject.md) |
 
 _* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
@@ -109,8 +109,6 @@ rank: 1000
 is_a: NamedObject
 slots:
 - id
-- label
-- description
 - documentRefs
 - operations
 - codeTemplate
@@ -156,38 +154,6 @@ attributes:
     - OutputDisplay
     range: string
     required: true
-  label:
-    name: label
-    description: A short informative description that may be used for display.
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    alias: label
-    owner: AnalysisMethod
-    domain_of:
-    - AnalysisOutputCategorization
-    - AnalysisOutputCategory
-    - AnalysisSet
-    - DataSubset
-    - GroupingFactor
-    - Group
-    - AnalysisMethod
-    - PageRef
-    - Operation
-    range: string
-  description:
-    name: description
-    description: A textual description of the instance of the class.
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    alias: description
-    owner: AnalysisMethod
-    domain_of:
-    - SponsorTerm
-    - AnalysisMethod
-    - ReferencedOperationRelationship
-    - CodeParameter
-    - Analysis
-    range: string
   documentRefs:
     name: documentRefs
     description: References to external documents containing additional information.
@@ -243,6 +209,35 @@ attributes:
     - NamedObject
     range: string
     required: true
+  description:
+    name: description
+    description: A textual description of the instance of the class.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: description
+    owner: AnalysisMethod
+    domain_of:
+    - NamedObject
+    - SponsorTerm
+    - ReferencedOperationRelationship
+    range: string
+  label:
+    name: label
+    description: A short informative description that may be used for display.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: label
+    owner: AnalysisMethod
+    domain_of:
+    - NamedObject
+    - AnalysisOutputCategorization
+    - AnalysisOutputCategory
+    - AnalysisSet
+    - DataSubset
+    - GroupingFactor
+    - Group
+    - PageRef
+    range: string
 
 ```
 </details>

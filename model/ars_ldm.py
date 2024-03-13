@@ -1,9 +1,9 @@
 # Auto generated from ars_ldm.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-10-15T14:43:52
+# Generation date: 2024-03-13T15:33:14
 # Schema: ars_ldm
 #
 # id: https://www.cdisc.org/ars/1-0
-# description: DRAFT Logical model to support both the prospective specification of analyses and the fully contextualized representation of the results of the analyses.
+# description: Logical model to support both the prospective specification of analyses and the fully contextualized representation of the results of the analyses.
 #
 # license: https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -138,12 +138,20 @@ class NamedObject(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = ARS.NamedObject
 
     name: str = None
+    description: Optional[str] = None
+    label: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.name):
             self.MissingRequiredField("name")
         if not isinstance(self.name, str):
             self.name = str(self.name)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        if self.label is not None and not isinstance(self.label, str):
+            self.label = str(self.label)
 
         super().__post_init__(**kwargs)
 
@@ -162,9 +170,9 @@ class ReportingEvent(NamedObject):
 
     id: Union[str, ReportingEventId] = None
     name: str = None
-    listOfPlannedAnalyses: Union[dict, "NestedList"] = None
+    mainListOfContents: Union[dict, "ListOfContents"] = None
     version: Optional[int] = None
-    listOfPlannedOutputs: Optional[Union[dict, "NestedList"]] = None
+    otherListsOfContents: Optional[Union[Union[dict, "ListOfContents"], List[Union[dict, "ListOfContents"]]]] = empty_list()
     referenceDocuments: Optional[Union[Dict[Union[str, ReferenceDocumentId], Union[dict, "ReferenceDocument"]], List[Union[dict, "ReferenceDocument"]]]] = empty_dict()
     terminologyExtensions: Optional[Union[Dict[Union[str, TerminologyExtensionId], Union[dict, "TerminologyExtension"]], List[Union[dict, "TerminologyExtension"]]]] = empty_dict()
     analysisOutputCategorizations: Optional[Union[Dict[Union[str, AnalysisOutputCategorizationId], Union[dict, "AnalysisOutputCategorization"]], List[Union[dict, "AnalysisOutputCategorization"]]]] = empty_dict()
@@ -183,16 +191,17 @@ class ReportingEvent(NamedObject):
         if not isinstance(self.id, ReportingEventId):
             self.id = ReportingEventId(self.id)
 
-        if self._is_empty(self.listOfPlannedAnalyses):
-            self.MissingRequiredField("listOfPlannedAnalyses")
-        if not isinstance(self.listOfPlannedAnalyses, NestedList):
-            self.listOfPlannedAnalyses = NestedList(**as_dict(self.listOfPlannedAnalyses))
+        if self._is_empty(self.mainListOfContents):
+            self.MissingRequiredField("mainListOfContents")
+        if not isinstance(self.mainListOfContents, ListOfContents):
+            self.mainListOfContents = ListOfContents(**as_dict(self.mainListOfContents))
 
         if self.version is not None and not isinstance(self.version, int):
             self.version = int(self.version)
 
-        if self.listOfPlannedOutputs is not None and not isinstance(self.listOfPlannedOutputs, NestedList):
-            self.listOfPlannedOutputs = NestedList(**as_dict(self.listOfPlannedOutputs))
+        if not isinstance(self.otherListsOfContents, list):
+            self.otherListsOfContents = [self.otherListsOfContents] if self.otherListsOfContents is not None else []
+        self.otherListsOfContents = [v if isinstance(v, ListOfContents) else ListOfContents(**as_dict(v)) for v in self.otherListsOfContents]
 
         self._normalize_inlined_as_list(slot_name="referenceDocuments", slot_type=ReferenceDocument, key_name="id", keyed=True)
 
@@ -217,6 +226,30 @@ class ReportingEvent(NamedObject):
         self.globalDisplaySections = [v if isinstance(v, GlobalDisplaySection) else GlobalDisplaySection(**as_dict(v)) for v in self.globalDisplaySections]
 
         self._normalize_inlined_as_list(slot_name="outputs", slot_type=Output, key_name="id", keyed=True)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class ListOfContents(NamedObject):
+    """
+    A structured list of analyses and outputs included in the reporting event.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ARS.ListOfContents
+    class_class_curie: ClassVar[str] = "ars:ListOfContents"
+    class_name: ClassVar[str] = "ListOfContents"
+    class_model_uri: ClassVar[URIRef] = ARS.ListOfContents
+
+    name: str = None
+    contentsList: Union[dict, "NestedList"] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.contentsList):
+            self.MissingRequiredField("contentsList")
+        if not isinstance(self.contentsList, NestedList):
+            self.contentsList = NestedList(**as_dict(self.contentsList))
 
         super().__post_init__(**kwargs)
 
@@ -478,16 +511,20 @@ class WhereClause(YAMLRoot):
     class_name: ClassVar[str] = "WhereClause"
     class_model_uri: ClassVar[URIRef] = ARS.WhereClause
 
-    level: Optional[int] = None
-    order: Optional[int] = None
+    level: int = None
+    order: int = None
     condition: Optional[Union[dict, "WhereClauseCondition"]] = None
     compoundExpression: Optional[Union[dict, "WhereClauseCompoundExpression"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.level is not None and not isinstance(self.level, int):
+        if self._is_empty(self.level):
+            self.MissingRequiredField("level")
+        if not isinstance(self.level, int):
             self.level = int(self.level)
 
-        if self.order is not None and not isinstance(self.order, int):
+        if self._is_empty(self.order):
+            self.MissingRequiredField("order")
+        if not isinstance(self.order, int):
             self.order = int(self.order)
 
         if self.condition is not None and not isinstance(self.condition, WhereClauseCondition):
@@ -555,9 +592,7 @@ class WhereClauseCompoundExpression(YAMLRoot):
         if not isinstance(self.logicalOperator, ExpressionLogicalOperatorEnum):
             self.logicalOperator = ExpressionLogicalOperatorEnum(self.logicalOperator)
 
-        if not isinstance(self.whereClauses, list):
-            self.whereClauses = [self.whereClauses] if self.whereClauses is not None else []
-        self.whereClauses = [v if isinstance(v, WhereClause) else WhereClause(**as_dict(v)) for v in self.whereClauses]
+        self._normalize_inlined_as_dict(slot_name="whereClauses", slot_type=WhereClause, key_name="level", keyed=False)
 
         super().__post_init__(**kwargs)
 
@@ -577,6 +612,8 @@ class AnalysisSet(WhereClause):
     class_model_uri: ClassVar[URIRef] = ARS.AnalysisSet
 
     id: Union[str, AnalysisSetId] = None
+    level: int = None
+    order: int = None
     label: Optional[str] = None
     compoundExpression: Optional[Union[dict, "CompoundSetExpression"]] = None
 
@@ -632,6 +669,8 @@ class DataSubset(WhereClause):
     class_model_uri: ClassVar[URIRef] = ARS.DataSubset
 
     id: Union[str, DataSubsetId] = None
+    level: int = None
+    order: int = None
     label: Optional[str] = None
     compoundExpression: Optional[Union[dict, "CompoundSubsetExpression"]] = None
 
@@ -689,6 +728,7 @@ class GroupingFactor(YAMLRoot):
     id: Union[str, GroupingFactorId] = None
     dataDriven: Union[bool, Bool] = None
     label: Optional[str] = None
+    groupingDataset: Optional[str] = None
     groupingVariable: Optional[str] = None
     groups: Optional[Union[Dict[Union[str, GroupId], Union[dict, "Group"]], List[Union[dict, "Group"]]]] = empty_dict()
 
@@ -705,6 +745,9 @@ class GroupingFactor(YAMLRoot):
 
         if self.label is not None and not isinstance(self.label, str):
             self.label = str(self.label)
+
+        if self.groupingDataset is not None and not isinstance(self.groupingDataset, str):
+            self.groupingDataset = str(self.groupingDataset)
 
         if self.groupingVariable is not None and not isinstance(self.groupingVariable, str):
             self.groupingVariable = str(self.groupingVariable)
@@ -727,6 +770,8 @@ class Group(WhereClause):
     class_model_uri: ClassVar[URIRef] = ARS.Group
 
     id: Union[str, GroupId] = None
+    level: int = None
+    order: int = None
     label: Optional[str] = None
     compoundExpression: Optional[Union[dict, "CompoundGroupExpression"]] = None
 
@@ -810,6 +855,8 @@ class AnalysisGroup(Group):
     class_model_uri: ClassVar[URIRef] = ARS.AnalysisGroup
 
     id: Union[str, AnalysisGroupId] = None
+    level: int = None
+    order: int = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -860,6 +907,8 @@ class DataGroup(Group):
     class_model_uri: ClassVar[URIRef] = ARS.DataGroup
 
     id: Union[str, DataGroupId] = None
+    level: int = None
+    order: int = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -885,8 +934,6 @@ class AnalysisMethod(NamedObject):
     id: Union[str, AnalysisMethodId] = None
     name: str = None
     operations: Union[Dict[Union[str, OperationId], Union[dict, "Operation"]], List[Union[dict, "Operation"]]] = empty_dict()
-    label: Optional[str] = None
-    description: Optional[str] = None
     documentRefs: Optional[Union[Union[dict, "DocumentReference"], List[Union[dict, "DocumentReference"]]]] = empty_list()
     codeTemplate: Optional[Union[dict, "AnalysisProgrammingCodeTemplate"]] = None
 
@@ -899,12 +946,6 @@ class AnalysisMethod(NamedObject):
         if self._is_empty(self.operations):
             self.MissingRequiredField("operations")
         self._normalize_inlined_as_list(slot_name="operations", slot_type=Operation, key_name="id", keyed=True)
-
-        if self.label is not None and not isinstance(self.label, str):
-            self.label = str(self.label)
-
-        if self.description is not None and not isinstance(self.description, str):
-            self.description = str(self.description)
 
         if not isinstance(self.documentRefs, list):
             self.documentRefs = [self.documentRefs] if self.documentRefs is not None else []
@@ -1135,7 +1176,7 @@ class Operation(NamedObject):
 
     id: Union[str, OperationId] = None
     name: str = None
-    label: Optional[str] = None
+    order: int = None
     referencedOperationRelationships: Optional[Union[Dict[Union[str, ReferencedOperationRelationshipId], Union[dict, "ReferencedOperationRelationship"]], List[Union[dict, "ReferencedOperationRelationship"]]]] = empty_dict()
     resultPattern: Optional[str] = None
 
@@ -1145,8 +1186,10 @@ class Operation(NamedObject):
         if not isinstance(self.id, OperationId):
             self.id = OperationId(self.id)
 
-        if self.label is not None and not isinstance(self.label, str):
-            self.label = str(self.label)
+        if self._is_empty(self.order):
+            self.MissingRequiredField("order")
+        if not isinstance(self.order, int):
+            self.order = int(self.order)
 
         self._normalize_inlined_as_list(slot_name="referencedOperationRelationships", slot_type=ReferencedOperationRelationship, key_name="id", keyed=True)
 
@@ -1305,14 +1348,6 @@ class CodeParameter(NamedObject):
     class_model_uri: ClassVar[URIRef] = ARS.CodeParameter
 
     name: str = None
-    description: Optional[str] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.description is not None and not isinstance(self.description, str):
-            self.description = str(self.description)
-
-        super().__post_init__(**kwargs)
-
 
 @dataclass
 class TemplateCodeParameter(CodeParameter):
@@ -1366,7 +1401,6 @@ class Analysis(NamedObject):
     purpose: Union[dict, ExtensibleTerminologyTerm] = None
     methodId: Union[str, AnalysisMethodId] = None
     version: Optional[int] = None
-    description: Optional[str] = None
     documentRefs: Optional[Union[Union[dict, DocumentReference], List[Union[dict, DocumentReference]]]] = empty_list()
     categoryIds: Optional[Union[Union[str, AnalysisOutputCategoryId], List[Union[str, AnalysisOutputCategoryId]]]] = empty_list()
     dataset: Optional[str] = None
@@ -1401,9 +1435,6 @@ class Analysis(NamedObject):
 
         if self.version is not None and not isinstance(self.version, int):
             self.version = int(self.version)
-
-        if self.description is not None and not isinstance(self.description, str):
-            self.description = str(self.description)
 
         if not isinstance(self.documentRefs, list):
             self.documentRefs = [self.documentRefs] if self.documentRefs is not None else []
@@ -1566,8 +1597,8 @@ class OrderedGroupingFactor(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = ARS.OrderedGroupingFactor
 
     order: int = None
+    groupingId: Union[str, GroupingFactorId] = None
     resultsByGroup: Union[bool, Bool] = None
-    groupingId: Optional[Union[str, GroupingFactorId]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.order):
@@ -1575,13 +1606,15 @@ class OrderedGroupingFactor(YAMLRoot):
         if not isinstance(self.order, int):
             self.order = int(self.order)
 
+        if self._is_empty(self.groupingId):
+            self.MissingRequiredField("groupingId")
+        if not isinstance(self.groupingId, GroupingFactorId):
+            self.groupingId = GroupingFactorId(self.groupingId)
+
         if self._is_empty(self.resultsByGroup):
             self.MissingRequiredField("resultsByGroup")
         if not isinstance(self.resultsByGroup, Bool):
             self.resultsByGroup = Bool(self.resultsByGroup)
-
-        if self.groupingId is not None and not isinstance(self.groupingId, GroupingFactorId):
-            self.groupingId = GroupingFactorId(self.groupingId)
 
         super().__post_init__(**kwargs)
 
@@ -1726,12 +1759,14 @@ class ResultGroup(YAMLRoot):
     class_name: ClassVar[str] = "ResultGroup"
     class_model_uri: ClassVar[URIRef] = ARS.ResultGroup
 
-    groupingId: Optional[Union[str, GroupingFactorId]] = None
+    groupingId: Union[str, GroupingFactorId] = None
     groupId: Optional[Union[str, GroupId]] = None
     groupValue: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.groupingId is not None and not isinstance(self.groupingId, GroupingFactorId):
+        if self._is_empty(self.groupingId):
+            self.MissingRequiredField("groupingId")
+        if not isinstance(self.groupingId, GroupingFactorId):
             self.groupingId = GroupingFactorId(self.groupingId)
 
         if self.groupId is not None and not isinstance(self.groupId, GroupId):
@@ -1811,9 +1846,9 @@ class Output(NamedObject):
 
     id: Union[str, OutputId] = None
     name: str = None
+    displays: Union[Union[dict, "OrderedDisplay"], List[Union[dict, "OrderedDisplay"]]] = None
     version: Optional[int] = None
     fileSpecifications: Optional[Union[Union[dict, "OutputFile"], List[Union[dict, "OutputFile"]]]] = empty_list()
-    displays: Optional[Union[Union[dict, "OrderedDisplay"], List[Union[dict, "OrderedDisplay"]]]] = empty_list()
     categoryIds: Optional[Union[Union[str, AnalysisOutputCategoryId], List[Union[str, AnalysisOutputCategoryId]]]] = empty_list()
     documentRefs: Optional[Union[Union[dict, DocumentReference], List[Union[dict, DocumentReference]]]] = empty_list()
     programmingCode: Optional[Union[dict, AnalysisOutputProgrammingCode]] = None
@@ -1824,16 +1859,18 @@ class Output(NamedObject):
         if not isinstance(self.id, OutputId):
             self.id = OutputId(self.id)
 
+        if self._is_empty(self.displays):
+            self.MissingRequiredField("displays")
+        if not isinstance(self.displays, list):
+            self.displays = [self.displays] if self.displays is not None else []
+        self.displays = [v if isinstance(v, OrderedDisplay) else OrderedDisplay(**as_dict(v)) for v in self.displays]
+
         if self.version is not None and not isinstance(self.version, int):
             self.version = int(self.version)
 
         if not isinstance(self.fileSpecifications, list):
             self.fileSpecifications = [self.fileSpecifications] if self.fileSpecifications is not None else []
         self.fileSpecifications = [v if isinstance(v, OutputFile) else OutputFile(**as_dict(v)) for v in self.fileSpecifications]
-
-        if not isinstance(self.displays, list):
-            self.displays = [self.displays] if self.displays is not None else []
-        self.displays = [v if isinstance(v, OrderedDisplay) else OrderedDisplay(**as_dict(v)) for v in self.displays]
 
         if not isinstance(self.categoryIds, list):
             self.categoryIds = [self.categoryIds] if self.categoryIds is not None else []
@@ -1946,7 +1983,7 @@ class OrderedDisplay(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = ARS.OrderedDisplay
 
     order: int = None
-    display: Optional[Union[dict, "OutputDisplay"]] = None
+    display: Union[dict, "OutputDisplay"] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.order):
@@ -1954,7 +1991,9 @@ class OrderedDisplay(YAMLRoot):
         if not isinstance(self.order, int):
             self.order = int(self.order)
 
-        if self.display is not None and not isinstance(self.display, OutputDisplay):
+        if self._is_empty(self.display):
+            self.MissingRequiredField("display")
+        if not isinstance(self.display, OutputDisplay):
             self.display = OutputDisplay(**as_dict(self.display))
 
         super().__post_init__(**kwargs)
@@ -2182,10 +2221,24 @@ class DisplaySectionTypeEnum(EnumDefinitionImpl):
     """
     Types of display section that contain one or more pieces of informational text.
     """
-    Title = PermissibleValue(text="Title")
-    Footnote = PermissibleValue(text="Footnote")
-    Abbreviation = PermissibleValue(text="Abbreviation")
-    Legend = PermissibleValue(text="Legend")
+    Header = PermissibleValue(
+        text="Header",
+        description="""Lines of text appearing above the title and containing additional generic information such as study identifier or page numbering.""")
+    Title = PermissibleValue(
+        text="Title",
+        description="""The title is a caption of a table beginning with \"Table\" followed by sequenced numbers or letters and separated by full stops. The title includes additional lines describing the content.""")
+    Legend = PermissibleValue(
+        text="Legend",
+        description="""Lines of text placed immediately after the body of the table containing statements explaining the use of terms or values. May be prefaced with a word such as 'Note:'.""")
+    Abbreviation = PermissibleValue(
+        text="Abbreviation",
+        description="Lines of text defining abbreviations, acronyms, and terms used in the body of the display.")
+    Footnote = PermissibleValue(
+        text="Footnote",
+        description="""Placed after the abbreviations and definitions, if any. Footnotes lead with symbols (asterisk, dagger, double dagger, or section symbol) or superscripted letters (a, b, c) or numbers (1, 2, 3) which are in the table behind units of measure or words. Footnotes add information regarding the associated values where they occur in the body.""")
+    Footer = PermissibleValue(
+        text="Footer",
+        description="""Lines of text appearing below any footnote and containing additional information such as traceability of the source program or page numbering.""")
 
     _defn = EnumDefinition(
         name="DisplaySectionTypeEnum",
@@ -2195,7 +2248,9 @@ class DisplaySectionTypeEnum(EnumDefinitionImpl):
     @classmethod
     def _addvals(cls):
         setattr(cls, "Rowlabel Header",
-            PermissibleValue(text="Rowlabel Header"))
+            PermissibleValue(
+                text="Rowlabel Header",
+                description="Optional text placed in the column header for a column containing row/stub labels."))
 
 class OperationRoleEnum(EnumDefinitionImpl):
     """
@@ -2321,17 +2376,26 @@ class slots:
 slots.name = Slot(uri=ARS.name, name="name", curie=ARS.curie('name'),
                    model_uri=ARS.name, domain=None, range=str)
 
+slots.description = Slot(uri=ARS.description, name="description", curie=ARS.curie('description'),
+                   model_uri=ARS.description, domain=None, range=Optional[str])
+
+slots.label = Slot(uri=ARS.label, name="label", curie=ARS.curie('label'),
+                   model_uri=ARS.label, domain=None, range=Optional[str])
+
 slots.id = Slot(uri=ARS.id, name="id", curie=ARS.curie('id'),
                    model_uri=ARS.id, domain=None, range=URIRef)
 
 slots.version = Slot(uri=ARS.version, name="version", curie=ARS.curie('version'),
                    model_uri=ARS.version, domain=None, range=Optional[int])
 
-slots.listOfPlannedAnalyses = Slot(uri=ARS.listOfPlannedAnalyses, name="listOfPlannedAnalyses", curie=ARS.curie('listOfPlannedAnalyses'),
-                   model_uri=ARS.listOfPlannedAnalyses, domain=None, range=Union[dict, NestedList])
+slots.mainListOfContents = Slot(uri=ARS.mainListOfContents, name="mainListOfContents", curie=ARS.curie('mainListOfContents'),
+                   model_uri=ARS.mainListOfContents, domain=None, range=Union[dict, ListOfContents])
 
-slots.listOfPlannedOutputs = Slot(uri=ARS.listOfPlannedOutputs, name="listOfPlannedOutputs", curie=ARS.curie('listOfPlannedOutputs'),
-                   model_uri=ARS.listOfPlannedOutputs, domain=None, range=Optional[Union[dict, NestedList]])
+slots.otherListsOfContents = Slot(uri=ARS.otherListsOfContents, name="otherListsOfContents", curie=ARS.curie('otherListsOfContents'),
+                   model_uri=ARS.otherListsOfContents, domain=None, range=Optional[Union[Union[dict, ListOfContents], List[Union[dict, ListOfContents]]]])
+
+slots.contentsList = Slot(uri=ARS.contentsList, name="contentsList", curie=ARS.curie('contentsList'),
+                   model_uri=ARS.contentsList, domain=None, range=Union[dict, NestedList])
 
 slots.referenceDocuments = Slot(uri=ARS.referenceDocuments, name="referenceDocuments", curie=ARS.curie('referenceDocuments'),
                    model_uri=ARS.referenceDocuments, domain=None, range=Optional[Union[Dict[Union[str, ReferenceDocumentId], Union[dict, ReferenceDocument]], List[Union[dict, ReferenceDocument]]]])
@@ -2370,10 +2434,10 @@ slots.listItems = Slot(uri=ARS.listItems, name="listItems", curie=ARS.curie('lis
                    model_uri=ARS.listItems, domain=None, range=Optional[Union[Union[dict, OrderedListItem], List[Union[dict, OrderedListItem]]]])
 
 slots.level = Slot(uri=ARS.level, name="level", curie=ARS.curie('level'),
-                   model_uri=ARS.level, domain=None, range=Optional[int])
+                   model_uri=ARS.level, domain=None, range=int)
 
 slots.order = Slot(uri=ARS.order, name="order", curie=ARS.curie('order'),
-                   model_uri=ARS.order, domain=None, range=Optional[int])
+                   model_uri=ARS.order, domain=None, range=int)
 
 slots.sublist = Slot(uri=ARS.sublist, name="sublist", curie=ARS.curie('sublist'),
                    model_uri=ARS.sublist, domain=None, range=Optional[Union[dict, NestedList]])
@@ -2396,17 +2460,11 @@ slots.sponsorTerms = Slot(uri=ARS.sponsorTerms, name="sponsorTerms", curie=ARS.c
 slots.submissionValue = Slot(uri=ARS.submissionValue, name="submissionValue", curie=ARS.curie('submissionValue'),
                    model_uri=ARS.submissionValue, domain=None, range=str)
 
-slots.description = Slot(uri=ARS.description, name="description", curie=ARS.curie('description'),
-                   model_uri=ARS.description, domain=None, range=Optional[str])
-
 slots.controlledTerm = Slot(uri=ARS.controlledTerm, name="controlledTerm", curie=ARS.curie('controlledTerm'),
                    model_uri=ARS.controlledTerm, domain=None, range=Optional[str])
 
 slots.sponsorTermId = Slot(uri=ARS.sponsorTermId, name="sponsorTermId", curie=ARS.curie('sponsorTermId'),
                    model_uri=ARS.sponsorTermId, domain=None, range=Optional[Union[str, SponsorTermId]])
-
-slots.label = Slot(uri=ARS.label, name="label", curie=ARS.curie('label'),
-                   model_uri=ARS.label, domain=None, range=Optional[str])
 
 slots.categories = Slot(uri=ARS.categories, name="categories", curie=ARS.curie('categories'),
                    model_uri=ARS.categories, domain=None, range=Union[Dict[Union[str, AnalysisOutputCategoryId], Union[dict, AnalysisOutputCategory]], List[Union[dict, AnalysisOutputCategory]]])
@@ -2437,6 +2495,9 @@ slots.logicalOperator = Slot(uri=ARS.logicalOperator, name="logicalOperator", cu
 
 slots.whereClauses = Slot(uri=ARS.whereClauses, name="whereClauses", curie=ARS.curie('whereClauses'),
                    model_uri=ARS.whereClauses, domain=None, range=Optional[Union[Union[dict, WhereClause], List[Union[dict, WhereClause]]]])
+
+slots.groupingDataset = Slot(uri=ARS.groupingDataset, name="groupingDataset", curie=ARS.curie('groupingDataset'),
+                   model_uri=ARS.groupingDataset, domain=None, range=Optional[str])
 
 slots.groupingVariable = Slot(uri=ARS.groupingVariable, name="groupingVariable", curie=ARS.curie('groupingVariable'),
                    model_uri=ARS.groupingVariable, domain=None, range=Optional[str])
@@ -2535,7 +2596,7 @@ slots.results = Slot(uri=ARS.results, name="results", curie=ARS.curie('results')
                    model_uri=ARS.results, domain=None, range=Optional[Union[Union[dict, OperationResult], List[Union[dict, OperationResult]]]])
 
 slots.groupingId = Slot(uri=ARS.groupingId, name="groupingId", curie=ARS.curie('groupingId'),
-                   model_uri=ARS.groupingId, domain=None, range=Optional[Union[str, GroupingFactorId]])
+                   model_uri=ARS.groupingId, domain=None, range=Union[str, GroupingFactorId])
 
 slots.resultsByGroup = Slot(uri=ARS.resultsByGroup, name="resultsByGroup", curie=ARS.curie('resultsByGroup'),
                    model_uri=ARS.resultsByGroup, domain=None, range=Union[bool, Bool])
@@ -2571,7 +2632,7 @@ slots.fileSpecifications = Slot(uri=ARS.fileSpecifications, name="fileSpecificat
                    model_uri=ARS.fileSpecifications, domain=None, range=Optional[Union[Union[dict, OutputFile], List[Union[dict, OutputFile]]]])
 
 slots.displays = Slot(uri=ARS.displays, name="displays", curie=ARS.curie('displays'),
-                   model_uri=ARS.displays, domain=None, range=Optional[Union[Union[dict, OrderedDisplay], List[Union[dict, OrderedDisplay]]]])
+                   model_uri=ARS.displays, domain=None, range=Union[Union[dict, OrderedDisplay], List[Union[dict, OrderedDisplay]]])
 
 slots.fileType = Slot(uri=ARS.fileType, name="fileType", curie=ARS.curie('fileType'),
                    model_uri=ARS.fileType, domain=None, range=Optional[Union[dict, ExtensibleTerminologyTerm]])
@@ -2580,7 +2641,7 @@ slots.style = Slot(uri=ARS.style, name="style", curie=ARS.curie('style'),
                    model_uri=ARS.style, domain=None, range=Optional[str])
 
 slots.display = Slot(uri=ARS.display, name="display", curie=ARS.curie('display'),
-                   model_uri=ARS.display, domain=None, range=Optional[Union[dict, OutputDisplay]])
+                   model_uri=ARS.display, domain=None, range=Union[dict, OutputDisplay])
 
 slots.displayTitle = Slot(uri=ARS.displayTitle, name="displayTitle", curie=ARS.curie('displayTitle'),
                    model_uri=ARS.displayTitle, domain=None, range=Optional[str])
@@ -2596,12 +2657,6 @@ slots.subSection = Slot(uri=ARS.subSection, name="subSection", curie=ARS.curie('
 
 slots.subSectionId = Slot(uri=ARS.subSectionId, name="subSectionId", curie=ARS.curie('subSectionId'),
                    model_uri=ARS.subSectionId, domain=None, range=Optional[Union[str, DisplaySubSectionId]])
-
-slots.OrderedListItem_level = Slot(uri=ARS.level, name="OrderedListItem_level", curie=ARS.curie('level'),
-                   model_uri=ARS.OrderedListItem_level, domain=OrderedListItem, range=int)
-
-slots.OrderedListItem_order = Slot(uri=ARS.order, name="OrderedListItem_order", curie=ARS.curie('order'),
-                   model_uri=ARS.OrderedListItem_order, domain=OrderedListItem, range=int)
 
 slots.WhereClauseCondition_value = Slot(uri=ARS.value, name="WhereClauseCondition_value", curie=ARS.curie('value'),
                    model_uri=ARS.WhereClauseCondition_value, domain=WhereClauseCondition, range=Optional[Union[str, List[str]]])
@@ -2726,9 +2781,6 @@ slots.SponsorAnalysisPurpose_controlledTerm = Slot(uri=ARS.controlledTerm, name=
 slots.SponsorAnalysisPurpose_sponsorTermId = Slot(uri=ARS.sponsorTermId, name="SponsorAnalysisPurpose_sponsorTermId", curie=ARS.curie('sponsorTermId'),
                    model_uri=ARS.SponsorAnalysisPurpose_sponsorTermId, domain=SponsorAnalysisPurpose, range=Union[str, SponsorTermId])
 
-slots.OrderedGroupingFactor_order = Slot(uri=ARS.order, name="OrderedGroupingFactor_order", curie=ARS.curie('order'),
-                   model_uri=ARS.OrderedGroupingFactor_order, domain=OrderedGroupingFactor, range=int)
-
 slots.ReferencedAnalysisOperation_analysisId = Slot(uri=ARS.analysisId, name="ReferencedAnalysisOperation_analysisId", curie=ARS.curie('analysisId'),
                    model_uri=ARS.ReferencedAnalysisOperation_analysisId, domain=ReferencedAnalysisOperation, range=Union[str, AnalysisId])
 
@@ -2758,12 +2810,6 @@ slots.SponsorOutputFileType_controlledTerm = Slot(uri=ARS.controlledTerm, name="
 
 slots.SponsorOutputFileType_sponsorTermId = Slot(uri=ARS.sponsorTermId, name="SponsorOutputFileType_sponsorTermId", curie=ARS.curie('sponsorTermId'),
                    model_uri=ARS.SponsorOutputFileType_sponsorTermId, domain=SponsorOutputFileType, range=Union[str, SponsorTermId])
-
-slots.OrderedDisplay_order = Slot(uri=ARS.order, name="OrderedDisplay_order", curie=ARS.curie('order'),
-                   model_uri=ARS.OrderedDisplay_order, domain=OrderedDisplay, range=int)
-
-slots.OrderedDisplaySubSection_order = Slot(uri=ARS.order, name="OrderedDisplaySubSection_order", curie=ARS.curie('order'),
-                   model_uri=ARS.OrderedDisplaySubSection_order, domain=OrderedDisplaySubSection, range=int)
 
 slots.OrderedSubSection_subSection = Slot(uri=ARS.subSection, name="OrderedSubSection_subSection", curie=ARS.curie('subSection'),
                    model_uri=ARS.OrderedSubSection_subSection, domain=OrderedSubSection, range=Union[dict, DisplaySubSection])

@@ -20,6 +20,7 @@ URI: [ars:name](https://www.cdisc.org/ars/1-0/name)
 | --- | --- | --- |
 [NamedObject](NamedObject.md) | An object with a name |  no  |
 [ReportingEvent](ReportingEvent.md) | A set of analyses and outputs created to meet a specific reporting requiremen... |  no  |
+[ListOfContents](ListOfContents.md) | A structured list of analyses and outputs included in the reporting event |  no  |
 [OrderedListItem](OrderedListItem.md) | An item (analysis, output or sub-list) ordered relative to other items within... |  no  |
 [ReferenceDocument](ReferenceDocument.md) | An external document containing supporting documentation or programming code |  no  |
 [AnalysisMethod](AnalysisMethod.md) | A set of one or more statistical operations |  no  |

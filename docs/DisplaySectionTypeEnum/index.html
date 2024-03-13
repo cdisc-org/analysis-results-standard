@@ -81,29 +81,39 @@
 </thead>
 <tbody>
 <tr>
+<td>Header</td>
+<td>None</td>
+<td>Lines of text appearing above the title and containing additional generic inf...</td>
+</tr>
+<tr>
 <td>Title</td>
 <td>None</td>
-<td></td>
-</tr>
-<tr>
-<td>Footnote</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
-<td>Abbreviation</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
-<td>Legend</td>
-<td>None</td>
-<td></td>
+<td>The title is a caption of a table beginning with "Table" followed by sequence...</td>
 </tr>
 <tr>
 <td>Rowlabel Header</td>
 <td>None</td>
-<td></td>
+<td>Optional text placed in the column header for a column containing row/stub la...</td>
+</tr>
+<tr>
+<td>Legend</td>
+<td>None</td>
+<td>Lines of text placed immediately after the body of the table containing state...</td>
+</tr>
+<tr>
+<td>Abbreviation</td>
+<td>None</td>
+<td>Lines of text defining abbreviations, acronyms, and terms used in the body of...</td>
+</tr>
+<tr>
+<td>Footnote</td>
+<td>None</td>
+<td>Placed after the abbreviations and definitions, if any</td>
+</tr>
+<tr>
+<td>Footer</td>
+<td>None</td>
+<td>Lines of text appearing below any footnote and containing additional informat...</td>
 </tr>
 </tbody>
 </table>
@@ -135,16 +145,39 @@
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://www.cdisc.org/ars/1-0</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">permissible_values</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">Header</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Header</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Lines of text appearing above the title and containing additional</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">generic information such as study identifier or page numbering.</span>
 <span class="w">  </span><span class="nt">Title</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Title</span>
-<span class="w">  </span><span class="nt">Footnote</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Footnote</span>
-<span class="w">  </span><span class="nt">Abbreviation</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Abbreviation</span>
-<span class="w">  </span><span class="nt">Legend</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Legend</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The title is a caption of a table beginning with "Table" followed</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">by sequenced numbers or letters and separated by full stops. The title includes</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">additional lines describing the content.</span>
 <span class="w">  </span><span class="nt">Rowlabel Header</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Rowlabel Header</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Optional text placed in the column header for a column containing</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">row/stub labels.</span>
+<span class="w">  </span><span class="nt">Legend</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Legend</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Lines of text placed immediately after the body of the table containing</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">statements explaining the use of terms or values. May be prefaced with a word</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">such as 'Note:'.</span>
+<span class="w">  </span><span class="nt">Abbreviation</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Abbreviation</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Lines of text defining abbreviations, acronyms, and terms used in</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">the body of the display.</span>
+<span class="w">  </span><span class="nt">Footnote</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Footnote</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Placed after the abbreviations and definitions, if any. Footnotes</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">lead with symbols (asterisk, dagger, double dagger, or section symbol) or superscripted</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">letters (a, b, c) or numbers (1, 2, 3) which are in the table behind units of</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">measure or words. Footnotes add information regarding the associated values</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">where they occur in the body.</span>
+<span class="w">  </span><span class="nt">Footer</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Footer</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Lines of text appearing below any footnote and containing additional</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">information such as traceability of the source program or page numbering.</span>
 </code></pre></div>
 </details></div>
 </div>

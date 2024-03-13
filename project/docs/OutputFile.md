@@ -20,6 +20,8 @@ URI: [ars:OutputFile](https://www.cdisc.org/ars/1-0/OutputFile)
         OutputFile : location
         OutputFile : style
         OutputFile : name
+        OutputFile : description
+        OutputFile : label
         
 ```
 
@@ -40,6 +42,8 @@ URI: [ars:OutputFile](https://www.cdisc.org/ars/1-0/OutputFile)
 | [location](location.md) | 0..1 <br/> [Uri](Uri.md) | A path (relative or absolute) indicating the location of the file | direct |
 | [style](style.md) | 0..1 <br/> [String](String.md) | Reference to the specification of the style used for the output | direct |
 | [name](name.md) | 1..1 <br/> [String](String.md) | The name for the instance of the class | [NamedObject](NamedObject.md) |
+| [description](description.md) | 0..1 <br/> [String](String.md) | A textual description of the instance of the class | [NamedObject](NamedObject.md) |
+| [label](label.md) | 0..1 <br/> [String](String.md) | A short informative description that may be used for display | [NamedObject](NamedObject.md) |
 
 _* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
@@ -164,6 +168,35 @@ attributes:
     - NamedObject
     range: string
     required: true
+  description:
+    name: description
+    description: A textual description of the instance of the class.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: description
+    owner: OutputFile
+    domain_of:
+    - NamedObject
+    - SponsorTerm
+    - ReferencedOperationRelationship
+    range: string
+  label:
+    name: label
+    description: A short informative description that may be used for display.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: label
+    owner: OutputFile
+    domain_of:
+    - NamedObject
+    - AnalysisOutputCategorization
+    - AnalysisOutputCategory
+    - AnalysisSet
+    - DataSubset
+    - GroupingFactor
+    - Group
+    - PageRef
+    range: string
 
 ```
 </details>

@@ -1,11 +1,11 @@
-# Slot: listOfPlannedOutputs
+# Slot: otherListsOfContents
 
 
-_An optional structured list of the outputs defined for the reporting event._
+_Other lists of the analyses and outputs defined for the reporting event._
 
 
 
-URI: [ars:listOfPlannedOutputs](https://www.cdisc.org/ars/1-0/listOfPlannedOutputs)
+URI: [ars:otherListsOfContents](https://www.cdisc.org/ars/1-0/otherListsOfContents)
 
 
 
@@ -28,7 +28,9 @@ URI: [ars:listOfPlannedOutputs](https://www.cdisc.org/ars/1-0/listOfPlannedOutpu
 
 ## Properties
 
-* Range: [NestedList](NestedList.md)
+* Range: [ListOfContents](ListOfContents.md)
+
+* Multivalued: True
 
 
 
@@ -54,16 +56,18 @@ URI: [ars:listOfPlannedOutputs](https://www.cdisc.org/ars/1-0/listOfPlannedOutpu
 
 <details>
 ```yaml
-name: listOfPlannedOutputs
-description: An optional structured list of the outputs defined for the reporting
-  event.
+name: otherListsOfContents
+description: Other lists of the analyses and outputs defined for the reporting event.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
-alias: listOfPlannedOutputs
+multivalued: true
+alias: otherListsOfContents
 domain_of:
 - ReportingEvent
-range: NestedList
+range: ListOfContents
 required: false
+inlined: true
+inlined_as_list: true
 
 ```
 </details>

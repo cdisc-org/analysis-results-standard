@@ -17,8 +17,9 @@ URI: [ars:TemplateCodeParameter](https://www.cdisc.org/ars/1-0/TemplateCodeParam
 
       TemplateCodeParameter : valueSource
         TemplateCodeParameter : value
-        TemplateCodeParameter : description
         TemplateCodeParameter : name
+        TemplateCodeParameter : description
+        TemplateCodeParameter : label
         
 ```
 
@@ -38,8 +39,9 @@ URI: [ars:TemplateCodeParameter](https://www.cdisc.org/ars/1-0/TemplateCodeParam
 | ---  | --- | --- | --- |
 | [valueSource](valueSource.md) | 0..1 <br/> [String](String.md) | A reference to the prespecified source of the value for the parameter | direct |
 | [value](value.md) | 0..* <br/> [String](String.md) | The value to be used for the parameter when the method is used in an analysis | direct |
-| [description](description.md) | 0..1 <br/> [String](String.md) | A textual description of the instance of the class | [CodeParameter](CodeParameter.md) |
 | [name](name.md) | 1..1 <br/> [String](String.md) | The name for the instance of the class | [NamedObject](NamedObject.md) |
+| [description](description.md) | 0..1 <br/> [String](String.md) | A textual description of the instance of the class | [NamedObject](NamedObject.md) |
+| [label](label.md) | 0..1 <br/> [String](String.md) | A short informative description that may be used for display | [NamedObject](NamedObject.md) |
 
 _* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
@@ -162,20 +164,6 @@ attributes:
     - AnalysisOutputCodeParameter
     range: string
     required: false
-  description:
-    name: description
-    description: A textual description of the instance of the class.
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    alias: description
-    owner: TemplateCodeParameter
-    domain_of:
-    - SponsorTerm
-    - AnalysisMethod
-    - ReferencedOperationRelationship
-    - CodeParameter
-    - Analysis
-    range: string
   name:
     name: name
     description: The name for the instance of the class.
@@ -187,6 +175,35 @@ attributes:
     - NamedObject
     range: string
     required: true
+  description:
+    name: description
+    description: A textual description of the instance of the class.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: description
+    owner: TemplateCodeParameter
+    domain_of:
+    - NamedObject
+    - SponsorTerm
+    - ReferencedOperationRelationship
+    range: string
+  label:
+    name: label
+    description: A short informative description that may be used for display.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: label
+    owner: TemplateCodeParameter
+    domain_of:
+    - NamedObject
+    - AnalysisOutputCategorization
+    - AnalysisOutputCategory
+    - AnalysisSet
+    - DataSubset
+    - GroupingFactor
+    - Group
+    - PageRef
+    range: string
 
 ```
 </details>

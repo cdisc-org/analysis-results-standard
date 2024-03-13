@@ -46,7 +46,6 @@ linkml:Sparqlpath xsd:string
     (  $<Analysis_tes> (  &<NamedObject_tes> ;
           rdf:type [ <NamedObject> ] ? ;
           <version> @linkml:Integer ? ;
-          <description> @linkml:String ? ;
           <reason> @<ExtensibleTerminologyTerm> ;
           <purpose> @<ExtensibleTerminologyTerm> ;
           <documentRefs> @<DocumentReference> * ;
@@ -76,8 +75,6 @@ linkml:Sparqlpath xsd:string
 <AnalysisMethod> CLOSED {
     (  $<AnalysisMethod_tes> (  &<NamedObject_tes> ;
           rdf:type [ <NamedObject> ] ? ;
-          <label> @linkml:String ? ;
-          <description> @linkml:String ? ;
           <documentRefs> @<DocumentReference> * ;
           <operations> @<Operation> + ;
           <codeTemplate> @<AnalysisProgrammingCodeTemplate> ?
@@ -167,8 +164,7 @@ linkml:Sparqlpath xsd:string
 
 <CodeParameter_struct> {
     (  $<CodeParameter_tes> (  &<NamedObject_tes> ;
-          rdf:type [ <NamedObject> ] ? ;
-          <description> @linkml:String ?
+          rdf:type [ <NamedObject> ] ?
        ) ;
        rdf:type [ <CodeParameter> ] ?
     )
@@ -289,6 +285,7 @@ linkml:Sparqlpath xsd:string
 
 <GroupingFactor_struct> {
     (  $<GroupingFactor_tes> (  <label> @linkml:String ? ;
+          <groupingDataset> @linkml:String ? ;
           <groupingVariable> @linkml:String ? ;
           <dataDriven> @linkml:Boolean ;
           <groups> @<Group> *
@@ -297,13 +294,25 @@ linkml:Sparqlpath xsd:string
     )
 }
 
+<ListOfContents> CLOSED {
+    (  $<ListOfContents_tes> (  &<NamedObject_tes> ;
+          rdf:type [ <NamedObject> ] ? ;
+          <contentsList> @<NestedList>
+       ) ;
+       rdf:type [ <ListOfContents> ] ?
+    )
+}
+
 <NamedObject>  (
-    @<Analysis> OR @<AnalysisMethod> OR @<CodeParameter> OR @<Operation> OR @<OrderedListItem> OR @<Output> OR @<OutputDisplay> OR
-    @<OutputFile> OR @<ReferenceDocument> OR @<ReportingEvent>
+    @<Analysis> OR @<AnalysisMethod> OR @<CodeParameter> OR @<ListOfContents> OR @<Operation> OR @<OrderedListItem> OR @<Output> OR
+    @<OutputDisplay> OR @<OutputFile> OR @<ReferenceDocument> OR @<ReportingEvent>
 )
 
 <NamedObject_struct> {
-    (  $<NamedObject_tes> <name> @linkml:String ;
+    (  $<NamedObject_tes> (  <name> @linkml:String ;
+          <description> @linkml:String ? ;
+          <label> @linkml:String ?
+       ) ;
        rdf:type [ <NamedObject> ] ?
     )
 }
@@ -317,7 +326,7 @@ linkml:Sparqlpath xsd:string
 <Operation> CLOSED {
     (  $<Operation_tes> (  &<NamedObject_tes> ;
           rdf:type [ <NamedObject> ] ? ;
-          <label> @linkml:String ? ;
+          <order> @linkml:Integer ;
           <referencedOperationRelationships> @<ReferencedOperationRelationship> * ;
           <resultPattern> @linkml:String ?
        ) ;
@@ -347,7 +356,7 @@ linkml:Sparqlpath xsd:string
 
 <OrderedDisplay> CLOSED {
     (  $<OrderedDisplay_tes> (  <order> @linkml:Integer ;
-          <display> @<OutputDisplay> ?
+          <display> @<OutputDisplay>
        ) ;
        rdf:type [ <OrderedDisplay> ] ?
     )
@@ -368,7 +377,7 @@ linkml:Sparqlpath xsd:string
 
 <OrderedGroupingFactor> CLOSED {
     (  $<OrderedGroupingFactor_tes> (  <order> @linkml:Integer ;
-          <groupingId> @<GroupingFactor> ? ;
+          <groupingId> @<GroupingFactor> ;
           <resultsByGroup> @linkml:Boolean
        ) ;
        rdf:type [ <OrderedGroupingFactor> ] ?
@@ -413,7 +422,7 @@ linkml:Sparqlpath xsd:string
           rdf:type [ <NamedObject> ] ? ;
           <version> @linkml:Integer ? ;
           <fileSpecifications> @<OutputFile> * ;
-          <displays> @<OrderedDisplay> * ;
+          <displays> @<OrderedDisplay> + ;
           <categoryIds> @<AnalysisOutputCategory> * ;
           <documentRefs> @<DocumentReference> * ;
           <programmingCode> @<AnalysisOutputProgrammingCode> ?
@@ -540,8 +549,8 @@ linkml:Sparqlpath xsd:string
     (  $<ReportingEvent_tes> (  &<NamedObject_tes> ;
           rdf:type [ <NamedObject> ] ? ;
           <version> @linkml:Integer ? ;
-          <listOfPlannedAnalyses> @<NestedList> ;
-          <listOfPlannedOutputs> @<NestedList> ? ;
+          <mainListOfContents> @<ListOfContents> ;
+          <otherListsOfContents> @<ListOfContents> * ;
           <referenceDocuments> @<ReferenceDocument> * ;
           <terminologyExtensions> @<TerminologyExtension> * ;
           <analysisOutputCategorizations> @<AnalysisOutputCategorization> * ;
@@ -559,7 +568,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <ResultGroup> CLOSED {
-    (  $<ResultGroup_tes> (  <groupingId> @<GroupingFactor> ? ;
+    (  $<ResultGroup_tes> (  <groupingId> @<GroupingFactor> ;
           <groupId> @<Group> ? ;
           <groupValue> @linkml:String ?
        ) ;
@@ -644,8 +653,8 @@ linkml:Sparqlpath xsd:string
 
 <WhereClause>  (
     CLOSED {
-       (  $<WhereClause_tes> (  <level> @linkml:Integer ? ;
-             <order> @linkml:Integer ? ;
+       (  $<WhereClause_tes> (  <level> @linkml:Integer ;
+             <order> @linkml:Integer ;
              <condition> @<WhereClauseCondition> ? ;
              <compoundExpression> @<WhereClauseCompoundExpression> ?
           ) ;

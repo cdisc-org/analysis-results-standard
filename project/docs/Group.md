@@ -50,8 +50,8 @@ URI: [ars:Group](https://www.cdisc.org/ars/1-0/Group)
 | ---  | --- | --- | --- |
 | [id](id.md) | 1..1 <br/> [String](String.md) | The assigned identifying value for the instance of the class | direct |
 | [label](label.md) | 0..1 <br/> [String](String.md) | A short informative description that may be used for display | direct |
-| [level](level.md) | 0..1 <br/> [Integer](Integer.md) | The level of the entry within a hierarchical structure | [WhereClause](WhereClause.md) |
-| [order](order.md) | 0..1 <br/> [Integer](Integer.md) | The ordinal of the instance with respect to other instances | [WhereClause](WhereClause.md) |
+| [level](level.md) | 1..1 <br/> [Integer](Integer.md) | The level of the entry within a hierarchical structure | [WhereClause](WhereClause.md) |
+| [order](order.md) | 1..1 <br/> [Integer](Integer.md) | The ordinal of the instance with respect to other instances | [WhereClause](WhereClause.md) |
 | [condition](condition.md) | 0..1 <br/> [WhereClauseCondition](WhereClauseCondition.md) | A simple selection criterion exressed as [dataset] | [WhereClause](WhereClause.md) |
 | [compoundExpression](compoundExpression.md) | 0..1 <br/> [CompoundGroupExpression](CompoundGroupExpression.md) | A compound expression that combines or negates where clauses | [WhereClause](WhereClause.md) |
 
@@ -181,15 +181,14 @@ attributes:
     alias: label
     owner: Group
     domain_of:
+    - NamedObject
     - AnalysisOutputCategorization
     - AnalysisOutputCategory
     - AnalysisSet
     - DataSubset
     - GroupingFactor
     - Group
-    - AnalysisMethod
     - PageRef
-    - Operation
     range: string
   level:
     name: level
@@ -204,6 +203,7 @@ attributes:
     - OrderedListItem
     - WhereClause
     range: integer
+    required: true
   order:
     name: order
     description: The ordinal of the instance with respect to other instances.
@@ -214,10 +214,12 @@ attributes:
     domain_of:
     - OrderedListItem
     - WhereClause
+    - Operation
     - OrderedGroupingFactor
     - OrderedDisplay
     - OrderedDisplaySubSection
     range: integer
+    required: true
   condition:
     name: condition
     description: A simple selection criterion exressed as [dataset].[variable] [comparator]

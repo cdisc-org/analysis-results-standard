@@ -28,7 +28,7 @@ URI: [ars:OrderedDisplay](https://www.cdisc.org/ars/1-0/OrderedDisplay)
 | Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [order](order.md) | 1..1 <br/> [Integer](Integer.md) | The ordinal of the instance with respect to other instances | direct |
-| [display](display.md) | 0..1 <br/> [OutputDisplay](OutputDisplay.md) | A display contained in the output | direct |
+| [display](display.md) | 1..1 <br/> [OutputDisplay](OutputDisplay.md) | A display contained in the output | direct |
 
 _* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
@@ -89,16 +89,6 @@ rank: 1000
 slots:
 - order
 - display
-slot_usage:
-  order:
-    name: order
-    domain_of:
-    - OrderedListItem
-    - WhereClause
-    - OrderedGroupingFactor
-    - OrderedDisplay
-    - OrderedDisplaySubSection
-    required: true
 
 ```
 </details>
@@ -111,16 +101,6 @@ name: OrderedDisplay
 description: A display ordered with respect to other displays in an analysis output.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
-slot_usage:
-  order:
-    name: order
-    domain_of:
-    - OrderedListItem
-    - WhereClause
-    - OrderedGroupingFactor
-    - OrderedDisplay
-    - OrderedDisplaySubSection
-    required: true
 attributes:
   order:
     name: order
@@ -132,6 +112,7 @@ attributes:
     domain_of:
     - OrderedListItem
     - WhereClause
+    - Operation
     - OrderedGroupingFactor
     - OrderedDisplay
     - OrderedDisplaySubSection
@@ -147,6 +128,7 @@ attributes:
     domain_of:
     - OrderedDisplay
     range: OutputDisplay
+    required: true
     inlined: true
 
 ```

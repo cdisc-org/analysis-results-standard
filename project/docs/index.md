@@ -1,6 +1,6 @@
 # Analysis Results Standard (ARS)
 
-DRAFT Logical model to support both the prospective specification of analyses and the fully contextualized representation of the results of the analyses.
+Logical model to support both the prospective specification of analyses and the fully contextualized representation of the results of the analyses.
 
 
 URI: https://www.cdisc.org/ars/1-0
@@ -15,11 +15,15 @@ ReportingEvent {
     string id  
     integer version  
     string name  
+    string description  
+    string label  
 }
 Output {
     string id  
     integer version  
     string name  
+    string description  
+    string label  
 }
 AnalysisOutputProgrammingCode {
     string context  
@@ -27,8 +31,9 @@ AnalysisOutputProgrammingCode {
 }
 AnalysisOutputCodeParameter {
     stringList value  
-    string description  
     string name  
+    string description  
+    string label  
 }
 DocumentReference {
 
@@ -45,6 +50,8 @@ ReferenceDocument {
     string id  
     uri location  
     string name  
+    string description  
+    string label  
 }
 AnalysisOutputCategory {
     string id  
@@ -62,6 +69,8 @@ OutputDisplay {
     integer version  
     string displayTitle  
     string name  
+    string description  
+    string label  
 }
 DisplaySection {
     DisplaySectionTypeEnum sectionType  
@@ -77,6 +86,8 @@ OutputFile {
     uri location  
     string style  
     string name  
+    string description  
+    string label  
 }
 ExtensibleTerminologyTerm {
     string controlledTerm  
@@ -92,10 +103,11 @@ GlobalDisplaySection {
 Analysis {
     string id  
     integer version  
-    string description  
     string dataset  
     string variable  
     string name  
+    string description  
+    string label  
 }
 OperationResult {
     string rawValue  
@@ -122,14 +134,17 @@ WhereClauseCondition {
 GroupingFactor {
     string id  
     string label  
+    string groupingDataset  
     string groupingVariable  
     boolean dataDriven  
 }
 Operation {
     string id  
-    string label  
+    integer order  
     string resultPattern  
     string name  
+    string description  
+    string label  
 }
 ReferencedOperationRelationship {
     string id  
@@ -140,9 +155,9 @@ ReferencedAnalysisOperation {
 }
 AnalysisMethod {
     string id  
-    string label  
-    string description  
     string name  
+    string description  
+    string label  
 }
 AnalysisProgrammingCodeTemplate {
     string context  
@@ -151,8 +166,9 @@ AnalysisProgrammingCodeTemplate {
 TemplateCodeParameter {
     string valueSource  
     stringList value  
-    string description  
     string name  
+    string description  
+    string label  
 }
 OrderedGroupingFactor {
     integer order  
@@ -186,6 +202,7 @@ CompoundSetExpression {
 DataGroupingFactor {
     string id  
     string label  
+    string groupingDataset  
     string groupingVariable  
     boolean dataDriven  
 }
@@ -198,6 +215,7 @@ DataGroup {
 SubjectGroupingFactor {
     string id  
     string label  
+    string groupingDataset  
     string groupingVariable  
     boolean dataDriven  
 }
@@ -211,6 +229,11 @@ TerminologyExtension {
     string id  
     ExtensibleTerminologyEnum enumeration  
 }
+ListOfContents {
+    string name  
+    string description  
+    string label  
+}
 NestedList {
 
 }
@@ -218,10 +241,12 @@ OrderedListItem {
     integer level  
     integer order  
     string name  
+    string description  
+    string label  
 }
 
-ReportingEvent ||--|| NestedList : "listOfPlannedAnalyses"
-ReportingEvent ||--|o NestedList : "listOfPlannedOutputs"
+ReportingEvent ||--|| ListOfContents : "mainListOfContents"
+ReportingEvent ||--}o ListOfContents : "otherListsOfContents"
 ReportingEvent ||--}o ReferenceDocument : "referenceDocuments"
 ReportingEvent ||--}o TerminologyExtension : "terminologyExtensions"
 ReportingEvent ||--}o AnalysisOutputCategorization : "analysisOutputCategorizations"
@@ -234,7 +259,7 @@ ReportingEvent ||--}o Analysis : "analyses"
 ReportingEvent ||--}o GlobalDisplaySection : "globalDisplaySections"
 ReportingEvent ||--}o Output : "outputs"
 Output ||--}o OutputFile : "fileSpecifications"
-Output ||--}o OrderedDisplay : "displays"
+Output ||--}| OrderedDisplay : "displays"
 Output ||--}o AnalysisOutputCategory : "categoryIds"
 Output ||--}o DocumentReference : "documentRefs"
 Output ||--|o AnalysisOutputProgrammingCode : "programmingCode"
@@ -244,7 +269,7 @@ DocumentReference ||--|| ReferenceDocument : "referenceDocumentId"
 DocumentReference ||--}o PageRef : "pageRefs"
 AnalysisOutputCategory ||--}o AnalysisOutputCategorization : "subCategorizations"
 AnalysisOutputCategorization ||--}| AnalysisOutputCategory : "categories"
-OrderedDisplay ||--|o OutputDisplay : "display"
+OrderedDisplay ||--|| OutputDisplay : "display"
 OutputDisplay ||--}o DisplaySection : "displaySections"
 DisplaySection ||--}o OrderedDisplaySubSection : "orderedSubSections"
 OrderedDisplaySubSection ||--|o DisplaySubSection : "subSection"
@@ -265,7 +290,7 @@ Analysis ||--|o AnalysisOutputProgrammingCode : "programmingCode"
 Analysis ||--}o OperationResult : "results"
 OperationResult ||--|| Operation : "operationId"
 OperationResult ||--}o ResultGroup : "resultGroups"
-ResultGroup ||--|o GroupingFactor : "groupingId"
+ResultGroup ||--|| GroupingFactor : "groupingId"
 ResultGroup ||--|o Group : "groupId"
 Group ||--|o WhereClauseCondition : "condition"
 Group ||--|o CompoundGroupExpression : "compoundExpression"
@@ -282,7 +307,7 @@ AnalysisMethod ||--}| Operation : "operations"
 AnalysisMethod ||--|o AnalysisProgrammingCodeTemplate : "codeTemplate"
 AnalysisProgrammingCodeTemplate ||--|o DocumentReference : "documentRef"
 AnalysisProgrammingCodeTemplate ||--}o TemplateCodeParameter : "parameters"
-OrderedGroupingFactor ||--|o GroupingFactor : "groupingId"
+OrderedGroupingFactor ||--|| GroupingFactor : "groupingId"
 DataSubset ||--|o WhereClauseCondition : "condition"
 DataSubset ||--|o CompoundSubsetExpression : "compoundExpression"
 CompoundSubsetExpression ||--}o WhereClause : "whereClauses"
@@ -299,6 +324,7 @@ SubjectGroupingFactor ||--}o AnalysisGroup : "groups"
 AnalysisGroup ||--|o WhereClauseCondition : "condition"
 AnalysisGroup ||--|o CompoundGroupExpression : "compoundExpression"
 TerminologyExtension ||--}| SponsorTerm : "sponsorTerms"
+ListOfContents ||--|| NestedList : "contentsList"
 NestedList ||--}o OrderedListItem : "listItems"
 OrderedListItem ||--|o Analysis : "analysisId"
 OrderedListItem ||--|o Output : "outputId"
@@ -314,6 +340,7 @@ _Classes provide templates for organizing data. Data objects instantiate classes
 | --- | --- |
 | [NamedObject](NamedObject.md) | An object with a name |
 | [ReportingEvent](ReportingEvent.md) | A set of analyses and outputs created to meet a specific reporting requiremen... |
+| [ListOfContents](ListOfContents.md) | A structured list of analyses and outputs included in the reporting event |
 | [NestedList](NestedList.md) | A list of items (analyses or outputs) that may be organized within sub-lists |
 | [OrderedListItem](OrderedListItem.md) | An item (analysis, output or sub-list) ordered relative to other items within... |
 | [ReferenceDocument](ReferenceDocument.md) | An external document containing supporting documentation or programming code |
@@ -380,10 +407,13 @@ _Slots (aka attributes, fields, columns, properties) can be associated with clas
 | Slot | Description |
 | --- | --- |
 | [name](name.md) | The name for the instance of the class |
+| [description](description.md) | A textual description of the instance of the class |
+| [label](label.md) | A short informative description that may be used for display |
 | [id](id.md) | The assigned identifying value for the instance of the class |
 | [version](version.md) | An ordinal indicating the version of the identified instance of the class |
-| [listOfPlannedAnalyses](listOfPlannedAnalyses.md) | A structured list of the analyses defined for the reporting event |
-| [listOfPlannedOutputs](listOfPlannedOutputs.md) | An optional structured list of the outputs defined for the reporting event |
+| [mainListOfContents](mainListOfContents.md) | The main list of the analyses and outputs defined for the reporting event |
+| [otherListsOfContents](otherListsOfContents.md) | Other lists of the analyses and outputs defined for the reporting event |
+| [contentsList](contentsList.md) | A structured list of the analyses and outputs defined for the reporting event |
 | [referenceDocuments](referenceDocuments.md) | External documents containing information referenced for the reporting event |
 | [terminologyExtensions](terminologyExtensions.md) | Any sponsor-defined extensions to extensible terminology |
 | [analysisOutputCategorizations](analysisOutputCategorizations.md) | Sets of related implementer-defined categories that can be used to categorize... |
@@ -405,10 +435,8 @@ _Slots (aka attributes, fields, columns, properties) can be associated with clas
 | [enumeration](enumeration.md) | The name of the extensible enumeration |
 | [sponsorTerms](sponsorTerms.md) | The sponsor-defined terms added to the extensible terminology |
 | [submissionValue](submissionValue.md) | The specific value expected for submissions |
-| [description](description.md) | A textual description of the instance of the class |
 | [controlledTerm](controlledTerm.md) | One of the permissible values from the referenced enumeration |
 | [sponsorTermId](sponsorTermId.md) | The identifier of the referenced sponsor term |
-| [label](label.md) | A short informative description that may be used for display |
 | [categories](categories.md) | Implementer-defined categories of analyses/outputs, each of which may include... |
 | [subCategorizations](subCategorizations.md) | Sets of related implementer-defined sub-categories that can be used to catego... |
 | [condition](condition.md) | A simple selection criterion exressed as [dataset] |
@@ -419,6 +447,7 @@ _Slots (aka attributes, fields, columns, properties) can be associated with clas
 | [value](value.md) | The prespecified value or values |
 | [logicalOperator](logicalOperator.md) | The boolean operator that is used to combine (AND, OR) or negate (NOT) the wh... |
 | [whereClauses](whereClauses.md) | A list of one or more where clauses (selection criteria) to be combined or ne... |
+| [groupingDataset](groupingDataset.md) | For groupings based on a single variable, a reference to the dataset containi... |
 | [groupingVariable](groupingVariable.md) | For groupings based on a single variable, a reference to the dataset variable... |
 | [dataDriven](dataDriven.md) | Indicates whether the groups defined by the grouping are prespecified (false)... |
 | [groups](groups.md) | The pre-specified groups within the grouping |

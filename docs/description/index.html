@@ -82,13 +82,13 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../SponsorTerm/">SponsorTerm</a></td>
-<td>A sponsor-defined term that is included in an extensible set of controlled te...</td>
+<td><a href="../NamedObject/">NamedObject</a></td>
+<td>An object with a name</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../AnalysisMethod/">AnalysisMethod</a></td>
-<td>A set of one or more statistical operations</td>
+<td><a href="../SponsorTerm/">SponsorTerm</a></td>
+<td>A sponsor-defined term that is included in an extensible set of controlled te...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -97,7 +97,42 @@
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../ReportingEvent/">ReportingEvent</a></td>
+<td>A set of analyses and outputs created to meet a specific reporting requiremen...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ListOfContents/">ListOfContents</a></td>
+<td>A structured list of analyses and outputs included in the reporting event</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../OrderedListItem/">OrderedListItem</a></td>
+<td>An item (analysis, output or sub-list) ordered relative to other items within...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ReferenceDocument/">ReferenceDocument</a></td>
+<td>An external document containing supporting documentation or programming code</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../AnalysisMethod/">AnalysisMethod</a></td>
+<td>A set of one or more statistical operations</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Operation/">Operation</a></td>
+<td>A statistical operation that produces a single analysis result value as part ...</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../CodeParameter/">CodeParameter</a></td>
+<td>A replacement parameter whose value is substituted in template programming co...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../TemplateCodeParameter/">TemplateCodeParameter</a></td>
 <td>A replacement parameter whose value is substituted in template programming co...</td>
 <td>no</td>
 </tr>
@@ -107,13 +142,23 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../TemplateCodeParameter/">TemplateCodeParameter</a></td>
-<td>A replacement parameter whose value is substituted in template programming co...</td>
+<td><a href="../AnalysisOutputCodeParameter/">AnalysisOutputCodeParameter</a></td>
+<td>A parameter whose value is used in programming code for a specific analysis o...</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../AnalysisOutputCodeParameter/">AnalysisOutputCodeParameter</a></td>
-<td>A parameter whose value is used in programming code for a specific analysis o...</td>
+<td><a href="../Output/">Output</a></td>
+<td>A report of results and their evaluation based on planned analyses performed ...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../OutputFile/">OutputFile</a></td>
+<td>A file containing analysis output displays</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../OutputDisplay/">OutputDisplay</a></td>
+<td>A tabular representation of the results of one or more analyses</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -135,11 +180,9 @@
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">description</span>
 <span class="nt">domain_of</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NamedObject</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SponsorTerm</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AnalysisMethod</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReferencedOperationRelationship</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CodeParameter</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Analysis</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 </code></pre></div>
 </details></div>

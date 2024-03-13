@@ -2,7 +2,7 @@ id: https://www.cdisc.org/ars/1-0
 title: Analysis Results Standard (ARS)
 name: ars_ldm
 description: >
-  DRAFT Logical model to support both the prospective specification of analyses and the fully contextualized
+  Logical model to support both the prospective specification of analyses and the fully contextualized
   representation of the results of the analyses.
 
 imports:
@@ -18,12 +18,13 @@ default_prefix: ars
 default_range: string
 
 classes:
-
   NamedObject:
     description: An object with a name.
     abstract: true
     slots:
       - name
+      - description
+      - label
 
   ReportingEvent:
     description: A set of analyses and outputs created to meet a specific reporting requirement, such as a CSR or interim analysis.
@@ -32,8 +33,8 @@ classes:
     slots:
       - id
       - version
-      - listOfPlannedAnalyses
-      - listOfPlannedOutputs
+      - mainListOfContents
+      - otherListsOfContents
       - referenceDocuments
       - terminologyExtensions
       - analysisOutputCategorizations
@@ -45,6 +46,12 @@ classes:
       - analyses
       - globalDisplaySections
       - outputs
+
+  ListOfContents:
+    description: A structured list of analyses and outputs included in the reporting event.
+    is_a: NamedObject
+    slots:
+      - contentsList
 
   NestedList:
     description: A list of items (analyses or outputs) that may be organized within sub-lists.
@@ -60,11 +67,6 @@ classes:
       - analysisId
       - outputId
       - sublist
-    slot_usage:
-      level:
-        required: true
-      order:
-        required: true
 
   ReferenceDocument:
     description: An external document containing supporting documentation or programming code.
@@ -135,33 +137,6 @@ classes:
       value:
         description: The value(s) for comparison with the variable.
         required: false
-#    rules:
-#      - preconditions:
-#          slot_conditions:
-#            comparator:
-#              any_of:
-#                - equals_string: EQ
-#                - equals_string: NE
-#                - equals_string: LT
-#                - equals_string: LE
-#                - equals_string: GT
-#                - equals_string: GE
-#        postconditions:
-#          slot_conditions:
-#            value:
-#              maximum_cardinality: 1
-#        description: Only a single value is allowed when comparator is EQ, NE, LT, LE, GT, or GE.
-#      - preconditions:
-#          slot_conditions:
-#            comparator:
-#              any_of:
-#                - equals_string: IN
-#                - equals_string: NOTIN
-#        postconditions:
-#          slot_conditions:
-#            value:
-#              minimum_cardinality: 2
-#        description: At least 2 values are required when comparator is IN or NOTIN.
 
   WhereClauseCompoundExpression:
     description: >-
@@ -242,6 +217,7 @@ classes:
     slots:
       - id
       - label
+      - groupingDataset
       - groupingVariable
       - dataDriven
       - groups
@@ -293,8 +269,6 @@ classes:
     is_a: NamedObject
     slots:
       - id
-      - label
-      - description
       - documentRefs
       - operations
       - codeTemplate
@@ -398,7 +372,7 @@ classes:
     is_a: NamedObject
     slots:
       - id
-      - label
+      - order
       - referencedOperationRelationships
       - resultPattern
 
@@ -451,8 +425,6 @@ classes:
     description: A replacement parameter whose value is substituted in template programming code to create statements required for a specific analysis.
     abstract: true
     is_a: NamedObject
-    slots:
-      - description
 
   TemplateCodeParameter:
     description: A replacement parameter whose value is substituted in template programming code to create statements required for a specific analysis.
@@ -477,7 +449,6 @@ classes:
     slots:
       - id
       - version
-      - description
       - reason
       - purpose
       - documentRefs
@@ -510,7 +481,7 @@ classes:
         value_presence: ABSENT
 
   SponsorAnalysisReason:
-    description:  The sponsor-defined rationale for performing this analysis.
+    description: The sponsor-defined rationale for performing this analysis.
     is_a: ExtensibleTerminologyTerm
     slot_usage:
       controlledTerm:
@@ -551,9 +522,6 @@ classes:
       - order
       - groupingId
       - resultsByGroup
-    slot_usage:
-      order:
-        required: true
 
   ReferencedAnalysisOperation:
     description: An indication of the analysis that contains results of a referenced operation.
@@ -671,9 +639,6 @@ classes:
     slots:
       - order
       - display
-    slot_usage:
-      order:
-        required: true
 
   OutputDisplay:
     description: A tabular representation of the results of one or more analyses.
@@ -699,9 +664,6 @@ classes:
       - order
       - subSection
       - subSectionId
-    slot_usage:
-      order:
-        required: true
 
   OrderedSubSection:
     description: A subsection ordered with respect to other subsections of the same type.
@@ -730,10 +692,16 @@ classes:
       - subSectionId
 
 slots:
-
   name:
     description: The name for the instance of the class.
     required: true
+
+  description:
+    range: string
+    description: A textual description of the instance of the class.
+
+  label:
+    description: A short informative description that may be used for display.
 
   id:
     description: The assigned identifying value for the instance of the class.
@@ -745,14 +713,24 @@ slots:
     description: An ordinal indicating the version of the identified instance of the class.
     range: integer
 
-  listOfPlannedAnalyses:
-    description: A structured list of the analyses defined for the reporting event.
+  mainListOfContents:
+    description: The main list of the analyses and outputs defined for the reporting event.
     required: true
-    range: NestedList
+    range: ListOfContents
+    inlined: true
+    inlined_as_list: true
 
-  listOfPlannedOutputs:
-    description: An optional structured list of the outputs defined for the reporting event.
+  otherListsOfContents:
+    description: Other lists of the analyses and outputs defined for the reporting event.
     required: false
+    range: ListOfContents
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+
+  contentsList:
+    description: A structured list of the analyses and outputs defined for the reporting event.
+    required: true
     range: NestedList
 
   referenceDocuments:
@@ -847,10 +825,12 @@ slots:
     comments:
       - 1 is the top level.
     range: integer
+    required: true
 
   order:
     description: The ordinal of the instance with respect to other instances.
     range: integer
+    required: true
 
   sublist:
     description: A sub-list of items (analyses or outputs) that may be further organized within sub-lists.
@@ -891,10 +871,6 @@ slots:
     range: string
     required: true
 
-  description:
-    range: string
-    description: A textual description of the instance of the class.
-
   controlledTerm:
     description: One of the permissible values from the referenced enumeration.
     range: string
@@ -908,9 +884,6 @@ slots:
     description: The identifier of the referenced sponsor term.
     range: SponsorTerm
     inlined: false
-
-  label:
-    description: A short informative description that may be used for display.
 
   categories:
     description: Implementer-defined categories of analyses/outputs, each of which may include one or more sub-categorization.
@@ -967,6 +940,9 @@ slots:
     list_elements_ordered: true
     inlined: false
     range: WhereClause
+
+  groupingDataset:
+    description: For groupings based on a single variable, a reference to the dataset containing the variable upon which grouping is based.
 
   groupingVariable:
     description: For groupings based on a single variable, a reference to the dataset variable upon which grouping is based.
@@ -1181,6 +1157,7 @@ slots:
     description: The identifier of the referenced subject or data grouping factor.
     range: GroupingFactor
     inlined: false
+    required: true
 
   resultsByGroup:
     description: Indicates whether a result is expected for each group in the grouping.
@@ -1220,10 +1197,12 @@ slots:
     description: The type of display section that contains one or more pieces of informational text.
     range: DisplaySectionTypeEnum
     examples:
+      - value: Header
       - value: Title
       - value: Footnote
       - value: Legend
       - value: Abbreviation
+      - value: Footer
 
   subSections:
     description: A list of defined pieces of information text that may be displayed in display sections of the same type.
@@ -1249,6 +1228,7 @@ slots:
     inlined: true
     inlined_as_list: true
     list_elements_ordered: true
+    required: true
 
   fileType:
     description: The format of the output file.
@@ -1266,6 +1246,7 @@ slots:
     description: A display contained in the output.
     range: OutputDisplay
     inlined: true
+    required: true
 
   displayTitle:
     description: Display description which uniquely identifies the display in the report.
@@ -1299,7 +1280,6 @@ slots:
     inlined: false
 
 enums:
-
   OutputFileTypeEnum:
     description: The file format of the file containing output from analyses.
     permissible_values:
@@ -1340,11 +1320,33 @@ enums:
   DisplaySectionTypeEnum:
     description: Types of display section that contain one or more pieces of informational text.
     permissible_values:
+      Header:
+        description: >-
+          Lines of text appearing above the title and containing additional generic information
+          such as study identifier or page numbering.
       Title:
-      Footnote:
-      Abbreviation:
-      Legend:
+        description: >-
+          The title is a caption of a table beginning with "Table" followed by sequenced numbers
+          or letters and separated by full stops. The title includes additional lines describing the content.
       Rowlabel Header:
+        description: Optional text placed in the column header for a column containing row/stub labels.
+      Legend:
+        description: >-
+          Lines of text placed immediately after the body of the table containing statements
+          explaining the use of terms or values. May be prefaced with a word such as 'Note:'.
+      Abbreviation:
+        description: >-
+          Lines of text defining abbreviations, acronyms, and terms used in the body of the display.
+      Footnote:
+        description: >-
+          Placed after the abbreviations and definitions, if any. Footnotes lead with symbols
+          (asterisk, dagger, double dagger, or section symbol) or superscripted letters (a, b, c)
+          or numbers (1, 2, 3) which are in the table behind units of measure or words.
+          Footnotes add information regarding the associated values where they occur in the body.
+      Footer:
+        description: >-
+          Lines of text appearing below any footnote and containing additional information such as
+          traceability of the source program or page numbering.
 
   OperationRoleEnum:
     description: The role that the referenced operation's result plays in the calculation of the result of this operation.
@@ -1355,7 +1357,7 @@ enums:
         description: The divisor of a fraction.
 
   AnalysisReasonEnum:
-  # TODO: change to a dynamic enum based on the NCI or CDISC terminology with extending terms.
+    # TODO: change to a dynamic enum based on the NCI or CDISC terminology with extending terms.
     description: The rationale for performing this analysis. It indicates when the analysis was planned.
     code_set: NCIT:C117744
     permissible_values:
@@ -1373,7 +1375,7 @@ enums:
         meaning: NCIT:C117751
 
   AnalysisPurposeEnum:
-  # TODO: change to a dynamic enum based on the NCI or CDISC terminology with extending terms.
+    # TODO: change to a dynamic enum based on the NCI or CDISC terminology with extending terms.
     description: The purpose of the analysis within the body of evidence (e.g., section in the clinical study report).
     code_set: NCIT:C117745
     permissible_values:

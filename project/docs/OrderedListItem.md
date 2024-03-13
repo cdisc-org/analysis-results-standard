@@ -24,6 +24,8 @@ URI: [ars:OrderedListItem](https://www.cdisc.org/ars/1-0/OrderedListItem)
         OrderedListItem : sublist
         OrderedListItem --|> NestedList : sublist
         OrderedListItem : name
+        OrderedListItem : description
+        OrderedListItem : label
         
 ```
 
@@ -46,6 +48,8 @@ URI: [ars:OrderedListItem](https://www.cdisc.org/ars/1-0/OrderedListItem)
 | [outputId](outputId.md) | 0..1 <br/> [Output](Output.md) | The identifier of the referenced output | direct |
 | [sublist](sublist.md) | 0..1 <br/> [NestedList](NestedList.md) | A sub-list of items (analyses or outputs) that may be further organized withi... | direct |
 | [name](name.md) | 1..1 <br/> [String](String.md) | The name for the instance of the class | [NamedObject](NamedObject.md) |
+| [description](description.md) | 0..1 <br/> [String](String.md) | A textual description of the instance of the class | [NamedObject](NamedObject.md) |
+| [label](label.md) | 0..1 <br/> [String](String.md) | A short informative description that may be used for display | [NamedObject](NamedObject.md) |
 
 _* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
@@ -111,22 +115,6 @@ slots:
 - analysisId
 - outputId
 - sublist
-slot_usage:
-  level:
-    name: level
-    domain_of:
-    - OrderedListItem
-    - WhereClause
-    required: true
-  order:
-    name: order
-    domain_of:
-    - OrderedListItem
-    - WhereClause
-    - OrderedGroupingFactor
-    - OrderedDisplay
-    - OrderedDisplaySubSection
-    required: true
 
 ```
 </details>
@@ -141,26 +129,12 @@ description: An item (analysis, output or sub-list) ordered relative to other it
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 is_a: NamedObject
-slot_usage:
-  level:
-    name: level
-    domain_of:
-    - OrderedListItem
-    - WhereClause
-    required: true
-  order:
-    name: order
-    domain_of:
-    - OrderedListItem
-    - WhereClause
-    - OrderedGroupingFactor
-    - OrderedDisplay
-    - OrderedDisplaySubSection
-    required: true
 attributes:
   level:
     name: level
     description: The level of the entry within a hierarchical structure.
+    comments:
+    - 1 is the top level.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     alias: level
@@ -180,6 +154,7 @@ attributes:
     domain_of:
     - OrderedListItem
     - WhereClause
+    - Operation
     - OrderedGroupingFactor
     - OrderedDisplay
     - OrderedDisplaySubSection
@@ -235,6 +210,35 @@ attributes:
     - NamedObject
     range: string
     required: true
+  description:
+    name: description
+    description: A textual description of the instance of the class.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: description
+    owner: OrderedListItem
+    domain_of:
+    - NamedObject
+    - SponsorTerm
+    - ReferencedOperationRelationship
+    range: string
+  label:
+    name: label
+    description: A short informative description that may be used for display.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: label
+    owner: OrderedListItem
+    domain_of:
+    - NamedObject
+    - AnalysisOutputCategorization
+    - AnalysisOutputCategory
+    - AnalysisSet
+    - DataSubset
+    - GroupingFactor
+    - Group
+    - PageRef
+    range: string
 
 ```
 </details>

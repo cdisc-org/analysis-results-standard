@@ -1,11 +1,11 @@
-# Slot: listOfPlannedAnalyses
+# Slot: mainListOfContents
 
 
-_A structured list of the analyses defined for the reporting event._
+_The main list of the analyses and outputs defined for the reporting event._
 
 
 
-URI: [ars:listOfPlannedAnalyses](https://www.cdisc.org/ars/1-0/listOfPlannedAnalyses)
+URI: [ars:mainListOfContents](https://www.cdisc.org/ars/1-0/mainListOfContents)
 
 
 
@@ -28,7 +28,7 @@ URI: [ars:listOfPlannedAnalyses](https://www.cdisc.org/ars/1-0/listOfPlannedAnal
 
 ## Properties
 
-* Range: [NestedList](NestedList.md)
+* Range: [ListOfContents](ListOfContents.md)
 
 * Required: True
 
@@ -56,15 +56,17 @@ URI: [ars:listOfPlannedAnalyses](https://www.cdisc.org/ars/1-0/listOfPlannedAnal
 
 <details>
 ```yaml
-name: listOfPlannedAnalyses
-description: A structured list of the analyses defined for the reporting event.
+name: mainListOfContents
+description: The main list of the analyses and outputs defined for the reporting event.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
-alias: listOfPlannedAnalyses
+alias: mainListOfContents
 domain_of:
 - ReportingEvent
-range: NestedList
+range: ListOfContents
 required: true
+inlined: true
+inlined_as_list: true
 
 ```
 </details>

@@ -37,8 +37,7 @@ _* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-c
 
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
-| [ReportingEvent](ReportingEvent.md) | [listOfPlannedAnalyses](listOfPlannedAnalyses.md) | range | [NestedList](NestedList.md) |
-| [ReportingEvent](ReportingEvent.md) | [listOfPlannedOutputs](listOfPlannedOutputs.md) | range | [NestedList](NestedList.md) |
+| [ListOfContents](ListOfContents.md) | [contentsList](contentsList.md) | range | [NestedList](NestedList.md) |
 | [OrderedListItem](OrderedListItem.md) | [sublist](sublist.md) | range | [NestedList](NestedList.md) |
 
 

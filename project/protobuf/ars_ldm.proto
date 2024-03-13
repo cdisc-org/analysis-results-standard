@@ -7,9 +7,10 @@
 message Analysis
  {
   string name = 0
+  string description = 0
+  string label = 0
   string id = 0
   integer version = 0
-  string description = 0
   extensibleTerminologyTerm reason = 0
   extensibleTerminologyTerm purpose = 0
  repeated  documentReference documentRefs = 0
@@ -38,9 +39,9 @@ message AnalysisGroup
 message AnalysisMethod
  {
   string name = 0
-  string id = 0
-  string label = 0
   string description = 0
+  string label = 0
+  string id = 0
  repeated  documentReference documentRefs = 0
  repeated  operation operations = 0
   analysisProgrammingCodeTemplate codeTemplate = 0
@@ -64,6 +65,7 @@ message AnalysisOutputCodeParameter
  {
   string name = 0
   string description = 0
+  string label = 0
  repeated  string value = 0
  }
 // Programming statements and/or a reference to the program used to perform a specific analysis or create a specific output.
@@ -137,6 +139,7 @@ message DataGroupingFactor
  {
   string id = 0
   string label = 0
+  string groupingDataset = 0
   string groupingVariable = 0
   boolean dataDriven = 0
  repeated  dataGroup groups = 0
@@ -185,6 +188,14 @@ message Group
   string label = 0
   compoundGroupExpression compoundExpression = 0
  }
+// A structured list of analyses and outputs included in the reporting event.
+message ListOfContents
+ {
+  string name = 0
+  string description = 0
+  string label = 0
+  nestedList contentsList = 0
+ }
 // A list of items (analyses or outputs) that may be organized within sub-lists.
 message NestedList
  {
@@ -194,8 +205,10 @@ message NestedList
 message Operation
  {
   string name = 0
-  string id = 0
+  string description = 0
   string label = 0
+  string id = 0
+  integer order = 0
  repeated  referencedOperationRelationship referencedOperationRelationships = 0
   string resultPattern = 0
  }
@@ -230,6 +243,8 @@ message OrderedGroupingFactor
 message OrderedListItem
  {
   string name = 0
+  string description = 0
+  string label = 0
   integer level = 0
   integer order = 0
   analysis analysisId = 0
@@ -254,6 +269,8 @@ message OrderedSubSectionRef
 message Output
  {
   string name = 0
+  string description = 0
+  string label = 0
   string id = 0
   integer version = 0
  repeated  outputFile fileSpecifications = 0
@@ -266,6 +283,8 @@ message Output
 message OutputDisplay
  {
   string name = 0
+  string description = 0
+  string label = 0
   string id = 0
   integer version = 0
   string displayTitle = 0
@@ -275,6 +294,8 @@ message OutputDisplay
 message OutputFile
  {
   string name = 0
+  string description = 0
+  string label = 0
   extensibleTerminologyTerm fileType = 0
   uri location = 0
   string style = 0
@@ -325,6 +346,8 @@ message ReferencedAnalysisOperation
 message ReferenceDocument
  {
   string name = 0
+  string description = 0
+  string label = 0
   string id = 0
   uri location = 0
  }
@@ -341,10 +364,12 @@ message ReferencedOperationRelationship
 message ReportingEvent
  {
   string name = 0
+  string description = 0
+  string label = 0
   string id = 0
   integer version = 0
-  nestedList listOfPlannedAnalyses = 0
-  nestedList listOfPlannedOutputs = 0
+  listOfContents mainListOfContents = 0
+ repeated  listOfContents otherListsOfContents = 0
  repeated  referenceDocument referenceDocuments = 0
  repeated  terminologyExtension terminologyExtensions = 0
  repeated  analysisOutputCategorization analysisOutputCategorizations = 0
@@ -400,6 +425,7 @@ message SubjectGroupingFactor
  {
   string id = 0
   string label = 0
+  string groupingDataset = 0
   string groupingVariable = 0
   boolean dataDriven = 0
  repeated  analysisGroup groups = 0
@@ -409,6 +435,7 @@ message TemplateCodeParameter
  {
   string name = 0
   string description = 0
+  string label = 0
   string valueSource = 0
  repeated  string value = 0
  }

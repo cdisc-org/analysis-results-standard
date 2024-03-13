@@ -195,15 +195,14 @@ attributes:
     alias: label
     owner: PageNumberRangeRef
     domain_of:
+    - NamedObject
     - AnalysisOutputCategorization
     - AnalysisOutputCategory
     - AnalysisSet
     - DataSubset
     - GroupingFactor
     - Group
-    - AnalysisMethod
     - PageRef
-    - Operation
     range: string
   pageNames:
     name: pageNames

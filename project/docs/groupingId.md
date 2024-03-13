@@ -31,6 +31,8 @@ URI: [ars:groupingId](https://www.cdisc.org/ars/1-0/groupingId)
 
 * Range: [GroupingFactor](GroupingFactor.md)
 
+* Required: True
+
 
 
 
@@ -64,6 +66,7 @@ domain_of:
 - OrderedGroupingFactor
 - ResultGroup
 range: GroupingFactor
+required: true
 inlined: false
 
 ```

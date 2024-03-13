@@ -162,11 +162,9 @@ attributes:
     alias: description
     owner: SponsorTerm
     domain_of:
+    - NamedObject
     - SponsorTerm
-    - AnalysisMethod
     - ReferencedOperationRelationship
-    - CodeParameter
-    - Analysis
     range: string
 
 ```

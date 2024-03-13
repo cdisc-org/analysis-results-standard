@@ -38,6 +38,10 @@
                     "description": "The assigned identifying value for the instance of the class.",
                     "type": "string"
                 },
+                "label": {
+                    "description": "A short informative description that may be used for display.",
+                    "type": "string"
+                },
                 "methodId": {
                     "description": "A reference to the set of one or more statistical operations performed for the analysis.",
                     "type": "string"
@@ -142,7 +146,9 @@
                 }
             },
             "required": [
-                "id"
+                "id",
+                "level",
+                "order"
             ],
             "title": "AnalysisGroup",
             "type": "object"
@@ -253,6 +259,10 @@
             "properties": {
                 "description": {
                     "description": "A textual description of the instance of the class.",
+                    "type": "string"
+                },
+                "label": {
+                    "description": "A short informative description that may be used for display.",
                     "type": "string"
                 },
                 "name": {
@@ -424,7 +434,9 @@
                 }
             },
             "required": [
-                "id"
+                "id",
+                "level",
+                "order"
             ],
             "title": "AnalysisSet",
             "type": "object"
@@ -540,7 +552,9 @@
                 }
             },
             "required": [
-                "id"
+                "id",
+                "level",
+                "order"
             ],
             "title": "DataGroup",
             "type": "object"
@@ -552,6 +566,10 @@
                 "dataDriven": {
                     "description": "Indicates whether the groups defined by the grouping are prespecified (false) or obtained from distinct data values of the groupingVariable (true).",
                     "type": "boolean"
+                },
+                "groupingDataset": {
+                    "description": "For groupings based on a single variable, a reference to the dataset containing the variable upon which grouping is based.",
+                    "type": "string"
                 },
                 "groupingVariable": {
                     "description": "For groupings based on a single variable, a reference to the dataset variable upon which grouping is based.",
@@ -610,7 +628,9 @@
                 }
             },
             "required": [
-                "id"
+                "id",
+                "level",
+                "order"
             ],
             "title": "DataSubset",
             "type": "object"
@@ -644,11 +664,13 @@
         "DisplaySectionTypeEnum": {
             "description": "Types of display section that contain one or more pieces of informational text.",
             "enum": [
+                "Header",
                 "Title",
-                "Footnote",
-                "Abbreviation",
+                "Rowlabel Header",
                 "Legend",
-                "Rowlabel Header"
+                "Abbreviation",
+                "Footnote",
+                "Footer"
             ],
             "title": "DisplaySectionTypeEnum",
             "type": "string"
@@ -775,9 +797,39 @@
                 }
             },
             "required": [
-                "id"
+                "id",
+                "level",
+                "order"
             ],
             "title": "Group",
+            "type": "object"
+        },
+        "ListOfContents": {
+            "additionalProperties": false,
+            "description": "A structured list of analyses and outputs included in the reporting event.",
+            "properties": {
+                "contentsList": {
+                    "$ref": "#/$defs/NestedList",
+                    "description": "A structured list of the analyses and outputs defined for the reporting event."
+                },
+                "description": {
+                    "description": "A textual description of the instance of the class.",
+                    "type": "string"
+                },
+                "label": {
+                    "description": "A short informative description that may be used for display.",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "The name for the instance of the class.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "contentsList",
+                "name"
+            ],
+            "title": "ListOfContents",
             "type": "object"
         },
         "NestedList": {
@@ -799,6 +851,10 @@
             "additionalProperties": false,
             "description": "A statistical operation that produces a single analysis result value as part of an analysis method.",
             "properties": {
+                "description": {
+                    "description": "A textual description of the instance of the class.",
+                    "type": "string"
+                },
                 "id": {
                     "description": "The assigned identifying value for the instance of the class.",
                     "type": "string"
@@ -810,6 +866,10 @@
                 "name": {
                     "description": "The name for the instance of the class.",
                     "type": "string"
+                },
+                "order": {
+                    "description": "The ordinal of the instance with respect to other instances.",
+                    "type": "integer"
                 },
                 "referencedOperationRelationships": {
                     "description": "Relationships to other operations indicating how the result of the referenced operation are used in the calculation of the result for this operation.",
@@ -825,6 +885,7 @@
             },
             "required": [
                 "id",
+                "order",
                 "name"
             ],
             "title": "Operation",
@@ -902,7 +963,8 @@
                 }
             },
             "required": [
-                "order"
+                "order",
+                "display"
             ],
             "title": "OrderedDisplay",
             "type": "object"
@@ -926,6 +988,7 @@
             },
             "required": [
                 "order",
+                "groupingId",
                 "resultsByGroup"
             ],
             "title": "OrderedGroupingFactor",
@@ -937,6 +1000,14 @@
             "properties": {
                 "analysisId": {
                     "description": "The identifier of the referenced analysis.",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "A textual description of the instance of the class.",
+                    "type": "string"
+                },
+                "label": {
+                    "description": "A short informative description that may be used for display.",
                     "type": "string"
                 },
                 "level": {
@@ -1027,6 +1098,10 @@
                     },
                     "type": "array"
                 },
+                "description": {
+                    "description": "A textual description of the instance of the class.",
+                    "type": "string"
+                },
                 "displays": {
                     "description": "An ordered list of the displays included in the output.",
                     "items": {
@@ -1052,6 +1127,10 @@
                     "description": "The assigned identifying value for the instance of the class.",
                     "type": "string"
                 },
+                "label": {
+                    "description": "A short informative description that may be used for display.",
+                    "type": "string"
+                },
                 "name": {
                     "description": "The name for the instance of the class.",
                     "type": "string"
@@ -1067,6 +1146,7 @@
             },
             "required": [
                 "id",
+                "displays",
                 "name"
             ],
             "title": "Output",
@@ -1076,6 +1156,10 @@
             "additionalProperties": false,
             "description": "A tabular representation of the results of one or more analyses.",
             "properties": {
+                "description": {
+                    "description": "A textual description of the instance of the class.",
+                    "type": "string"
+                },
                 "displaySections": {
                     "description": "The parts of the display containing one or more pieces of informational text (e.g. title, footnote).",
                     "items": {
@@ -1089,6 +1173,10 @@
                 },
                 "id": {
                     "description": "The assigned identifying value for the instance of the class.",
+                    "type": "string"
+                },
+                "label": {
+                    "description": "A short informative description that may be used for display.",
                     "type": "string"
                 },
                 "name": {
@@ -1111,6 +1199,10 @@
             "additionalProperties": false,
             "description": "A file containing analysis output displays.",
             "properties": {
+                "description": {
+                    "description": "A textual description of the instance of the class.",
+                    "type": "string"
+                },
                 "fileType": {
                     "anyOf": [
                         {
@@ -1121,6 +1213,10 @@
                         }
                     ],
                     "description": "The format of the output file."
+                },
+                "label": {
+                    "description": "A short informative description that may be used for display.",
+                    "type": "string"
                 },
                 "location": {
                     "description": "A path (relative or absolute) indicating the location of the file.",
@@ -1313,8 +1409,16 @@
             "additionalProperties": false,
             "description": "An external document containing supporting documentation or programming code.",
             "properties": {
+                "description": {
+                    "description": "A textual description of the instance of the class.",
+                    "type": "string"
+                },
                 "id": {
                     "description": "The assigned identifying value for the instance of the class.",
+                    "type": "string"
+                },
+                "label": {
+                    "description": "A short informative description that may be used for display.",
                     "type": "string"
                 },
                 "location": {
@@ -1439,6 +1543,10 @@
                     },
                     "type": "array"
                 },
+                "description": {
+                    "description": "A textual description of the instance of the class.",
+                    "type": "string"
+                },
                 "globalDisplaySections": {
                     "description": "Display section specifications that may be applied to any display.",
                     "items": {
@@ -1450,13 +1558,13 @@
                     "description": "The assigned identifying value for the instance of the class.",
                     "type": "string"
                 },
-                "listOfPlannedAnalyses": {
-                    "$ref": "#/$defs/NestedList",
-                    "description": "A structured list of the analyses defined for the reporting event."
+                "label": {
+                    "description": "A short informative description that may be used for display.",
+                    "type": "string"
                 },
-                "listOfPlannedOutputs": {
-                    "$ref": "#/$defs/NestedList",
-                    "description": "An optional structured list of the outputs defined for the reporting event."
+                "mainListOfContents": {
+                    "$ref": "#/$defs/ListOfContents",
+                    "description": "The main list of the analyses and outputs defined for the reporting event."
                 },
                 "methods": {
                     "description": "The defined methods used to analyze any analysis variable.",
@@ -1468,6 +1576,13 @@
                 "name": {
                     "description": "The name for the instance of the class.",
                     "type": "string"
+                },
+                "otherListsOfContents": {
+                    "description": "Other lists of the analyses and outputs defined for the reporting event.",
+                    "items": {
+                        "$ref": "#/$defs/ListOfContents"
+                    },
+                    "type": "array"
                 },
                 "outputs": {
                     "description": "The outputs defined for the reporting event.",
@@ -1497,7 +1612,7 @@
             },
             "required": [
                 "id",
-                "listOfPlannedAnalyses",
+                "mainListOfContents",
                 "name"
             ],
             "title": "ReportingEvent",
@@ -1520,6 +1635,9 @@
                     "type": "string"
                 }
             },
+            "required": [
+                "groupingId"
+            ],
             "title": "ResultGroup",
             "type": "object"
         },
@@ -1631,6 +1749,10 @@
                     "description": "Indicates whether the groups defined by the grouping are prespecified (false) or obtained from distinct data values of the groupingVariable (true).",
                     "type": "boolean"
                 },
+                "groupingDataset": {
+                    "description": "For groupings based on a single variable, a reference to the dataset containing the variable upon which grouping is based.",
+                    "type": "string"
+                },
                 "groupingVariable": {
                     "description": "For groupings based on a single variable, a reference to the dataset variable upon which grouping is based.",
                     "type": "string"
@@ -1664,6 +1786,10 @@
             "properties": {
                 "description": {
                     "description": "A textual description of the instance of the class.",
+                    "type": "string"
+                },
+                "label": {
+                    "description": "A short informative description that may be used for display.",
                     "type": "string"
                 },
                 "name": {
@@ -1736,6 +1862,10 @@
                     "type": "integer"
                 }
             },
+            "required": [
+                "level",
+                "order"
+            ],
             "title": "WhereClause",
             "type": "object"
         },
@@ -1886,6 +2016,10 @@
             },
             "type": "array"
         },
+        "description": {
+            "description": "A textual description of the instance of the class.",
+            "type": "string"
+        },
         "globalDisplaySections": {
             "description": "Display section specifications that may be applied to any display.",
             "items": {
@@ -1897,13 +2031,13 @@
             "description": "The assigned identifying value for the instance of the class.",
             "type": "string"
         },
-        "listOfPlannedAnalyses": {
-            "$ref": "#/$defs/NestedList",
-            "description": "A structured list of the analyses defined for the reporting event."
+        "label": {
+            "description": "A short informative description that may be used for display.",
+            "type": "string"
         },
-        "listOfPlannedOutputs": {
-            "$ref": "#/$defs/NestedList",
-            "description": "An optional structured list of the outputs defined for the reporting event."
+        "mainListOfContents": {
+            "$ref": "#/$defs/ListOfContents",
+            "description": "The main list of the analyses and outputs defined for the reporting event."
         },
         "methods": {
             "description": "The defined methods used to analyze any analysis variable.",
@@ -1915,6 +2049,13 @@
         "name": {
             "description": "The name for the instance of the class.",
             "type": "string"
+        },
+        "otherListsOfContents": {
+            "description": "Other lists of the analyses and outputs defined for the reporting event.",
+            "items": {
+                "$ref": "#/$defs/ListOfContents"
+            },
+            "type": "array"
         },
         "outputs": {
             "description": "The outputs defined for the reporting event.",
@@ -1944,7 +2085,7 @@
     },
     "required": [
         "id",
-        "listOfPlannedAnalyses",
+        "mainListOfContents",
         "name"
     ],
     "title": "ars_ldm",

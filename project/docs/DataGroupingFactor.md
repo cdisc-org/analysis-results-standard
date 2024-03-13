@@ -17,6 +17,7 @@ URI: [ars:DataGroupingFactor](https://www.cdisc.org/ars/1-0/DataGroupingFactor)
 
       DataGroupingFactor : id
         DataGroupingFactor : label
+        DataGroupingFactor : groupingDataset
         DataGroupingFactor : groupingVariable
         DataGroupingFactor : dataDriven
         DataGroupingFactor : groups
@@ -39,6 +40,7 @@ URI: [ars:DataGroupingFactor](https://www.cdisc.org/ars/1-0/DataGroupingFactor)
 | ---  | --- | --- | --- |
 | [id](id.md) | 1..1 <br/> [String](String.md) | The assigned identifying value for the instance of the class | [GroupingFactor](GroupingFactor.md) |
 | [label](label.md) | 0..1 <br/> [String](String.md) | A short informative description that may be used for display | [GroupingFactor](GroupingFactor.md) |
+| [groupingDataset](groupingDataset.md) | 0..1 <br/> [String](String.md) | For groupings based on a single variable, a reference to the dataset containi... | [GroupingFactor](GroupingFactor.md) |
 | [groupingVariable](groupingVariable.md) | 0..1 <br/> [String](String.md) | For groupings based on a single variable, a reference to the dataset variable... | [GroupingFactor](GroupingFactor.md) |
 | [dataDriven](dataDriven.md) | 1..1 <br/> [Boolean](Boolean.md) | Indicates whether the groups defined by the grouping are prespecified (false)... | [GroupingFactor](GroupingFactor.md) |
 | [groups](groups.md) | 0..* <br/> [DataGroup](DataGroup.md) | The pre-specified groups within the grouping | [GroupingFactor](GroupingFactor.md) |
@@ -162,15 +164,25 @@ attributes:
     alias: label
     owner: DataGroupingFactor
     domain_of:
+    - NamedObject
     - AnalysisOutputCategorization
     - AnalysisOutputCategory
     - AnalysisSet
     - DataSubset
     - GroupingFactor
     - Group
-    - AnalysisMethod
     - PageRef
-    - Operation
+    range: string
+  groupingDataset:
+    name: groupingDataset
+    description: For groupings based on a single variable, a reference to the dataset
+      containing the variable upon which grouping is based.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: groupingDataset
+    owner: DataGroupingFactor
+    domain_of:
+    - GroupingFactor
     range: string
   groupingVariable:
     name: groupingVariable

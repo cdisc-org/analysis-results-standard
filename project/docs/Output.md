@@ -28,6 +28,8 @@ URI: [ars:Output](https://www.cdisc.org/ars/1-0/Output)
         Output : programmingCode
         Output --|> AnalysisOutputProgrammingCode : programmingCode
         Output : name
+        Output : description
+        Output : label
         
 ```
 
@@ -47,11 +49,13 @@ URI: [ars:Output](https://www.cdisc.org/ars/1-0/Output)
 | [id](id.md) | 1..1 <br/> [String](String.md) | The assigned identifying value for the instance of the class | direct |
 | [version](version.md) | 0..1 <br/> [Integer](Integer.md) | An ordinal indicating the version of the identified instance of the class | direct |
 | [fileSpecifications](fileSpecifications.md) | 0..* <br/> [OutputFile](OutputFile.md) | Specifications of output files | direct |
-| [displays](displays.md) | 0..* <br/> [OrderedDisplay](OrderedDisplay.md) | An ordered list of the displays included in the output | direct |
+| [displays](displays.md) | 1..* <br/> [OrderedDisplay](OrderedDisplay.md) | An ordered list of the displays included in the output | direct |
 | [categoryIds](categoryIds.md) | 0..* <br/> [AnalysisOutputCategory](AnalysisOutputCategory.md) | References to any implementer-defined categories that apply to the output | direct |
 | [documentRefs](documentRefs.md) | 0..* <br/> [DocumentReference](DocumentReference.md) | References to external documents containing additional information | direct |
 | [programmingCode](programmingCode.md) | 0..1 <br/> [AnalysisOutputProgrammingCode](AnalysisOutputProgrammingCode.md) | Programming statements and/or a reference to the program used to perform the ... | direct |
 | [name](name.md) | 1..1 <br/> [String](String.md) | The name for the instance of the class | [NamedObject](NamedObject.md) |
+| [description](description.md) | 0..1 <br/> [String](String.md) | A textual description of the instance of the class | [NamedObject](NamedObject.md) |
+| [label](label.md) | 0..1 <br/> [String](String.md) | A short informative description that may be used for display | [NamedObject](NamedObject.md) |
 
 _* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
@@ -232,6 +236,7 @@ attributes:
     domain_of:
     - Output
     range: OrderedDisplay
+    required: true
     inlined: true
     inlined_as_list: true
   categoryIds:
@@ -287,6 +292,35 @@ attributes:
     - NamedObject
     range: string
     required: true
+  description:
+    name: description
+    description: A textual description of the instance of the class.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: description
+    owner: Output
+    domain_of:
+    - NamedObject
+    - SponsorTerm
+    - ReferencedOperationRelationship
+    range: string
+  label:
+    name: label
+    description: A short informative description that may be used for display.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: label
+    owner: Output
+    domain_of:
+    - NamedObject
+    - AnalysisOutputCategorization
+    - AnalysisOutputCategory
+    - AnalysisSet
+    - DataSubset
+    - GroupingFactor
+    - Group
+    - PageRef
+    range: string
 
 ```
 </details>

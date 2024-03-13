@@ -192,15 +192,14 @@ attributes:
     alias: label
     owner: PageNameRef
     domain_of:
+    - NamedObject
     - AnalysisOutputCategorization
     - AnalysisOutputCategory
     - AnalysisSet
     - DataSubset
     - GroupingFactor
     - Group
-    - AnalysisMethod
     - PageRef
-    - Operation
     range: string
   pageNames:
     name: pageNames

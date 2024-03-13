@@ -1,9 +1,10 @@
 type Analysis
   {
     name: String!
+    description: String
+    label: String
     id: String!
     version: Integer
-    description: String
     reason: ExtensibleTerminologyTerm!
     purpose: ExtensibleTerminologyTerm!
     documentRefs: [DocumentReference]
@@ -21,8 +22,8 @@ type Analysis
 
 type AnalysisGroup
   {
-    level: Integer
-    order: Integer
+    level: Integer!
+    order: Integer!
     condition: WhereClauseCondition
     id: String!
     label: String
@@ -32,9 +33,9 @@ type AnalysisGroup
 type AnalysisMethod
   {
     name: String!
-    id: String!
-    label: String
     description: String
+    label: String
+    id: String!
     documentRefs: [DocumentReference]
     operations: [Operation]!
     codeTemplate: AnalysisProgrammingCodeTemplate
@@ -58,6 +59,7 @@ type AnalysisOutputCodeParameter
   {
     name: String!
     description: String
+    label: String
     value: [String]!
   }
 
@@ -91,8 +93,8 @@ type AnalysisReason
 
 type AnalysisSet
   {
-    level: Integer
-    order: Integer
+    level: Integer!
+    order: Integer!
     condition: WhereClauseCondition
     id: String!
     label: String
@@ -103,6 +105,7 @@ interface CodeParameter
   {
     name: String!
     description: String
+    label: String
   }
 
 type CompoundGroupExpression
@@ -125,8 +128,8 @@ type CompoundSubsetExpression
 
 type DataGroup
   {
-    level: Integer
-    order: Integer
+    level: Integer!
+    order: Integer!
     condition: WhereClauseCondition
     id: String!
     label: String
@@ -137,6 +140,7 @@ type DataGroupingFactor
   {
     id: String!
     label: String
+    groupingDataset: String
     groupingVariable: String
     dataDriven: Boolean!
     groups: [DataGroup]
@@ -144,8 +148,8 @@ type DataGroupingFactor
 
 type DataSubset
   {
-    level: Integer
-    order: Integer
+    level: Integer!
+    order: Integer!
     condition: WhereClauseCondition
     id: String!
     label: String
@@ -184,8 +188,8 @@ type GlobalDisplaySection
 
 type Group
   {
-    level: Integer
-    order: Integer
+    level: Integer!
+    order: Integer!
     condition: WhereClauseCondition
     id: String!
     label: String
@@ -196,14 +200,25 @@ interface GroupingFactor
   {
     id: String!
     label: String
+    groupingDataset: String
     groupingVariable: String
     dataDriven: Boolean!
     groups: [Group]
   }
 
+type ListOfContents
+  {
+    name: String!
+    description: String
+    label: String
+    contentsList: NestedList!
+  }
+
 interface NamedObject
   {
     name: String!
+    description: String
+    label: String
   }
 
 type NestedList
@@ -214,8 +229,10 @@ type NestedList
 type Operation
   {
     name: String!
-    id: String!
+    description: String
     label: String
+    id: String!
+    order: Integer!
     referencedOperationRelationships: [ReferencedOperationRelationship]
     resultPattern: String
   }
@@ -237,7 +254,7 @@ type OperationRole
 type OrderedDisplay
   {
     order: Integer!
-    display: OutputDisplay
+    display: OutputDisplay!
   }
 
 interface OrderedDisplaySubSection
@@ -250,13 +267,15 @@ interface OrderedDisplaySubSection
 type OrderedGroupingFactor
   {
     order: Integer!
-    groupingId: GroupingFactor
+    groupingId: GroupingFactor!
     resultsByGroup: Boolean!
   }
 
 type OrderedListItem
   {
     name: String!
+    description: String
+    label: String
     level: Integer!
     order: Integer!
     analysisId: Analysis
@@ -281,10 +300,12 @@ type OrderedSubSectionRef
 type Output
   {
     name: String!
+    description: String
+    label: String
     id: String!
     version: Integer
     fileSpecifications: [OutputFile]
-    displays: [OrderedDisplay]
+    displays: [OrderedDisplay]!
     categoryIds: [AnalysisOutputCategory]
     documentRefs: [DocumentReference]
     programmingCode: AnalysisOutputProgrammingCode
@@ -293,6 +314,8 @@ type Output
 type OutputDisplay
   {
     name: String!
+    description: String
+    label: String
     id: String!
     version: Integer
     displayTitle: String
@@ -302,6 +325,8 @@ type OutputDisplay
 type OutputFile
   {
     name: String!
+    description: String
+    label: String
     fileType: ExtensibleTerminologyTerm
     location: Uri
     style: String
@@ -362,6 +387,8 @@ type ReferencedAnalysisOperation
 type ReferenceDocument
   {
     name: String!
+    description: String
+    label: String
     id: String!
     location: Uri
   }
@@ -378,10 +405,12 @@ type ReferencedOperationRelationship
 type ReportingEvent
   {
     name: String!
+    description: String
+    label: String
     id: String!
     version: Integer
-    listOfPlannedAnalyses: NestedList!
-    listOfPlannedOutputs: NestedList
+    mainListOfContents: ListOfContents!
+    otherListsOfContents: [ListOfContents]
     referenceDocuments: [ReferenceDocument]
     terminologyExtensions: [TerminologyExtension]
     analysisOutputCategorizations: [AnalysisOutputCategorization]
@@ -397,7 +426,7 @@ type ReportingEvent
 
 type ResultGroup
   {
-    groupingId: GroupingFactor
+    groupingId: GroupingFactor!
     groupId: Group
     groupValue: String
   }
@@ -437,6 +466,7 @@ type SubjectGroupingFactor
   {
     id: String!
     label: String
+    groupingDataset: String
     groupingVariable: String
     dataDriven: Boolean!
     groups: [AnalysisGroup]
@@ -446,6 +476,7 @@ type TemplateCodeParameter
   {
     name: String!
     description: String
+    label: String
     valueSource: String
     value: [String]
   }
@@ -459,8 +490,8 @@ type TerminologyExtension
 
 type WhereClause
   {
-    level: Integer
-    order: Integer
+    level: Integer!
+    order: Integer!
     condition: WhereClauseCondition
     compoundExpression: WhereClauseCompoundExpression
   }

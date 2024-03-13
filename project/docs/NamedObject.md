@@ -14,6 +14,7 @@ URI: [ars:NamedObject](https://www.cdisc.org/ars/1-0/NamedObject)
  classDiagram
     class NamedObject
       NamedObject <|-- ReportingEvent
+      NamedObject <|-- ListOfContents
       NamedObject <|-- OrderedListItem
       NamedObject <|-- ReferenceDocument
       NamedObject <|-- AnalysisMethod
@@ -24,6 +25,8 @@ URI: [ars:NamedObject](https://www.cdisc.org/ars/1-0/NamedObject)
       NamedObject <|-- OutputFile
       NamedObject <|-- OutputDisplay
       NamedObject : name        
+        NamedObject : description        
+        NamedObject : label        
         
 ```
 
@@ -33,6 +36,7 @@ URI: [ars:NamedObject](https://www.cdisc.org/ars/1-0/NamedObject)
 ## Inheritance
 * **NamedObject**
     * [ReportingEvent](ReportingEvent.md)
+    * [ListOfContents](ListOfContents.md)
     * [OrderedListItem](OrderedListItem.md)
     * [ReferenceDocument](ReferenceDocument.md)
     * [AnalysisMethod](AnalysisMethod.md)
@@ -50,6 +54,8 @@ URI: [ars:NamedObject](https://www.cdisc.org/ars/1-0/NamedObject)
 | Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [name](name.md) | 1..1 <br/> [String](String.md) | The name for the instance of the class | direct |
+| [description](description.md) | 0..1 <br/> [String](String.md) | A textual description of the instance of the class | direct |
+| [label](label.md) | 0..1 <br/> [String](String.md) | A short informative description that may be used for display | direct |
 
 _* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
@@ -103,6 +109,8 @@ rank: 1000
 abstract: true
 slots:
 - name
+- description
+- label
 
 ```
 </details>
@@ -128,6 +136,35 @@ attributes:
     - NamedObject
     range: string
     required: true
+  description:
+    name: description
+    description: A textual description of the instance of the class.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: description
+    owner: NamedObject
+    domain_of:
+    - NamedObject
+    - SponsorTerm
+    - ReferencedOperationRelationship
+    range: string
+  label:
+    name: label
+    description: A short informative description that may be used for display.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: label
+    owner: NamedObject
+    domain_of:
+    - NamedObject
+    - AnalysisOutputCategorization
+    - AnalysisOutputCategory
+    - AnalysisSet
+    - DataSubset
+    - GroupingFactor
+    - Group
+    - PageRef
+    range: string
 
 ```
 </details>

@@ -29,7 +29,7 @@ URI: [ars:ResultGroup](https://www.cdisc.org/ars/1-0/ResultGroup)
 
 | Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [groupingId](groupingId.md) | 0..1 <br/> [GroupingFactor](GroupingFactor.md) | The identifier of the referenced subject or data grouping factor | direct |
+| [groupingId](groupingId.md) | 1..1 <br/> [GroupingFactor](GroupingFactor.md) | The identifier of the referenced subject or data grouping factor | direct |
 | [groupId](groupId.md) | 0..1 <br/> [Group](Group.md) | The identifier of a referenced predefined group within a grouping | direct |
 | [groupValue](groupValue.md) | 0..1 <br/> [String](String.md) | The data value used as a group within a data-driven grouping | direct |
 
@@ -119,6 +119,7 @@ attributes:
     - OrderedGroupingFactor
     - ResultGroup
     range: GroupingFactor
+    required: true
     inlined: false
   groupId:
     name: groupId

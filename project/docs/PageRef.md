@@ -131,15 +131,14 @@ slot_usage:
     description: Alternative label to provide a more specific and description to a
       page link.
     domain_of:
+    - NamedObject
     - AnalysisOutputCategorization
     - AnalysisOutputCategory
     - AnalysisSet
     - DataSubset
     - GroupingFactor
     - Group
-    - AnalysisMethod
     - PageRef
-    - Operation
 
 ```
 </details>
@@ -164,15 +163,14 @@ slot_usage:
     description: Alternative label to provide a more specific and description to a
       page link.
     domain_of:
+    - NamedObject
     - AnalysisOutputCategorization
     - AnalysisOutputCategory
     - AnalysisSet
     - DataSubset
     - GroupingFactor
     - Group
-    - AnalysisMethod
     - PageRef
-    - Operation
 attributes:
   refType:
     name: refType
@@ -194,15 +192,14 @@ attributes:
     alias: label
     owner: PageRef
     domain_of:
+    - NamedObject
     - AnalysisOutputCategorization
     - AnalysisOutputCategory
     - AnalysisSet
     - DataSubset
     - GroupingFactor
     - Group
-    - AnalysisMethod
     - PageRef
-    - Operation
     range: string
   pageNames:
     name: pageNames

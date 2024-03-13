@@ -110,16 +110,6 @@ slots:
 - order
 - subSection
 - subSectionId
-slot_usage:
-  order:
-    name: order
-    domain_of:
-    - OrderedListItem
-    - WhereClause
-    - OrderedGroupingFactor
-    - OrderedDisplay
-    - OrderedDisplaySubSection
-    required: true
 
 ```
 </details>
@@ -137,16 +127,6 @@ comments:
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 abstract: true
-slot_usage:
-  order:
-    name: order
-    domain_of:
-    - OrderedListItem
-    - WhereClause
-    - OrderedGroupingFactor
-    - OrderedDisplay
-    - OrderedDisplaySubSection
-    required: true
 attributes:
   order:
     name: order
@@ -158,6 +138,7 @@ attributes:
     domain_of:
     - OrderedListItem
     - WhereClause
+    - Operation
     - OrderedGroupingFactor
     - OrderedDisplay
     - OrderedDisplaySubSection

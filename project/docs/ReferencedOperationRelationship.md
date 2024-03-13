@@ -194,11 +194,9 @@ attributes:
     alias: description
     owner: ReferencedOperationRelationship
     domain_of:
+    - NamedObject
     - SponsorTerm
-    - AnalysisMethod
     - ReferencedOperationRelationship
-    - CodeParameter
-    - Analysis
     range: string
 
 ```
