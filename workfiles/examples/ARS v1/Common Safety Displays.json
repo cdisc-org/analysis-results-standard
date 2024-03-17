@@ -1,413 +1,423 @@
 {
   "name": "Common Safety Displays",
   "id": "CSD",
-  "listOfPlannedAnalyses": {
-    "listItems": [
-      {
-        "name": "Summary of Demographics",
-        "level": 1,
-        "order": 1,
-        "outputId": "Out14-1-1",
-        "sublist": {
-          "listItems": [
-            {
-              "name": "Summary of Subjects by Treatment",
-              "level": 2,
-              "order": 1,
-              "analysisId": "An01_05_SAF_Summ_ByTrt"
-            },
-            {
-              "name": "Age",
-              "level": 2,
-              "order": 2,
-              "sublist": {
-                "listItems": [
-                  {
-                    "name": "Summary by Treatment",
-                    "level": 3,
-                    "order": 1,
-                    "analysisId": "An03_01_Age_Summ_ByTrt"
-                  },
-                  {
-                    "name": "Comparison by Treatment",
-                    "level": 3,
-                    "order": 2,
-                    "analysisId": "An03_01_Age_Comp_ByTrt"
-                  }
-                ]
+  "mainListOfContents": {
+    "name": "List of Planned Analyses",
+    "label": "LOPA",
+    "contentsList": {
+      "listItems": [
+        {
+          "name": "Summary of Demographics",
+          "level": 1,
+          "order": 1,
+          "outputId": "Out14-1-1",
+          "sublist": {
+            "listItems": [
+              {
+                "name": "Summary of Subjects by Treatment",
+                "level": 2,
+                "order": 1,
+                "analysisId": "An01_05_SAF_Summ_ByTrt"
+              },
+              {
+                "name": "Age",
+                "level": 2,
+                "order": 2,
+                "sublist": {
+                  "listItems": [
+                    {
+                      "name": "Summary by Treatment",
+                      "level": 3,
+                      "order": 1,
+                      "analysisId": "An03_01_Age_Summ_ByTrt"
+                    },
+                    {
+                      "name": "Comparison by Treatment",
+                      "level": 3,
+                      "order": 2,
+                      "analysisId": "An03_01_Age_Comp_ByTrt"
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "Age Group",
+                "level": 2,
+                "order": 3,
+                "sublist": {
+                  "listItems": [
+                    {
+                      "name": "Summary of Subjects by Treatment",
+                      "level": 3,
+                      "order": 1,
+                      "analysisId": "An03_02_AgeGrp_Summ_ByTrt"
+                    },
+                    {
+                      "name": "Comparison of Subjects by Treatment",
+                      "level": 3,
+                      "order": 2,
+                      "analysisId": "An03_02_AgeGrp_Comp_ByTrt"
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "Sex",
+                "level": 2,
+                "order": 4,
+                "sublist": {
+                  "listItems": [
+                    {
+                      "name": "Summary of Subjects by Treatment",
+                      "level": 3,
+                      "order": 1,
+                      "analysisId": "An03_03_Sex_Summ_ByTrt"
+                    },
+                    {
+                      "name": "Comparison of Subjects by Treatment",
+                      "level": 3,
+                      "order": 2,
+                      "analysisId": "An03_03_Sex_Comp_ByTrt"
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "Ethnicity",
+                "level": 2,
+                "order": 5,
+                "sublist": {
+                  "listItems": [
+                    {
+                      "name": "Summary of Subjects by Treatment",
+                      "level": 3,
+                      "order": 1,
+                      "analysisId": "An03_04_Ethnic_Summ_ByTrt"
+                    },
+                    {
+                      "name": "Comparison of Subjects by Treatment",
+                      "level": 3,
+                      "order": 2,
+                      "analysisId": "An03_04_Ethnic_Comp_ByTrt"
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "Race",
+                "level": 2,
+                "order": 6,
+                "sublist": {
+                  "listItems": [
+                    {
+                      "name": "Summary of Subjects by Treatment",
+                      "level": 3,
+                      "order": 1,
+                      "analysisId": "An03_05_Race_Summ_ByTrt"
+                    },
+                    {
+                      "name": "Comparison of Subjects by Treatment",
+                      "level": 3,
+                      "order": 2,
+                      "analysisId": "An03_05_Race_Comp_ByTrt"
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "Height",
+                "level": 2,
+                "order": 7,
+                "sublist": {
+                  "listItems": [
+                    {
+                      "name": "Summary by Treatment",
+                      "level": 3,
+                      "order": 1,
+                      "analysisId": "An03_06_Height_Summ_ByTrt"
+                    },
+                    {
+                      "name": "Comparison by Treatment",
+                      "level": 3,
+                      "order": 2,
+                      "analysisId": "An03_06_Height_Comp_ByTrt"
+                    }
+                  ]
+                }
               }
-            },
-            {
-              "name": "Age Group",
-              "level": 2,
-              "order": 3,
-              "sublist": {
-                "listItems": [
-                  {
-                    "name": "Summary of Subjects by Treatment",
-                    "level": 3,
-                    "order": 1,
-                    "analysisId": "An03_02_AgeGrp_Summ_ByTrt"
-                  },
-                  {
-                    "name": "Comparison of Subjects by Treatment",
-                    "level": 3,
-                    "order": 2,
-                    "analysisId": "An03_02_AgeGrp_Comp_ByTrt"
-                  }
-                ]
+            ]
+          }
+        },
+        {
+          "name": "Overall Summary of Treatment-Emergent Adverse Events",
+          "level": 1,
+          "order": 2,
+          "outputId": "Out14-3-1-1",
+          "sublist": {
+            "listItems": [
+              {
+                "name": "Summary of Subjects by Treatment",
+                "level": 2,
+                "order": 1,
+                "analysisId": "An01_05_SAF_Summ_ByTrt"
+              },
+              {
+                "name": "Number of subjects with at least one event",
+                "level": 2,
+                "order": 2,
+                "sublist": {
+                  "listItems": [
+                    {
+                      "name": "TEAE",
+                      "level": 3,
+                      "order": 1,
+                      "analysisId": "An07_01_TEAE_Summ_ByTrt"
+                    },
+                    {
+                      "name": "Related TEAE",
+                      "level": 3,
+                      "order": 2,
+                      "analysisId": "An07_02_RelTEAE_Summ_ByTrt"
+                    },
+                    {
+                      "name": "Serious TEAE",
+                      "level": 3,
+                      "order": 3,
+                      "analysisId": "An07_03_SerTEAE_Summ_ByTrt"
+                    },
+                    {
+                      "name": "Related Serious TEAE",
+                      "level": 3,
+                      "order": 4,
+                      "analysisId": "An07_04_RelSerTEAE_Summ_ByTrt"
+                    },
+                    {
+                      "name": "TEAE Leading to Death",
+                      "level": 3,
+                      "order": 5,
+                      "analysisId": "An07_05_TEAELd2Dth_Summ_ByTrt"
+                    },
+                    {
+                      "name": "Related TEAE Leading to Death",
+                      "level": 3,
+                      "order": 6,
+                      "analysisId": "An07_06_RelTEAELd2Dth_Summ_ByTrt"
+                    },
+                    {
+                      "name": "TEAE Leading to Dose Modification",
+                      "level": 3,
+                      "order": 7,
+                      "analysisId": "An07_07_TEAELd2DoseMod_Summ_ByTrt"
+                    },
+                    {
+                      "name": "TEAE Leading to Treatment Discontinuation",
+                      "level": 3,
+                      "order": 8,
+                      "analysisId": "An07_08_TEAELd2TrtDsc_Summ_ByTrt"
+                    }
+                  ]
+                }
               }
-            },
-            {
-              "name": "Sex",
-              "level": 2,
-              "order": 4,
-              "sublist": {
-                "listItems": [
-                  {
-                    "name": "Summary of Subjects by Treatment",
-                    "level": 3,
-                    "order": 1,
-                    "analysisId": "An03_03_Sex_Summ_ByTrt"
-                  },
-                  {
-                    "name": "Comparison of Subjects by Treatment",
-                    "level": 3,
-                    "order": 2,
-                    "analysisId": "An03_03_Sex_Comp_ByTrt"
-                  }
-                ]
+            ]
+          }
+        },
+        {
+          "name": "Summary of TEAE by System Organ Class and Preferred Term",
+          "level": 1,
+          "order": 3,
+          "outputId": "Out14-3-2-1",
+          "sublist": {
+            "listItems": [
+              {
+                "name": "Summary of Subjects by Treatment",
+                "level": 2,
+                "order": 1,
+                "analysisId": "An01_05_SAF_Summ_ByTrt"
+              },
+              {
+                "name": "Number of subjects with at least one event",
+                "level": 2,
+                "order": 2,
+                "sublist": {
+                  "listItems": [
+                    {
+                      "name": "Summary of Subjects by Treatment",
+                      "level": 3,
+                      "order": 1,
+                      "analysisId": "An07_01_TEAE_Summ_ByTrt"
+                    },
+                    {
+                      "name": "Comparison of Subjects by Treatment - Placebo vs Low Dose",
+                      "level": 3,
+                      "order": 2,
+                      "analysisId": "An07_01_TEAE_Comp_ByTrt_PlacLow"
+                    },
+                    {
+                      "name": "Comparison of Subjects by Treatment - Placebo vs High Dose",
+                      "level": 3,
+                      "order": 3,
+                      "analysisId": "An07_01_TEAE_Comp_ByTrt_PlacHigh"
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "System Organ Class",
+                "level": 2,
+                "order": 3,
+                "sublist": {
+                  "listItems": [
+                    {
+                      "name": "Summary of Subjects by Treatment and System Organ Class",
+                      "level": 3,
+                      "order": 1,
+                      "analysisId": "An07_09_Soc_Summ_ByTrt"
+                    },
+                    {
+                      "name": "Comparison of Subjects with TEAEs by Treatment and System Organ Class - Placebo vs Low Dose",
+                      "level": 3,
+                      "order": 2,
+                      "analysisId": "An07_09_Soc_Comp_ByTrt_PlacLow"
+                    },
+                    {
+                      "name": "Comparison of Subjects with TEAEs by Treatment and System Organ Class - Placebo vs High Dose",
+                      "level": 3,
+                      "order": 3,
+                      "analysisId": "An07_09_Soc_Comp_ByTrt_PlacHigh"
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "Preferred Term",
+                "level": 2,
+                "order": 4,
+                "sublist": {
+                  "listItems": [
+                    {
+                      "name": "Summary of Subjects by Treatment, System Organ Class and Preferred Term",
+                      "level": 3,
+                      "order": 1,
+                      "analysisId": "An07_10_SocPt_Summ_ByTrt"
+                    },
+                    {
+                      "name": "Comparison of Subjects with TEAEs by Treatment, System Organ Class and Preferred Term - Placebo vs Low Dose",
+                      "level": 3,
+                      "order": 2,
+                      "analysisId": "An07_10_SocPt_Comp_ByTrt_PlacLow"
+                    },
+                    {
+                      "name": "Comparison of Subjects with TEAEs by Treatment, System Organ Class and Preferred Term - Placebo vs High Dose",
+                      "level": 3,
+                      "order": 3,
+                      "analysisId": "An07_10_SocPt_Comp_ByTrt_PlacHigh"
+                    }
+                  ]
+                }
               }
-            },
-            {
-              "name": "Ethnicity",
-              "level": 2,
-              "order": 5,
-              "sublist": {
-                "listItems": [
-                  {
-                    "name": "Summary of Subjects by Treatment",
-                    "level": 3,
-                    "order": 1,
-                    "analysisId": "An03_04_Ethnic_Summ_ByTrt"
-                  },
-                  {
-                    "name": "Comparison of Subjects by Treatment",
-                    "level": 3,
-                    "order": 2,
-                    "analysisId": "An03_04_Ethnic_Comp_ByTrt"
-                  }
-                ]
+            ]
+          }
+        },
+        {
+          "name": "Summary of Observed and Change from Baseline by Scheduled Visits - Vital Signs (Horizontal)",
+          "level": 1,
+          "order": 4,
+          "outputId": "Out14-3-3-1a",
+          "sublist": {
+            "listItems": [
+              {
+                "name": "Summary of Subjects by Treatment",
+                "level": 2,
+                "order": 1,
+                "analysisId": "An01_05_SAF_Summ_ByTrt"
+              },
+              {
+                "name": "Summary of Observed Value by Treatment, Parameter and Visit",
+                "level": 2,
+                "order": 2,
+                "analysisId": "An08_01_Obs_Summ_ByTrt"
+              },
+              {
+                "name": "Summary of Change from Baseline by Treatment, Parameter and Visit",
+                "level": 2,
+                "order": 3,
+                "analysisId": "An08_02_ChgBl_Summ_ByTrt"
               }
-            },
-            {
-              "name": "Race",
-              "level": 2,
-              "order": 6,
-              "sublist": {
-                "listItems": [
-                  {
-                    "name": "Summary of Subjects by Treatment",
-                    "level": 3,
-                    "order": 1,
-                    "analysisId": "An03_05_Race_Summ_ByTrt"
-                  },
-                  {
-                    "name": "Comparison of Subjects by Treatment",
-                    "level": 3,
-                    "order": 2,
-                    "analysisId": "An03_05_Race_Comp_ByTrt"
-                  }
-                ]
+            ]
+          }
+        },
+        {
+          "name": "Summary of Observed and Change from Baseline by Scheduled Visits - Vital Signs (Vertical)",
+          "level": 1,
+          "order": 5,
+          "outputId": "Out14-3-3-1b",
+          "sublist": {
+            "listItems": [
+              {
+                "name": "Summary of Subjects by Treatment",
+                "level": 2,
+                "order": 1,
+                "analysisId": "An01_05_SAF_Summ_ByTrt"
+              },
+              {
+                "name": "Summary of Observed Value by Treatment, Parameter and Visit",
+                "level": 2,
+                "order": 2,
+                "analysisId": "An08_01_Obs_Summ_ByTrt"
+              },
+              {
+                "name": "Summary of Change from Baseline by Treatment, Parameter and Visit",
+                "level": 2,
+                "order": 3,
+                "analysisId": "An08_02_ChgBl_Summ_ByTrt"
               }
-            },
-            {
-              "name": "Height",
-              "level": 2,
-              "order": 7,
-              "sublist": {
-                "listItems": [
-                  {
-                    "name": "Summary by Treatment",
-                    "level": 3,
-                    "order": 1,
-                    "analysisId": "An03_06_Height_Summ_ByTrt"
-                  },
-                  {
-                    "name": "Comparison by Treatment",
-                    "level": 3,
-                    "order": 2,
-                    "analysisId": "An03_06_Height_Comp_ByTrt"
-                  }
-                ]
-              }
-            }
-          ]
+            ]
+          }
         }
-      },
-      {
-        "name": "Overall Summary of Treatment-Emergent Adverse Events",
-        "level": 1,
-        "order": 2,
-        "outputId": "Out14-3-1-1",
-        "sublist": {
-          "listItems": [
-            {
-              "name": "Summary of Subjects by Treatment",
-              "level": 2,
-              "order": 1,
-              "analysisId": "An01_05_SAF_Summ_ByTrt"
-            },
-            {
-              "name": "Number of subjects with at least one event",
-              "level": 2,
-              "order": 2,
-              "sublist": {
-                "listItems": [
-                  {
-                    "name": "TEAE",
-                    "level": 3,
-                    "order": 1,
-                    "analysisId": "An07_01_TEAE_Summ_ByTrt"
-                  },
-                  {
-                    "name": "Related TEAE",
-                    "level": 3,
-                    "order": 2,
-                    "analysisId": "An07_02_RelTEAE_Summ_ByTrt"
-                  },
-                  {
-                    "name": "Serious TEAE",
-                    "level": 3,
-                    "order": 3,
-                    "analysisId": "An07_03_SerTEAE_Summ_ByTrt"
-                  },
-                  {
-                    "name": "Related Serious TEAE",
-                    "level": 3,
-                    "order": 4,
-                    "analysisId": "An07_04_RelSerTEAE_Summ_ByTrt"
-                  },
-                  {
-                    "name": "TEAE Leading to Death",
-                    "level": 3,
-                    "order": 5,
-                    "analysisId": "An07_05_TEAELd2Dth_Summ_ByTrt"
-                  },
-                  {
-                    "name": "Related TEAE Leading to Death",
-                    "level": 3,
-                    "order": 6,
-                    "analysisId": "An07_06_RelTEAELd2Dth_Summ_ByTrt"
-                  },
-                  {
-                    "name": "TEAE Leading to Dose Modification",
-                    "level": 3,
-                    "order": 7,
-                    "analysisId": "An07_07_TEAELd2DoseMod_Summ_ByTrt"
-                  },
-                  {
-                    "name": "TEAE Leading to Treatment Discontinuation",
-                    "level": 3,
-                    "order": 8,
-                    "analysisId": "An07_08_TEAELd2TrtDsc_Summ_ByTrt"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      },
-      {
-        "name": "Summary of TEAE by System Organ Class and Preferred Term",
-        "level": 1,
-        "order": 3,
-        "outputId": "Out14-3-2-1",
-        "sublist": {
-          "listItems": [
-            {
-              "name": "Summary of Subjects by Treatment",
-              "level": 2,
-              "order": 1,
-              "analysisId": "An01_05_SAF_Summ_ByTrt"
-            },
-            {
-              "name": "Number of subjects with at least one event",
-              "level": 2,
-              "order": 2,
-              "sublist": {
-                "listItems": [
-                  {
-                    "name": "Summary of Subjects by Treatment",
-                    "level": 3,
-                    "order": 1,
-                    "analysisId": "An07_01_TEAE_Summ_ByTrt"
-                  },
-                  {
-                    "name": "Comparison of Subjects by Treatment - Placebo vs Low Dose",
-                    "level": 3,
-                    "order": 2,
-                    "analysisId": "An07_01_TEAE_Comp_ByTrt_PlacLow"
-                  },
-                  {
-                    "name": "Comparison of Subjects by Treatment - Placebo vs High Dose",
-                    "level": 3,
-                    "order": 3,
-                    "analysisId": "An07_01_TEAE_Comp_ByTrt_PlacHigh"
-                  }
-                ]
-              }
-            },
-            {
-              "name": "System Organ Class",
-              "level": 2,
-              "order": 3,
-              "sublist": {
-                "listItems": [
-                  {
-                    "name": "Summary of Subjects by Treatment and System Organ Class",
-                    "level": 3,
-                    "order": 1,
-                    "analysisId": "An07_09_Soc_Summ_ByTrt"
-                  },
-                  {
-                    "name": "Comparison of Subjects with TEAEs by Treatment and System Organ Class - Placebo vs Low Dose",
-                    "level": 3,
-                    "order": 2,
-                    "analysisId": "An07_09_Soc_Comp_ByTrt_PlacLow"
-                  },
-                  {
-                    "name": "Comparison of Subjects with TEAEs by Treatment and System Organ Class - Placebo vs High Dose",
-                    "level": 3,
-                    "order": 3,
-                    "analysisId": "An07_09_Soc_Comp_ByTrt_PlacHigh"
-                  }
-                ]
-              }
-            },
-            {
-              "name": "Preferred Term",
-              "level": 2,
-              "order": 4,
-              "sublist": {
-                "listItems": [
-                  {
-                    "name": "Summary of Subjects by Treatment, System Organ Class and Preferred Term",
-                    "level": 3,
-                    "order": 1,
-                    "analysisId": "An07_10_SocPt_Summ_ByTrt"
-                  },
-                  {
-                    "name": "Comparison of Subjects with TEAEs by Treatment, System Organ Class and Preferred Term - Placebo vs Low Dose",
-                    "level": 3,
-                    "order": 2,
-                    "analysisId": "An07_10_SocPt_Comp_ByTrt_PlacLow"
-                  },
-                  {
-                    "name": "Comparison of Subjects with TEAEs by Treatment, System Organ Class and Preferred Term - Placebo vs High Dose",
-                    "level": 3,
-                    "order": 3,
-                    "analysisId": "An07_10_SocPt_Comp_ByTrt_PlacHigh"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      },
-      {
-        "name": "Summary of Observed and Change from Baseline by Scheduled Visits - Vital Signs (Horizontal)",
-        "level": 1,
-        "order": 4,
-        "outputId": "Out14-3-3-1a",
-        "sublist": {
-          "listItems": [
-            {
-              "name": "Summary of Subjects by Treatment",
-              "level": 2,
-              "order": 1,
-              "analysisId": "An01_05_SAF_Summ_ByTrt"
-            },
-            {
-              "name": "Summary of Observed Value by Treatment, Parameter and Visit",
-              "level": 2,
-              "order": 2,
-              "analysisId": "An08_01_Obs_Summ_ByTrt"
-            },
-            {
-              "name": "Summary of Change from Baseline by Treatment, Parameter and Visit",
-              "level": 2,
-              "order": 3,
-              "analysisId": "An08_02_ChgBl_Summ_ByTrt"
-            }
-          ]
-        }
-      },
-      {
-        "name": "Summary of Observed and Change from Baseline by Scheduled Visits - Vital Signs (Vertical)",
-        "level": 1,
-        "order": 5,
-        "outputId": "Out14-3-3-1b",
-        "sublist": {
-          "listItems": [
-            {
-              "name": "Summary of Subjects by Treatment",
-              "level": 2,
-              "order": 1,
-              "analysisId": "An01_05_SAF_Summ_ByTrt"
-            },
-            {
-              "name": "Summary of Observed Value by Treatment, Parameter and Visit",
-              "level": 2,
-              "order": 2,
-              "analysisId": "An08_01_Obs_Summ_ByTrt"
-            },
-            {
-              "name": "Summary of Change from Baseline by Treatment, Parameter and Visit",
-              "level": 2,
-              "order": 3,
-              "analysisId": "An08_02_ChgBl_Summ_ByTrt"
-            }
-          ]
-        }
-      }
-    ]
+      ]
+    }
   },
   "version": 1,
-  "listOfPlannedOutputs": {
-    "listItems": [
-      {
-        "name": "Summary of Demographics",
-        "level": 1,
-        "order": 1,
-        "outputId": "Out14-1-1"
-      },
-      {
-        "name": "Overall Summary of Treatment-Emergent Adverse Events",
-        "level": 1,
-        "order": 2,
-        "outputId": "Out14-3-1-1"
-      },
-      {
-        "name": "Summary of TEAE by System Organ Class and Preferred Term",
-        "level": 1,
-        "order": 3,
-        "outputId": "Out14-3-2-1"
-      },
-      {
-        "name": "Summary of Observed and Change from Baseline by Scheduled Visits - Vital Signs (Horizontal)",
-        "level": 1,
-        "order": 4,
-        "outputId": "Out14-3-3-1a"
-      },
-      {
-        "name": "Summary of Observed and Change from Baseline by Scheduled Visits - Vital Signs (Vertical)",
-        "level": 1,
-        "order": 5,
-        "outputId": "Out14-3-3-1b"
+  "otherListsOfContents": [
+    {
+      "name": "List of Planned Outputs",
+      "label": "LOPO",
+      "contentsList": {
+        "listItems": [
+          {
+            "name": "Summary of Demographics",
+            "level": 1,
+            "order": 1,
+            "outputId": "Out14-1-1"
+          },
+          {
+            "name": "Overall Summary of Treatment-Emergent Adverse Events",
+            "level": 1,
+            "order": 2,
+            "outputId": "Out14-3-1-1"
+          },
+          {
+            "name": "Summary of TEAE by System Organ Class and Preferred Term",
+            "level": 1,
+            "order": 3,
+            "outputId": "Out14-3-2-1"
+          },
+          {
+            "name": "Summary of Observed and Change from Baseline by Scheduled Visits - Vital Signs (Horizontal)",
+            "level": 1,
+            "order": 4,
+            "outputId": "Out14-3-3-1a"
+          },
+          {
+            "name": "Summary of Observed and Change from Baseline by Scheduled Visits - Vital Signs (Vertical)",
+            "level": 1,
+            "order": 5,
+            "outputId": "Out14-3-3-1b"
+          }
+        ]
       }
-    ]
-  },
+    }
+  ],
   "referenceDocuments": [
     {
       "name": "Statistical Analysis Plan",
@@ -559,6 +569,9 @@
   ],
   "analysisSets": [
     {
+      "name": "Intent-to-Treat Population",
+      "label": "ITT",
+      "id": "AnalysisSet_01_ITT",
       "level": 1,
       "order": 1,
       "condition": {
@@ -568,11 +581,12 @@
         "value": [
           "Y"
         ]
-      },
-      "id": "AnalysisSet_01_ITT",
-      "label": "Intent-to-Treat Population"
+      }
     },
     {
+      "name": "Safety Population",
+      "label": "SAF",
+      "id": "AnalysisSet_02_SAF",
       "level": 1,
       "order": 1,
       "condition": {
@@ -582,308 +596,13 @@
         "value": [
           "Y"
         ]
-      },
-      "id": "AnalysisSet_02_SAF",
-      "label": "Safety Population"
-    }
-  ],
-  "analysisGroupings": [
-    {
-      "id": "AnlsGrouping_01_Trt",
-      "dataDriven": false,
-      "label": "Treatment",
-      "groupingVariable": "TRT01A",
-      "groups": [
-        {
-          "level": 1,
-          "order": 1,
-          "condition": {
-            "dataset": "ADSL",
-            "variable": "TRT01A",
-            "comparator": "EQ",
-            "value": [
-              "Placebo"
-            ]
-          },
-          "id": "AnlsGrouping_01_Trt_1",
-          "label": "Placebo"
-        },
-        {
-          "level": 1,
-          "order": 2,
-          "condition": {
-            "dataset": "ADSL",
-            "variable": "TRT01A",
-            "comparator": "EQ",
-            "value": [
-              "Xanomeline Low Dose"
-            ]
-          },
-          "id": "AnlsGrouping_01_Trt_2",
-          "label": "Xanomeline Low Dose"
-        },
-        {
-          "level": 1,
-          "order": 3,
-          "condition": {
-            "dataset": "ADSL",
-            "variable": "TRT01A",
-            "comparator": "EQ",
-            "value": [
-              "Xanomeline High Dose"
-            ]
-          },
-          "id": "AnlsGrouping_01_Trt_3",
-          "label": "Xanomeline High Dose"
-        }
-      ]
-    },
-    {
-      "id": "AnlsGrouping_02_Sex",
-      "dataDriven": false,
-      "label": "Gender",
-      "groupingVariable": "SEX",
-      "groups": [
-        {
-          "level": 1,
-          "order": 1,
-          "condition": {
-            "dataset": "ADSL",
-            "variable": "SEX",
-            "comparator": "EQ",
-            "value": [
-              "M"
-            ]
-          },
-          "id": "AnlsGrouping_02_Sex_1",
-          "label": "Male"
-        },
-        {
-          "level": 1,
-          "order": 2,
-          "condition": {
-            "dataset": "ADSL",
-            "variable": "SEX",
-            "comparator": "EQ",
-            "value": [
-              "F"
-            ]
-          },
-          "id": "AnlsGrouping_02_Sex_2",
-          "label": "Female"
-        }
-      ]
-    },
-    {
-      "id": "AnlsGrouping_03_AgeGp",
-      "dataDriven": false,
-      "label": "Age Group",
-      "groupingVariable": "AGEGR1",
-      "groups": [
-        {
-          "level": 1,
-          "order": 1,
-          "condition": {
-            "dataset": "ADSL",
-            "variable": "AGEGR1",
-            "comparator": "EQ",
-            "value": [
-              "<65"
-            ]
-          },
-          "id": "AnlsGrouping_03_AgeGp_1",
-          "label": "< 65 years"
-        },
-        {
-          "level": 1,
-          "order": 2,
-          "condition": {
-            "dataset": "ADSL",
-            "variable": "AGEGR1",
-            "comparator": "IN",
-            "value": [
-              "65-80",
-              ">80"
-            ]
-          },
-          "id": "AnlsGrouping_03_AgeGp_2",
-          "label": "≥ 65 years"
-        }
-      ]
-    },
-    {
-      "id": "AnlsGrouping_04_Race",
-      "dataDriven": false,
-      "label": "Primary Race",
-      "groupingVariable": "RACE",
-      "groups": [
-        {
-          "level": 1,
-          "order": 1,
-          "condition": {
-            "dataset": "ADSL",
-            "variable": "RACE",
-            "comparator": "EQ",
-            "value": [
-              "AMERICAN INDIAN OR ALASKA NATIVE"
-            ]
-          },
-          "id": "AnlsGrouping_04_Race_1",
-          "label": "American Indian or Alaska Native"
-        },
-        {
-          "level": 1,
-          "order": 2,
-          "condition": {
-            "dataset": "ADSL",
-            "variable": "RACE",
-            "comparator": "EQ",
-            "value": [
-              "ASIAN"
-            ]
-          },
-          "id": "AnlsGrouping_04_Race_2",
-          "label": "Asian"
-        },
-        {
-          "level": 1,
-          "order": 3,
-          "condition": {
-            "dataset": "ADSL",
-            "variable": "RACE",
-            "comparator": "EQ",
-            "value": [
-              "BLACK OR AFRICAN AMERICAN"
-            ]
-          },
-          "id": "AnlsGrouping_04_Race_3",
-          "label": "Black or African American"
-        },
-        {
-          "level": 1,
-          "order": 4,
-          "condition": {
-            "dataset": "ADSL",
-            "variable": "RACE",
-            "comparator": "EQ",
-            "value": [
-              "NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER"
-            ]
-          },
-          "id": "AnlsGrouping_04_Race_4",
-          "label": "Native Hawaiian or Other Pacific Islander"
-        },
-        {
-          "level": 1,
-          "order": 5,
-          "condition": {
-            "dataset": "ADSL",
-            "variable": "RACE",
-            "comparator": "EQ",
-            "value": [
-              "WHITE"
-            ]
-          },
-          "id": "AnlsGrouping_04_Race_5",
-          "label": "White"
-        },
-        {
-          "level": 1,
-          "order": 6,
-          "condition": {
-            "dataset": "ADSL",
-            "variable": "RACE",
-            "comparator": "EQ",
-            "value": [
-              "MULTIPLE"
-            ]
-          },
-          "id": "AnlsGrouping_04_Race_6",
-          "label": "Multiple"
-        },
-        {
-          "level": 1,
-          "order": 7,
-          "condition": {
-            "dataset": "ADSL",
-            "variable": "RACE",
-            "comparator": "EQ",
-            "value": [
-              "NOT REPORTED"
-            ]
-          },
-          "id": "AnlsGrouping_04_Race_7",
-          "label": "Not Reported"
-        },
-        {
-          "level": 1,
-          "order": 8,
-          "condition": {
-            "dataset": "ADSL",
-            "variable": "RACE",
-            "comparator": "EQ",
-            "value": [
-              "UNKNOWN"
-            ]
-          },
-          "id": "AnlsGrouping_04_Race_8",
-          "label": "Unknown"
-        },
-        {
-          "level": 1,
-          "order": 9,
-          "condition": {
-            "dataset": "ADSL",
-            "variable": "RACE",
-            "comparator": "EQ",
-            "value": [
-              "OTHER"
-            ]
-          },
-          "id": "AnlsGrouping_04_Race_9",
-          "label": "Other"
-        }
-      ]
-    },
-    {
-      "id": "AnlsGrouping_05_Ethnic",
-      "dataDriven": false,
-      "label": "Ethnicity",
-      "groupingVariable": "ETHNIC",
-      "groups": [
-        {
-          "level": 1,
-          "order": 1,
-          "condition": {
-            "dataset": "ADSL",
-            "variable": "ETHNIC",
-            "comparator": "EQ",
-            "value": [
-              "HISPANIC OR LATINO"
-            ]
-          },
-          "id": "AnlsGrouping_05_Ethnic_1",
-          "label": "Hispanic or Latino"
-        },
-        {
-          "level": 1,
-          "order": 2,
-          "condition": {
-            "dataset": "ADSL",
-            "variable": "ETHNIC",
-            "comparator": "EQ",
-            "value": [
-              "NOT HISPANIC OR LATINO"
-            ]
-          },
-          "id": "AnlsGrouping_05_Ethnic_2",
-          "label": "Not Hispanic or Latino"
-        }
-      ]
+      }
     }
   ],
   "dataSubsets": [
     {
+      "name": "Treatment-Emergent Adverse Events",
+      "id": "Dss01_TEAE",
       "level": 1,
       "order": 1,
       "condition": {
@@ -893,11 +612,11 @@
         "value": [
           "Y"
         ]
-      },
-      "id": "Dss01_TEAE",
-      "label": "Treatment-Emergent Adverse Events"
+      }
     },
     {
+      "name": "Related Treatment-Emergent Adverse Events",
+      "id": "Dss02_Related_TEAE",
       "level": 1,
       "order": 1,
       "compoundExpression": {
@@ -929,11 +648,11 @@
             }
           }
         ]
-      },
-      "id": "Dss02_Related_TEAE",
-      "label": "Related Treatment-Emergent Adverse Events"
+      }
     },
     {
+      "name": "Serious Treatment-Emergent Adverse Events",
+      "id": "Dss03_Serious_TEAE",
       "level": 1,
       "order": 1,
       "compoundExpression": {
@@ -964,11 +683,11 @@
             }
           }
         ]
-      },
-      "id": "Dss03_Serious_TEAE",
-      "label": "Serious Treatment-Emergent Adverse Events"
+      }
     },
     {
+      "name": "Related Serious Treatment-Emergent Adverse Events",
+      "id": "Dss04_RelSer_TEAE",
       "level": 1,
       "order": 1,
       "compoundExpression": {
@@ -1012,11 +731,11 @@
             }
           }
         ]
-      },
-      "id": "Dss04_RelSer_TEAE",
-      "label": "Related Serious Treatment-Emergent Adverse Events"
+      }
     },
     {
+      "name": "Treatment-Emergent Adverse Events Leading to Death",
+      "id": "Dss05_TEAE_Ld2Dth",
       "level": 1,
       "order": 1,
       "compoundExpression": {
@@ -1047,11 +766,11 @@
             }
           }
         ]
-      },
-      "id": "Dss05_TEAE_Ld2Dth",
-      "label": "Treatment-Emergent Adverse Events Leading to Death"
+      }
     },
     {
+      "name": "Related Treatment-Emergent Adverse Events Leading to Death",
+      "id": "Dss06_Rel_TEAE_Ld2Dth",
       "level": 1,
       "order": 1,
       "compoundExpression": {
@@ -1115,11 +834,11 @@
             }
           }
         ]
-      },
-      "id": "Dss06_Rel_TEAE_Ld2Dth",
-      "label": "Related Treatment-Emergent Adverse Events Leading to Death"
+      }
     },
     {
+      "name": "Treatment-Emergent Adverse Events Leading to Dose Modification",
+      "id": "Dss07_TEAE_Ld2DoseMod",
       "level": 1,
       "order": 1,
       "compoundExpression": {
@@ -1151,11 +870,11 @@
             }
           }
         ]
-      },
-      "id": "Dss07_TEAE_Ld2DoseMod",
-      "label": "Treatment-Emergent Adverse Events Leading to Dose Modification"
+      }
     },
     {
+      "name": "Treatment-Emergent Adverse Events Leading to Treatment Discontinuation",
+      "id": "Dss08_AE_Ld2TrtDsc",
       "level": 1,
       "order": 1,
       "compoundExpression": {
@@ -1186,11 +905,11 @@
             }
           }
         ]
-      },
-      "id": "Dss08_AE_Ld2TrtDsc",
-      "label": "Treatment-Emergent Adverse Events Leading to Treatment Discontinuation"
+      }
     },
     {
+      "name": "Vital Signs Analysis Records",
+      "id": "Dss09_VS_AnRec",
       "level": 1,
       "order": 1,
       "condition": {
@@ -1200,11 +919,11 @@
         "value": [
           "Y"
         ]
-      },
-      "id": "Dss09_VS_AnRec",
-      "label": "Vital Signs Analysis Records"
+      }
     },
     {
+      "name": "Vital Signs Non-baseline Analysis Records",
+      "id": "Dss10_VS_NonBl_AnRec",
       "level": 1,
       "order": 1,
       "compoundExpression": {
@@ -1235,11 +954,11 @@
             }
           }
         ]
-      },
-      "id": "Dss10_VS_NonBl_AnRec",
-      "label": "Vital Signs Non-baseline Analysis Records"
+      }
     },
     {
+      "name": "Treatment-Emergent Adverse Events for Placebo and Low Active Dose",
+      "id": "Dss11_TEAE_PlacLow",
       "level": 1,
       "order": 1,
       "compoundExpression": {
@@ -1271,11 +990,11 @@
             }
           }
         ]
-      },
-      "id": "Dss11_TEAE_PlacLow",
-      "label": "Treatment-Emergent Adverse Events for Placebo and Low Active Dose"
+      }
     },
     {
+      "name": "Treatment-Emergent Adverse Events for Placebo and High Active Dose",
+      "id": "Dss12_TEAE_PlacHigh",
       "level": 1,
       "order": 1,
       "compoundExpression": {
@@ -1307,31 +1026,331 @@
             }
           }
         ]
-      },
-      "id": "Dss12_TEAE_PlacHigh",
-      "label": "Treatment-Emergent Adverse Events for Placebo and High Active Dose"
+      }
     }
   ],
-  "dataGroupings": [
+  "analysisGroupings": [
     {
+      "name": "Treatment",
+      "id": "AnlsGrouping_01_Trt",
+      "dataDriven": false,
+      "groupingDataset": "ADSL",
+      "groupingVariable": "TRT01A",
+      "groups": [
+        {
+          "name": "Placebo",
+          "id": "AnlsGrouping_01_Trt_1",
+          "level": 1,
+          "order": 1,
+          "condition": {
+            "dataset": "ADSL",
+            "variable": "TRT01A",
+            "comparator": "EQ",
+            "value": [
+              "Placebo"
+            ]
+          }
+        },
+        {
+          "name": "Xanomeline Low Dose",
+          "id": "AnlsGrouping_01_Trt_2",
+          "level": 1,
+          "order": 2,
+          "condition": {
+            "dataset": "ADSL",
+            "variable": "TRT01A",
+            "comparator": "EQ",
+            "value": [
+              "Xanomeline Low Dose"
+            ]
+          }
+        },
+        {
+          "name": "Xanomeline High Dose",
+          "id": "AnlsGrouping_01_Trt_3",
+          "level": 1,
+          "order": 3,
+          "condition": {
+            "dataset": "ADSL",
+            "variable": "TRT01A",
+            "comparator": "EQ",
+            "value": [
+              "Xanomeline High Dose"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Gender",
+      "id": "AnlsGrouping_02_Sex",
+      "dataDriven": false,
+      "groupingDataset": "ADSL",
+      "groupingVariable": "SEX",
+      "groups": [
+        {
+          "name": "Male",
+          "id": "AnlsGrouping_02_Sex_1",
+          "level": 1,
+          "order": 1,
+          "condition": {
+            "dataset": "ADSL",
+            "variable": "SEX",
+            "comparator": "EQ",
+            "value": [
+              "M"
+            ]
+          }
+        },
+        {
+          "name": "Female",
+          "id": "AnlsGrouping_02_Sex_2",
+          "level": 1,
+          "order": 2,
+          "condition": {
+            "dataset": "ADSL",
+            "variable": "SEX",
+            "comparator": "EQ",
+            "value": [
+              "F"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Age Group",
+      "id": "AnlsGrouping_03_AgeGp",
+      "dataDriven": false,
+      "groupingDataset": "ADSL",
+      "groupingVariable": "AGEGR1",
+      "groups": [
+        {
+          "name": "< 65 years",
+          "id": "AnlsGrouping_03_AgeGp_1",
+          "level": 1,
+          "order": 1,
+          "condition": {
+            "dataset": "ADSL",
+            "variable": "AGEGR1",
+            "comparator": "EQ",
+            "value": [
+              "<65"
+            ]
+          }
+        },
+        {
+          "name": "≥ 65 years",
+          "id": "AnlsGrouping_03_AgeGp_2",
+          "level": 1,
+          "order": 2,
+          "condition": {
+            "dataset": "ADSL",
+            "variable": "AGEGR1",
+            "comparator": "IN",
+            "value": [
+              "65-80 | >80"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Primary Race",
+      "id": "AnlsGrouping_04_Race",
+      "dataDriven": false,
+      "groupingDataset": "ADSL",
+      "groupingVariable": "RACE",
+      "groups": [
+        {
+          "name": "American Indian or Alaska Native",
+          "id": "AnlsGrouping_04_Race_1",
+          "level": 1,
+          "order": 1,
+          "condition": {
+            "dataset": "ADSL",
+            "variable": "RACE",
+            "comparator": "EQ",
+            "value": [
+              "AMERICAN INDIAN OR ALASKA NATIVE"
+            ]
+          }
+        },
+        {
+          "name": "Asian",
+          "id": "AnlsGrouping_04_Race_2",
+          "level": 1,
+          "order": 2,
+          "condition": {
+            "dataset": "ADSL",
+            "variable": "RACE",
+            "comparator": "EQ",
+            "value": [
+              "ASIAN"
+            ]
+          }
+        },
+        {
+          "name": "Black or African American",
+          "id": "AnlsGrouping_04_Race_3",
+          "level": 1,
+          "order": 3,
+          "condition": {
+            "dataset": "ADSL",
+            "variable": "RACE",
+            "comparator": "EQ",
+            "value": [
+              "BLACK OR AFRICAN AMERICAN"
+            ]
+          }
+        },
+        {
+          "name": "Native Hawaiian or Other Pacific Islander",
+          "id": "AnlsGrouping_04_Race_4",
+          "level": 1,
+          "order": 4,
+          "condition": {
+            "dataset": "ADSL",
+            "variable": "RACE",
+            "comparator": "EQ",
+            "value": [
+              "NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER"
+            ]
+          }
+        },
+        {
+          "name": "White",
+          "id": "AnlsGrouping_04_Race_5",
+          "level": 1,
+          "order": 5,
+          "condition": {
+            "dataset": "ADSL",
+            "variable": "RACE",
+            "comparator": "EQ",
+            "value": [
+              "WHITE"
+            ]
+          }
+        },
+        {
+          "name": "Multiple",
+          "id": "AnlsGrouping_04_Race_6",
+          "level": 1,
+          "order": 6,
+          "condition": {
+            "dataset": "ADSL",
+            "variable": "RACE",
+            "comparator": "EQ",
+            "value": [
+              "MULTIPLE"
+            ]
+          }
+        },
+        {
+          "name": "Not Reported",
+          "id": "AnlsGrouping_04_Race_7",
+          "level": 1,
+          "order": 7,
+          "condition": {
+            "dataset": "ADSL",
+            "variable": "RACE",
+            "comparator": "EQ",
+            "value": [
+              "NOT REPORTED"
+            ]
+          }
+        },
+        {
+          "name": "Unknown",
+          "id": "AnlsGrouping_04_Race_8",
+          "level": 1,
+          "order": 8,
+          "condition": {
+            "dataset": "ADSL",
+            "variable": "RACE",
+            "comparator": "EQ",
+            "value": [
+              "UNKNOWN"
+            ]
+          }
+        },
+        {
+          "name": "Other",
+          "id": "AnlsGrouping_04_Race_9",
+          "level": 1,
+          "order": 9,
+          "condition": {
+            "dataset": "ADSL",
+            "variable": "RACE",
+            "comparator": "EQ",
+            "value": [
+              "OTHER"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Ethnicity",
+      "id": "AnlsGrouping_05_Ethnic",
+      "dataDriven": false,
+      "groupingDataset": "ADSL",
+      "groupingVariable": "ETHNIC",
+      "groups": [
+        {
+          "name": "Hispanic or Latino",
+          "id": "AnlsGrouping_05_Ethnic_1",
+          "level": 1,
+          "order": 1,
+          "condition": {
+            "dataset": "ADSL",
+            "variable": "ETHNIC",
+            "comparator": "EQ",
+            "value": [
+              "HISPANIC OR LATINO"
+            ]
+          }
+        },
+        {
+          "name": "Not Hispanic or Latino",
+          "id": "AnlsGrouping_05_Ethnic_2",
+          "level": 1,
+          "order": 2,
+          "condition": {
+            "dataset": "ADSL",
+            "variable": "ETHNIC",
+            "comparator": "EQ",
+            "value": [
+              "NOT HISPANIC OR LATINO"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "System Organ Class",
       "id": "AnlsGrouping_06_Soc",
       "dataDriven": true,
-      "label": "System Organ Class",
+      "groupingDataset": "ADAE",
       "groupingVariable": "AESOC"
     },
     {
+      "name": "Preferred Term",
       "id": "AnlsGrouping_07_Pt",
       "dataDriven": true,
-      "label": "Preferred Term",
+      "groupingDataset": "ADAE",
       "groupingVariable": "AEDECOD"
     },
     {
+      "name": "Parameter",
       "id": "AnlsGrouping_08_Param",
       "dataDriven": false,
-      "label": "Parameter",
+      "groupingDataset": "ADVS",
       "groupingVariable": "PARAMCD",
       "groups": [
         {
+          "name": "Systolic Blood Pressure (mmHg)",
+          "id": "AnlsGrouping_08_Param_1",
           "level": 1,
           "order": 1,
           "condition": {
@@ -1341,11 +1360,11 @@
             "value": [
               "SYSBP"
             ]
-          },
-          "id": "AnlsGrouping_08_Param_1",
-          "label": "Systolic Blood Pressure (mmHg)"
+          }
         },
         {
+          "name": "Diastolic Blood Pressure (mmHg)",
+          "id": "AnlsGrouping_08_Param_2",
           "level": 1,
           "order": 2,
           "condition": {
@@ -1355,11 +1374,11 @@
             "value": [
               "DIABP"
             ]
-          },
-          "id": "AnlsGrouping_08_Param_2",
-          "label": "Diastolic Blood Pressure (mmHg)"
+          }
         },
         {
+          "name": "Pulse Rate (beats/min)",
+          "id": "AnlsGrouping_08_Param_3",
           "level": 1,
           "order": 3,
           "condition": {
@@ -1369,11 +1388,11 @@
             "value": [
               "PULSE"
             ]
-          },
-          "id": "AnlsGrouping_08_Param_3",
-          "label": "Pulse Rate (beats/min)"
+          }
         },
         {
+          "name": "Temperature (C)",
+          "id": "AnlsGrouping_08_Param_4",
           "level": 1,
           "order": 4,
           "condition": {
@@ -1383,19 +1402,20 @@
             "value": [
               "TEMP"
             ]
-          },
-          "id": "AnlsGrouping_08_Param_4",
-          "label": "Temperature (C)"
+          }
         }
       ]
     },
     {
+      "name": "Visit",
       "id": "AnlsGrouping_09_Visit",
       "dataDriven": false,
-      "label": "Visit",
+      "groupingDataset": "ADVS",
       "groupingVariable": "AVISIT",
       "groups": [
         {
+          "name": "Baseline",
+          "id": "AnlsGrouping_09_Visit_01",
           "level": 1,
           "order": 1,
           "condition": {
@@ -1405,11 +1425,11 @@
             "value": [
               "Baseline"
             ]
-          },
-          "id": "AnlsGrouping_09_Visit_01",
-          "label": "Baseline"
+          }
         },
         {
+          "name": "Week 2",
+          "id": "AnlsGrouping_09_Visit_02",
           "level": 1,
           "order": 2,
           "condition": {
@@ -1419,11 +1439,11 @@
             "value": [
               "Week 2"
             ]
-          },
-          "id": "AnlsGrouping_09_Visit_02",
-          "label": "Week 2"
+          }
         },
         {
+          "name": "Week 4",
+          "id": "AnlsGrouping_09_Visit_03",
           "level": 1,
           "order": 3,
           "condition": {
@@ -1433,11 +1453,11 @@
             "value": [
               "Week 4"
             ]
-          },
-          "id": "AnlsGrouping_09_Visit_03",
-          "label": "Week 4"
+          }
         },
         {
+          "name": "Week 6",
+          "id": "AnlsGrouping_09_Visit_04",
           "level": 1,
           "order": 4,
           "condition": {
@@ -1447,11 +1467,11 @@
             "value": [
               "Week 6"
             ]
-          },
-          "id": "AnlsGrouping_09_Visit_04",
-          "label": "Week 6"
+          }
         },
         {
+          "name": "Week 8",
+          "id": "AnlsGrouping_09_Visit_05",
           "level": 1,
           "order": 5,
           "condition": {
@@ -1461,11 +1481,11 @@
             "value": [
               "Week 8"
             ]
-          },
-          "id": "AnlsGrouping_09_Visit_05",
-          "label": "Week 8"
+          }
         },
         {
+          "name": "Week 12",
+          "id": "AnlsGrouping_09_Visit_06",
           "level": 1,
           "order": 6,
           "condition": {
@@ -1475,11 +1495,11 @@
             "value": [
               "Week 12"
             ]
-          },
-          "id": "AnlsGrouping_09_Visit_06",
-          "label": "Week 12"
+          }
         },
         {
+          "name": "Week 16",
+          "id": "AnlsGrouping_09_Visit_07",
           "level": 1,
           "order": 7,
           "condition": {
@@ -1489,11 +1509,11 @@
             "value": [
               "Week 16"
             ]
-          },
-          "id": "AnlsGrouping_09_Visit_07",
-          "label": "Week 16"
+          }
         },
         {
+          "name": "Week 20",
+          "id": "AnlsGrouping_09_Visit_08",
           "level": 1,
           "order": 8,
           "condition": {
@@ -1503,11 +1523,11 @@
             "value": [
               "Week 20"
             ]
-          },
-          "id": "AnlsGrouping_09_Visit_08",
-          "label": "Week 20"
+          }
         },
         {
+          "name": "Week 24",
+          "id": "AnlsGrouping_09_Visit_09",
           "level": 1,
           "order": 9,
           "condition": {
@@ -1517,11 +1537,11 @@
             "value": [
               "Week 24"
             ]
-          },
-          "id": "AnlsGrouping_09_Visit_09",
-          "label": "Week 24"
+          }
         },
         {
+          "name": "Week 26",
+          "id": "AnlsGrouping_09_Visit_10",
           "level": 1,
           "order": 10,
           "condition": {
@@ -1531,11 +1551,11 @@
             "value": [
               "Week 26"
             ]
-          },
-          "id": "AnlsGrouping_09_Visit_10",
-          "label": "Week 26"
+          }
         },
         {
+          "name": "End of Treatment",
+          "id": "AnlsGrouping_09_Visit_11",
           "level": 1,
           "order": 11,
           "condition": {
@@ -1545,9 +1565,7 @@
             "value": [
               "End of Treatment"
             ]
-          },
-          "id": "AnlsGrouping_09_Visit_11",
-          "label": "End of Treatment"
+          }
         }
       ]
     }
@@ -1555,32 +1573,37 @@
   "methods": [
     {
       "name": "Count by group for a categorical variable",
+      "description": "Count across groups for a categorical variable, based on subject occurrence",
+      "label": "Grouped count for categorical variable",
       "id": "Mth01_CatVar_Count_ByGrp",
       "operations": [
         {
           "name": "Count of subjects",
-          "id": "Mth01_CatVar_Count_ByGrp_1_n",
           "label": "n",
+          "id": "Mth01_CatVar_Count_ByGrp_1_n",
+          "order": 1,
           "resultPattern": "(N=XX)"
         }
-      ],
-      "label": "Grouped count for categorical variable",
-      "description": "Count across groups for a categorical variable, based on subject occurrence"
+      ]
     },
     {
       "name": "Summary by group of a categorical variable",
+      "description": "Descriptive summary statistics across groups for a categorical variable, based on subject occurrence",
+      "label": "Grouped summary of categorical variable",
       "id": "Mth01_CatVar_Summ_ByGrp",
       "operations": [
         {
           "name": "Count of subjects",
-          "id": "Mth01_CatVar_Summ_ByGrp_1_n",
           "label": "n",
+          "id": "Mth01_CatVar_Summ_ByGrp_1_n",
+          "order": 1,
           "resultPattern": "XXX"
         },
         {
           "name": "Percent of subjects",
-          "id": "Mth01_CatVar_Summ_ByGrp_2_pct",
           "label": "%",
+          "id": "Mth01_CatVar_Summ_ByGrp_2_pct",
+          "order": 2,
           "referencedOperationRelationships": [
             {
               "id": "Mth01_CatVar_Summ_ByGrp_2_pct_NUM",
@@ -1602,8 +1625,6 @@
           "resultPattern": "( XX.X)"
         }
       ],
-      "label": "Grouped summary of categorical variable",
-      "description": "Descriptive summary statistics across groups for a categorical variable, based on subject occurrence",
       "documentRefs": [
         {
           "referenceDocumentId": "CDISCPILOT01_SAP",
@@ -1621,59 +1642,67 @@
     },
     {
       "name": "Summary by group of a continuous variable",
+      "description": "Descriptive summary statistics across groups for a continuous variable",
+      "label": "Grouped summary of continuous variable",
       "id": "Mth02_ContVar_Summ_ByGrp",
       "operations": [
         {
           "name": "Count of non-missing values",
-          "id": "Mth02_ContVar_Summ_ByGrp_1_n",
           "label": "n",
+          "id": "Mth02_ContVar_Summ_ByGrp_1_n",
+          "order": 1,
           "resultPattern": "XX"
         },
         {
           "name": "Mean",
-          "id": "Mth02_ContVar_Summ_ByGrp_2_Mean",
           "label": "Mean",
+          "id": "Mth02_ContVar_Summ_ByGrp_2_Mean",
+          "order": 2,
           "resultPattern": "XX.X"
         },
         {
           "name": "Standard deviation",
-          "id": "Mth02_ContVar_Summ_ByGrp_3_SD",
           "label": "SD",
+          "id": "Mth02_ContVar_Summ_ByGrp_3_SD",
+          "order": 3,
           "resultPattern": "(XX.XX)"
         },
         {
           "name": "Median",
-          "id": "Mth02_ContVar_Summ_ByGrp_4_Median",
           "label": "Median",
+          "id": "Mth02_ContVar_Summ_ByGrp_4_Median",
+          "order": 4,
           "resultPattern": "XX.X"
         },
         {
           "name": "First quartile",
-          "id": "Mth02_ContVar_Summ_ByGrp_5_Q1",
           "label": "Q1",
+          "id": "Mth02_ContVar_Summ_ByGrp_5_Q1",
+          "order": 5,
           "resultPattern": "XX.X"
         },
         {
           "name": "Third quartile",
-          "id": "Mth02_ContVar_Summ_ByGrp_6_Q3",
           "label": "Q3",
+          "id": "Mth02_ContVar_Summ_ByGrp_6_Q3",
+          "order": 6,
           "resultPattern": "XX.X"
         },
         {
           "name": "Minimum",
-          "id": "Mth02_ContVar_Summ_ByGrp_7_Min",
           "label": "Min",
+          "id": "Mth02_ContVar_Summ_ByGrp_7_Min",
+          "order": 7,
           "resultPattern": "XX"
         },
         {
           "name": "Maximum",
-          "id": "Mth02_ContVar_Summ_ByGrp_8_Max",
           "label": "Max",
+          "id": "Mth02_ContVar_Summ_ByGrp_8_Max",
+          "order": 8,
           "resultPattern": "XX"
         }
       ],
-      "label": "Grouped summary of continuous variable",
-      "description": "Descriptive summary statistics across groups for a continuous variable",
       "documentRefs": [
         {
           "referenceDocumentId": "CDISCPILOT01_SAP",
@@ -1691,17 +1720,18 @@
     },
     {
       "name": "Pearson's chi-square test group comparison for a categorical variable",
+      "description": "Comparison of groups by Pearson's chi-square test for a categorical variable",
+      "label": "Pearson's chi-square test group comparison for categorical variable",
       "id": "Mth03_CatVar_Comp_PChiSq",
       "operations": [
         {
           "name": "P-value",
-          "id": "Mth03_CatVar_Comp_PChiSq_1_pval",
           "label": "p-value",
+          "id": "Mth03_CatVar_Comp_PChiSq_1_pval",
+          "order": 1,
           "resultPattern": "X.XXXX"
         }
       ],
-      "label": "Pearson's chi-square test group comparison for categorical variable",
-      "description": "Comparison of groups by Pearson's chi-square test for a categorical variable",
       "codeTemplate": {
         "context": "SAS Version 9.4",
         "code": "proc freq data={dataset};\ntable {grp1var}*{grp2var}/chisq;\nexact pchi; \nods output PearsonChiSq=results.PCHI{outdssfx};\nrun;",
@@ -1731,17 +1761,18 @@
     },
     {
       "name": "Analysis of variance group comparison for a continuous variable",
+      "description": "Comparison of groups by analysis of variance (ANOVA) for a continuous variable",
+      "label": "ANOVA group comparison for continuous variable",
       "id": "Mth04_ContVar_Comp_Anova",
       "operations": [
         {
           "name": "P-value",
-          "id": "Mth04_ContVar_Comp_Anova_1_pval",
           "label": "p-value",
+          "id": "Mth04_ContVar_Comp_Anova_1_pval",
+          "order": 1,
           "resultPattern": "X.XXXX"
         }
       ],
-      "label": "ANOVA group comparison for continuous variable",
-      "description": "Comparison of groups by analysis of variance (ANOVA) for a continuous variable",
       "codeTemplate": {
         "context": "SAS Version 9.4",
         "code": "proc glm data={dataset};\nclass {grp1var};\nmodel {grp2var}={gpr1var};\nods output OverallANOVA=results.ANOV{outdssfx} (where=(source = 'Model'));\nrun;",
@@ -1771,17 +1802,18 @@
     },
     {
       "name": "Fisher's exact test group comparison for a categorical variable",
+      "description": "Comparison of groups by Fisher's exact test for a categorical variable",
+      "label": "Fisher's exact test group comparison for categorical variable",
       "id": "Mth05_CatVar_Comp_FishEx",
       "operations": [
         {
           "name": "P-value",
-          "id": "Mth03_CatVar_Comp_FishEx_1_pval",
           "label": "p-value",
+          "id": "Mth03_CatVar_Comp_FishEx_1_pval",
+          "order": 1,
           "resultPattern": "X.XXXX"
         }
-      ],
-      "label": "Fisher's exact test group comparison for categorical variable",
-      "description": "Comparison of groups by Fisher's exact test for a categorical variable"
+      ]
     }
   ],
   "analyses": [
@@ -1821,8 +1853,8 @@
       "orderedGroupings": [
         {
           "order": 1,
-          "resultsByGroup": true,
-          "groupingId": "AnlsGrouping_01_Trt"
+          "groupingId": "AnlsGrouping_01_Trt",
+          "resultsByGroup": true
         }
       ],
       "results": [
@@ -1863,6 +1895,7 @@
     },
     {
       "name": "Summary of Age by Treatment",
+      "label": "Age",
       "id": "An03_01_Age_Summ_ByTrt",
       "reason": {
         "controlledTerm": "SPECIFIED IN SAP"
@@ -1897,8 +1930,8 @@
       "orderedGroupings": [
         {
           "order": 1,
-          "resultsByGroup": true,
-          "groupingId": "AnlsGrouping_01_Trt"
+          "groupingId": "AnlsGrouping_01_Trt",
+          "resultsByGroup": true
         }
       ],
       "results": [
@@ -2170,6 +2203,7 @@
     },
     {
       "name": "Comparison of Age by Treatment",
+      "label": "Age",
       "id": "An03_01_Age_Comp_ByTrt",
       "reason": {
         "controlledTerm": "SPECIFIED IN SAP"
@@ -2204,8 +2238,8 @@
       "orderedGroupings": [
         {
           "order": 1,
-          "resultsByGroup": false,
-          "groupingId": "AnlsGrouping_01_Trt"
+          "groupingId": "AnlsGrouping_01_Trt",
+          "resultsByGroup": false
         }
       ],
       "programmingCode": {
@@ -2227,6 +2261,7 @@
     },
     {
       "name": "Summary of Subjects by Treatment and Age Group",
+      "label": "Age Group",
       "id": "An03_02_AgeGrp_Summ_ByTrt",
       "reason": {
         "controlledTerm": "SPECIFIED IN SAP"
@@ -2261,13 +2296,13 @@
       "orderedGroupings": [
         {
           "order": 1,
-          "resultsByGroup": true,
-          "groupingId": "AnlsGrouping_01_Trt"
+          "groupingId": "AnlsGrouping_01_Trt",
+          "resultsByGroup": true
         },
         {
           "order": 2,
-          "resultsByGroup": true,
-          "groupingId": "AnlsGrouping_03_AgeGp"
+          "groupingId": "AnlsGrouping_03_AgeGp",
+          "resultsByGroup": true
         }
       ],
       "referencedAnalysisOperations": [
@@ -2465,6 +2500,7 @@
     },
     {
       "name": "Comparison of Age Group by Treatment",
+      "label": "Age Group",
       "id": "An03_02_AgeGrp_Comp_ByTrt",
       "reason": {
         "controlledTerm": "SPECIFIED IN SAP"
@@ -2499,13 +2535,13 @@
       "orderedGroupings": [
         {
           "order": 1,
-          "resultsByGroup": false,
-          "groupingId": "AnlsGrouping_01_Trt"
+          "groupingId": "AnlsGrouping_01_Trt",
+          "resultsByGroup": false
         },
         {
           "order": 2,
-          "resultsByGroup": false,
-          "groupingId": "AnlsGrouping_03_AgeGp"
+          "groupingId": "AnlsGrouping_03_AgeGp",
+          "resultsByGroup": false
         }
       ],
       "programmingCode": {
@@ -2530,6 +2566,7 @@
     },
     {
       "name": "Summary of Subjects by Treatment and Sex",
+      "label": "Sex",
       "id": "An03_03_Sex_Summ_ByTrt",
       "reason": {
         "controlledTerm": "SPECIFIED IN SAP"
@@ -2564,13 +2601,13 @@
       "orderedGroupings": [
         {
           "order": 1,
-          "resultsByGroup": true,
-          "groupingId": "AnlsGrouping_01_Trt"
+          "groupingId": "AnlsGrouping_01_Trt",
+          "resultsByGroup": true
         },
         {
           "order": 2,
-          "resultsByGroup": true,
-          "groupingId": "AnlsGrouping_02_Sex"
+          "groupingId": "AnlsGrouping_02_Sex",
+          "resultsByGroup": true
         }
       ],
       "referencedAnalysisOperations": [
@@ -2768,6 +2805,7 @@
     },
     {
       "name": "Comparison of Sex by Treatment",
+      "label": "Sex",
       "id": "An03_03_Sex_Comp_ByTrt",
       "reason": {
         "controlledTerm": "SPECIFIED IN SAP"
@@ -2802,13 +2840,13 @@
       "orderedGroupings": [
         {
           "order": 1,
-          "resultsByGroup": false,
-          "groupingId": "AnlsGrouping_01_Trt"
+          "groupingId": "AnlsGrouping_01_Trt",
+          "resultsByGroup": false
         },
         {
           "order": 2,
-          "resultsByGroup": false,
-          "groupingId": "AnlsGrouping_02_Sex"
+          "groupingId": "AnlsGrouping_02_Sex",
+          "resultsByGroup": false
         }
       ],
       "programmingCode": {
@@ -2833,6 +2871,7 @@
     },
     {
       "name": "Summary of Subjects by Treatment and Ethnicity",
+      "label": "Ethnicity",
       "id": "An03_04_Ethnic_Summ_ByTrt",
       "reason": {
         "controlledTerm": "SPECIFIED IN SAP"
@@ -2867,13 +2906,13 @@
       "orderedGroupings": [
         {
           "order": 1,
-          "resultsByGroup": true,
-          "groupingId": "AnlsGrouping_01_Trt"
+          "groupingId": "AnlsGrouping_01_Trt",
+          "resultsByGroup": true
         },
         {
           "order": 2,
-          "resultsByGroup": true,
-          "groupingId": "AnlsGrouping_05_Ethnic"
+          "groupingId": "AnlsGrouping_05_Ethnic",
+          "resultsByGroup": true
         }
       ],
       "referencedAnalysisOperations": [
@@ -3071,6 +3110,7 @@
     },
     {
       "name": "Comparison of Ethnicity by Treatment",
+      "label": "Ethnicity",
       "id": "An03_04_Ethnic_Comp_ByTrt",
       "reason": {
         "controlledTerm": "SPECIFIED IN SAP"
@@ -3105,13 +3145,13 @@
       "orderedGroupings": [
         {
           "order": 1,
-          "resultsByGroup": false,
-          "groupingId": "AnlsGrouping_01_Trt"
+          "groupingId": "AnlsGrouping_01_Trt",
+          "resultsByGroup": false
         },
         {
           "order": 2,
-          "resultsByGroup": false,
-          "groupingId": "AnlsGrouping_05_Ethnic"
+          "groupingId": "AnlsGrouping_05_Ethnic",
+          "resultsByGroup": false
         }
       ],
       "programmingCode": {
@@ -3136,6 +3176,7 @@
     },
     {
       "name": "Summary of Subjects by Treatment and Race",
+      "label": "Race",
       "id": "An03_05_Race_Summ_ByTrt",
       "reason": {
         "controlledTerm": "SPECIFIED IN SAP"
@@ -3170,13 +3211,13 @@
       "orderedGroupings": [
         {
           "order": 1,
-          "resultsByGroup": true,
-          "groupingId": "AnlsGrouping_01_Trt"
+          "groupingId": "AnlsGrouping_01_Trt",
+          "resultsByGroup": true
         },
         {
           "order": 2,
-          "resultsByGroup": true,
-          "groupingId": "AnlsGrouping_04_Race"
+          "groupingId": "AnlsGrouping_04_Race",
+          "resultsByGroup": true
         }
       ],
       "referencedAnalysisOperations": [
@@ -4004,6 +4045,7 @@
     },
     {
       "name": "Comparison of Race by Treatment",
+      "label": "Race",
       "id": "An03_05_Race_Comp_ByTrt",
       "reason": {
         "controlledTerm": "SPECIFIED IN SAP"
@@ -4038,13 +4080,13 @@
       "orderedGroupings": [
         {
           "order": 1,
-          "resultsByGroup": false,
-          "groupingId": "AnlsGrouping_01_Trt"
+          "groupingId": "AnlsGrouping_01_Trt",
+          "resultsByGroup": false
         },
         {
           "order": 2,
-          "resultsByGroup": false,
-          "groupingId": "AnlsGrouping_04_Race"
+          "groupingId": "AnlsGrouping_04_Race",
+          "resultsByGroup": false
         }
       ],
       "programmingCode": {
@@ -4069,6 +4111,7 @@
     },
     {
       "name": "Summary of Height by Treatment",
+      "label": "Height",
       "id": "An03_06_Height_Summ_ByTrt",
       "reason": {
         "controlledTerm": "SPECIFIED IN SAP"
@@ -4103,8 +4146,8 @@
       "orderedGroupings": [
         {
           "order": 1,
-          "resultsByGroup": true,
-          "groupingId": "AnlsGrouping_01_Trt"
+          "groupingId": "AnlsGrouping_01_Trt",
+          "resultsByGroup": true
         }
       ],
       "results": [
@@ -4376,6 +4419,7 @@
     },
     {
       "name": "Comparison of Height by Treatment",
+      "label": "Height",
       "id": "An03_06_Height_Comp_ByTrt",
       "reason": {
         "controlledTerm": "SPECIFIED IN SAP"
@@ -4410,8 +4454,8 @@
       "orderedGroupings": [
         {
           "order": 1,
-          "resultsByGroup": false,
-          "groupingId": "AnlsGrouping_01_Trt"
+          "groupingId": "AnlsGrouping_01_Trt",
+          "resultsByGroup": false
         }
       ],
       "programmingCode": {
@@ -4433,6 +4477,7 @@
     },
     {
       "name": "Summary of Subjects with At Least One TEAE, by Treatment",
+      "label": "TEAE",
       "id": "An07_01_TEAE_Summ_ByTrt",
       "reason": {
         "controlledTerm": "SPECIFIED IN SAP"
@@ -4468,8 +4513,8 @@
       "orderedGroupings": [
         {
           "order": 1,
-          "resultsByGroup": true,
-          "groupingId": "AnlsGrouping_01_Trt"
+          "groupingId": "AnlsGrouping_01_Trt",
+          "resultsByGroup": true
         }
       ],
       "referencedAnalysisOperations": [
@@ -4588,8 +4633,8 @@
       "orderedGroupings": [
         {
           "order": 1,
-          "resultsByGroup": false,
-          "groupingId": "AnlsGrouping_01_Trt"
+          "groupingId": "AnlsGrouping_01_Trt",
+          "resultsByGroup": false
         }
       ],
       "results": [
@@ -4642,8 +4687,8 @@
       "orderedGroupings": [
         {
           "order": 1,
-          "resultsByGroup": false,
-          "groupingId": "AnlsGrouping_01_Trt"
+          "groupingId": "AnlsGrouping_01_Trt",
+          "resultsByGroup": false
         }
       ],
       "results": [
@@ -4661,6 +4706,7 @@
     },
     {
       "name": "Summary of Subjects with At Least One Related TEAE, by Treatment",
+      "label": "Related TEAE",
       "id": "An07_02_RelTEAE_Summ_ByTrt",
       "reason": {
         "sponsorTermId": "TermEx1_1"
@@ -4683,8 +4729,8 @@
       "orderedGroupings": [
         {
           "order": 1,
-          "resultsByGroup": true,
-          "groupingId": "AnlsGrouping_01_Trt"
+          "groupingId": "AnlsGrouping_01_Trt",
+          "resultsByGroup": true
         }
       ],
       "referencedAnalysisOperations": [
@@ -4768,6 +4814,7 @@
     },
     {
       "name": "Summary of Subjects with At Least One Serious TEAE, by Treatment",
+      "label": "Serious TEAE",
       "id": "An07_03_SerTEAE_Summ_ByTrt",
       "reason": {
         "sponsorTermId": "TermEx1_1"
@@ -4790,8 +4837,8 @@
       "orderedGroupings": [
         {
           "order": 1,
-          "resultsByGroup": true,
-          "groupingId": "AnlsGrouping_01_Trt"
+          "groupingId": "AnlsGrouping_01_Trt",
+          "resultsByGroup": true
         }
       ],
       "referencedAnalysisOperations": [
@@ -4875,6 +4922,7 @@
     },
     {
       "name": "Summary of Subjects with At Least One Related Serious TEAE, by Treatment",
+      "label": "Related Serious TEAE",
       "id": "An07_04_RelSerTEAE_Summ_ByTrt",
       "reason": {
         "sponsorTermId": "TermEx1_1"
@@ -4897,8 +4945,8 @@
       "orderedGroupings": [
         {
           "order": 1,
-          "resultsByGroup": true,
-          "groupingId": "AnlsGrouping_01_Trt"
+          "groupingId": "AnlsGrouping_01_Trt",
+          "resultsByGroup": true
         }
       ],
       "referencedAnalysisOperations": [
@@ -4982,6 +5030,7 @@
     },
     {
       "name": "Summary of Subjects with At Least One TEAE Leading to Death, by Treatment",
+      "label": "TEAE Leading to Death",
       "id": "An07_05_TEAELd2Dth_Summ_ByTrt",
       "reason": {
         "sponsorTermId": "TermEx1_1"
@@ -5004,8 +5053,8 @@
       "orderedGroupings": [
         {
           "order": 1,
-          "resultsByGroup": true,
-          "groupingId": "AnlsGrouping_01_Trt"
+          "groupingId": "AnlsGrouping_01_Trt",
+          "resultsByGroup": true
         }
       ],
       "referencedAnalysisOperations": [
@@ -5089,6 +5138,7 @@
     },
     {
       "name": "Summary of Subjects with At Least One Related TEAE Leading to Death, by Treatment",
+      "label": "Related TEAE Leading to Death",
       "id": "An07_06_RelTEAELd2Dth_Summ_ByTrt",
       "reason": {
         "sponsorTermId": "TermEx1_1"
@@ -5111,8 +5161,8 @@
       "orderedGroupings": [
         {
           "order": 1,
-          "resultsByGroup": true,
-          "groupingId": "AnlsGrouping_01_Trt"
+          "groupingId": "AnlsGrouping_01_Trt",
+          "resultsByGroup": true
         }
       ],
       "referencedAnalysisOperations": [
@@ -5196,6 +5246,7 @@
     },
     {
       "name": "Summary of Subjects with At Least One TEAE Leading to Dose Modification, by Treatment",
+      "label": "TEAE Leading to Dose Modification [a]",
       "id": "An07_07_TEAELd2DoseMod_Summ_ByTrt",
       "reason": {
         "sponsorTermId": "TermEx1_1"
@@ -5218,8 +5269,8 @@
       "orderedGroupings": [
         {
           "order": 1,
-          "resultsByGroup": true,
-          "groupingId": "AnlsGrouping_01_Trt"
+          "groupingId": "AnlsGrouping_01_Trt",
+          "resultsByGroup": true
         }
       ],
       "referencedAnalysisOperations": [
@@ -5303,6 +5354,7 @@
     },
     {
       "name": "Summary of Subjects with At Least One TEAE Leading to Treatment Discontinuation, by Treatment",
+      "label": "TEAE Leading to Treatment Discontinuation",
       "id": "An07_08_TEAELd2TrtDsc_Summ_ByTrt",
       "reason": {
         "sponsorTermId": "TermEx1_1"
@@ -5325,8 +5377,8 @@
       "orderedGroupings": [
         {
           "order": 1,
-          "resultsByGroup": true,
-          "groupingId": "AnlsGrouping_01_Trt"
+          "groupingId": "AnlsGrouping_01_Trt",
+          "resultsByGroup": true
         }
       ],
       "referencedAnalysisOperations": [
@@ -5445,13 +5497,13 @@
       "orderedGroupings": [
         {
           "order": 1,
-          "resultsByGroup": true,
-          "groupingId": "AnlsGrouping_01_Trt"
+          "groupingId": "AnlsGrouping_01_Trt",
+          "resultsByGroup": true
         },
         {
           "order": 2,
-          "resultsByGroup": true,
-          "groupingId": "AnlsGrouping_06_Soc"
+          "groupingId": "AnlsGrouping_06_Soc",
+          "resultsByGroup": true
         }
       ],
       "referencedAnalysisOperations": [
@@ -7574,13 +7626,13 @@
       "orderedGroupings": [
         {
           "order": 1,
-          "resultsByGroup": false,
-          "groupingId": "AnlsGrouping_01_Trt"
+          "groupingId": "AnlsGrouping_01_Trt",
+          "resultsByGroup": false
         },
         {
           "order": 2,
-          "resultsByGroup": true,
-          "groupingId": "AnlsGrouping_06_Soc"
+          "groupingId": "AnlsGrouping_06_Soc",
+          "resultsByGroup": true
         }
       ],
       "results": [
@@ -7637,13 +7689,13 @@
       "orderedGroupings": [
         {
           "order": 1,
-          "resultsByGroup": false,
-          "groupingId": "AnlsGrouping_01_Trt"
+          "groupingId": "AnlsGrouping_01_Trt",
+          "resultsByGroup": false
         },
         {
           "order": 2,
-          "resultsByGroup": true,
-          "groupingId": "AnlsGrouping_06_Soc"
+          "groupingId": "AnlsGrouping_06_Soc",
+          "resultsByGroup": true
         }
       ],
       "results": [
@@ -7700,18 +7752,18 @@
       "orderedGroupings": [
         {
           "order": 1,
-          "resultsByGroup": true,
-          "groupingId": "AnlsGrouping_01_Trt"
+          "groupingId": "AnlsGrouping_01_Trt",
+          "resultsByGroup": true
         },
         {
           "order": 2,
-          "resultsByGroup": true,
-          "groupingId": "AnlsGrouping_06_Soc"
+          "groupingId": "AnlsGrouping_06_Soc",
+          "resultsByGroup": true
         },
         {
           "order": 3,
-          "resultsByGroup": true,
-          "groupingId": "AnlsGrouping_07_Pt"
+          "groupingId": "AnlsGrouping_07_Pt",
+          "resultsByGroup": true
         }
       ],
       "referencedAnalysisOperations": [
@@ -33984,18 +34036,18 @@
       "orderedGroupings": [
         {
           "order": 1,
-          "resultsByGroup": false,
-          "groupingId": "AnlsGrouping_01_Trt"
+          "groupingId": "AnlsGrouping_01_Trt",
+          "resultsByGroup": false
         },
         {
           "order": 2,
-          "resultsByGroup": true,
-          "groupingId": "AnlsGrouping_06_Soc"
+          "groupingId": "AnlsGrouping_06_Soc",
+          "resultsByGroup": true
         },
         {
           "order": 3,
-          "resultsByGroup": true,
-          "groupingId": "AnlsGrouping_07_Pt"
+          "groupingId": "AnlsGrouping_07_Pt",
+          "resultsByGroup": true
         }
       ],
       "results": [
@@ -34055,18 +34107,18 @@
       "orderedGroupings": [
         {
           "order": 1,
-          "resultsByGroup": false,
-          "groupingId": "AnlsGrouping_01_Trt"
+          "groupingId": "AnlsGrouping_01_Trt",
+          "resultsByGroup": false
         },
         {
           "order": 2,
-          "resultsByGroup": true,
-          "groupingId": "AnlsGrouping_06_Soc"
+          "groupingId": "AnlsGrouping_06_Soc",
+          "resultsByGroup": true
         },
         {
           "order": 3,
-          "resultsByGroup": true,
-          "groupingId": "AnlsGrouping_07_Pt"
+          "groupingId": "AnlsGrouping_07_Pt",
+          "resultsByGroup": true
         }
       ],
       "results": [
@@ -34129,18 +34181,18 @@
       "orderedGroupings": [
         {
           "order": 1,
-          "resultsByGroup": true,
-          "groupingId": "AnlsGrouping_01_Trt"
+          "groupingId": "AnlsGrouping_01_Trt",
+          "resultsByGroup": true
         },
         {
           "order": 2,
-          "resultsByGroup": true,
-          "groupingId": "AnlsGrouping_08_Param"
+          "groupingId": "AnlsGrouping_08_Param",
+          "resultsByGroup": true
         },
         {
           "order": 3,
-          "resultsByGroup": true,
-          "groupingId": "AnlsGrouping_09_Visit"
+          "groupingId": "AnlsGrouping_09_Visit",
+          "resultsByGroup": true
         }
       ],
       "results": [
@@ -54266,18 +54318,18 @@
       "orderedGroupings": [
         {
           "order": 1,
-          "resultsByGroup": true,
-          "groupingId": "AnlsGrouping_01_Trt"
+          "groupingId": "AnlsGrouping_01_Trt",
+          "resultsByGroup": true
         },
         {
           "order": 2,
-          "resultsByGroup": true,
-          "groupingId": "AnlsGrouping_08_Param"
+          "groupingId": "AnlsGrouping_08_Param",
+          "resultsByGroup": true
         },
         {
           "order": 3,
-          "resultsByGroup": true,
-          "groupingId": "AnlsGrouping_09_Visit"
+          "groupingId": "AnlsGrouping_09_Visit",
+          "resultsByGroup": true
         }
       ],
       "results": [
@@ -72526,6 +72578,19 @@
   ],
   "globalDisplaySections": [
     {
+      "sectionType": "Header",
+      "subSections": [
+        {
+          "id": "GlobalDisp_Header_1",
+          "text": "Study - CDISC 360"
+        },
+        {
+          "id": "GlobalDisp_Header_2",
+          "text": "Page x of y"
+        }
+      ]
+    },
+    {
       "sectionType": "Title",
       "subSections": [
         {
@@ -72535,10 +72600,10 @@
       ]
     },
     {
-      "sectionType": "Footnote",
+      "sectionType": "Footer",
       "subSections": [
         {
-          "id": "GlobalDisp_Footnote_1",
+          "id": "GlobalDisp_Footer_1",
           "text": "Program: <pid>.sas, Output: <pid><oid>.rtf, Generated on: DDMONYYYY:HH:MM"
         }
       ]
@@ -72548,32 +72613,29 @@
     {
       "name": "Summary of Demographics",
       "id": "Out14-1-1",
-      "version": 1,
-      "fileSpecifications": [
-        {
-          "name": "t14-1-1-demog",
-          "fileType": {
-            "controlledTerm": "rtf"
-          },
-          "location": "."
-        },
-        {
-          "name": "t14-1-1-demog",
-          "fileType": {
-            "controlledTerm": "pdf"
-          },
-          "location": "."
-        }
-      ],
       "displays": [
         {
           "order": 1,
           "display": {
-            "name": "Demog",
+            "name": "Demographics",
+            "label": "Demog",
             "id": "Disp14-1-1",
             "version": 1,
             "displayTitle": "Summary of Demographics",
             "displaySections": [
+              {
+                "sectionType": "Header",
+                "orderedSubSections": [
+                  {
+                    "order": 1,
+                    "subSectionId": "GlobalDisp_Header_1"
+                  },
+                  {
+                    "order": 2,
+                    "subSectionId": "GlobalDisp_Header_2"
+                  }
+                ]
+              },
               {
                 "sectionType": "Title",
                 "orderedSubSections": [
@@ -72598,18 +72660,18 @@
                 ]
               },
               {
-                "sectionType": "Footnote",
+                "sectionType": "Footer",
                 "orderedSubSections": [
                   {
                     "order": 1,
                     "subSection": {
-                      "id": "Disp14-1-1_Fnote_1",
+                      "id": "Disp14-1-1_Footer_1",
                       "text": "Source dataset: adsl, Generated on: DDMONYYYY:HH:MM"
                     }
                   },
                   {
                     "order": 2,
-                    "subSectionId": "GlobalDisp_Footnote_1"
+                    "subSectionId": "GlobalDisp_Footer_1"
                   }
                 ]
               },
@@ -72627,6 +72689,25 @@
               }
             ]
           }
+        }
+      ],
+      "version": 1,
+      "fileSpecifications": [
+        {
+          "name": "t14-1-1-demog (RTF)",
+          "label": "t14-1-1-demog",
+          "fileType": {
+            "controlledTerm": "rtf"
+          },
+          "location": "./t14-1-1-demog.rtf"
+        },
+        {
+          "name": "t14-1-1-demog (PDF)",
+          "label": "t14-1-1-demog",
+          "fileType": {
+            "controlledTerm": "pdf"
+          },
+          "location": "./t14-1-1-demog.pdf"
         }
       ],
       "categoryIds": [
@@ -72650,32 +72731,29 @@
     {
       "name": "Overall Summary of Treatment-Emergent Adverse Events",
       "id": "Out14-3-1-1",
-      "version": 1,
-      "fileSpecifications": [
-        {
-          "name": "t14-3-1-1-teae-summ",
-          "fileType": {
-            "controlledTerm": "rtf"
-          },
-          "location": "."
-        },
-        {
-          "name": "t14-3-1-1-teae-summ",
-          "fileType": {
-            "controlledTerm": "pdf"
-          },
-          "location": "."
-        }
-      ],
       "displays": [
         {
           "order": 1,
           "display": {
-            "name": "AE_Summ",
+            "name": "AE Summary",
+            "label": "AE_Summ",
             "id": "Disp14-3-1-1",
             "version": 1,
             "displayTitle": "Overall Summary of Treatment-Emergent Adverse Events",
             "displaySections": [
+              {
+                "sectionType": "Header",
+                "orderedSubSections": [
+                  {
+                    "order": 1,
+                    "subSectionId": "GlobalDisp_Header_1"
+                  },
+                  {
+                    "order": 2,
+                    "subSectionId": "GlobalDisp_Header_2"
+                  }
+                ]
+              },
               {
                 "sectionType": "Title",
                 "orderedSubSections": [
@@ -72712,30 +72790,30 @@
                 ]
               },
               {
-                "sectionType": "Legend",
-                "orderedSubSections": [
-                  {
-                    "order": 1,
-                    "subSection": {
-                      "id": "Disp14-3-1-1_Legnd_1",
-                      "text": "[a] Dose Modification includes Dose Reduced; Drug Interrupted in the AE action taken with study treatment."
-                    }
-                  }
-                ]
-              },
-              {
                 "sectionType": "Footnote",
                 "orderedSubSections": [
                   {
                     "order": 1,
                     "subSection": {
                       "id": "Disp14-3-1-1_Fnote_1",
+                      "text": "[a] Dose Modification includes Dose Reduced; Drug Interrupted in the AE action taken with study treatment."
+                    }
+                  }
+                ]
+              },
+              {
+                "sectionType": "Footer",
+                "orderedSubSections": [
+                  {
+                    "order": 1,
+                    "subSection": {
+                      "id": "Disp14-3-1-1_Footer_1",
                       "text": "Source dataset: adae, Generated on: DDMONYYYY:HH:MM"
                     }
                   },
                   {
                     "order": 2,
-                    "subSectionId": "GlobalDisp_Footnote_1"
+                    "subSectionId": "GlobalDisp_Footer_1"
                   }
                 ]
               },
@@ -72755,6 +72833,25 @@
           }
         }
       ],
+      "version": 1,
+      "fileSpecifications": [
+        {
+          "name": "t14-3-1-1-teae-summ (RTF)",
+          "label": "t14-3-1-1-teae-summ",
+          "fileType": {
+            "controlledTerm": "rtf"
+          },
+          "location": "./t14-3-1-1-teae-summ.rtf"
+        },
+        {
+          "name": "t14-3-1-1-teae-summ (PDF)",
+          "label": "t14-3-1-1-teae-summ",
+          "fileType": {
+            "controlledTerm": "pdf"
+          },
+          "location": "./t14-3-1-1-teae-summ.pdf"
+        }
+      ],
       "categoryIds": [
         "Catn_01_Grp_2_Saf",
         "Catn_04_EvtDType_1_Ae"
@@ -72768,32 +72865,29 @@
     {
       "name": "Summary of TEAE by System Organ Class and Preferred Term",
       "id": "Out14-3-2-1",
-      "version": 1,
-      "fileSpecifications": [
-        {
-          "name": "t14-3-2-1-teae-socpt",
-          "fileType": {
-            "controlledTerm": "rtf"
-          },
-          "location": "."
-        },
-        {
-          "name": "t14-3-2-1-teae-socpt",
-          "fileType": {
-            "controlledTerm": "pdf"
-          },
-          "location": "."
-        }
-      ],
       "displays": [
         {
           "order": 1,
           "display": {
-            "name": "AE_SOC_PT",
+            "name": "AE SOCPT Summary",
+            "label": "AE_SOC_PT",
             "id": "Disp14-3-2-1",
             "version": 1,
             "displayTitle": "Summary of TEAE by System Organ Class and Preferred Term",
             "displaySections": [
+              {
+                "sectionType": "Header",
+                "orderedSubSections": [
+                  {
+                    "order": 1,
+                    "subSectionId": "GlobalDisp_Header_1"
+                  },
+                  {
+                    "order": 2,
+                    "subSectionId": "GlobalDisp_Header_2"
+                  }
+                ]
+              },
               {
                 "sectionType": "Title",
                 "orderedSubSections": [
@@ -72838,13 +72932,6 @@
                       "id": "Disp14-3-2-1_Legnd_1",
                       "text": "       Subjects are counted once within each system organ class and preferred term."
                     }
-                  },
-                  {
-                    "order": 2,
-                    "subSection": {
-                      "id": "Disp14-3-2-1_Legnd_2",
-                      "text": "[a] All investigators adverse events were coded using MedDRA version xx.x."
-                    }
                   }
                 ]
               },
@@ -72853,11 +72940,30 @@
                 "orderedSubSections": [
                   {
                     "order": 1,
-                    "subSectionId": "Disp14-3-1-1_Fnote_1"
+                    "subSection": {
+                      "id": "Disp14-3-2-1_Fnote_1",
+                      "text": "[a] All investigators adverse events were coded using MedDRA version xx.x."
+                    }
                   },
                   {
                     "order": 2,
-                    "subSectionId": "GlobalDisp_Footnote_1"
+                    "subSection": {
+                      "id": "Disp14-3-2-1_Fnote_2",
+                      "text": "[b] P-values are based on Fisher's Exact test for the comparison of placebo versus each active treatment group. An asterisk is appended to p-values that are less than 0.15."
+                    }
+                  }
+                ]
+              },
+              {
+                "sectionType": "Footer",
+                "orderedSubSections": [
+                  {
+                    "order": 1,
+                    "subSectionId": "Disp14-3-1-1_Footer_1"
+                  },
+                  {
+                    "order": 2,
+                    "subSectionId": "GlobalDisp_Footer_1"
                   }
                 ]
               },
@@ -72882,6 +72988,25 @@
               }
             ]
           }
+        }
+      ],
+      "version": 1,
+      "fileSpecifications": [
+        {
+          "name": "t14-3-2-1-teae-socpt (RTF)",
+          "label": "t14-3-2-1-teae-socpt",
+          "fileType": {
+            "controlledTerm": "rtf"
+          },
+          "location": "./t14-3-2-1-teae-socpt.rtf"
+        },
+        {
+          "name": "t14-3-2-1-teae-socpt (PDF)",
+          "label": "t14-3-2-1-teae-socpt",
+          "fileType": {
+            "controlledTerm": "pdf"
+          },
+          "location": "./t14-3-2-1-teae-socpt.pdf"
         }
       ],
       "categoryIds": [
@@ -72923,32 +73048,29 @@
     {
       "name": "Summary of Observed and Change from Baseline by Scheduled Visits - Vital Signs Horizontal",
       "id": "Out14-3-3-1a",
-      "version": 1,
-      "fileSpecifications": [
-        {
-          "name": "t14-3-3-1-vitals-chgbl",
-          "fileType": {
-            "controlledTerm": "rtf"
-          },
-          "location": "."
-        },
-        {
-          "name": "t14-3-3-1-vitals-chgbl",
-          "fileType": {
-            "controlledTerm": "pdf"
-          },
-          "location": "."
-        }
-      ],
       "displays": [
         {
           "order": 1,
           "display": {
-            "name": "Vitals_ChgBl",
+            "name": "Vitals Change from Baseline",
+            "label": "Vitals_ChgBl",
             "id": "Disp14-3-3-1a",
             "version": 1,
             "displayTitle": "Summary of Observed and Change from Baseline by Scheduled Visits - Vital Signs",
             "displaySections": [
+              {
+                "sectionType": "Header",
+                "orderedSubSections": [
+                  {
+                    "order": 1,
+                    "subSectionId": "GlobalDisp_Header_1"
+                  },
+                  {
+                    "order": 2,
+                    "subSectionId": "GlobalDisp_Header_2"
+                  }
+                ]
+              },
               {
                 "sectionType": "Title",
                 "orderedSubSections": [
@@ -72985,18 +73107,18 @@
                 ]
               },
               {
-                "sectionType": "Footnote",
+                "sectionType": "Footer",
                 "orderedSubSections": [
                   {
                     "order": 1,
                     "subSection": {
-                      "id": "Disp14-3-3-1a_Fnote_1",
+                      "id": "Disp14-3-3-1a_Footer_1",
                       "text": "Source dataset: advs, Generated on: DDMONYYYY:HH:MM"
                     }
                   },
                   {
                     "order": 2,
-                    "subSectionId": "GlobalDisp_Footnote_1"
+                    "subSectionId": "GlobalDisp_Footer_1"
                   }
                 ]
               },
@@ -73023,6 +73145,25 @@
           }
         }
       ],
+      "version": 1,
+      "fileSpecifications": [
+        {
+          "name": "t14-3-3-1-vitals-chgbl (RTF)",
+          "label": "t14-3-3-1-vitals-chgbl",
+          "fileType": {
+            "controlledTerm": "rtf"
+          },
+          "location": "./t14-3-3-1-vitals-chgbl.rtf"
+        },
+        {
+          "name": "t14-3-3-1-vitals-chgbl (PDF)",
+          "label": "t14-3-3-1-vitals-chgbl",
+          "fileType": {
+            "controlledTerm": "pdf"
+          },
+          "location": "./t14-3-3-1-vitals-chgbl.pdf"
+        }
+      ],
       "categoryIds": [
         "Catn_01_Grp_2_Saf",
         "Catn_06_FndDType_1_Vs"
@@ -73031,32 +73172,29 @@
     {
       "name": "Summary of Observed and Change from Baseline by Scheduled Visits - Vital Signs Vertical",
       "id": "Out14-3-3-1b",
-      "version": 1,
-      "fileSpecifications": [
-        {
-          "name": "t14-3-3-1-vitals-chgbl-vert",
-          "fileType": {
-            "controlledTerm": "rtf"
-          },
-          "location": "."
-        },
-        {
-          "name": "t14-3-3-1-vitals-chgbl-vert",
-          "fileType": {
-            "controlledTerm": "pdf"
-          },
-          "location": "."
-        }
-      ],
       "displays": [
         {
           "order": 1,
           "display": {
-            "name": "Vitals_ChgBl_Vert",
+            "name": "Vitals Change from Baseline - Vertical",
+            "label": "Vitals_ChgBl_Vert",
             "id": "Disp14-3-3-1b",
             "version": 1,
             "displayTitle": "Summary of Observed and Change from Baseline by Scheduled Visits - Vital Signs <Vertical Layout>",
             "displaySections": [
+              {
+                "sectionType": "Header",
+                "orderedSubSections": [
+                  {
+                    "order": 1,
+                    "subSectionId": "GlobalDisp_Header_1"
+                  },
+                  {
+                    "order": 2,
+                    "subSectionId": "GlobalDisp_Header_2"
+                  }
+                ]
+              },
               {
                 "sectionType": "Title",
                 "orderedSubSections": [
@@ -73087,15 +73225,15 @@
                 ]
               },
               {
-                "sectionType": "Footnote",
+                "sectionType": "Footer",
                 "orderedSubSections": [
                   {
                     "order": 1,
-                    "subSectionId": "Disp14-3-3-1a_Fnote_1"
+                    "subSectionId": "Disp14-3-3-1a_Footer_1"
                   },
                   {
                     "order": 2,
-                    "subSectionId": "GlobalDisp_Footnote_1"
+                    "subSectionId": "GlobalDisp_Footer_1"
                   }
                 ]
               },
@@ -73114,6 +73252,25 @@
               }
             ]
           }
+        }
+      ],
+      "version": 1,
+      "fileSpecifications": [
+        {
+          "name": "t14-3-3-1-vitals-chgbl-vert (RTF)",
+          "label": "t14-3-3-1-vitals-chgbl-vert",
+          "fileType": {
+            "controlledTerm": "rtf"
+          },
+          "location": "./t14-3-3-1-vitals-chgbl-vert.rtf"
+        },
+        {
+          "name": "t14-3-3-1-vitals-chgbl-vert (PDF)",
+          "label": "t14-3-3-1-vitals-chgbl-vert",
+          "fileType": {
+            "controlledTerm": "pdf"
+          },
+          "location": "./t14-3-3-1-vitals-chgbl-vert.pdf"
         }
       ],
       "categoryIds": [

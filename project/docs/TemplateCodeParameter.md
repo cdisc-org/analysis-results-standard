@@ -13,8 +13,7 @@ URI: [ars:TemplateCodeParameter](https://www.cdisc.org/ars/1-0/TemplateCodeParam
 ```mermaid
  classDiagram
     class TemplateCodeParameter
-      CodeParameter <|-- TemplateCodeParameter
-
+      CodeParameter <|-- TemplateCodeParameter        
       TemplateCodeParameter : valueSource
         TemplateCodeParameter : value
         TemplateCodeParameter : name
@@ -198,10 +197,6 @@ attributes:
     - NamedObject
     - AnalysisOutputCategorization
     - AnalysisOutputCategory
-    - AnalysisSet
-    - DataSubset
-    - GroupingFactor
-    - Group
     - PageRef
     range: string
 

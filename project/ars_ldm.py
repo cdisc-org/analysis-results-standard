@@ -1,5 +1,5 @@
 # Auto generated from ars_ldm.yaml by pythongen.py version: 0.9.0
-# Generation date: 2024-03-13T15:33:36
+# Generation date: 2024-03-17T11:39:11
 # Schema: ars_ldm
 #
 # id: https://www.cdisc.org/ars/1-0
@@ -78,22 +78,6 @@ class GroupingFactorId(extended_str):
 
 
 class GroupId(extended_str):
-    pass
-
-
-class SubjectGroupingFactorId(GroupingFactorId):
-    pass
-
-
-class AnalysisGroupId(GroupId):
-    pass
-
-
-class DataGroupingFactorId(GroupingFactorId):
-    pass
-
-
-class DataGroupId(GroupId):
     pass
 
 
@@ -177,9 +161,8 @@ class ReportingEvent(NamedObject):
     terminologyExtensions: Optional[Union[Dict[Union[str, TerminologyExtensionId], Union[dict, "TerminologyExtension"]], List[Union[dict, "TerminologyExtension"]]]] = empty_dict()
     analysisOutputCategorizations: Optional[Union[Dict[Union[str, AnalysisOutputCategorizationId], Union[dict, "AnalysisOutputCategorization"]], List[Union[dict, "AnalysisOutputCategorization"]]]] = empty_dict()
     analysisSets: Optional[Union[Dict[Union[str, AnalysisSetId], Union[dict, "AnalysisSet"]], List[Union[dict, "AnalysisSet"]]]] = empty_dict()
-    analysisGroupings: Optional[Union[Dict[Union[str, SubjectGroupingFactorId], Union[dict, "SubjectGroupingFactor"]], List[Union[dict, "SubjectGroupingFactor"]]]] = empty_dict()
     dataSubsets: Optional[Union[Dict[Union[str, DataSubsetId], Union[dict, "DataSubset"]], List[Union[dict, "DataSubset"]]]] = empty_dict()
-    dataGroupings: Optional[Union[Dict[Union[str, DataGroupingFactorId], Union[dict, "DataGroupingFactor"]], List[Union[dict, "DataGroupingFactor"]]]] = empty_dict()
+    analysisGroupings: Optional[Union[Dict[Union[str, GroupingFactorId], Union[dict, "GroupingFactor"]], List[Union[dict, "GroupingFactor"]]]] = empty_dict()
     methods: Optional[Union[Dict[Union[str, AnalysisMethodId], Union[dict, "AnalysisMethod"]], List[Union[dict, "AnalysisMethod"]]]] = empty_dict()
     analyses: Optional[Union[Dict[Union[str, AnalysisId], Union[dict, "Analysis"]], List[Union[dict, "Analysis"]]]] = empty_dict()
     globalDisplaySections: Optional[Union[Union[dict, "GlobalDisplaySection"], List[Union[dict, "GlobalDisplaySection"]]]] = empty_list()
@@ -211,11 +194,9 @@ class ReportingEvent(NamedObject):
 
         self._normalize_inlined_as_list(slot_name="analysisSets", slot_type=AnalysisSet, key_name="id", keyed=True)
 
-        self._normalize_inlined_as_list(slot_name="analysisGroupings", slot_type=SubjectGroupingFactor, key_name="id", keyed=True)
-
         self._normalize_inlined_as_list(slot_name="dataSubsets", slot_type=DataSubset, key_name="id", keyed=True)
 
-        self._normalize_inlined_as_list(slot_name="dataGroupings", slot_type=DataGroupingFactor, key_name="id", keyed=True)
+        self._normalize_inlined_as_list(slot_name="analysisGroupings", slot_type=GroupingFactor, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="methods", slot_type=AnalysisMethod, key_name="id", keyed=True)
 
@@ -272,6 +253,35 @@ class NestedList(YAMLRoot):
         if not isinstance(self.listItems, list):
             self.listItems = [self.listItems] if self.listItems is not None else []
         self.listItems = [v if isinstance(v, OrderedListItem) else OrderedListItem(**as_dict(v)) for v in self.listItems]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class LevelOrder(YAMLRoot):
+    """
+    An abstract class containing attributes used to position class instances within a hierarchical tree.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ARS.LevelOrder
+    class_class_curie: ClassVar[str] = "ars:LevelOrder"
+    class_name: ClassVar[str] = "LevelOrder"
+    class_model_uri: ClassVar[URIRef] = ARS.LevelOrder
+
+    level: int = None
+    order: int = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.level):
+            self.MissingRequiredField("level")
+        if not isinstance(self.level, int):
+            self.level = int(self.level)
+
+        if self._is_empty(self.order):
+            self.MissingRequiredField("order")
+        if not isinstance(self.order, int):
+            self.order = int(self.order)
 
         super().__post_init__(**kwargs)
 
@@ -571,6 +581,85 @@ class WhereClauseCondition(YAMLRoot):
 
 
 @dataclass
+class ReferencedWhereClause(YAMLRoot):
+    """
+    An abstract class indicating an identified where clause (i.e., `AnalysisSet`, `DataSubset` or `Group`) referenced
+    by identifier (`subClauseId`) as the sub-clause in a compound expression.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ARS.ReferencedWhereClause
+    class_class_curie: ClassVar[str] = "ars:ReferencedWhereClause"
+    class_name: ClassVar[str] = "ReferencedWhereClause"
+    class_model_uri: ClassVar[URIRef] = ARS.ReferencedWhereClause
+
+    subClauseId: str = None
+    level: int = None
+    order: int = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.subClauseId):
+            self.MissingRequiredField("subClauseId")
+        if not isinstance(self.subClauseId, str):
+            self.subClauseId = str(self.subClauseId)
+
+        if self._is_empty(self.level):
+            self.MissingRequiredField("level")
+        if not isinstance(self.level, int):
+            self.level = int(self.level)
+
+        if self._is_empty(self.order):
+            self.MissingRequiredField("order")
+        if not isinstance(self.order, int):
+            self.order = int(self.order)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class SubClause(YAMLRoot):
+    """
+    An abstract class containing all attributes that may be specified for a sub-clause of a compound expression. In
+    practice, each sub-clause will be either a fully-defined `WhereClause` (containing either a `condition` or a
+    `compoundExpression`) or a `ReferencedWhereClause` (containing a `subClauseId`).
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ARS.SubClause
+    class_class_curie: ClassVar[str] = "ars:SubClause"
+    class_name: ClassVar[str] = "SubClause"
+    class_model_uri: ClassVar[URIRef] = ARS.SubClause
+
+    level: int = None
+    order: int = None
+    subClauseId: Optional[str] = None
+    condition: Optional[Union[dict, WhereClauseCondition]] = None
+    compoundExpression: Optional[Union[dict, "WhereClauseCompoundExpression"]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.level):
+            self.MissingRequiredField("level")
+        if not isinstance(self.level, int):
+            self.level = int(self.level)
+
+        if self._is_empty(self.order):
+            self.MissingRequiredField("order")
+        if not isinstance(self.order, int):
+            self.order = int(self.order)
+
+        if self.subClauseId is not None and not isinstance(self.subClauseId, str):
+            self.subClauseId = str(self.subClauseId)
+
+        if self.condition is not None and not isinstance(self.condition, WhereClauseCondition):
+            self.condition = WhereClauseCondition(**as_dict(self.condition))
+
+        if self.compoundExpression is not None and not isinstance(self.compoundExpression, WhereClauseCompoundExpression):
+            self.compoundExpression = WhereClauseCompoundExpression(**as_dict(self.compoundExpression))
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
 class WhereClauseCompoundExpression(YAMLRoot):
     """
     A compound expression consisting of either two or more where clauses combined with the `AND` or `OR` logical
@@ -584,7 +673,7 @@ class WhereClauseCompoundExpression(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = ARS.WhereClauseCompoundExpression
 
     logicalOperator: Union[str, "ExpressionLogicalOperatorEnum"] = None
-    whereClauses: Optional[Union[Union[dict, WhereClause], List[Union[dict, WhereClause]]]] = empty_list()
+    whereClauses: Optional[Union[Union[dict, SubClause], List[Union[dict, SubClause]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.logicalOperator):
@@ -592,13 +681,15 @@ class WhereClauseCompoundExpression(YAMLRoot):
         if not isinstance(self.logicalOperator, ExpressionLogicalOperatorEnum):
             self.logicalOperator = ExpressionLogicalOperatorEnum(self.logicalOperator)
 
-        self._normalize_inlined_as_dict(slot_name="whereClauses", slot_type=WhereClause, key_name="level", keyed=False)
+        if not isinstance(self.whereClauses, list):
+            self.whereClauses = [self.whereClauses] if self.whereClauses is not None else []
+        self.whereClauses = [v if isinstance(v, SubClause) else SubClause(**as_dict(v)) for v in self.whereClauses]
 
         super().__post_init__(**kwargs)
 
 
 @dataclass
-class AnalysisSet(WhereClause):
+class AnalysisSet(NamedObject):
     """
     A set of subjects whose data are to be included in the main analyses. This should be defined in the statistical
     section of the protocol. NOTE: There are a number of potential analysis sets, including, for example, the set
@@ -612,10 +703,11 @@ class AnalysisSet(WhereClause):
     class_model_uri: ClassVar[URIRef] = ARS.AnalysisSet
 
     id: Union[str, AnalysisSetId] = None
+    name: str = None
     level: int = None
     order: int = None
-    label: Optional[str] = None
     compoundExpression: Optional[Union[dict, "CompoundSetExpression"]] = None
+    condition: Optional[Union[dict, WhereClauseCondition]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -623,11 +715,36 @@ class AnalysisSet(WhereClause):
         if not isinstance(self.id, AnalysisSetId):
             self.id = AnalysisSetId(self.id)
 
-        if self.label is not None and not isinstance(self.label, str):
-            self.label = str(self.label)
-
         if self.compoundExpression is not None and not isinstance(self.compoundExpression, CompoundSetExpression):
             self.compoundExpression = CompoundSetExpression(**as_dict(self.compoundExpression))
+
+        if self.condition is not None and not isinstance(self.condition, WhereClauseCondition):
+            self.condition = WhereClauseCondition(**as_dict(self.condition))
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class ReferencedAnalysisSet(ReferencedWhereClause):
+    """
+    An `AnalysisSet` referenced by identifier (`subClauseId`) as the sub-clause of a compound expression.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ARS.ReferencedAnalysisSet
+    class_class_curie: ClassVar[str] = "ars:ReferencedAnalysisSet"
+    class_name: ClassVar[str] = "ReferencedAnalysisSet"
+    class_model_uri: ClassVar[URIRef] = ARS.ReferencedAnalysisSet
+
+    level: int = None
+    order: int = None
+    subClauseId: Union[str, AnalysisSetId] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.subClauseId):
+            self.MissingRequiredField("subClauseId")
+        if not isinstance(self.subClauseId, AnalysisSetId):
+            self.subClauseId = AnalysisSetId(self.subClauseId)
 
         super().__post_init__(**kwargs)
 
@@ -646,18 +763,18 @@ class CompoundSetExpression(WhereClauseCompoundExpression):
     class_model_uri: ClassVar[URIRef] = ARS.CompoundSetExpression
 
     logicalOperator: Union[str, "ExpressionLogicalOperatorEnum"] = None
-    whereClauses: Optional[Union[Union[str, AnalysisSetId], List[Union[str, AnalysisSetId]]]] = empty_list()
+    whereClauses: Optional[Union[Union[dict, SubClause], List[Union[dict, SubClause]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if not isinstance(self.whereClauses, list):
             self.whereClauses = [self.whereClauses] if self.whereClauses is not None else []
-        self.whereClauses = [v if isinstance(v, AnalysisSetId) else AnalysisSetId(v) for v in self.whereClauses]
+        self.whereClauses = [v if isinstance(v, SubClause) else SubClause(**as_dict(v)) for v in self.whereClauses]
 
         super().__post_init__(**kwargs)
 
 
 @dataclass
-class DataSubset(WhereClause):
+class DataSubset(NamedObject):
     """
     A subset of data identified by selection criteria for inclusion in the analysis.
     """
@@ -669,10 +786,11 @@ class DataSubset(WhereClause):
     class_model_uri: ClassVar[URIRef] = ARS.DataSubset
 
     id: Union[str, DataSubsetId] = None
+    name: str = None
     level: int = None
     order: int = None
-    label: Optional[str] = None
     compoundExpression: Optional[Union[dict, "CompoundSubsetExpression"]] = None
+    condition: Optional[Union[dict, WhereClauseCondition]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -680,11 +798,36 @@ class DataSubset(WhereClause):
         if not isinstance(self.id, DataSubsetId):
             self.id = DataSubsetId(self.id)
 
-        if self.label is not None and not isinstance(self.label, str):
-            self.label = str(self.label)
-
         if self.compoundExpression is not None and not isinstance(self.compoundExpression, CompoundSubsetExpression):
             self.compoundExpression = CompoundSubsetExpression(**as_dict(self.compoundExpression))
+
+        if self.condition is not None and not isinstance(self.condition, WhereClauseCondition):
+            self.condition = WhereClauseCondition(**as_dict(self.condition))
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class ReferencedDataSubset(ReferencedWhereClause):
+    """
+    A `DataSubset` referenced by identifier (`subClauseId`) as the sub-clause of a compound expression.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ARS.ReferencedDataSubset
+    class_class_curie: ClassVar[str] = "ars:ReferencedDataSubset"
+    class_name: ClassVar[str] = "ReferencedDataSubset"
+    class_model_uri: ClassVar[URIRef] = ARS.ReferencedDataSubset
+
+    level: int = None
+    order: int = None
+    subClauseId: Union[str, DataSubsetId] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.subClauseId):
+            self.MissingRequiredField("subClauseId")
+        if not isinstance(self.subClauseId, DataSubsetId):
+            self.subClauseId = DataSubsetId(self.subClauseId)
 
         super().__post_init__(**kwargs)
 
@@ -703,18 +846,18 @@ class CompoundSubsetExpression(WhereClauseCompoundExpression):
     class_model_uri: ClassVar[URIRef] = ARS.CompoundSubsetExpression
 
     logicalOperator: Union[str, "ExpressionLogicalOperatorEnum"] = None
-    whereClauses: Optional[Union[Union[dict, WhereClause], List[Union[dict, WhereClause]]]] = empty_list()
+    whereClauses: Optional[Union[Union[dict, SubClause], List[Union[dict, SubClause]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if not isinstance(self.whereClauses, list):
             self.whereClauses = [self.whereClauses] if self.whereClauses is not None else []
-        self.whereClauses = [v if isinstance(v, WhereClause) else WhereClause(**as_dict(v)) for v in self.whereClauses]
+        self.whereClauses = [v if isinstance(v, SubClause) else SubClause(**as_dict(v)) for v in self.whereClauses]
 
         super().__post_init__(**kwargs)
 
 
 @dataclass
-class GroupingFactor(YAMLRoot):
+class GroupingFactor(NamedObject):
     """
     A factor used to subdivide either the subject population or data records in an analysis dataset for analysis.
     """
@@ -726,8 +869,8 @@ class GroupingFactor(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = ARS.GroupingFactor
 
     id: Union[str, GroupingFactorId] = None
+    name: str = None
     dataDriven: Union[bool, Bool] = None
-    label: Optional[str] = None
     groupingDataset: Optional[str] = None
     groupingVariable: Optional[str] = None
     groups: Optional[Union[Dict[Union[str, GroupId], Union[dict, "Group"]], List[Union[dict, "Group"]]]] = empty_dict()
@@ -743,9 +886,6 @@ class GroupingFactor(YAMLRoot):
         if not isinstance(self.dataDriven, Bool):
             self.dataDriven = Bool(self.dataDriven)
 
-        if self.label is not None and not isinstance(self.label, str):
-            self.label = str(self.label)
-
         if self.groupingDataset is not None and not isinstance(self.groupingDataset, str):
             self.groupingDataset = str(self.groupingDataset)
 
@@ -758,7 +898,7 @@ class GroupingFactor(YAMLRoot):
 
 
 @dataclass
-class Group(WhereClause):
+class Group(NamedObject):
     """
     A subdivision of the subject population or analysis dataset record set based on a defined factor.
     """
@@ -770,10 +910,11 @@ class Group(WhereClause):
     class_model_uri: ClassVar[URIRef] = ARS.Group
 
     id: Union[str, GroupId] = None
+    name: str = None
     level: int = None
     order: int = None
-    label: Optional[str] = None
     compoundExpression: Optional[Union[dict, "CompoundGroupExpression"]] = None
+    condition: Optional[Union[dict, WhereClauseCondition]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -781,11 +922,36 @@ class Group(WhereClause):
         if not isinstance(self.id, GroupId):
             self.id = GroupId(self.id)
 
-        if self.label is not None and not isinstance(self.label, str):
-            self.label = str(self.label)
-
         if self.compoundExpression is not None and not isinstance(self.compoundExpression, CompoundGroupExpression):
             self.compoundExpression = CompoundGroupExpression(**as_dict(self.compoundExpression))
+
+        if self.condition is not None and not isinstance(self.condition, WhereClauseCondition):
+            self.condition = WhereClauseCondition(**as_dict(self.condition))
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class ReferencedGroup(ReferencedWhereClause):
+    """
+    A `Group` referenced by identifier (`subClauseId`) as the sub-clause of a compound expression.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ARS.ReferencedGroup
+    class_class_curie: ClassVar[str] = "ars:ReferencedGroup"
+    class_name: ClassVar[str] = "ReferencedGroup"
+    class_model_uri: ClassVar[URIRef] = ARS.ReferencedGroup
+
+    level: int = None
+    order: int = None
+    subClauseId: Union[str, GroupId] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.subClauseId):
+            self.MissingRequiredField("subClauseId")
+        if not isinstance(self.subClauseId, GroupId):
+            self.subClauseId = GroupId(self.subClauseId)
 
         super().__post_init__(**kwargs)
 
@@ -804,117 +970,12 @@ class CompoundGroupExpression(WhereClauseCompoundExpression):
     class_model_uri: ClassVar[URIRef] = ARS.CompoundGroupExpression
 
     logicalOperator: Union[str, "ExpressionLogicalOperatorEnum"] = None
-    whereClauses: Optional[Union[Union[str, GroupId], List[Union[str, GroupId]]]] = empty_list()
+    whereClauses: Optional[Union[Union[dict, SubClause], List[Union[dict, SubClause]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if not isinstance(self.whereClauses, list):
             self.whereClauses = [self.whereClauses] if self.whereClauses is not None else []
-        self.whereClauses = [v if isinstance(v, GroupId) else GroupId(v) for v in self.whereClauses]
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass
-class SubjectGroupingFactor(GroupingFactor):
-    """
-    A factor used to subdivide the subject population for comparative analysis (e.g., treatment, sex, race, age).
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = ARS.SubjectGroupingFactor
-    class_class_curie: ClassVar[str] = "ars:SubjectGroupingFactor"
-    class_name: ClassVar[str] = "SubjectGroupingFactor"
-    class_model_uri: ClassVar[URIRef] = ARS.SubjectGroupingFactor
-
-    id: Union[str, SubjectGroupingFactorId] = None
-    dataDriven: Union[bool, Bool] = None
-    groups: Optional[Union[Dict[Union[str, AnalysisGroupId], Union[dict, "AnalysisGroup"]], List[Union[dict, "AnalysisGroup"]]]] = empty_dict()
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, SubjectGroupingFactorId):
-            self.id = SubjectGroupingFactorId(self.id)
-
-        self._normalize_inlined_as_list(slot_name="groups", slot_type=AnalysisGroup, key_name="id", keyed=True)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass
-class AnalysisGroup(Group):
-    """
-    A subdivision of the subject population based on a defined factor (e.g., subjects whose treatment is Drug A,
-    subjects whose gender is male).
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = ARS.AnalysisGroup
-    class_class_curie: ClassVar[str] = "ars:AnalysisGroup"
-    class_name: ClassVar[str] = "AnalysisGroup"
-    class_model_uri: ClassVar[URIRef] = ARS.AnalysisGroup
-
-    id: Union[str, AnalysisGroupId] = None
-    level: int = None
-    order: int = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, AnalysisGroupId):
-            self.id = AnalysisGroupId(self.id)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass
-class DataGroupingFactor(GroupingFactor):
-    """
-    A factor used to subdivide data records in an analysis dataset for analysis.
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = ARS.DataGroupingFactor
-    class_class_curie: ClassVar[str] = "ars:DataGroupingFactor"
-    class_name: ClassVar[str] = "DataGroupingFactor"
-    class_model_uri: ClassVar[URIRef] = ARS.DataGroupingFactor
-
-    id: Union[str, DataGroupingFactorId] = None
-    dataDriven: Union[bool, Bool] = None
-    groups: Optional[Union[Dict[Union[str, DataGroupId], Union[dict, "DataGroup"]], List[Union[dict, "DataGroup"]]]] = empty_dict()
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, DataGroupingFactorId):
-            self.id = DataGroupingFactorId(self.id)
-
-        self._normalize_inlined_as_list(slot_name="groups", slot_type=DataGroup, key_name="id", keyed=True)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass
-class DataGroup(Group):
-    """
-    A subdivision of the analysis dataset records based on a defined factor.
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = ARS.DataGroup
-    class_class_curie: ClassVar[str] = "ars:DataGroup"
-    class_name: ClassVar[str] = "DataGroup"
-    class_model_uri: ClassVar[URIRef] = ARS.DataGroup
-
-    id: Union[str, DataGroupId] = None
-    level: int = None
-    order: int = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, DataGroupId):
-            self.id = DataGroupId(self.id)
+        self.whereClauses = [v if isinstance(v, SubClause) else SubClause(**as_dict(v)) for v in self.whereClauses]
 
         super().__post_init__(**kwargs)
 
@@ -2409,14 +2470,11 @@ slots.analysisOutputCategorizations = Slot(uri=ARS.analysisOutputCategorizations
 slots.analysisSets = Slot(uri=ARS.analysisSets, name="analysisSets", curie=ARS.curie('analysisSets'),
                    model_uri=ARS.analysisSets, domain=None, range=Optional[Union[Dict[Union[str, AnalysisSetId], Union[dict, AnalysisSet]], List[Union[dict, AnalysisSet]]]])
 
-slots.analysisGroupings = Slot(uri=ARS.analysisGroupings, name="analysisGroupings", curie=ARS.curie('analysisGroupings'),
-                   model_uri=ARS.analysisGroupings, domain=None, range=Optional[Union[Dict[Union[str, SubjectGroupingFactorId], Union[dict, SubjectGroupingFactor]], List[Union[dict, SubjectGroupingFactor]]]])
-
 slots.dataSubsets = Slot(uri=ARS.dataSubsets, name="dataSubsets", curie=ARS.curie('dataSubsets'),
                    model_uri=ARS.dataSubsets, domain=None, range=Optional[Union[Dict[Union[str, DataSubsetId], Union[dict, DataSubset]], List[Union[dict, DataSubset]]]])
 
-slots.dataGroupings = Slot(uri=ARS.dataGroupings, name="dataGroupings", curie=ARS.curie('dataGroupings'),
-                   model_uri=ARS.dataGroupings, domain=None, range=Optional[Union[Dict[Union[str, DataGroupingFactorId], Union[dict, DataGroupingFactor]], List[Union[dict, DataGroupingFactor]]]])
+slots.analysisGroupings = Slot(uri=ARS.analysisGroupings, name="analysisGroupings", curie=ARS.curie('analysisGroupings'),
+                   model_uri=ARS.analysisGroupings, domain=None, range=Optional[Union[Dict[Union[str, GroupingFactorId], Union[dict, GroupingFactor]], List[Union[dict, GroupingFactor]]]])
 
 slots.methods = Slot(uri=ARS.methods, name="methods", curie=ARS.curie('methods'),
                    model_uri=ARS.methods, domain=None, range=Optional[Union[Dict[Union[str, AnalysisMethodId], Union[dict, AnalysisMethod]], List[Union[dict, AnalysisMethod]]]])
@@ -2476,7 +2534,7 @@ slots.condition = Slot(uri=ARS.condition, name="condition", curie=ARS.curie('con
                    model_uri=ARS.condition, domain=None, range=Optional[Union[dict, WhereClauseCondition]])
 
 slots.compoundExpression = Slot(uri=ARS.compoundExpression, name="compoundExpression", curie=ARS.curie('compoundExpression'),
-                   model_uri=ARS.compoundExpression, domain=None, range=Optional[Union[dict, WhereClauseCompoundExpression]])
+                   model_uri=ARS.compoundExpression, domain=None, range=Optional[str])
 
 slots.dataset = Slot(uri=ARS.dataset, name="dataset", curie=ARS.curie('dataset'),
                    model_uri=ARS.dataset, domain=None, range=Optional[str])
@@ -2490,11 +2548,14 @@ slots.comparator = Slot(uri=ARS.comparator, name="comparator", curie=ARS.curie('
 slots.value = Slot(uri=ARS.value, name="value", curie=ARS.curie('value'),
                    model_uri=ARS.value, domain=None, range=Optional[Union[str, List[str]]])
 
+slots.subClauseId = Slot(uri=ARS.subClauseId, name="subClauseId", curie=ARS.curie('subClauseId'),
+                   model_uri=ARS.subClauseId, domain=None, range=Optional[str])
+
 slots.logicalOperator = Slot(uri=ARS.logicalOperator, name="logicalOperator", curie=ARS.curie('logicalOperator'),
                    model_uri=ARS.logicalOperator, domain=None, range=Union[str, "ExpressionLogicalOperatorEnum"])
 
 slots.whereClauses = Slot(uri=ARS.whereClauses, name="whereClauses", curie=ARS.curie('whereClauses'),
-                   model_uri=ARS.whereClauses, domain=None, range=Optional[Union[Union[dict, WhereClause], List[Union[dict, WhereClause]]]])
+                   model_uri=ARS.whereClauses, domain=None, range=Optional[Union[Union[dict, SubClause], List[Union[dict, SubClause]]]])
 
 slots.groupingDataset = Slot(uri=ARS.groupingDataset, name="groupingDataset", curie=ARS.curie('groupingDataset'),
                    model_uri=ARS.groupingDataset, domain=None, range=Optional[str])
@@ -2658,32 +2719,47 @@ slots.subSection = Slot(uri=ARS.subSection, name="subSection", curie=ARS.curie('
 slots.subSectionId = Slot(uri=ARS.subSectionId, name="subSectionId", curie=ARS.curie('subSectionId'),
                    model_uri=ARS.subSectionId, domain=None, range=Optional[Union[str, DisplaySubSectionId]])
 
+slots.WhereClause_compoundExpression = Slot(uri=ARS.compoundExpression, name="WhereClause_compoundExpression", curie=ARS.curie('compoundExpression'),
+                   model_uri=ARS.WhereClause_compoundExpression, domain=WhereClause, range=Optional[Union[dict, "WhereClauseCompoundExpression"]])
+
 slots.WhereClauseCondition_value = Slot(uri=ARS.value, name="WhereClauseCondition_value", curie=ARS.curie('value'),
                    model_uri=ARS.WhereClauseCondition_value, domain=WhereClauseCondition, range=Optional[Union[str, List[str]]])
+
+slots.ReferencedWhereClause_subClauseId = Slot(uri=ARS.subClauseId, name="ReferencedWhereClause_subClauseId", curie=ARS.curie('subClauseId'),
+                   model_uri=ARS.ReferencedWhereClause_subClauseId, domain=ReferencedWhereClause, range=str)
+
+slots.SubClause_subClauseId = Slot(uri=ARS.subClauseId, name="SubClause_subClauseId", curie=ARS.curie('subClauseId'),
+                   model_uri=ARS.SubClause_subClauseId, domain=SubClause, range=Optional[str])
+
+slots.WhereClauseCompoundExpression_whereClauses = Slot(uri=ARS.whereClauses, name="WhereClauseCompoundExpression_whereClauses", curie=ARS.curie('whereClauses'),
+                   model_uri=ARS.WhereClauseCompoundExpression_whereClauses, domain=WhereClauseCompoundExpression, range=Optional[Union[Union[dict, SubClause], List[Union[dict, SubClause]]]])
 
 slots.AnalysisSet_compoundExpression = Slot(uri=ARS.compoundExpression, name="AnalysisSet_compoundExpression", curie=ARS.curie('compoundExpression'),
                    model_uri=ARS.AnalysisSet_compoundExpression, domain=AnalysisSet, range=Optional[Union[dict, "CompoundSetExpression"]])
 
+slots.ReferencedAnalysisSet_subClauseId = Slot(uri=ARS.subClauseId, name="ReferencedAnalysisSet_subClauseId", curie=ARS.curie('subClauseId'),
+                   model_uri=ARS.ReferencedAnalysisSet_subClauseId, domain=ReferencedAnalysisSet, range=Union[str, AnalysisSetId])
+
 slots.CompoundSetExpression_whereClauses = Slot(uri=ARS.whereClauses, name="CompoundSetExpression_whereClauses", curie=ARS.curie('whereClauses'),
-                   model_uri=ARS.CompoundSetExpression_whereClauses, domain=CompoundSetExpression, range=Optional[Union[Union[str, AnalysisSetId], List[Union[str, AnalysisSetId]]]])
+                   model_uri=ARS.CompoundSetExpression_whereClauses, domain=CompoundSetExpression, range=Optional[Union[Union[dict, SubClause], List[Union[dict, SubClause]]]])
 
 slots.DataSubset_compoundExpression = Slot(uri=ARS.compoundExpression, name="DataSubset_compoundExpression", curie=ARS.curie('compoundExpression'),
                    model_uri=ARS.DataSubset_compoundExpression, domain=DataSubset, range=Optional[Union[dict, "CompoundSubsetExpression"]])
 
+slots.ReferencedDataSubset_subClauseId = Slot(uri=ARS.subClauseId, name="ReferencedDataSubset_subClauseId", curie=ARS.curie('subClauseId'),
+                   model_uri=ARS.ReferencedDataSubset_subClauseId, domain=ReferencedDataSubset, range=Union[str, DataSubsetId])
+
 slots.CompoundSubsetExpression_whereClauses = Slot(uri=ARS.whereClauses, name="CompoundSubsetExpression_whereClauses", curie=ARS.curie('whereClauses'),
-                   model_uri=ARS.CompoundSubsetExpression_whereClauses, domain=CompoundSubsetExpression, range=Optional[Union[Union[dict, WhereClause], List[Union[dict, WhereClause]]]])
+                   model_uri=ARS.CompoundSubsetExpression_whereClauses, domain=CompoundSubsetExpression, range=Optional[Union[Union[dict, SubClause], List[Union[dict, SubClause]]]])
 
 slots.Group_compoundExpression = Slot(uri=ARS.compoundExpression, name="Group_compoundExpression", curie=ARS.curie('compoundExpression'),
                    model_uri=ARS.Group_compoundExpression, domain=Group, range=Optional[Union[dict, "CompoundGroupExpression"]])
 
+slots.ReferencedGroup_subClauseId = Slot(uri=ARS.subClauseId, name="ReferencedGroup_subClauseId", curie=ARS.curie('subClauseId'),
+                   model_uri=ARS.ReferencedGroup_subClauseId, domain=ReferencedGroup, range=Union[str, GroupId])
+
 slots.CompoundGroupExpression_whereClauses = Slot(uri=ARS.whereClauses, name="CompoundGroupExpression_whereClauses", curie=ARS.curie('whereClauses'),
-                   model_uri=ARS.CompoundGroupExpression_whereClauses, domain=CompoundGroupExpression, range=Optional[Union[Union[str, GroupId], List[Union[str, GroupId]]]])
-
-slots.SubjectGroupingFactor_groups = Slot(uri=ARS.groups, name="SubjectGroupingFactor_groups", curie=ARS.curie('groups'),
-                   model_uri=ARS.SubjectGroupingFactor_groups, domain=SubjectGroupingFactor, range=Optional[Union[Dict[Union[str, AnalysisGroupId], Union[dict, "AnalysisGroup"]], List[Union[dict, "AnalysisGroup"]]]])
-
-slots.DataGroupingFactor_groups = Slot(uri=ARS.groups, name="DataGroupingFactor_groups", curie=ARS.curie('groups'),
-                   model_uri=ARS.DataGroupingFactor_groups, domain=DataGroupingFactor, range=Optional[Union[Dict[Union[str, DataGroupId], Union[dict, "DataGroup"]], List[Union[dict, "DataGroup"]]]])
+                   model_uri=ARS.CompoundGroupExpression_whereClauses, domain=CompoundGroupExpression, range=Optional[Union[Union[dict, SubClause], List[Union[dict, SubClause]]]])
 
 slots.PageRef_label = Slot(uri=ARS.label, name="PageRef_label", curie=ARS.curie('label'),
                    model_uri=ARS.PageRef_label, domain=PageRef, range=Optional[str])

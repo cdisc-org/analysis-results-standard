@@ -13,8 +13,7 @@ URI: [ars:Operation](https://www.cdisc.org/ars/1-0/Operation)
 ```mermaid
  classDiagram
     class Operation
-      NamedObject <|-- Operation
-
+      NamedObject <|-- Operation        
       Operation : id
         Operation : order
         Operation : referencedOperationRelationships
@@ -163,8 +162,7 @@ attributes:
     alias: order
     owner: Operation
     domain_of:
-    - OrderedListItem
-    - WhereClause
+    - LevelOrder
     - Operation
     - OrderedGroupingFactor
     - OrderedDisplay
@@ -232,10 +230,6 @@ attributes:
     - NamedObject
     - AnalysisOutputCategorization
     - AnalysisOutputCategory
-    - AnalysisSet
-    - DataSubset
-    - GroupingFactor
-    - Group
     - PageRef
     range: string
 

@@ -136,8 +136,7 @@ attributes:
     alias: order
     owner: OrderedDisplaySubSection
     domain_of:
-    - OrderedListItem
-    - WhereClause
+    - LevelOrder
     - Operation
     - OrderedGroupingFactor
     - OrderedDisplay

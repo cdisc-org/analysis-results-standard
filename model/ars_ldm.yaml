@@ -39,9 +39,8 @@ classes:
       - terminologyExtensions
       - analysisOutputCategorizations
       - analysisSets
-      - analysisGroupings
       - dataSubsets
-      - dataGroupings
+      - analysisGroupings
       - methods
       - analyses
       - globalDisplaySections
@@ -58,12 +57,19 @@ classes:
     slots:
       - listItems
 
-  OrderedListItem:
-    description: An item (analysis, output or sub-list) ordered relative to other items within a list or sub-list.
-    is_a: NamedObject
+  LevelOrder:
+    description: An abstract class containing attributes used to position class instances within a hierarchical tree.
+    mixin: true
     slots:
       - level
       - order
+
+  OrderedListItem:
+    description: An item (analysis, output or sub-list) ordered relative to other items within a list or sub-list.
+    is_a: NamedObject
+    mixins:
+      - LevelOrder
+    slots:
       - analysisId
       - outputId
       - sublist
@@ -118,11 +124,24 @@ classes:
       simple conditions or compound expressions.
     comments:
       - Each instance of this class should have either a condition or a compoundExpression, not both.
+    mixins:
+      - LevelOrder
     slots:
-      - level
-      - order
       - condition
       - compoundExpression
+    slot_usage:
+      compoundExpression:
+        range: WhereClauseCompoundExpression
+        any_of:
+          - range: CompoundSetExpression
+            inlined: true
+            inlined_as_list: true
+          - range: CompoundSubsetExpression
+            inlined: true
+            inlined_as_list: true
+          - range: CompoundGroupExpression
+            inlined: true
+            inlined_as_list: true
 
   WhereClauseCondition:
     description: A simple selection criterion exressed as [dataset].[variable] [comparator] [value(s)]
@@ -138,34 +157,46 @@ classes:
         description: The value(s) for comparison with the variable.
         required: false
 
+  ReferencedWhereClause:
+    description: >-
+      An abstract class indicating an identified where clause (i.e., `AnalysisSet`, `DataSubset` or `Group`) referenced by identifier
+      (`subClauseId`) as the sub-clause in a compound expression.
+    abstract: true
+    mixins:
+      - LevelOrder
+    slots:
+      - subClauseId
+    slot_usage:
+      subClauseId:
+        required: true
+
+  SubClause:
+    description: >-
+      An abstract class containing all attributes that may be specified for a sub-clause of a compound expression. In practice, each sub-clause
+      will be either a fully-defined `WhereClause` (containing either a `condition` or a `compoundExpression`) or a `ReferencedWhereClause`
+      (containing a `subClauseId`).
+    abstract: true
+    mixins:
+      - LevelOrder
+      - WhereClause
+      - ReferencedWhereClause
+    slot_usage:
+      subClauseId:
+        required: false
+
   WhereClauseCompoundExpression:
     description: >-
       A compound expression consisting of either two or more where clauses combined with the `AND` or `OR` logical operator, or a single where clause
       negated with the `NOT` logical operator.
+    abstract: true
     slots:
       - logicalOperator
       - whereClauses
-    rules:
-      - preconditions:
-          slot_conditions:
-            logicalOperator:
-              any_of:
-                - equals_string: AND
-                - equals_string: OR
-        postconditions:
-          slot_conditions:
-            whereClauses:
-              minimum_cardinality: 2
-        description: At least 2 where clauses are required when logicalOperator is AND or OR.
-      - preconditions:
-          slot_conditions:
-            logicalOperator:
-              equals_string: NOT
-        postconditions:
-          slot_conditions:
-            value:
-              maximum_cardinality: 1
-        description: Only a single where clause is allowed when logicalOperator is NOT.
+    slot_usage:
+      whereClauses:
+        any_of:
+          - range: WhereClause
+          - range: ReferencedWhereClause
 
   AnalysisSet:
     description: >-
@@ -173,13 +204,21 @@ classes:
       This should be defined in the statistical section of the protocol.
       NOTE: There are a number of potential analysis sets, including,
       for example, the set based upon the intent-to-treat principle. [ICH E9]
-    is_a: WhereClause
+    is_a: NamedObject
+    slots:
+      - id
+    mixins:
+      - WhereClause
     slot_usage:
       compoundExpression:
         range: CompoundSetExpression
-    slots:
-      - id
-      - label
+
+  ReferencedAnalysisSet:
+    description: An `AnalysisSet` referenced by identifier (`subClauseId`) as the sub-clause of a compound expression.
+    is_a: ReferencedWhereClause
+    slot_usage:
+      subClauseId:
+        range: AnalysisSet
 
   CompoundSetExpression:
     description: >-
@@ -188,18 +227,27 @@ classes:
     is_a: WhereClauseCompoundExpression
     slot_usage:
       whereClauses:
-        range: AnalysisSet
-        inlined: false
+        any_of:
+          - range: ReferencedAnalysisSet
+          - range: WhereClause    
 
   DataSubset:
     description: A subset of data identified by selection criteria for inclusion in the analysis.
-    is_a: WhereClause
+    is_a: NamedObject
+    slots:
+      - id
+    mixins:
+      - WhereClause
     slot_usage:
       compoundExpression:
         range: CompoundSubsetExpression
-    slots:
-      - id
-      - label
+
+  ReferencedDataSubset:
+    description:  A `DataSubset` referenced by identifier (`subClauseId`) as the sub-clause of a compound expression.
+    is_a: ReferencedWhereClause
+    slot_usage:
+      subClauseId:
+        range: DataSubset
 
   CompoundSubsetExpression:
     description: >-
@@ -208,15 +256,15 @@ classes:
     is_a: WhereClauseCompoundExpression
     slot_usage:
       whereClauses:
-        inlined: true
-        inlined_as_list: true
+        any_of:
+          - range: ReferencedDataSubset
+          - range: WhereClause      
 
   GroupingFactor:
     description: A factor used to subdivide either the subject population or data records in an analysis dataset for analysis.
-    abstract: true
+    is_a: NamedObject
     slots:
       - id
-      - label
       - groupingDataset
       - groupingVariable
       - dataDriven
@@ -224,13 +272,21 @@ classes:
 
   Group:
     description: A subdivision of the subject population or analysis dataset record set based on a defined factor.
-    is_a: WhereClause
+    is_a: NamedObject
+    slots:
+      - id
+    mixins:
+      - WhereClause
     slot_usage:
       compoundExpression:
         range: CompoundGroupExpression
-    slots:
-      - id
-      - label
+
+  ReferencedGroup:
+    description: A `Group` referenced by identifier (`subClauseId`) as the sub-clause of a compound expression.
+    is_a: ReferencedWhereClause
+    slot_usage:
+      subClauseId:
+        range: Group
 
   CompoundGroupExpression:
     description: >-
@@ -239,30 +295,9 @@ classes:
     is_a: WhereClauseCompoundExpression
     slot_usage:
       whereClauses:
-        range: Group
-        inlined: false
-
-  SubjectGroupingFactor:
-    is_a: GroupingFactor
-    description: A factor used to subdivide the subject population for comparative analysis (e.g., treatment, sex, race, age).
-    slot_usage:
-      groups:
-        range: AnalysisGroup
-
-  AnalysisGroup:
-    description: A subdivision of the subject population based on a defined factor (e.g., subjects whose treatment is Drug A, subjects whose gender is male).
-    is_a: Group
-
-  DataGroupingFactor:
-    is_a: GroupingFactor
-    description: A factor used to subdivide data records in an analysis dataset for analysis.
-    slot_usage:
-      groups:
-        range: DataGroup
-
-  DataGroup:
-    description: A subdivision of the analysis dataset records based on a defined factor.
-    is_a: Group
+        any_of:
+          - range: ReferencedGroup
+          - range: WhereClause
 
   AnalysisMethod:
     description: A set of one or more statistical operations.
@@ -694,6 +729,7 @@ classes:
 slots:
   name:
     description: The name for the instance of the class.
+    range: string
     required: true
 
   description:
@@ -702,6 +738,7 @@ slots:
 
   label:
     description: A short informative description that may be used for display.
+    range: string
 
   id:
     description: The assigned identifying value for the instance of the class.
@@ -763,13 +800,6 @@ slots:
     inlined_as_list: true
     range: AnalysisSet
 
-  analysisGroupings:
-    description: Characteristics used to subdivide the subject population (e.g., treatment, sex, age group).
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-    range: SubjectGroupingFactor
-
   dataSubsets:
     description: Subsets of data identified by selection criteria for inclusion in analysis definitions.
     multivalued: true
@@ -777,12 +807,14 @@ slots:
     inlined_as_list: true
     range: DataSubset
 
-  dataGroupings:
-    description: Characteristics used to subdivide data records in analysis datasets (e.g., visit, system organ class).
+  analysisGroupings:
+    description: >-
+      Characteristics used to subdivide the subject population (e.g., treatment, sex, age group) or
+      data records in analysis datasets (e.g., visit, system organ class).
     multivalued: true
     inlined: true
     inlined_as_list: true
-    range: DataGroupingFactor
+    range: GroupingFactor
 
   methods:
     description: The defined methods used to analyze any analysis variable.
@@ -907,7 +939,16 @@ slots:
   compoundExpression:
     description: >-
       A compound expression that combines or negates where clauses.
-    range: WhereClauseCompoundExpression
+    any_of:
+      - range: CompoundSetExpression
+        inlined: true
+        inlined_as_list: true
+      - range: CompoundSubsetExpression
+        inlined: true
+        inlined_as_list: true
+      - range: CompoundGroupExpression
+        inlined: true
+        inlined_as_list: true
 
   dataset:
     description: The name of the analysis dataset.
@@ -922,6 +963,15 @@ slots:
   value:
     description: The prespecified value or values.
     multivalued: true
+
+  subClauseId:
+    description: The identifier of the analysis set, data subset or group referenced in the compound expression.  
+    inlined: false
+    inlined_as_list: false  
+    any_of:
+      - range: AnalysisSet
+      - range: DataSubset
+      - range: Group
 
   logicalOperator:
     description: The boolean operator that is used to combine (AND, OR) or negate (NOT) the where claus(s) in the compound expression.
@@ -938,8 +988,12 @@ slots:
       - Only one where clause should be specfied when the logical operator is NOT. This where clause will usually be a compound expression.
     multivalued: true
     list_elements_ordered: true
-    inlined: false
-    range: WhereClause
+    inlined: true
+    inlined_as_list: true
+    range: SubClause
+    any_of:
+      - range: WhereClause
+      - range: ReferencedWhereClause
 
   groupingDataset:
     description: For groupings based on a single variable, a reference to the dataset containing the variable upon which grouping is based.

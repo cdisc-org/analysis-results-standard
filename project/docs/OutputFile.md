@@ -13,8 +13,7 @@ URI: [ars:OutputFile](https://www.cdisc.org/ars/1-0/OutputFile)
 ```mermaid
  classDiagram
     class OutputFile
-      NamedObject <|-- OutputFile
-
+      NamedObject <|-- OutputFile        
       OutputFile : fileType
         OutputFile --|> ExtensibleTerminologyTerm : fileType
         OutputFile : location
@@ -191,10 +190,6 @@ attributes:
     - NamedObject
     - AnalysisOutputCategorization
     - AnalysisOutputCategory
-    - AnalysisSet
-    - DataSubset
-    - GroupingFactor
-    - Group
     - PageRef
     range: string
 

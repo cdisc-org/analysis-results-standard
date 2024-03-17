@@ -146,10 +146,6 @@ attributes:
     - NamedObject
     - AnalysisOutputCategorization
     - AnalysisOutputCategory
-    - AnalysisSet
-    - DataSubset
-    - GroupingFactor
-    - Group
     - PageRef
     range: string
 

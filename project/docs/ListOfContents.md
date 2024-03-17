@@ -13,8 +13,7 @@ URI: [ars:ListOfContents](https://www.cdisc.org/ars/1-0/ListOfContents)
 ```mermaid
  classDiagram
     class ListOfContents
-      NamedObject <|-- ListOfContents
-
+      NamedObject <|-- ListOfContents        
       ListOfContents : contentsList
         ListOfContents --|> NestedList : contentsList
         ListOfContents : name
@@ -161,10 +160,6 @@ attributes:
     - NamedObject
     - AnalysisOutputCategorization
     - AnalysisOutputCategory
-    - AnalysisSet
-    - DataSubset
-    - GroupingFactor
-    - Group
     - PageRef
     range: string
 

@@ -13,8 +13,7 @@ URI: [ars:ReportingEvent](https://www.cdisc.org/ars/1-0/ReportingEvent)
 ```mermaid
  classDiagram
     class ReportingEvent
-      NamedObject <|-- ReportingEvent
-
+      NamedObject <|-- ReportingEvent        
       ReportingEvent : id
         ReportingEvent : version
         ReportingEvent : mainListOfContents
@@ -29,12 +28,10 @@ URI: [ars:ReportingEvent](https://www.cdisc.org/ars/1-0/ReportingEvent)
         ReportingEvent --|> AnalysisOutputCategorization : analysisOutputCategorizations
         ReportingEvent : analysisSets
         ReportingEvent --|> AnalysisSet : analysisSets
-        ReportingEvent : analysisGroupings
-        ReportingEvent --|> SubjectGroupingFactor : analysisGroupings
         ReportingEvent : dataSubsets
         ReportingEvent --|> DataSubset : dataSubsets
-        ReportingEvent : dataGroupings
-        ReportingEvent --|> DataGroupingFactor : dataGroupings
+        ReportingEvent : analysisGroupings
+        ReportingEvent --|> GroupingFactor : analysisGroupings
         ReportingEvent : methods
         ReportingEvent --|> AnalysisMethod : methods
         ReportingEvent : analyses
@@ -70,9 +67,8 @@ URI: [ars:ReportingEvent](https://www.cdisc.org/ars/1-0/ReportingEvent)
 | [terminologyExtensions](terminologyExtensions.md) | 0..* <br/> [TerminologyExtension](TerminologyExtension.md) | Any sponsor-defined extensions to extensible terminology | direct |
 | [analysisOutputCategorizations](analysisOutputCategorizations.md) | 0..* <br/> [AnalysisOutputCategorization](AnalysisOutputCategorization.md) | Sets of related implementer-defined categories that can be used to categorize... | direct |
 | [analysisSets](analysisSets.md) | 0..* <br/> [AnalysisSet](AnalysisSet.md) | The analysis sets (subject populations) defined for the reporting event | direct |
-| [analysisGroupings](analysisGroupings.md) | 0..* <br/> [SubjectGroupingFactor](SubjectGroupingFactor.md) | Characteristics used to subdivide the subject population (e | direct |
 | [dataSubsets](dataSubsets.md) | 0..* <br/> [DataSubset](DataSubset.md) | Subsets of data identified by selection criteria for inclusion in analysis de... | direct |
-| [dataGroupings](dataGroupings.md) | 0..* <br/> [DataGroupingFactor](DataGroupingFactor.md) | Characteristics used to subdivide data records in analysis datasets (e | direct |
+| [analysisGroupings](analysisGroupings.md) | 0..* <br/> [GroupingFactor](GroupingFactor.md) | Characteristics used to subdivide the subject population (e | direct |
 | [methods](methods.md) | 0..* <br/> [AnalysisMethod](AnalysisMethod.md) | The defined methods used to analyze any analysis variable | direct |
 | [analyses](analyses.md) | 0..* <br/> [Analysis](Analysis.md) | The analyses defined for the reporting event | direct |
 | [globalDisplaySections](globalDisplaySections.md) | 0..* <br/> [GlobalDisplaySection](GlobalDisplaySection.md) | Display section specifications that may be applied to any display | direct |
@@ -141,9 +137,8 @@ slots:
 - terminologyExtensions
 - analysisOutputCategorizations
 - analysisSets
-- analysisGroupings
 - dataSubsets
-- dataGroupings
+- analysisGroupings
 - methods
 - analyses
 - globalDisplaySections
@@ -293,20 +288,6 @@ attributes:
     range: AnalysisSet
     inlined: true
     inlined_as_list: true
-  analysisGroupings:
-    name: analysisGroupings
-    description: Characteristics used to subdivide the subject population (e.g., treatment,
-      sex, age group).
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    multivalued: true
-    alias: analysisGroupings
-    owner: ReportingEvent
-    domain_of:
-    - ReportingEvent
-    range: SubjectGroupingFactor
-    inlined: true
-    inlined_as_list: true
   dataSubsets:
     name: dataSubsets
     description: Subsets of data identified by selection criteria for inclusion in
@@ -321,18 +302,19 @@ attributes:
     range: DataSubset
     inlined: true
     inlined_as_list: true
-  dataGroupings:
-    name: dataGroupings
-    description: Characteristics used to subdivide data records in analysis datasets
-      (e.g., visit, system organ class).
+  analysisGroupings:
+    name: analysisGroupings
+    description: Characteristics used to subdivide the subject population (e.g., treatment,
+      sex, age group) or data records in analysis datasets (e.g., visit, system organ
+      class).
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     multivalued: true
-    alias: dataGroupings
+    alias: analysisGroupings
     owner: ReportingEvent
     domain_of:
     - ReportingEvent
-    range: DataGroupingFactor
+    range: GroupingFactor
     inlined: true
     inlined_as_list: true
   methods:
@@ -421,10 +403,6 @@ attributes:
     - NamedObject
     - AnalysisOutputCategorization
     - AnalysisOutputCategory
-    - AnalysisSet
-    - DataSubset
-    - GroupingFactor
-    - Group
     - PageRef
     range: string
 tree_root: true

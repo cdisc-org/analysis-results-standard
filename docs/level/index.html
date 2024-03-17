@@ -86,6 +86,11 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../LevelOrder/">LevelOrder</a></td>
+<td>An abstract class containing attributes used to position class instances with...</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../OrderedListItem/">OrderedListItem</a></td>
 <td>An item (analysis, output or sub-list) ordered relative to other items within...</td>
 <td>no</td>
@@ -96,8 +101,23 @@
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../ReferencedWhereClause/">ReferencedWhereClause</a></td>
+<td>An abstract class indicating an identified where clause (i</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SubClause/">SubClause</a></td>
+<td>An abstract class containing all attributes that may be specified for a sub-c...</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../AnalysisSet/">AnalysisSet</a></td>
 <td>A set of subjects whose data are to be included in the main analyses</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ReferencedAnalysisSet/">ReferencedAnalysisSet</a></td>
+<td>An <code>AnalysisSet</code> referenced by identifier (<code>subClauseId</code>) as the sub-clause o...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -106,18 +126,18 @@
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../ReferencedDataSubset/">ReferencedDataSubset</a></td>
+<td>A <code>DataSubset</code> referenced by identifier (<code>subClauseId</code>) as the sub-clause of ...</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../Group/">Group</a></td>
 <td>A subdivision of the subject population or analysis dataset record set based ...</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../AnalysisGroup/">AnalysisGroup</a></td>
-<td>A subdivision of the subject population based on a defined factor (e</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../DataGroup/">DataGroup</a></td>
-<td>A subdivision of the analysis dataset records based on a defined factor</td>
+<td><a href="../ReferencedGroup/">ReferencedGroup</a></td>
+<td>A <code>Group</code> referenced by identifier (<code>subClauseId</code>) as the sub-clause of a com...</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -150,8 +170,7 @@
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">level</span>
 <span class="nt">domain_of</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OrderedListItem</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WhereClause</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LevelOrder</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
 <span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>

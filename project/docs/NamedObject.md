@@ -17,6 +17,10 @@ URI: [ars:NamedObject](https://www.cdisc.org/ars/1-0/NamedObject)
       NamedObject <|-- ListOfContents
       NamedObject <|-- OrderedListItem
       NamedObject <|-- ReferenceDocument
+      NamedObject <|-- AnalysisSet
+      NamedObject <|-- DataSubset
+      NamedObject <|-- GroupingFactor
+      NamedObject <|-- Group
       NamedObject <|-- AnalysisMethod
       NamedObject <|-- Operation
       NamedObject <|-- CodeParameter
@@ -37,8 +41,12 @@ URI: [ars:NamedObject](https://www.cdisc.org/ars/1-0/NamedObject)
 * **NamedObject**
     * [ReportingEvent](ReportingEvent.md)
     * [ListOfContents](ListOfContents.md)
-    * [OrderedListItem](OrderedListItem.md)
+    * [OrderedListItem](OrderedListItem.md) [ [LevelOrder](LevelOrder.md)]
     * [ReferenceDocument](ReferenceDocument.md)
+    * [AnalysisSet](AnalysisSet.md) [ [WhereClause](WhereClause.md)]
+    * [DataSubset](DataSubset.md) [ [WhereClause](WhereClause.md)]
+    * [GroupingFactor](GroupingFactor.md)
+    * [Group](Group.md) [ [WhereClause](WhereClause.md)]
     * [AnalysisMethod](AnalysisMethod.md)
     * [Operation](Operation.md)
     * [CodeParameter](CodeParameter.md)
@@ -159,10 +167,6 @@ attributes:
     - NamedObject
     - AnalysisOutputCategorization
     - AnalysisOutputCategory
-    - AnalysisSet
-    - DataSubset
-    - GroupingFactor
-    - Group
     - PageRef
     range: string
 

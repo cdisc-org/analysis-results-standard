@@ -25,16 +25,6 @@ message Analysis
   analysisOutputProgrammingCode programmingCode = 0
  repeated  operationResult results = 0
  }
-// A subdivision of the subject population based on a defined factor (e.g., subjects whose treatment is Drug A, subjects whose gender is male).
-message AnalysisGroup
- {
-  integer level = 0
-  integer order = 0
-  whereClauseCondition condition = 0
-  string id = 0
-  string label = 0
-  compoundGroupExpression compoundExpression = 0
- }
 // A set of one or more statistical operations.
 message AnalysisMethod
  {
@@ -99,60 +89,44 @@ message AnalysisReason
 // A set of subjects whose data are to be included in the main analyses. This should be defined in the statistical section of the protocol. NOTE: There are a number of potential analysis sets, including, for example, the set based upon the intent-to-treat principle. [ICH E9]
 message AnalysisSet
  {
+  string name = 0
+  string description = 0
+  string label = 0
+  string id = 0
+  compoundSetExpression compoundExpression = 0
+  whereClauseCondition condition = 0
   integer level = 0
   integer order = 0
-  whereClauseCondition condition = 0
-  string id = 0
-  string label = 0
-  compoundSetExpression compoundExpression = 0
  }
 // A compound expression consisting of either two or more identified group combined with the `AND` or `OR` logical operator, or a single identified group negated with the `NOT` logical operator.
 message CompoundGroupExpression
  {
   expressionLogicalOperatorEnum logicalOperator = 0
- repeated  group whereClauses = 0
+ repeated  subClause whereClauses = 0
  }
 // A compound expression consisting of either two or more identified analysis sets combined with the `AND` or `OR` logical operator, or a single identified analysis set negated with the `NOT` logical operator.
 message CompoundSetExpression
  {
   expressionLogicalOperatorEnum logicalOperator = 0
- repeated  analysisSet whereClauses = 0
+ repeated  subClause whereClauses = 0
  }
 // A compound expression consisting of either two or more where clauses combined with the `AND` or `OR` logical operator, or a single where clause negated with the `NOT` logical operator.
 message CompoundSubsetExpression
  {
   expressionLogicalOperatorEnum logicalOperator = 0
- repeated  whereClause whereClauses = 0
- }
-// A subdivision of the analysis dataset records based on a defined factor.
-message DataGroup
- {
-  integer level = 0
-  integer order = 0
-  whereClauseCondition condition = 0
-  string id = 0
-  string label = 0
-  compoundGroupExpression compoundExpression = 0
- }
-// A factor used to subdivide data records in an analysis dataset for analysis.
-message DataGroupingFactor
- {
-  string id = 0
-  string label = 0
-  string groupingDataset = 0
-  string groupingVariable = 0
-  boolean dataDriven = 0
- repeated  dataGroup groups = 0
+ repeated  subClause whereClauses = 0
  }
 // A subset of data identified by selection criteria for inclusion in the analysis.
 message DataSubset
  {
+  string name = 0
+  string description = 0
+  string label = 0
+  string id = 0
+  compoundSubsetExpression compoundExpression = 0
+  whereClauseCondition condition = 0
   integer level = 0
   integer order = 0
-  whereClauseCondition condition = 0
-  string id = 0
-  string label = 0
-  compoundSubsetExpression compoundExpression = 0
  }
 // A part of a tabular display containing one or more pieces of informational text (e.g., title, footnote).
 message DisplaySection
@@ -181,12 +155,26 @@ message GlobalDisplaySection
 // A subdivision of the subject population or analysis dataset record set based on a defined factor.
 message Group
  {
+  string name = 0
+  string description = 0
+  string label = 0
+  string id = 0
+  compoundGroupExpression compoundExpression = 0
+  whereClauseCondition condition = 0
   integer level = 0
   integer order = 0
-  whereClauseCondition condition = 0
-  string id = 0
+ }
+// A factor used to subdivide either the subject population or data records in an analysis dataset for analysis.
+message GroupingFactor
+ {
+  string name = 0
+  string description = 0
   string label = 0
-  compoundGroupExpression compoundExpression = 0
+  string id = 0
+  string groupingDataset = 0
+  string groupingVariable = 0
+  boolean dataDriven = 0
+ repeated  group groups = 0
  }
 // A structured list of analyses and outputs included in the reporting event.
 message ListOfContents
@@ -245,11 +233,11 @@ message OrderedListItem
   string name = 0
   string description = 0
   string label = 0
-  integer level = 0
-  integer order = 0
   analysis analysisId = 0
   output outputId = 0
   nestedList sublist = 0
+  integer level = 0
+  integer order = 0
  }
 // A subsection ordered with respect to other subsections of the same type.
 message OrderedSubSection
@@ -342,6 +330,27 @@ message ReferencedAnalysisOperation
   referencedOperationRelationship referencedOperationRelationshipId = 0
   analysis analysisId = 0
  }
+// An `AnalysisSet` referenced by identifier (`subClauseId`) as the sub-clause of a compound expression.
+message ReferencedAnalysisSet
+ {
+  integer level = 0
+  integer order = 0
+  analysisSet subClauseId = 0
+ }
+// A `DataSubset` referenced by identifier (`subClauseId`) as the sub-clause of a compound expression.
+message ReferencedDataSubset
+ {
+  integer level = 0
+  integer order = 0
+  dataSubset subClauseId = 0
+ }
+// A `Group` referenced by identifier (`subClauseId`) as the sub-clause of a compound expression.
+message ReferencedGroup
+ {
+  integer level = 0
+  integer order = 0
+  group subClauseId = 0
+ }
 // An external document containing supporting documentation or programming code.
 message ReferenceDocument
  {
@@ -374,9 +383,8 @@ message ReportingEvent
  repeated  terminologyExtension terminologyExtensions = 0
  repeated  analysisOutputCategorization analysisOutputCategorizations = 0
  repeated  analysisSet analysisSets = 0
- repeated  subjectGroupingFactor analysisGroupings = 0
  repeated  dataSubset dataSubsets = 0
- repeated  dataGroupingFactor dataGroupings = 0
+ repeated  groupingFactor analysisGroupings = 0
  repeated  analysisMethod methods = 0
  repeated  analysis analyses = 0
  repeated  globalDisplaySection globalDisplaySections = 0
@@ -420,16 +428,6 @@ message SponsorTerm
   string submissionValue = 0
   string description = 0
  }
-// A factor used to subdivide the subject population for comparative analysis (e.g., treatment, sex, race, age).
-message SubjectGroupingFactor
- {
-  string id = 0
-  string label = 0
-  string groupingDataset = 0
-  string groupingVariable = 0
-  boolean dataDriven = 0
- repeated  analysisGroup groups = 0
- }
 // A replacement parameter whose value is substituted in template programming code to create statements required for a specific analysis.
 message TemplateCodeParameter
  {
@@ -449,16 +447,10 @@ message TerminologyExtension
 // Selection criteria defined as either a simple condition ([variable] [comparator] [value(s)]) or a compound expression that may combine simple conditions or compound expressions.
 message WhereClause
  {
-  integer level = 0
-  integer order = 0
   whereClauseCondition condition = 0
   whereClauseCompoundExpression compoundExpression = 0
- }
-// A compound expression consisting of either two or more where clauses combined with the `AND` or `OR` logical operator, or a single where clause negated with the `NOT` logical operator.
-message WhereClauseCompoundExpression
- {
-  expressionLogicalOperatorEnum logicalOperator = 0
- repeated  whereClause whereClauses = 0
+  integer level = 0
+  integer order = 0
  }
 // A simple selection criterion exressed as [dataset].[variable] [comparator] [value(s)]
 message WhereClauseCondition

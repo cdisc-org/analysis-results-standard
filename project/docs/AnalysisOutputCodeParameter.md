@@ -13,8 +13,7 @@ URI: [ars:AnalysisOutputCodeParameter](https://www.cdisc.org/ars/1-0/AnalysisOut
 ```mermaid
  classDiagram
     class AnalysisOutputCodeParameter
-      CodeParameter <|-- AnalysisOutputCodeParameter
-
+      CodeParameter <|-- AnalysisOutputCodeParameter        
       AnalysisOutputCodeParameter : value
         AnalysisOutputCodeParameter : name
         AnalysisOutputCodeParameter : description
@@ -185,10 +184,6 @@ attributes:
     - NamedObject
     - AnalysisOutputCategorization
     - AnalysisOutputCategory
-    - AnalysisSet
-    - DataSubset
-    - GroupingFactor
-    - Group
     - PageRef
     range: string
 

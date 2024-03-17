@@ -83,6 +83,10 @@
       NamedObject &lt;|-- ListOfContents
       NamedObject &lt;|-- OrderedListItem
       NamedObject &lt;|-- ReferenceDocument
+      NamedObject &lt;|-- AnalysisSet
+      NamedObject &lt;|-- DataSubset
+      NamedObject &lt;|-- GroupingFactor
+      NamedObject &lt;|-- Group
       NamedObject &lt;|-- AnalysisMethod
       NamedObject &lt;|-- Operation
       NamedObject &lt;|-- CodeParameter
@@ -99,8 +103,12 @@
 <li><strong>NamedObject</strong><ul>
 <li><a href="../ReportingEvent/">ReportingEvent</a></li>
 <li><a href="../ListOfContents/">ListOfContents</a></li>
-<li><a href="../OrderedListItem/">OrderedListItem</a></li>
+<li><a href="../OrderedListItem/">OrderedListItem</a> [ <a href="../LevelOrder/">LevelOrder</a>]</li>
 <li><a href="../ReferenceDocument/">ReferenceDocument</a></li>
+<li><a href="../AnalysisSet/">AnalysisSet</a> [ <a href="../WhereClause/">WhereClause</a>]</li>
+<li><a href="../DataSubset/">DataSubset</a> [ <a href="../WhereClause/">WhereClause</a>]</li>
+<li><a href="../GroupingFactor/">GroupingFactor</a></li>
+<li><a href="../Group/">Group</a> [ <a href="../WhereClause/">WhereClause</a>]</li>
 <li><a href="../AnalysisMethod/">AnalysisMethod</a></li>
 <li><a href="../Operation/">Operation</a></li>
 <li><a href="../CodeParameter/">CodeParameter</a></li>
@@ -224,10 +232,6 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NamedObject</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AnalysisOutputCategorization</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AnalysisOutputCategory</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AnalysisSet</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DataSubset</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GroupingFactor</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Group</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PageRef</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 </code></pre></div>

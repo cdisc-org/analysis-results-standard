@@ -23,8 +23,7 @@ URI: [ars:Analysis](https://www.cdisc.org/ars/1-0/Analysis)
 ```mermaid
  classDiagram
     class Analysis
-      NamedObject <|-- Analysis
-
+      NamedObject <|-- Analysis        
       Analysis : id
         Analysis : version
         Analysis : reason
@@ -482,10 +481,6 @@ attributes:
     - NamedObject
     - AnalysisOutputCategorization
     - AnalysisOutputCategory
-    - AnalysisSet
-    - DataSubset
-    - GroupingFactor
-    - Group
     - PageRef
     range: string
 

@@ -3,7 +3,7 @@
 _A factor used to subdivide either the subject population or data records in an analysis dataset for analysis._
 
 
-* __NOTE__: this is an abstract class and should not be instantiated directly
+
 
 URI: [ars:GroupingFactor](https://www.cdisc.org/ars/1-0/GroupingFactor)
 
@@ -13,15 +13,16 @@ URI: [ars:GroupingFactor](https://www.cdisc.org/ars/1-0/GroupingFactor)
 ```mermaid
  classDiagram
     class GroupingFactor
-      GroupingFactor <|-- SubjectGroupingFactor
-      GroupingFactor <|-- DataGroupingFactor
-      GroupingFactor : id        
-        GroupingFactor : label        
-        GroupingFactor : groupingDataset        
-        GroupingFactor : groupingVariable        
-        GroupingFactor : dataDriven        
-        GroupingFactor : groups        
+      NamedObject <|-- GroupingFactor        
+      GroupingFactor : id
+        GroupingFactor : groupingDataset
+        GroupingFactor : groupingVariable
+        GroupingFactor : dataDriven
+        GroupingFactor : groups
         GroupingFactor --|> Group : groups
+        GroupingFactor : name
+        GroupingFactor : description
+        GroupingFactor : label
         
 ```
 
@@ -29,9 +30,8 @@ URI: [ars:GroupingFactor](https://www.cdisc.org/ars/1-0/GroupingFactor)
 
 
 ## Inheritance
-* **GroupingFactor**
-    * [SubjectGroupingFactor](SubjectGroupingFactor.md)
-    * [DataGroupingFactor](DataGroupingFactor.md)
+* [NamedObject](NamedObject.md)
+    * **GroupingFactor**
 
 
 
@@ -40,11 +40,13 @@ URI: [ars:GroupingFactor](https://www.cdisc.org/ars/1-0/GroupingFactor)
 | Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [id](id.md) | 1..1 <br/> [String](String.md) | The assigned identifying value for the instance of the class | direct |
-| [label](label.md) | 0..1 <br/> [String](String.md) | A short informative description that may be used for display | direct |
 | [groupingDataset](groupingDataset.md) | 0..1 <br/> [String](String.md) | For groupings based on a single variable, a reference to the dataset containi... | direct |
 | [groupingVariable](groupingVariable.md) | 0..1 <br/> [String](String.md) | For groupings based on a single variable, a reference to the dataset variable... | direct |
 | [dataDriven](dataDriven.md) | 1..1 <br/> [Boolean](Boolean.md) | Indicates whether the groups defined by the grouping are prespecified (false)... | direct |
 | [groups](groups.md) | 0..* <br/> [Group](Group.md) | The pre-specified groups within the grouping | direct |
+| [name](name.md) | 1..1 <br/> [String](String.md) | The name for the instance of the class | [NamedObject](NamedObject.md) |
+| [description](description.md) | 0..1 <br/> [String](String.md) | A textual description of the instance of the class | [NamedObject](NamedObject.md) |
+| [label](label.md) | 0..1 <br/> [String](String.md) | A short informative description that may be used for display | [NamedObject](NamedObject.md) |
 
 _* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
@@ -55,6 +57,7 @@ _* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-c
 
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
+| [ReportingEvent](ReportingEvent.md) | [analysisGroupings](analysisGroupings.md) | range | [GroupingFactor](GroupingFactor.md) |
 | [OrderedGroupingFactor](OrderedGroupingFactor.md) | [groupingId](groupingId.md) | range | [GroupingFactor](GroupingFactor.md) |
 | [ResultGroup](ResultGroup.md) | [groupingId](groupingId.md) | range | [GroupingFactor](GroupingFactor.md) |
 
@@ -104,10 +107,9 @@ description: A factor used to subdivide either the subject population or data re
   in an analysis dataset for analysis.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
-abstract: true
+is_a: NamedObject
 slots:
 - id
-- label
 - groupingDataset
 - groupingVariable
 - dataDriven
@@ -125,7 +127,7 @@ description: A factor used to subdivide either the subject population or data re
   in an analysis dataset for analysis.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
-abstract: true
+is_a: NamedObject
 attributes:
   id:
     name: id
@@ -155,23 +157,6 @@ attributes:
     - OutputDisplay
     range: string
     required: true
-  label:
-    name: label
-    description: A short informative description that may be used for display.
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    alias: label
-    owner: GroupingFactor
-    domain_of:
-    - NamedObject
-    - AnalysisOutputCategorization
-    - AnalysisOutputCategory
-    - AnalysisSet
-    - DataSubset
-    - GroupingFactor
-    - Group
-    - PageRef
-    range: string
   groupingDataset:
     name: groupingDataset
     description: For groupings based on a single variable, a reference to the dataset
@@ -224,6 +209,42 @@ attributes:
     range: Group
     inlined: true
     inlined_as_list: true
+  name:
+    name: name
+    description: The name for the instance of the class.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: name
+    owner: GroupingFactor
+    domain_of:
+    - NamedObject
+    range: string
+    required: true
+  description:
+    name: description
+    description: A textual description of the instance of the class.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: description
+    owner: GroupingFactor
+    domain_of:
+    - NamedObject
+    - SponsorTerm
+    - ReferencedOperationRelationship
+    range: string
+  label:
+    name: label
+    description: A short informative description that may be used for display.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: label
+    owner: GroupingFactor
+    domain_of:
+    - NamedObject
+    - AnalysisOutputCategorization
+    - AnalysisOutputCategory
+    - PageRef
+    range: string
 
 ```
 </details>

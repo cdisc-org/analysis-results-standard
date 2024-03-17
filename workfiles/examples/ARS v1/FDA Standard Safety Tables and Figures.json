@@ -1,112 +1,122 @@
 {
   "name": "FDA Standard Safety Tables and Figures",
   "id": "FDASTF",
-  "listOfPlannedAnalyses": {
-    "listItems": [
-      {
-        "name": "Table 2. Baseline Demographic and Clinical Characteristics, Safety Population, Trial CDISCPILOT01",
-        "level": 1,
-        "order": 1,
-        "outputId": "O_T2",
-        "sublist": {
-          "listItems": [
-            {
-              "name": "Summary of Subjects by Treatment",
-              "level": 2,
-              "order": 1,
-              "analysisId": "A_SAF_SUM_USUBJID_TRT"
-            },
-            {
-              "name": "Sex",
-              "level": 2,
-              "order": 2,
-              "sublist": {
-                "listItems": [
-                  {
-                    "name": "Summary of Subjects by Treatment",
-                    "level": 3,
-                    "order": 1,
-                    "analysisId": "A_SAF_SUM_USUBJID_TRT_SEX"
-                  }
-                ]
+  "mainListOfContents": {
+    "name": "List of Planned Analyses",
+    "label": "LOPA",
+    "contentsList": {
+      "listItems": [
+        {
+          "name": "Table 2. Baseline Demographic and Clinical Characteristics, Safety Population, Trial CDISCPILOT01",
+          "level": 1,
+          "order": 1,
+          "outputId": "O_T2",
+          "sublist": {
+            "listItems": [
+              {
+                "name": "Summary of Subjects by Treatment",
+                "level": 2,
+                "order": 1,
+                "analysisId": "A_SAF_SUM_USUBJID_TRT"
+              },
+              {
+                "name": "Sex",
+                "level": 2,
+                "order": 2,
+                "sublist": {
+                  "listItems": [
+                    {
+                      "name": "Summary of Subjects by Treatment",
+                      "level": 3,
+                      "order": 1,
+                      "analysisId": "A_SAF_SUM_USUBJID_TRT_SEX"
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "Age",
+                "level": 2,
+                "order": 3,
+                "sublist": {
+                  "listItems": [
+                    {
+                      "name": "Summary of Age by Treatment",
+                      "level": 3,
+                      "order": 1,
+                      "analysisId": "A_SAF_SUM_AGE_TRT"
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "Age groups",
+                "level": 2,
+                "order": 4,
+                "sublist": {
+                  "listItems": [
+                    {
+                      "name": "Summary of Subjects by Treatment",
+                      "level": 3,
+                      "order": 1,
+                      "analysisId": "A_SAF_SUM_USUBJID_TRT_AGEGRP"
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "Race",
+                "level": 2,
+                "order": 5,
+                "sublist": {
+                  "listItems": [
+                    {
+                      "name": "Summary of Subjects by Treatment",
+                      "level": 3,
+                      "order": 1,
+                      "analysisId": "A_SAF_SUM_USUBJID_TRT_RACE"
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "Ethnicity",
+                "level": 2,
+                "order": 6,
+                "sublist": {
+                  "listItems": [
+                    {
+                      "name": "Summary of Subjects by Treatment",
+                      "level": 3,
+                      "order": 1,
+                      "analysisId": "A_SAF_SUM_USUBJID_TRT_ETHNIC"
+                    }
+                  ]
+                }
               }
-            },
-            {
-              "name": "Age",
-              "level": 2,
-              "order": 3,
-              "sublist": {
-                "listItems": [
-                  {
-                    "name": "Summary of Age by Treatment",
-                    "level": 3,
-                    "order": 1,
-                    "analysisId": "A_SAF_SUM_AGE_TRT"
-                  }
-                ]
-              }
-            },
-            {
-              "name": "Age groups",
-              "level": 2,
-              "order": 4,
-              "sublist": {
-                "listItems": [
-                  {
-                    "name": "Summary of Subjects by Treatment",
-                    "level": 3,
-                    "order": 1,
-                    "analysisId": "A_SAF_SUM_USUBJID_TRT_AGEGRP"
-                  }
-                ]
-              }
-            },
-            {
-              "name": "Race",
-              "level": 2,
-              "order": 5,
-              "sublist": {
-                "listItems": [
-                  {
-                    "name": "Summary of Subjects by Treatment",
-                    "level": 3,
-                    "order": 1,
-                    "analysisId": "A_SAF_SUM_USUBJID_TRT_RACE"
-                  }
-                ]
-              }
-            },
-            {
-              "name": "Ethnicity",
-              "level": 2,
-              "order": 6,
-              "sublist": {
-                "listItems": [
-                  {
-                    "name": "Summary of Subjects by Treatment",
-                    "level": 3,
-                    "order": 1,
-                    "analysisId": "A_SAF_SUM_USUBJID_TRT_ETHNIC"
-                  }
-                ]
-              }
-            }
-          ]
+            ]
+          }
         }
-      }
-    ]
+      ]
+    }
   },
   "version": 1,
-  "listOfPlannedOutputs": {
-    "listItems": [
-      {
-        "name": "Table 2. Baseline Demographic and Clinical Characteristics, Safety Population, Trial CDISCPILOT01",
-        "level": 1,
-        "order": 1,
-        "outputId": "O_T2"
+  "otherListsOfContents": [
+    {
+      "name": "List of Planned Outputs",
+      "label": "LOPO",
+      "contentsList": {
+        "listItems": [
+          {
+            "name": "Table 2. Baseline Demographic and Clinical Characteristics, Safety Population, Trial CDISCPILOT01",
+            "level": 1,
+            "order": 1,
+            "outputId": "O_T2"
+          }
+        ]
       }
-    ]
-  },
+    }
+  ],
   "referenceDocuments": [
     {
       "name": "Statistical Analysis Plan",
@@ -126,6 +136,8 @@
   ],
   "analysisSets": [
     {
+      "name": "Safety Population",
+      "id": "AS_SAF",
       "level": 1,
       "order": 1,
       "condition": {
@@ -135,19 +147,20 @@
         "value": [
           "Y"
         ]
-      },
-      "id": "AS_SAF",
-      "label": "Safety Population"
+      }
     }
   ],
   "analysisGroupings": [
     {
+      "name": "Treatment",
       "id": "AG_TRT",
       "dataDriven": false,
-      "label": "Treatment",
+      "groupingDataset": "ADSL",
       "groupingVariable": "TRT01A",
       "groups": [
         {
+          "name": "Placebo",
+          "id": "AG_TRT_1",
           "level": 1,
           "order": 1,
           "condition": {
@@ -157,11 +170,11 @@
             "value": [
               "Placebo"
             ]
-          },
-          "id": "AG_TRT_1",
-          "label": "Placebo"
+          }
         },
         {
+          "name": "Xanomeline Low Dose",
+          "id": "AG_TRT_2",
           "level": 1,
           "order": 2,
           "condition": {
@@ -171,11 +184,11 @@
             "value": [
               "Xanomeline Low Dose"
             ]
-          },
-          "id": "AG_TRT_2",
-          "label": "Xanomeline Low Dose"
+          }
         },
         {
+          "name": "Xanomeline High Dose",
+          "id": "AG_TRT_3",
           "level": 1,
           "order": 3,
           "condition": {
@@ -185,19 +198,20 @@
             "value": [
               "Xanomeline High Dose"
             ]
-          },
-          "id": "AG_TRT_3",
-          "label": "Xanomeline High Dose"
+          }
         }
       ]
     },
     {
+      "name": "Gender",
       "id": "AG_SEX",
       "dataDriven": false,
-      "label": "Gender",
+      "groupingDataset": "ADSL",
       "groupingVariable": "SEX",
       "groups": [
         {
+          "name": "Male",
+          "id": "AG_SEX_1",
           "level": 1,
           "order": 1,
           "condition": {
@@ -207,11 +221,11 @@
             "value": [
               "M"
             ]
-          },
-          "id": "AG_SEX_1",
-          "label": "Male"
+          }
         },
         {
+          "name": "Female",
+          "id": "AG_SEX_2",
           "level": 1,
           "order": 2,
           "condition": {
@@ -221,19 +235,20 @@
             "value": [
               "F"
             ]
-          },
-          "id": "AG_SEX_2",
-          "label": "Female"
+          }
         }
       ]
     },
     {
+      "name": "Age groups",
       "id": "AG_AGEGR2",
       "dataDriven": false,
-      "label": "Age groups",
+      "groupingDataset": "ADSL",
       "groupingVariable": "AGEGR2",
       "groups": [
         {
+          "name": "< 65",
+          "id": "AG_AGEGR2_1",
           "level": 1,
           "order": 1,
           "condition": {
@@ -243,11 +258,11 @@
             "value": [
               "<65"
             ]
-          },
-          "id": "AG_AGEGR2_1",
-          "label": "< 65"
+          }
         },
         {
+          "name": "≥ 65",
+          "id": "AG_AGEGR2_2",
           "level": 1,
           "order": 2,
           "condition": {
@@ -257,19 +272,20 @@
             "value": [
               "65+"
             ]
-          },
-          "id": "AG_AGEGR2_2",
-          "label": "≥ 65"
+          }
         }
       ]
     },
     {
+      "name": "Age sub-groups",
       "id": "AG_AGEGR3",
       "dataDriven": false,
-      "label": "Age sub-groups",
+      "groupingDataset": "ADSL",
       "groupingVariable": "AGEGR3",
       "groups": [
         {
+          "name": "≥17 to <65",
+          "id": "AG_AGEGR3_1",
           "level": 1,
           "order": 1,
           "condition": {
@@ -279,11 +295,11 @@
             "value": [
               "17-<65"
             ]
-          },
-          "id": "AG_AGEGR3_1",
-          "label": "≥17 to <65"
+          }
         },
         {
+          "name": "≥ 65 to <75",
+          "id": "AG_AGEGR3_2",
           "level": 1,
           "order": 2,
           "condition": {
@@ -293,11 +309,11 @@
             "value": [
               "65-<75"
             ]
-          },
-          "id": "AG_AGEGR3_2",
-          "label": "≥ 65 to <75"
+          }
         },
         {
+          "name": "≥ 75",
+          "id": "AG_AGEGR3_3",
           "level": 1,
           "order": 3,
           "condition": {
@@ -307,19 +323,20 @@
             "value": [
               "75+"
             ]
-          },
-          "id": "AG_AGEGR3_3",
-          "label": "≥ 75"
+          }
         }
       ]
     },
     {
+      "name": "Race",
       "id": "AG_RACE",
       "dataDriven": false,
-      "label": "Race",
+      "groupingDataset": "ADSL",
       "groupingVariable": "RACE",
       "groups": [
         {
+          "name": "American Indian or Alaska Native",
+          "id": "AG_RACE_1",
           "level": 1,
           "order": 1,
           "condition": {
@@ -329,11 +346,11 @@
             "value": [
               "AMERICAN INDIAN OR ALASKA NATIVE"
             ]
-          },
-          "id": "AG_RACE_1",
-          "label": "American Indian or Alaska Native"
+          }
         },
         {
+          "name": "Black or African American",
+          "id": "AG_RACE_2",
           "level": 1,
           "order": 2,
           "condition": {
@@ -343,11 +360,11 @@
             "value": [
               "BLACK OR AFRICAN AMERICAN"
             ]
-          },
-          "id": "AG_RACE_2",
-          "label": "Black or African American"
+          }
         },
         {
+          "name": "Native Hawaiian or Other Pacific Islander",
+          "id": "AG_RACE_3",
           "level": 1,
           "order": 3,
           "condition": {
@@ -357,11 +374,11 @@
             "value": [
               "NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER"
             ]
-          },
-          "id": "AG_RACE_3",
-          "label": "Native Hawaiian or Other Pacific Islander"
+          }
         },
         {
+          "name": "White",
+          "id": "AG_RACE_4",
           "level": 1,
           "order": 4,
           "condition": {
@@ -371,11 +388,11 @@
             "value": [
               "WHITE"
             ]
-          },
-          "id": "AG_RACE_4",
-          "label": "White"
+          }
         },
         {
+          "name": "Other",
+          "id": "AG_RACE_5",
           "level": 1,
           "order": 5,
           "condition": {
@@ -383,24 +400,22 @@
             "variable": "RACE",
             "comparator": "NOTIN",
             "value": [
-              "AMERICAN INDIAN OR ALASKA NATIVE",
-              "BLACK OR AFRICAN AMERICAN",
-              "NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER",
-              "WHITE"
+              "AMERICAN INDIAN OR ALASKA NATIVE | BLACK OR AFRICAN AMERICAN | NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER | WHITE"
             ]
-          },
-          "id": "AG_RACE_5",
-          "label": "Other"
+          }
         }
       ]
     },
     {
+      "name": "Ethnicity",
       "id": "AG_ETHNIC",
       "dataDriven": false,
-      "label": "Ethnicity",
+      "groupingDataset": "ADSL",
       "groupingVariable": "ETHNIC",
       "groups": [
         {
+          "name": "Hispanic or Latino",
+          "id": "AG_ETHNIC_1",
           "level": 1,
           "order": 1,
           "condition": {
@@ -410,11 +425,11 @@
             "value": [
               "HISPANIC OR LATINO"
             ]
-          },
-          "id": "AG_ETHNIC_1",
-          "label": "Hispanic or Latino"
+          }
         },
         {
+          "name": "Not Hispanic or Latino",
+          "id": "AG_ETHNIC_2",
           "level": 1,
           "order": 2,
           "condition": {
@@ -424,9 +439,7 @@
             "value": [
               "NOT HISPANIC OR LATINO"
             ]
-          },
-          "id": "AG_ETHNIC_2",
-          "label": "Not Hispanic or Latino"
+          }
         }
       ]
     }
@@ -434,32 +447,37 @@
   "methods": [
     {
       "name": "Count by group for a categorical variable",
+      "description": "Count across groups for a categorical variable, based on subject occurrence",
+      "label": "Grouped count for categorical variable",
       "id": "M_GRP_CNT",
       "operations": [
         {
           "name": "Count of subjects",
-          "id": "M_GRP_CNT_1_N",
           "label": "n",
+          "id": "M_GRP_CNT_1_N",
+          "order": 1,
           "resultPattern": "N = XXX"
         }
-      ],
-      "label": "Grouped count for categorical variable",
-      "description": "Count across groups for a categorical variable, based on subject occurrence"
+      ]
     },
     {
       "name": "Summary by group of a categorical variable",
+      "description": "Descriptive summary statistics across groups for a categorical variable, based on subject occurrence",
+      "label": "Grouped summary of categorical variable",
       "id": "M_GRP_SUM_CATEG",
       "operations": [
         {
           "name": "Count of subjects",
-          "id": "M_GRP_SUM_CATEG_1_N",
           "label": "n",
+          "id": "M_GRP_SUM_CATEG_1_N",
+          "order": 1,
           "resultPattern": "n"
         },
         {
           "name": "Percent of subjects",
-          "id": "M_GRP_SUM_CATEG_2_PCT",
           "label": "%",
+          "id": "M_GRP_SUM_CATEG_2_PCT",
+          "order": 2,
           "referencedOperationRelationships": [
             {
               "id": "M_GRP_SUM_CATEG_2_PCT_NUM",
@@ -481,8 +499,6 @@
           "resultPattern": "(%)"
         }
       ],
-      "label": "Grouped summary of categorical variable",
-      "description": "Descriptive summary statistics across groups for a categorical variable, based on subject occurrence",
       "documentRefs": [
         {
           "referenceDocumentId": "CDISCPILOT01_SAP",
@@ -500,41 +516,46 @@
     },
     {
       "name": "Summary by group of a continuous variable",
+      "description": "Descriptive summary statistics across groups for a continuous variable",
+      "label": "Grouped summary of continuous variable",
       "id": "M_GRP_SUM_CONTIN",
       "operations": [
         {
           "name": "Mean",
-          "id": "M_GRP_SUM_CONTIN_1_MEAN",
           "label": "Mean",
+          "id": "M_GRP_SUM_CONTIN_1_MEAN",
+          "order": 1,
           "resultPattern": "X.X"
         },
         {
           "name": "Standard deviation",
-          "id": "M_GRP_SUM_CONTIN_2_SD",
           "label": "SD",
+          "id": "M_GRP_SUM_CONTIN_2_SD",
+          "order": 2,
           "resultPattern": "(Y.Y)"
         },
         {
           "name": "Median",
-          "id": "M_GRP_SUM_CONTIN_3_MEDIAN",
           "label": "Median",
+          "id": "M_GRP_SUM_CONTIN_3_MEDIAN",
+          "order": 3,
           "resultPattern": "X.X"
         },
         {
           "name": "Minimum",
-          "id": "M_GRP_SUM_CONTIN_4_MIN",
           "label": "min",
+          "id": "M_GRP_SUM_CONTIN_4_MIN",
+          "order": 4,
           "resultPattern": "Y.Y"
         },
         {
           "name": "Maximum",
-          "id": "M_GRP_SUM_CONTIN_5_MAX",
           "label": "max",
+          "id": "M_GRP_SUM_CONTIN_5_MAX",
+          "order": 5,
           "resultPattern": "Z.Z"
         }
       ],
-      "label": "Grouped summary of continuous variable",
-      "description": "Descriptive summary statistics across groups for a continuous variable",
       "documentRefs": [
         {
           "referenceDocumentId": "CDISCPILOT01_SAP",
@@ -583,8 +604,8 @@
       "orderedGroupings": [
         {
           "order": 1,
-          "resultsByGroup": true,
-          "groupingId": "AG_TRT"
+          "groupingId": "AG_TRT",
+          "resultsByGroup": true
         }
       ],
       "results": [
@@ -654,13 +675,13 @@
       "orderedGroupings": [
         {
           "order": 1,
-          "resultsByGroup": true,
-          "groupingId": "AG_TRT"
+          "groupingId": "AG_TRT",
+          "resultsByGroup": true
         },
         {
           "order": 2,
-          "resultsByGroup": true,
-          "groupingId": "AG_SEX"
+          "groupingId": "AG_SEX",
+          "resultsByGroup": true
         }
       ],
       "referencedAnalysisOperations": [
@@ -887,8 +908,8 @@
       "orderedGroupings": [
         {
           "order": 1,
-          "resultsByGroup": true,
-          "groupingId": "AG_TRT"
+          "groupingId": "AG_TRT",
+          "resultsByGroup": true
         }
       ],
       "results": [
@@ -1090,18 +1111,18 @@
       "orderedGroupings": [
         {
           "order": 1,
-          "resultsByGroup": true,
-          "groupingId": "AG_TRT"
+          "groupingId": "AG_TRT",
+          "resultsByGroup": true
         },
         {
           "order": 2,
-          "resultsByGroup": true,
-          "groupingId": "AG_AGEGR2"
+          "groupingId": "AG_AGEGR2",
+          "resultsByGroup": true
         },
         {
           "order": 3,
-          "resultsByGroup": true,
-          "groupingId": "AG_AGEGR3"
+          "groupingId": "AG_AGEGR3",
+          "resultsByGroup": true
         }
       ],
       "referencedAnalysisOperations": [
@@ -1490,13 +1511,13 @@
       "orderedGroupings": [
         {
           "order": 1,
-          "resultsByGroup": true,
-          "groupingId": "AG_TRT"
+          "groupingId": "AG_TRT",
+          "resultsByGroup": true
         },
         {
           "order": 2,
-          "resultsByGroup": true,
-          "groupingId": "AG_RACE"
+          "groupingId": "AG_RACE",
+          "resultsByGroup": true
         }
       ],
       "referencedAnalysisOperations": [
@@ -1753,13 +1774,13 @@
       "orderedGroupings": [
         {
           "order": 1,
-          "resultsByGroup": true,
-          "groupingId": "AG_TRT"
+          "groupingId": "AG_TRT",
+          "resultsByGroup": true
         },
         {
           "order": 2,
-          "resultsByGroup": true,
-          "groupingId": "AG_ETHNIC"
+          "groupingId": "AG_ETHNIC",
+          "resultsByGroup": true
         }
       ],
       "referencedAnalysisOperations": [
@@ -1960,23 +1981,6 @@
     {
       "name": "Table 2. Baseline Demographic and Clinical Characteristics, Safety Population, Trial CDISCPILOT01",
       "id": "O_T2",
-      "version": 1,
-      "fileSpecifications": [
-        {
-          "name": "t2-demog",
-          "fileType": {
-            "controlledTerm": "rtf"
-          },
-          "location": "."
-        },
-        {
-          "name": "t2-demog",
-          "fileType": {
-            "controlledTerm": "pdf"
-          },
-          "location": "."
-        }
-      ],
       "displays": [
         {
           "order": 1,
@@ -1999,12 +2003,12 @@
                 ]
               },
               {
-                "sectionType": "Footnote",
+                "sectionType": "Footer",
                 "orderedSubSections": [
                   {
                     "order": 1,
                     "subSection": {
-                      "id": "D_T2_Fnote_1",
+                      "id": "D_T2_Footer_1",
                       "text": "Source dataset: adsl, Generated on: DDMONYYYY:HH:MM"
                     }
                   }
@@ -2050,6 +2054,25 @@
               }
             ]
           }
+        }
+      ],
+      "version": 1,
+      "fileSpecifications": [
+        {
+          "name": "t2-demog (RTF)",
+          "label": "t2-demog",
+          "fileType": {
+            "controlledTerm": "rtf"
+          },
+          "location": "./t2-demog.rtf"
+        },
+        {
+          "name": "t2-demog (PDF)",
+          "label": "t2-demog",
+          "fileType": {
+            "controlledTerm": "pdf"
+          },
+          "location": "./t2-demog.pdf"
         }
       ],
       "documentRefs": [

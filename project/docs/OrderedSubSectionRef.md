@@ -13,8 +13,7 @@ URI: [ars:OrderedSubSectionRef](https://www.cdisc.org/ars/1-0/OrderedSubSectionR
 ```mermaid
  classDiagram
     class OrderedSubSectionRef
-      OrderedDisplaySubSection <|-- OrderedSubSectionRef
-
+      OrderedDisplaySubSection <|-- OrderedSubSectionRef        
       OrderedSubSectionRef : order
         OrderedSubSectionRef : subSection
         OrderedSubSectionRef --|> DisplaySubSection : subSection
@@ -142,8 +141,7 @@ attributes:
     alias: order
     owner: OrderedSubSectionRef
     domain_of:
-    - OrderedListItem
-    - WhereClause
+    - LevelOrder
     - Operation
     - OrderedGroupingFactor
     - OrderedDisplay

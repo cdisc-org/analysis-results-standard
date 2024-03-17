@@ -13,16 +13,18 @@ URI: [ars:DataSubset](https://www.cdisc.org/ars/1-0/DataSubset)
 ```mermaid
  classDiagram
     class DataSubset
-      WhereClause <|-- DataSubset
-
+      WhereClause <|-- DataSubset        
+      NamedObject <|-- DataSubset        
       DataSubset : id
-        DataSubset : label
-        DataSubset : level
-        DataSubset : order
         DataSubset : condition
         DataSubset --|> WhereClauseCondition : condition
         DataSubset : compoundExpression
         DataSubset --|> CompoundSubsetExpression : compoundExpression
+        DataSubset : name
+        DataSubset : description
+        DataSubset : label
+        DataSubset : level
+        DataSubset : order
         
 ```
 
@@ -30,8 +32,8 @@ URI: [ars:DataSubset](https://www.cdisc.org/ars/1-0/DataSubset)
 
 
 ## Inheritance
-* [WhereClause](WhereClause.md)
-    * **DataSubset**
+* [NamedObject](NamedObject.md)
+    * **DataSubset** [ [WhereClause](WhereClause.md)]
 
 
 
@@ -40,11 +42,13 @@ URI: [ars:DataSubset](https://www.cdisc.org/ars/1-0/DataSubset)
 | Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [id](id.md) | 1..1 <br/> [String](String.md) | The assigned identifying value for the instance of the class | direct |
-| [label](label.md) | 0..1 <br/> [String](String.md) | A short informative description that may be used for display | direct |
-| [level](level.md) | 1..1 <br/> [Integer](Integer.md) | The level of the entry within a hierarchical structure | [WhereClause](WhereClause.md) |
-| [order](order.md) | 1..1 <br/> [Integer](Integer.md) | The ordinal of the instance with respect to other instances | [WhereClause](WhereClause.md) |
 | [condition](condition.md) | 0..1 <br/> [WhereClauseCondition](WhereClauseCondition.md) | A simple selection criterion exressed as [dataset] | [WhereClause](WhereClause.md) |
 | [compoundExpression](compoundExpression.md) | 0..1 <br/> [CompoundSubsetExpression](CompoundSubsetExpression.md) | A compound expression that combines or negates where clauses | [WhereClause](WhereClause.md) |
+| [name](name.md) | 1..1 <br/> [String](String.md) | The name for the instance of the class | [NamedObject](NamedObject.md) |
+| [description](description.md) | 0..1 <br/> [String](String.md) | A textual description of the instance of the class | [NamedObject](NamedObject.md) |
+| [label](label.md) | 0..1 <br/> [String](String.md) | A short informative description that may be used for display | [NamedObject](NamedObject.md) |
+| [level](level.md) | 1..1 <br/> [Integer](Integer.md) | The level of the entry within a hierarchical structure | [LevelOrder](LevelOrder.md) |
+| [order](order.md) | 1..1 <br/> [Integer](Integer.md) | The ordinal of the instance with respect to other instances | [LevelOrder](LevelOrder.md) |
 
 _* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
@@ -56,6 +60,7 @@ _* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-c
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
 | [ReportingEvent](ReportingEvent.md) | [dataSubsets](dataSubsets.md) | range | [DataSubset](DataSubset.md) |
+| [ReferencedDataSubset](ReferencedDataSubset.md) | [subClauseId](subClauseId.md) | range | [DataSubset](DataSubset.md) |
 | [Analysis](Analysis.md) | [dataSubsetId](dataSubsetId.md) | range | [DataSubset](DataSubset.md) |
 
 
@@ -104,10 +109,11 @@ description: A subset of data identified by selection criteria for inclusion in 
   analysis.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
-is_a: WhereClause
+is_a: NamedObject
+mixins:
+- WhereClause
 slots:
 - id
-- label
 slot_usage:
   compoundExpression:
     name: compoundExpression
@@ -127,7 +133,9 @@ description: A subset of data identified by selection criteria for inclusion in 
   analysis.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
-is_a: WhereClause
+is_a: NamedObject
+mixins:
+- WhereClause
 slot_usage:
   compoundExpression:
     name: compoundExpression
@@ -163,53 +171,6 @@ attributes:
     - OutputDisplay
     range: string
     required: true
-  label:
-    name: label
-    description: A short informative description that may be used for display.
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    alias: label
-    owner: DataSubset
-    domain_of:
-    - NamedObject
-    - AnalysisOutputCategorization
-    - AnalysisOutputCategory
-    - AnalysisSet
-    - DataSubset
-    - GroupingFactor
-    - Group
-    - PageRef
-    range: string
-  level:
-    name: level
-    description: The level of the entry within a hierarchical structure.
-    comments:
-    - 1 is the top level.
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    alias: level
-    owner: DataSubset
-    domain_of:
-    - OrderedListItem
-    - WhereClause
-    range: integer
-    required: true
-  order:
-    name: order
-    description: The ordinal of the instance with respect to other instances.
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    alias: order
-    owner: DataSubset
-    domain_of:
-    - OrderedListItem
-    - WhereClause
-    - Operation
-    - OrderedGroupingFactor
-    - OrderedDisplay
-    - OrderedDisplaySubSection
-    range: integer
-    required: true
   condition:
     name: condition
     description: A simple selection criterion exressed as [dataset].[variable] [comparator]
@@ -231,6 +192,70 @@ attributes:
     domain_of:
     - WhereClause
     range: CompoundSubsetExpression
+  name:
+    name: name
+    description: The name for the instance of the class.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: name
+    owner: DataSubset
+    domain_of:
+    - NamedObject
+    range: string
+    required: true
+  description:
+    name: description
+    description: A textual description of the instance of the class.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: description
+    owner: DataSubset
+    domain_of:
+    - NamedObject
+    - SponsorTerm
+    - ReferencedOperationRelationship
+    range: string
+  label:
+    name: label
+    description: A short informative description that may be used for display.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: label
+    owner: DataSubset
+    domain_of:
+    - NamedObject
+    - AnalysisOutputCategorization
+    - AnalysisOutputCategory
+    - PageRef
+    range: string
+  level:
+    name: level
+    description: The level of the entry within a hierarchical structure.
+    comments:
+    - 1 is the top level.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: level
+    owner: DataSubset
+    domain_of:
+    - LevelOrder
+    range: integer
+    required: true
+  order:
+    name: order
+    description: The ordinal of the instance with respect to other instances.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: order
+    owner: DataSubset
+    domain_of:
+    - LevelOrder
+    - Operation
+    - OrderedGroupingFactor
+    - OrderedDisplay
+    - OrderedDisplaySubSection
+    range: integer
+    required: true
 
 ```
 </details>

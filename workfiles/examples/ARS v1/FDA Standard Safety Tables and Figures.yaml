@@ -1,71 +1,77 @@
 name: FDA Standard Safety Tables and Figures
 id: FDASTF
-listOfPlannedAnalyses:
-  listItems:
-  - name: Table 2. Baseline Demographic and Clinical Characteristics, Safety Population,
-      Trial CDISCPILOT01
-    level: 1
-    order: 1
-    outputId: O_T2
-    sublist:
-      listItems:
-      - name: Summary of Subjects by Treatment
-        level: 2
-        order: 1
-        analysisId: A_SAF_SUM_USUBJID_TRT
-      - name: Sex
-        level: 2
-        order: 2
-        sublist:
-          listItems:
-          - name: Summary of Subjects by Treatment
-            level: 3
-            order: 1
-            analysisId: A_SAF_SUM_USUBJID_TRT_SEX
-      - name: Age
-        level: 2
-        order: 3
-        sublist:
-          listItems:
-          - name: Summary of Age by Treatment
-            level: 3
-            order: 1
-            analysisId: A_SAF_SUM_AGE_TRT
-      - name: Age groups
-        level: 2
-        order: 4
-        sublist:
-          listItems:
-          - name: Summary of Subjects by Treatment
-            level: 3
-            order: 1
-            analysisId: A_SAF_SUM_USUBJID_TRT_AGEGRP
-      - name: Race
-        level: 2
-        order: 5
-        sublist:
-          listItems:
-          - name: Summary of Subjects by Treatment
-            level: 3
-            order: 1
-            analysisId: A_SAF_SUM_USUBJID_TRT_RACE
-      - name: Ethnicity
-        level: 2
-        order: 6
-        sublist:
-          listItems:
-          - name: Summary of Subjects by Treatment
-            level: 3
-            order: 1
-            analysisId: A_SAF_SUM_USUBJID_TRT_ETHNIC
+mainListOfContents:
+  name: List of Planned Analyses
+  label: LOPA
+  contentsList:
+    listItems:
+    - name: Table 2. Baseline Demographic and Clinical Characteristics, Safety Population,
+        Trial CDISCPILOT01
+      level: 1
+      order: 1
+      outputId: O_T2
+      sublist:
+        listItems:
+        - name: Summary of Subjects by Treatment
+          level: 2
+          order: 1
+          analysisId: A_SAF_SUM_USUBJID_TRT
+        - name: Sex
+          level: 2
+          order: 2
+          sublist:
+            listItems:
+            - name: Summary of Subjects by Treatment
+              level: 3
+              order: 1
+              analysisId: A_SAF_SUM_USUBJID_TRT_SEX
+        - name: Age
+          level: 2
+          order: 3
+          sublist:
+            listItems:
+            - name: Summary of Age by Treatment
+              level: 3
+              order: 1
+              analysisId: A_SAF_SUM_AGE_TRT
+        - name: Age groups
+          level: 2
+          order: 4
+          sublist:
+            listItems:
+            - name: Summary of Subjects by Treatment
+              level: 3
+              order: 1
+              analysisId: A_SAF_SUM_USUBJID_TRT_AGEGRP
+        - name: Race
+          level: 2
+          order: 5
+          sublist:
+            listItems:
+            - name: Summary of Subjects by Treatment
+              level: 3
+              order: 1
+              analysisId: A_SAF_SUM_USUBJID_TRT_RACE
+        - name: Ethnicity
+          level: 2
+          order: 6
+          sublist:
+            listItems:
+            - name: Summary of Subjects by Treatment
+              level: 3
+              order: 1
+              analysisId: A_SAF_SUM_USUBJID_TRT_ETHNIC
 version: 1
-listOfPlannedOutputs:
-  listItems:
-  - name: Table 2. Baseline Demographic and Clinical Characteristics, Safety Population,
-      Trial CDISCPILOT01
-    level: 1
-    order: 1
-    outputId: O_T2
+otherListsOfContents:
+- name: List of Planned Outputs
+  label: LOPO
+  contentsList:
+    listItems:
+    - name: Table 2. Baseline Demographic and Clinical Characteristics, Safety Population,
+        Trial CDISCPILOT01
+      level: 1
+      order: 1
+      outputId: O_T2
 referenceDocuments:
 - name: Statistical Analysis Plan
   id: CDISCPILOT01_SAP
@@ -77,7 +83,9 @@ referenceDocuments:
   id: TABLE2_SAS
   location: ./table2.sas
 analysisSets:
-- level: 1
+- name: Safety Population
+  id: AS_SAF
+  level: 1
   order: 1
   condition:
     dataset: ADSL
@@ -85,15 +93,16 @@ analysisSets:
     comparator: EQ
     value:
     - Y
-  id: AS_SAF
-  label: Safety Population
 analysisGroupings:
-- id: AG_TRT
+- name: Treatment
+  id: AG_TRT
   dataDriven: false
-  label: Treatment
+  groupingDataset: ADSL
   groupingVariable: TRT01A
   groups:
-  - level: 1
+  - name: Placebo
+    id: AG_TRT_1
+    level: 1
     order: 1
     condition:
       dataset: ADSL
@@ -101,9 +110,9 @@ analysisGroupings:
       comparator: EQ
       value:
       - Placebo
-    id: AG_TRT_1
-    label: Placebo
-  - level: 1
+  - name: Xanomeline Low Dose
+    id: AG_TRT_2
+    level: 1
     order: 2
     condition:
       dataset: ADSL
@@ -111,9 +120,9 @@ analysisGroupings:
       comparator: EQ
       value:
       - Xanomeline Low Dose
-    id: AG_TRT_2
-    label: Xanomeline Low Dose
-  - level: 1
+  - name: Xanomeline High Dose
+    id: AG_TRT_3
+    level: 1
     order: 3
     condition:
       dataset: ADSL
@@ -121,14 +130,15 @@ analysisGroupings:
       comparator: EQ
       value:
       - Xanomeline High Dose
-    id: AG_TRT_3
-    label: Xanomeline High Dose
-- id: AG_SEX
+- name: Gender
+  id: AG_SEX
   dataDriven: false
-  label: Gender
+  groupingDataset: ADSL
   groupingVariable: SEX
   groups:
-  - level: 1
+  - name: Male
+    id: AG_SEX_1
+    level: 1
     order: 1
     condition:
       dataset: ADSL
@@ -136,9 +146,9 @@ analysisGroupings:
       comparator: EQ
       value:
       - M
-    id: AG_SEX_1
-    label: Male
-  - level: 1
+  - name: Female
+    id: AG_SEX_2
+    level: 1
     order: 2
     condition:
       dataset: ADSL
@@ -146,14 +156,15 @@ analysisGroupings:
       comparator: EQ
       value:
       - F
-    id: AG_SEX_2
-    label: Female
-- id: AG_AGEGR2
+- name: Age groups
+  id: AG_AGEGR2
   dataDriven: false
-  label: Age groups
+  groupingDataset: ADSL
   groupingVariable: AGEGR2
   groups:
-  - level: 1
+  - name: < 65
+    id: AG_AGEGR2_1
+    level: 1
     order: 1
     condition:
       dataset: ADSL
@@ -161,9 +172,9 @@ analysisGroupings:
       comparator: EQ
       value:
       - <65
-    id: AG_AGEGR2_1
-    label: < 65
-  - level: 1
+  - name: ≥ 65
+    id: AG_AGEGR2_2
+    level: 1
     order: 2
     condition:
       dataset: ADSL
@@ -171,14 +182,15 @@ analysisGroupings:
       comparator: EQ
       value:
       - 65+
-    id: AG_AGEGR2_2
-    label: ≥ 65
-- id: AG_AGEGR3
+- name: Age sub-groups
+  id: AG_AGEGR3
   dataDriven: false
-  label: Age sub-groups
+  groupingDataset: ADSL
   groupingVariable: AGEGR3
   groups:
-  - level: 1
+  - name: ≥17 to <65
+    id: AG_AGEGR3_1
+    level: 1
     order: 1
     condition:
       dataset: ADSL
@@ -186,9 +198,9 @@ analysisGroupings:
       comparator: EQ
       value:
       - 17-<65
-    id: AG_AGEGR3_1
-    label: ≥17 to <65
-  - level: 1
+  - name: ≥ 65 to <75
+    id: AG_AGEGR3_2
+    level: 1
     order: 2
     condition:
       dataset: ADSL
@@ -196,9 +208,9 @@ analysisGroupings:
       comparator: EQ
       value:
       - 65-<75
-    id: AG_AGEGR3_2
-    label: ≥ 65 to <75
-  - level: 1
+  - name: ≥ 75
+    id: AG_AGEGR3_3
+    level: 1
     order: 3
     condition:
       dataset: ADSL
@@ -206,14 +218,15 @@ analysisGroupings:
       comparator: EQ
       value:
       - 75+
-    id: AG_AGEGR3_3
-    label: ≥ 75
-- id: AG_RACE
+- name: Race
+  id: AG_RACE
   dataDriven: false
-  label: Race
+  groupingDataset: ADSL
   groupingVariable: RACE
   groups:
-  - level: 1
+  - name: American Indian or Alaska Native
+    id: AG_RACE_1
+    level: 1
     order: 1
     condition:
       dataset: ADSL
@@ -221,9 +234,9 @@ analysisGroupings:
       comparator: EQ
       value:
       - AMERICAN INDIAN OR ALASKA NATIVE
-    id: AG_RACE_1
-    label: American Indian or Alaska Native
-  - level: 1
+  - name: Black or African American
+    id: AG_RACE_2
+    level: 1
     order: 2
     condition:
       dataset: ADSL
@@ -231,9 +244,9 @@ analysisGroupings:
       comparator: EQ
       value:
       - BLACK OR AFRICAN AMERICAN
-    id: AG_RACE_2
-    label: Black or African American
-  - level: 1
+  - name: Native Hawaiian or Other Pacific Islander
+    id: AG_RACE_3
+    level: 1
     order: 3
     condition:
       dataset: ADSL
@@ -241,9 +254,9 @@ analysisGroupings:
       comparator: EQ
       value:
       - NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER
-    id: AG_RACE_3
-    label: Native Hawaiian or Other Pacific Islander
-  - level: 1
+  - name: White
+    id: AG_RACE_4
+    level: 1
     order: 4
     condition:
       dataset: ADSL
@@ -251,27 +264,26 @@ analysisGroupings:
       comparator: EQ
       value:
       - WHITE
-    id: AG_RACE_4
-    label: White
-  - level: 1
+  - name: Other
+    id: AG_RACE_5
+    level: 1
     order: 5
     condition:
       dataset: ADSL
       variable: RACE
       comparator: NOTIN
       value:
-      - AMERICAN INDIAN OR ALASKA NATIVE
-      - BLACK OR AFRICAN AMERICAN
-      - NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER
-      - WHITE
-    id: AG_RACE_5
-    label: Other
-- id: AG_ETHNIC
+      - AMERICAN INDIAN OR ALASKA NATIVE | BLACK OR AFRICAN AMERICAN | NATIVE HAWAIIAN
+        OR OTHER PACIFIC ISLANDER | WHITE
+- name: Ethnicity
+  id: AG_ETHNIC
   dataDriven: false
-  label: Ethnicity
+  groupingDataset: ADSL
   groupingVariable: ETHNIC
   groups:
-  - level: 1
+  - name: Hispanic or Latino
+    id: AG_ETHNIC_1
+    level: 1
     order: 1
     condition:
       dataset: ADSL
@@ -279,9 +291,9 @@ analysisGroupings:
       comparator: EQ
       value:
       - HISPANIC OR LATINO
-    id: AG_ETHNIC_1
-    label: Hispanic or Latino
-  - level: 1
+  - name: Not Hispanic or Latino
+    id: AG_ETHNIC_2
+    level: 1
     order: 2
     condition:
       dataset: ADSL
@@ -289,28 +301,32 @@ analysisGroupings:
       comparator: EQ
       value:
       - NOT HISPANIC OR LATINO
-    id: AG_ETHNIC_2
-    label: Not Hispanic or Latino
 methods:
 - name: Count by group for a categorical variable
+  description: Count across groups for a categorical variable, based on subject occurrence
+  label: Grouped count for categorical variable
   id: M_GRP_CNT
   operations:
   - name: Count of subjects
-    id: M_GRP_CNT_1_N
     label: n
+    id: M_GRP_CNT_1_N
+    order: 1
     resultPattern: N = XXX
-  label: Grouped count for categorical variable
-  description: Count across groups for a categorical variable, based on subject occurrence
 - name: Summary by group of a categorical variable
+  description: Descriptive summary statistics across groups for a categorical variable,
+    based on subject occurrence
+  label: Grouped summary of categorical variable
   id: M_GRP_SUM_CATEG
   operations:
   - name: Count of subjects
-    id: M_GRP_SUM_CATEG_1_N
     label: n
+    id: M_GRP_SUM_CATEG_1_N
+    order: 1
     resultPattern: n
   - name: Percent of subjects
-    id: M_GRP_SUM_CATEG_2_PCT
     label: '%'
+    id: M_GRP_SUM_CATEG_2_PCT
+    order: 2
     referencedOperationRelationships:
     - id: M_GRP_SUM_CATEG_2_PCT_NUM
       referencedOperationRole:
@@ -327,9 +343,6 @@ methods:
         of the percentage. The referenced analysis should have the same analysis set
         and subject grouping(s) as the analysis containing this percent operation.
     resultPattern: (%)
-  label: Grouped summary of categorical variable
-  description: Descriptive summary statistics across groups for a categorical variable,
-    based on subject occurrence
   documentRefs:
   - referenceDocumentId: CDISCPILOT01_SAP
     pageRefs:
@@ -338,30 +351,35 @@ methods:
       pageNumbers:
       - 9
 - name: Summary by group of a continuous variable
+  description: Descriptive summary statistics across groups for a continuous variable
+  label: Grouped summary of continuous variable
   id: M_GRP_SUM_CONTIN
   operations:
   - name: Mean
-    id: M_GRP_SUM_CONTIN_1_MEAN
     label: Mean
+    id: M_GRP_SUM_CONTIN_1_MEAN
+    order: 1
     resultPattern: X.X
   - name: Standard deviation
-    id: M_GRP_SUM_CONTIN_2_SD
     label: SD
+    id: M_GRP_SUM_CONTIN_2_SD
+    order: 2
     resultPattern: (Y.Y)
   - name: Median
-    id: M_GRP_SUM_CONTIN_3_MEDIAN
     label: Median
+    id: M_GRP_SUM_CONTIN_3_MEDIAN
+    order: 3
     resultPattern: X.X
   - name: Minimum
-    id: M_GRP_SUM_CONTIN_4_MIN
     label: min
+    id: M_GRP_SUM_CONTIN_4_MIN
+    order: 4
     resultPattern: Y.Y
   - name: Maximum
-    id: M_GRP_SUM_CONTIN_5_MAX
     label: max
+    id: M_GRP_SUM_CONTIN_5_MAX
+    order: 5
     resultPattern: Z.Z
-  label: Grouped summary of continuous variable
-  description: Descriptive summary statistics across groups for a continuous variable
   documentRefs:
   - referenceDocumentId: CDISCPILOT01_SAP
     pageRefs:
@@ -390,8 +408,8 @@ analyses:
   analysisSetId: AS_SAF
   orderedGroupings:
   - order: 1
-    resultsByGroup: true
     groupingId: AG_TRT
+    resultsByGroup: true
   results:
   - operationId: M_GRP_CNT_1_N
     resultGroups:
@@ -431,11 +449,11 @@ analyses:
   analysisSetId: AS_SAF
   orderedGroupings:
   - order: 1
-    resultsByGroup: true
     groupingId: AG_TRT
-  - order: 2
     resultsByGroup: true
+  - order: 2
     groupingId: AG_SEX
+    resultsByGroup: true
   referencedAnalysisOperations:
   - referencedOperationRelationshipId: M_GRP_SUM_CATEG_2_PCT_NUM
     analysisId: A_SAF_SUM_USUBJID_TRT_SEX
@@ -558,8 +576,8 @@ analyses:
   analysisSetId: AS_SAF
   orderedGroupings:
   - order: 1
-    resultsByGroup: true
     groupingId: AG_TRT
+    resultsByGroup: true
   results:
   - operationId: M_GRP_SUM_CONTIN_1_MEAN
     resultGroups:
@@ -671,14 +689,14 @@ analyses:
   analysisSetId: AS_SAF
   orderedGroupings:
   - order: 1
-    resultsByGroup: true
     groupingId: AG_TRT
+    resultsByGroup: true
   - order: 2
-    resultsByGroup: true
     groupingId: AG_AGEGR2
-  - order: 3
     resultsByGroup: true
+  - order: 3
     groupingId: AG_AGEGR3
+    resultsByGroup: true
   referencedAnalysisOperations:
   - referencedOperationRelationshipId: M_GRP_SUM_CATEG_2_PCT_NUM
     analysisId: A_SAF_SUM_USUBJID_TRT_AGEGRP
@@ -885,11 +903,11 @@ analyses:
   analysisSetId: AS_SAF
   orderedGroupings:
   - order: 1
-    resultsByGroup: true
     groupingId: AG_TRT
-  - order: 2
     resultsByGroup: true
+  - order: 2
     groupingId: AG_RACE
+    resultsByGroup: true
   referencedAnalysisOperations:
   - referencedOperationRelationshipId: M_GRP_SUM_CATEG_2_PCT_NUM
     analysisId: A_SAF_SUM_USUBJID_TRT_RACE
@@ -1028,11 +1046,11 @@ analyses:
   analysisSetId: AS_SAF
   orderedGroupings:
   - order: 1
-    resultsByGroup: true
     groupingId: AG_TRT
-  - order: 2
     resultsByGroup: true
+  - order: 2
     groupingId: AG_ETHNIC
+    resultsByGroup: true
   referencedAnalysisOperations:
   - referencedOperationRelationshipId: M_GRP_SUM_CATEG_2_PCT_NUM
     analysisId: A_SAF_SUM_USUBJID_TRT_ETHNIC
@@ -1139,16 +1157,6 @@ outputs:
 - name: Table 2. Baseline Demographic and Clinical Characteristics, Safety Population,
     Trial CDISCPILOT01
   id: O_T2
-  version: 1
-  fileSpecifications:
-  - name: t2-demog
-    fileType:
-      controlledTerm: rtf
-    location: .
-  - name: t2-demog
-    fileType:
-      controlledTerm: pdf
-    location: .
   displays:
   - order: 1
     display:
@@ -1165,11 +1173,11 @@ outputs:
             id: D_T2_Title_1
             text: Table 2. Baseline Demographic and Clinical Characteristics, Safety
               Population, Trial CDISCPILOT01
-      - sectionType: Footnote
+      - sectionType: Footer
         orderedSubSections:
         - order: 1
           subSection:
-            id: D_T2_Fnote_1
+            id: D_T2_Footer_1
             text: 'Source dataset: adsl, Generated on: DDMONYYYY:HH:MM'
       - sectionType: Rowlabel Header
         orderedSubSections:
@@ -1191,6 +1199,18 @@ outputs:
           subSection:
             id: D_T2_Abbrv_3
             text: SD, standard deviation
+  version: 1
+  fileSpecifications:
+  - name: t2-demog (RTF)
+    label: t2-demog
+    fileType:
+      controlledTerm: rtf
+    location: ./t2-demog.rtf
+  - name: t2-demog (PDF)
+    label: t2-demog
+    fileType:
+      controlledTerm: pdf
+    location: ./t2-demog.pdf
   documentRefs:
   - referenceDocumentId: FDA-2022-N-1961-0046
     pageRefs:

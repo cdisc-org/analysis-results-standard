@@ -13,12 +13,11 @@ URI: [ars:CompoundGroupExpression](https://www.cdisc.org/ars/1-0/CompoundGroupEx
 ```mermaid
  classDiagram
     class CompoundGroupExpression
-      WhereClauseCompoundExpression <|-- CompoundGroupExpression
-
+      WhereClauseCompoundExpression <|-- CompoundGroupExpression        
       CompoundGroupExpression : logicalOperator
         CompoundGroupExpression --|> ExpressionLogicalOperatorEnum : logicalOperator
         CompoundGroupExpression : whereClauses
-        CompoundGroupExpression --|> Group : whereClauses
+        CompoundGroupExpression --|> SubClause : whereClauses
         
 ```
 
@@ -36,7 +35,7 @@ URI: [ars:CompoundGroupExpression](https://www.cdisc.org/ars/1-0/CompoundGroupEx
 | Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [logicalOperator](logicalOperator.md) | 1..1 <br/> [ExpressionLogicalOperatorEnum](ExpressionLogicalOperatorEnum.md) | The boolean operator that is used to combine (AND, OR) or negate (NOT) the wh... | [WhereClauseCompoundExpression](WhereClauseCompoundExpression.md) |
-| [whereClauses](whereClauses.md) | 0..* <br/> [Group](Group.md) | A list of one or more where clauses (selection criteria) to be combined or ne... | [WhereClauseCompoundExpression](WhereClauseCompoundExpression.md) |
+| [whereClauses](whereClauses.md) | 0..* <br/> [SubClause](SubClause.md) | A list of one or more where clauses (selection criteria) to be combined or ne... | [WhereClauseCompoundExpression](WhereClauseCompoundExpression.md) |
 
 _* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
@@ -48,8 +47,6 @@ _* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-c
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
 | [Group](Group.md) | [compoundExpression](compoundExpression.md) | range | [CompoundGroupExpression](CompoundGroupExpression.md) |
-| [AnalysisGroup](AnalysisGroup.md) | [compoundExpression](compoundExpression.md) | range | [CompoundGroupExpression](CompoundGroupExpression.md) |
-| [DataGroup](DataGroup.md) | [compoundExpression](compoundExpression.md) | range | [CompoundGroupExpression](CompoundGroupExpression.md) |
 
 
 
@@ -104,8 +101,9 @@ slot_usage:
     name: whereClauses
     domain_of:
     - WhereClauseCompoundExpression
-    range: Group
-    inlined: false
+    any_of:
+    - range: ReferencedGroup
+    - range: WhereClause
 
 ```
 </details>
@@ -126,8 +124,9 @@ slot_usage:
     name: whereClauses
     domain_of:
     - WhereClauseCompoundExpression
-    range: Group
-    inlined: false
+    any_of:
+    - range: ReferencedGroup
+    - range: WhereClause
 attributes:
   logicalOperator:
     name: logicalOperator
@@ -153,8 +152,12 @@ attributes:
     owner: CompoundGroupExpression
     domain_of:
     - WhereClauseCompoundExpression
-    range: Group
-    inlined: false
+    range: SubClause
+    inlined: true
+    inlined_as_list: true
+    any_of:
+    - range: ReferencedGroup
+    - range: WhereClause
 
 ```
 </details>

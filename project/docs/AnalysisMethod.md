@@ -13,8 +13,7 @@ URI: [ars:AnalysisMethod](https://www.cdisc.org/ars/1-0/AnalysisMethod)
 ```mermaid
  classDiagram
     class AnalysisMethod
-      NamedObject <|-- AnalysisMethod
-
+      NamedObject <|-- AnalysisMethod        
       AnalysisMethod : id
         AnalysisMethod : documentRefs
         AnalysisMethod --|> DocumentReference : documentRefs
@@ -232,10 +231,6 @@ attributes:
     - NamedObject
     - AnalysisOutputCategorization
     - AnalysisOutputCategory
-    - AnalysisSet
-    - DataSubset
-    - GroupingFactor
-    - Group
     - PageRef
     range: string
 

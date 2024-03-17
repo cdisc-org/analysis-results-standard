@@ -107,11 +107,21 @@ ResultGroup {
 }
 Group {
     string id  
+    string name  
+    string description  
     string label  
     integer level  
     integer order  
 }
 CompoundGroupExpression {
+    ExpressionLogicalOperatorEnum logicalOperator  
+}
+SubClause {
+    integer level  
+    integer order  
+    string subClauseId  
+}
+WhereClauseCompoundExpression {
     ExpressionLogicalOperatorEnum logicalOperator  
 }
 WhereClauseCondition {
@@ -122,10 +132,12 @@ WhereClauseCondition {
 }
 GroupingFactor {
     string id  
-    string label  
     string groupingDataset  
     string groupingVariable  
     boolean dataDriven  
+    string name  
+    string description  
+    string label  
 }
 Operation {
     string id  
@@ -165,6 +177,8 @@ OrderedGroupingFactor {
 }
 DataSubset {
     string id  
+    string name  
+    string description  
     string label  
     integer level  
     integer order  
@@ -172,47 +186,16 @@ DataSubset {
 CompoundSubsetExpression {
     ExpressionLogicalOperatorEnum logicalOperator  
 }
-WhereClause {
-    integer level  
-    integer order  
-}
-WhereClauseCompoundExpression {
-    ExpressionLogicalOperatorEnum logicalOperator  
-}
 AnalysisSet {
     string id  
+    string name  
+    string description  
     string label  
     integer level  
     integer order  
 }
 CompoundSetExpression {
     ExpressionLogicalOperatorEnum logicalOperator  
-}
-DataGroupingFactor {
-    string id  
-    string label  
-    string groupingDataset  
-    string groupingVariable  
-    boolean dataDriven  
-}
-DataGroup {
-    string id  
-    string label  
-    integer level  
-    integer order  
-}
-SubjectGroupingFactor {
-    string id  
-    string label  
-    string groupingDataset  
-    string groupingVariable  
-    boolean dataDriven  
-}
-AnalysisGroup {
-    string id  
-    string label  
-    integer level  
-    integer order  
 }
 TerminologyExtension {
     string id  
@@ -240,9 +223,8 @@ ReportingEvent ||--}o ReferenceDocument : "referenceDocuments"
 ReportingEvent ||--}o TerminologyExtension : "terminologyExtensions"
 ReportingEvent ||--}o AnalysisOutputCategorization : "analysisOutputCategorizations"
 ReportingEvent ||--}o AnalysisSet : "analysisSets"
-ReportingEvent ||--}o SubjectGroupingFactor : "analysisGroupings"
 ReportingEvent ||--}o DataSubset : "dataSubsets"
-ReportingEvent ||--}o DataGroupingFactor : "dataGroupings"
+ReportingEvent ||--}o GroupingFactor : "analysisGroupings"
 ReportingEvent ||--}o AnalysisMethod : "methods"
 ReportingEvent ||--}o Analysis : "analyses"
 ReportingEvent ||--}o GlobalDisplaySection : "globalDisplaySections"
@@ -283,7 +265,10 @@ ResultGroup ||--|| GroupingFactor : "groupingId"
 ResultGroup ||--|o Group : "groupId"
 Group ||--|o WhereClauseCondition : "condition"
 Group ||--|o CompoundGroupExpression : "compoundExpression"
-CompoundGroupExpression ||--}o Group : "whereClauses"
+CompoundGroupExpression ||--}o SubClause : "whereClauses"
+SubClause ||--|o WhereClauseCondition : "condition"
+SubClause ||--|o WhereClauseCompoundExpression : "compoundExpression"
+WhereClauseCompoundExpression ||--}o SubClause : "whereClauses"
 GroupingFactor ||--}o Group : "groups"
 Operation ||--}o ReferencedOperationRelationship : "referencedOperationRelationships"
 ReferencedOperationRelationship ||--|| ExtensibleTerminologyTerm : "referencedOperationRole"
@@ -299,19 +284,10 @@ AnalysisProgrammingCodeTemplate ||--}o TemplateCodeParameter : "parameters"
 OrderedGroupingFactor ||--|| GroupingFactor : "groupingId"
 DataSubset ||--|o WhereClauseCondition : "condition"
 DataSubset ||--|o CompoundSubsetExpression : "compoundExpression"
-CompoundSubsetExpression ||--}o WhereClause : "whereClauses"
-WhereClause ||--|o WhereClauseCondition : "condition"
-WhereClause ||--|o WhereClauseCompoundExpression : "compoundExpression"
-WhereClauseCompoundExpression ||--}o WhereClause : "whereClauses"
+CompoundSubsetExpression ||--}o SubClause : "whereClauses"
 AnalysisSet ||--|o WhereClauseCondition : "condition"
 AnalysisSet ||--|o CompoundSetExpression : "compoundExpression"
-CompoundSetExpression ||--}o AnalysisSet : "whereClauses"
-DataGroupingFactor ||--}o DataGroup : "groups"
-DataGroup ||--|o WhereClauseCondition : "condition"
-DataGroup ||--|o CompoundGroupExpression : "compoundExpression"
-SubjectGroupingFactor ||--}o AnalysisGroup : "groups"
-AnalysisGroup ||--|o WhereClauseCondition : "condition"
-AnalysisGroup ||--|o CompoundGroupExpression : "compoundExpression"
+CompoundSetExpression ||--}o SubClause : "whereClauses"
 TerminologyExtension ||--}| SponsorTerm : "sponsorTerms"
 ListOfContents ||--|| NestedList : "contentsList"
 NestedList ||--}o OrderedListItem : "listItems"

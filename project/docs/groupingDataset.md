@@ -19,8 +19,6 @@ URI: [ars:groupingDataset](https://www.cdisc.org/ars/1-0/groupingDataset)
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 [GroupingFactor](GroupingFactor.md) | A factor used to subdivide either the subject population or data records in a... |  no  |
-[SubjectGroupingFactor](SubjectGroupingFactor.md) | A factor used to subdivide the subject population for comparative analysis (e |  no  |
-[DataGroupingFactor](DataGroupingFactor.md) | A factor used to subdivide data records in an analysis dataset for analysis |  no  |
 
 
 

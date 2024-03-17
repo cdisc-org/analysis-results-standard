@@ -13,8 +13,7 @@ URI: [ars:ReferenceDocument](https://www.cdisc.org/ars/1-0/ReferenceDocument)
 ```mermaid
  classDiagram
     class ReferenceDocument
-      NamedObject <|-- ReferenceDocument
-
+      NamedObject <|-- ReferenceDocument        
       ReferenceDocument : id
         ReferenceDocument : location
         ReferenceDocument : name
@@ -192,10 +191,6 @@ attributes:
     - NamedObject
     - AnalysisOutputCategorization
     - AnalysisOutputCategory
-    - AnalysisSet
-    - DataSubset
-    - GroupingFactor
-    - Group
     - PageRef
     range: string
 

@@ -1,7 +1,7 @@
 # Slot: analysisGroupings
 
 
-_Characteristics used to subdivide the subject population (e.g., treatment, sex, age group)._
+_Characteristics used to subdivide the subject population (e.g., treatment, sex, age group) or data records in analysis datasets (e.g., visit, system organ class)._
 
 
 
@@ -28,7 +28,7 @@ URI: [ars:analysisGroupings](https://www.cdisc.org/ars/1-0/analysisGroupings)
 
 ## Properties
 
-* Range: [SubjectGroupingFactor](SubjectGroupingFactor.md)
+* Range: [GroupingFactor](GroupingFactor.md)
 
 * Multivalued: True
 
@@ -58,14 +58,15 @@ URI: [ars:analysisGroupings](https://www.cdisc.org/ars/1-0/analysisGroupings)
 ```yaml
 name: analysisGroupings
 description: Characteristics used to subdivide the subject population (e.g., treatment,
-  sex, age group).
+  sex, age group) or data records in analysis datasets (e.g., visit, system organ
+  class).
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 multivalued: true
 alias: analysisGroupings
 domain_of:
 - ReportingEvent
-range: SubjectGroupingFactor
+range: GroupingFactor
 inlined: true
 inlined_as_list: true
 

@@ -64,14 +64,6 @@ linkml:Sparqlpath xsd:string
     )
 }
 
-<AnalysisGroup> CLOSED {
-    (  $<AnalysisGroup_tes> (  &<Group_tes> ;
-          rdf:type [ <Group> ] ?
-       ) ;
-       rdf:type [ <AnalysisGroup> ]
-    )
-}
-
 <AnalysisMethod> CLOSED {
     (  $<AnalysisMethod_tes> (  &<NamedObject_tes> ;
           rdf:type [ <NamedObject> ] ? ;
@@ -149,10 +141,14 @@ linkml:Sparqlpath xsd:string
 }
 
 <AnalysisSet> CLOSED {
-    (  $<AnalysisSet_tes> (  &<WhereClause_tes> ;
+    (  $<AnalysisSet_tes> (  &<NamedObject_tes> ;
+          rdf:type [ <NamedObject> ] ? ;
+          &<WhereClause_tes> ;
           rdf:type [ <WhereClause> ] ? ;
-          <label> @linkml:String ? ;
-          <compoundExpression> @<CompoundSetExpression> ?
+          <compoundExpression> @<CompoundSetExpression> ? ;
+          <condition> @<WhereClauseCondition> ? ;
+          <level> @linkml:Integer ;
+          <order> @linkml:Integer
        ) ;
        rdf:type [ <AnalysisSet> ]
     )
@@ -173,7 +169,7 @@ linkml:Sparqlpath xsd:string
 <CompoundGroupExpression> CLOSED {
     (  $<CompoundGroupExpression_tes> (  &<WhereClauseCompoundExpression_tes> ;
           rdf:type [ <WhereClauseCompoundExpression> ] ? ;
-          <whereClauses> @<Group> *
+          <whereClauses> @<SubClause> *
        ) ;
        rdf:type [ <CompoundGroupExpression> ] ?
     )
@@ -182,7 +178,7 @@ linkml:Sparqlpath xsd:string
 <CompoundSetExpression> CLOSED {
     (  $<CompoundSetExpression_tes> (  &<WhereClauseCompoundExpression_tes> ;
           rdf:type [ <WhereClauseCompoundExpression> ] ? ;
-          <whereClauses> @<AnalysisSet> *
+          <whereClauses> @<SubClause> *
        ) ;
        rdf:type [ <CompoundSetExpression> ] ?
     )
@@ -191,34 +187,21 @@ linkml:Sparqlpath xsd:string
 <CompoundSubsetExpression> CLOSED {
     (  $<CompoundSubsetExpression_tes> (  &<WhereClauseCompoundExpression_tes> ;
           rdf:type [ <WhereClauseCompoundExpression> ] ? ;
-          <whereClauses> @<WhereClause> *
+          <whereClauses> @<SubClause> *
        ) ;
        rdf:type [ <CompoundSubsetExpression> ] ?
     )
 }
 
-<DataGroup> CLOSED {
-    (  $<DataGroup_tes> (  &<Group_tes> ;
-          rdf:type [ <Group> ] ?
-       ) ;
-       rdf:type [ <DataGroup> ]
-    )
-}
-
-<DataGroupingFactor> CLOSED {
-    (  $<DataGroupingFactor_tes> (  &<GroupingFactor_tes> ;
-          rdf:type [ <GroupingFactor> ] ? ;
-          <groups> @<DataGroup> *
-       ) ;
-       rdf:type [ <DataGroupingFactor> ]
-    )
-}
-
 <DataSubset> CLOSED {
-    (  $<DataSubset_tes> (  &<WhereClause_tes> ;
+    (  $<DataSubset_tes> (  &<NamedObject_tes> ;
+          rdf:type [ <NamedObject> ] ? ;
+          &<WhereClause_tes> ;
           rdf:type [ <WhereClause> ] ? ;
-          <label> @linkml:String ? ;
-          <compoundExpression> @<CompoundSubsetExpression> ?
+          <compoundExpression> @<CompoundSubsetExpression> ? ;
+          <condition> @<WhereClauseCondition> ? ;
+          <level> @linkml:Integer ;
+          <order> @linkml:Integer
        ) ;
        rdf:type [ <DataSubset> ]
     )
@@ -267,30 +250,37 @@ linkml:Sparqlpath xsd:string
     )
 }
 
-<Group>  (
-    CLOSED {
-       (  $<Group_tes> (  &<WhereClause_tes> ;
-             rdf:type [ <WhereClause> ] ? ;
-             <label> @linkml:String ? ;
-             <compoundExpression> @<CompoundGroupExpression> ?
-          ) ;
-          rdf:type [ <Group> ]
-       )
-    } OR @<AnalysisGroup> OR @<DataGroup>
-)
+<Group> CLOSED {
+    (  $<Group_tes> (  &<NamedObject_tes> ;
+          rdf:type [ <NamedObject> ] ? ;
+          &<WhereClause_tes> ;
+          rdf:type [ <WhereClause> ] ? ;
+          <compoundExpression> @<CompoundGroupExpression> ? ;
+          <condition> @<WhereClauseCondition> ? ;
+          <level> @linkml:Integer ;
+          <order> @linkml:Integer
+       ) ;
+       rdf:type [ <Group> ]
+    )
+}
 
-<GroupingFactor>  (
-    @<DataGroupingFactor> OR @<SubjectGroupingFactor>
-)
-
-<GroupingFactor_struct> {
-    (  $<GroupingFactor_tes> (  <label> @linkml:String ? ;
+<GroupingFactor> CLOSED {
+    (  $<GroupingFactor_tes> (  &<NamedObject_tes> ;
+          rdf:type [ <NamedObject> ] ? ;
           <groupingDataset> @linkml:String ? ;
           <groupingVariable> @linkml:String ? ;
           <dataDriven> @linkml:Boolean ;
           <groups> @<Group> *
        ) ;
        rdf:type [ <GroupingFactor> ]
+    )
+}
+
+<LevelOrder> {
+    (  $<LevelOrder_tes> (  <level> @linkml:Integer ;
+          <order> @linkml:Integer
+       ) ;
+       rdf:type [ <LevelOrder> ] ?
     )
 }
 
@@ -304,8 +294,9 @@ linkml:Sparqlpath xsd:string
 }
 
 <NamedObject>  (
-    @<Analysis> OR @<AnalysisMethod> OR @<CodeParameter> OR @<ListOfContents> OR @<Operation> OR @<OrderedListItem> OR @<Output> OR
-    @<OutputDisplay> OR @<OutputFile> OR @<ReferenceDocument> OR @<ReportingEvent>
+    @<Analysis> OR @<AnalysisMethod> OR @<AnalysisSet> OR @<CodeParameter> OR @<DataSubset> OR @<Group> OR @<GroupingFactor> OR
+    @<ListOfContents> OR @<Operation> OR @<OrderedListItem> OR @<Output> OR @<OutputDisplay> OR @<OutputFile> OR
+    @<ReferenceDocument> OR @<ReportingEvent>
 )
 
 <NamedObject_struct> {
@@ -387,11 +378,13 @@ linkml:Sparqlpath xsd:string
 <OrderedListItem> CLOSED {
     (  $<OrderedListItem_tes> (  &<NamedObject_tes> ;
           rdf:type [ <NamedObject> ] ? ;
-          <level> @linkml:Integer ;
-          <order> @linkml:Integer ;
+          &<LevelOrder_tes> ;
+          rdf:type [ <LevelOrder> ] ? ;
           <analysisId> @<Analysis> ? ;
           <outputId> @<Output> ? ;
-          <sublist> @<NestedList> ?
+          <sublist> @<NestedList> ? ;
+          <level> @linkml:Integer ;
+          <order> @linkml:Integer
        ) ;
        rdf:type [ <OrderedListItem> ] ?
     )
@@ -526,6 +519,33 @@ linkml:Sparqlpath xsd:string
     )
 }
 
+<ReferencedAnalysisSet> CLOSED {
+    (  $<ReferencedAnalysisSet_tes> (  &<ReferencedWhereClause_tes> ;
+          rdf:type [ <ReferencedWhereClause> ] ? ;
+          <subClauseId> @<AnalysisSet>
+       ) ;
+       rdf:type [ <ReferencedAnalysisSet> ] ?
+    )
+}
+
+<ReferencedDataSubset> CLOSED {
+    (  $<ReferencedDataSubset_tes> (  &<ReferencedWhereClause_tes> ;
+          rdf:type [ <ReferencedWhereClause> ] ? ;
+          <subClauseId> @<DataSubset>
+       ) ;
+       rdf:type [ <ReferencedDataSubset> ] ?
+    )
+}
+
+<ReferencedGroup> CLOSED {
+    (  $<ReferencedGroup_tes> (  &<ReferencedWhereClause_tes> ;
+          rdf:type [ <ReferencedWhereClause> ] ? ;
+          <subClauseId> @<Group>
+       ) ;
+       rdf:type [ <ReferencedGroup> ] ?
+    )
+}
+
 <ReferenceDocument> CLOSED {
     (  $<ReferenceDocument_tes> (  &<NamedObject_tes> ;
           rdf:type [ <NamedObject> ] ? ;
@@ -545,6 +565,21 @@ linkml:Sparqlpath xsd:string
     )
 }
 
+<ReferencedWhereClause>  (
+    @<ReferencedAnalysisSet> OR @<ReferencedDataSubset> OR @<ReferencedGroup>
+)
+
+<ReferencedWhereClause_struct> {
+    (  $<ReferencedWhereClause_tes> (  &<LevelOrder_tes> ;
+          rdf:type [ <LevelOrder> ] ? ;
+          <subClauseId> @linkml:String ;
+          <level> @linkml:Integer ;
+          <order> @linkml:Integer
+       ) ;
+       rdf:type [ <ReferencedWhereClause> ] ?
+    )
+}
+
 <ReportingEvent> CLOSED {
     (  $<ReportingEvent_tes> (  &<NamedObject_tes> ;
           rdf:type [ <NamedObject> ] ? ;
@@ -555,9 +590,8 @@ linkml:Sparqlpath xsd:string
           <terminologyExtensions> @<TerminologyExtension> * ;
           <analysisOutputCategorizations> @<AnalysisOutputCategorization> * ;
           <analysisSets> @<AnalysisSet> * ;
-          <analysisGroupings> @<SubjectGroupingFactor> * ;
           <dataSubsets> @<DataSubset> * ;
-          <dataGroupings> @<DataGroupingFactor> * ;
+          <analysisGroupings> @<GroupingFactor> * ;
           <methods> @<AnalysisMethod> * ;
           <analyses> @<Analysis> * ;
           <globalDisplaySections> @<GlobalDisplaySection> * ;
@@ -624,12 +658,20 @@ linkml:Sparqlpath xsd:string
     )
 }
 
-<SubjectGroupingFactor> CLOSED {
-    (  $<SubjectGroupingFactor_tes> (  &<GroupingFactor_tes> ;
-          rdf:type [ <GroupingFactor> ] ? ;
-          <groups> @<AnalysisGroup> *
+<SubClause> {
+    (  $<SubClause_tes> (  &<LevelOrder_tes> ;
+          rdf:type [ <LevelOrder> ] ? ;
+          &<WhereClause_tes> ;
+          rdf:type [ <WhereClause> ] ? ;
+          &<ReferencedWhereClause_tes> ;
+          rdf:type [ <ReferencedWhereClause> ] ? ;
+          <subClauseId> @linkml:String ? ;
+          <level> @linkml:Integer ;
+          <order> @linkml:Integer ;
+          <condition> @<WhereClauseCondition> ? ;
+          <compoundExpression> @<WhereClauseCompoundExpression> ?
        ) ;
-       rdf:type [ <SubjectGroupingFactor> ]
+       rdf:type [ <SubClause> ] ?
     )
 }
 
@@ -651,27 +693,29 @@ linkml:Sparqlpath xsd:string
     )
 }
 
-<WhereClause>  (
-    CLOSED {
-       (  $<WhereClause_tes> (  <level> @linkml:Integer ;
-             <order> @linkml:Integer ;
-             <condition> @<WhereClauseCondition> ? ;
-             <compoundExpression> @<WhereClauseCompoundExpression> ?
-          ) ;
-          rdf:type [ <WhereClause> ] ?
-       )
-    } OR @<AnalysisSet> OR @<DataSubset> OR @<Group>
-)
+<WhereClause> CLOSED {
+    (  $<WhereClause_tes> (  &<LevelOrder_tes> ;
+          rdf:type [ <LevelOrder> ] ? ;
+          <condition> @<WhereClauseCondition> ? ;
+          <compoundExpression> @<WhereClauseCompoundExpression> ? ;
+          <level> @linkml:Integer ;
+          <order> @linkml:Integer
+       ) ;
+       rdf:type [ <WhereClause> ] ?
+    )
+}
 
 <WhereClauseCompoundExpression>  (
-    CLOSED {
-       (  $<WhereClauseCompoundExpression_tes> (  <logicalOperator> @<ExpressionLogicalOperatorEnum> ;
-             <whereClauses> @<WhereClause> *
-          ) ;
-          rdf:type [ <WhereClauseCompoundExpression> ] ?
-       )
-    } OR @<CompoundGroupExpression> OR @<CompoundSetExpression> OR @<CompoundSubsetExpression>
+    @<CompoundGroupExpression> OR @<CompoundSetExpression> OR @<CompoundSubsetExpression>
 )
+
+<WhereClauseCompoundExpression_struct> {
+    (  $<WhereClauseCompoundExpression_tes> (  <logicalOperator> @<ExpressionLogicalOperatorEnum> ;
+          <whereClauses> @<SubClause> *
+       ) ;
+       rdf:type [ <WhereClauseCompoundExpression> ] ?
+    )
+}
 
 <WhereClauseCondition> CLOSED {
     (  $<WhereClauseCondition_tes> (  <dataset> @linkml:String ? ;

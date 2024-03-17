@@ -35,10 +35,6 @@ URI: [ars:id](https://www.cdisc.org/ars/1-0/id)
 [DisplaySubSection](DisplaySubSection.md) | An occurrence of a display section containing text |  no  |
 [Output](Output.md) | A report of results and their evaluation based on planned analyses performed ... |  no  |
 [OutputDisplay](OutputDisplay.md) | A tabular representation of the results of one or more analyses |  no  |
-[SubjectGroupingFactor](SubjectGroupingFactor.md) | A factor used to subdivide the subject population for comparative analysis (e |  no  |
-[AnalysisGroup](AnalysisGroup.md) | A subdivision of the subject population based on a defined factor (e |  no  |
-[DataGroupingFactor](DataGroupingFactor.md) | A factor used to subdivide data records in an analysis dataset for analysis |  no  |
-[DataGroup](DataGroup.md) | A subdivision of the analysis dataset records based on a defined factor |  no  |
 
 
 

@@ -9,38 +9,31 @@ URI: [ars:Group](https://www.cdisc.org/ars/1-0/Group)
 
 
 
+
 ```mermaid
  classDiagram
     class Group
-      WhereClause <|-- Group
-      Group <|-- AnalysisGroup
-      Group <|-- DataGroup
-            
+      WhereClause <|-- Group        
+      NamedObject <|-- Group        
       Group : id
-        
-      Group : label
-        
-      Group : level
-        
-      Group : order
-        
-      Group : condition
+        Group : condition
         Group --|> WhereClauseCondition : condition
-        
-      Group : compoundExpression
+        Group : compoundExpression
         Group --|> CompoundGroupExpression : compoundExpression
+        Group : name
+        Group : description
+        Group : label
+        Group : level
+        Group : order
         
-      
 ```
 
 
 
 
 ## Inheritance
-* [WhereClause](WhereClause.md)
-    * **Group**
-        * [AnalysisGroup](AnalysisGroup.md)
-        * [DataGroup](DataGroup.md)
+* [NamedObject](NamedObject.md)
+    * **Group** [ [WhereClause](WhereClause.md)]
 
 
 
@@ -49,11 +42,13 @@ URI: [ars:Group](https://www.cdisc.org/ars/1-0/Group)
 | Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [id](id.md) | 1..1 <br/> [String](String.md) | The assigned identifying value for the instance of the class | direct |
-| [label](label.md) | 0..1 <br/> [String](String.md) | A short informative description that may be used for display | direct |
-| [level](level.md) | 1..1 <br/> [Integer](Integer.md) | The level of the entry within a hierarchical structure | [WhereClause](WhereClause.md) |
-| [order](order.md) | 1..1 <br/> [Integer](Integer.md) | The ordinal of the instance with respect to other instances | [WhereClause](WhereClause.md) |
 | [condition](condition.md) | 0..1 <br/> [WhereClauseCondition](WhereClauseCondition.md) | A simple selection criterion exressed as [dataset] | [WhereClause](WhereClause.md) |
 | [compoundExpression](compoundExpression.md) | 0..1 <br/> [CompoundGroupExpression](CompoundGroupExpression.md) | A compound expression that combines or negates where clauses | [WhereClause](WhereClause.md) |
+| [name](name.md) | 1..1 <br/> [String](String.md) | The name for the instance of the class | [NamedObject](NamedObject.md) |
+| [description](description.md) | 0..1 <br/> [String](String.md) | A textual description of the instance of the class | [NamedObject](NamedObject.md) |
+| [label](label.md) | 0..1 <br/> [String](String.md) | A short informative description that may be used for display | [NamedObject](NamedObject.md) |
+| [level](level.md) | 1..1 <br/> [Integer](Integer.md) | The level of the entry within a hierarchical structure | [LevelOrder](LevelOrder.md) |
+| [order](order.md) | 1..1 <br/> [Integer](Integer.md) | The ordinal of the instance with respect to other instances | [LevelOrder](LevelOrder.md) |
 
 _* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
@@ -65,7 +60,7 @@ _* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-c
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
 | [GroupingFactor](GroupingFactor.md) | [groups](groups.md) | range | [Group](Group.md) |
-| [CompoundGroupExpression](CompoundGroupExpression.md) | [whereClauses](whereClauses.md) | range | [Group](Group.md) |
+| [ReferencedGroup](ReferencedGroup.md) | [subClauseId](subClauseId.md) | range | [Group](Group.md) |
 | [ResultGroup](ResultGroup.md) | [groupId](groupId.md) | range | [Group](Group.md) |
 
 
@@ -114,10 +109,11 @@ description: A subdivision of the subject population or analysis dataset record 
   based on a defined factor.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
-is_a: WhereClause
+is_a: NamedObject
+mixins:
+- WhereClause
 slots:
 - id
-- label
 slot_usage:
   compoundExpression:
     name: compoundExpression
@@ -137,7 +133,9 @@ description: A subdivision of the subject population or analysis dataset record 
   based on a defined factor.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
-is_a: WhereClause
+is_a: NamedObject
+mixins:
+- WhereClause
 slot_usage:
   compoundExpression:
     name: compoundExpression
@@ -173,53 +171,6 @@ attributes:
     - OutputDisplay
     range: string
     required: true
-  label:
-    name: label
-    description: A short informative description that may be used for display.
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    alias: label
-    owner: Group
-    domain_of:
-    - NamedObject
-    - AnalysisOutputCategorization
-    - AnalysisOutputCategory
-    - AnalysisSet
-    - DataSubset
-    - GroupingFactor
-    - Group
-    - PageRef
-    range: string
-  level:
-    name: level
-    description: The level of the entry within a hierarchical structure.
-    comments:
-    - 1 is the top level.
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    alias: level
-    owner: Group
-    domain_of:
-    - OrderedListItem
-    - WhereClause
-    range: integer
-    required: true
-  order:
-    name: order
-    description: The ordinal of the instance with respect to other instances.
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    alias: order
-    owner: Group
-    domain_of:
-    - OrderedListItem
-    - WhereClause
-    - Operation
-    - OrderedGroupingFactor
-    - OrderedDisplay
-    - OrderedDisplaySubSection
-    range: integer
-    required: true
   condition:
     name: condition
     description: A simple selection criterion exressed as [dataset].[variable] [comparator]
@@ -241,6 +192,70 @@ attributes:
     domain_of:
     - WhereClause
     range: CompoundGroupExpression
+  name:
+    name: name
+    description: The name for the instance of the class.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: name
+    owner: Group
+    domain_of:
+    - NamedObject
+    range: string
+    required: true
+  description:
+    name: description
+    description: A textual description of the instance of the class.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: description
+    owner: Group
+    domain_of:
+    - NamedObject
+    - SponsorTerm
+    - ReferencedOperationRelationship
+    range: string
+  label:
+    name: label
+    description: A short informative description that may be used for display.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: label
+    owner: Group
+    domain_of:
+    - NamedObject
+    - AnalysisOutputCategorization
+    - AnalysisOutputCategory
+    - PageRef
+    range: string
+  level:
+    name: level
+    description: The level of the entry within a hierarchical structure.
+    comments:
+    - 1 is the top level.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: level
+    owner: Group
+    domain_of:
+    - LevelOrder
+    range: integer
+    required: true
+  order:
+    name: order
+    description: The ordinal of the instance with respect to other instances.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: order
+    owner: Group
+    domain_of:
+    - LevelOrder
+    - Operation
+    - OrderedGroupingFactor
+    - OrderedDisplay
+    - OrderedDisplaySubSection
+    range: integer
+    required: true
 
 ```
 </details>

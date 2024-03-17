@@ -13,8 +13,7 @@ URI: [ars:Output](https://www.cdisc.org/ars/1-0/Output)
 ```mermaid
  classDiagram
     class Output
-      NamedObject <|-- Output
-
+      NamedObject <|-- Output        
       Output : id
         Output : version
         Output : fileSpecifications
@@ -315,10 +314,6 @@ attributes:
     - NamedObject
     - AnalysisOutputCategorization
     - AnalysisOutputCategory
-    - AnalysisSet
-    - DataSubset
-    - GroupingFactor
-    - Group
     - PageRef
     range: string
 

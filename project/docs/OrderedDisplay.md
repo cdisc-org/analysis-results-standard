@@ -110,8 +110,7 @@ attributes:
     alias: order
     owner: OrderedDisplay
     domain_of:
-    - OrderedListItem
-    - WhereClause
+    - LevelOrder
     - Operation
     - OrderedGroupingFactor
     - OrderedDisplay

@@ -13,8 +13,7 @@ URI: [ars:OutputFileType](https://www.cdisc.org/ars/1-0/OutputFileType)
 ```mermaid
  classDiagram
     class OutputFileType
-      ExtensibleTerminologyTerm <|-- OutputFileType
-
+      ExtensibleTerminologyTerm <|-- OutputFileType        
       OutputFileType : controlledTerm
         OutputFileType --|> OutputFileTypeEnum : controlledTerm
         OutputFileType : sponsorTermId
