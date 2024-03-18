@@ -330,17 +330,17 @@ _Classes provide templates for organizing data. Data objects instantiate classes
 | [WhereClauseCondition](WhereClauseCondition.md) | A simple selection criterion exressed as [dataset] |
 | [ReferencedWhereClause](ReferencedWhereClause.md) | An abstract class indicating an identified where clause (i |
 | [SubClause](SubClause.md) | An abstract class containing all attributes that may be specified for a sub-c... |
-| [WhereClauseCompoundExpression](WhereClauseCompoundExpression.md) | A compound expression consisting of either two or more where clauses combined... |
+| [WhereClauseCompoundExpression](WhereClauseCompoundExpression.md) | An abstract class representing a compound expression consisting of either two... |
 | [AnalysisSet](AnalysisSet.md) | A set of subjects whose data are to be included in the main analyses |
 | [ReferencedAnalysisSet](ReferencedAnalysisSet.md) | An `AnalysisSet` referenced by identifier (`subClauseId`) as the sub-clause o... |
-| [CompoundSetExpression](CompoundSetExpression.md) | A compound expression consisting of either two or more identified analysis se... |
+| [CompoundSetExpression](CompoundSetExpression.md) | A compound expression consisting of either two or more sub-clauses combined w... |
 | [DataSubset](DataSubset.md) | A subset of data identified by selection criteria for inclusion in the analys... |
 | [ReferencedDataSubset](ReferencedDataSubset.md) | A `DataSubset` referenced by identifier (`subClauseId`) as the sub-clause of ... |
-| [CompoundSubsetExpression](CompoundSubsetExpression.md) | A compound expression consisting of either two or more where clauses combined... |
+| [CompoundSubsetExpression](CompoundSubsetExpression.md) | A compound expression consisting of either two or more sub-clauses combined w... |
 | [GroupingFactor](GroupingFactor.md) | A factor used to subdivide either the subject population or data records in a... |
 | [Group](Group.md) | A subdivision of the subject population or analysis dataset record set based ... |
 | [ReferencedGroup](ReferencedGroup.md) | A `Group` referenced by identifier (`subClauseId`) as the sub-clause of a com... |
-| [CompoundGroupExpression](CompoundGroupExpression.md) | A compound expression consisting of either two or more identified group combi... |
+| [CompoundGroupExpression](CompoundGroupExpression.md) | A compound expression consisting of either two or more sub-clauses combined w... |
 | [AnalysisMethod](AnalysisMethod.md) | A set of one or more statistical operations |
 | [DocumentReference](DocumentReference.md) | A reference to an external document |
 | [PageRef](PageRef.md) | A reference to a specific part of a document as indicated by a list of one or... |

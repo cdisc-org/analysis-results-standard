@@ -98,19 +98,19 @@ message AnalysisSet
   integer level = 0
   integer order = 0
  }
-// A compound expression consisting of either two or more identified group combined with the `AND` or `OR` logical operator, or a single identified group negated with the `NOT` logical operator.
+// A compound expression consisting of either two or more sub-clauses combined with the `AND` or `OR` logical operator, or a single sub-clause negated with the `NOT` logical operator. Each sub-clause is either a fully-defined `WhereClause` (containing either a `condition` or a `compoundExpression`) or a `ReferencedGroup` (containing a `subClauseId` indicating the `id` of the referenced `Group`).
 message CompoundGroupExpression
  {
   expressionLogicalOperatorEnum logicalOperator = 0
  repeated  subClause whereClauses = 0
  }
-// A compound expression consisting of either two or more identified analysis sets combined with the `AND` or `OR` logical operator, or a single identified analysis set negated with the `NOT` logical operator.
+// A compound expression consisting of either two or more sub-clauses combined with the `AND` or `OR` logical operator, or a single sub-clause negated with the `NOT` logical operator. Each sub-clause is either a fully-defined `WhereClause` (containing either a `condition` or a `compoundExpression`) or a `ReferencedAnalysisSet` (containing a `subClauseId` indicating the `id` of the referenced `AnalysisSet`).
 message CompoundSetExpression
  {
   expressionLogicalOperatorEnum logicalOperator = 0
  repeated  subClause whereClauses = 0
  }
-// A compound expression consisting of either two or more where clauses combined with the `AND` or `OR` logical operator, or a single where clause negated with the `NOT` logical operator.
+// A compound expression consisting of either two or more sub-clauses combined with the `AND` or `OR` logical operator, or a single sub-clause negated with the `NOT` logical operator. Each sub-clause is either a fully-defined `WhereClause` (containing either a `condition` or a `compoundExpression`) or a `ReferencedDataSubset` (containing a `subClauseId` indicating the `id` of the referenced `DataSubset`).
 message CompoundSubsetExpression
  {
   expressionLogicalOperatorEnum logicalOperator = 0

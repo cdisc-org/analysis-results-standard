@@ -1,5 +1,5 @@
 # Auto generated from ars_ldm.yaml by pythongen.py version: 0.9.0
-# Generation date: 2024-03-17T11:38:47
+# Generation date: 2024-03-18T16:58:04
 # Schema: ars_ldm
 #
 # id: https://www.cdisc.org/ars/1-0
@@ -662,8 +662,10 @@ class SubClause(YAMLRoot):
 @dataclass
 class WhereClauseCompoundExpression(YAMLRoot):
     """
-    A compound expression consisting of either two or more where clauses combined with the `AND` or `OR` logical
-    operator, or a single where clause negated with the `NOT` logical operator.
+    An abstract class representing a compound expression consisting of either two or more sub-clauses combined with
+    the `AND` or `OR` logical operator, or a single sub-clause negated with the `NOT` logical operator. Each
+    sub-clause is either a fully-defined `WhereClause` (containing either a `condition` or a `compoundExpression`) or
+    a `ReferencedWhereClause` (containing a `subClauseId`).
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -752,8 +754,10 @@ class ReferencedAnalysisSet(ReferencedWhereClause):
 @dataclass
 class CompoundSetExpression(WhereClauseCompoundExpression):
     """
-    A compound expression consisting of either two or more identified analysis sets combined with the `AND` or `OR`
-    logical operator, or a single identified analysis set negated with the `NOT` logical operator.
+    A compound expression consisting of either two or more sub-clauses combined with the `AND` or `OR` logical
+    operator, or a single sub-clause negated with the `NOT` logical operator. Each sub-clause is either a
+    fully-defined `WhereClause` (containing either a `condition` or a `compoundExpression`) or a
+    `ReferencedAnalysisSet` (containing a `subClauseId` indicating the `id` of the referenced `AnalysisSet`).
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -835,8 +839,10 @@ class ReferencedDataSubset(ReferencedWhereClause):
 @dataclass
 class CompoundSubsetExpression(WhereClauseCompoundExpression):
     """
-    A compound expression consisting of either two or more where clauses combined with the `AND` or `OR` logical
-    operator, or a single where clause negated with the `NOT` logical operator.
+    A compound expression consisting of either two or more sub-clauses combined with the `AND` or `OR` logical
+    operator, or a single sub-clause negated with the `NOT` logical operator. Each sub-clause is either a
+    fully-defined `WhereClause` (containing either a `condition` or a `compoundExpression`) or a
+    `ReferencedDataSubset` (containing a `subClauseId` indicating the `id` of the referenced `DataSubset`).
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -959,8 +965,10 @@ class ReferencedGroup(ReferencedWhereClause):
 @dataclass
 class CompoundGroupExpression(WhereClauseCompoundExpression):
     """
-    A compound expression consisting of either two or more identified group combined with the `AND` or `OR` logical
-    operator, or a single identified group negated with the `NOT` logical operator.
+    A compound expression consisting of either two or more sub-clauses combined with the `AND` or `OR` logical
+    operator, or a single sub-clause negated with the `NOT` logical operator. Each sub-clause is either a
+    fully-defined `WhereClause` (containing either a `condition` or a `compoundExpression`) or a `ReferencedGroup`
+    (containing a `subClauseId` indicating the `id` of the referenced `Group`).
     """
     _inherited_slots: ClassVar[List[str]] = []
 

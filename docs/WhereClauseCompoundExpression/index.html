@@ -80,7 +80,7 @@
 </div></div>
 <div class="col-md-9" role="main">
 <h1 id="class-whereclausecompoundexpression">Class: WhereClauseCompoundExpression</h1>
-<p><em>A compound expression consisting of either two or more where clauses combined with the <code>AND</code> or <code>OR</code> logical operator, or a single where clause negated with the <code>NOT</code> logical operator.</em></p>
+<p><em>An abstract class representing a compound expression consisting of either two or more sub-clauses combined with the <code>AND</code> or <code>OR</code> logical operator, or a single sub-clause negated with the <code>NOT</code> logical operator. Each sub-clause is either a fully-defined <code>WhereClause</code> (containing either a <code>condition</code> or a <code>compoundExpression</code>) or a <code>ReferencedWhereClause</code> (containing a <code>subClauseId</code>).</em></p>
 <ul>
 <li><strong>NOTE</strong>: this is an abstract class and should not be instantiated directly</li>
 </ul>
@@ -234,9 +234,11 @@
 <h3 id="direct">Direct</h3>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WhereClauseCompoundExpression</span>
-<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A compound expression consisting of either two or more where clauses</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">combined with the `AND` or `OR` logical operator, or a single where clause negated</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">with the `NOT` logical operator.</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">An abstract class representing a compound expression consisting of either</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">two or more sub-clauses combined with the `AND` or `OR` logical operator, or a single</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">sub-clause negated with the `NOT` logical operator. Each sub-clause is either a</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">fully-defined `WhereClause` (containing either a `condition` or a `compoundExpression`)</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">or a `ReferencedWhereClause` (containing a `subClauseId`).</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://www.cdisc.org/ars/1-0</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">abstract</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
@@ -256,9 +258,11 @@
 <h3 id="induced">Induced</h3>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WhereClauseCompoundExpression</span>
-<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A compound expression consisting of either two or more where clauses</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">combined with the `AND` or `OR` logical operator, or a single where clause negated</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">with the `NOT` logical operator.</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">An abstract class representing a compound expression consisting of either</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">two or more sub-clauses combined with the `AND` or `OR` logical operator, or a single</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">sub-clause negated with the `NOT` logical operator. Each sub-clause is either a</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">fully-defined `WhereClause` (containing either a `condition` or a `compoundExpression`)</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">or a `ReferencedWhereClause` (containing a `subClauseId`).</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://www.cdisc.org/ars/1-0</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">abstract</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>

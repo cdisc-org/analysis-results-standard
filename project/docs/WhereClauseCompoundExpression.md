@@ -1,6 +1,6 @@
 # Class: WhereClauseCompoundExpression
 
-_A compound expression consisting of either two or more where clauses combined with the `AND` or `OR` logical operator, or a single where clause negated with the `NOT` logical operator._
+_An abstract class representing a compound expression consisting of either two or more sub-clauses combined with the `AND` or `OR` logical operator, or a single sub-clause negated with the `NOT` logical operator. Each sub-clause is either a fully-defined `WhereClause` (containing either a `condition` or a `compoundExpression`) or a `ReferencedWhereClause` (containing a `subClauseId`)._
 
 
 * __NOTE__: this is an abstract class and should not be instantiated directly
@@ -150,9 +150,11 @@ whereClauses:
 <details>
 ```yaml
 name: WhereClauseCompoundExpression
-description: A compound expression consisting of either two or more where clauses
-  combined with the `AND` or `OR` logical operator, or a single where clause negated
-  with the `NOT` logical operator.
+description: An abstract class representing a compound expression consisting of either
+  two or more sub-clauses combined with the `AND` or `OR` logical operator, or a single
+  sub-clause negated with the `NOT` logical operator. Each sub-clause is either a
+  fully-defined `WhereClause` (containing either a `condition` or a `compoundExpression`)
+  or a `ReferencedWhereClause` (containing a `subClauseId`).
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 abstract: true
@@ -176,9 +178,11 @@ slot_usage:
 <details>
 ```yaml
 name: WhereClauseCompoundExpression
-description: A compound expression consisting of either two or more where clauses
-  combined with the `AND` or `OR` logical operator, or a single where clause negated
-  with the `NOT` logical operator.
+description: An abstract class representing a compound expression consisting of either
+  two or more sub-clauses combined with the `AND` or `OR` logical operator, or a single
+  sub-clause negated with the `NOT` logical operator. Each sub-clause is either a
+  fully-defined `WhereClause` (containing either a `condition` or a `compoundExpression`)
+  or a `ReferencedWhereClause` (containing a `subClauseId`).
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 abstract: true

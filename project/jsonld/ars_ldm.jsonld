@@ -4103,7 +4103,7 @@
     {
       "name": "WhereClauseCompoundExpression",
       "definition_uri": "https://www.cdisc.org/ars/1-0/WhereClauseCompoundExpression",
-      "description": "A compound expression consisting of either two or more where clauses combined with the `AND` or `OR` logical operator, or a single where clause negated with the `NOT` logical operator.",
+      "description": "An abstract class representing a compound expression consisting of either two or more sub-clauses combined with the `AND` or `OR` logical operator, or a single sub-clause negated with the `NOT` logical operator. Each sub-clause is either a fully-defined `WhereClause` (containing either a `condition` or a `compoundExpression`) or a `ReferencedWhereClause` (containing a `subClauseId`).",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "abstract": true,
       "slots": [
@@ -4155,7 +4155,7 @@
     {
       "name": "CompoundSetExpression",
       "definition_uri": "https://www.cdisc.org/ars/1-0/CompoundSetExpression",
-      "description": "A compound expression consisting of either two or more identified analysis sets combined with the `AND` or `OR` logical operator, or a single identified analysis set negated with the `NOT` logical operator.",
+      "description": "A compound expression consisting of either two or more sub-clauses combined with the `AND` or `OR` logical operator, or a single sub-clause negated with the `NOT` logical operator. Each sub-clause is either a fully-defined `WhereClause` (containing either a `condition` or a `compoundExpression`) or a `ReferencedAnalysisSet` (containing a `subClauseId` indicating the `id` of the referenced `AnalysisSet`).",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "WhereClauseCompoundExpression",
       "slots": [
@@ -4207,7 +4207,7 @@
     {
       "name": "CompoundSubsetExpression",
       "definition_uri": "https://www.cdisc.org/ars/1-0/CompoundSubsetExpression",
-      "description": "A compound expression consisting of either two or more where clauses combined with the `AND` or `OR` logical operator, or a single where clause negated with the `NOT` logical operator.",
+      "description": "A compound expression consisting of either two or more sub-clauses combined with the `AND` or `OR` logical operator, or a single sub-clause negated with the `NOT` logical operator. Each sub-clause is either a fully-defined `WhereClause` (containing either a `condition` or a `compoundExpression`) or a `ReferencedDataSubset` (containing a `subClauseId` indicating the `id` of the referenced `DataSubset`).",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "WhereClauseCompoundExpression",
       "slots": [
@@ -4279,7 +4279,7 @@
     {
       "name": "CompoundGroupExpression",
       "definition_uri": "https://www.cdisc.org/ars/1-0/CompoundGroupExpression",
-      "description": "A compound expression consisting of either two or more identified group combined with the `AND` or `OR` logical operator, or a single identified group negated with the `NOT` logical operator.",
+      "description": "A compound expression consisting of either two or more sub-clauses combined with the `AND` or `OR` logical operator, or a single sub-clause negated with the `NOT` logical operator. Each sub-clause is either a fully-defined `WhereClause` (containing either a `condition` or a `compoundExpression`) or a `ReferencedGroup` (containing a `subClauseId` indicating the `id` of the referenced `Group`).",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "WhereClauseCompoundExpression",
       "slots": [
@@ -4890,9 +4890,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "ars_ldm.yaml",
-  "source_file_date": "2024-03-17T11:37:02",
-  "source_file_size": 50430,
-  "generation_date": "2024-03-17T11:39:03",
+  "source_file_date": "2024-03-18T16:57:54",
+  "source_file_size": 49874,
+  "generation_date": "2024-03-18T16:58:19",
   "@type": "SchemaDefinition",
   "@context": [
     ".\\analysis-results-standard\\project\\/jsonld/ars_ldm.context.jsonld",
