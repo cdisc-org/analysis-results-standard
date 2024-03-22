@@ -1,0 +1,238 @@
+Reporting Event: FDASTF - FDA Standard Safety Tables and Figures
+List of Contents: List of Planned Analyses (LOPA)
+1. Table 2. Baseline Demographic and Clinical Characteristics, Safety Population, Trial CDISCPILOT01
+  Output: O_T2 - Table 2. Baseline Demographic and Clinical Characteristics, Safety Population, Trial CDISCPILOT01
+    Documentation:
+      > Standard Safety Tables and Figures: Integrated Guide (https://downloads.regulations.gov/FDA-2022-N-1961-0046/attachment_1.pdf)
+        - Pages 12-13 [Table 2]
+    Output File(s):
+      > RTF Format: t2-demog (RTF) (./t2-demog.rtf)
+      > PDF Format: t2-demog (PDF) (./t2-demog.pdf)
+    Displays:
+      1. D_T2 - Table 2
+        Display Title: Table 2. Baseline Demographic and Clinical Characteristics, Safety Population, Trial CDISCPILOT01
+        Sections:
+          > Title:
+            1. Table 2. Baseline Demographic and Clinical Characteristics, Safety Population, Trial CDISCPILOT01
+          > Footer:
+            1. Source dataset: adsl, Generated on: DDMONYYYY:HH:MM
+          > Rowlabel Header:
+            1. Characteristic
+          > Abbreviation:
+            1. N, number of patients in treatment arm
+            2. n, number of patients with given characteristic
+            3. SD, standard deviation
+  1.1. Summary of Subjects by Treatment
+    Analysis: A_SAF_SUM_USUBJID_TRT - Summary of Subjects by Treatment
+      Documentation:
+        Reason: SPECIFIED IN SAP
+        Purpose: PRIMARY OUTCOME MEASURE
+        See:
+          > Statistical Analysis Plan (./sap.pdf)
+            - Page 9 [6. ANALYSIS POPULATIONS]
+      Population: AS_SAF - Safety Population
+        Selection Criteria: ADSL.SAFFL EQ 'Y'
+      Groupings:
+        1. AG_TRT - Treatment
+          Grouping Variable: ADSL.TRT01A
+          Groups [Results per group: Y]:
+            1. AG_TRT_1 - Placebo
+               Selection Criteria: ADSL.TRT01A EQ 'Placebo'
+            2. AG_TRT_2 - Xanomeline Low Dose
+               Selection Criteria: ADSL.TRT01A EQ 'Xanomeline Low Dose'
+            3. AG_TRT_3 - Xanomeline High Dose
+               Selection Criteria: ADSL.TRT01A EQ 'Xanomeline High Dose'
+      Analysis Variable: ADSL.USUBJID
+      Method: M_GRP_CNT - Count by group for a categorical variable (Grouped count for categorical variable)
+              Count across groups for a categorical variable, based on subject occurrence
+        Operations:
+          1. M_GRP_CNT_1_N - Count of subjects (n)
+  1.2. Sex
+    1.2.1. Summary of Subjects by Treatment
+      Analysis: A_SAF_SUM_USUBJID_TRT_SEX - Summary of Subjects by Treatment and Sex
+        Documentation:
+          Reason: SPECIFIED IN SAP
+          Purpose: PRIMARY OUTCOME MEASURE
+          See:
+            > Statistical Analysis Plan (./sap.pdf)
+              - Page 13 [9.2. Demographic and Baseline Characteristics]
+        Population: AS_SAF - Safety Population
+          Selection Criteria: ADSL.SAFFL EQ 'Y'
+        Groupings:
+          1. AG_TRT - Treatment
+            Grouping Variable: ADSL.TRT01A
+            Groups [Results per group: Y]:
+              1. AG_TRT_1 - Placebo
+                 Selection Criteria: ADSL.TRT01A EQ 'Placebo'
+              2. AG_TRT_2 - Xanomeline Low Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline Low Dose'
+              3. AG_TRT_3 - Xanomeline High Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline High Dose'
+          2. AG_SEX - Gender
+            Grouping Variable: ADSL.SEX
+            Groups [Results per group: Y]:
+              1. AG_SEX_1 - Male
+                 Selection Criteria: ADSL.SEX EQ 'M'
+              2. AG_SEX_2 - Female
+                 Selection Criteria: ADSL.SEX EQ 'F'
+        Analysis Variable: ADSL.USUBJID
+        Method: M_GRP_SUM_CATEG - Summary by group of a categorical variable (Grouped summary of categorical variable)
+                Descriptive summary statistics across groups for a categorical variable, based on subject occurrence
+          Operations:
+            1. M_GRP_SUM_CATEG_1_N - Count of subjects (n)
+            2. M_GRP_SUM_CATEG_2_PCT - Percent of subjects (%)
+                - Numerator: result of operation M_GRP_SUM_CATEG_1_N for this analysis
+                - Denominator: result of operation M_GRP_CNT_1_N for analysis A_SAF_SUM_USUBJID_TRT
+  1.3. Age
+    1.3.1. Summary of Age by Treatment
+      Analysis: A_SAF_SUM_AGE_TRT - Summary of Age by Treatment
+        Documentation:
+          Reason: SPECIFIED IN SAP
+          Purpose: PRIMARY OUTCOME MEASURE
+          See:
+            > Statistical Analysis Plan (./sap.pdf)
+              - Page 13 [9.2. Demographic and Baseline Characteristics]
+        Population: AS_SAF - Safety Population
+          Selection Criteria: ADSL.SAFFL EQ 'Y'
+        Groupings:
+          1. AG_TRT - Treatment
+            Grouping Variable: ADSL.TRT01A
+            Groups [Results per group: Y]:
+              1. AG_TRT_1 - Placebo
+                 Selection Criteria: ADSL.TRT01A EQ 'Placebo'
+              2. AG_TRT_2 - Xanomeline Low Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline Low Dose'
+              3. AG_TRT_3 - Xanomeline High Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline High Dose'
+        Analysis Variable: ADSL.AGE
+        Method: M_GRP_SUM_CONTIN - Summary by group of a continuous variable (Grouped summary of continuous variable)
+                Descriptive summary statistics across groups for a continuous variable
+          Operations:
+            1. M_GRP_SUM_CONTIN_1_MEAN - Mean (Mean)
+            2. M_GRP_SUM_CONTIN_2_SD - Standard deviation (SD)
+            3. M_GRP_SUM_CONTIN_3_MEDIAN - Median (Median)
+            4. M_GRP_SUM_CONTIN_4_MIN - Minimum (min)
+            5. M_GRP_SUM_CONTIN_5_MAX - Maximum (max)
+  1.4. Age groups
+    1.4.1. Summary of Subjects by Treatment
+      Analysis: A_SAF_SUM_USUBJID_TRT_AGEGRP - Summary of Subjects by Treatment and Age Group
+        Documentation:
+          Reason: SPECIFIED IN SAP
+          Purpose: PRIMARY OUTCOME MEASURE
+          See:
+            > Statistical Analysis Plan (./sap.pdf)
+              - Page 13 [9.2. Demographic and Baseline Characteristics]
+        Population: AS_SAF - Safety Population
+          Selection Criteria: ADSL.SAFFL EQ 'Y'
+        Groupings:
+          1. AG_TRT - Treatment
+            Grouping Variable: ADSL.TRT01A
+            Groups [Results per group: Y]:
+              1. AG_TRT_1 - Placebo
+                 Selection Criteria: ADSL.TRT01A EQ 'Placebo'
+              2. AG_TRT_2 - Xanomeline Low Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline Low Dose'
+              3. AG_TRT_3 - Xanomeline High Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline High Dose'
+          2. AG_AGEGR2 - Age groups
+            Grouping Variable: ADSL.AGEGR2
+            Groups [Results per group: Y]:
+              1. AG_AGEGR2_1 - < 65
+                 Selection Criteria: ADSL.AGEGR2 EQ '<65'
+              2. AG_AGEGR2_2 - ≥ 65
+                 Selection Criteria: ADSL.AGEGR2 EQ '65+'
+          3. AG_AGEGR3 - Age sub-groups
+            Grouping Variable: ADSL.AGEGR3
+            Groups [Results per group: Y]:
+              1. AG_AGEGR3_1 - ≥17 to <65
+                 Selection Criteria: ADSL.AGEGR3 EQ '17-<65'
+              2. AG_AGEGR3_2 - ≥ 65 to <75
+                 Selection Criteria: ADSL.AGEGR3 EQ '65-<75'
+              3. AG_AGEGR3_3 - ≥ 75
+                 Selection Criteria: ADSL.AGEGR3 EQ '75+'
+        Analysis Variable: ADSL.USUBJID
+        Method: M_GRP_SUM_CATEG - Summary by group of a categorical variable (Grouped summary of categorical variable)
+                Descriptive summary statistics across groups for a categorical variable, based on subject occurrence
+          Operations:
+            1. M_GRP_SUM_CATEG_1_N - Count of subjects (n)
+            2. M_GRP_SUM_CATEG_2_PCT - Percent of subjects (%)
+                - Numerator: result of operation M_GRP_SUM_CATEG_1_N for this analysis
+                - Denominator: result of operation M_GRP_CNT_1_N for analysis A_SAF_SUM_USUBJID_TRT
+  1.5. Race
+    1.5.1. Summary of Subjects by Treatment
+      Analysis: A_SAF_SUM_USUBJID_TRT_RACE - Summary of Subjects by Treatment and Race
+        Documentation:
+          Reason: SPECIFIED IN SAP
+          Purpose: PRIMARY OUTCOME MEASURE
+          See:
+            > Statistical Analysis Plan (./sap.pdf)
+              - Page 13 [9.2. Demographic and Baseline Characteristics]
+        Population: AS_SAF - Safety Population
+          Selection Criteria: ADSL.SAFFL EQ 'Y'
+        Groupings:
+          1. AG_TRT - Treatment
+            Grouping Variable: ADSL.TRT01A
+            Groups [Results per group: Y]:
+              1. AG_TRT_1 - Placebo
+                 Selection Criteria: ADSL.TRT01A EQ 'Placebo'
+              2. AG_TRT_2 - Xanomeline Low Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline Low Dose'
+              3. AG_TRT_3 - Xanomeline High Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline High Dose'
+          2. AG_RACE - Race
+            Grouping Variable: ADSL.RACE
+            Groups [Results per group: Y]:
+              1. AG_RACE_1 - American Indian or Alaska Native
+                 Selection Criteria: ADSL.RACE EQ 'AMERICAN INDIAN OR ALASKA NATIVE'
+              2. AG_RACE_2 - Black or African American
+                 Selection Criteria: ADSL.RACE EQ 'BLACK OR AFRICAN AMERICAN'
+              3. AG_RACE_3 - Native Hawaiian or Other Pacific Islander
+                 Selection Criteria: ADSL.RACE EQ 'NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER'
+              4. AG_RACE_4 - White
+                 Selection Criteria: ADSL.RACE EQ 'WHITE'
+              5. AG_RACE_5 - Other
+                 Selection Criteria: ADSL.RACE NOTIN 'AMERICAN INDIAN OR ALASKA NATIVE | BLACK OR AFRICAN AMERICAN | NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER | WHITE'
+        Analysis Variable: ADSL.USUBJID
+        Method: M_GRP_SUM_CATEG - Summary by group of a categorical variable (Grouped summary of categorical variable)
+                Descriptive summary statistics across groups for a categorical variable, based on subject occurrence
+          Operations:
+            1. M_GRP_SUM_CATEG_1_N - Count of subjects (n)
+            2. M_GRP_SUM_CATEG_2_PCT - Percent of subjects (%)
+                - Numerator: result of operation M_GRP_SUM_CATEG_1_N for this analysis
+                - Denominator: result of operation M_GRP_CNT_1_N for analysis A_SAF_SUM_USUBJID_TRT
+  1.6. Ethnicity
+    1.6.1. Summary of Subjects by Treatment
+      Analysis: A_SAF_SUM_USUBJID_TRT_ETHNIC - Summary of Subjects by Treatment and Ethnicity
+        Documentation:
+          Reason: SPECIFIED IN SAP
+          Purpose: PRIMARY OUTCOME MEASURE
+          See:
+            > Statistical Analysis Plan (./sap.pdf)
+              - Page 13 [9.2. Demographic and Baseline Characteristics]
+        Population: AS_SAF - Safety Population
+          Selection Criteria: ADSL.SAFFL EQ 'Y'
+        Groupings:
+          1. AG_TRT - Treatment
+            Grouping Variable: ADSL.TRT01A
+            Groups [Results per group: Y]:
+              1. AG_TRT_1 - Placebo
+                 Selection Criteria: ADSL.TRT01A EQ 'Placebo'
+              2. AG_TRT_2 - Xanomeline Low Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline Low Dose'
+              3. AG_TRT_3 - Xanomeline High Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline High Dose'
+          2. AG_ETHNIC - Ethnicity
+            Grouping Variable: ADSL.ETHNIC
+            Groups [Results per group: Y]:
+              1. AG_ETHNIC_1 - Hispanic or Latino
+                 Selection Criteria: ADSL.ETHNIC EQ 'HISPANIC OR LATINO'
+              2. AG_ETHNIC_2 - Not Hispanic or Latino
+                 Selection Criteria: ADSL.ETHNIC EQ 'NOT HISPANIC OR LATINO'
+        Analysis Variable: ADSL.USUBJID
+        Method: M_GRP_SUM_CATEG - Summary by group of a categorical variable (Grouped summary of categorical variable)
+                Descriptive summary statistics across groups for a categorical variable, based on subject occurrence
+          Operations:
+            1. M_GRP_SUM_CATEG_1_N - Count of subjects (n)
+            2. M_GRP_SUM_CATEG_2_PCT - Percent of subjects (%)
+                - Numerator: result of operation M_GRP_SUM_CATEG_1_N for this analysis
+                - Denominator: result of operation M_GRP_CNT_1_N for analysis A_SAF_SUM_USUBJID_TRT

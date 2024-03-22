@@ -13,14 +13,15 @@ URI: [ars:OutputDisplay](https://www.cdisc.org/ars/1-0/OutputDisplay)
 ```mermaid
  classDiagram
     class OutputDisplay
-      NamedObject <|-- OutputDisplay
-
+      NamedObject <|-- OutputDisplay        
       OutputDisplay : id
         OutputDisplay : version
         OutputDisplay : displayTitle
         OutputDisplay : displaySections
         OutputDisplay --|> DisplaySection : displaySections
         OutputDisplay : name
+        OutputDisplay : description
+        OutputDisplay : label
         
 ```
 
@@ -42,6 +43,8 @@ URI: [ars:OutputDisplay](https://www.cdisc.org/ars/1-0/OutputDisplay)
 | [displayTitle](displayTitle.md) | 0..1 <br/> [String](String.md) | Display description which uniquely identifies the display in the report | direct |
 | [displaySections](displaySections.md) | 0..* <br/> [DisplaySection](DisplaySection.md) | The parts of the display containing one or more pieces of informational text ... | direct |
 | [name](name.md) | 1..1 <br/> [String](String.md) | The name for the instance of the class | [NamedObject](NamedObject.md) |
+| [description](description.md) | 0..1 <br/> [String](String.md) | A textual description of the instance of the class | [NamedObject](NamedObject.md) |
+| [label](label.md) | 0..1 <br/> [String](String.md) | A short informative description that may be used for display | [NamedObject](NamedObject.md) |
 
 _* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
@@ -197,6 +200,31 @@ attributes:
     - NamedObject
     range: string
     required: true
+  description:
+    name: description
+    description: A textual description of the instance of the class.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: description
+    owner: OutputDisplay
+    domain_of:
+    - NamedObject
+    - SponsorTerm
+    - ReferencedOperationRelationship
+    range: string
+  label:
+    name: label
+    description: A short informative description that may be used for display.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: label
+    owner: OutputDisplay
+    domain_of:
+    - NamedObject
+    - AnalysisOutputCategorization
+    - AnalysisOutputCategory
+    - PageRef
+    range: string
 
 ```
 </details>

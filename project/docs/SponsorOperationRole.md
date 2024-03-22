@@ -13,8 +13,7 @@ URI: [ars:SponsorOperationRole](https://www.cdisc.org/ars/1-0/SponsorOperationRo
 ```mermaid
  classDiagram
     class SponsorOperationRole
-      ExtensibleTerminologyTerm <|-- SponsorOperationRole
-
+      ExtensibleTerminologyTerm <|-- SponsorOperationRole        
       SponsorOperationRole : controlledTerm
         SponsorOperationRole : sponsorTermId
         SponsorOperationRole --|> SponsorTerm : sponsorTermId

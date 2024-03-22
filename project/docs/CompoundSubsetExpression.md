@@ -1,6 +1,6 @@
 # Class: CompoundSubsetExpression
 
-_A compound expression consisting of either two or more where clauses combined with the `AND` or `OR` logical operator, or a single where clause negated with the `NOT` logical operator._
+_A compound expression consisting of either two or more sub-clauses combined with the `AND` or `OR` logical operator, or a single sub-clause negated with the `NOT` logical operator. Each sub-clause is either a fully-defined `WhereClause` (containing either a `condition` or a `compoundExpression`) or a `ReferencedDataSubset` (containing a `subClauseId` indicating the `id` of the referenced `DataSubset`)._
 
 
 
@@ -13,12 +13,11 @@ URI: [ars:CompoundSubsetExpression](https://www.cdisc.org/ars/1-0/CompoundSubset
 ```mermaid
  classDiagram
     class CompoundSubsetExpression
-      WhereClauseCompoundExpression <|-- CompoundSubsetExpression
-
+      WhereClauseCompoundExpression <|-- CompoundSubsetExpression        
       CompoundSubsetExpression : logicalOperator
         CompoundSubsetExpression --|> ExpressionLogicalOperatorEnum : logicalOperator
         CompoundSubsetExpression : whereClauses
-        CompoundSubsetExpression --|> WhereClause : whereClauses
+        CompoundSubsetExpression --|> SubClause : whereClauses
         
 ```
 
@@ -36,7 +35,7 @@ URI: [ars:CompoundSubsetExpression](https://www.cdisc.org/ars/1-0/CompoundSubset
 | Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [logicalOperator](logicalOperator.md) | 1..1 <br/> [ExpressionLogicalOperatorEnum](ExpressionLogicalOperatorEnum.md) | The boolean operator that is used to combine (AND, OR) or negate (NOT) the wh... | [WhereClauseCompoundExpression](WhereClauseCompoundExpression.md) |
-| [whereClauses](whereClauses.md) | 0..* <br/> [WhereClause](WhereClause.md) | A list of one or more where clauses (selection criteria) to be combined or ne... | [WhereClauseCompoundExpression](WhereClauseCompoundExpression.md) |
+| [whereClauses](whereClauses.md) | 0..* <br/> [SubClause](SubClause.md) | A list of one or more where clauses (selection criteria) to be combined or ne... | [WhereClauseCompoundExpression](WhereClauseCompoundExpression.md) |
 
 _* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
@@ -91,9 +90,11 @@ _* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-c
 <details>
 ```yaml
 name: CompoundSubsetExpression
-description: A compound expression consisting of either two or more where clauses
-  combined with the `AND` or `OR` logical operator, or a single where clause negated
-  with the `NOT` logical operator.
+description: A compound expression consisting of either two or more sub-clauses combined
+  with the `AND` or `OR` logical operator, or a single sub-clause negated with the
+  `NOT` logical operator. Each sub-clause is either a fully-defined `WhereClause`
+  (containing either a `condition` or a `compoundExpression`) or a `ReferencedDataSubset`
+  (containing a `subClauseId` indicating the `id` of the referenced `DataSubset`).
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 is_a: WhereClauseCompoundExpression
@@ -102,8 +103,9 @@ slot_usage:
     name: whereClauses
     domain_of:
     - WhereClauseCompoundExpression
-    inlined: true
-    inlined_as_list: true
+    any_of:
+    - range: ReferencedDataSubset
+    - range: WhereClause
 
 ```
 </details>
@@ -113,9 +115,11 @@ slot_usage:
 <details>
 ```yaml
 name: CompoundSubsetExpression
-description: A compound expression consisting of either two or more where clauses
-  combined with the `AND` or `OR` logical operator, or a single where clause negated
-  with the `NOT` logical operator.
+description: A compound expression consisting of either two or more sub-clauses combined
+  with the `AND` or `OR` logical operator, or a single sub-clause negated with the
+  `NOT` logical operator. Each sub-clause is either a fully-defined `WhereClause`
+  (containing either a `condition` or a `compoundExpression`) or a `ReferencedDataSubset`
+  (containing a `subClauseId` indicating the `id` of the referenced `DataSubset`).
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 is_a: WhereClauseCompoundExpression
@@ -124,8 +128,9 @@ slot_usage:
     name: whereClauses
     domain_of:
     - WhereClauseCompoundExpression
-    inlined: true
-    inlined_as_list: true
+    any_of:
+    - range: ReferencedDataSubset
+    - range: WhereClause
 attributes:
   logicalOperator:
     name: logicalOperator
@@ -151,9 +156,12 @@ attributes:
     owner: CompoundSubsetExpression
     domain_of:
     - WhereClauseCompoundExpression
-    range: WhereClause
+    range: SubClause
     inlined: true
     inlined_as_list: true
+    any_of:
+    - range: ReferencedDataSubset
+    - range: WhereClause
 
 ```
 </details>

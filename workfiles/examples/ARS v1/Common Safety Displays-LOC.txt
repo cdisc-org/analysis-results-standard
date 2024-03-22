@@ -1,0 +1,1652 @@
+Reporting Event: CSD - Common Safety Displays
+List of Contents: List of Planned Analyses (LOPA)
+1. Summary of Demographics
+  Output: Out14-1-1 - Summary of Demographics
+    Documentation:
+      > Clinical Study Report (./csr-cdiscpilot01.pdf)
+        - Pages 46-48 [Table 14-2.01]
+    Categories:
+      > Population Description
+      > Demographics
+    Output File(s):
+      > RTF Format: t14-1-1-demog (RTF) (./t14-1-1-demog.rtf)
+      > PDF Format: t14-1-1-demog (PDF) (./t14-1-1-demog.pdf)
+    Displays:
+      1. Disp14-1-1 - Demographics (Demog)
+        Display Title: Summary of Demographics
+        Sections:
+          > Header:
+            1. Study - CDISC 360
+            2. Page x of y
+          > Title:
+            1. Table 14.1.1
+            2. Summary of Demographics
+            3. Safety Population
+          > Footer:
+            1. Source dataset: adsl, Generated on: DDMONYYYY:HH:MM
+            2. Program: <pid>.sas, Output: <pid><oid>.rtf, Generated on: DDMONYYYY:HH:MM
+          > Rowlabel Header:
+            1. Characteristics
+  1.1. Summary of Subjects by Treatment
+    Analysis: An01_05_SAF_Summ_ByTrt - Summary of Subjects by Treatment
+      Documentation:
+        Reason: SPECIFIED IN SAP
+        Purpose: PRIMARY OUTCOME MEASURE
+        See:
+          > Statistical Analysis Plan (./sap.pdf)
+            - Page 9 [6. ANALYSIS POPULATIONS]
+      Categories:
+        > Population Description
+        > Subject-level
+        > Demographics
+      Population: AnalysisSet_02_SAF - Safety Population (SAF)
+        Selection Criteria: ADSL.SAFFL EQ 'Y'
+      Groupings:
+        1. AnlsGrouping_01_Trt - Treatment
+          Grouping Variable: ADSL.TRT01A
+          Groups [Results per group: Y]:
+            1. AnlsGrouping_01_Trt_1 - Placebo
+               Selection Criteria: ADSL.TRT01A EQ 'Placebo'
+            2. AnlsGrouping_01_Trt_2 - Xanomeline Low Dose
+               Selection Criteria: ADSL.TRT01A EQ 'Xanomeline Low Dose'
+            3. AnlsGrouping_01_Trt_3 - Xanomeline High Dose
+               Selection Criteria: ADSL.TRT01A EQ 'Xanomeline High Dose'
+      Analysis Variable: ADSL.USUBJID
+      Method: Mth01_CatVar_Count_ByGrp - Count by group for a categorical variable (Grouped count for categorical variable)
+              Count across groups for a categorical variable, based on subject occurrence
+        Operations:
+          1. Mth01_CatVar_Count_ByGrp_1_n - Count of subjects (n)
+  1.2. Age
+    1.2.1. Summary by Treatment
+      Analysis: An03_01_Age_Summ_ByTrt - Summary of Age by Treatment (Age)
+        Documentation:
+          Reason: SPECIFIED IN SAP
+          Purpose: PRIMARY OUTCOME MEASURE
+          See:
+            > Statistical Analysis Plan (./sap.pdf)
+              - Page 13 [9.2. Demographic and Baseline Characteristics]
+        Categories:
+          > Population Description
+          > Subject-level
+          > Demographics
+        Population: AnalysisSet_02_SAF - Safety Population (SAF)
+          Selection Criteria: ADSL.SAFFL EQ 'Y'
+        Groupings:
+          1. AnlsGrouping_01_Trt - Treatment
+            Grouping Variable: ADSL.TRT01A
+            Groups [Results per group: Y]:
+              1. AnlsGrouping_01_Trt_1 - Placebo
+                 Selection Criteria: ADSL.TRT01A EQ 'Placebo'
+              2. AnlsGrouping_01_Trt_2 - Xanomeline Low Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline Low Dose'
+              3. AnlsGrouping_01_Trt_3 - Xanomeline High Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline High Dose'
+        Analysis Variable: ADSL.AGE
+        Method: Mth02_ContVar_Summ_ByGrp - Summary by group of a continuous variable (Grouped summary of continuous variable)
+                Descriptive summary statistics across groups for a continuous variable
+          Operations:
+            1. Mth02_ContVar_Summ_ByGrp_1_n - Count of non-missing values (n)
+            2. Mth02_ContVar_Summ_ByGrp_2_Mean - Mean (Mean)
+            3. Mth02_ContVar_Summ_ByGrp_3_SD - Standard deviation (SD)
+            4. Mth02_ContVar_Summ_ByGrp_4_Median - Median (Median)
+            5. Mth02_ContVar_Summ_ByGrp_5_Q1 - First quartile (Q1)
+            6. Mth02_ContVar_Summ_ByGrp_6_Q3 - Third quartile (Q3)
+            7. Mth02_ContVar_Summ_ByGrp_7_Min - Minimum (Min)
+            8. Mth02_ContVar_Summ_ByGrp_8_Max - Maximum (Max)
+    1.2.2. Comparison by Treatment
+      Analysis: An03_01_Age_Comp_ByTrt - Comparison of Age by Treatment (Age)
+        Documentation:
+          Reason: SPECIFIED IN SAP
+          Purpose: PRIMARY OUTCOME MEASURE
+          See:
+            > Statistical Analysis Plan (./sap.pdf)
+              - Page 13 [9.2. Demographic and Baseline Characteristics]
+        Categories:
+          > Population Description
+          > Subject-level
+          > Demographics
+        Population: AnalysisSet_02_SAF - Safety Population (SAF)
+          Selection Criteria: ADSL.SAFFL EQ 'Y'
+        Groupings:
+          1. AnlsGrouping_01_Trt - Treatment
+            Grouping Variable: ADSL.TRT01A
+            Groups [Results per group: N]:
+              1. AnlsGrouping_01_Trt_1 - Placebo
+                 Selection Criteria: ADSL.TRT01A EQ 'Placebo'
+              2. AnlsGrouping_01_Trt_2 - Xanomeline Low Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline Low Dose'
+              3. AnlsGrouping_01_Trt_3 - Xanomeline High Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline High Dose'
+        Analysis Variable: ADSL.AGE
+        Method: Mth04_ContVar_Comp_Anova - Analysis of variance group comparison for a continuous variable (ANOVA group comparison for continuous variable)
+                Comparison of groups by analysis of variance (ANOVA) for a continuous variable
+          Operations:
+            1. Mth04_ContVar_Comp_Anova_1_pval - P-value (p-value)
+  1.3. Age Group
+    1.3.1. Summary of Subjects by Treatment
+      Analysis: An03_02_AgeGrp_Summ_ByTrt - Summary of Subjects by Treatment and Age Group (Age Group)
+        Documentation:
+          Reason: SPECIFIED IN SAP
+          Purpose: PRIMARY OUTCOME MEASURE
+          See:
+            > Statistical Analysis Plan (./sap.pdf)
+              - Page 13 [9.2. Demographic and Baseline Characteristics]
+        Categories:
+          > Population Description
+          > Subject-level
+          > Demographics
+        Population: AnalysisSet_02_SAF - Safety Population (SAF)
+          Selection Criteria: ADSL.SAFFL EQ 'Y'
+        Groupings:
+          1. AnlsGrouping_01_Trt - Treatment
+            Grouping Variable: ADSL.TRT01A
+            Groups [Results per group: Y]:
+              1. AnlsGrouping_01_Trt_1 - Placebo
+                 Selection Criteria: ADSL.TRT01A EQ 'Placebo'
+              2. AnlsGrouping_01_Trt_2 - Xanomeline Low Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline Low Dose'
+              3. AnlsGrouping_01_Trt_3 - Xanomeline High Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline High Dose'
+          2. AnlsGrouping_03_AgeGp - Age Group
+            Grouping Variable: ADSL.AGEGR1
+            Groups [Results per group: Y]:
+              1. AnlsGrouping_03_AgeGp_1 - < 65 years
+                 Selection Criteria: ADSL.AGEGR1 EQ '<65'
+              2. AnlsGrouping_03_AgeGp_2 - ≥ 65 years
+                 Selection Criteria: ADSL.AGEGR1 IN '65-80 | >80'
+        Analysis Variable: ADSL.USUBJID
+        Method: Mth01_CatVar_Summ_ByGrp - Summary by group of a categorical variable (Grouped summary of categorical variable)
+                Descriptive summary statistics across groups for a categorical variable, based on subject occurrence
+          Operations:
+            1. Mth01_CatVar_Summ_ByGrp_1_n - Count of subjects (n)
+            2. Mth01_CatVar_Summ_ByGrp_2_pct - Percent of subjects (%)
+                - Numerator: result of operation Mth01_CatVar_Summ_ByGrp_1_n for this analysis
+                - Denominator: result of operation Mth01_CatVar_Count_ByGrp_1_n for analysis An01_05_SAF_Summ_ByTrt
+    1.3.2. Comparison of Subjects by Treatment
+      Analysis: An03_02_AgeGrp_Comp_ByTrt - Comparison of Age Group by Treatment (Age Group)
+        Documentation:
+          Reason: SPECIFIED IN SAP
+          Purpose: PRIMARY OUTCOME MEASURE
+          See:
+            > Statistical Analysis Plan (./sap.pdf)
+              - Page 13 [9.2. Demographic and Baseline Characteristics]
+        Categories:
+          > Population Description
+          > Subject-level
+          > Demographics
+        Population: AnalysisSet_02_SAF - Safety Population (SAF)
+          Selection Criteria: ADSL.SAFFL EQ 'Y'
+        Groupings:
+          1. AnlsGrouping_01_Trt - Treatment
+            Grouping Variable: ADSL.TRT01A
+            Groups [Results per group: N]:
+              1. AnlsGrouping_01_Trt_1 - Placebo
+                 Selection Criteria: ADSL.TRT01A EQ 'Placebo'
+              2. AnlsGrouping_01_Trt_2 - Xanomeline Low Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline Low Dose'
+              3. AnlsGrouping_01_Trt_3 - Xanomeline High Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline High Dose'
+          2. AnlsGrouping_03_AgeGp - Age Group
+            Grouping Variable: ADSL.AGEGR1
+            Groups [Results per group: N]:
+              1. AnlsGrouping_03_AgeGp_1 - < 65 years
+                 Selection Criteria: ADSL.AGEGR1 EQ '<65'
+              2. AnlsGrouping_03_AgeGp_2 - ≥ 65 years
+                 Selection Criteria: ADSL.AGEGR1 IN '65-80 | >80'
+        Analysis Variable: ADSL.USUBJID
+        Method: Mth03_CatVar_Comp_PChiSq - Pearson's chi-square test group comparison for a categorical variable (Pearson's chi-square test group comparison for categorical variable)
+                Comparison of groups by Pearson's chi-square test for a categorical variable
+          Operations:
+            1. Mth03_CatVar_Comp_PChiSq_1_pval - P-value (p-value)
+  1.4. Sex
+    1.4.1. Summary of Subjects by Treatment
+      Analysis: An03_03_Sex_Summ_ByTrt - Summary of Subjects by Treatment and Sex (Sex)
+        Documentation:
+          Reason: SPECIFIED IN SAP
+          Purpose: PRIMARY OUTCOME MEASURE
+          See:
+            > Statistical Analysis Plan (./sap.pdf)
+              - Page 13 [9.2. Demographic and Baseline Characteristics]
+        Categories:
+          > Population Description
+          > Subject-level
+          > Demographics
+        Population: AnalysisSet_02_SAF - Safety Population (SAF)
+          Selection Criteria: ADSL.SAFFL EQ 'Y'
+        Groupings:
+          1. AnlsGrouping_01_Trt - Treatment
+            Grouping Variable: ADSL.TRT01A
+            Groups [Results per group: Y]:
+              1. AnlsGrouping_01_Trt_1 - Placebo
+                 Selection Criteria: ADSL.TRT01A EQ 'Placebo'
+              2. AnlsGrouping_01_Trt_2 - Xanomeline Low Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline Low Dose'
+              3. AnlsGrouping_01_Trt_3 - Xanomeline High Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline High Dose'
+          2. AnlsGrouping_02_Sex - Gender
+            Grouping Variable: ADSL.SEX
+            Groups [Results per group: Y]:
+              1. AnlsGrouping_02_Sex_1 - Male
+                 Selection Criteria: ADSL.SEX EQ 'M'
+              2. AnlsGrouping_02_Sex_2 - Female
+                 Selection Criteria: ADSL.SEX EQ 'F'
+        Analysis Variable: ADSL.USUBJID
+        Method: Mth01_CatVar_Summ_ByGrp - Summary by group of a categorical variable (Grouped summary of categorical variable)
+                Descriptive summary statistics across groups for a categorical variable, based on subject occurrence
+          Operations:
+            1. Mth01_CatVar_Summ_ByGrp_1_n - Count of subjects (n)
+            2. Mth01_CatVar_Summ_ByGrp_2_pct - Percent of subjects (%)
+                - Numerator: result of operation Mth01_CatVar_Summ_ByGrp_1_n for this analysis
+                - Denominator: result of operation Mth01_CatVar_Count_ByGrp_1_n for analysis An01_05_SAF_Summ_ByTrt
+    1.4.2. Comparison of Subjects by Treatment
+      Analysis: An03_03_Sex_Comp_ByTrt - Comparison of Sex by Treatment (Sex)
+        Documentation:
+          Reason: SPECIFIED IN SAP
+          Purpose: PRIMARY OUTCOME MEASURE
+          See:
+            > Statistical Analysis Plan (./sap.pdf)
+              - Page 13 [9.2. Demographic and Baseline Characteristics]
+        Categories:
+          > Population Description
+          > Subject-level
+          > Demographics
+        Population: AnalysisSet_02_SAF - Safety Population (SAF)
+          Selection Criteria: ADSL.SAFFL EQ 'Y'
+        Groupings:
+          1. AnlsGrouping_01_Trt - Treatment
+            Grouping Variable: ADSL.TRT01A
+            Groups [Results per group: N]:
+              1. AnlsGrouping_01_Trt_1 - Placebo
+                 Selection Criteria: ADSL.TRT01A EQ 'Placebo'
+              2. AnlsGrouping_01_Trt_2 - Xanomeline Low Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline Low Dose'
+              3. AnlsGrouping_01_Trt_3 - Xanomeline High Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline High Dose'
+          2. AnlsGrouping_02_Sex - Gender
+            Grouping Variable: ADSL.SEX
+            Groups [Results per group: N]:
+              1. AnlsGrouping_02_Sex_1 - Male
+                 Selection Criteria: ADSL.SEX EQ 'M'
+              2. AnlsGrouping_02_Sex_2 - Female
+                 Selection Criteria: ADSL.SEX EQ 'F'
+        Analysis Variable: ADSL.USUBJID
+        Method: Mth03_CatVar_Comp_PChiSq - Pearson's chi-square test group comparison for a categorical variable (Pearson's chi-square test group comparison for categorical variable)
+                Comparison of groups by Pearson's chi-square test for a categorical variable
+          Operations:
+            1. Mth03_CatVar_Comp_PChiSq_1_pval - P-value (p-value)
+  1.5. Ethnicity
+    1.5.1. Summary of Subjects by Treatment
+      Analysis: An03_04_Ethnic_Summ_ByTrt - Summary of Subjects by Treatment and Ethnicity (Ethnicity)
+        Documentation:
+          Reason: SPECIFIED IN SAP
+          Purpose: PRIMARY OUTCOME MEASURE
+          See:
+            > Statistical Analysis Plan (./sap.pdf)
+              - Page 13 [9.2. Demographic and Baseline Characteristics]
+        Categories:
+          > Population Description
+          > Subject-level
+          > Demographics
+        Population: AnalysisSet_02_SAF - Safety Population (SAF)
+          Selection Criteria: ADSL.SAFFL EQ 'Y'
+        Groupings:
+          1. AnlsGrouping_01_Trt - Treatment
+            Grouping Variable: ADSL.TRT01A
+            Groups [Results per group: Y]:
+              1. AnlsGrouping_01_Trt_1 - Placebo
+                 Selection Criteria: ADSL.TRT01A EQ 'Placebo'
+              2. AnlsGrouping_01_Trt_2 - Xanomeline Low Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline Low Dose'
+              3. AnlsGrouping_01_Trt_3 - Xanomeline High Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline High Dose'
+          2. AnlsGrouping_05_Ethnic - Ethnicity
+            Grouping Variable: ADSL.ETHNIC
+            Groups [Results per group: Y]:
+              1. AnlsGrouping_05_Ethnic_1 - Hispanic or Latino
+                 Selection Criteria: ADSL.ETHNIC EQ 'HISPANIC OR LATINO'
+              2. AnlsGrouping_05_Ethnic_2 - Not Hispanic or Latino
+                 Selection Criteria: ADSL.ETHNIC EQ 'NOT HISPANIC OR LATINO'
+        Analysis Variable: ADSL.USUBJID
+        Method: Mth01_CatVar_Summ_ByGrp - Summary by group of a categorical variable (Grouped summary of categorical variable)
+                Descriptive summary statistics across groups for a categorical variable, based on subject occurrence
+          Operations:
+            1. Mth01_CatVar_Summ_ByGrp_1_n - Count of subjects (n)
+            2. Mth01_CatVar_Summ_ByGrp_2_pct - Percent of subjects (%)
+                - Numerator: result of operation Mth01_CatVar_Summ_ByGrp_1_n for this analysis
+                - Denominator: result of operation Mth01_CatVar_Count_ByGrp_1_n for analysis An01_05_SAF_Summ_ByTrt
+    1.5.2. Comparison of Subjects by Treatment
+      Analysis: An03_04_Ethnic_Comp_ByTrt - Comparison of Ethnicity by Treatment (Ethnicity)
+        Documentation:
+          Reason: SPECIFIED IN SAP
+          Purpose: PRIMARY OUTCOME MEASURE
+          See:
+            > Statistical Analysis Plan (./sap.pdf)
+              - Page 13 [9.2. Demographic and Baseline Characteristics]
+        Categories:
+          > Population Description
+          > Subject-level
+          > Demographics
+        Population: AnalysisSet_02_SAF - Safety Population (SAF)
+          Selection Criteria: ADSL.SAFFL EQ 'Y'
+        Groupings:
+          1. AnlsGrouping_01_Trt - Treatment
+            Grouping Variable: ADSL.TRT01A
+            Groups [Results per group: N]:
+              1. AnlsGrouping_01_Trt_1 - Placebo
+                 Selection Criteria: ADSL.TRT01A EQ 'Placebo'
+              2. AnlsGrouping_01_Trt_2 - Xanomeline Low Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline Low Dose'
+              3. AnlsGrouping_01_Trt_3 - Xanomeline High Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline High Dose'
+          2. AnlsGrouping_05_Ethnic - Ethnicity
+            Grouping Variable: ADSL.ETHNIC
+            Groups [Results per group: N]:
+              1. AnlsGrouping_05_Ethnic_1 - Hispanic or Latino
+                 Selection Criteria: ADSL.ETHNIC EQ 'HISPANIC OR LATINO'
+              2. AnlsGrouping_05_Ethnic_2 - Not Hispanic or Latino
+                 Selection Criteria: ADSL.ETHNIC EQ 'NOT HISPANIC OR LATINO'
+        Analysis Variable: ADSL.USUBJID
+        Method: Mth03_CatVar_Comp_PChiSq - Pearson's chi-square test group comparison for a categorical variable (Pearson's chi-square test group comparison for categorical variable)
+                Comparison of groups by Pearson's chi-square test for a categorical variable
+          Operations:
+            1. Mth03_CatVar_Comp_PChiSq_1_pval - P-value (p-value)
+  1.6. Race
+    1.6.1. Summary of Subjects by Treatment
+      Analysis: An03_05_Race_Summ_ByTrt - Summary of Subjects by Treatment and Race (Race)
+        Documentation:
+          Reason: SPECIFIED IN SAP
+          Purpose: PRIMARY OUTCOME MEASURE
+          See:
+            > Statistical Analysis Plan (./sap.pdf)
+              - Page 13 [9.2. Demographic and Baseline Characteristics]
+        Categories:
+          > Population Description
+          > Subject-level
+          > Demographics
+        Population: AnalysisSet_02_SAF - Safety Population (SAF)
+          Selection Criteria: ADSL.SAFFL EQ 'Y'
+        Groupings:
+          1. AnlsGrouping_01_Trt - Treatment
+            Grouping Variable: ADSL.TRT01A
+            Groups [Results per group: Y]:
+              1. AnlsGrouping_01_Trt_1 - Placebo
+                 Selection Criteria: ADSL.TRT01A EQ 'Placebo'
+              2. AnlsGrouping_01_Trt_2 - Xanomeline Low Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline Low Dose'
+              3. AnlsGrouping_01_Trt_3 - Xanomeline High Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline High Dose'
+          2. AnlsGrouping_04_Race - Primary Race
+            Grouping Variable: ADSL.RACE
+            Groups [Results per group: Y]:
+              1. AnlsGrouping_04_Race_1 - American Indian or Alaska Native
+                 Selection Criteria: ADSL.RACE EQ 'AMERICAN INDIAN OR ALASKA NATIVE'
+              2. AnlsGrouping_04_Race_2 - Asian
+                 Selection Criteria: ADSL.RACE EQ 'ASIAN'
+              3. AnlsGrouping_04_Race_3 - Black or African American
+                 Selection Criteria: ADSL.RACE EQ 'BLACK OR AFRICAN AMERICAN'
+              4. AnlsGrouping_04_Race_4 - Native Hawaiian or Other Pacific Islander
+                 Selection Criteria: ADSL.RACE EQ 'NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER'
+              5. AnlsGrouping_04_Race_5 - White
+                 Selection Criteria: ADSL.RACE EQ 'WHITE'
+              6. AnlsGrouping_04_Race_6 - Multiple
+                 Selection Criteria: ADSL.RACE EQ 'MULTIPLE'
+              7. AnlsGrouping_04_Race_7 - Not Reported
+                 Selection Criteria: ADSL.RACE EQ 'NOT REPORTED'
+              8. AnlsGrouping_04_Race_8 - Unknown
+                 Selection Criteria: ADSL.RACE EQ 'UNKNOWN'
+              9. AnlsGrouping_04_Race_9 - Other
+                 Selection Criteria: ADSL.RACE EQ 'OTHER'
+        Analysis Variable: ADSL.USUBJID
+        Method: Mth01_CatVar_Summ_ByGrp - Summary by group of a categorical variable (Grouped summary of categorical variable)
+                Descriptive summary statistics across groups for a categorical variable, based on subject occurrence
+          Operations:
+            1. Mth01_CatVar_Summ_ByGrp_1_n - Count of subjects (n)
+            2. Mth01_CatVar_Summ_ByGrp_2_pct - Percent of subjects (%)
+                - Numerator: result of operation Mth01_CatVar_Summ_ByGrp_1_n for this analysis
+                - Denominator: result of operation Mth01_CatVar_Count_ByGrp_1_n for analysis An01_05_SAF_Summ_ByTrt
+    1.6.2. Comparison of Subjects by Treatment
+      Analysis: An03_05_Race_Comp_ByTrt - Comparison of Race by Treatment (Race)
+        Documentation:
+          Reason: SPECIFIED IN SAP
+          Purpose: PRIMARY OUTCOME MEASURE
+          See:
+            > Statistical Analysis Plan (./sap.pdf)
+              - Page 13 [9.2. Demographic and Baseline Characteristics]
+        Categories:
+          > Population Description
+          > Subject-level
+          > Demographics
+        Population: AnalysisSet_02_SAF - Safety Population (SAF)
+          Selection Criteria: ADSL.SAFFL EQ 'Y'
+        Groupings:
+          1. AnlsGrouping_01_Trt - Treatment
+            Grouping Variable: ADSL.TRT01A
+            Groups [Results per group: N]:
+              1. AnlsGrouping_01_Trt_1 - Placebo
+                 Selection Criteria: ADSL.TRT01A EQ 'Placebo'
+              2. AnlsGrouping_01_Trt_2 - Xanomeline Low Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline Low Dose'
+              3. AnlsGrouping_01_Trt_3 - Xanomeline High Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline High Dose'
+          2. AnlsGrouping_04_Race - Primary Race
+            Grouping Variable: ADSL.RACE
+            Groups [Results per group: N]:
+              1. AnlsGrouping_04_Race_1 - American Indian or Alaska Native
+                 Selection Criteria: ADSL.RACE EQ 'AMERICAN INDIAN OR ALASKA NATIVE'
+              2. AnlsGrouping_04_Race_2 - Asian
+                 Selection Criteria: ADSL.RACE EQ 'ASIAN'
+              3. AnlsGrouping_04_Race_3 - Black or African American
+                 Selection Criteria: ADSL.RACE EQ 'BLACK OR AFRICAN AMERICAN'
+              4. AnlsGrouping_04_Race_4 - Native Hawaiian or Other Pacific Islander
+                 Selection Criteria: ADSL.RACE EQ 'NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER'
+              5. AnlsGrouping_04_Race_5 - White
+                 Selection Criteria: ADSL.RACE EQ 'WHITE'
+              6. AnlsGrouping_04_Race_6 - Multiple
+                 Selection Criteria: ADSL.RACE EQ 'MULTIPLE'
+              7. AnlsGrouping_04_Race_7 - Not Reported
+                 Selection Criteria: ADSL.RACE EQ 'NOT REPORTED'
+              8. AnlsGrouping_04_Race_8 - Unknown
+                 Selection Criteria: ADSL.RACE EQ 'UNKNOWN'
+              9. AnlsGrouping_04_Race_9 - Other
+                 Selection Criteria: ADSL.RACE EQ 'OTHER'
+        Analysis Variable: ADSL.USUBJID
+        Method: Mth03_CatVar_Comp_PChiSq - Pearson's chi-square test group comparison for a categorical variable (Pearson's chi-square test group comparison for categorical variable)
+                Comparison of groups by Pearson's chi-square test for a categorical variable
+          Operations:
+            1. Mth03_CatVar_Comp_PChiSq_1_pval - P-value (p-value)
+  1.7. Height
+    1.7.1. Summary by Treatment
+      Analysis: An03_06_Height_Summ_ByTrt - Summary of Height by Treatment (Height)
+        Documentation:
+          Reason: SPECIFIED IN SAP
+          Purpose: PRIMARY OUTCOME MEASURE
+          See:
+            > Statistical Analysis Plan (./sap.pdf)
+              - Page 13 [9.2. Demographic and Baseline Characteristics]
+        Categories:
+          > Population Description
+          > Subject-level
+          > Demographics
+        Population: AnalysisSet_02_SAF - Safety Population (SAF)
+          Selection Criteria: ADSL.SAFFL EQ 'Y'
+        Groupings:
+          1. AnlsGrouping_01_Trt - Treatment
+            Grouping Variable: ADSL.TRT01A
+            Groups [Results per group: Y]:
+              1. AnlsGrouping_01_Trt_1 - Placebo
+                 Selection Criteria: ADSL.TRT01A EQ 'Placebo'
+              2. AnlsGrouping_01_Trt_2 - Xanomeline Low Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline Low Dose'
+              3. AnlsGrouping_01_Trt_3 - Xanomeline High Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline High Dose'
+        Analysis Variable: ADSL.HEIGHTBL
+        Method: Mth02_ContVar_Summ_ByGrp - Summary by group of a continuous variable (Grouped summary of continuous variable)
+                Descriptive summary statistics across groups for a continuous variable
+          Operations:
+            1. Mth02_ContVar_Summ_ByGrp_1_n - Count of non-missing values (n)
+            2. Mth02_ContVar_Summ_ByGrp_2_Mean - Mean (Mean)
+            3. Mth02_ContVar_Summ_ByGrp_3_SD - Standard deviation (SD)
+            4. Mth02_ContVar_Summ_ByGrp_4_Median - Median (Median)
+            5. Mth02_ContVar_Summ_ByGrp_5_Q1 - First quartile (Q1)
+            6. Mth02_ContVar_Summ_ByGrp_6_Q3 - Third quartile (Q3)
+            7. Mth02_ContVar_Summ_ByGrp_7_Min - Minimum (Min)
+            8. Mth02_ContVar_Summ_ByGrp_8_Max - Maximum (Max)
+    1.7.2. Comparison by Treatment
+      Analysis: An03_06_Height_Comp_ByTrt - Comparison of Height by Treatment (Height)
+        Documentation:
+          Reason: SPECIFIED IN SAP
+          Purpose: PRIMARY OUTCOME MEASURE
+          See:
+            > Statistical Analysis Plan (./sap.pdf)
+              - Page 13 [9.2. Demographic and Baseline Characteristics]
+        Categories:
+          > Population Description
+          > Subject-level
+          > Demographics
+        Population: AnalysisSet_02_SAF - Safety Population (SAF)
+          Selection Criteria: ADSL.SAFFL EQ 'Y'
+        Groupings:
+          1. AnlsGrouping_01_Trt - Treatment
+            Grouping Variable: ADSL.TRT01A
+            Groups [Results per group: N]:
+              1. AnlsGrouping_01_Trt_1 - Placebo
+                 Selection Criteria: ADSL.TRT01A EQ 'Placebo'
+              2. AnlsGrouping_01_Trt_2 - Xanomeline Low Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline Low Dose'
+              3. AnlsGrouping_01_Trt_3 - Xanomeline High Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline High Dose'
+        Analysis Variable: ADSL.HEIGHTBL
+        Method: Mth04_ContVar_Comp_Anova - Analysis of variance group comparison for a continuous variable (ANOVA group comparison for continuous variable)
+                Comparison of groups by analysis of variance (ANOVA) for a continuous variable
+          Operations:
+            1. Mth04_ContVar_Comp_Anova_1_pval - P-value (p-value)
+2. Overall Summary of Treatment-Emergent Adverse Events
+  Output: Out14-3-1-1 - Overall Summary of Treatment-Emergent Adverse Events
+    Documentation:
+      > AE Summary Table Shell (./AE_Summary_Table_Shell.pdf)
+    Categories:
+      > Safety
+      > Adverse Events
+    Output File(s):
+      > RTF Format: t14-3-1-1-teae-summ (RTF) (./t14-3-1-1-teae-summ.rtf)
+      > PDF Format: t14-3-1-1-teae-summ (PDF) (./t14-3-1-1-teae-summ.pdf)
+    Displays:
+      1. Disp14-3-1-1 - AE Summary (AE_Summ)
+        Display Title: Overall Summary of Treatment-Emergent Adverse Events
+        Sections:
+          > Header:
+            1. Study - CDISC 360
+            2. Page x of y
+          > Title:
+            1. Table 14.3.1.<x>.<y>
+            2. Overall Summary of Treatment-Emergent Adverse Events
+            3. Safety Population
+          > Abbreviation:
+            1. Note: TEAE=Treatment-Emergent Adverse Events.
+          > Footnote:
+            1. [a] Dose Modification includes Dose Reduced; Drug Interrupted in the AE action taken with study treatment.
+          > Footer:
+            1. Source dataset: adae, Generated on: DDMONYYYY:HH:MM
+            2. Program: <pid>.sas, Output: <pid><oid>.rtf, Generated on: DDMONYYYY:HH:MM
+          > Rowlabel Header:
+            1. Categories, n (%)
+  2.1. Summary of Subjects by Treatment
+    Analysis: An01_05_SAF_Summ_ByTrt - Summary of Subjects by Treatment
+      Documentation:
+        Reason: SPECIFIED IN SAP
+        Purpose: PRIMARY OUTCOME MEASURE
+        See:
+          > Statistical Analysis Plan (./sap.pdf)
+            - Page 9 [6. ANALYSIS POPULATIONS]
+      Categories:
+        > Population Description
+        > Subject-level
+        > Demographics
+      Population: AnalysisSet_02_SAF - Safety Population (SAF)
+        Selection Criteria: ADSL.SAFFL EQ 'Y'
+      Groupings:
+        1. AnlsGrouping_01_Trt - Treatment
+          Grouping Variable: ADSL.TRT01A
+          Groups [Results per group: Y]:
+            1. AnlsGrouping_01_Trt_1 - Placebo
+               Selection Criteria: ADSL.TRT01A EQ 'Placebo'
+            2. AnlsGrouping_01_Trt_2 - Xanomeline Low Dose
+               Selection Criteria: ADSL.TRT01A EQ 'Xanomeline Low Dose'
+            3. AnlsGrouping_01_Trt_3 - Xanomeline High Dose
+               Selection Criteria: ADSL.TRT01A EQ 'Xanomeline High Dose'
+      Analysis Variable: ADSL.USUBJID
+      Method: Mth01_CatVar_Count_ByGrp - Count by group for a categorical variable (Grouped count for categorical variable)
+              Count across groups for a categorical variable, based on subject occurrence
+        Operations:
+          1. Mth01_CatVar_Count_ByGrp_1_n - Count of subjects (n)
+  2.2. Number of subjects with at least one event
+    2.2.1. TEAE
+      Analysis: An07_01_TEAE_Summ_ByTrt - Summary of Subjects with At Least One TEAE, by Treatment (TEAE)
+        Documentation:
+          Reason: SPECIFIED IN SAP
+          Purpose: PRIMARY OUTCOME MEASURE
+          See:
+            > Statistical Analysis Plan (./sap.pdf)
+              - Pages 15-16 [11.2. Adverse Events]
+        Categories:
+          > Safety
+          > Events
+          > Adverse Events
+          > Occurrence
+        Population: AnalysisSet_02_SAF - Safety Population (SAF)
+          Selection Criteria: ADSL.SAFFL EQ 'Y'
+        Data Subset: Dss01_TEAE - Treatment-Emergent Adverse Events
+          Selection Criteria: ADAE.TRTEMFL EQ 'Y'
+        Groupings:
+          1. AnlsGrouping_01_Trt - Treatment
+            Grouping Variable: ADSL.TRT01A
+            Groups [Results per group: Y]:
+              1. AnlsGrouping_01_Trt_1 - Placebo
+                 Selection Criteria: ADSL.TRT01A EQ 'Placebo'
+              2. AnlsGrouping_01_Trt_2 - Xanomeline Low Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline Low Dose'
+              3. AnlsGrouping_01_Trt_3 - Xanomeline High Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline High Dose'
+        Analysis Variable: ADAE.USUBJID
+        Method: Mth01_CatVar_Summ_ByGrp - Summary by group of a categorical variable (Grouped summary of categorical variable)
+                Descriptive summary statistics across groups for a categorical variable, based on subject occurrence
+          Operations:
+            1. Mth01_CatVar_Summ_ByGrp_1_n - Count of subjects (n)
+            2. Mth01_CatVar_Summ_ByGrp_2_pct - Percent of subjects (%)
+                - Numerator: result of operation Mth01_CatVar_Summ_ByGrp_1_n for this analysis
+                - Denominator: result of operation Mth01_CatVar_Count_ByGrp_1_n for analysis An01_05_SAF_Summ_ByTrt
+    2.2.2. Related TEAE
+      Analysis: An07_02_RelTEAE_Summ_ByTrt - Summary of Subjects with At Least One Related TEAE, by Treatment (Related TEAE)
+        Documentation:
+          Reason: ADDITIONAL EXAMPLE
+          Purpose: SECONDARY OUTCOME MEASURE
+        Categories:
+          > Safety
+          > Events
+          > Adverse Events
+          > Occurrence
+        Population: AnalysisSet_02_SAF - Safety Population (SAF)
+          Selection Criteria: ADSL.SAFFL EQ 'Y'
+        Data Subset: Dss02_Related_TEAE - Related Treatment-Emergent Adverse Events
+          Selection Criteria: (ADAE.TRTEMFL EQ 'Y' AND ADAE.AEREL IN ('POSSIBLE', 'PROBABLE'))
+        Groupings:
+          1. AnlsGrouping_01_Trt - Treatment
+            Grouping Variable: ADSL.TRT01A
+            Groups [Results per group: Y]:
+              1. AnlsGrouping_01_Trt_1 - Placebo
+                 Selection Criteria: ADSL.TRT01A EQ 'Placebo'
+              2. AnlsGrouping_01_Trt_2 - Xanomeline Low Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline Low Dose'
+              3. AnlsGrouping_01_Trt_3 - Xanomeline High Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline High Dose'
+        Analysis Variable: ADAE.USUBJID
+        Method: Mth01_CatVar_Summ_ByGrp - Summary by group of a categorical variable (Grouped summary of categorical variable)
+                Descriptive summary statistics across groups for a categorical variable, based on subject occurrence
+          Operations:
+            1. Mth01_CatVar_Summ_ByGrp_1_n - Count of subjects (n)
+            2. Mth01_CatVar_Summ_ByGrp_2_pct - Percent of subjects (%)
+                - Numerator: result of operation Mth01_CatVar_Summ_ByGrp_1_n for this analysis
+                - Denominator: result of operation Mth01_CatVar_Count_ByGrp_1_n for analysis An01_05_SAF_Summ_ByTrt
+    2.2.3. Serious TEAE
+      Analysis: An07_03_SerTEAE_Summ_ByTrt - Summary of Subjects with At Least One Serious TEAE, by Treatment (Serious TEAE)
+        Documentation:
+          Reason: ADDITIONAL EXAMPLE
+          Purpose: SECONDARY OUTCOME MEASURE
+        Categories:
+          > Safety
+          > Events
+          > Adverse Events
+          > Occurrence
+        Population: AnalysisSet_02_SAF - Safety Population (SAF)
+          Selection Criteria: ADSL.SAFFL EQ 'Y'
+        Data Subset: Dss03_Serious_TEAE - Serious Treatment-Emergent Adverse Events
+          Selection Criteria: (ADAE.TRTEMFL EQ 'Y' AND ADAE.AESER EQ 'Y')
+        Groupings:
+          1. AnlsGrouping_01_Trt - Treatment
+            Grouping Variable: ADSL.TRT01A
+            Groups [Results per group: Y]:
+              1. AnlsGrouping_01_Trt_1 - Placebo
+                 Selection Criteria: ADSL.TRT01A EQ 'Placebo'
+              2. AnlsGrouping_01_Trt_2 - Xanomeline Low Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline Low Dose'
+              3. AnlsGrouping_01_Trt_3 - Xanomeline High Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline High Dose'
+        Analysis Variable: ADAE.USUBJID
+        Method: Mth01_CatVar_Summ_ByGrp - Summary by group of a categorical variable (Grouped summary of categorical variable)
+                Descriptive summary statistics across groups for a categorical variable, based on subject occurrence
+          Operations:
+            1. Mth01_CatVar_Summ_ByGrp_1_n - Count of subjects (n)
+            2. Mth01_CatVar_Summ_ByGrp_2_pct - Percent of subjects (%)
+                - Numerator: result of operation Mth01_CatVar_Summ_ByGrp_1_n for this analysis
+                - Denominator: result of operation Mth01_CatVar_Count_ByGrp_1_n for analysis An01_05_SAF_Summ_ByTrt
+    2.2.4. Related Serious TEAE
+      Analysis: An07_04_RelSerTEAE_Summ_ByTrt - Summary of Subjects with At Least One Related Serious TEAE, by Treatment (Related Serious TEAE)
+        Documentation:
+          Reason: ADDITIONAL EXAMPLE
+          Purpose: SECONDARY OUTCOME MEASURE
+        Categories:
+          > Safety
+          > Events
+          > Adverse Events
+          > Occurrence
+        Population: AnalysisSet_02_SAF - Safety Population (SAF)
+          Selection Criteria: ADSL.SAFFL EQ 'Y'
+        Data Subset: Dss04_RelSer_TEAE - Related Serious Treatment-Emergent Adverse Events
+          Selection Criteria: (ADAE.TRTEMFL EQ 'Y' AND ADAE.AEREL IN ('POSSIBLE', 'PROBABLE') AND ADAE.AESER EQ 'Y')
+        Groupings:
+          1. AnlsGrouping_01_Trt - Treatment
+            Grouping Variable: ADSL.TRT01A
+            Groups [Results per group: Y]:
+              1. AnlsGrouping_01_Trt_1 - Placebo
+                 Selection Criteria: ADSL.TRT01A EQ 'Placebo'
+              2. AnlsGrouping_01_Trt_2 - Xanomeline Low Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline Low Dose'
+              3. AnlsGrouping_01_Trt_3 - Xanomeline High Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline High Dose'
+        Analysis Variable: ADAE.USUBJID
+        Method: Mth01_CatVar_Summ_ByGrp - Summary by group of a categorical variable (Grouped summary of categorical variable)
+                Descriptive summary statistics across groups for a categorical variable, based on subject occurrence
+          Operations:
+            1. Mth01_CatVar_Summ_ByGrp_1_n - Count of subjects (n)
+            2. Mth01_CatVar_Summ_ByGrp_2_pct - Percent of subjects (%)
+                - Numerator: result of operation Mth01_CatVar_Summ_ByGrp_1_n for this analysis
+                - Denominator: result of operation Mth01_CatVar_Count_ByGrp_1_n for analysis An01_05_SAF_Summ_ByTrt
+    2.2.5. TEAE Leading to Death
+      Analysis: An07_05_TEAELd2Dth_Summ_ByTrt - Summary of Subjects with At Least One TEAE Leading to Death, by Treatment (TEAE Leading to Death)
+        Documentation:
+          Reason: ADDITIONAL EXAMPLE
+          Purpose: SECONDARY OUTCOME MEASURE
+        Categories:
+          > Safety
+          > Events
+          > Adverse Events
+          > Occurrence
+        Population: AnalysisSet_02_SAF - Safety Population (SAF)
+          Selection Criteria: ADSL.SAFFL EQ 'Y'
+        Data Subset: Dss05_TEAE_Ld2Dth - Treatment-Emergent Adverse Events Leading to Death
+          Selection Criteria: (ADAE.TRTEMFL EQ 'Y' AND ADAE.AESDTH EQ 'Y')
+        Groupings:
+          1. AnlsGrouping_01_Trt - Treatment
+            Grouping Variable: ADSL.TRT01A
+            Groups [Results per group: Y]:
+              1. AnlsGrouping_01_Trt_1 - Placebo
+                 Selection Criteria: ADSL.TRT01A EQ 'Placebo'
+              2. AnlsGrouping_01_Trt_2 - Xanomeline Low Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline Low Dose'
+              3. AnlsGrouping_01_Trt_3 - Xanomeline High Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline High Dose'
+        Analysis Variable: ADAE.USUBJID
+        Method: Mth01_CatVar_Summ_ByGrp - Summary by group of a categorical variable (Grouped summary of categorical variable)
+                Descriptive summary statistics across groups for a categorical variable, based on subject occurrence
+          Operations:
+            1. Mth01_CatVar_Summ_ByGrp_1_n - Count of subjects (n)
+            2. Mth01_CatVar_Summ_ByGrp_2_pct - Percent of subjects (%)
+                - Numerator: result of operation Mth01_CatVar_Summ_ByGrp_1_n for this analysis
+                - Denominator: result of operation Mth01_CatVar_Count_ByGrp_1_n for analysis An01_05_SAF_Summ_ByTrt
+    2.2.6. Related TEAE Leading to Death
+      Analysis: An07_06_RelTEAELd2Dth_Summ_ByTrt - Summary of Subjects with At Least One Related TEAE Leading to Death, by Treatment (Related TEAE Leading to Death)
+        Documentation:
+          Reason: ADDITIONAL EXAMPLE
+          Purpose: SECONDARY OUTCOME MEASURE
+        Categories:
+          > Safety
+          > Events
+          > Adverse Events
+          > Occurrence
+        Population: AnalysisSet_02_SAF - Safety Population (SAF)
+          Selection Criteria: ADSL.SAFFL EQ 'Y'
+        Data Subset: Dss06_Rel_TEAE_Ld2Dth - Related Treatment-Emergent Adverse Events Leading to Death
+          Selection Criteria: (ADAE.TRTEMFL EQ 'Y' AND ADAE.AESDTH EQ 'Y' AND (ADAE.AEREL EQ 'POSSIBLE' OR ADAE.AEREL EQ 'PROBABLE'))
+        Groupings:
+          1. AnlsGrouping_01_Trt - Treatment
+            Grouping Variable: ADSL.TRT01A
+            Groups [Results per group: Y]:
+              1. AnlsGrouping_01_Trt_1 - Placebo
+                 Selection Criteria: ADSL.TRT01A EQ 'Placebo'
+              2. AnlsGrouping_01_Trt_2 - Xanomeline Low Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline Low Dose'
+              3. AnlsGrouping_01_Trt_3 - Xanomeline High Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline High Dose'
+        Analysis Variable: ADAE.USUBJID
+        Method: Mth01_CatVar_Summ_ByGrp - Summary by group of a categorical variable (Grouped summary of categorical variable)
+                Descriptive summary statistics across groups for a categorical variable, based on subject occurrence
+          Operations:
+            1. Mth01_CatVar_Summ_ByGrp_1_n - Count of subjects (n)
+            2. Mth01_CatVar_Summ_ByGrp_2_pct - Percent of subjects (%)
+                - Numerator: result of operation Mth01_CatVar_Summ_ByGrp_1_n for this analysis
+                - Denominator: result of operation Mth01_CatVar_Count_ByGrp_1_n for analysis An01_05_SAF_Summ_ByTrt
+    2.2.7. TEAE Leading to Dose Modification
+      Analysis: An07_07_TEAELd2DoseMod_Summ_ByTrt - Summary of Subjects with At Least One TEAE Leading to Dose Modification, by Treatment (TEAE Leading to Dose Modification [a])
+        Documentation:
+          Reason: ADDITIONAL EXAMPLE
+          Purpose: SECONDARY OUTCOME MEASURE
+        Categories:
+          > Safety
+          > Events
+          > Adverse Events
+          > Occurrence
+        Population: AnalysisSet_02_SAF - Safety Population (SAF)
+          Selection Criteria: ADSL.SAFFL EQ 'Y'
+        Data Subset: Dss07_TEAE_Ld2DoseMod - Treatment-Emergent Adverse Events Leading to Dose Modification
+          Selection Criteria: (ADAE.TRTEMFL EQ 'Y' AND ADAE.AEACN IN ('DOSE REDUCED', 'DRUG INTERRUPTED'))
+        Groupings:
+          1. AnlsGrouping_01_Trt - Treatment
+            Grouping Variable: ADSL.TRT01A
+            Groups [Results per group: Y]:
+              1. AnlsGrouping_01_Trt_1 - Placebo
+                 Selection Criteria: ADSL.TRT01A EQ 'Placebo'
+              2. AnlsGrouping_01_Trt_2 - Xanomeline Low Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline Low Dose'
+              3. AnlsGrouping_01_Trt_3 - Xanomeline High Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline High Dose'
+        Analysis Variable: ADAE.USUBJID
+        Method: Mth01_CatVar_Summ_ByGrp - Summary by group of a categorical variable (Grouped summary of categorical variable)
+                Descriptive summary statistics across groups for a categorical variable, based on subject occurrence
+          Operations:
+            1. Mth01_CatVar_Summ_ByGrp_1_n - Count of subjects (n)
+            2. Mth01_CatVar_Summ_ByGrp_2_pct - Percent of subjects (%)
+                - Numerator: result of operation Mth01_CatVar_Summ_ByGrp_1_n for this analysis
+                - Denominator: result of operation Mth01_CatVar_Count_ByGrp_1_n for analysis An01_05_SAF_Summ_ByTrt
+    2.2.8. TEAE Leading to Treatment Discontinuation
+      Analysis: An07_08_TEAELd2TrtDsc_Summ_ByTrt - Summary of Subjects with At Least One TEAE Leading to Treatment Discontinuation, by Treatment (TEAE Leading to Treatment Discontinuation)
+        Documentation:
+          Reason: ADDITIONAL EXAMPLE
+          Purpose: SECONDARY OUTCOME MEASURE
+        Categories:
+          > Safety
+          > Events
+          > Adverse Events
+          > Occurrence
+        Population: AnalysisSet_02_SAF - Safety Population (SAF)
+          Selection Criteria: ADSL.SAFFL EQ 'Y'
+        Data Subset: Dss08_AE_Ld2TrtDsc - Treatment-Emergent Adverse Events Leading to Treatment Discontinuation
+          Selection Criteria: (ADAE.TRTEMFL EQ 'Y' AND ADAE.AEACN EQ 'DRUG WITHDRAWN')
+        Groupings:
+          1. AnlsGrouping_01_Trt - Treatment
+            Grouping Variable: ADSL.TRT01A
+            Groups [Results per group: Y]:
+              1. AnlsGrouping_01_Trt_1 - Placebo
+                 Selection Criteria: ADSL.TRT01A EQ 'Placebo'
+              2. AnlsGrouping_01_Trt_2 - Xanomeline Low Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline Low Dose'
+              3. AnlsGrouping_01_Trt_3 - Xanomeline High Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline High Dose'
+        Analysis Variable: ADAE.USUBJID
+        Method: Mth01_CatVar_Summ_ByGrp - Summary by group of a categorical variable (Grouped summary of categorical variable)
+                Descriptive summary statistics across groups for a categorical variable, based on subject occurrence
+          Operations:
+            1. Mth01_CatVar_Summ_ByGrp_1_n - Count of subjects (n)
+            2. Mth01_CatVar_Summ_ByGrp_2_pct - Percent of subjects (%)
+                - Numerator: result of operation Mth01_CatVar_Summ_ByGrp_1_n for this analysis
+                - Denominator: result of operation Mth01_CatVar_Count_ByGrp_1_n for analysis An01_05_SAF_Summ_ByTrt
+3. Summary of TEAE by System Organ Class and Preferred Term
+  Output: Out14-3-2-1 - Summary of TEAE by System Organ Class and Preferred Term
+    Documentation:
+      > Statistical Analysis Plan (./sap.pdf)
+        - Page 32 [Template 13]
+      > Clinical Study Report (./csr-cdiscpilot01.pdf)
+        - Pages 63-78 [Table 14-5.01]
+    Categories:
+      > Safety
+      > Adverse Events
+    Output File(s):
+      > RTF Format: t14-3-2-1-teae-socpt (RTF) (./t14-3-2-1-teae-socpt.rtf)
+      > PDF Format: t14-3-2-1-teae-socpt (PDF) (./t14-3-2-1-teae-socpt.pdf)
+    Displays:
+      1. Disp14-3-2-1 - AE SOCPT Summary (AE_SOC_PT)
+        Display Title: Summary of TEAE by System Organ Class and Preferred Term
+        Sections:
+          > Header:
+            1. Study - CDISC 360
+            2. Page x of y
+          > Title:
+            1. Table 14.3.1.1
+            2. Summary of TEAE by System Organ Class and Preferred Term
+            3. Safety Population
+          > Abbreviation:
+            1. Notes: TEAE=Treatment-Emergent Adverse Events.
+          > Legend:
+            1.        Subjects are counted once within each system organ class and preferred term.
+          > Footnote:
+            1. [a] All investigators adverse events were coded using MedDRA version xx.x.
+            2. [b] P-values are based on Fisher's Exact test for the comparison of placebo versus each active treatment group. An asterisk is appended to p-values that are less than 0.15.
+          > Footer:
+            1. Source dataset: adae, Generated on: DDMONYYYY:HH:MM
+            2. Program: <pid>.sas, Output: <pid><oid>.rtf, Generated on: DDMONYYYY:HH:MM
+          > Rowlabel Header:
+            1. System Organ Class
+            2.     Preferred Term [a], n (%)
+  3.1. Summary of Subjects by Treatment
+    Analysis: An01_05_SAF_Summ_ByTrt - Summary of Subjects by Treatment
+      Documentation:
+        Reason: SPECIFIED IN SAP
+        Purpose: PRIMARY OUTCOME MEASURE
+        See:
+          > Statistical Analysis Plan (./sap.pdf)
+            - Page 9 [6. ANALYSIS POPULATIONS]
+      Categories:
+        > Population Description
+        > Subject-level
+        > Demographics
+      Population: AnalysisSet_02_SAF - Safety Population (SAF)
+        Selection Criteria: ADSL.SAFFL EQ 'Y'
+      Groupings:
+        1. AnlsGrouping_01_Trt - Treatment
+          Grouping Variable: ADSL.TRT01A
+          Groups [Results per group: Y]:
+            1. AnlsGrouping_01_Trt_1 - Placebo
+               Selection Criteria: ADSL.TRT01A EQ 'Placebo'
+            2. AnlsGrouping_01_Trt_2 - Xanomeline Low Dose
+               Selection Criteria: ADSL.TRT01A EQ 'Xanomeline Low Dose'
+            3. AnlsGrouping_01_Trt_3 - Xanomeline High Dose
+               Selection Criteria: ADSL.TRT01A EQ 'Xanomeline High Dose'
+      Analysis Variable: ADSL.USUBJID
+      Method: Mth01_CatVar_Count_ByGrp - Count by group for a categorical variable (Grouped count for categorical variable)
+              Count across groups for a categorical variable, based on subject occurrence
+        Operations:
+          1. Mth01_CatVar_Count_ByGrp_1_n - Count of subjects (n)
+  3.2. Number of subjects with at least one event
+    3.2.1. Summary of Subjects by Treatment
+      Analysis: An07_01_TEAE_Summ_ByTrt - Summary of Subjects with At Least One TEAE, by Treatment (TEAE)
+        Documentation:
+          Reason: SPECIFIED IN SAP
+          Purpose: PRIMARY OUTCOME MEASURE
+          See:
+            > Statistical Analysis Plan (./sap.pdf)
+              - Pages 15-16 [11.2. Adverse Events]
+        Categories:
+          > Safety
+          > Events
+          > Adverse Events
+          > Occurrence
+        Population: AnalysisSet_02_SAF - Safety Population (SAF)
+          Selection Criteria: ADSL.SAFFL EQ 'Y'
+        Data Subset: Dss01_TEAE - Treatment-Emergent Adverse Events
+          Selection Criteria: ADAE.TRTEMFL EQ 'Y'
+        Groupings:
+          1. AnlsGrouping_01_Trt - Treatment
+            Grouping Variable: ADSL.TRT01A
+            Groups [Results per group: Y]:
+              1. AnlsGrouping_01_Trt_1 - Placebo
+                 Selection Criteria: ADSL.TRT01A EQ 'Placebo'
+              2. AnlsGrouping_01_Trt_2 - Xanomeline Low Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline Low Dose'
+              3. AnlsGrouping_01_Trt_3 - Xanomeline High Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline High Dose'
+        Analysis Variable: ADAE.USUBJID
+        Method: Mth01_CatVar_Summ_ByGrp - Summary by group of a categorical variable (Grouped summary of categorical variable)
+                Descriptive summary statistics across groups for a categorical variable, based on subject occurrence
+          Operations:
+            1. Mth01_CatVar_Summ_ByGrp_1_n - Count of subjects (n)
+            2. Mth01_CatVar_Summ_ByGrp_2_pct - Percent of subjects (%)
+                - Numerator: result of operation Mth01_CatVar_Summ_ByGrp_1_n for this analysis
+                - Denominator: result of operation Mth01_CatVar_Count_ByGrp_1_n for analysis An01_05_SAF_Summ_ByTrt
+    3.2.2. Comparison of Subjects by Treatment - Placebo vs Low Dose
+      Analysis: An07_01_TEAE_Comp_ByTrt_PlacLow - Comparison of Subjects with TEAEs by Treatment - Placebo vs Low Dose
+        Documentation:
+          Reason: ADDITIONAL EXAMPLE
+          Purpose: SECONDARY OUTCOME MEASURE
+          See:
+            > Statistical Analysis Plan (./sap.pdf)
+              - Pages 15-16 [11.2. Adverse Events]
+        Categories:
+          > Safety
+          > Events
+          > Adverse Events
+          > Occurrence
+        Population: AnalysisSet_02_SAF - Safety Population (SAF)
+          Selection Criteria: ADSL.SAFFL EQ 'Y'
+        Data Subset: Dss11_TEAE_PlacLow - Treatment-Emergent Adverse Events for Placebo and Low Active Dose
+          Selection Criteria: (ADAE.TRTEMFL EQ 'Y' AND ADSL.TRT01A IN ('Placebo', 'Xanomeline Low Dose'))
+        Groupings:
+          1. AnlsGrouping_01_Trt - Treatment
+            Grouping Variable: ADSL.TRT01A
+            Groups [Results per group: N]:
+              1. AnlsGrouping_01_Trt_1 - Placebo
+                 Selection Criteria: ADSL.TRT01A EQ 'Placebo'
+              2. AnlsGrouping_01_Trt_2 - Xanomeline Low Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline Low Dose'
+              3. AnlsGrouping_01_Trt_3 - Xanomeline High Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline High Dose'
+        Analysis Variable: ADAE.USUBJID
+        Method: Mth05_CatVar_Comp_FishEx - Fisher's exact test group comparison for a categorical variable (Fisher's exact test group comparison for categorical variable)
+                Comparison of groups by Fisher's exact test for a categorical variable
+          Operations:
+            1. Mth03_CatVar_Comp_FishEx_1_pval - P-value (p-value)
+    3.2.3. Comparison of Subjects by Treatment - Placebo vs High Dose
+      Analysis: An07_01_TEAE_Comp_ByTrt_PlacHigh - Comparison of Subjects with TEAEs by Treatment - Placebo vs High Dose
+        Documentation:
+          Reason: ADDITIONAL EXAMPLE
+          Purpose: SECONDARY OUTCOME MEASURE
+          See:
+            > Statistical Analysis Plan (./sap.pdf)
+              - Pages 15-16 [11.2. Adverse Events]
+        Categories:
+          > Safety
+          > Events
+          > Adverse Events
+          > Occurrence
+        Population: AnalysisSet_02_SAF - Safety Population (SAF)
+          Selection Criteria: ADSL.SAFFL EQ 'Y'
+        Data Subset: Dss12_TEAE_PlacHigh - Treatment-Emergent Adverse Events for Placebo and High Active Dose
+          Selection Criteria: (ADAE.TRTEMFL EQ 'Y' AND ADSL.TRT01A IN ('Placebo', 'Xanomeline High Dose'))
+        Groupings:
+          1. AnlsGrouping_01_Trt - Treatment
+            Grouping Variable: ADSL.TRT01A
+            Groups [Results per group: N]:
+              1. AnlsGrouping_01_Trt_1 - Placebo
+                 Selection Criteria: ADSL.TRT01A EQ 'Placebo'
+              2. AnlsGrouping_01_Trt_2 - Xanomeline Low Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline Low Dose'
+              3. AnlsGrouping_01_Trt_3 - Xanomeline High Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline High Dose'
+        Analysis Variable: ADAE.USUBJID
+        Method: Mth05_CatVar_Comp_FishEx - Fisher's exact test group comparison for a categorical variable (Fisher's exact test group comparison for categorical variable)
+                Comparison of groups by Fisher's exact test for a categorical variable
+          Operations:
+            1. Mth03_CatVar_Comp_FishEx_1_pval - P-value (p-value)
+  3.3. System Organ Class
+    3.3.1. Summary of Subjects by Treatment and System Organ Class
+      Analysis: An07_09_Soc_Summ_ByTrt - Summary of Subjects with TEAEs by Treatment and System Organ Class
+        Documentation:
+          Reason: SPECIFIED IN SAP
+          Purpose: PRIMARY OUTCOME MEASURE
+          See:
+            > Statistical Analysis Plan (./sap.pdf)
+              - Pages 15-16 [11.2. Adverse Events]
+        Categories:
+          > Safety
+          > Events
+          > Adverse Events
+          > Occurrence
+        Population: AnalysisSet_02_SAF - Safety Population (SAF)
+          Selection Criteria: ADSL.SAFFL EQ 'Y'
+        Data Subset: Dss01_TEAE - Treatment-Emergent Adverse Events
+          Selection Criteria: ADAE.TRTEMFL EQ 'Y'
+        Groupings:
+          1. AnlsGrouping_01_Trt - Treatment
+            Grouping Variable: ADSL.TRT01A
+            Groups [Results per group: Y]:
+              1. AnlsGrouping_01_Trt_1 - Placebo
+                 Selection Criteria: ADSL.TRT01A EQ 'Placebo'
+              2. AnlsGrouping_01_Trt_2 - Xanomeline Low Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline Low Dose'
+              3. AnlsGrouping_01_Trt_3 - Xanomeline High Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline High Dose'
+          2. AnlsGrouping_06_Soc - System Organ Class
+            Grouping Variable: ADAE.AESOC
+            Data-driven [Results per group: Y]
+        Analysis Variable: ADAE.USUBJID
+        Method: Mth01_CatVar_Summ_ByGrp - Summary by group of a categorical variable (Grouped summary of categorical variable)
+                Descriptive summary statistics across groups for a categorical variable, based on subject occurrence
+          Operations:
+            1. Mth01_CatVar_Summ_ByGrp_1_n - Count of subjects (n)
+            2. Mth01_CatVar_Summ_ByGrp_2_pct - Percent of subjects (%)
+                - Numerator: result of operation Mth01_CatVar_Summ_ByGrp_1_n for this analysis
+                - Denominator: result of operation Mth01_CatVar_Count_ByGrp_1_n for analysis An01_05_SAF_Summ_ByTrt
+    3.3.2. Comparison of Subjects with TEAEs by Treatment and System Organ Class - Placebo vs Low Dose
+      Analysis: An07_09_Soc_Comp_ByTrt_PlacLow - Comparison of Subjects with TEAEs by Treatment and System Organ Class - Placebo vs Low Dose
+        Documentation:
+          Reason: SPECIFIED IN SAP
+          Purpose: PRIMARY OUTCOME MEASURE
+          See:
+            > Statistical Analysis Plan (./sap.pdf)
+              - Pages 15-16 [11.2. Adverse Events]
+        Categories:
+          > Safety
+          > Events
+          > Adverse Events
+          > Occurrence
+        Population: AnalysisSet_02_SAF - Safety Population (SAF)
+          Selection Criteria: ADSL.SAFFL EQ 'Y'
+        Data Subset: Dss11_TEAE_PlacLow - Treatment-Emergent Adverse Events for Placebo and Low Active Dose
+          Selection Criteria: (ADAE.TRTEMFL EQ 'Y' AND ADSL.TRT01A IN ('Placebo', 'Xanomeline Low Dose'))
+        Groupings:
+          1. AnlsGrouping_01_Trt - Treatment
+            Grouping Variable: ADSL.TRT01A
+            Groups [Results per group: N]:
+              1. AnlsGrouping_01_Trt_1 - Placebo
+                 Selection Criteria: ADSL.TRT01A EQ 'Placebo'
+              2. AnlsGrouping_01_Trt_2 - Xanomeline Low Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline Low Dose'
+              3. AnlsGrouping_01_Trt_3 - Xanomeline High Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline High Dose'
+          2. AnlsGrouping_06_Soc - System Organ Class
+            Grouping Variable: ADAE.AESOC
+            Data-driven [Results per group: Y]
+        Analysis Variable: ADAE.USUBJID
+        Method: Mth05_CatVar_Comp_FishEx - Fisher's exact test group comparison for a categorical variable (Fisher's exact test group comparison for categorical variable)
+                Comparison of groups by Fisher's exact test for a categorical variable
+          Operations:
+            1. Mth03_CatVar_Comp_FishEx_1_pval - P-value (p-value)
+    3.3.3. Comparison of Subjects with TEAEs by Treatment and System Organ Class - Placebo vs High Dose
+      Analysis: An07_09_Soc_Comp_ByTrt_PlacHigh - Comparison of Subjects with TEAEs by Treatment and System Organ Class - Placebo vs High Dose
+        Documentation:
+          Reason: SPECIFIED IN SAP
+          Purpose: PRIMARY OUTCOME MEASURE
+          See:
+            > Statistical Analysis Plan (./sap.pdf)
+              - Pages 15-16 [11.2. Adverse Events]
+        Categories:
+          > Safety
+          > Events
+          > Adverse Events
+          > Occurrence
+        Population: AnalysisSet_02_SAF - Safety Population (SAF)
+          Selection Criteria: ADSL.SAFFL EQ 'Y'
+        Data Subset: Dss12_TEAE_PlacHigh - Treatment-Emergent Adverse Events for Placebo and High Active Dose
+          Selection Criteria: (ADAE.TRTEMFL EQ 'Y' AND ADSL.TRT01A IN ('Placebo', 'Xanomeline High Dose'))
+        Groupings:
+          1. AnlsGrouping_01_Trt - Treatment
+            Grouping Variable: ADSL.TRT01A
+            Groups [Results per group: N]:
+              1. AnlsGrouping_01_Trt_1 - Placebo
+                 Selection Criteria: ADSL.TRT01A EQ 'Placebo'
+              2. AnlsGrouping_01_Trt_2 - Xanomeline Low Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline Low Dose'
+              3. AnlsGrouping_01_Trt_3 - Xanomeline High Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline High Dose'
+          2. AnlsGrouping_06_Soc - System Organ Class
+            Grouping Variable: ADAE.AESOC
+            Data-driven [Results per group: Y]
+        Analysis Variable: ADAE.USUBJID
+        Method: Mth05_CatVar_Comp_FishEx - Fisher's exact test group comparison for a categorical variable (Fisher's exact test group comparison for categorical variable)
+                Comparison of groups by Fisher's exact test for a categorical variable
+          Operations:
+            1. Mth03_CatVar_Comp_FishEx_1_pval - P-value (p-value)
+  3.4. Preferred Term
+    3.4.1. Summary of Subjects by Treatment, System Organ Class and Preferred Term
+      Analysis: An07_10_SocPt_Summ_ByTrt - Summary of Subjects with TEAEs by Treatment, System Organ Class and Preferred Term
+        Documentation:
+          Reason: SPECIFIED IN SAP
+          Purpose: PRIMARY OUTCOME MEASURE
+          See:
+            > Statistical Analysis Plan (./sap.pdf)
+              - Pages 15-16 [11.2. Adverse Events]
+        Categories:
+          > Safety
+          > Events
+          > Adverse Events
+          > Occurrence
+        Population: AnalysisSet_02_SAF - Safety Population (SAF)
+          Selection Criteria: ADSL.SAFFL EQ 'Y'
+        Data Subset: Dss01_TEAE - Treatment-Emergent Adverse Events
+          Selection Criteria: ADAE.TRTEMFL EQ 'Y'
+        Groupings:
+          1. AnlsGrouping_01_Trt - Treatment
+            Grouping Variable: ADSL.TRT01A
+            Groups [Results per group: Y]:
+              1. AnlsGrouping_01_Trt_1 - Placebo
+                 Selection Criteria: ADSL.TRT01A EQ 'Placebo'
+              2. AnlsGrouping_01_Trt_2 - Xanomeline Low Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline Low Dose'
+              3. AnlsGrouping_01_Trt_3 - Xanomeline High Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline High Dose'
+          2. AnlsGrouping_06_Soc - System Organ Class
+            Grouping Variable: ADAE.AESOC
+            Data-driven [Results per group: Y]
+          3. AnlsGrouping_07_Pt - Preferred Term
+            Grouping Variable: ADAE.AEDECOD
+            Data-driven [Results per group: Y]
+        Analysis Variable: ADAE.USUBJID
+        Method: Mth01_CatVar_Summ_ByGrp - Summary by group of a categorical variable (Grouped summary of categorical variable)
+                Descriptive summary statistics across groups for a categorical variable, based on subject occurrence
+          Operations:
+            1. Mth01_CatVar_Summ_ByGrp_1_n - Count of subjects (n)
+            2. Mth01_CatVar_Summ_ByGrp_2_pct - Percent of subjects (%)
+                - Numerator: result of operation Mth01_CatVar_Summ_ByGrp_1_n for this analysis
+                - Denominator: result of operation Mth01_CatVar_Count_ByGrp_1_n for analysis An01_05_SAF_Summ_ByTrt
+    3.4.2. Comparison of Subjects with TEAEs by Treatment, System Organ Class and Preferred Term - Placebo vs Low Dose
+      Analysis: An07_10_SocPt_Comp_ByTrt_PlacLow - Comparison of Subjects with TEAEs by Treatment, System Organ Class and Preferred Term - Placebo vs Low Dose
+        Documentation:
+          Reason: SPECIFIED IN SAP
+          Purpose: PRIMARY OUTCOME MEASURE
+          See:
+            > Statistical Analysis Plan (./sap.pdf)
+              - Pages 15-16 [11.2. Adverse Events]
+        Categories:
+          > Safety
+          > Events
+          > Adverse Events
+          > Occurrence
+        Population: AnalysisSet_02_SAF - Safety Population (SAF)
+          Selection Criteria: ADSL.SAFFL EQ 'Y'
+        Data Subset: Dss11_TEAE_PlacLow - Treatment-Emergent Adverse Events for Placebo and Low Active Dose
+          Selection Criteria: (ADAE.TRTEMFL EQ 'Y' AND ADSL.TRT01A IN ('Placebo', 'Xanomeline Low Dose'))
+        Groupings:
+          1. AnlsGrouping_01_Trt - Treatment
+            Grouping Variable: ADSL.TRT01A
+            Groups [Results per group: N]:
+              1. AnlsGrouping_01_Trt_1 - Placebo
+                 Selection Criteria: ADSL.TRT01A EQ 'Placebo'
+              2. AnlsGrouping_01_Trt_2 - Xanomeline Low Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline Low Dose'
+              3. AnlsGrouping_01_Trt_3 - Xanomeline High Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline High Dose'
+          2. AnlsGrouping_06_Soc - System Organ Class
+            Grouping Variable: ADAE.AESOC
+            Data-driven [Results per group: Y]
+          3. AnlsGrouping_07_Pt - Preferred Term
+            Grouping Variable: ADAE.AEDECOD
+            Data-driven [Results per group: Y]
+        Analysis Variable: ADAE.USUBJID
+        Method: Mth05_CatVar_Comp_FishEx - Fisher's exact test group comparison for a categorical variable (Fisher's exact test group comparison for categorical variable)
+                Comparison of groups by Fisher's exact test for a categorical variable
+          Operations:
+            1. Mth03_CatVar_Comp_FishEx_1_pval - P-value (p-value)
+    3.4.3. Comparison of Subjects with TEAEs by Treatment, System Organ Class and Preferred Term - Placebo vs High Dose
+      Analysis: An07_10_SocPt_Comp_ByTrt_PlacHigh - Comparison of Subjects with TEAEs by Treatment, System Organ Class and Preferred Term - Placebo vs High Dose
+        Documentation:
+          Reason: SPECIFIED IN SAP
+          Purpose: PRIMARY OUTCOME MEASURE
+          See:
+            > Statistical Analysis Plan (./sap.pdf)
+              - Pages 15-16 [11.2. Adverse Events]
+        Categories:
+          > Safety
+          > Events
+          > Adverse Events
+          > Occurrence
+        Population: AnalysisSet_02_SAF - Safety Population (SAF)
+          Selection Criteria: ADSL.SAFFL EQ 'Y'
+        Data Subset: Dss12_TEAE_PlacHigh - Treatment-Emergent Adverse Events for Placebo and High Active Dose
+          Selection Criteria: (ADAE.TRTEMFL EQ 'Y' AND ADSL.TRT01A IN ('Placebo', 'Xanomeline High Dose'))
+        Groupings:
+          1. AnlsGrouping_01_Trt - Treatment
+            Grouping Variable: ADSL.TRT01A
+            Groups [Results per group: N]:
+              1. AnlsGrouping_01_Trt_1 - Placebo
+                 Selection Criteria: ADSL.TRT01A EQ 'Placebo'
+              2. AnlsGrouping_01_Trt_2 - Xanomeline Low Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline Low Dose'
+              3. AnlsGrouping_01_Trt_3 - Xanomeline High Dose
+                 Selection Criteria: ADSL.TRT01A EQ 'Xanomeline High Dose'
+          2. AnlsGrouping_06_Soc - System Organ Class
+            Grouping Variable: ADAE.AESOC
+            Data-driven [Results per group: Y]
+          3. AnlsGrouping_07_Pt - Preferred Term
+            Grouping Variable: ADAE.AEDECOD
+            Data-driven [Results per group: Y]
+        Analysis Variable: ADAE.USUBJID
+        Method: Mth05_CatVar_Comp_FishEx - Fisher's exact test group comparison for a categorical variable (Fisher's exact test group comparison for categorical variable)
+                Comparison of groups by Fisher's exact test for a categorical variable
+          Operations:
+            1. Mth03_CatVar_Comp_FishEx_1_pval - P-value (p-value)
+4. Summary of Observed and Change from Baseline by Scheduled Visits - Vital Signs (Horizontal)
+  Output: Out14-3-3-1a - Summary of Observed and Change from Baseline by Scheduled Visits - Vital Signs Horizontal
+    Categories:
+      > Safety
+      > Vital Signs
+    Output File(s):
+      > RTF Format: t14-3-3-1-vitals-chgbl (RTF) (./t14-3-3-1-vitals-chgbl.rtf)
+      > PDF Format: t14-3-3-1-vitals-chgbl (PDF) (./t14-3-3-1-vitals-chgbl.pdf)
+    Displays:
+      1. Disp14-3-3-1a - Vitals Change from Baseline (Vitals_ChgBl)
+        Display Title: Summary of Observed and Change from Baseline by Scheduled Visits - Vital Signs
+        Sections:
+          > Header:
+            1. Study - CDISC 360
+            2. Page x of y
+          > Title:
+            1. Table 14.3.3.1a
+            2. Summary of Observed and Change from Baseline by Scheduled Visits – Vital Signs
+            3. Safety Population
+          > Legend:
+            1. Note: Baseline is defined as the last assessment that is non-missing prior to first dose of investigational product.
+          > Footer:
+            1. Source dataset: advs, Generated on: DDMONYYYY:HH:MM
+            2. Program: <pid>.sas, Output: <pid><oid>.rtf, Generated on: DDMONYYYY:HH:MM
+          > Rowlabel Header:
+            1. Parameter (Units)
+            2. Visit
+  4.1. Summary of Subjects by Treatment
+    Analysis: An01_05_SAF_Summ_ByTrt - Summary of Subjects by Treatment
+      Documentation:
+        Reason: SPECIFIED IN SAP
+        Purpose: PRIMARY OUTCOME MEASURE
+        See:
+          > Statistical Analysis Plan (./sap.pdf)
+            - Page 9 [6. ANALYSIS POPULATIONS]
+      Categories:
+        > Population Description
+        > Subject-level
+        > Demographics
+      Population: AnalysisSet_02_SAF - Safety Population (SAF)
+        Selection Criteria: ADSL.SAFFL EQ 'Y'
+      Groupings:
+        1. AnlsGrouping_01_Trt - Treatment
+          Grouping Variable: ADSL.TRT01A
+          Groups [Results per group: Y]:
+            1. AnlsGrouping_01_Trt_1 - Placebo
+               Selection Criteria: ADSL.TRT01A EQ 'Placebo'
+            2. AnlsGrouping_01_Trt_2 - Xanomeline Low Dose
+               Selection Criteria: ADSL.TRT01A EQ 'Xanomeline Low Dose'
+            3. AnlsGrouping_01_Trt_3 - Xanomeline High Dose
+               Selection Criteria: ADSL.TRT01A EQ 'Xanomeline High Dose'
+      Analysis Variable: ADSL.USUBJID
+      Method: Mth01_CatVar_Count_ByGrp - Count by group for a categorical variable (Grouped count for categorical variable)
+              Count across groups for a categorical variable, based on subject occurrence
+        Operations:
+          1. Mth01_CatVar_Count_ByGrp_1_n - Count of subjects (n)
+  4.2. Summary of Observed Value by Treatment, Parameter and Visit
+    Analysis: An08_01_Obs_Summ_ByTrt - Summary of Observed Value by Treatment, Parameter and Visit
+      Documentation:
+        Reason: SPECIFIED IN SAP
+        Purpose: PRIMARY OUTCOME MEASURE
+        See:
+          > Statistical Analysis Plan (./sap.pdf)
+            - Pages 9 and 17 [Sections 7 (General Considerations) and 11.6 (Other Safety Measures)]
+      Categories:
+        > Safety
+        > Findings
+        > Vital Signs
+        > Change from Baseline
+      Population: AnalysisSet_02_SAF - Safety Population (SAF)
+        Selection Criteria: ADSL.SAFFL EQ 'Y'
+      Data Subset: Dss09_VS_AnRec - Vital Signs Analysis Records
+        Selection Criteria: ADVS.ANL01FL EQ 'Y'
+      Groupings:
+        1. AnlsGrouping_01_Trt - Treatment
+          Grouping Variable: ADSL.TRT01A
+          Groups [Results per group: Y]:
+            1. AnlsGrouping_01_Trt_1 - Placebo
+               Selection Criteria: ADSL.TRT01A EQ 'Placebo'
+            2. AnlsGrouping_01_Trt_2 - Xanomeline Low Dose
+               Selection Criteria: ADSL.TRT01A EQ 'Xanomeline Low Dose'
+            3. AnlsGrouping_01_Trt_3 - Xanomeline High Dose
+               Selection Criteria: ADSL.TRT01A EQ 'Xanomeline High Dose'
+        2. AnlsGrouping_08_Param - Parameter
+          Grouping Variable: ADVS.PARAMCD
+          Groups [Results per group: Y]:
+            1. AnlsGrouping_08_Param_1 - Systolic Blood Pressure (mmHg)
+               Selection Criteria: ADVS.PARAMCD EQ 'SYSBP'
+            2. AnlsGrouping_08_Param_2 - Diastolic Blood Pressure (mmHg)
+               Selection Criteria: ADVS.PARAMCD EQ 'DIABP'
+            3. AnlsGrouping_08_Param_3 - Pulse Rate (beats/min)
+               Selection Criteria: ADVS.PARAMCD EQ 'PULSE'
+            4. AnlsGrouping_08_Param_4 - Temperature (C)
+               Selection Criteria: ADVS.PARAMCD EQ 'TEMP'
+        3. AnlsGrouping_09_Visit - Visit
+          Grouping Variable: ADVS.AVISIT
+          Groups [Results per group: Y]:
+            1. AnlsGrouping_09_Visit_01 - Baseline
+               Selection Criteria: ADVS.AVISIT EQ 'Baseline'
+            2. AnlsGrouping_09_Visit_02 - Week 2
+               Selection Criteria: ADVS.AVISIT EQ 'Week 2'
+            3. AnlsGrouping_09_Visit_03 - Week 4
+               Selection Criteria: ADVS.AVISIT EQ 'Week 4'
+            4. AnlsGrouping_09_Visit_04 - Week 6
+               Selection Criteria: ADVS.AVISIT EQ 'Week 6'
+            5. AnlsGrouping_09_Visit_05 - Week 8
+               Selection Criteria: ADVS.AVISIT EQ 'Week 8'
+            6. AnlsGrouping_09_Visit_06 - Week 12
+               Selection Criteria: ADVS.AVISIT EQ 'Week 12'
+            7. AnlsGrouping_09_Visit_07 - Week 16
+               Selection Criteria: ADVS.AVISIT EQ 'Week 16'
+            8. AnlsGrouping_09_Visit_08 - Week 20
+               Selection Criteria: ADVS.AVISIT EQ 'Week 20'
+            9. AnlsGrouping_09_Visit_09 - Week 24
+               Selection Criteria: ADVS.AVISIT EQ 'Week 24'
+            10. AnlsGrouping_09_Visit_10 - Week 26
+               Selection Criteria: ADVS.AVISIT EQ 'Week 26'
+            11. AnlsGrouping_09_Visit_11 - End of Treatment
+               Selection Criteria: ADVS.AVISIT EQ 'End of Treatment'
+      Analysis Variable: ADVS.AVAL
+      Method: Mth02_ContVar_Summ_ByGrp - Summary by group of a continuous variable (Grouped summary of continuous variable)
+              Descriptive summary statistics across groups for a continuous variable
+        Operations:
+          1. Mth02_ContVar_Summ_ByGrp_1_n - Count of non-missing values (n)
+          2. Mth02_ContVar_Summ_ByGrp_2_Mean - Mean (Mean)
+          3. Mth02_ContVar_Summ_ByGrp_3_SD - Standard deviation (SD)
+          4. Mth02_ContVar_Summ_ByGrp_4_Median - Median (Median)
+          5. Mth02_ContVar_Summ_ByGrp_5_Q1 - First quartile (Q1)
+          6. Mth02_ContVar_Summ_ByGrp_6_Q3 - Third quartile (Q3)
+          7. Mth02_ContVar_Summ_ByGrp_7_Min - Minimum (Min)
+          8. Mth02_ContVar_Summ_ByGrp_8_Max - Maximum (Max)
+  4.3. Summary of Change from Baseline by Treatment, Parameter and Visit
+    Analysis: An08_02_ChgBl_Summ_ByTrt - Summary of Change from Baseline by Treatment, Parameter and Visit
+      Documentation:
+        Reason: SPECIFIED IN SAP
+        Purpose: PRIMARY OUTCOME MEASURE
+        See:
+          > Statistical Analysis Plan (./sap.pdf)
+            - Page 9 [Sections 7 (General Considerations)]
+            - Page 17 [11.6 (Other Safety Measures)]
+          > Clinical Study Report (./csr-cdiscpilot01.pdf)
+            - Section "Table 14-7.02"
+      Categories:
+        > Safety
+        > Findings
+        > Vital Signs
+        > Change from Baseline
+      Population: AnalysisSet_02_SAF - Safety Population (SAF)
+        Selection Criteria: ADSL.SAFFL EQ 'Y'
+      Data Subset: Dss10_VS_NonBl_AnRec - Vital Signs Non-baseline Analysis Records
+        Selection Criteria: (ADVS.ANL01FL EQ 'Y' AND ADVS.AVISIT NE 'Baseline')
+      Groupings:
+        1. AnlsGrouping_01_Trt - Treatment
+          Grouping Variable: ADSL.TRT01A
+          Groups [Results per group: Y]:
+            1. AnlsGrouping_01_Trt_1 - Placebo
+               Selection Criteria: ADSL.TRT01A EQ 'Placebo'
+            2. AnlsGrouping_01_Trt_2 - Xanomeline Low Dose
+               Selection Criteria: ADSL.TRT01A EQ 'Xanomeline Low Dose'
+            3. AnlsGrouping_01_Trt_3 - Xanomeline High Dose
+               Selection Criteria: ADSL.TRT01A EQ 'Xanomeline High Dose'
+        2. AnlsGrouping_08_Param - Parameter
+          Grouping Variable: ADVS.PARAMCD
+          Groups [Results per group: Y]:
+            1. AnlsGrouping_08_Param_1 - Systolic Blood Pressure (mmHg)
+               Selection Criteria: ADVS.PARAMCD EQ 'SYSBP'
+            2. AnlsGrouping_08_Param_2 - Diastolic Blood Pressure (mmHg)
+               Selection Criteria: ADVS.PARAMCD EQ 'DIABP'
+            3. AnlsGrouping_08_Param_3 - Pulse Rate (beats/min)
+               Selection Criteria: ADVS.PARAMCD EQ 'PULSE'
+            4. AnlsGrouping_08_Param_4 - Temperature (C)
+               Selection Criteria: ADVS.PARAMCD EQ 'TEMP'
+        3. AnlsGrouping_09_Visit - Visit
+          Grouping Variable: ADVS.AVISIT
+          Groups [Results per group: Y]:
+            1. AnlsGrouping_09_Visit_01 - Baseline
+               Selection Criteria: ADVS.AVISIT EQ 'Baseline'
+            2. AnlsGrouping_09_Visit_02 - Week 2
+               Selection Criteria: ADVS.AVISIT EQ 'Week 2'
+            3. AnlsGrouping_09_Visit_03 - Week 4
+               Selection Criteria: ADVS.AVISIT EQ 'Week 4'
+            4. AnlsGrouping_09_Visit_04 - Week 6
+               Selection Criteria: ADVS.AVISIT EQ 'Week 6'
+            5. AnlsGrouping_09_Visit_05 - Week 8
+               Selection Criteria: ADVS.AVISIT EQ 'Week 8'
+            6. AnlsGrouping_09_Visit_06 - Week 12
+               Selection Criteria: ADVS.AVISIT EQ 'Week 12'
+            7. AnlsGrouping_09_Visit_07 - Week 16
+               Selection Criteria: ADVS.AVISIT EQ 'Week 16'
+            8. AnlsGrouping_09_Visit_08 - Week 20
+               Selection Criteria: ADVS.AVISIT EQ 'Week 20'
+            9. AnlsGrouping_09_Visit_09 - Week 24
+               Selection Criteria: ADVS.AVISIT EQ 'Week 24'
+            10. AnlsGrouping_09_Visit_10 - Week 26
+               Selection Criteria: ADVS.AVISIT EQ 'Week 26'
+            11. AnlsGrouping_09_Visit_11 - End of Treatment
+               Selection Criteria: ADVS.AVISIT EQ 'End of Treatment'
+      Analysis Variable: ADVS.CHG
+      Method: Mth02_ContVar_Summ_ByGrp - Summary by group of a continuous variable (Grouped summary of continuous variable)
+              Descriptive summary statistics across groups for a continuous variable
+        Operations:
+          1. Mth02_ContVar_Summ_ByGrp_1_n - Count of non-missing values (n)
+          2. Mth02_ContVar_Summ_ByGrp_2_Mean - Mean (Mean)
+          3. Mth02_ContVar_Summ_ByGrp_3_SD - Standard deviation (SD)
+          4. Mth02_ContVar_Summ_ByGrp_4_Median - Median (Median)
+          5. Mth02_ContVar_Summ_ByGrp_5_Q1 - First quartile (Q1)
+          6. Mth02_ContVar_Summ_ByGrp_6_Q3 - Third quartile (Q3)
+          7. Mth02_ContVar_Summ_ByGrp_7_Min - Minimum (Min)
+          8. Mth02_ContVar_Summ_ByGrp_8_Max - Maximum (Max)
+5. Summary of Observed and Change from Baseline by Scheduled Visits - Vital Signs (Vertical)
+  Output: Out14-3-3-1b - Summary of Observed and Change from Baseline by Scheduled Visits - Vital Signs Vertical
+    Categories:
+      > Safety
+      > Vital Signs
+    Output File(s):
+      > RTF Format: t14-3-3-1-vitals-chgbl-vert (RTF) (./t14-3-3-1-vitals-chgbl-vert.rtf)
+      > PDF Format: t14-3-3-1-vitals-chgbl-vert (PDF) (./t14-3-3-1-vitals-chgbl-vert.pdf)
+    Displays:
+      1. Disp14-3-3-1b - Vitals Change from Baseline - Vertical (Vitals_ChgBl_Vert)
+        Display Title: Summary of Observed and Change from Baseline by Scheduled Visits - Vital Signs <Vertical Layout>
+        Sections:
+          > Header:
+            1. Study - CDISC 360
+            2. Page x of y
+          > Title:
+            1. Table 14.3.3.1b
+            2. Summary of Observed and Change from Baseline by Scheduled Visits – Vital Signs
+            3. Safety Population
+          > Legend:
+            1. Note: Baseline is defined as the last assessment that is non-missing prior to first dose of investigational product.
+          > Footer:
+            1. Source dataset: advs, Generated on: DDMONYYYY:HH:MM
+            2. Program: <pid>.sas, Output: <pid><oid>.rtf, Generated on: DDMONYYYY:HH:MM
+          > Rowlabel Header:
+            1. Parameter (Units)
+            2. Visit
+  5.1. Summary of Subjects by Treatment
+    Analysis: An01_05_SAF_Summ_ByTrt - Summary of Subjects by Treatment
+      Documentation:
+        Reason: SPECIFIED IN SAP
+        Purpose: PRIMARY OUTCOME MEASURE
+        See:
+          > Statistical Analysis Plan (./sap.pdf)
+            - Page 9 [6. ANALYSIS POPULATIONS]
+      Categories:
+        > Population Description
+        > Subject-level
+        > Demographics
+      Population: AnalysisSet_02_SAF - Safety Population (SAF)
+        Selection Criteria: ADSL.SAFFL EQ 'Y'
+      Groupings:
+        1. AnlsGrouping_01_Trt - Treatment
+          Grouping Variable: ADSL.TRT01A
+          Groups [Results per group: Y]:
+            1. AnlsGrouping_01_Trt_1 - Placebo
+               Selection Criteria: ADSL.TRT01A EQ 'Placebo'
+            2. AnlsGrouping_01_Trt_2 - Xanomeline Low Dose
+               Selection Criteria: ADSL.TRT01A EQ 'Xanomeline Low Dose'
+            3. AnlsGrouping_01_Trt_3 - Xanomeline High Dose
+               Selection Criteria: ADSL.TRT01A EQ 'Xanomeline High Dose'
+      Analysis Variable: ADSL.USUBJID
+      Method: Mth01_CatVar_Count_ByGrp - Count by group for a categorical variable (Grouped count for categorical variable)
+              Count across groups for a categorical variable, based on subject occurrence
+        Operations:
+          1. Mth01_CatVar_Count_ByGrp_1_n - Count of subjects (n)
+  5.2. Summary of Observed Value by Treatment, Parameter and Visit
+    Analysis: An08_01_Obs_Summ_ByTrt - Summary of Observed Value by Treatment, Parameter and Visit
+      Documentation:
+        Reason: SPECIFIED IN SAP
+        Purpose: PRIMARY OUTCOME MEASURE
+        See:
+          > Statistical Analysis Plan (./sap.pdf)
+            - Pages 9 and 17 [Sections 7 (General Considerations) and 11.6 (Other Safety Measures)]
+      Categories:
+        > Safety
+        > Findings
+        > Vital Signs
+        > Change from Baseline
+      Population: AnalysisSet_02_SAF - Safety Population (SAF)
+        Selection Criteria: ADSL.SAFFL EQ 'Y'
+      Data Subset: Dss09_VS_AnRec - Vital Signs Analysis Records
+        Selection Criteria: ADVS.ANL01FL EQ 'Y'
+      Groupings:
+        1. AnlsGrouping_01_Trt - Treatment
+          Grouping Variable: ADSL.TRT01A
+          Groups [Results per group: Y]:
+            1. AnlsGrouping_01_Trt_1 - Placebo
+               Selection Criteria: ADSL.TRT01A EQ 'Placebo'
+            2. AnlsGrouping_01_Trt_2 - Xanomeline Low Dose
+               Selection Criteria: ADSL.TRT01A EQ 'Xanomeline Low Dose'
+            3. AnlsGrouping_01_Trt_3 - Xanomeline High Dose
+               Selection Criteria: ADSL.TRT01A EQ 'Xanomeline High Dose'
+        2. AnlsGrouping_08_Param - Parameter
+          Grouping Variable: ADVS.PARAMCD
+          Groups [Results per group: Y]:
+            1. AnlsGrouping_08_Param_1 - Systolic Blood Pressure (mmHg)
+               Selection Criteria: ADVS.PARAMCD EQ 'SYSBP'
+            2. AnlsGrouping_08_Param_2 - Diastolic Blood Pressure (mmHg)
+               Selection Criteria: ADVS.PARAMCD EQ 'DIABP'
+            3. AnlsGrouping_08_Param_3 - Pulse Rate (beats/min)
+               Selection Criteria: ADVS.PARAMCD EQ 'PULSE'
+            4. AnlsGrouping_08_Param_4 - Temperature (C)
+               Selection Criteria: ADVS.PARAMCD EQ 'TEMP'
+        3. AnlsGrouping_09_Visit - Visit
+          Grouping Variable: ADVS.AVISIT
+          Groups [Results per group: Y]:
+            1. AnlsGrouping_09_Visit_01 - Baseline
+               Selection Criteria: ADVS.AVISIT EQ 'Baseline'
+            2. AnlsGrouping_09_Visit_02 - Week 2
+               Selection Criteria: ADVS.AVISIT EQ 'Week 2'
+            3. AnlsGrouping_09_Visit_03 - Week 4
+               Selection Criteria: ADVS.AVISIT EQ 'Week 4'
+            4. AnlsGrouping_09_Visit_04 - Week 6
+               Selection Criteria: ADVS.AVISIT EQ 'Week 6'
+            5. AnlsGrouping_09_Visit_05 - Week 8
+               Selection Criteria: ADVS.AVISIT EQ 'Week 8'
+            6. AnlsGrouping_09_Visit_06 - Week 12
+               Selection Criteria: ADVS.AVISIT EQ 'Week 12'
+            7. AnlsGrouping_09_Visit_07 - Week 16
+               Selection Criteria: ADVS.AVISIT EQ 'Week 16'
+            8. AnlsGrouping_09_Visit_08 - Week 20
+               Selection Criteria: ADVS.AVISIT EQ 'Week 20'
+            9. AnlsGrouping_09_Visit_09 - Week 24
+               Selection Criteria: ADVS.AVISIT EQ 'Week 24'
+            10. AnlsGrouping_09_Visit_10 - Week 26
+               Selection Criteria: ADVS.AVISIT EQ 'Week 26'
+            11. AnlsGrouping_09_Visit_11 - End of Treatment
+               Selection Criteria: ADVS.AVISIT EQ 'End of Treatment'
+      Analysis Variable: ADVS.AVAL
+      Method: Mth02_ContVar_Summ_ByGrp - Summary by group of a continuous variable (Grouped summary of continuous variable)
+              Descriptive summary statistics across groups for a continuous variable
+        Operations:
+          1. Mth02_ContVar_Summ_ByGrp_1_n - Count of non-missing values (n)
+          2. Mth02_ContVar_Summ_ByGrp_2_Mean - Mean (Mean)
+          3. Mth02_ContVar_Summ_ByGrp_3_SD - Standard deviation (SD)
+          4. Mth02_ContVar_Summ_ByGrp_4_Median - Median (Median)
+          5. Mth02_ContVar_Summ_ByGrp_5_Q1 - First quartile (Q1)
+          6. Mth02_ContVar_Summ_ByGrp_6_Q3 - Third quartile (Q3)
+          7. Mth02_ContVar_Summ_ByGrp_7_Min - Minimum (Min)
+          8. Mth02_ContVar_Summ_ByGrp_8_Max - Maximum (Max)
+  5.3. Summary of Change from Baseline by Treatment, Parameter and Visit
+    Analysis: An08_02_ChgBl_Summ_ByTrt - Summary of Change from Baseline by Treatment, Parameter and Visit
+      Documentation:
+        Reason: SPECIFIED IN SAP
+        Purpose: PRIMARY OUTCOME MEASURE
+        See:
+          > Statistical Analysis Plan (./sap.pdf)
+            - Page 9 [Sections 7 (General Considerations)]
+            - Page 17 [11.6 (Other Safety Measures)]
+          > Clinical Study Report (./csr-cdiscpilot01.pdf)
+            - Section "Table 14-7.02"
+      Categories:
+        > Safety
+        > Findings
+        > Vital Signs
+        > Change from Baseline
+      Population: AnalysisSet_02_SAF - Safety Population (SAF)
+        Selection Criteria: ADSL.SAFFL EQ 'Y'
+      Data Subset: Dss10_VS_NonBl_AnRec - Vital Signs Non-baseline Analysis Records
+        Selection Criteria: (ADVS.ANL01FL EQ 'Y' AND ADVS.AVISIT NE 'Baseline')
+      Groupings:
+        1. AnlsGrouping_01_Trt - Treatment
+          Grouping Variable: ADSL.TRT01A
+          Groups [Results per group: Y]:
+            1. AnlsGrouping_01_Trt_1 - Placebo
+               Selection Criteria: ADSL.TRT01A EQ 'Placebo'
+            2. AnlsGrouping_01_Trt_2 - Xanomeline Low Dose
+               Selection Criteria: ADSL.TRT01A EQ 'Xanomeline Low Dose'
+            3. AnlsGrouping_01_Trt_3 - Xanomeline High Dose
+               Selection Criteria: ADSL.TRT01A EQ 'Xanomeline High Dose'
+        2. AnlsGrouping_08_Param - Parameter
+          Grouping Variable: ADVS.PARAMCD
+          Groups [Results per group: Y]:
+            1. AnlsGrouping_08_Param_1 - Systolic Blood Pressure (mmHg)
+               Selection Criteria: ADVS.PARAMCD EQ 'SYSBP'
+            2. AnlsGrouping_08_Param_2 - Diastolic Blood Pressure (mmHg)
+               Selection Criteria: ADVS.PARAMCD EQ 'DIABP'
+            3. AnlsGrouping_08_Param_3 - Pulse Rate (beats/min)
+               Selection Criteria: ADVS.PARAMCD EQ 'PULSE'
+            4. AnlsGrouping_08_Param_4 - Temperature (C)
+               Selection Criteria: ADVS.PARAMCD EQ 'TEMP'
+        3. AnlsGrouping_09_Visit - Visit
+          Grouping Variable: ADVS.AVISIT
+          Groups [Results per group: Y]:
+            1. AnlsGrouping_09_Visit_01 - Baseline
+               Selection Criteria: ADVS.AVISIT EQ 'Baseline'
+            2. AnlsGrouping_09_Visit_02 - Week 2
+               Selection Criteria: ADVS.AVISIT EQ 'Week 2'
+            3. AnlsGrouping_09_Visit_03 - Week 4
+               Selection Criteria: ADVS.AVISIT EQ 'Week 4'
+            4. AnlsGrouping_09_Visit_04 - Week 6
+               Selection Criteria: ADVS.AVISIT EQ 'Week 6'
+            5. AnlsGrouping_09_Visit_05 - Week 8
+               Selection Criteria: ADVS.AVISIT EQ 'Week 8'
+            6. AnlsGrouping_09_Visit_06 - Week 12
+               Selection Criteria: ADVS.AVISIT EQ 'Week 12'
+            7. AnlsGrouping_09_Visit_07 - Week 16
+               Selection Criteria: ADVS.AVISIT EQ 'Week 16'
+            8. AnlsGrouping_09_Visit_08 - Week 20
+               Selection Criteria: ADVS.AVISIT EQ 'Week 20'
+            9. AnlsGrouping_09_Visit_09 - Week 24
+               Selection Criteria: ADVS.AVISIT EQ 'Week 24'
+            10. AnlsGrouping_09_Visit_10 - Week 26
+               Selection Criteria: ADVS.AVISIT EQ 'Week 26'
+            11. AnlsGrouping_09_Visit_11 - End of Treatment
+               Selection Criteria: ADVS.AVISIT EQ 'End of Treatment'
+      Analysis Variable: ADVS.CHG
+      Method: Mth02_ContVar_Summ_ByGrp - Summary by group of a continuous variable (Grouped summary of continuous variable)
+              Descriptive summary statistics across groups for a continuous variable
+        Operations:
+          1. Mth02_ContVar_Summ_ByGrp_1_n - Count of non-missing values (n)
+          2. Mth02_ContVar_Summ_ByGrp_2_Mean - Mean (Mean)
+          3. Mth02_ContVar_Summ_ByGrp_3_SD - Standard deviation (SD)
+          4. Mth02_ContVar_Summ_ByGrp_4_Median - Median (Median)
+          5. Mth02_ContVar_Summ_ByGrp_5_Q1 - First quartile (Q1)
+          6. Mth02_ContVar_Summ_ByGrp_6_Q3 - Third quartile (Q3)
+          7. Mth02_ContVar_Summ_ByGrp_7_Min - Minimum (Min)
+          8. Mth02_ContVar_Summ_ByGrp_8_Max - Maximum (Max)

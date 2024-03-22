@@ -18,12 +18,11 @@ URI: [ars:compoundExpression](https://www.cdisc.org/ars/1-0/compoundExpression)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-[WhereClause](WhereClause.md) | Selection criteria defined as either a simple condition ([variable] [comparat... |  no  |
+[WhereClause](WhereClause.md) | Selection criteria defined as either a simple condition ([variable] [comparat... |  yes  |
+[SubClause](SubClause.md) | An abstract class containing all attributes that may be specified for a sub-c... |  no  |
 [AnalysisSet](AnalysisSet.md) | A set of subjects whose data are to be included in the main analyses |  yes  |
 [DataSubset](DataSubset.md) | A subset of data identified by selection criteria for inclusion in the analys... |  yes  |
 [Group](Group.md) | A subdivision of the subject population or analysis dataset record set based ... |  yes  |
-[AnalysisGroup](AnalysisGroup.md) | A subdivision of the subject population based on a defined factor (e |  no  |
-[DataGroup](DataGroup.md) | A subdivision of the analysis dataset records based on a defined factor |  no  |
 
 
 
@@ -33,7 +32,7 @@ URI: [ars:compoundExpression](https://www.cdisc.org/ars/1-0/compoundExpression)
 
 ## Properties
 
-* Range: [WhereClauseCompoundExpression](WhereClauseCompoundExpression.md)
+* Range: [String](String.md)
 
 
 
@@ -66,7 +65,17 @@ rank: 1000
 alias: compoundExpression
 domain_of:
 - WhereClause
-range: WhereClauseCompoundExpression
+range: string
+any_of:
+- range: CompoundSetExpression
+  inlined: true
+  inlined_as_list: true
+- range: CompoundSubsetExpression
+  inlined: true
+  inlined_as_list: true
+- range: CompoundGroupExpression
+  inlined: true
+  inlined_as_list: true
 
 ```
 </details>

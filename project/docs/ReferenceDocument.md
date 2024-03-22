@@ -13,11 +13,12 @@ URI: [ars:ReferenceDocument](https://www.cdisc.org/ars/1-0/ReferenceDocument)
 ```mermaid
  classDiagram
     class ReferenceDocument
-      NamedObject <|-- ReferenceDocument
-
+      NamedObject <|-- ReferenceDocument        
       ReferenceDocument : id
         ReferenceDocument : location
         ReferenceDocument : name
+        ReferenceDocument : description
+        ReferenceDocument : label
         
 ```
 
@@ -37,6 +38,8 @@ URI: [ars:ReferenceDocument](https://www.cdisc.org/ars/1-0/ReferenceDocument)
 | [id](id.md) | 1..1 <br/> [String](String.md) | The assigned identifying value for the instance of the class | direct |
 | [location](location.md) | 0..1 <br/> [Uri](Uri.md) | A path (relative or absolute) indicating the location of the file | direct |
 | [name](name.md) | 1..1 <br/> [String](String.md) | The name for the instance of the class | [NamedObject](NamedObject.md) |
+| [description](description.md) | 0..1 <br/> [String](String.md) | A textual description of the instance of the class | [NamedObject](NamedObject.md) |
+| [label](label.md) | 0..1 <br/> [String](String.md) | A short informative description that may be used for display | [NamedObject](NamedObject.md) |
 
 _* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
@@ -165,6 +168,31 @@ attributes:
     - NamedObject
     range: string
     required: true
+  description:
+    name: description
+    description: A textual description of the instance of the class.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: description
+    owner: ReferenceDocument
+    domain_of:
+    - NamedObject
+    - SponsorTerm
+    - ReferencedOperationRelationship
+    range: string
+  label:
+    name: label
+    description: A short informative description that may be used for display.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: label
+    owner: ReferenceDocument
+    domain_of:
+    - NamedObject
+    - AnalysisOutputCategorization
+    - AnalysisOutputCategory
+    - PageRef
+    range: string
 
 ```
 </details>

@@ -13,8 +13,7 @@ URI: [ars:SponsorAnalysisPurpose](https://www.cdisc.org/ars/1-0/SponsorAnalysisP
 ```mermaid
  classDiagram
     class SponsorAnalysisPurpose
-      ExtensibleTerminologyTerm <|-- SponsorAnalysisPurpose
-
+      ExtensibleTerminologyTerm <|-- SponsorAnalysisPurpose        
       SponsorAnalysisPurpose : controlledTerm
         SponsorAnalysisPurpose : sponsorTermId
         SponsorAnalysisPurpose --|> SponsorTerm : sponsorTermId

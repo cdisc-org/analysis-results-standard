@@ -4,11 +4,15 @@ ReportingEvent {
     string id  
     integer version  
     string name  
+    string description  
+    string label  
 }
 Output {
     string id  
     integer version  
     string name  
+    string description  
+    string label  
 }
 AnalysisOutputProgrammingCode {
     string context  
@@ -16,8 +20,9 @@ AnalysisOutputProgrammingCode {
 }
 AnalysisOutputCodeParameter {
     stringList value  
-    string description  
     string name  
+    string description  
+    string label  
 }
 DocumentReference {
 
@@ -34,6 +39,8 @@ ReferenceDocument {
     string id  
     uri location  
     string name  
+    string description  
+    string label  
 }
 AnalysisOutputCategory {
     string id  
@@ -51,6 +58,8 @@ OutputDisplay {
     integer version  
     string displayTitle  
     string name  
+    string description  
+    string label  
 }
 DisplaySection {
     DisplaySectionTypeEnum sectionType  
@@ -66,6 +75,8 @@ OutputFile {
     uri location  
     string style  
     string name  
+    string description  
+    string label  
 }
 ExtensibleTerminologyTerm {
     string controlledTerm  
@@ -81,10 +92,11 @@ GlobalDisplaySection {
 Analysis {
     string id  
     integer version  
-    string description  
     string dataset  
     string variable  
     string name  
+    string description  
+    string label  
 }
 OperationResult {
     string rawValue  
@@ -95,11 +107,21 @@ ResultGroup {
 }
 Group {
     string id  
+    string name  
+    string description  
     string label  
     integer level  
     integer order  
 }
 CompoundGroupExpression {
+    ExpressionLogicalOperatorEnum logicalOperator  
+}
+SubClause {
+    integer level  
+    integer order  
+    string subClauseId  
+}
+WhereClauseCompoundExpression {
     ExpressionLogicalOperatorEnum logicalOperator  
 }
 WhereClauseCondition {
@@ -110,15 +132,20 @@ WhereClauseCondition {
 }
 GroupingFactor {
     string id  
-    string label  
+    string groupingDataset  
     string groupingVariable  
     boolean dataDriven  
+    string name  
+    string description  
+    string label  
 }
 Operation {
     string id  
-    string label  
+    integer order  
     string resultPattern  
     string name  
+    string description  
+    string label  
 }
 ReferencedOperationRelationship {
     string id  
@@ -129,9 +156,9 @@ ReferencedAnalysisOperation {
 }
 AnalysisMethod {
     string id  
-    string label  
-    string description  
     string name  
+    string description  
+    string label  
 }
 AnalysisProgrammingCodeTemplate {
     string context  
@@ -140,8 +167,9 @@ AnalysisProgrammingCodeTemplate {
 TemplateCodeParameter {
     string valueSource  
     stringList value  
-    string description  
     string name  
+    string description  
+    string label  
 }
 OrderedGroupingFactor {
     integer order  
@@ -149,6 +177,8 @@ OrderedGroupingFactor {
 }
 DataSubset {
     string id  
+    string name  
+    string description  
     string label  
     integer level  
     integer order  
@@ -156,15 +186,10 @@ DataSubset {
 CompoundSubsetExpression {
     ExpressionLogicalOperatorEnum logicalOperator  
 }
-WhereClause {
-    integer level  
-    integer order  
-}
-WhereClauseCompoundExpression {
-    ExpressionLogicalOperatorEnum logicalOperator  
-}
 AnalysisSet {
     string id  
+    string name  
+    string description  
     string label  
     integer level  
     integer order  
@@ -172,33 +197,14 @@ AnalysisSet {
 CompoundSetExpression {
     ExpressionLogicalOperatorEnum logicalOperator  
 }
-DataGroupingFactor {
-    string id  
-    string label  
-    string groupingVariable  
-    boolean dataDriven  
-}
-DataGroup {
-    string id  
-    string label  
-    integer level  
-    integer order  
-}
-SubjectGroupingFactor {
-    string id  
-    string label  
-    string groupingVariable  
-    boolean dataDriven  
-}
-AnalysisGroup {
-    string id  
-    string label  
-    integer level  
-    integer order  
-}
 TerminologyExtension {
     string id  
     ExtensibleTerminologyEnum enumeration  
+}
+ListOfContents {
+    string name  
+    string description  
+    string label  
 }
 NestedList {
 
@@ -207,23 +213,24 @@ OrderedListItem {
     integer level  
     integer order  
     string name  
+    string description  
+    string label  
 }
 
-ReportingEvent ||--|| NestedList : "listOfPlannedAnalyses"
-ReportingEvent ||--|o NestedList : "listOfPlannedOutputs"
+ReportingEvent ||--|| ListOfContents : "mainListOfContents"
+ReportingEvent ||--}o ListOfContents : "otherListsOfContents"
 ReportingEvent ||--}o ReferenceDocument : "referenceDocuments"
 ReportingEvent ||--}o TerminologyExtension : "terminologyExtensions"
 ReportingEvent ||--}o AnalysisOutputCategorization : "analysisOutputCategorizations"
 ReportingEvent ||--}o AnalysisSet : "analysisSets"
-ReportingEvent ||--}o SubjectGroupingFactor : "analysisGroupings"
 ReportingEvent ||--}o DataSubset : "dataSubsets"
-ReportingEvent ||--}o DataGroupingFactor : "dataGroupings"
+ReportingEvent ||--}o GroupingFactor : "analysisGroupings"
 ReportingEvent ||--}o AnalysisMethod : "methods"
 ReportingEvent ||--}o Analysis : "analyses"
 ReportingEvent ||--}o GlobalDisplaySection : "globalDisplaySections"
 ReportingEvent ||--}o Output : "outputs"
 Output ||--}o OutputFile : "fileSpecifications"
-Output ||--}o OrderedDisplay : "displays"
+Output ||--}| OrderedDisplay : "displays"
 Output ||--}o AnalysisOutputCategory : "categoryIds"
 Output ||--}o DocumentReference : "documentRefs"
 Output ||--|o AnalysisOutputProgrammingCode : "programmingCode"
@@ -233,7 +240,7 @@ DocumentReference ||--|| ReferenceDocument : "referenceDocumentId"
 DocumentReference ||--}o PageRef : "pageRefs"
 AnalysisOutputCategory ||--}o AnalysisOutputCategorization : "subCategorizations"
 AnalysisOutputCategorization ||--}| AnalysisOutputCategory : "categories"
-OrderedDisplay ||--|o OutputDisplay : "display"
+OrderedDisplay ||--|| OutputDisplay : "display"
 OutputDisplay ||--}o DisplaySection : "displaySections"
 DisplaySection ||--}o OrderedDisplaySubSection : "orderedSubSections"
 OrderedDisplaySubSection ||--|o DisplaySubSection : "subSection"
@@ -254,11 +261,14 @@ Analysis ||--|o AnalysisOutputProgrammingCode : "programmingCode"
 Analysis ||--}o OperationResult : "results"
 OperationResult ||--|| Operation : "operationId"
 OperationResult ||--}o ResultGroup : "resultGroups"
-ResultGroup ||--|o GroupingFactor : "groupingId"
+ResultGroup ||--|| GroupingFactor : "groupingId"
 ResultGroup ||--|o Group : "groupId"
 Group ||--|o WhereClauseCondition : "condition"
 Group ||--|o CompoundGroupExpression : "compoundExpression"
-CompoundGroupExpression ||--}o Group : "whereClauses"
+CompoundGroupExpression ||--}o SubClause : "whereClauses"
+SubClause ||--|o WhereClauseCondition : "condition"
+SubClause ||--|o WhereClauseCompoundExpression : "compoundExpression"
+WhereClauseCompoundExpression ||--}o SubClause : "whereClauses"
 GroupingFactor ||--}o Group : "groups"
 Operation ||--}o ReferencedOperationRelationship : "referencedOperationRelationships"
 ReferencedOperationRelationship ||--|| ExtensibleTerminologyTerm : "referencedOperationRole"
@@ -271,23 +281,15 @@ AnalysisMethod ||--}| Operation : "operations"
 AnalysisMethod ||--|o AnalysisProgrammingCodeTemplate : "codeTemplate"
 AnalysisProgrammingCodeTemplate ||--|o DocumentReference : "documentRef"
 AnalysisProgrammingCodeTemplate ||--}o TemplateCodeParameter : "parameters"
-OrderedGroupingFactor ||--|o GroupingFactor : "groupingId"
+OrderedGroupingFactor ||--|| GroupingFactor : "groupingId"
 DataSubset ||--|o WhereClauseCondition : "condition"
 DataSubset ||--|o CompoundSubsetExpression : "compoundExpression"
-CompoundSubsetExpression ||--}o WhereClause : "whereClauses"
-WhereClause ||--|o WhereClauseCondition : "condition"
-WhereClause ||--|o WhereClauseCompoundExpression : "compoundExpression"
-WhereClauseCompoundExpression ||--}o WhereClause : "whereClauses"
+CompoundSubsetExpression ||--}o SubClause : "whereClauses"
 AnalysisSet ||--|o WhereClauseCondition : "condition"
 AnalysisSet ||--|o CompoundSetExpression : "compoundExpression"
-CompoundSetExpression ||--}o AnalysisSet : "whereClauses"
-DataGroupingFactor ||--}o DataGroup : "groups"
-DataGroup ||--|o WhereClauseCondition : "condition"
-DataGroup ||--|o CompoundGroupExpression : "compoundExpression"
-SubjectGroupingFactor ||--}o AnalysisGroup : "groups"
-AnalysisGroup ||--|o WhereClauseCondition : "condition"
-AnalysisGroup ||--|o CompoundGroupExpression : "compoundExpression"
+CompoundSetExpression ||--}o SubClause : "whereClauses"
 TerminologyExtension ||--}| SponsorTerm : "sponsorTerms"
+ListOfContents ||--|| NestedList : "contentsList"
 NestedList ||--}o OrderedListItem : "listItems"
 OrderedListItem ||--|o Analysis : "analysisId"
 OrderedListItem ||--|o Output : "outputId"

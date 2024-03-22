@@ -13,8 +13,7 @@ URI: [ars:SponsorOutputFileType](https://www.cdisc.org/ars/1-0/SponsorOutputFile
 ```mermaid
  classDiagram
     class SponsorOutputFileType
-      ExtensibleTerminologyTerm <|-- SponsorOutputFileType
-
+      ExtensibleTerminologyTerm <|-- SponsorOutputFileType        
       SponsorOutputFileType : controlledTerm
         SponsorOutputFileType : sponsorTermId
         SponsorOutputFileType --|> SponsorTerm : sponsorTermId

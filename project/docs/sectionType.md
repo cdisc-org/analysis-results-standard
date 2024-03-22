@@ -40,10 +40,12 @@ URI: [ars:sectionType](https://www.cdisc.org/ars/1-0/sectionType)
 
 | Value |
 | --- |
+| Header |
 | Title |
 | Footnote |
 | Legend |
 | Abbreviation |
+| Footer |
 
 ## Identifier and Mapping Information
 
@@ -69,10 +71,12 @@ name: sectionType
 description: The type of display section that contains one or more pieces of informational
   text.
 examples:
+- value: Header
 - value: Title
 - value: Footnote
 - value: Legend
 - value: Abbreviation
+- value: Footer
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 alias: sectionType

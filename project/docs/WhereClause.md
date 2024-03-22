@@ -9,30 +9,33 @@ URI: [ars:WhereClause](https://www.cdisc.org/ars/1-0/WhereClause)
 
 
 
-
 ```mermaid
  classDiagram
     class WhereClause
+      LevelOrder <|-- WhereClause
+      WhereClause <|-- SubClause
       WhereClause <|-- AnalysisSet
       WhereClause <|-- DataSubset
       WhereClause <|-- Group
-      WhereClause : level        
-        WhereClause : order        
-        WhereClause : condition        
+            
+      WhereClause : condition
         WhereClause --|> WhereClauseCondition : condition
-        WhereClause : compoundExpression        
+        
+      WhereClause : compoundExpression
         WhereClause --|> WhereClauseCompoundExpression : compoundExpression
         
+      WhereClause : level
+        
+      WhereClause : order
+        
+      
 ```
 
 
 
 
 ## Inheritance
-* **WhereClause**
-    * [AnalysisSet](AnalysisSet.md)
-    * [DataSubset](DataSubset.md)
-    * [Group](Group.md)
+* **WhereClause** [ [LevelOrder](LevelOrder.md)]
 
 
 
@@ -40,22 +43,14 @@ URI: [ars:WhereClause](https://www.cdisc.org/ars/1-0/WhereClause)
 
 | Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [level](level.md) | 0..1 <br/> [Integer](Integer.md) | The level of the entry within a hierarchical structure | direct |
-| [order](order.md) | 0..1 <br/> [Integer](Integer.md) | The ordinal of the instance with respect to other instances | direct |
 | [condition](condition.md) | 0..1 <br/> [WhereClauseCondition](WhereClauseCondition.md) | A simple selection criterion exressed as [dataset] | direct |
 | [compoundExpression](compoundExpression.md) | 0..1 <br/> [WhereClauseCompoundExpression](WhereClauseCompoundExpression.md) | A compound expression that combines or negates where clauses | direct |
+| [level](level.md) | 1..1 <br/> [Integer](Integer.md) | The level of the entry within a hierarchical structure | [LevelOrder](LevelOrder.md) |
+| [order](order.md) | 1..1 <br/> [Integer](Integer.md) | The ordinal of the instance with respect to other instances | [LevelOrder](LevelOrder.md) |
 
 _* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
 
-
-
-## Usages
-
-| used by | used in | type | used |
-| ---  | --- | --- | --- |
-| [WhereClauseCompoundExpression](WhereClauseCompoundExpression.md) | [whereClauses](whereClauses.md) | range | [WhereClause](WhereClause.md) |
-| [CompoundSubsetExpression](CompoundSubsetExpression.md) | [whereClauses](whereClauses.md) | range | [WhereClause](WhereClause.md) |
 
 
 
@@ -176,11 +171,27 @@ comments:
   not both.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
+mixins:
+- LevelOrder
 slots:
-- level
-- order
 - condition
 - compoundExpression
+slot_usage:
+  compoundExpression:
+    name: compoundExpression
+    domain_of:
+    - WhereClause
+    range: WhereClauseCompoundExpression
+    any_of:
+    - range: CompoundSetExpression
+      inlined: true
+      inlined_as_list: true
+    - range: CompoundSubsetExpression
+      inlined: true
+      inlined_as_list: true
+    - range: CompoundGroupExpression
+      inlined: true
+      inlined_as_list: true
 
 ```
 </details>
@@ -198,34 +209,25 @@ comments:
   not both.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
+mixins:
+- LevelOrder
+slot_usage:
+  compoundExpression:
+    name: compoundExpression
+    domain_of:
+    - WhereClause
+    range: WhereClauseCompoundExpression
+    any_of:
+    - range: CompoundSetExpression
+      inlined: true
+      inlined_as_list: true
+    - range: CompoundSubsetExpression
+      inlined: true
+      inlined_as_list: true
+    - range: CompoundGroupExpression
+      inlined: true
+      inlined_as_list: true
 attributes:
-  level:
-    name: level
-    description: The level of the entry within a hierarchical structure.
-    comments:
-    - 1 is the top level.
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    alias: level
-    owner: WhereClause
-    domain_of:
-    - OrderedListItem
-    - WhereClause
-    range: integer
-  order:
-    name: order
-    description: The ordinal of the instance with respect to other instances.
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    alias: order
-    owner: WhereClause
-    domain_of:
-    - OrderedListItem
-    - WhereClause
-    - OrderedGroupingFactor
-    - OrderedDisplay
-    - OrderedDisplaySubSection
-    range: integer
   condition:
     name: condition
     description: A simple selection criterion exressed as [dataset].[variable] [comparator]
@@ -247,6 +249,44 @@ attributes:
     domain_of:
     - WhereClause
     range: WhereClauseCompoundExpression
+    any_of:
+    - range: CompoundSetExpression
+      inlined: true
+      inlined_as_list: true
+    - range: CompoundSubsetExpression
+      inlined: true
+      inlined_as_list: true
+    - range: CompoundGroupExpression
+      inlined: true
+      inlined_as_list: true
+  level:
+    name: level
+    description: The level of the entry within a hierarchical structure.
+    comments:
+    - 1 is the top level.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: level
+    owner: WhereClause
+    domain_of:
+    - LevelOrder
+    range: integer
+    required: true
+  order:
+    name: order
+    description: The ordinal of the instance with respect to other instances.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: order
+    owner: WhereClause
+    domain_of:
+    - LevelOrder
+    - Operation
+    - OrderedGroupingFactor
+    - OrderedDisplay
+    - OrderedDisplaySubSection
+    range: integer
+    required: true
 
 ```
 </details>

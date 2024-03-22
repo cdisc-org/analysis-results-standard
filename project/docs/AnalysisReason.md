@@ -13,8 +13,7 @@ URI: [ars:AnalysisReason](https://www.cdisc.org/ars/1-0/AnalysisReason)
 ```mermaid
  classDiagram
     class AnalysisReason
-      ExtensibleTerminologyTerm <|-- AnalysisReason
-
+      ExtensibleTerminologyTerm <|-- AnalysisReason        
       AnalysisReason : controlledTerm
         AnalysisReason --|> AnalysisReasonEnum : controlledTerm
         AnalysisReason : sponsorTermId

@@ -2,9 +2,9 @@
 
 CREATE TABLE "AnalysisMethod" (
 	name TEXT NOT NULL, 
-	id TEXT NOT NULL, 
-	label TEXT, 
 	description TEXT, 
+	label TEXT, 
+	id TEXT NOT NULL, 
 	"documentRefs" TEXT, 
 	operations TEXT NOT NULL, 
 	"codeTemplate" TEXT, 
@@ -28,8 +28,9 @@ CREATE TABLE "AnalysisOutputCategory" (
 CREATE TABLE "AnalysisOutputCodeParameter" (
 	name TEXT NOT NULL, 
 	description TEXT, 
+	label TEXT, 
 	value TEXT NOT NULL, 
-	PRIMARY KEY (name, description, value)
+	PRIMARY KEY (name, description, label, value)
 );
 
 CREATE TABLE "AnalysisOutputProgrammingCode" (
@@ -49,12 +50,14 @@ CREATE TABLE "AnalysisProgrammingCodeTemplate" (
 );
 
 CREATE TABLE "AnalysisSet" (
-	level INTEGER, 
-	"order" INTEGER, 
-	condition TEXT, 
-	id TEXT NOT NULL, 
+	name TEXT NOT NULL, 
+	description TEXT, 
 	label TEXT, 
+	id TEXT NOT NULL, 
 	"compoundExpression" TEXT, 
+	condition TEXT, 
+	level INTEGER NOT NULL, 
+	"order" INTEGER NOT NULL, 
 	PRIMARY KEY (id)
 );
 
@@ -77,12 +80,14 @@ CREATE TABLE "CompoundSubsetExpression" (
 );
 
 CREATE TABLE "DataSubset" (
-	level INTEGER, 
-	"order" INTEGER, 
-	condition TEXT, 
-	id TEXT NOT NULL, 
+	name TEXT NOT NULL, 
+	description TEXT, 
 	label TEXT, 
+	id TEXT NOT NULL, 
 	"compoundExpression" TEXT, 
+	condition TEXT, 
+	level INTEGER NOT NULL, 
+	"order" INTEGER NOT NULL, 
 	PRIMARY KEY (id)
 );
 
@@ -93,13 +98,35 @@ CREATE TABLE "DisplaySubSection" (
 );
 
 CREATE TABLE "Group" (
-	level INTEGER, 
-	"order" INTEGER, 
-	condition TEXT, 
-	id TEXT NOT NULL, 
+	name TEXT NOT NULL, 
+	description TEXT, 
 	label TEXT, 
+	id TEXT NOT NULL, 
 	"compoundExpression" TEXT, 
+	condition TEXT, 
+	level INTEGER NOT NULL, 
+	"order" INTEGER NOT NULL, 
 	PRIMARY KEY (id)
+);
+
+CREATE TABLE "GroupingFactor" (
+	name TEXT NOT NULL, 
+	description TEXT, 
+	label TEXT, 
+	id TEXT NOT NULL, 
+	"groupingDataset" TEXT, 
+	"groupingVariable" TEXT, 
+	"dataDriven" BOOLEAN NOT NULL, 
+	groups TEXT, 
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE "ListOfContents" (
+	name TEXT NOT NULL, 
+	description TEXT, 
+	label TEXT, 
+	"contentsList" TEXT NOT NULL, 
+	PRIMARY KEY (name, description, label, "contentsList")
 );
 
 CREATE TABLE "NestedList" (
@@ -109,8 +136,10 @@ CREATE TABLE "NestedList" (
 
 CREATE TABLE "Operation" (
 	name TEXT NOT NULL, 
-	id TEXT NOT NULL, 
+	description TEXT, 
 	label TEXT, 
+	id TEXT NOT NULL, 
+	"order" INTEGER NOT NULL, 
 	"referencedOperationRelationships" TEXT, 
 	"resultPattern" TEXT, 
 	PRIMARY KEY (id)
@@ -118,6 +147,8 @@ CREATE TABLE "Operation" (
 
 CREATE TABLE "Output" (
 	name TEXT NOT NULL, 
+	description TEXT, 
+	label TEXT, 
 	id TEXT NOT NULL, 
 	version INTEGER, 
 	"categoryIds" TEXT, 
@@ -128,6 +159,8 @@ CREATE TABLE "Output" (
 
 CREATE TABLE "OutputDisplay" (
 	name TEXT NOT NULL, 
+	description TEXT, 
+	label TEXT, 
 	id TEXT NOT NULL, 
 	version INTEGER, 
 	"displayTitle" TEXT, 
@@ -166,6 +199,8 @@ CREATE TABLE "PageNumberRangeRef" (
 
 CREATE TABLE "ReferenceDocument" (
 	name TEXT NOT NULL, 
+	description TEXT, 
+	label TEXT, 
 	id TEXT NOT NULL, 
 	location TEXT, 
 	PRIMARY KEY (id)
@@ -173,14 +208,17 @@ CREATE TABLE "ReferenceDocument" (
 
 CREATE TABLE "ReportingEvent" (
 	name TEXT NOT NULL, 
+	description TEXT, 
+	label TEXT, 
 	id TEXT NOT NULL, 
 	version INTEGER, 
-	"listOfPlannedAnalyses" TEXT NOT NULL, 
-	"listOfPlannedOutputs" TEXT, 
+	"mainListOfContents" TEXT NOT NULL, 
+	"otherListsOfContents" TEXT, 
 	"referenceDocuments" TEXT, 
 	"analysisOutputCategorizations" TEXT, 
 	"analysisSets" TEXT, 
 	"dataSubsets" TEXT, 
+	"analysisGroupings" TEXT, 
 	methods TEXT, 
 	analyses TEXT, 
 	outputs TEXT, 
@@ -197,23 +235,18 @@ CREATE TABLE "SponsorTerm" (
 CREATE TABLE "TemplateCodeParameter" (
 	name TEXT NOT NULL, 
 	description TEXT, 
+	label TEXT, 
 	"valueSource" TEXT, 
 	value TEXT, 
-	PRIMARY KEY (name, description, "valueSource", value)
+	PRIMARY KEY (name, description, label, "valueSource", value)
 );
 
 CREATE TABLE "WhereClause" (
-	level INTEGER, 
-	"order" INTEGER, 
 	condition TEXT, 
 	"compoundExpression" TEXT, 
-	PRIMARY KEY (level, "order", condition, "compoundExpression")
-);
-
-CREATE TABLE "WhereClauseCompoundExpression" (
-	"logicalOperator" VARCHAR(3) NOT NULL, 
-	"whereClauses" TEXT, 
-	PRIMARY KEY ("logicalOperator", "whereClauses")
+	level INTEGER NOT NULL, 
+	"order" INTEGER NOT NULL, 
+	PRIMARY KEY (condition, "compoundExpression", level, "order")
 );
 
 CREATE TABLE "WhereClauseCondition" (
@@ -226,9 +259,10 @@ CREATE TABLE "WhereClauseCondition" (
 
 CREATE TABLE "Analysis" (
 	name TEXT NOT NULL, 
+	description TEXT, 
+	label TEXT, 
 	id TEXT NOT NULL, 
 	version INTEGER, 
-	description TEXT, 
 	reason TEXT NOT NULL, 
 	purpose TEXT NOT NULL, 
 	"documentRefs" TEXT, 
@@ -257,16 +291,6 @@ CREATE TABLE "AnalysisReason" (
 	"sponsorTermId" TEXT, 
 	PRIMARY KEY ("controlledTerm", "sponsorTermId"), 
 	FOREIGN KEY("sponsorTermId") REFERENCES "SponsorTerm" (id)
-);
-
-CREATE TABLE "DataGroupingFactor" (
-	id TEXT NOT NULL, 
-	label TEXT, 
-	"groupingVariable" TEXT, 
-	"dataDriven" BOOLEAN NOT NULL, 
-	"ReportingEvent_id" TEXT, 
-	PRIMARY KEY (id), 
-	FOREIGN KEY("ReportingEvent_id") REFERENCES "ReportingEvent" (id)
 );
 
 CREATE TABLE "DisplaySection" (
@@ -301,7 +325,7 @@ CREATE TABLE "OperationRole" (
 
 CREATE TABLE "OrderedDisplay" (
 	"order" INTEGER NOT NULL, 
-	display TEXT, 
+	display TEXT NOT NULL, 
 	"Output_id" TEXT, 
 	PRIMARY KEY ("order", display, "Output_id"), 
 	FOREIGN KEY(display) REFERENCES "OutputDisplay" (id), 
@@ -328,11 +352,13 @@ CREATE TABLE "OrderedSubSectionRef" (
 
 CREATE TABLE "OutputFile" (
 	name TEXT NOT NULL, 
+	description TEXT, 
+	label TEXT, 
 	"fileType" TEXT, 
 	location TEXT, 
 	style TEXT, 
 	"Output_id" TEXT, 
-	PRIMARY KEY (name, "fileType", location, style, "Output_id"), 
+	PRIMARY KEY (name, description, label, "fileType", location, style, "Output_id"), 
 	FOREIGN KEY("Output_id") REFERENCES "Output" (id)
 );
 
@@ -343,11 +369,36 @@ CREATE TABLE "OutputFileType" (
 	FOREIGN KEY("sponsorTermId") REFERENCES "SponsorTerm" (id)
 );
 
+CREATE TABLE "ReferencedAnalysisSet" (
+	level INTEGER NOT NULL, 
+	"order" INTEGER NOT NULL, 
+	"subClauseId" TEXT NOT NULL, 
+	PRIMARY KEY (level, "order", "subClauseId"), 
+	FOREIGN KEY("subClauseId") REFERENCES "AnalysisSet" (id)
+);
+
+CREATE TABLE "ReferencedDataSubset" (
+	level INTEGER NOT NULL, 
+	"order" INTEGER NOT NULL, 
+	"subClauseId" TEXT NOT NULL, 
+	PRIMARY KEY (level, "order", "subClauseId"), 
+	FOREIGN KEY("subClauseId") REFERENCES "DataSubset" (id)
+);
+
+CREATE TABLE "ReferencedGroup" (
+	level INTEGER NOT NULL, 
+	"order" INTEGER NOT NULL, 
+	"subClauseId" TEXT NOT NULL, 
+	PRIMARY KEY (level, "order", "subClauseId"), 
+	FOREIGN KEY("subClauseId") REFERENCES "Group" (id)
+);
+
 CREATE TABLE "ResultGroup" (
-	"groupingId" TEXT, 
+	"groupingId" TEXT NOT NULL, 
 	"groupId" TEXT, 
 	"groupValue" TEXT, 
 	PRIMARY KEY ("groupingId", "groupId", "groupValue"), 
+	FOREIGN KEY("groupingId") REFERENCES "GroupingFactor" (id), 
 	FOREIGN KEY("groupId") REFERENCES "Group" (id)
 );
 
@@ -379,16 +430,6 @@ CREATE TABLE "SponsorOutputFileType" (
 	FOREIGN KEY("sponsorTermId") REFERENCES "SponsorTerm" (id)
 );
 
-CREATE TABLE "SubjectGroupingFactor" (
-	id TEXT NOT NULL, 
-	label TEXT, 
-	"groupingVariable" TEXT, 
-	"dataDriven" BOOLEAN NOT NULL, 
-	"ReportingEvent_id" TEXT, 
-	PRIMARY KEY (id), 
-	FOREIGN KEY("ReportingEvent_id") REFERENCES "ReportingEvent" (id)
-);
-
 CREATE TABLE "TerminologyExtension" (
 	id TEXT NOT NULL, 
 	enumeration VARCHAR(19), 
@@ -396,30 +437,6 @@ CREATE TABLE "TerminologyExtension" (
 	"ReportingEvent_id" TEXT, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY("ReportingEvent_id") REFERENCES "ReportingEvent" (id)
-);
-
-CREATE TABLE "AnalysisGroup" (
-	level INTEGER, 
-	"order" INTEGER, 
-	condition TEXT, 
-	id TEXT NOT NULL, 
-	label TEXT, 
-	"compoundExpression" TEXT, 
-	"SubjectGroupingFactor_id" TEXT, 
-	PRIMARY KEY (id), 
-	FOREIGN KEY("SubjectGroupingFactor_id") REFERENCES "SubjectGroupingFactor" (id)
-);
-
-CREATE TABLE "DataGroup" (
-	level INTEGER, 
-	"order" INTEGER, 
-	condition TEXT, 
-	id TEXT NOT NULL, 
-	label TEXT, 
-	"compoundExpression" TEXT, 
-	"DataGroupingFactor_id" TEXT, 
-	PRIMARY KEY (id), 
-	FOREIGN KEY("DataGroupingFactor_id") REFERENCES "DataGroupingFactor" (id)
 );
 
 CREATE TABLE "OperationResult" (
@@ -435,21 +452,24 @@ CREATE TABLE "OperationResult" (
 
 CREATE TABLE "OrderedGroupingFactor" (
 	"order" INTEGER NOT NULL, 
-	"groupingId" TEXT, 
+	"groupingId" TEXT NOT NULL, 
 	"resultsByGroup" BOOLEAN NOT NULL, 
 	"Analysis_id" TEXT, 
 	PRIMARY KEY ("order", "groupingId", "resultsByGroup", "Analysis_id"), 
+	FOREIGN KEY("groupingId") REFERENCES "GroupingFactor" (id), 
 	FOREIGN KEY("Analysis_id") REFERENCES "Analysis" (id)
 );
 
 CREATE TABLE "OrderedListItem" (
 	name TEXT NOT NULL, 
-	level INTEGER NOT NULL, 
-	"order" INTEGER NOT NULL, 
+	description TEXT, 
+	label TEXT, 
 	"analysisId" TEXT, 
 	"outputId" TEXT, 
 	sublist TEXT, 
-	PRIMARY KEY (name, level, "order", "analysisId", "outputId", sublist), 
+	level INTEGER NOT NULL, 
+	"order" INTEGER NOT NULL, 
+	PRIMARY KEY (name, description, label, "analysisId", "outputId", sublist, level, "order"), 
 	FOREIGN KEY("analysisId") REFERENCES "Analysis" (id), 
 	FOREIGN KEY("outputId") REFERENCES "Output" (id)
 );

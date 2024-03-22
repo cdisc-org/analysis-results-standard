@@ -29,7 +29,7 @@ URI: [ars:OrderedGroupingFactor](https://www.cdisc.org/ars/1-0/OrderedGroupingFa
 | Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [order](order.md) | 1..1 <br/> [Integer](Integer.md) | The ordinal of the instance with respect to other instances | direct |
-| [groupingId](groupingId.md) | 0..1 <br/> [GroupingFactor](GroupingFactor.md) | The identifier of the referenced subject or data grouping factor | direct |
+| [groupingId](groupingId.md) | 1..1 <br/> [GroupingFactor](GroupingFactor.md) | The identifier of the referenced subject or data grouping factor | direct |
 | [resultsByGroup](resultsByGroup.md) | 1..1 <br/> [Boolean](Boolean.md) | Indicates whether a result is expected for each group in the grouping | direct |
 
 _* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
@@ -93,16 +93,6 @@ slots:
 - order
 - groupingId
 - resultsByGroup
-slot_usage:
-  order:
-    name: order
-    domain_of:
-    - OrderedListItem
-    - WhereClause
-    - OrderedGroupingFactor
-    - OrderedDisplay
-    - OrderedDisplaySubSection
-    required: true
 
 ```
 </details>
@@ -116,16 +106,6 @@ description: A reference to a defined factor by which subjects or data records a
   grouped for the analysis, ordered with respect to other grouping factors.
 from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
-slot_usage:
-  order:
-    name: order
-    domain_of:
-    - OrderedListItem
-    - WhereClause
-    - OrderedGroupingFactor
-    - OrderedDisplay
-    - OrderedDisplaySubSection
-    required: true
 attributes:
   order:
     name: order
@@ -135,8 +115,8 @@ attributes:
     alias: order
     owner: OrderedGroupingFactor
     domain_of:
-    - OrderedListItem
-    - WhereClause
+    - LevelOrder
+    - Operation
     - OrderedGroupingFactor
     - OrderedDisplay
     - OrderedDisplaySubSection
@@ -153,6 +133,7 @@ attributes:
     - OrderedGroupingFactor
     - ResultGroup
     range: GroupingFactor
+    required: true
     inlined: false
   resultsByGroup:
     name: resultsByGroup

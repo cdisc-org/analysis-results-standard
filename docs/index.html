@@ -77,7 +77,7 @@
 </div></div>
 <div class="col-md-9" role="main">
 <h1 id="analysis-results-standard-ars">Analysis Results Standard (ARS)</h1>
-<p>DRAFT Logical model to support both the prospective specification of analyses and the fully contextualized representation of the results of the analyses.</p>
+<p>Logical model to support both the prospective specification of analyses and the fully contextualized representation of the results of the analyses.</p>
 <p>URI: https://www.cdisc.org/ars/1-0
 Name: ars_ldm</p>
 <h2 id="schema-diagram">Schema Diagram</h2>
@@ -86,11 +86,15 @@ ReportingEvent {
     string id  
     integer version  
     string name  
+    string description  
+    string label  
 }
 Output {
     string id  
     integer version  
     string name  
+    string description  
+    string label  
 }
 AnalysisOutputProgrammingCode {
     string context  
@@ -98,8 +102,9 @@ AnalysisOutputProgrammingCode {
 }
 AnalysisOutputCodeParameter {
     stringList value  
-    string description  
     string name  
+    string description  
+    string label  
 }
 DocumentReference {
 
@@ -116,6 +121,8 @@ ReferenceDocument {
     string id  
     uri location  
     string name  
+    string description  
+    string label  
 }
 AnalysisOutputCategory {
     string id  
@@ -133,6 +140,8 @@ OutputDisplay {
     integer version  
     string displayTitle  
     string name  
+    string description  
+    string label  
 }
 DisplaySection {
     DisplaySectionTypeEnum sectionType  
@@ -148,6 +157,8 @@ OutputFile {
     uri location  
     string style  
     string name  
+    string description  
+    string label  
 }
 ExtensibleTerminologyTerm {
     string controlledTerm  
@@ -163,10 +174,11 @@ GlobalDisplaySection {
 Analysis {
     string id  
     integer version  
-    string description  
     string dataset  
     string variable  
     string name  
+    string description  
+    string label  
 }
 OperationResult {
     string rawValue  
@@ -177,11 +189,21 @@ ResultGroup {
 }
 Group {
     string id  
+    string name  
+    string description  
     string label  
     integer level  
     integer order  
 }
 CompoundGroupExpression {
+    ExpressionLogicalOperatorEnum logicalOperator  
+}
+SubClause {
+    integer level  
+    integer order  
+    string subClauseId  
+}
+WhereClauseCompoundExpression {
     ExpressionLogicalOperatorEnum logicalOperator  
 }
 WhereClauseCondition {
@@ -192,15 +214,20 @@ WhereClauseCondition {
 }
 GroupingFactor {
     string id  
-    string label  
+    string groupingDataset  
     string groupingVariable  
     boolean dataDriven  
+    string name  
+    string description  
+    string label  
 }
 Operation {
     string id  
-    string label  
+    integer order  
     string resultPattern  
     string name  
+    string description  
+    string label  
 }
 ReferencedOperationRelationship {
     string id  
@@ -211,9 +238,9 @@ ReferencedAnalysisOperation {
 }
 AnalysisMethod {
     string id  
-    string label  
-    string description  
     string name  
+    string description  
+    string label  
 }
 AnalysisProgrammingCodeTemplate {
     string context  
@@ -222,8 +249,9 @@ AnalysisProgrammingCodeTemplate {
 TemplateCodeParameter {
     string valueSource  
     stringList value  
-    string description  
     string name  
+    string description  
+    string label  
 }
 OrderedGroupingFactor {
     integer order  
@@ -231,6 +259,8 @@ OrderedGroupingFactor {
 }
 DataSubset {
     string id  
+    string name  
+    string description  
     string label  
     integer level  
     integer order  
@@ -238,15 +268,10 @@ DataSubset {
 CompoundSubsetExpression {
     ExpressionLogicalOperatorEnum logicalOperator  
 }
-WhereClause {
-    integer level  
-    integer order  
-}
-WhereClauseCompoundExpression {
-    ExpressionLogicalOperatorEnum logicalOperator  
-}
 AnalysisSet {
     string id  
+    string name  
+    string description  
     string label  
     integer level  
     integer order  
@@ -254,33 +279,14 @@ AnalysisSet {
 CompoundSetExpression {
     ExpressionLogicalOperatorEnum logicalOperator  
 }
-DataGroupingFactor {
-    string id  
-    string label  
-    string groupingVariable  
-    boolean dataDriven  
-}
-DataGroup {
-    string id  
-    string label  
-    integer level  
-    integer order  
-}
-SubjectGroupingFactor {
-    string id  
-    string label  
-    string groupingVariable  
-    boolean dataDriven  
-}
-AnalysisGroup {
-    string id  
-    string label  
-    integer level  
-    integer order  
-}
 TerminologyExtension {
     string id  
     ExtensibleTerminologyEnum enumeration  
+}
+ListOfContents {
+    string name  
+    string description  
+    string label  
 }
 NestedList {
 
@@ -289,23 +295,24 @@ OrderedListItem {
     integer level  
     integer order  
     string name  
+    string description  
+    string label  
 }
 
-ReportingEvent ||--|| NestedList : "listOfPlannedAnalyses"
-ReportingEvent ||--|o NestedList : "listOfPlannedOutputs"
+ReportingEvent ||--|| ListOfContents : "mainListOfContents"
+ReportingEvent ||--}o ListOfContents : "otherListsOfContents"
 ReportingEvent ||--}o ReferenceDocument : "referenceDocuments"
 ReportingEvent ||--}o TerminologyExtension : "terminologyExtensions"
 ReportingEvent ||--}o AnalysisOutputCategorization : "analysisOutputCategorizations"
 ReportingEvent ||--}o AnalysisSet : "analysisSets"
-ReportingEvent ||--}o SubjectGroupingFactor : "analysisGroupings"
 ReportingEvent ||--}o DataSubset : "dataSubsets"
-ReportingEvent ||--}o DataGroupingFactor : "dataGroupings"
+ReportingEvent ||--}o GroupingFactor : "analysisGroupings"
 ReportingEvent ||--}o AnalysisMethod : "methods"
 ReportingEvent ||--}o Analysis : "analyses"
 ReportingEvent ||--}o GlobalDisplaySection : "globalDisplaySections"
 ReportingEvent ||--}o Output : "outputs"
 Output ||--}o OutputFile : "fileSpecifications"
-Output ||--}o OrderedDisplay : "displays"
+Output ||--}| OrderedDisplay : "displays"
 Output ||--}o AnalysisOutputCategory : "categoryIds"
 Output ||--}o DocumentReference : "documentRefs"
 Output ||--|o AnalysisOutputProgrammingCode : "programmingCode"
@@ -315,7 +322,7 @@ DocumentReference ||--|| ReferenceDocument : "referenceDocumentId"
 DocumentReference ||--}o PageRef : "pageRefs"
 AnalysisOutputCategory ||--}o AnalysisOutputCategorization : "subCategorizations"
 AnalysisOutputCategorization ||--}| AnalysisOutputCategory : "categories"
-OrderedDisplay ||--|o OutputDisplay : "display"
+OrderedDisplay ||--|| OutputDisplay : "display"
 OutputDisplay ||--}o DisplaySection : "displaySections"
 DisplaySection ||--}o OrderedDisplaySubSection : "orderedSubSections"
 OrderedDisplaySubSection ||--|o DisplaySubSection : "subSection"
@@ -336,11 +343,14 @@ Analysis ||--|o AnalysisOutputProgrammingCode : "programmingCode"
 Analysis ||--}o OperationResult : "results"
 OperationResult ||--|| Operation : "operationId"
 OperationResult ||--}o ResultGroup : "resultGroups"
-ResultGroup ||--|o GroupingFactor : "groupingId"
+ResultGroup ||--|| GroupingFactor : "groupingId"
 ResultGroup ||--|o Group : "groupId"
 Group ||--|o WhereClauseCondition : "condition"
 Group ||--|o CompoundGroupExpression : "compoundExpression"
-CompoundGroupExpression ||--}o Group : "whereClauses"
+CompoundGroupExpression ||--}o SubClause : "whereClauses"
+SubClause ||--|o WhereClauseCondition : "condition"
+SubClause ||--|o WhereClauseCompoundExpression : "compoundExpression"
+WhereClauseCompoundExpression ||--}o SubClause : "whereClauses"
 GroupingFactor ||--}o Group : "groups"
 Operation ||--}o ReferencedOperationRelationship : "referencedOperationRelationships"
 ReferencedOperationRelationship ||--|| ExtensibleTerminologyTerm : "referencedOperationRole"
@@ -353,23 +363,15 @@ AnalysisMethod ||--}| Operation : "operations"
 AnalysisMethod ||--|o AnalysisProgrammingCodeTemplate : "codeTemplate"
 AnalysisProgrammingCodeTemplate ||--|o DocumentReference : "documentRef"
 AnalysisProgrammingCodeTemplate ||--}o TemplateCodeParameter : "parameters"
-OrderedGroupingFactor ||--|o GroupingFactor : "groupingId"
+OrderedGroupingFactor ||--|| GroupingFactor : "groupingId"
 DataSubset ||--|o WhereClauseCondition : "condition"
 DataSubset ||--|o CompoundSubsetExpression : "compoundExpression"
-CompoundSubsetExpression ||--}o WhereClause : "whereClauses"
-WhereClause ||--|o WhereClauseCondition : "condition"
-WhereClause ||--|o WhereClauseCompoundExpression : "compoundExpression"
-WhereClauseCompoundExpression ||--}o WhereClause : "whereClauses"
+CompoundSubsetExpression ||--}o SubClause : "whereClauses"
 AnalysisSet ||--|o WhereClauseCondition : "condition"
 AnalysisSet ||--|o CompoundSetExpression : "compoundExpression"
-CompoundSetExpression ||--}o AnalysisSet : "whereClauses"
-DataGroupingFactor ||--}o DataGroup : "groups"
-DataGroup ||--|o WhereClauseCondition : "condition"
-DataGroup ||--|o CompoundGroupExpression : "compoundExpression"
-SubjectGroupingFactor ||--}o AnalysisGroup : "groups"
-AnalysisGroup ||--|o WhereClauseCondition : "condition"
-AnalysisGroup ||--|o CompoundGroupExpression : "compoundExpression"
+CompoundSetExpression ||--}o SubClause : "whereClauses"
 TerminologyExtension ||--}| SponsorTerm : "sponsorTerms"
+ListOfContents ||--|| NestedList : "contentsList"
 NestedList ||--}o OrderedListItem : "listItems"
 OrderedListItem ||--|o Analysis : "analysisId"
 OrderedListItem ||--|o Output : "outputId"
@@ -394,8 +396,16 @@ OrderedListItem ||--|o NestedList : "sublist"
 <td>A set of analyses and outputs created to meet a specific reporting requiremen...</td>
 </tr>
 <tr>
+<td><a href="ListOfContents/">ListOfContents</a></td>
+<td>A structured list of analyses and outputs included in the reporting event</td>
+</tr>
+<tr>
 <td><a href="NestedList/">NestedList</a></td>
 <td>A list of items (analyses or outputs) that may be organized within sub-lists</td>
+</tr>
+<tr>
+<td><a href="LevelOrder/">LevelOrder</a></td>
+<td>An abstract class containing attributes used to position class instances with...</td>
 </tr>
 <tr>
 <td><a href="OrderedListItem/">OrderedListItem</a></td>
@@ -434,24 +444,40 @@ OrderedListItem ||--|o NestedList : "sublist"
 <td>A simple selection criterion exressed as [dataset]</td>
 </tr>
 <tr>
+<td><a href="ReferencedWhereClause/">ReferencedWhereClause</a></td>
+<td>An abstract class indicating an identified where clause (i</td>
+</tr>
+<tr>
+<td><a href="SubClause/">SubClause</a></td>
+<td>An abstract class containing all attributes that may be specified for a sub-c...</td>
+</tr>
+<tr>
 <td><a href="WhereClauseCompoundExpression/">WhereClauseCompoundExpression</a></td>
-<td>A compound expression consisting of either two or more where clauses combined...</td>
+<td>An abstract class representing a compound expression consisting of either two...</td>
 </tr>
 <tr>
 <td><a href="AnalysisSet/">AnalysisSet</a></td>
 <td>A set of subjects whose data are to be included in the main analyses</td>
 </tr>
 <tr>
+<td><a href="ReferencedAnalysisSet/">ReferencedAnalysisSet</a></td>
+<td>An <code>AnalysisSet</code> referenced by identifier (<code>subClauseId</code>) as the sub-clause o...</td>
+</tr>
+<tr>
 <td><a href="CompoundSetExpression/">CompoundSetExpression</a></td>
-<td>A compound expression consisting of either two or more identified analysis se...</td>
+<td>A compound expression consisting of either two or more sub-clauses combined w...</td>
 </tr>
 <tr>
 <td><a href="DataSubset/">DataSubset</a></td>
 <td>A subset of data identified by selection criteria for inclusion in the analys...</td>
 </tr>
 <tr>
+<td><a href="ReferencedDataSubset/">ReferencedDataSubset</a></td>
+<td>A <code>DataSubset</code> referenced by identifier (<code>subClauseId</code>) as the sub-clause of ...</td>
+</tr>
+<tr>
 <td><a href="CompoundSubsetExpression/">CompoundSubsetExpression</a></td>
-<td>A compound expression consisting of either two or more where clauses combined...</td>
+<td>A compound expression consisting of either two or more sub-clauses combined w...</td>
 </tr>
 <tr>
 <td><a href="GroupingFactor/">GroupingFactor</a></td>
@@ -462,24 +488,12 @@ OrderedListItem ||--|o NestedList : "sublist"
 <td>A subdivision of the subject population or analysis dataset record set based ...</td>
 </tr>
 <tr>
+<td><a href="ReferencedGroup/">ReferencedGroup</a></td>
+<td>A <code>Group</code> referenced by identifier (<code>subClauseId</code>) as the sub-clause of a com...</td>
+</tr>
+<tr>
 <td><a href="CompoundGroupExpression/">CompoundGroupExpression</a></td>
-<td>A compound expression consisting of either two or more identified group combi...</td>
-</tr>
-<tr>
-<td><a href="SubjectGroupingFactor/">SubjectGroupingFactor</a></td>
-<td>A factor used to subdivide the subject population for comparative analysis (e</td>
-</tr>
-<tr>
-<td><a href="AnalysisGroup/">AnalysisGroup</a></td>
-<td>A subdivision of the subject population based on a defined factor (e</td>
-</tr>
-<tr>
-<td><a href="DataGroupingFactor/">DataGroupingFactor</a></td>
-<td>A factor used to subdivide data records in an analysis dataset for analysis</td>
-</tr>
-<tr>
-<td><a href="DataGroup/">DataGroup</a></td>
-<td>A subdivision of the analysis dataset records based on a defined factor</td>
+<td>A compound expression consisting of either two or more sub-clauses combined w...</td>
 </tr>
 <tr>
 <td><a href="AnalysisMethod/">AnalysisMethod</a></td>
@@ -642,6 +656,14 @@ OrderedListItem ||--|o NestedList : "sublist"
 <td>The name for the instance of the class</td>
 </tr>
 <tr>
+<td><a href="description/">description</a></td>
+<td>A textual description of the instance of the class</td>
+</tr>
+<tr>
+<td><a href="label/">label</a></td>
+<td>A short informative description that may be used for display</td>
+</tr>
+<tr>
 <td><a href="id/">id</a></td>
 <td>The assigned identifying value for the instance of the class</td>
 </tr>
@@ -650,12 +672,16 @@ OrderedListItem ||--|o NestedList : "sublist"
 <td>An ordinal indicating the version of the identified instance of the class</td>
 </tr>
 <tr>
-<td><a href="listOfPlannedAnalyses/">listOfPlannedAnalyses</a></td>
-<td>A structured list of the analyses defined for the reporting event</td>
+<td><a href="mainListOfContents/">mainListOfContents</a></td>
+<td>The main list of the analyses and outputs defined for the reporting event</td>
 </tr>
 <tr>
-<td><a href="listOfPlannedOutputs/">listOfPlannedOutputs</a></td>
-<td>An optional structured list of the outputs defined for the reporting event</td>
+<td><a href="otherListsOfContents/">otherListsOfContents</a></td>
+<td>Other lists of the analyses and outputs defined for the reporting event</td>
+</tr>
+<tr>
+<td><a href="contentsList/">contentsList</a></td>
+<td>A structured list of the analyses and outputs defined for the reporting event</td>
 </tr>
 <tr>
 <td><a href="referenceDocuments/">referenceDocuments</a></td>
@@ -674,16 +700,12 @@ OrderedListItem ||--|o NestedList : "sublist"
 <td>The analysis sets (subject populations) defined for the reporting event</td>
 </tr>
 <tr>
-<td><a href="analysisGroupings/">analysisGroupings</a></td>
-<td>Characteristics used to subdivide the subject population (e</td>
-</tr>
-<tr>
 <td><a href="dataSubsets/">dataSubsets</a></td>
 <td>Subsets of data identified by selection criteria for inclusion in analysis de...</td>
 </tr>
 <tr>
-<td><a href="dataGroupings/">dataGroupings</a></td>
-<td>Characteristics used to subdivide data records in analysis datasets (e</td>
+<td><a href="analysisGroupings/">analysisGroupings</a></td>
+<td>Characteristics used to subdivide the subject population (e</td>
 </tr>
 <tr>
 <td><a href="methods/">methods</a></td>
@@ -742,20 +764,12 @@ OrderedListItem ||--|o NestedList : "sublist"
 <td>The specific value expected for submissions</td>
 </tr>
 <tr>
-<td><a href="description/">description</a></td>
-<td>A textual description of the instance of the class</td>
-</tr>
-<tr>
 <td><a href="controlledTerm/">controlledTerm</a></td>
 <td>One of the permissible values from the referenced enumeration</td>
 </tr>
 <tr>
 <td><a href="sponsorTermId/">sponsorTermId</a></td>
 <td>The identifier of the referenced sponsor term</td>
-</tr>
-<tr>
-<td><a href="label/">label</a></td>
-<td>A short informative description that may be used for display</td>
 </tr>
 <tr>
 <td><a href="categories/">categories</a></td>
@@ -790,12 +804,20 @@ OrderedListItem ||--|o NestedList : "sublist"
 <td>The prespecified value or values</td>
 </tr>
 <tr>
+<td><a href="subClauseId/">subClauseId</a></td>
+<td>The identifier of the analysis set, data subset or group referenced in the co...</td>
+</tr>
+<tr>
 <td><a href="logicalOperator/">logicalOperator</a></td>
 <td>The boolean operator that is used to combine (AND, OR) or negate (NOT) the wh...</td>
 </tr>
 <tr>
 <td><a href="whereClauses/">whereClauses</a></td>
 <td>A list of one or more where clauses (selection criteria) to be combined or ne...</td>
+</tr>
+<tr>
+<td><a href="groupingDataset/">groupingDataset</a></td>
+<td>For groupings based on a single variable, a reference to the dataset containi...</td>
 </tr>
 <tr>
 <td><a href="groupingVariable/">groupingVariable</a></td>
@@ -1230,5 +1252,5 @@ OrderedListItem ||--|o NestedList : "sublist"
 </html>
 <!--
 MkDocs version : 1.4.3
-Build Date UTC : 2023-11-01 14:48:03.523877+00:00
+Build Date UTC : 2024-03-18 16:59:19.221544+00:00
 -->

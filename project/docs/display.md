@@ -30,6 +30,8 @@ URI: [ars:display](https://www.cdisc.org/ars/1-0/display)
 
 * Range: [OutputDisplay](OutputDisplay.md)
 
+* Required: True
+
 
 
 
@@ -62,6 +64,7 @@ alias: display
 domain_of:
 - OrderedDisplay
 range: OutputDisplay
+required: true
 inlined: true
 
 ```

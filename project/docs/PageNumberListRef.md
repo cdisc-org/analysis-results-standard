@@ -13,8 +13,7 @@ URI: [ars:PageNumberListRef](https://www.cdisc.org/ars/1-0/PageNumberListRef)
 ```mermaid
  classDiagram
     class PageNumberListRef
-      PageRef <|-- PageNumberListRef
-
+      PageRef <|-- PageNumberListRef        
       PageNumberListRef : refType
         PageNumberListRef --|> PageRefTypeEnum : refType
         PageNumberListRef : label
@@ -194,15 +193,10 @@ attributes:
     alias: label
     owner: PageNumberListRef
     domain_of:
+    - NamedObject
     - AnalysisOutputCategorization
     - AnalysisOutputCategory
-    - AnalysisSet
-    - DataSubset
-    - GroupingFactor
-    - Group
-    - AnalysisMethod
     - PageRef
-    - Operation
     range: string
   pageNames:
     name: pageNames

@@ -13,14 +13,13 @@ URI: [ars:ReportingEvent](https://www.cdisc.org/ars/1-0/ReportingEvent)
 ```mermaid
  classDiagram
     class ReportingEvent
-      NamedObject <|-- ReportingEvent
-
+      NamedObject <|-- ReportingEvent        
       ReportingEvent : id
         ReportingEvent : version
-        ReportingEvent : listOfPlannedAnalyses
-        ReportingEvent --|> NestedList : listOfPlannedAnalyses
-        ReportingEvent : listOfPlannedOutputs
-        ReportingEvent --|> NestedList : listOfPlannedOutputs
+        ReportingEvent : mainListOfContents
+        ReportingEvent --|> ListOfContents : mainListOfContents
+        ReportingEvent : otherListsOfContents
+        ReportingEvent --|> ListOfContents : otherListsOfContents
         ReportingEvent : referenceDocuments
         ReportingEvent --|> ReferenceDocument : referenceDocuments
         ReportingEvent : terminologyExtensions
@@ -29,12 +28,10 @@ URI: [ars:ReportingEvent](https://www.cdisc.org/ars/1-0/ReportingEvent)
         ReportingEvent --|> AnalysisOutputCategorization : analysisOutputCategorizations
         ReportingEvent : analysisSets
         ReportingEvent --|> AnalysisSet : analysisSets
-        ReportingEvent : analysisGroupings
-        ReportingEvent --|> SubjectGroupingFactor : analysisGroupings
         ReportingEvent : dataSubsets
         ReportingEvent --|> DataSubset : dataSubsets
-        ReportingEvent : dataGroupings
-        ReportingEvent --|> DataGroupingFactor : dataGroupings
+        ReportingEvent : analysisGroupings
+        ReportingEvent --|> GroupingFactor : analysisGroupings
         ReportingEvent : methods
         ReportingEvent --|> AnalysisMethod : methods
         ReportingEvent : analyses
@@ -44,6 +41,8 @@ URI: [ars:ReportingEvent](https://www.cdisc.org/ars/1-0/ReportingEvent)
         ReportingEvent : outputs
         ReportingEvent --|> Output : outputs
         ReportingEvent : name
+        ReportingEvent : description
+        ReportingEvent : label
         
 ```
 
@@ -62,20 +61,21 @@ URI: [ars:ReportingEvent](https://www.cdisc.org/ars/1-0/ReportingEvent)
 | ---  | --- | --- | --- |
 | [id](id.md) | 1..1 <br/> [String](String.md) | The assigned identifying value for the instance of the class | direct |
 | [version](version.md) | 0..1 <br/> [Integer](Integer.md) | An ordinal indicating the version of the identified instance of the class | direct |
-| [listOfPlannedAnalyses](listOfPlannedAnalyses.md) | 1..1 <br/> [NestedList](NestedList.md) | A structured list of the analyses defined for the reporting event | direct |
-| [listOfPlannedOutputs](listOfPlannedOutputs.md) | 0..1 <br/> [NestedList](NestedList.md) | An optional structured list of the outputs defined for the reporting event | direct |
+| [mainListOfContents](mainListOfContents.md) | 1..1 <br/> [ListOfContents](ListOfContents.md) | The main list of the analyses and outputs defined for the reporting event | direct |
+| [otherListsOfContents](otherListsOfContents.md) | 0..* <br/> [ListOfContents](ListOfContents.md) | Other lists of the analyses and outputs defined for the reporting event | direct |
 | [referenceDocuments](referenceDocuments.md) | 0..* <br/> [ReferenceDocument](ReferenceDocument.md) | External documents containing information referenced for the reporting event | direct |
 | [terminologyExtensions](terminologyExtensions.md) | 0..* <br/> [TerminologyExtension](TerminologyExtension.md) | Any sponsor-defined extensions to extensible terminology | direct |
 | [analysisOutputCategorizations](analysisOutputCategorizations.md) | 0..* <br/> [AnalysisOutputCategorization](AnalysisOutputCategorization.md) | Sets of related implementer-defined categories that can be used to categorize... | direct |
 | [analysisSets](analysisSets.md) | 0..* <br/> [AnalysisSet](AnalysisSet.md) | The analysis sets (subject populations) defined for the reporting event | direct |
-| [analysisGroupings](analysisGroupings.md) | 0..* <br/> [SubjectGroupingFactor](SubjectGroupingFactor.md) | Characteristics used to subdivide the subject population (e | direct |
 | [dataSubsets](dataSubsets.md) | 0..* <br/> [DataSubset](DataSubset.md) | Subsets of data identified by selection criteria for inclusion in analysis de... | direct |
-| [dataGroupings](dataGroupings.md) | 0..* <br/> [DataGroupingFactor](DataGroupingFactor.md) | Characteristics used to subdivide data records in analysis datasets (e | direct |
+| [analysisGroupings](analysisGroupings.md) | 0..* <br/> [GroupingFactor](GroupingFactor.md) | Characteristics used to subdivide the subject population (e | direct |
 | [methods](methods.md) | 0..* <br/> [AnalysisMethod](AnalysisMethod.md) | The defined methods used to analyze any analysis variable | direct |
 | [analyses](analyses.md) | 0..* <br/> [Analysis](Analysis.md) | The analyses defined for the reporting event | direct |
 | [globalDisplaySections](globalDisplaySections.md) | 0..* <br/> [GlobalDisplaySection](GlobalDisplaySection.md) | Display section specifications that may be applied to any display | direct |
 | [outputs](outputs.md) | 0..* <br/> [Output](Output.md) | The outputs defined for the reporting event | direct |
 | [name](name.md) | 1..1 <br/> [String](String.md) | The name for the instance of the class | [NamedObject](NamedObject.md) |
+| [description](description.md) | 0..1 <br/> [String](String.md) | A textual description of the instance of the class | [NamedObject](NamedObject.md) |
+| [label](label.md) | 0..1 <br/> [String](String.md) | A short informative description that may be used for display | [NamedObject](NamedObject.md) |
 
 _* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
@@ -131,15 +131,14 @@ is_a: NamedObject
 slots:
 - id
 - version
-- listOfPlannedAnalyses
-- listOfPlannedOutputs
+- mainListOfContents
+- otherListsOfContents
 - referenceDocuments
 - terminologyExtensions
 - analysisOutputCategorizations
 - analysisSets
-- analysisGroupings
 - dataSubsets
-- dataGroupings
+- analysisGroupings
 - methods
 - analyses
 - globalDisplaySections
@@ -202,29 +201,35 @@ attributes:
     - Output
     - OutputDisplay
     range: integer
-  listOfPlannedAnalyses:
-    name: listOfPlannedAnalyses
-    description: A structured list of the analyses defined for the reporting event.
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    alias: listOfPlannedAnalyses
-    owner: ReportingEvent
-    domain_of:
-    - ReportingEvent
-    range: NestedList
-    required: true
-  listOfPlannedOutputs:
-    name: listOfPlannedOutputs
-    description: An optional structured list of the outputs defined for the reporting
+  mainListOfContents:
+    name: mainListOfContents
+    description: The main list of the analyses and outputs defined for the reporting
       event.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
-    alias: listOfPlannedOutputs
+    alias: mainListOfContents
     owner: ReportingEvent
     domain_of:
     - ReportingEvent
-    range: NestedList
+    range: ListOfContents
+    required: true
+    inlined: true
+    inlined_as_list: true
+  otherListsOfContents:
+    name: otherListsOfContents
+    description: Other lists of the analyses and outputs defined for the reporting
+      event.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    multivalued: true
+    alias: otherListsOfContents
+    owner: ReportingEvent
+    domain_of:
+    - ReportingEvent
+    range: ListOfContents
     required: false
+    inlined: true
+    inlined_as_list: true
   referenceDocuments:
     name: referenceDocuments
     description: External documents containing information referenced for the reporting
@@ -283,20 +288,6 @@ attributes:
     range: AnalysisSet
     inlined: true
     inlined_as_list: true
-  analysisGroupings:
-    name: analysisGroupings
-    description: Characteristics used to subdivide the subject population (e.g., treatment,
-      sex, age group).
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    multivalued: true
-    alias: analysisGroupings
-    owner: ReportingEvent
-    domain_of:
-    - ReportingEvent
-    range: SubjectGroupingFactor
-    inlined: true
-    inlined_as_list: true
   dataSubsets:
     name: dataSubsets
     description: Subsets of data identified by selection criteria for inclusion in
@@ -311,18 +302,19 @@ attributes:
     range: DataSubset
     inlined: true
     inlined_as_list: true
-  dataGroupings:
-    name: dataGroupings
-    description: Characteristics used to subdivide data records in analysis datasets
-      (e.g., visit, system organ class).
+  analysisGroupings:
+    name: analysisGroupings
+    description: Characteristics used to subdivide the subject population (e.g., treatment,
+      sex, age group) or data records in analysis datasets (e.g., visit, system organ
+      class).
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
     multivalued: true
-    alias: dataGroupings
+    alias: analysisGroupings
     owner: ReportingEvent
     domain_of:
     - ReportingEvent
-    range: DataGroupingFactor
+    range: GroupingFactor
     inlined: true
     inlined_as_list: true
   methods:
@@ -388,6 +380,31 @@ attributes:
     - NamedObject
     range: string
     required: true
+  description:
+    name: description
+    description: A textual description of the instance of the class.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: description
+    owner: ReportingEvent
+    domain_of:
+    - NamedObject
+    - SponsorTerm
+    - ReferencedOperationRelationship
+    range: string
+  label:
+    name: label
+    description: A short informative description that may be used for display.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: label
+    owner: ReportingEvent
+    domain_of:
+    - NamedObject
+    - AnalysisOutputCategorization
+    - AnalysisOutputCategory
+    - PageRef
+    range: string
 tree_root: true
 
 ```

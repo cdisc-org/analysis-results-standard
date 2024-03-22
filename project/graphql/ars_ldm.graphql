@@ -1,9 +1,10 @@
 type Analysis
   {
     name: String!
+    description: String
+    label: String
     id: String!
     version: Integer
-    description: String
     reason: ExtensibleTerminologyTerm!
     purpose: ExtensibleTerminologyTerm!
     documentRefs: [DocumentReference]
@@ -19,22 +20,12 @@ type Analysis
     results: [OperationResult]
   }
 
-type AnalysisGroup
-  {
-    level: Integer
-    order: Integer
-    condition: WhereClauseCondition
-    id: String!
-    label: String
-    compoundExpression: CompoundGroupExpression
-  }
-
 type AnalysisMethod
   {
     name: String!
-    id: String!
-    label: String
     description: String
+    label: String
+    id: String!
     documentRefs: [DocumentReference]
     operations: [Operation]!
     codeTemplate: AnalysisProgrammingCodeTemplate
@@ -58,6 +49,7 @@ type AnalysisOutputCodeParameter
   {
     name: String!
     description: String
+    label: String
     value: [String]!
   }
 
@@ -89,67 +81,53 @@ type AnalysisReason
     sponsorTermId: SponsorTerm
   }
 
-type AnalysisSet
+type AnalysisSet implements WhereClause
   {
-    level: Integer
-    order: Integer
-    condition: WhereClauseCondition
-    id: String!
+    name: String!
+    description: String
     label: String
+    id: String!
     compoundExpression: CompoundSetExpression
+    condition: WhereClauseCondition
+    level: Integer!
+    order: Integer!
   }
 
 interface CodeParameter
   {
     name: String!
     description: String
+    label: String
   }
 
 type CompoundGroupExpression
   {
     logicalOperator: ExpressionLogicalOperatorEnum!
-    whereClauses: [Group]
+    whereClauses: [SubClause]
   }
 
 type CompoundSetExpression
   {
     logicalOperator: ExpressionLogicalOperatorEnum!
-    whereClauses: [AnalysisSet]
+    whereClauses: [SubClause]
   }
 
 type CompoundSubsetExpression
   {
     logicalOperator: ExpressionLogicalOperatorEnum!
-    whereClauses: [WhereClause]
+    whereClauses: [SubClause]
   }
 
-type DataGroup
+type DataSubset implements WhereClause
   {
-    level: Integer
-    order: Integer
-    condition: WhereClauseCondition
-    id: String!
+    name: String!
+    description: String
     label: String
-    compoundExpression: CompoundGroupExpression
-  }
-
-type DataGroupingFactor
-  {
     id: String!
-    label: String
-    groupingVariable: String
-    dataDriven: Boolean!
-    groups: [DataGroup]
-  }
-
-type DataSubset
-  {
-    level: Integer
-    order: Integer
-    condition: WhereClauseCondition
-    id: String!
-    label: String
     compoundExpression: CompoundSubsetExpression
+    condition: WhereClauseCondition
+    level: Integer!
+    order: Integer!
   }
 
 type DisplaySection
@@ -182,28 +160,49 @@ type GlobalDisplaySection
     subSections: [DisplaySubSection]
   }
 
-type Group
+type Group implements WhereClause
   {
-    level: Integer
-    order: Integer
-    condition: WhereClauseCondition
-    id: String!
+    name: String!
+    description: String
     label: String
+    id: String!
     compoundExpression: CompoundGroupExpression
+    condition: WhereClauseCondition
+    level: Integer!
+    order: Integer!
   }
 
-interface GroupingFactor
+type GroupingFactor
   {
-    id: String!
+    name: String!
+    description: String
     label: String
+    id: String!
+    groupingDataset: String
     groupingVariable: String
     dataDriven: Boolean!
     groups: [Group]
   }
 
+interface LevelOrder
+  {
+    level: Integer!
+    order: Integer!
+  }
+
+type ListOfContents
+  {
+    name: String!
+    description: String
+    label: String
+    contentsList: NestedList!
+  }
+
 interface NamedObject
   {
     name: String!
+    description: String
+    label: String
   }
 
 type NestedList
@@ -214,8 +213,10 @@ type NestedList
 type Operation
   {
     name: String!
-    id: String!
+    description: String
     label: String
+    id: String!
+    order: Integer!
     referencedOperationRelationships: [ReferencedOperationRelationship]
     resultPattern: String
   }
@@ -237,7 +238,7 @@ type OperationRole
 type OrderedDisplay
   {
     order: Integer!
-    display: OutputDisplay
+    display: OutputDisplay!
   }
 
 interface OrderedDisplaySubSection
@@ -250,18 +251,20 @@ interface OrderedDisplaySubSection
 type OrderedGroupingFactor
   {
     order: Integer!
-    groupingId: GroupingFactor
+    groupingId: GroupingFactor!
     resultsByGroup: Boolean!
   }
 
-type OrderedListItem
+type OrderedListItem implements LevelOrder
   {
     name: String!
-    level: Integer!
-    order: Integer!
+    description: String
+    label: String
     analysisId: Analysis
     outputId: Output
     sublist: NestedList
+    level: Integer!
+    order: Integer!
   }
 
 type OrderedSubSection
@@ -281,10 +284,12 @@ type OrderedSubSectionRef
 type Output
   {
     name: String!
+    description: String
+    label: String
     id: String!
     version: Integer
     fileSpecifications: [OutputFile]
-    displays: [OrderedDisplay]
+    displays: [OrderedDisplay]!
     categoryIds: [AnalysisOutputCategory]
     documentRefs: [DocumentReference]
     programmingCode: AnalysisOutputProgrammingCode
@@ -293,6 +298,8 @@ type Output
 type OutputDisplay
   {
     name: String!
+    description: String
+    label: String
     id: String!
     version: Integer
     displayTitle: String
@@ -302,6 +309,8 @@ type OutputDisplay
 type OutputFile
   {
     name: String!
+    description: String
+    label: String
     fileType: ExtensibleTerminologyTerm
     location: Uri
     style: String
@@ -359,9 +368,32 @@ type ReferencedAnalysisOperation
     analysisId: Analysis!
   }
 
+type ReferencedAnalysisSet
+  {
+    level: Integer!
+    order: Integer!
+    subClauseId: AnalysisSet!
+  }
+
+type ReferencedDataSubset
+  {
+    level: Integer!
+    order: Integer!
+    subClauseId: DataSubset!
+  }
+
+type ReferencedGroup
+  {
+    level: Integer!
+    order: Integer!
+    subClauseId: Group!
+  }
+
 type ReferenceDocument
   {
     name: String!
+    description: String
+    label: String
     id: String!
     location: Uri
   }
@@ -375,20 +407,28 @@ type ReferencedOperationRelationship
     description: String
   }
 
+type ReferencedWhereClause implements LevelOrder
+  {
+    subClauseId: String!
+    level: Integer!
+    order: Integer!
+  }
+
 type ReportingEvent
   {
     name: String!
+    description: String
+    label: String
     id: String!
     version: Integer
-    listOfPlannedAnalyses: NestedList!
-    listOfPlannedOutputs: NestedList
+    mainListOfContents: ListOfContents!
+    otherListsOfContents: [ListOfContents]
     referenceDocuments: [ReferenceDocument]
     terminologyExtensions: [TerminologyExtension]
     analysisOutputCategorizations: [AnalysisOutputCategorization]
     analysisSets: [AnalysisSet]
-    analysisGroupings: [SubjectGroupingFactor]
     dataSubsets: [DataSubset]
-    dataGroupings: [DataGroupingFactor]
+    analysisGroupings: [GroupingFactor]
     methods: [AnalysisMethod]
     analyses: [Analysis]
     globalDisplaySections: [GlobalDisplaySection]
@@ -397,7 +437,7 @@ type ReportingEvent
 
 type ResultGroup
   {
-    groupingId: GroupingFactor
+    groupingId: GroupingFactor!
     groupId: Group
     groupValue: String
   }
@@ -433,19 +473,20 @@ type SponsorTerm
     description: String
   }
 
-type SubjectGroupingFactor
+type SubClause implements LevelOrder, WhereClause, ReferencedWhereClause
   {
-    id: String!
-    label: String
-    groupingVariable: String
-    dataDriven: Boolean!
-    groups: [AnalysisGroup]
+    subClauseId: String
+    level: Integer!
+    order: Integer!
+    condition: WhereClauseCondition
+    compoundExpression: WhereClauseCompoundExpression
   }
 
 type TemplateCodeParameter
   {
     name: String!
     description: String
+    label: String
     valueSource: String
     value: [String]
   }
@@ -457,18 +498,18 @@ type TerminologyExtension
     sponsorTerms: [SponsorTerm]!
   }
 
-type WhereClause
+type WhereClause implements LevelOrder
   {
-    level: Integer
-    order: Integer
     condition: WhereClauseCondition
     compoundExpression: WhereClauseCompoundExpression
+    level: Integer!
+    order: Integer!
   }
 
-type WhereClauseCompoundExpression
+interface WhereClauseCompoundExpression
   {
     logicalOperator: ExpressionLogicalOperatorEnum!
-    whereClauses: [WhereClause]
+    whereClauses: [SubClause]
   }
 
 type WhereClauseCondition

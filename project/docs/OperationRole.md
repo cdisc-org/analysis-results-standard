@@ -13,8 +13,7 @@ URI: [ars:OperationRole](https://www.cdisc.org/ars/1-0/OperationRole)
 ```mermaid
  classDiagram
     class OperationRole
-      ExtensibleTerminologyTerm <|-- OperationRole
-
+      ExtensibleTerminologyTerm <|-- OperationRole        
       OperationRole : controlledTerm
         OperationRole --|> OperationRoleEnum : controlledTerm
         OperationRole : sponsorTermId

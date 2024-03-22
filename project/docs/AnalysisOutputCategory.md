@@ -145,15 +145,10 @@ attributes:
     alias: label
     owner: AnalysisOutputCategory
     domain_of:
+    - NamedObject
     - AnalysisOutputCategorization
     - AnalysisOutputCategory
-    - AnalysisSet
-    - DataSubset
-    - GroupingFactor
-    - Group
-    - AnalysisMethod
     - PageRef
-    - Operation
     range: string
   subCategorizations:
     name: subCategorizations

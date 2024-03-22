@@ -1,6 +1,6 @@
 {
   "name": "ars_ldm",
-  "description": "DRAFT Logical model to support both the prospective specification of analyses and the fully contextualized representation of the results of the analyses.\n",
+  "description": "Logical model to support both the prospective specification of analyses and the fully contextualized representation of the results of the analyses.\n",
   "title": "Analysis Results Standard (ARS)",
   "id": "https://www.cdisc.org/ars/1-0",
   "imports": [
@@ -418,19 +418,32 @@
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "permissible_values": [
         {
-          "text": "Title"
+          "text": "Header",
+          "description": "Lines of text appearing above the title and containing additional generic information such as study identifier or page numbering."
         },
         {
-          "text": "Footnote"
+          "text": "Title",
+          "description": "The title is a caption of a table beginning with \"Table\" followed by sequenced numbers or letters and separated by full stops. The title includes additional lines describing the content."
         },
         {
-          "text": "Abbreviation"
+          "text": "Rowlabel Header",
+          "description": "Optional text placed in the column header for a column containing row/stub labels."
         },
         {
-          "text": "Legend"
+          "text": "Legend",
+          "description": "Lines of text placed immediately after the body of the table containing statements explaining the use of terms or values. May be prefaced with a word such as 'Note:'."
         },
         {
-          "text": "Rowlabel Header"
+          "text": "Abbreviation",
+          "description": "Lines of text defining abbreviations, acronyms, and terms used in the body of the display."
+        },
+        {
+          "text": "Footnote",
+          "description": "Placed after the abbreviations and definitions, if any. Footnotes lead with symbols (asterisk, dagger, double dagger, or section symbol) or superscripted letters (a, b, c) or numbers (1, 2, 3) which are in the table behind units of measure or words. Footnotes add information regarding the associated values where they occur in the body."
+        },
+        {
+          "text": "Footer",
+          "description": "Lines of text appearing below any footnote and containing additional information such as traceability of the source program or page numbering."
         }
       ]
     },
@@ -562,6 +575,37 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "description",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/description",
+      "description": "A textual description of the instance of the class.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/description",
+      "owner": "ReferencedOperationRelationship",
+      "domain_of": [
+        "NamedObject",
+        "SponsorTerm",
+        "ReferencedOperationRelationship"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "label",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/label",
+      "description": "A short informative description that may be used for display.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/label",
+      "owner": "PageRef",
+      "domain_of": [
+        "NamedObject",
+        "AnalysisOutputCategorization",
+        "AnalysisOutputCategory",
+        "PageRef"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "id",
       "definition_uri": "https://www.cdisc.org/ars/1-0/id",
       "description": "The assigned identifying value for the instance of the class.",
@@ -609,31 +653,49 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "listOfPlannedAnalyses",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/listOfPlannedAnalyses",
-      "description": "A structured list of the analyses defined for the reporting event.",
+      "name": "mainListOfContents",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/mainListOfContents",
+      "description": "The main list of the analyses and outputs defined for the reporting event.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/listOfPlannedAnalyses",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/mainListOfContents",
       "owner": "ReportingEvent",
       "domain_of": [
         "ReportingEvent"
       ],
-      "range": "NestedList",
+      "range": "ListOfContents",
       "required": true,
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
-      "name": "listOfPlannedOutputs",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/listOfPlannedOutputs",
-      "description": "An optional structured list of the outputs defined for the reporting event.",
+      "name": "otherListsOfContents",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/otherListsOfContents",
+      "description": "Other lists of the analyses and outputs defined for the reporting event.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/listOfPlannedOutputs",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/otherListsOfContents",
+      "multivalued": true,
       "owner": "ReportingEvent",
       "domain_of": [
         "ReportingEvent"
       ],
+      "range": "ListOfContents",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "contentsList",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/contentsList",
+      "description": "A structured list of the analyses and outputs defined for the reporting event.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/contentsList",
+      "owner": "ListOfContents",
+      "domain_of": [
+        "ListOfContents"
+      ],
       "range": "NestedList",
+      "required": true,
       "inlined": true,
       "@type": "SlotDefinition"
     },
@@ -705,22 +767,6 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "analysisGroupings",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/analysisGroupings",
-      "description": "Characteristics used to subdivide the subject population (e.g., treatment, sex, age group).",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/analysisGroupings",
-      "multivalued": true,
-      "owner": "ReportingEvent",
-      "domain_of": [
-        "ReportingEvent"
-      ],
-      "range": "SubjectGroupingFactor",
-      "inlined": true,
-      "inlined_as_list": true,
-      "@type": "SlotDefinition"
-    },
-    {
       "name": "dataSubsets",
       "definition_uri": "https://www.cdisc.org/ars/1-0/dataSubsets",
       "description": "Subsets of data identified by selection criteria for inclusion in analysis definitions.",
@@ -737,17 +783,17 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "dataGroupings",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/dataGroupings",
-      "description": "Characteristics used to subdivide data records in analysis datasets (e.g., visit, system organ class).",
+      "name": "analysisGroupings",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/analysisGroupings",
+      "description": "Characteristics used to subdivide the subject population (e.g., treatment, sex, age group) or data records in analysis datasets (e.g., visit, system organ class).",
       "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/dataGroupings",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/analysisGroupings",
       "multivalued": true,
       "owner": "ReportingEvent",
       "domain_of": [
         "ReportingEvent"
       ],
-      "range": "DataGroupingFactor",
+      "range": "GroupingFactor",
       "inlined": true,
       "inlined_as_list": true,
       "@type": "SlotDefinition"
@@ -842,12 +888,12 @@
       ],
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "slot_uri": "https://www.cdisc.org/ars/1-0/level",
-      "owner": "WhereClause",
+      "owner": "LevelOrder",
       "domain_of": [
-        "OrderedListItem",
-        "WhereClause"
+        "LevelOrder"
       ],
       "range": "integer",
+      "required": true,
       "@type": "SlotDefinition"
     },
     {
@@ -858,13 +904,14 @@
       "slot_uri": "https://www.cdisc.org/ars/1-0/order",
       "owner": "OrderedDisplaySubSection",
       "domain_of": [
-        "OrderedListItem",
-        "WhereClause",
+        "LevelOrder",
+        "Operation",
         "OrderedGroupingFactor",
         "OrderedDisplay",
         "OrderedDisplaySubSection"
       ],
       "range": "integer",
+      "required": true,
       "@type": "SlotDefinition"
     },
     {
@@ -968,23 +1015,6 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "description",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/description",
-      "description": "A textual description of the instance of the class.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/description",
-      "owner": "Analysis",
-      "domain_of": [
-        "SponsorTerm",
-        "AnalysisMethod",
-        "ReferencedOperationRelationship",
-        "CodeParameter",
-        "Analysis"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
       "name": "controlledTerm",
       "definition_uri": "https://www.cdisc.org/ars/1-0/controlledTerm",
       "description": "One of the permissible values from the referenced enumeration.",
@@ -1026,27 +1056,6 @@
         "ExtensibleTerminologyTerm"
       ],
       "range": "SponsorTerm",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "label",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/label",
-      "description": "A short informative description that may be used for display.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/label",
-      "owner": "Operation",
-      "domain_of": [
-        "AnalysisOutputCategorization",
-        "AnalysisOutputCategory",
-        "AnalysisSet",
-        "DataSubset",
-        "GroupingFactor",
-        "Group",
-        "AnalysisMethod",
-        "PageRef",
-        "Operation"
-      ],
-      "range": "string",
       "@type": "SlotDefinition"
     },
     {
@@ -1106,8 +1115,27 @@
       "domain_of": [
         "WhereClause"
       ],
-      "range": "WhereClauseCompoundExpression",
-      "inlined": true,
+      "range": "string",
+      "any_of": [
+        {
+          "range": "CompoundSetExpression",
+          "inlined": true,
+          "inlined_as_list": true,
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "CompoundSubsetExpression",
+          "inlined": true,
+          "inlined_as_list": true,
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "CompoundGroupExpression",
+          "inlined": true,
+          "inlined_as_list": true,
+          "@type": "AnonymousSlotExpression"
+        }
+      ],
       "@type": "SlotDefinition"
     },
     {
@@ -1168,6 +1196,33 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "subClauseId",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/subClauseId",
+      "description": "The identifier of the analysis set, data subset or group referenced in the compound expression.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/subClauseId",
+      "owner": "ReferencedWhereClause",
+      "domain_of": [
+        "ReferencedWhereClause"
+      ],
+      "range": "string",
+      "any_of": [
+        {
+          "range": "AnalysisSet",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "DataSubset",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "Group",
+          "@type": "AnonymousSlotExpression"
+        }
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "logicalOperator",
       "definition_uri": "https://www.cdisc.org/ars/1-0/logicalOperator",
       "description": "The boolean operator that is used to combine (AND, OR) or negate (NOT) the where claus(s) in the compound expression.",
@@ -1198,8 +1253,32 @@
       "domain_of": [
         "WhereClauseCompoundExpression"
       ],
-      "range": "WhereClause",
+      "range": "SubClause",
       "inlined": true,
+      "inlined_as_list": true,
+      "any_of": [
+        {
+          "range": "WhereClause",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "ReferencedWhereClause",
+          "@type": "AnonymousSlotExpression"
+        }
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "groupingDataset",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/groupingDataset",
+      "description": "For groupings based on a single variable, a reference to the dataset containing the variable upon which grouping is based.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/groupingDataset",
+      "owner": "GroupingFactor",
+      "domain_of": [
+        "GroupingFactor"
+      ],
+      "range": "string",
       "@type": "SlotDefinition"
     },
     {
@@ -1757,6 +1836,7 @@
         "ResultGroup"
       ],
       "range": "GroupingFactor",
+      "required": true,
       "@type": "SlotDefinition"
     },
     {
@@ -1864,6 +1944,10 @@
       "description": "The type of display section that contains one or more pieces of informational text.",
       "examples": [
         {
+          "value": "Header",
+          "@type": "Example"
+        },
+        {
           "value": "Title",
           "@type": "Example"
         },
@@ -1877,6 +1961,10 @@
         },
         {
           "value": "Abbreviation",
+          "@type": "Example"
+        },
+        {
+          "value": "Footer",
           "@type": "Example"
         }
       ],
@@ -1948,6 +2036,7 @@
         "Output"
       ],
       "range": "OrderedDisplay",
+      "required": true,
       "inlined": true,
       "inlined_as_list": true,
       "@type": "SlotDefinition"
@@ -2003,6 +2092,7 @@
         "OrderedDisplay"
       ],
       "range": "OutputDisplay",
+      "required": true,
       "inlined": true,
       "@type": "SlotDefinition"
     },
@@ -2090,44 +2180,42 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "OrderedListItem_level",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/level",
-      "description": "The level of the entry within a hierarchical structure.",
-      "comments": [
-        "1 is the top level."
-      ],
+      "name": "WhereClause_compoundExpression",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/compoundExpression",
+      "description": "A compound expression that combines or negates where clauses.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "level",
-      "domain": "OrderedListItem",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/level",
-      "alias": "level",
-      "owner": "OrderedListItem",
+      "is_a": "compoundExpression",
+      "domain": "WhereClause",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/compoundExpression",
+      "alias": "compoundExpression",
+      "owner": "WhereClause",
       "domain_of": [
-        "OrderedListItem"
+        "WhereClause"
       ],
       "is_usage_slot": true,
-      "usage_slot_name": "level",
-      "range": "integer",
-      "required": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "OrderedListItem_order",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/order",
-      "description": "The ordinal of the instance with respect to other instances.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "order",
-      "domain": "OrderedListItem",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/order",
-      "alias": "order",
-      "owner": "OrderedListItem",
-      "domain_of": [
-        "OrderedListItem"
+      "usage_slot_name": "compoundExpression",
+      "range": "WhereClauseCompoundExpression",
+      "inlined": true,
+      "any_of": [
+        {
+          "range": "CompoundSetExpression",
+          "inlined": true,
+          "inlined_as_list": true,
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "CompoundSubsetExpression",
+          "inlined": true,
+          "inlined_as_list": true,
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "CompoundGroupExpression",
+          "inlined": true,
+          "inlined_as_list": true,
+          "@type": "AnonymousSlotExpression"
+        }
       ],
-      "is_usage_slot": true,
-      "usage_slot_name": "order",
-      "range": "integer",
-      "required": true,
       "@type": "SlotDefinition"
     },
     {
@@ -2150,11 +2238,113 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "ReferencedWhereClause_subClauseId",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/subClauseId",
+      "description": "The identifier of the analysis set, data subset or group referenced in the compound expression.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "is_a": "subClauseId",
+      "domain": "ReferencedWhereClause",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/subClauseId",
+      "alias": "subClauseId",
+      "owner": "ReferencedWhereClause",
+      "domain_of": [
+        "ReferencedWhereClause"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "subClauseId",
+      "range": "string",
+      "required": true,
+      "any_of": [
+        {
+          "range": "AnalysisSet",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "DataSubset",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "Group",
+          "@type": "AnonymousSlotExpression"
+        }
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "SubClause_subClauseId",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/subClauseId",
+      "description": "The identifier of the analysis set, data subset or group referenced in the compound expression.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "is_a": "ReferencedWhereClause_subClauseId",
+      "domain": "SubClause",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/subClauseId",
+      "alias": "subClauseId",
+      "owner": "SubClause",
+      "domain_of": [
+        "SubClause"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "subClauseId",
+      "range": "string",
+      "any_of": [
+        {
+          "range": "AnalysisSet",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "DataSubset",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "Group",
+          "@type": "AnonymousSlotExpression"
+        }
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "WhereClauseCompoundExpression_whereClauses",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/whereClauses",
+      "description": "A list of one or more where clauses (selection criteria) to be combined or negated.",
+      "comments": [
+        "Each where clause may be defined as either a simple condition ([variable] [comparator] [value(s)]) or a compound expression that may combine additional simple conditions or compound expressions.",
+        "Two or more where clauses should be specified when the logical operator is AND or OR.",
+        "Only one where clause should be specfied when the logical operator is NOT. This where clause will usually be a compound expression."
+      ],
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "is_a": "whereClauses",
+      "domain": "WhereClauseCompoundExpression",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/whereClauses",
+      "multivalued": true,
+      "list_elements_ordered": true,
+      "alias": "whereClauses",
+      "owner": "WhereClauseCompoundExpression",
+      "domain_of": [
+        "WhereClauseCompoundExpression"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "whereClauses",
+      "range": "SubClause",
+      "inlined": true,
+      "inlined_as_list": true,
+      "any_of": [
+        {
+          "range": "WhereClause",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "ReferencedWhereClause",
+          "@type": "AnonymousSlotExpression"
+        }
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "AnalysisSet_compoundExpression",
       "definition_uri": "https://www.cdisc.org/ars/1-0/compoundExpression",
       "description": "A compound expression that combines or negates where clauses.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "compoundExpression",
+      "is_a": "WhereClause_compoundExpression",
       "domain": "AnalysisSet",
       "slot_uri": "https://www.cdisc.org/ars/1-0/compoundExpression",
       "alias": "compoundExpression",
@@ -2166,6 +2356,59 @@
       "usage_slot_name": "compoundExpression",
       "range": "CompoundSetExpression",
       "inlined": true,
+      "any_of": [
+        {
+          "range": "CompoundSetExpression",
+          "inlined": true,
+          "inlined_as_list": true,
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "CompoundSubsetExpression",
+          "inlined": true,
+          "inlined_as_list": true,
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "CompoundGroupExpression",
+          "inlined": true,
+          "inlined_as_list": true,
+          "@type": "AnonymousSlotExpression"
+        }
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "ReferencedAnalysisSet_subClauseId",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/subClauseId",
+      "description": "The identifier of the analysis set, data subset or group referenced in the compound expression.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "is_a": "ReferencedWhereClause_subClauseId",
+      "domain": "ReferencedAnalysisSet",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/subClauseId",
+      "alias": "subClauseId",
+      "owner": "ReferencedAnalysisSet",
+      "domain_of": [
+        "ReferencedAnalysisSet"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "subClauseId",
+      "range": "AnalysisSet",
+      "required": true,
+      "any_of": [
+        {
+          "range": "AnalysisSet",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "DataSubset",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "Group",
+          "@type": "AnonymousSlotExpression"
+        }
+      ],
       "@type": "SlotDefinition"
     },
     {
@@ -2178,7 +2421,7 @@
         "Only one where clause should be specfied when the logical operator is NOT. This where clause will usually be a compound expression."
       ],
       "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "whereClauses",
+      "is_a": "WhereClauseCompoundExpression_whereClauses",
       "domain": "CompoundSetExpression",
       "slot_uri": "https://www.cdisc.org/ars/1-0/whereClauses",
       "multivalued": true,
@@ -2190,7 +2433,19 @@
       ],
       "is_usage_slot": true,
       "usage_slot_name": "whereClauses",
-      "range": "AnalysisSet",
+      "range": "SubClause",
+      "inlined": true,
+      "inlined_as_list": true,
+      "any_of": [
+        {
+          "range": "ReferencedAnalysisSet",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "WhereClause",
+          "@type": "AnonymousSlotExpression"
+        }
+      ],
       "@type": "SlotDefinition"
     },
     {
@@ -2198,7 +2453,7 @@
       "definition_uri": "https://www.cdisc.org/ars/1-0/compoundExpression",
       "description": "A compound expression that combines or negates where clauses.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "compoundExpression",
+      "is_a": "WhereClause_compoundExpression",
       "domain": "DataSubset",
       "slot_uri": "https://www.cdisc.org/ars/1-0/compoundExpression",
       "alias": "compoundExpression",
@@ -2210,6 +2465,59 @@
       "usage_slot_name": "compoundExpression",
       "range": "CompoundSubsetExpression",
       "inlined": true,
+      "any_of": [
+        {
+          "range": "CompoundSetExpression",
+          "inlined": true,
+          "inlined_as_list": true,
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "CompoundSubsetExpression",
+          "inlined": true,
+          "inlined_as_list": true,
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "CompoundGroupExpression",
+          "inlined": true,
+          "inlined_as_list": true,
+          "@type": "AnonymousSlotExpression"
+        }
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "ReferencedDataSubset_subClauseId",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/subClauseId",
+      "description": "The identifier of the analysis set, data subset or group referenced in the compound expression.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "is_a": "ReferencedWhereClause_subClauseId",
+      "domain": "ReferencedDataSubset",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/subClauseId",
+      "alias": "subClauseId",
+      "owner": "ReferencedDataSubset",
+      "domain_of": [
+        "ReferencedDataSubset"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "subClauseId",
+      "range": "DataSubset",
+      "required": true,
+      "any_of": [
+        {
+          "range": "AnalysisSet",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "DataSubset",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "Group",
+          "@type": "AnonymousSlotExpression"
+        }
+      ],
       "@type": "SlotDefinition"
     },
     {
@@ -2222,7 +2530,7 @@
         "Only one where clause should be specfied when the logical operator is NOT. This where clause will usually be a compound expression."
       ],
       "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "whereClauses",
+      "is_a": "WhereClauseCompoundExpression_whereClauses",
       "domain": "CompoundSubsetExpression",
       "slot_uri": "https://www.cdisc.org/ars/1-0/whereClauses",
       "multivalued": true,
@@ -2234,9 +2542,19 @@
       ],
       "is_usage_slot": true,
       "usage_slot_name": "whereClauses",
-      "range": "WhereClause",
+      "range": "SubClause",
       "inlined": true,
       "inlined_as_list": true,
+      "any_of": [
+        {
+          "range": "ReferencedDataSubset",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "WhereClause",
+          "@type": "AnonymousSlotExpression"
+        }
+      ],
       "@type": "SlotDefinition"
     },
     {
@@ -2244,7 +2562,7 @@
       "definition_uri": "https://www.cdisc.org/ars/1-0/compoundExpression",
       "description": "A compound expression that combines or negates where clauses.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "compoundExpression",
+      "is_a": "WhereClause_compoundExpression",
       "domain": "Group",
       "slot_uri": "https://www.cdisc.org/ars/1-0/compoundExpression",
       "alias": "compoundExpression",
@@ -2256,6 +2574,59 @@
       "usage_slot_name": "compoundExpression",
       "range": "CompoundGroupExpression",
       "inlined": true,
+      "any_of": [
+        {
+          "range": "CompoundSetExpression",
+          "inlined": true,
+          "inlined_as_list": true,
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "CompoundSubsetExpression",
+          "inlined": true,
+          "inlined_as_list": true,
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "CompoundGroupExpression",
+          "inlined": true,
+          "inlined_as_list": true,
+          "@type": "AnonymousSlotExpression"
+        }
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "ReferencedGroup_subClauseId",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/subClauseId",
+      "description": "The identifier of the analysis set, data subset or group referenced in the compound expression.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "is_a": "ReferencedWhereClause_subClauseId",
+      "domain": "ReferencedGroup",
+      "slot_uri": "https://www.cdisc.org/ars/1-0/subClauseId",
+      "alias": "subClauseId",
+      "owner": "ReferencedGroup",
+      "domain_of": [
+        "ReferencedGroup"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "subClauseId",
+      "range": "Group",
+      "required": true,
+      "any_of": [
+        {
+          "range": "AnalysisSet",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "DataSubset",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "Group",
+          "@type": "AnonymousSlotExpression"
+        }
+      ],
       "@type": "SlotDefinition"
     },
     {
@@ -2268,7 +2639,7 @@
         "Only one where clause should be specfied when the logical operator is NOT. This where clause will usually be a compound expression."
       ],
       "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "whereClauses",
+      "is_a": "WhereClauseCompoundExpression_whereClauses",
       "domain": "CompoundGroupExpression",
       "slot_uri": "https://www.cdisc.org/ars/1-0/whereClauses",
       "multivalued": true,
@@ -2280,71 +2651,19 @@
       ],
       "is_usage_slot": true,
       "usage_slot_name": "whereClauses",
-      "range": "Group",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "SubjectGroupingFactor_groups",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/groups",
-      "description": "The pre-specified groups within the grouping.",
-      "examples": [
-        {
-          "value": "'Male' and 'Female' might be groups within a sex grouping.",
-          "@type": "Example"
-        },
-        {
-          "value": "'Treatment A', 'Treatment B', 'Placebo' might be groups within a treatment grouping.",
-          "@type": "Example"
-        }
-      ],
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "groups",
-      "domain": "SubjectGroupingFactor",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/groups",
-      "multivalued": true,
-      "list_elements_ordered": true,
-      "alias": "groups",
-      "owner": "SubjectGroupingFactor",
-      "domain_of": [
-        "SubjectGroupingFactor"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "groups",
-      "range": "AnalysisGroup",
+      "range": "SubClause",
       "inlined": true,
       "inlined_as_list": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "DataGroupingFactor_groups",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/groups",
-      "description": "The pre-specified groups within the grouping.",
-      "examples": [
+      "any_of": [
         {
-          "value": "'Male' and 'Female' might be groups within a sex grouping.",
-          "@type": "Example"
+          "range": "ReferencedGroup",
+          "@type": "AnonymousSlotExpression"
         },
         {
-          "value": "'Treatment A', 'Treatment B', 'Placebo' might be groups within a treatment grouping.",
-          "@type": "Example"
+          "range": "WhereClause",
+          "@type": "AnonymousSlotExpression"
         }
       ],
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "groups",
-      "domain": "DataGroupingFactor",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/groups",
-      "multivalued": true,
-      "list_elements_ordered": true,
-      "alias": "groups",
-      "owner": "DataGroupingFactor",
-      "domain_of": [
-        "DataGroupingFactor"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "groups",
-      "range": "DataGroup",
-      "inlined": true,
-      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -3159,25 +3478,6 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "OrderedGroupingFactor_order",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/order",
-      "description": "The ordinal of the instance with respect to other instances.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "order",
-      "domain": "OrderedGroupingFactor",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/order",
-      "alias": "order",
-      "owner": "OrderedGroupingFactor",
-      "domain_of": [
-        "OrderedGroupingFactor"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "order",
-      "range": "integer",
-      "required": true,
-      "@type": "SlotDefinition"
-    },
-    {
       "name": "ReferencedAnalysisOperation_analysisId",
       "definition_uri": "https://www.cdisc.org/ars/1-0/analysisId",
       "description": "The identifier of the referenced analysis.",
@@ -3425,44 +3725,6 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "OrderedDisplay_order",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/order",
-      "description": "The ordinal of the instance with respect to other instances.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "order",
-      "domain": "OrderedDisplay",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/order",
-      "alias": "order",
-      "owner": "OrderedDisplay",
-      "domain_of": [
-        "OrderedDisplay"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "order",
-      "range": "integer",
-      "required": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "OrderedDisplaySubSection_order",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/order",
-      "description": "The ordinal of the instance with respect to other instances.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "order",
-      "domain": "OrderedDisplaySubSection",
-      "slot_uri": "https://www.cdisc.org/ars/1-0/order",
-      "alias": "order",
-      "owner": "OrderedDisplaySubSection",
-      "domain_of": [
-        "OrderedDisplaySubSection"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "order",
-      "range": "integer",
-      "required": true,
-      "@type": "SlotDefinition"
-    },
-    {
       "name": "OrderedSubSection_subSection",
       "definition_uri": "https://www.cdisc.org/ars/1-0/subSection",
       "description": "A defined piece of information text to display in a display section.",
@@ -3563,7 +3825,9 @@
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "abstract": true,
       "slots": [
-        "name"
+        "name",
+        "description",
+        "label"
       ],
       "slot_usage": {},
       "class_uri": "https://www.cdisc.org/ars/1-0/NamedObject",
@@ -3577,17 +3841,18 @@
       "is_a": "NamedObject",
       "slots": [
         "name",
+        "description",
+        "label",
         "id",
         "version",
-        "listOfPlannedAnalyses",
-        "listOfPlannedOutputs",
+        "mainListOfContents",
+        "otherListsOfContents",
         "referenceDocuments",
         "terminologyExtensions",
         "analysisOutputCategorizations",
         "analysisSets",
-        "analysisGroupings",
         "dataSubsets",
-        "dataGroupings",
+        "analysisGroupings",
         "methods",
         "analyses",
         "globalDisplaySections",
@@ -3596,6 +3861,22 @@
       "slot_usage": {},
       "class_uri": "https://www.cdisc.org/ars/1-0/ReportingEvent",
       "tree_root": true,
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ListOfContents",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/ListOfContents",
+      "description": "A structured list of analyses and outputs included in the reporting event.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "is_a": "NamedObject",
+      "slots": [
+        "name",
+        "description",
+        "label",
+        "contentsList"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://www.cdisc.org/ars/1-0/ListOfContents",
       "@type": "ClassDefinition"
     },
     {
@@ -3611,18 +3892,37 @@
       "@type": "ClassDefinition"
     },
     {
+      "name": "LevelOrder",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/LevelOrder",
+      "description": "An abstract class containing attributes used to position class instances within a hierarchical tree.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "mixin": true,
+      "slots": [
+        "level",
+        "order"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://www.cdisc.org/ars/1-0/LevelOrder",
+      "@type": "ClassDefinition"
+    },
+    {
       "name": "OrderedListItem",
       "definition_uri": "https://www.cdisc.org/ars/1-0/OrderedListItem",
       "description": "An item (analysis, output or sub-list) ordered relative to other items within a list or sub-list.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "NamedObject",
+      "mixins": [
+        "LevelOrder"
+      ],
       "slots": [
         "name",
-        "OrderedListItem_level",
-        "OrderedListItem_order",
+        "description",
+        "label",
         "analysisId",
         "outputId",
-        "sublist"
+        "sublist",
+        "level",
+        "order"
       ],
       "slot_usage": {},
       "class_uri": "https://www.cdisc.org/ars/1-0/OrderedListItem",
@@ -3636,6 +3936,8 @@
       "is_a": "NamedObject",
       "slots": [
         "name",
+        "description",
+        "label",
         "id",
         "location"
       ],
@@ -3724,11 +4026,14 @@
         "Each instance of this class should have either a condition or a compoundExpression, not both."
       ],
       "from_schema": "https://www.cdisc.org/ars/1-0",
+      "mixins": [
+        "LevelOrder"
+      ],
       "slots": [
-        "level",
-        "order",
         "condition",
-        "compoundExpression"
+        "WhereClause_compoundExpression",
+        "level",
+        "order"
       ],
       "slot_usage": {},
       "class_uri": "https://www.cdisc.org/ars/1-0/WhereClause",
@@ -3756,75 +4061,57 @@
       "@type": "ClassDefinition"
     },
     {
+      "name": "ReferencedWhereClause",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/ReferencedWhereClause",
+      "description": "An abstract class indicating an identified where clause (i.e., `AnalysisSet`, `DataSubset` or `Group`) referenced by identifier (`subClauseId`) as the sub-clause in a compound expression.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "abstract": true,
+      "mixins": [
+        "LevelOrder"
+      ],
+      "slots": [
+        "ReferencedWhereClause_subClauseId",
+        "level",
+        "order"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://www.cdisc.org/ars/1-0/ReferencedWhereClause",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "SubClause",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/SubClause",
+      "description": "An abstract class containing all attributes that may be specified for a sub-clause of a compound expression. In practice, each sub-clause will be either a fully-defined `WhereClause` (containing either a `condition` or a `compoundExpression`) or a `ReferencedWhereClause` (containing a `subClauseId`).",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "abstract": true,
+      "mixins": [
+        "LevelOrder",
+        "WhereClause",
+        "ReferencedWhereClause"
+      ],
+      "slots": [
+        "SubClause_subClauseId",
+        "level",
+        "order",
+        "condition",
+        "WhereClause_compoundExpression"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://www.cdisc.org/ars/1-0/SubClause",
+      "@type": "ClassDefinition"
+    },
+    {
       "name": "WhereClauseCompoundExpression",
       "definition_uri": "https://www.cdisc.org/ars/1-0/WhereClauseCompoundExpression",
-      "description": "A compound expression consisting of either two or more where clauses combined with the `AND` or `OR` logical operator, or a single where clause negated with the `NOT` logical operator.",
+      "description": "An abstract class representing a compound expression consisting of either two or more sub-clauses combined with the `AND` or `OR` logical operator, or a single sub-clause negated with the `NOT` logical operator. Each sub-clause is either a fully-defined `WhereClause` (containing either a `condition` or a `compoundExpression`) or a `ReferencedWhereClause` (containing a `subClauseId`).",
       "from_schema": "https://www.cdisc.org/ars/1-0",
+      "abstract": true,
       "slots": [
         "logicalOperator",
-        "whereClauses"
+        "WhereClauseCompoundExpression_whereClauses"
       ],
       "slot_usage": {},
       "class_uri": "https://www.cdisc.org/ars/1-0/WhereClauseCompoundExpression",
-      "rules": [
-        {
-          "preconditions": {
-            "slot_conditions": [
-              {
-                "name": "logicalOperator",
-                "any_of": [
-                  {
-                    "equals_string": "AND",
-                    "@type": "AnonymousSlotExpression"
-                  },
-                  {
-                    "equals_string": "OR",
-                    "@type": "AnonymousSlotExpression"
-                  }
-                ],
-                "@type": "SlotDefinition"
-              }
-            ],
-            "@type": "AnonymousClassExpression"
-          },
-          "postconditions": {
-            "slot_conditions": [
-              {
-                "name": "whereClauses",
-                "minimum_cardinality": 2,
-                "@type": "SlotDefinition"
-              }
-            ],
-            "@type": "AnonymousClassExpression"
-          },
-          "description": "At least 2 where clauses are required when logicalOperator is AND or OR.",
-          "@type": "ClassRule"
-        },
-        {
-          "preconditions": {
-            "slot_conditions": [
-              {
-                "name": "logicalOperator",
-                "equals_string": "NOT",
-                "@type": "SlotDefinition"
-              }
-            ],
-            "@type": "AnonymousClassExpression"
-          },
-          "postconditions": {
-            "slot_conditions": [
-              {
-                "name": "value",
-                "maximum_cardinality": 1,
-                "@type": "SlotDefinition"
-              }
-            ],
-            "@type": "AnonymousClassExpression"
-          },
-          "description": "Only a single where clause is allowed when logicalOperator is NOT.",
-          "@type": "ClassRule"
-        }
-      ],
       "@type": "ClassDefinition"
     },
     {
@@ -3832,23 +4119,43 @@
       "definition_uri": "https://www.cdisc.org/ars/1-0/AnalysisSet",
       "description": "A set of subjects whose data are to be included in the main analyses. This should be defined in the statistical section of the protocol. NOTE: There are a number of potential analysis sets, including, for example, the set based upon the intent-to-treat principle. [ICH E9]",
       "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "WhereClause",
+      "is_a": "NamedObject",
+      "mixins": [
+        "WhereClause"
+      ],
       "slots": [
-        "level",
-        "order",
-        "condition",
-        "id",
+        "name",
+        "description",
         "label",
-        "AnalysisSet_compoundExpression"
+        "id",
+        "AnalysisSet_compoundExpression",
+        "condition",
+        "level",
+        "order"
       ],
       "slot_usage": {},
       "class_uri": "https://www.cdisc.org/ars/1-0/AnalysisSet",
       "@type": "ClassDefinition"
     },
     {
+      "name": "ReferencedAnalysisSet",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/ReferencedAnalysisSet",
+      "description": "An `AnalysisSet` referenced by identifier (`subClauseId`) as the sub-clause of a compound expression.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "is_a": "ReferencedWhereClause",
+      "slots": [
+        "level",
+        "order",
+        "ReferencedAnalysisSet_subClauseId"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://www.cdisc.org/ars/1-0/ReferencedAnalysisSet",
+      "@type": "ClassDefinition"
+    },
+    {
       "name": "CompoundSetExpression",
       "definition_uri": "https://www.cdisc.org/ars/1-0/CompoundSetExpression",
-      "description": "A compound expression consisting of either two or more identified analysis sets combined with the `AND` or `OR` logical operator, or a single identified analysis set negated with the `NOT` logical operator.",
+      "description": "A compound expression consisting of either two or more sub-clauses combined with the `AND` or `OR` logical operator, or a single sub-clause negated with the `NOT` logical operator. Each sub-clause is either a fully-defined `WhereClause` (containing either a `condition` or a `compoundExpression`) or a `ReferencedAnalysisSet` (containing a `subClauseId` indicating the `id` of the referenced `AnalysisSet`).",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "WhereClauseCompoundExpression",
       "slots": [
@@ -3864,23 +4171,43 @@
       "definition_uri": "https://www.cdisc.org/ars/1-0/DataSubset",
       "description": "A subset of data identified by selection criteria for inclusion in the analysis.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "WhereClause",
+      "is_a": "NamedObject",
+      "mixins": [
+        "WhereClause"
+      ],
       "slots": [
-        "level",
-        "order",
-        "condition",
-        "id",
+        "name",
+        "description",
         "label",
-        "DataSubset_compoundExpression"
+        "id",
+        "DataSubset_compoundExpression",
+        "condition",
+        "level",
+        "order"
       ],
       "slot_usage": {},
       "class_uri": "https://www.cdisc.org/ars/1-0/DataSubset",
       "@type": "ClassDefinition"
     },
     {
+      "name": "ReferencedDataSubset",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/ReferencedDataSubset",
+      "description": "A `DataSubset` referenced by identifier (`subClauseId`) as the sub-clause of a compound expression.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "is_a": "ReferencedWhereClause",
+      "slots": [
+        "level",
+        "order",
+        "ReferencedDataSubset_subClauseId"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://www.cdisc.org/ars/1-0/ReferencedDataSubset",
+      "@type": "ClassDefinition"
+    },
+    {
       "name": "CompoundSubsetExpression",
       "definition_uri": "https://www.cdisc.org/ars/1-0/CompoundSubsetExpression",
-      "description": "A compound expression consisting of either two or more where clauses combined with the `AND` or `OR` logical operator, or a single where clause negated with the `NOT` logical operator.",
+      "description": "A compound expression consisting of either two or more sub-clauses combined with the `AND` or `OR` logical operator, or a single sub-clause negated with the `NOT` logical operator. Each sub-clause is either a fully-defined `WhereClause` (containing either a `condition` or a `compoundExpression`) or a `ReferencedDataSubset` (containing a `subClauseId` indicating the `id` of the referenced `DataSubset`).",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "WhereClauseCompoundExpression",
       "slots": [
@@ -3896,10 +4223,13 @@
       "definition_uri": "https://www.cdisc.org/ars/1-0/GroupingFactor",
       "description": "A factor used to subdivide either the subject population or data records in an analysis dataset for analysis.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
-      "abstract": true,
+      "is_a": "NamedObject",
       "slots": [
-        "id",
+        "name",
+        "description",
         "label",
+        "id",
+        "groupingDataset",
         "groupingVariable",
         "dataDriven",
         "groups"
@@ -3913,23 +4243,43 @@
       "definition_uri": "https://www.cdisc.org/ars/1-0/Group",
       "description": "A subdivision of the subject population or analysis dataset record set based on a defined factor.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "WhereClause",
+      "is_a": "NamedObject",
+      "mixins": [
+        "WhereClause"
+      ],
       "slots": [
-        "level",
-        "order",
-        "condition",
-        "id",
+        "name",
+        "description",
         "label",
-        "Group_compoundExpression"
+        "id",
+        "Group_compoundExpression",
+        "condition",
+        "level",
+        "order"
       ],
       "slot_usage": {},
       "class_uri": "https://www.cdisc.org/ars/1-0/Group",
       "@type": "ClassDefinition"
     },
     {
+      "name": "ReferencedGroup",
+      "definition_uri": "https://www.cdisc.org/ars/1-0/ReferencedGroup",
+      "description": "A `Group` referenced by identifier (`subClauseId`) as the sub-clause of a compound expression.",
+      "from_schema": "https://www.cdisc.org/ars/1-0",
+      "is_a": "ReferencedWhereClause",
+      "slots": [
+        "level",
+        "order",
+        "ReferencedGroup_subClauseId"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://www.cdisc.org/ars/1-0/ReferencedGroup",
+      "@type": "ClassDefinition"
+    },
+    {
       "name": "CompoundGroupExpression",
       "definition_uri": "https://www.cdisc.org/ars/1-0/CompoundGroupExpression",
-      "description": "A compound expression consisting of either two or more identified group combined with the `AND` or `OR` logical operator, or a single identified group negated with the `NOT` logical operator.",
+      "description": "A compound expression consisting of either two or more sub-clauses combined with the `AND` or `OR` logical operator, or a single sub-clause negated with the `NOT` logical operator. Each sub-clause is either a fully-defined `WhereClause` (containing either a `condition` or a `compoundExpression`) or a `ReferencedGroup` (containing a `subClauseId` indicating the `id` of the referenced `Group`).",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "WhereClauseCompoundExpression",
       "slots": [
@@ -3941,76 +4291,6 @@
       "@type": "ClassDefinition"
     },
     {
-      "name": "SubjectGroupingFactor",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/SubjectGroupingFactor",
-      "description": "A factor used to subdivide the subject population for comparative analysis (e.g., treatment, sex, race, age).",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "GroupingFactor",
-      "slots": [
-        "id",
-        "label",
-        "groupingVariable",
-        "dataDriven",
-        "SubjectGroupingFactor_groups"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://www.cdisc.org/ars/1-0/SubjectGroupingFactor",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "AnalysisGroup",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/AnalysisGroup",
-      "description": "A subdivision of the subject population based on a defined factor (e.g., subjects whose treatment is Drug A, subjects whose gender is male).",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "Group",
-      "slots": [
-        "level",
-        "order",
-        "condition",
-        "id",
-        "label",
-        "Group_compoundExpression"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://www.cdisc.org/ars/1-0/AnalysisGroup",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "DataGroupingFactor",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/DataGroupingFactor",
-      "description": "A factor used to subdivide data records in an analysis dataset for analysis.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "GroupingFactor",
-      "slots": [
-        "id",
-        "label",
-        "groupingVariable",
-        "dataDriven",
-        "DataGroupingFactor_groups"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://www.cdisc.org/ars/1-0/DataGroupingFactor",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "DataGroup",
-      "definition_uri": "https://www.cdisc.org/ars/1-0/DataGroup",
-      "description": "A subdivision of the analysis dataset records based on a defined factor.",
-      "from_schema": "https://www.cdisc.org/ars/1-0",
-      "is_a": "Group",
-      "slots": [
-        "level",
-        "order",
-        "condition",
-        "id",
-        "label",
-        "Group_compoundExpression"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://www.cdisc.org/ars/1-0/DataGroup",
-      "@type": "ClassDefinition"
-    },
-    {
       "name": "AnalysisMethod",
       "definition_uri": "https://www.cdisc.org/ars/1-0/AnalysisMethod",
       "description": "A set of one or more statistical operations.",
@@ -4018,9 +4298,9 @@
       "is_a": "NamedObject",
       "slots": [
         "name",
-        "id",
-        "label",
         "description",
+        "label",
+        "id",
         "documentRefs",
         "operations",
         "codeTemplate"
@@ -4138,8 +4418,10 @@
       "is_a": "NamedObject",
       "slots": [
         "name",
-        "id",
+        "description",
         "label",
+        "id",
+        "order",
         "referencedOperationRelationships",
         "resultPattern"
       ],
@@ -4215,7 +4497,8 @@
       "abstract": true,
       "slots": [
         "name",
-        "description"
+        "description",
+        "label"
       ],
       "slot_usage": {},
       "class_uri": "https://www.cdisc.org/ars/1-0/CodeParameter",
@@ -4230,6 +4513,7 @@
       "slots": [
         "name",
         "description",
+        "label",
         "valueSource",
         "TemplateCodeParameter_value"
       ],
@@ -4245,9 +4529,10 @@
       "is_a": "NamedObject",
       "slots": [
         "name",
+        "description",
+        "label",
         "id",
         "version",
-        "description",
         "reason",
         "purpose",
         "documentRefs",
@@ -4328,7 +4613,7 @@
       "description": "A reference to a defined factor by which subjects or data records are grouped for the analysis, ordered with respect to other grouping factors.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "slots": [
-        "OrderedGroupingFactor_order",
+        "order",
         "groupingId",
         "resultsByGroup"
       ],
@@ -4373,6 +4658,7 @@
       "slots": [
         "name",
         "description",
+        "label",
         "AnalysisOutputCodeParameter_value"
       ],
       "slot_usage": {},
@@ -4442,6 +4728,8 @@
       "is_a": "NamedObject",
       "slots": [
         "name",
+        "description",
+        "label",
         "id",
         "version",
         "fileSpecifications",
@@ -4462,6 +4750,8 @@
       "is_a": "NamedObject",
       "slots": [
         "name",
+        "description",
+        "label",
         "fileType",
         "location",
         "style"
@@ -4504,7 +4794,7 @@
       "description": "A display ordered with respect to other displays in an analysis output.",
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "slots": [
-        "OrderedDisplay_order",
+        "order",
         "display"
       ],
       "slot_usage": {},
@@ -4519,6 +4809,8 @@
       "is_a": "NamedObject",
       "slots": [
         "name",
+        "description",
+        "label",
         "id",
         "version",
         "displayTitle",
@@ -4551,7 +4843,7 @@
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "abstract": true,
       "slots": [
-        "OrderedDisplaySubSection_order",
+        "order",
         "subSection",
         "subSectionId"
       ],
@@ -4566,7 +4858,7 @@
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "OrderedDisplaySubSection",
       "slots": [
-        "OrderedDisplaySubSection_order",
+        "order",
         "OrderedSubSection_subSection",
         "OrderedSubSection_subSectionId"
       ],
@@ -4584,7 +4876,7 @@
       "from_schema": "https://www.cdisc.org/ars/1-0",
       "is_a": "OrderedDisplaySubSection",
       "slots": [
-        "OrderedDisplaySubSection_order",
+        "order",
         "OrderedSubSectionRef_subSection",
         "OrderedSubSectionRef_subSectionId"
       ],
@@ -4598,9 +4890,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "ars_ldm.yaml",
-  "source_file_date": "2023-10-15T14:43:27",
-  "source_file_size": 46298,
-  "generation_date": "2023-10-15T14:44:06",
+  "source_file_date": "2024-03-18T16:57:54",
+  "source_file_size": 49874,
+  "generation_date": "2024-03-18T16:58:19",
   "@type": "SchemaDefinition",
   "@context": [
     ".\\analysis-results-standard\\project\\/jsonld/ars_ldm.context.jsonld",

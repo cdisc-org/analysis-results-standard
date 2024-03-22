@@ -18,10 +18,10 @@ URI: [ars:logicalOperator](https://www.cdisc.org/ars/1-0/logicalOperator)
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-[WhereClauseCompoundExpression](WhereClauseCompoundExpression.md) | A compound expression consisting of either two or more where clauses combined... |  no  |
-[CompoundSetExpression](CompoundSetExpression.md) | A compound expression consisting of either two or more identified analysis se... |  no  |
-[CompoundSubsetExpression](CompoundSubsetExpression.md) | A compound expression consisting of either two or more where clauses combined... |  no  |
-[CompoundGroupExpression](CompoundGroupExpression.md) | A compound expression consisting of either two or more identified group combi... |  no  |
+[WhereClauseCompoundExpression](WhereClauseCompoundExpression.md) | An abstract class representing a compound expression consisting of either two... |  no  |
+[CompoundSetExpression](CompoundSetExpression.md) | A compound expression consisting of either two or more sub-clauses combined w... |  no  |
+[CompoundSubsetExpression](CompoundSubsetExpression.md) | A compound expression consisting of either two or more sub-clauses combined w... |  no  |
+[CompoundGroupExpression](CompoundGroupExpression.md) | A compound expression consisting of either two or more sub-clauses combined w... |  no  |
 
 
 

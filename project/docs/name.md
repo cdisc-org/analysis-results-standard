@@ -20,8 +20,13 @@ URI: [ars:name](https://www.cdisc.org/ars/1-0/name)
 | --- | --- | --- |
 [NamedObject](NamedObject.md) | An object with a name |  no  |
 [ReportingEvent](ReportingEvent.md) | A set of analyses and outputs created to meet a specific reporting requiremen... |  no  |
+[ListOfContents](ListOfContents.md) | A structured list of analyses and outputs included in the reporting event |  no  |
 [OrderedListItem](OrderedListItem.md) | An item (analysis, output or sub-list) ordered relative to other items within... |  no  |
 [ReferenceDocument](ReferenceDocument.md) | An external document containing supporting documentation or programming code |  no  |
+[AnalysisSet](AnalysisSet.md) | A set of subjects whose data are to be included in the main analyses |  no  |
+[DataSubset](DataSubset.md) | A subset of data identified by selection criteria for inclusion in the analys... |  no  |
+[GroupingFactor](GroupingFactor.md) | A factor used to subdivide either the subject population or data records in a... |  no  |
+[Group](Group.md) | A subdivision of the subject population or analysis dataset record set based ... |  no  |
 [AnalysisMethod](AnalysisMethod.md) | A set of one or more statistical operations |  no  |
 [Operation](Operation.md) | A statistical operation that produces a single analysis result value as part ... |  no  |
 [CodeParameter](CodeParameter.md) | A replacement parameter whose value is substituted in template programming co... |  no  |

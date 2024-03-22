@@ -19,11 +19,10 @@ URI: [ars:condition](https://www.cdisc.org/ars/1-0/condition)
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 [WhereClause](WhereClause.md) | Selection criteria defined as either a simple condition ([variable] [comparat... |  no  |
+[SubClause](SubClause.md) | An abstract class containing all attributes that may be specified for a sub-c... |  no  |
 [AnalysisSet](AnalysisSet.md) | A set of subjects whose data are to be included in the main analyses |  no  |
 [DataSubset](DataSubset.md) | A subset of data identified by selection criteria for inclusion in the analys... |  no  |
 [Group](Group.md) | A subdivision of the subject population or analysis dataset record set based ... |  no  |
-[AnalysisGroup](AnalysisGroup.md) | A subdivision of the subject population based on a defined factor (e |  no  |
-[DataGroup](DataGroup.md) | A subdivision of the analysis dataset records based on a defined factor |  no  |
 
 
 

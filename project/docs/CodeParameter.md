@@ -16,9 +16,11 @@ URI: [ars:CodeParameter](https://www.cdisc.org/ars/1-0/CodeParameter)
       CodeParameter <|-- TemplateCodeParameter
       CodeParameter <|-- AnalysisOutputCodeParameter
             
+      CodeParameter : name
+        
       CodeParameter : description
         
-      CodeParameter : name
+      CodeParameter : label
         
       
 ```
@@ -38,8 +40,9 @@ URI: [ars:CodeParameter](https://www.cdisc.org/ars/1-0/CodeParameter)
 
 | Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
-| [description](description.md) | 0..1 <br/> [String](String.md) | A textual description of the instance of the class | direct |
 | [name](name.md) | 1..1 <br/> [String](String.md) | The name for the instance of the class | [NamedObject](NamedObject.md) |
+| [description](description.md) | 0..1 <br/> [String](String.md) | A textual description of the instance of the class | [NamedObject](NamedObject.md) |
+| [label](label.md) | 0..1 <br/> [String](String.md) | A short informative description that may be used for display | [NamedObject](NamedObject.md) |
 
 _* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
@@ -93,8 +96,6 @@ from_schema: https://www.cdisc.org/ars/1-0
 rank: 1000
 is_a: NamedObject
 abstract: true
-slots:
-- description
 
 ```
 </details>
@@ -111,20 +112,6 @@ rank: 1000
 is_a: NamedObject
 abstract: true
 attributes:
-  description:
-    name: description
-    description: A textual description of the instance of the class.
-    from_schema: https://www.cdisc.org/ars/1-0
-    rank: 1000
-    alias: description
-    owner: CodeParameter
-    domain_of:
-    - SponsorTerm
-    - AnalysisMethod
-    - ReferencedOperationRelationship
-    - CodeParameter
-    - Analysis
-    range: string
   name:
     name: name
     description: The name for the instance of the class.
@@ -136,6 +123,31 @@ attributes:
     - NamedObject
     range: string
     required: true
+  description:
+    name: description
+    description: A textual description of the instance of the class.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: description
+    owner: CodeParameter
+    domain_of:
+    - NamedObject
+    - SponsorTerm
+    - ReferencedOperationRelationship
+    range: string
+  label:
+    name: label
+    description: A short informative description that may be used for display.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: label
+    owner: CodeParameter
+    domain_of:
+    - NamedObject
+    - AnalysisOutputCategorization
+    - AnalysisOutputCategory
+    - PageRef
+    range: string
 
 ```
 </details>

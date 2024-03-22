@@ -84,6 +84,11 @@
 <tr>
 <td><a href="../WhereClause/">WhereClause</a></td>
 <td>Selection criteria defined as either a simple condition ([variable] [comparat...</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../SubClause/">SubClause</a></td>
+<td>An abstract class containing all attributes that may be specified for a sub-c...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -101,21 +106,11 @@
 <td>A subdivision of the subject population or analysis dataset record set based ...</td>
 <td>yes</td>
 </tr>
-<tr>
-<td><a href="../AnalysisGroup/">AnalysisGroup</a></td>
-<td>A subdivision of the subject population based on a defined factor (e</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../DataGroup/">DataGroup</a></td>
-<td>A subdivision of the analysis dataset records based on a defined factor</td>
-<td>no</td>
-</tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../WhereClauseCompoundExpression/">WhereClauseCompoundExpression</a></li>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -131,7 +126,17 @@
 <span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">compoundExpression</span>
 <span class="nt">domain_of</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WhereClause</span>
-<span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WhereClauseCompoundExpression</span>
+<span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="nt">any_of</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CompoundSetExpression</span>
+<span class="w">  </span><span class="nt">inlined</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">inlined_as_list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CompoundSubsetExpression</span>
+<span class="w">  </span><span class="nt">inlined</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">inlined_as_list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CompoundGroupExpression</span>
+<span class="w">  </span><span class="nt">inlined</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">inlined_as_list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
 </details></div>
 </div>

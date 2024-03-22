@@ -32,6 +32,8 @@ URI: [ars:displays](https://www.cdisc.org/ars/1-0/displays)
 
 * Multivalued: True
 
+* Required: True
+
 
 
 
@@ -66,6 +68,7 @@ alias: displays
 domain_of:
 - Output
 range: OrderedDisplay
+required: true
 inlined: true
 inlined_as_list: true
 

@@ -13,8 +13,7 @@ URI: [ars:AnalysisPurpose](https://www.cdisc.org/ars/1-0/AnalysisPurpose)
 ```mermaid
  classDiagram
     class AnalysisPurpose
-      ExtensibleTerminologyTerm <|-- AnalysisPurpose
-
+      ExtensibleTerminologyTerm <|-- AnalysisPurpose        
       AnalysisPurpose : controlledTerm
         AnalysisPurpose --|> AnalysisPurposeEnum : controlledTerm
         AnalysisPurpose : sponsorTermId

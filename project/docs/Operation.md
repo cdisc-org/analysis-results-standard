@@ -13,14 +13,15 @@ URI: [ars:Operation](https://www.cdisc.org/ars/1-0/Operation)
 ```mermaid
  classDiagram
     class Operation
-      NamedObject <|-- Operation
-
+      NamedObject <|-- Operation        
       Operation : id
-        Operation : label
+        Operation : order
         Operation : referencedOperationRelationships
         Operation --|> ReferencedOperationRelationship : referencedOperationRelationships
         Operation : resultPattern
         Operation : name
+        Operation : description
+        Operation : label
         
 ```
 
@@ -38,10 +39,12 @@ URI: [ars:Operation](https://www.cdisc.org/ars/1-0/Operation)
 | Name | Cardinality* and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [id](id.md) | 1..1 <br/> [String](String.md) | The assigned identifying value for the instance of the class | direct |
-| [label](label.md) | 0..1 <br/> [String](String.md) | A short informative description that may be used for display | direct |
+| [order](order.md) | 1..1 <br/> [Integer](Integer.md) | The ordinal of the instance with respect to other instances | direct |
 | [referencedOperationRelationships](referencedOperationRelationships.md) | 0..* <br/> [ReferencedOperationRelationship](ReferencedOperationRelationship.md) | Relationships to other operations indicating how the result of the referenced... | direct |
 | [resultPattern](resultPattern.md) | 0..1 <br/> [String](String.md) | The default pattern or format to apply to the result for display | direct |
 | [name](name.md) | 1..1 <br/> [String](String.md) | The name for the instance of the class | [NamedObject](NamedObject.md) |
+| [description](description.md) | 0..1 <br/> [String](String.md) | A textual description of the instance of the class | [NamedObject](NamedObject.md) |
+| [label](label.md) | 0..1 <br/> [String](String.md) | A short informative description that may be used for display | [NamedObject](NamedObject.md) |
 
 _* See [LinkML documentation](https://linkml.io/linkml/schemas/slots.html#slot-cardinality) for cardinality definitions._
 
@@ -105,7 +108,7 @@ rank: 1000
 is_a: NamedObject
 slots:
 - id
-- label
+- order
 - referencedOperationRelationships
 - resultPattern
 
@@ -151,24 +154,21 @@ attributes:
     - OutputDisplay
     range: string
     required: true
-  label:
-    name: label
-    description: A short informative description that may be used for display.
+  order:
+    name: order
+    description: The ordinal of the instance with respect to other instances.
     from_schema: https://www.cdisc.org/ars/1-0
     rank: 1000
-    alias: label
+    alias: order
     owner: Operation
     domain_of:
-    - AnalysisOutputCategorization
-    - AnalysisOutputCategory
-    - AnalysisSet
-    - DataSubset
-    - GroupingFactor
-    - Group
-    - AnalysisMethod
-    - PageRef
+    - LevelOrder
     - Operation
-    range: string
+    - OrderedGroupingFactor
+    - OrderedDisplay
+    - OrderedDisplaySubSection
+    range: integer
+    required: true
   referencedOperationRelationships:
     name: referencedOperationRelationships
     description: Relationships to other operations indicating how the result of the
@@ -207,6 +207,31 @@ attributes:
     - NamedObject
     range: string
     required: true
+  description:
+    name: description
+    description: A textual description of the instance of the class.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: description
+    owner: Operation
+    domain_of:
+    - NamedObject
+    - SponsorTerm
+    - ReferencedOperationRelationship
+    range: string
+  label:
+    name: label
+    description: A short informative description that may be used for display.
+    from_schema: https://www.cdisc.org/ars/1-0
+    rank: 1000
+    alias: label
+    owner: Operation
+    domain_of:
+    - NamedObject
+    - AnalysisOutputCategorization
+    - AnalysisOutputCategory
+    - PageRef
+    range: string
 
 ```
 </details>
