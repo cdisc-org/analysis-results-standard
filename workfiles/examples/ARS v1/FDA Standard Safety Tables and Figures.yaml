@@ -273,8 +273,10 @@ analysisGroupings:
       variable: RACE
       comparator: NOTIN
       value:
-      - AMERICAN INDIAN OR ALASKA NATIVE | BLACK OR AFRICAN AMERICAN | NATIVE HAWAIIAN
-        OR OTHER PACIFIC ISLANDER | WHITE
+      - AMERICAN INDIAN OR ALASKA NATIVE
+      - BLACK OR AFRICAN AMERICAN
+      - NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER
+      - WHITE
 - name: Ethnicity
   id: AG_ETHNIC
   dataDriven: false
