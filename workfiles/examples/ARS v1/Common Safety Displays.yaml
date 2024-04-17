@@ -747,7 +747,8 @@ analysisGroupings:
       variable: AGEGR1
       comparator: IN
       value:
-      - 65-80 | >80
+      - 65-80
+      - '>80'
 - name: Primary Race
   id: AnlsGrouping_04_Race
   dataDriven: false

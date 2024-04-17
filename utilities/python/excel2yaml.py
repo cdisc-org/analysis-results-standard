@@ -363,7 +363,7 @@ for value in wsAnGrp.iter_rows(min_row=2, values_only=True):
                         variable=value[16],
                         comparator=value[17],
                         value=str(value[18]).split(" | ")
-                        if value[18] is not None and str(value[17]).find(" | ") > -1
+                        if value[18] is not None and str(value[18]).find(" | ") > -1
                         else value[18],
                     )
                     if value[16] is not None

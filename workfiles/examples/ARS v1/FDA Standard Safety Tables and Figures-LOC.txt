@@ -191,7 +191,7 @@ List of Contents: List of Planned Analyses (LOPA)
               4. AG_RACE_4 - White
                  Selection Criteria: ADSL.RACE EQ 'WHITE'
               5. AG_RACE_5 - Other
-                 Selection Criteria: ADSL.RACE NOTIN 'AMERICAN INDIAN OR ALASKA NATIVE | BLACK OR AFRICAN AMERICAN | NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER | WHITE'
+                 Selection Criteria: ADSL.RACE NOTIN ('AMERICAN INDIAN OR ALASKA NATIVE', 'BLACK OR AFRICAN AMERICAN', 'NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER', 'WHITE')
         Analysis Variable: ADSL.USUBJID
         Method: M_GRP_SUM_CATEG - Summary by group of a categorical variable (Grouped summary of categorical variable)
                 Descriptive summary statistics across groups for a categorical variable, based on subject occurrence

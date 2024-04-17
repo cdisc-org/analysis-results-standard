@@ -153,7 +153,7 @@ List of Contents: List of Planned Analyses (LOPA)
               1. AnlsGrouping_03_AgeGp_1 - < 65 years
                  Selection Criteria: ADSL.AGEGR1 EQ '<65'
               2. AnlsGrouping_03_AgeGp_2 - ≥ 65 years
-                 Selection Criteria: ADSL.AGEGR1 IN '65-80 | >80'
+                 Selection Criteria: ADSL.AGEGR1 IN ('65-80', '>80')
         Analysis Variable: ADSL.USUBJID
         Method: Mth01_CatVar_Summ_ByGrp - Summary by group of a categorical variable (Grouped summary of categorical variable)
                 Descriptive summary statistics across groups for a categorical variable, based on subject occurrence
@@ -192,7 +192,7 @@ List of Contents: List of Planned Analyses (LOPA)
               1. AnlsGrouping_03_AgeGp_1 - < 65 years
                  Selection Criteria: ADSL.AGEGR1 EQ '<65'
               2. AnlsGrouping_03_AgeGp_2 - ≥ 65 years
-                 Selection Criteria: ADSL.AGEGR1 IN '65-80 | >80'
+                 Selection Criteria: ADSL.AGEGR1 IN ('65-80', '>80')
         Analysis Variable: ADSL.USUBJID
         Method: Mth03_CatVar_Comp_PChiSq - Pearson's chi-square test group comparison for a categorical variable (Pearson's chi-square test group comparison for categorical variable)
                 Comparison of groups by Pearson's chi-square test for a categorical variable
