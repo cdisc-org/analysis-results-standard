@@ -393,7 +393,7 @@ def print_list(
                                     )
                         else:
                             fileref.write(
-                                f"{'  '*level+1}{grp.order}. {grp.groupingId} (**INVALID GROUPING ID**)\n"
+                                f"{'  '*(level+2)}{grp.order}. {grp.groupingId} (**INVALID GROUPING ID**)\n"
                             )
                 fileref.write(
                     f"{'  '*(level+1)}Analysis Variable: {analysis.dataset}.{analysis.variable}\n"

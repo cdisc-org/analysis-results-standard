@@ -1,4 +1,4 @@
-﻿%macro class_dataset(maplib=,inlib=,classlst=,classnm=,slotdefs=,outlib=);
+%macro class_dataset(maplib=,inlib=,classlst=,classnm=,slotdefs=,outlib=);
 
 /***********************************************************************************\
 *                                                                                   *
@@ -43,7 +43,7 @@
        with the specified class(es)
     */
 
-    select b.dsname,
+    select distinct b.dsname,
            a.tablepath
     into : dsnames separated by ' ',
          : tpaths separated by '|'

@@ -432,7 +432,7 @@ for value in wsAnGrp.iter_rows(min_row=2, values_only=True):
 else:
     if grpid != "":
         grpng.groups.append(grp)
-        rptevt.analysisGroupings.append(grpng)
+    rptevt.analysisGroupings.append(grpng)
 
 wsDss = wb["DataSubsets"]
 
