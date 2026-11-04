@@ -137,6 +137,7 @@
   "analysisSets": [
     {
       "name": "Safety Population",
+      "label": "Safety Population",
       "id": "AS_SAF",
       "level": 1,
       "order": 1,
