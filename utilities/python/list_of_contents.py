@@ -9,9 +9,9 @@
 #              "-LOC" suffix. For example, an YAML file called "Study 1 CSR.yaml"
 #              will generate a text file called "Study 1 CSR-LOPA.txt".
 #
-# Usage: python lopa.py -s <path to ARS model schema file> -r <path to report event YAML file>
+# Usage: python list_of_contents.py -s <path to ARS model schema file> -r <path to report event YAML file>
 #
-# Example: python lopa.py -s ..\..\model\ars_ldm.yaml -r '..\..\workfiles\examples\Sprint 12 Examples.yaml'
+# Example: python list_of_contents.py -s ..\..\model\ars_ldm.yaml -r '..\..\workfiles\examples\Sprint 12 Examples.yaml'
 #
 
 import os
@@ -80,8 +80,8 @@ def quote(word):
     return "'%s'" % word
 
 
-def value_list(value: List[str]):
-    return "({})".format(", ".join(quote(x) for x in value))
+def value_list(value: list[str]):
+    return "[{}]".format(", ".join(quote(x) for x in value))
 
 
 fetchlist = [ars_api.fetch_AnalysisSet, ars_api.fetch_DataSubset, ars_api.fetch_Group]
@@ -102,16 +102,17 @@ def where_clause(wc: Union[WhereClause, SubClause], where: str = "") -> str:
             " "
             if len(where) > 0
             else ""
-            + f"{wc.condition.dataset}.{wc.condition.variable} {wc.condition.comparator} {quote(''.join(wc.condition.value)) if len(wc.condition.value) == 1 else value_list(wc.condition.value)}"
+            + f"{wc.condition.dataset}.{wc.condition.variable} {wc.condition.comparator} {quote(''.join(wc.condition.value)) if len(wc.condition.value) <= 1 else value_list(wc.condition.value)}"
         )
     elif str(wc.compoundExpression.logicalOperator) == "NOT":
         if len(wc.compoundExpression.whereClauses) > 1:
             print(
                 f"Only one subclause is allowed when logicalOperator = 'NOT'. The following subclauses were ignored:\n{wc.compoundExpression.whereClauses[1:]}"
             )
-        where += "NOT ({})".format(
-            where_clause(wc.compoundExpression.whereClauses[0], where)
-        )
+        where += (
+            "NOT ({})" if wc.compoundExpression.whereClauses[0].condition else "NOT {}"
+        ).format(where_clause(wc.compoundExpression.whereClauses[0], where))
+
     else:
         where += "({})".format(
             " {} ".format(wc.compoundExpression.logicalOperator).join(
