@@ -1,3 +1,16 @@
+##############################################################################
+#
+#                                DEPRECATED 
+#
+# This script is no longer used. It has been replaced by the "excel2ars.py"
+# script, which generates an ARS model YAML or JSON file from an Excel file.
+# To generate a YAML file containing an ARS ReportingEvent from an Excel file,
+# use the "excel2ars.py" script with the "-of yaml" option.
+#
+# The "excel2yaml.py" script is retained here for reference purposes only and
+# will not be maintained.
+#
+##############################################################################
 #
 # Name: excel2yaml.py
 #

@@ -130,7 +130,7 @@ def get_nlist(sheetname: str, clist: str, vmap: dict, values: list[list]) -> Nes
 clists = {}
 for sheetname in ["MainListOfContents", "OtherListsOfContents"]:
     wsLopx = wb[sheetname]
-    mapLopx = {col.value: col.column - 1 for col in tuple(wsLopx.rows)[0]}
+    mapLopx = {col.value or f'[Column {col.column - 1}]': col.column - 1 for col in tuple(wsLopx.rows)[0]}
     lcols = len([1 for k in mapLopx.keys() if not k.startswith("listItem_")])
     for value in wsLopx.iter_rows(min_row=2, values_only=True):
         if all([c is None for c in value]):
@@ -201,7 +201,7 @@ def get_content_lists(main: bool) -> list[ListOfContents]:
 
 
 wsRptEvt = wb["ReportingEvent"]
-mapRptEvt = {col.value: col.column - 1 for col in tuple(wsRptEvt.rows)[0]}
+mapRptEvt = {col.value or f'[Column {col.column - 1}]': col.column - 1 for col in tuple(wsRptEvt.rows)[0]}
 for value in wsRptEvt.iter_rows(min_row=2, max_row=2, values_only=True):
     if all([c is None for c in value]):
         continue
@@ -219,7 +219,7 @@ for value in wsRptEvt.iter_rows(min_row=2, max_row=2, values_only=True):
 
 
 wsRefDoc = wb["ReferenceDocuments"]
-mapRefDoc = {col.value: col.column - 1 for col in tuple(wsRefDoc.rows)[0]}
+mapRefDoc = {col.value or f'[Column {col.column - 1}]': col.column - 1 for col in tuple(wsRefDoc.rows)[0]}
 
 for value in wsRefDoc.iter_rows(min_row=2, values_only=True):
     if all([c is None for c in value]):
@@ -236,7 +236,7 @@ for value in wsRefDoc.iter_rows(min_row=2, values_only=True):
     rptevt.referenceDocuments.append(refdoc)
 
 wsCat = wb["Categorizations"]
-mapCat = {col.value: col.column - 1 for col in tuple(wsCat.rows)[0]}
+mapCat = {col.value or f'[Column {col.column - 1}]': col.column - 1 for col in tuple(wsCat.rows)[0]}
 catnid = ""
 cats = {}
 catns = {}
@@ -299,7 +299,7 @@ for value in wsCat.iter_rows(min_row=2, values_only=True):
     cats[value[mapCat["category_id"]]] = catns[value[mapCat["id"]]].categories[-1]
 
 wsGDS = wb["GlobalDisplaySections"]
-mapGDS = {col.value: col.column - 1 for col in tuple(wsGDS.rows)[0]}
+mapGDS = {col.value or f'[Column {col.column - 1}]': col.column - 1 for col in tuple(wsGDS.rows)[0]}
 sidx = {}
 dsubsects = {}
 for value in wsGDS.iter_rows(min_row=2, values_only=True):
@@ -324,7 +324,7 @@ for value in wsGDS.iter_rows(min_row=2, values_only=True):
     ].subSections[-1]
 
 wsTermEx = wb["TerminologyExtensions"]
-mapTermEx = {col.value: col.column - 1 for col in tuple(wsTermEx.rows)[0]}
+mapTermEx = {col.value or f'[Column {col.column - 1}]': col.column - 1 for col in tuple(wsTermEx.rows)[0]}
 termexidx = {}
 spterms = {}
 for value in wsTermEx.iter_rows(min_row=2, values_only=True):
@@ -361,7 +361,7 @@ for value in wsTermEx.iter_rows(min_row=2, values_only=True):
     ].sponsorTerms[-1]
 
 wsAnSet = wb["AnalysisSets"]
-mapAnSet = {col.value: col.column - 1 for col in tuple(wsAnSet.rows)[0]}
+mapAnSet = {col.value or f'[Column {col.column - 1}]': col.column - 1 for col in tuple(wsAnSet.rows)[0]}
 
 asid = ""
 anset: AnalysisSet = None
@@ -443,7 +443,7 @@ else:
     rptevt.analysisSets.append(anset)
 
 wsAnGrp = wb["AnalysisGroupings"]
-mapAnGrp = {col.value: col.column - 1 for col in tuple(wsAnGrp.rows)[0]}
+mapAnGrp = {col.value or f'[Column {col.column - 1}]': col.column - 1 for col in tuple(wsAnGrp.rows)[0]}
 grpngid = ""
 grpid = ""
 
@@ -566,7 +566,7 @@ else:
     rptevt.analysisGroupings.append(grpng)
 
 wsDss = wb["DataSubsets"]
-mapDss = {col.value: col.column - 1 for col in tuple(wsDss.rows)[0]}
+mapDss = {col.value or f'[Column {col.column - 1}]': col.column - 1 for col in tuple(wsDss.rows)[0]}
 dss: DataSubset = None
 dssid = ""
 wcs = {}
@@ -674,16 +674,14 @@ results = {}
 
 if "AnalysisResults" in wb.sheetnames:
     wsRslts = wb["AnalysisResults"]
-    mapRslts = {col.value: col.column - 1 for col in tuple(wsRslts.rows)[0]}
-    anid = ""
+    mapRslts = {col.value or f'[Column {col.column - 1}]': col.column - 1 for col in tuple(wsRslts.rows)[0]}
     for value in wsRslts.iter_rows(min_row=2, values_only=True):
         if all([c is None for c in value]):
             continue
-        if str(value[mapRslts["id"]]) != anid:
+        if str(value[mapRslts["id"]]) not in results:
             results[value[mapRslts["id"]]] = [
                 read_operation_result(value, mapRslts)
             ]
-            anid = str(value[mapRslts["id"]])
         else:
             results[value[mapRslts["id"]]].append(
                 read_operation_result(value, mapRslts)
@@ -692,7 +690,7 @@ if "AnalysisResults" in wb.sheetnames:
 def get_docrefs(sheetname: str) -> dict:
 
     wsDocRef = wb[sheetname]
-    mapDocRef = {col.value: col.column - 1 for col in tuple(wsDocRef.rows)[0]}
+    mapDocRef = {col.value or f'[Column {col.column - 1}]': col.column - 1 for col in tuple(wsDocRef.rows)[0]}
 
     docrefs = {
         "sheetname": sheetname,
@@ -809,7 +807,7 @@ def get_docrefs(sheetname: str) -> dict:
 def get_params(sheetname: str, template: bool = False) -> dict:
 
     wsParams = wb[sheetname]
-    mapParams = {col.value: col.column - 1 for col in tuple(wsParams.rows)[0]}
+    mapParams = {col.value or f'[Column {col.column - 1}]': col.column - 1 for col in tuple(wsParams.rows)[0]}
 
     params = {}
 
@@ -865,7 +863,7 @@ def get_progcode(
 ) -> dict:
 
     wsProgCode = wb[sheetname]
-    mapProgCode = {col.value: col.column - 1 for col in tuple(wsProgCode.rows)[0]}
+    mapProgCode = {col.value or f'[Column {col.column - 1}]': col.column - 1 for col in tuple(wsProgCode.rows)[0]}
 
     progcode = {}
 
@@ -944,7 +942,7 @@ mprogcode = get_progcode(
 )
 
 wsMth = wb["AnalysisMethods"]
-mapMth = {col.value: col.column - 1 for col in tuple(wsMth.rows)[0]}
+mapMth = {col.value or f'[Column {col.column - 1}]': col.column - 1 for col in tuple(wsMth.rows)[0]}
 mthid = ""
 method = AnalysisMethod(
     id="dummy", name="dummy", operations=[Operation(id="dummy", name="dummy", order=0)]
@@ -1088,7 +1086,7 @@ aprogcode = get_progcode(
 )
 
 wsAn = wb["Analyses"]
-mapAn = {col.value: col.column - 1 for col in tuple(wsAn.rows)[0]}
+mapAn = {col.value or f'[Column {col.column - 1}]': col.column - 1 for col in tuple(wsAn.rows)[0]}
 
 for value in wsAn.iter_rows(min_row=2, values_only=True):
     if all([c is None for c in value]):
@@ -1176,7 +1174,7 @@ ofiles = {}
 
 if "OutputFiles" in wb.sheetnames:
     wsOFile = wb["OutputFiles"]
-    mapOFile = {col.value: col.column - 1 for col in tuple(wsOFile.rows)[0]}
+    mapOFile = {col.value or f'[Column {col.column - 1}]': col.column - 1 for col in tuple(wsOFile.rows)[0]}
 
     for value in wsOFile.iter_rows(min_row=2, values_only=True):
         if all([c is None for c in value]):
@@ -1199,7 +1197,7 @@ if "OutputFiles" in wb.sheetnames:
             ofiles[value[mapOFile["output_id"]]] = [fs]
 
 wsDisp = wb["Displays"]
-mapDisp = {col.value: col.column - 1 for col in tuple(wsDisp.rows)[0]}
+mapDisp = {col.value or f'[Column {col.column - 1}]': col.column - 1 for col in tuple(wsDisp.rows)[0]}
 
 displays = {}
 dispid = ""
@@ -1272,7 +1270,7 @@ oprogcode = get_progcode(
 )
 
 wsOutput = wb["Outputs"]
-mapOutput = {col.value: col.column - 1 for col in tuple(wsOutput.rows)[0]}
+mapOutput = {col.value or f'[Column {col.column - 1}]': col.column - 1 for col in tuple(wsOutput.rows)[0]}
 
 for value in wsOutput.iter_rows(min_row=2, values_only=True):
     if all([c is None for c in value]):
